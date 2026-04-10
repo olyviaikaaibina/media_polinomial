@@ -1965,6 +1965,7 @@
             document.getElementById('latihanFeedback2').innerHTML = '';
             document.getElementById('latihanPenjelasan2').style.display = 'none';
         }
+        
     </script>
 @endsection
 
