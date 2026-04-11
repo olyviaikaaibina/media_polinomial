@@ -537,10 +537,9 @@
             class="dropdown-item {{ request()->routeIs('teoremasisa') ? 'active' : '' }}">
             Teorema Sisa
           </a>
-          <a href="{{ route('kuisc') }}"
-            class="dropdown-item {{ request()->routeIs('kuisc') ? 'active' : '' }}">
+          <a href="{{ route('kuisc') }}" class="dropdown-item {{ request()->routeIs('kuisc') ? 'active' : '' }}">
             Kuis C
-            </a>
+          </a>
         </div>
       </div>
 
@@ -550,9 +549,17 @@
           <span class="dropdown-arrow">&#9662;</span>
         </button>
         <div class="dropdown-content">
-          <a href="#" class="dropdown-item">Teorema Faktor</a>
-          <a href="#" class="dropdown-item">Faktor dan Pembuat Nol</a>
-          <a href="#" class="dropdown-item">Kuis</a>
+          <a href="{{ route('teoremafaktor') }}"
+            class="dropdown-item {{ request()->routeIs('teoremafaktor') ? 'active' : '' }}">
+            Teorema Faktor
+          </a>
+          <a href="{{ route('faktordanpembuatnol') }}"
+            class="dropdown-item {{ request()->routeIs('faktordanpembuatnol') ? 'active' : '' }}">
+            Faktor dan Pembuat Nol
+          </a>
+          <a href="{{ route('kuisd') }}" class="dropdown-item {{ request()->routeIs('kuisd') ? 'active' : '' }}">
+            Kuis D
+          </a>
         </div>
       </div>
 
@@ -562,8 +569,13 @@
           <span class="dropdown-arrow">&#9662;</span>
         </button>
         <div class="dropdown-content">
-          <a href="#" class="dropdown-item">Identitas Polinomial</a>
-          <a href="#" class="dropdown-item">Kuis</a>
+          <a href="{{ route('identitaspolinomial') }}"
+            class="dropdown-item {{ request()->routeIs('identitaspolinomial') ? 'active' : '' }}">
+            Identitas Polinomial
+          </a>
+          <a href="{{ route('kuise') }}" class="dropdown-item {{ request()->routeIs('kuise') ? 'active' : '' }}">
+            Kuis E
+          </a>
         </div>
       </div>
 

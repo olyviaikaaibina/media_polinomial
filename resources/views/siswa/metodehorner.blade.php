@@ -815,8 +815,8 @@
         }
 
         /* =========================
-                   TABEL HORNER LATIHAN NO 2
-                ========================= */
+                       TABEL HORNER LATIHAN NO 2
+                    ========================= */
         .latihan-horner-wrap {
             margin: 18px 0 10px;
             overflow-x: auto;
@@ -1448,7 +1448,7 @@
             </div>
         </div>
 
-        <div class="latihan-item latihan-hidden" id="latihanSoal2">
+        <div class="latihan-item" id="latihanSoal2">
             <div class="latihan-soal-title">2. Lengkapi tabel Horner berikut untuk menentukan hasil bagi dan sisa:</div>
             <div class="latihan-rumus">(2x³ − x² + 4x − 8) ÷ (x − 2)</div>
 
@@ -1523,450 +1523,443 @@
         </div>
     </div>
 
-    <script>
-        let jawabanBenar = false;
+   <script>
+    let jawabanBenar = false;
 
-        const latihanJawaban = {
-            s1k: '',
-            s1koef: '',
-            s1turun: '',
-            s1proses: '',
-            s1hasil: ''
-        };
+    const latihanJawaban = {
+        s1k: '',
+        s1koef: '',
+        s1turun: '',
+        s1proses: '',
+        s1hasil: ''
+    };
 
-        function setStatusInput(input, isCorrect) {
-            input.classList.remove('input-benar', 'input-salah');
+    function setStatusInput(input, isCorrect) {
+        input.classList.remove('input-benar', 'input-salah');
 
-            if (input.value.trim() !== '') {
-                input.classList.add(isCorrect ? 'input-benar' : 'input-salah');
-            }
+        if (input.value.trim() !== '') {
+            input.classList.add(isCorrect ? 'input-benar' : 'input-salah');
         }
+    }
 
-        function cekJawaban() {
-            const a1 = document.getElementById('a1');
-            const a2 = document.getElementById('a2');
-            const a3 = document.getElementById('a3');
-            const a4 = document.getElementById('a4');
-            const a5 = document.getElementById('a5');
-            const hasilAkhir = document.getElementById('hasilAkhir');
-            const feedback = document.getElementById('feedbackJawaban');
-            const penjelasanBox = document.getElementById('penjelasanBox');
+    function cekJawaban() {
+        const a1 = document.getElementById('a1');
+        const a2 = document.getElementById('a2');
+        const a3 = document.getElementById('a3');
+        const a4 = document.getElementById('a4');
+        const a5 = document.getElementById('a5');
+        const hasilAkhir = document.getElementById('hasilAkhir');
+        const feedback = document.getElementById('feedbackJawaban');
+        const penjelasanBox = document.getElementById('penjelasanBox');
 
-            const v1 = a1.value.trim();
-            const v2 = a2.value.trim();
-            const v3 = a3.value.trim();
-            const v4 = a4.value.trim();
-            const v5 = a5.value.trim();
-            const vh = hasilAkhir.value.trim();
+        const v1 = a1.value.trim();
+        const v2 = a2.value.trim();
+        const v3 = a3.value.trim();
+        const v4 = a4.value.trim();
+        const v5 = a5.value.trim();
+        const vh = hasilAkhir.value.trim();
 
-            const c1 = v1 === '16';
-            const c2 = v2 === '12';
-            const c3 = v3 === '16';
-            const c4 = v4 === '12';
-            const c5 = v5 === '11';
-            const ch = vh === '11';
+        const c1 = v1 === '16';
+        const c2 = v2 === '12';
+        const c3 = v3 === '16';
+        const c4 = v4 === '12';
+        const c5 = v5 === '11';
+        const ch = vh === '11';
 
-            setStatusInput(a1, c1);
-            setStatusInput(a2, c2);
-            setStatusInput(a3, c3);
-            setStatusInput(a4, c4);
-            setStatusInput(a5, c5);
-            setStatusInput(hasilAkhir, ch);
+        setStatusInput(a1, c1);
+        setStatusInput(a2, c2);
+        setStatusInput(a3, c3);
+        setStatusInput(a4, c4);
+        setStatusInput(a5, c5);
+        setStatusInput(hasilAkhir, ch);
 
-            if (c1 && c2 && c3 && c4 && c5 && ch) {
-                jawabanBenar = true;
-                feedback.textContent = 'Jawaban benar. Kamu bisa lanjut ke materi berikutnya.';
-                feedback.className = 'feedback-jawaban feedback-benar';
-                penjelasanBox.style.display = 'block';
-            } else {
-                jawabanBenar = false;
-                feedback.textContent = 'Masih ada jawaban yang salah. Periksa kembali perhitunganmu.';
-                feedback.className = 'feedback-jawaban feedback-salah';
-                penjelasanBox.style.display = 'none';
-            }
+        if (c1 && c2 && c3 && c4 && c5 && ch) {
+            jawabanBenar = true;
+            feedback.textContent = 'Jawaban benar. Kamu bisa lanjut ke materi berikutnya.';
+            feedback.className = 'feedback-jawaban feedback-benar';
+            penjelasanBox.style.display = 'block';
+        } else {
+            jawabanBenar = false;
+            feedback.textContent = 'Masih ada jawaban yang salah. Periksa kembali perhitunganmu.';
+            feedback.className = 'feedback-jawaban feedback-salah';
+            penjelasanBox.style.display = 'none';
         }
+    }
 
-        const hornerSteps = [{
-            title: 'Langkah 1: Turunkan',
-            content: 'Tulis dulu koefisien polinomial dari pangkat tertinggi ke terendah, lalu tentukan nilai k dari pembagi (x − k). Setelah siap, koefisien pertama langsung diturunkan ke baris bawah sebagai nilai awal.'
-        },
-        {
-            title: 'Langkah 2: Kalikan',
-            content: 'Nilai yang sudah diturunkan kemudian dikalikan dengan k. Hasil perkalian itu ditulis di bawah koefisien berikutnya sebelum dilakukan penjumlahan.'
-        },
-        {
-            title: 'Langkah 3: Jumlahkan',
-            content: 'Jumlahkan hasil perkalian dengan koefisien berikutnya. Ulangi proses kalikan dan jumlahkan sampai selesai. Angka terakhir menjadi sisa, sedangkan angka sebelumnya menjadi koefisien hasil bagi.'
-        }
-        ];
+    const hornerSteps = [{
+        title: 'Langkah 1: Turunkan',
+        content: 'Tulis dulu koefisien polinomial dari pangkat tertinggi ke terendah, lalu tentukan nilai k dari pembagi (x − k). Setelah siap, koefisien pertama langsung diturunkan ke baris bawah sebagai nilai awal.'
+    },
+    {
+        title: 'Langkah 2: Kalikan',
+        content: 'Nilai yang sudah diturunkan kemudian dikalikan dengan k. Hasil perkalian itu ditulis di bawah koefisien berikutnya sebelum dilakukan penjumlahan.'
+    },
+    {
+        title: 'Langkah 3: Jumlahkan',
+        content: 'Jumlahkan hasil perkalian dengan koefisien berikutnya. Ulangi proses kalikan dan jumlahkan sampai selesai. Angka terakhir menjadi sisa, sedangkan angka sebelumnya menjadi koefisien hasil bagi.'
+    }
+    ];
 
-        let currentHornerStep = 0;
+    let currentHornerStep = 0;
 
-        function showHornerStep(index) {
-            currentHornerStep = index;
+    function showHornerStep(index) {
+        currentHornerStep = index;
 
-            const buttons = document.querySelectorAll('.flow-step');
-            buttons.forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-            });
-
-            const listItems = document.querySelectorAll('#hornerStepsList li');
-            listItems.forEach((item) => {
-                const stepIndex = parseInt(item.getAttribute('data-step'));
-                item.classList.toggle('active-step', stepIndex === index);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            showHornerStep(0);
-
-            const nextBtn = document.querySelector('.next-btn');
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function (e) {
-                    if (!jawabanBenar) {
-                        e.preventDefault();
-                        alert('Selesaikan soal eksplorasi dengan benar terlebih dahulu sebelum lanjut.');
-                    }
-                });
-            }
+        const buttons = document.querySelectorAll('.flow-step');
+        buttons.forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
         });
 
-        function bukaStep(stepNumber) {
-            const current = document.getElementById(`card-step-${stepNumber}`);
-            if (current) {
-                current.classList.remove('step-locked');
-                current.classList.add('step-active');
-            }
+        const listItems = document.querySelectorAll('#hornerStepsList li');
+        listItems.forEach((item) => {
+            const stepIndex = parseInt(item.getAttribute('data-step'));
+            item.classList.toggle('active-step', stepIndex === index);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        showHornerStep(0);
+
+        const nextBtn = document.querySelector('.next-btn');
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function (e) {
+                if (!jawabanBenar) {
+                    e.preventDefault();
+                    alert('Selesaikan soal eksplorasi dengan benar terlebih dahulu sebelum lanjut.');
+                }
+            });
         }
+    });
 
-        function kunciStepLama(stepNumber) {
-            const current = document.getElementById(`card-step-${stepNumber}`);
-            if (current) {
-                current.classList.remove('step-active');
-            }
+    function bukaStep(stepNumber) {
+        const current = document.getElementById(`card-step-${stepNumber}`);
+        if (current) {
+            current.classList.remove('step-locked');
+            current.classList.add('step-active');
         }
+    }
 
-        function tampilBenar(feedbackId, penjelasanId, pesan) {
-            const feedback = document.getElementById(feedbackId);
-            const penjelasan = document.getElementById(penjelasanId);
+    function kunciStepLama(stepNumber) {
+        const current = document.getElementById(`card-step-${stepNumber}`);
+        if (current) {
+            current.classList.remove('step-active');
+        }
+    }
 
-            feedback.textContent = pesan;
-            feedback.className = 'feedback-step feedback-benar';
+    function tampilBenar(feedbackId, penjelasanId, pesan) {
+        const feedback = document.getElementById(feedbackId);
+        const penjelasan = document.getElementById(penjelasanId);
+
+        feedback.textContent = pesan;
+        feedback.className = 'feedback-step feedback-benar';
+        penjelasan.style.display = 'block';
+    }
+
+    function tampilSalah(feedbackId, penjelasanId, pesan) {
+        const feedback = document.getElementById(feedbackId);
+        const penjelasan = document.getElementById(penjelasanId);
+
+        feedback.textContent = pesan;
+        feedback.className = 'feedback-step feedback-salah';
+        penjelasan.style.display = 'none';
+    }
+
+    function cekStep1() {
+        const v = document.getElementById('k').value.trim();
+        if (v === '1') {
+            tampilBenar('fb1', 'penjelasan1', 'Benar, nilai k sudah tepat.');
+            kunciStepLama(1);
+            bukaStep(2);
+        } else {
+            tampilSalah('fb1', 'penjelasan1', 'Masih salah. Perhatikan bentuk (x − k).');
+        }
+    }
+
+    function cekStep2() {
+        const c1 = document.getElementById('c1').value.trim();
+        const c2 = document.getElementById('c2').value.trim();
+        const c3 = document.getElementById('c3').value.trim();
+        const c4 = document.getElementById('c4').value.trim();
+
+        if (c1 === '3' && c2 === '5' && c3 === '-2' && c4 === '1') {
+            tampilBenar('fb2', 'penjelasan2', 'Benar, koefisien ditulis dengan urut.');
+            kunciStepLama(2);
+            bukaStep(3);
+        } else {
+            tampilSalah('fb2', 'penjelasan2', 'Masih ada koefisien yang belum tepat.');
+        }
+    }
+
+    function cekStep3() {
+        const v = document.getElementById('t1').value.trim();
+        if (v === '3') {
+            tampilBenar('fb3', 'penjelasan3', 'Benar, koefisien pertama langsung diturunkan.');
+            kunciStepLama(3);
+            bukaStep(4);
+        } else {
+            tampilSalah('fb3', 'penjelasan3', 'Masih salah. Coba lihat koefisien pertama.');
+        }
+    }
+
+    function cekStep4() {
+        const a = document.getElementById('s41').value.trim();
+        const b = document.getElementById('s42').value.trim();
+
+        if (a === '3' && b === '8') {
+            tampilBenar('fb4', 'penjelasan4', 'Benar, hasil perkalian dan penjumlahan sudah tepat.');
+            kunciStepLama(4);
+            bukaStep(5);
+        } else {
+            tampilSalah('fb4', 'penjelasan4', 'Periksa lagi hasil kali dan hasil jumlahnya.');
+        }
+    }
+
+    function cekStep5() {
+        const a = document.getElementById('s51').value.trim();
+        const b = document.getElementById('s52').value.trim();
+        const c = document.getElementById('s53').value.trim();
+        const d = document.getElementById('s54').value.trim();
+
+        if (a === '8' && b === '6' && c === '6' && d === '7') {
+            tampilBenar('fb5', 'penjelasan5', 'Benar, proses Horner sudah selesai.');
+            kunciStepLama(5);
+            bukaStep(6);
+        } else {
+            tampilSalah('fb5', 'penjelasan5', 'Masih ada hasil yang belum tepat. Coba ulangi prosesnya.');
+        }
+    }
+
+    function cekStep6() {
+        const t61 = document.getElementById('t61').value.trim();
+        const t62 = document.getElementById('t62').value.trim();
+        const t63 = document.getElementById('t63').value.trim();
+        const t64 = document.getElementById('t64').value.trim();
+        const t65 = document.getElementById('t65').value.trim();
+        const t66 = document.getElementById('t66').value.trim();
+
+        if (t61 === '3' && t62 === '8' && t63 === '6' &&
+            t64 === '8' && t65 === '6' && t66 === '7') {
+            tampilBenar('fb6', 'penjelasan6', 'Benar, tabel Horner sudah lengkap.');
+            kunciStepLama(6);
+            bukaStep(7);
+        } else {
+            tampilSalah('fb6', 'penjelasan6', 'Masih ada isian tabel yang belum tepat.');
+        }
+    }
+
+    function cekStep7() {
+        const h1 = document.getElementById('h1').value.trim();
+        const h2 = document.getElementById('h2').value.trim();
+        const h3 = document.getElementById('h3').value.trim();
+        const sisa = document.getElementById('sisa').value.trim();
+        const qx1 = document.getElementById('qx1').value.trim();
+        const qx2 = document.getElementById('qx2').value.trim();
+        const qx3 = document.getElementById('qx3').value.trim();
+
+        if (
+            h1 === '3' && h2 === '8' && h3 === '6' &&
+            sisa === '7' &&
+            qx1 === '3' && qx2 === '8' && qx3 === '6'
+        ) {
+            tampilBenar('fb7', 'penjelasan7', 'Hebat, hasil bagi dan sisa sudah benar.');
+        } else {
+            tampilSalah('fb7', 'penjelasan7', 'Coba cek lagi koefisien hasil bagi, bentuk Q(x), dan sisanya.');
+        }
+    }
+
+    function selectOption(group, btn, value) {
+        latihanJawaban[group] = value;
+
+        const wrapper = document.querySelector(`[data-group="${group}"]`);
+        if (!wrapper) return;
+
+        wrapper.querySelectorAll('.pilihan-btn').forEach(item => {
+            item.classList.remove('selected', 'wrong', 'correct');
+        });
+
+        btn.classList.add('selected');
+    }
+
+    function resetPilihanState(group) {
+        const wrapper = document.querySelector(`[data-group="${group}"]`);
+        if (!wrapper) return;
+
+        wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
+            btn.classList.remove('correct', 'wrong', 'selected');
+        });
+
+        latihanJawaban[group] = '';
+    }
+
+    function resetWarnaSaja(group) {
+        const wrapper = document.querySelector(`[data-group="${group}"]`);
+        if (!wrapper) return;
+
+        wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
+            btn.classList.remove('correct', 'wrong');
+        });
+    }
+
+    function tandaiSemuaBenar(group, jawabanBenarValue) {
+        const wrapper = document.querySelector(`[data-group="${group}"]`);
+        if (!wrapper) return;
+
+        wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
+            btn.classList.remove('correct', 'wrong');
+            const onclickText = btn.getAttribute('onclick') || '';
+            const isCorrectButton = onclickText.includes(`'${jawabanBenarValue}'`);
+
+            if (isCorrectButton) {
+                btn.classList.add('correct');
+            }
+        });
+    }
+
+    function tandaiYangDipilihSalah(group, jawabanBenarValue) {
+        const wrapper = document.querySelector(`[data-group="${group}"]`);
+        if (!wrapper) return;
+
+        wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
+            btn.classList.remove('correct', 'wrong');
+
+            const onclickText = btn.getAttribute('onclick') || '';
+            const isCorrectButton = onclickText.includes(`'${jawabanBenarValue}'`);
+            const isSelected = btn.classList.contains('selected');
+
+            if (isSelected && !isCorrectButton) {
+                btn.classList.add('wrong');
+            }
+        });
+    }
+
+    function cekLatihan1() {
+        resetWarnaSaja('s1k');
+        resetWarnaSaja('s1koef');
+        resetWarnaSaja('s1turun');
+        resetWarnaSaja('s1proses');
+        resetWarnaSaja('s1hasil');
+
+        const benar =
+            latihanJawaban.s1k === '2' &&
+            latihanJawaban.s1koef === '4,3,-5,2' &&
+            latihanJawaban.s1turun === '4' &&
+            latihanJawaban.s1proses === '4,11,17' &&
+            latihanJawaban.s1hasil === '4x2+11x+17,sisa36';
+
+        const feedback = document.getElementById('latihanFeedback1');
+        const penjelasan = document.getElementById('latihanPenjelasan1');
+
+        if (benar) {
+            tandaiSemuaBenar('s1k', '2');
+            tandaiSemuaBenar('s1koef', '4,3,-5,2');
+            tandaiSemuaBenar('s1turun', '4');
+            tandaiSemuaBenar('s1proses', '4,11,17');
+            tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
+
+            feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai.';
+            feedback.className = 'latihan-feedback success';
             penjelasan.style.display = 'block';
-        }
+        } else {
+            tandaiYangDipilihSalah('s1k', '2');
+            tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
+            tandaiYangDipilihSalah('s1turun', '4');
+            tandaiYangDipilihSalah('s1proses', '4,11,17');
+            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
 
-        function tampilSalah(feedbackId, penjelasanId, pesan) {
-            const feedback = document.getElementById(feedbackId);
-            const penjelasan = document.getElementById(penjelasanId);
-
-            feedback.textContent = pesan;
-            feedback.className = 'feedback-step feedback-salah';
+            feedback.innerHTML = `
+                Masih ada pilihan yang salah pada soal nomor 1.
+                <br>
+                <button type="button" class="btn-langkah" style="margin-top:10px;" onclick="ulangiLatihan1()">Ulangi</button>
+            `;
+            feedback.className = 'latihan-feedback error';
             penjelasan.style.display = 'none';
         }
+    }
 
-        function cekStep1() {
-            const v = document.getElementById('k').value.trim();
-            if (v === '1') {
-                tampilBenar('fb1', 'penjelasan1', 'Benar, nilai k sudah tepat.');
-                kunciStepLama(1);
-                bukaStep(2);
-            } else {
-                tampilSalah('fb1', 'penjelasan1', 'Masih salah. Perhatikan bentuk (x − k).');
-            }
+    function cekLatihan2() {
+        const s2m1 = document.getElementById('s2m1');
+        const s2m2 = document.getElementById('s2m2');
+        const s2m3 = document.getElementById('s2m3');
+        const s2b1 = document.getElementById('s2b1');
+        const s2b2 = document.getElementById('s2b2');
+        const s2b3 = document.getElementById('s2b3');
+        const s2q1 = document.getElementById('s2q1');
+        const s2q2 = document.getElementById('s2q2');
+        const s2q3 = document.getElementById('s2q3');
+        const s2sisa = document.getElementById('s2sisa');
+
+        const feedback = document.getElementById('latihanFeedback2');
+        const penjelasan = document.getElementById('latihanPenjelasan2');
+        const finalNote = document.getElementById('latihanFinalNote');
+
+        const c1 = s2m1.value.trim() === '4';
+        const c2 = s2m2.value.trim() === '6';
+        const c3 = s2m3.value.trim() === '20';
+        const c4 = s2b1.value.trim() === '3';
+        const c5 = s2b2.value.trim() === '10';
+        const c6 = s2b3.value.trim() === '12';
+        const c7 = s2q1.value.trim() === '2';
+        const c8 = s2q2.value.trim() === '3';
+        const c9 = s2q3.value.trim() === '10';
+        const c10 = s2sisa.value.trim() === '12';
+
+        setStatusInput(s2m1, c1);
+        setStatusInput(s2m2, c2);
+        setStatusInput(s2m3, c3);
+        setStatusInput(s2b1, c4);
+        setStatusInput(s2b2, c5);
+        setStatusInput(s2b3, c6);
+        setStatusInput(s2q1, c7);
+        setStatusInput(s2q2, c8);
+        setStatusInput(s2q3, c9);
+        setStatusInput(s2sisa, c10);
+
+        if (c1 && c2 && c3 && c4 && c5 && c6 && c7 && c8 && c9 && c10) {
+            feedback.innerHTML = 'Benar. Kedua soal sudah selesai.';
+            feedback.className = 'latihan-feedback success';
+            penjelasan.style.display = 'block';
+            document.getElementById('latihanPenjelasan1').style.display = 'block';
+            finalNote.style.display = 'block';
+        } else {
+            feedback.innerHTML = `
+                Masih ada isian yang salah pada soal nomor 2.
+                <br>
+                <button type="button" class="btn-langkah" style="margin-top:10px;" onclick="ulangiLatihan2()">Ulangi</button>
+            `;
+            feedback.className = 'latihan-feedback error';
+            penjelasan.style.display = 'none';
         }
+    }
 
-        function cekStep2() {
-            const c1 = document.getElementById('c1').value.trim();
-            const c2 = document.getElementById('c2').value.trim();
-            const c3 = document.getElementById('c3').value.trim();
-            const c4 = document.getElementById('c4').value.trim();
+    function cekInputKosong(el) {
+        if (!el) return;
+        el.value = '';
+        el.classList.remove('input-benar', 'input-salah');
+    }
 
-            if (c1 === '3' && c2 === '5' && c3 === '-2' && c4 === '1') {
-                tampilBenar('fb2', 'penjelasan2', 'Benar, koefisien ditulis dengan urut.');
-                kunciStepLama(2);
-                bukaStep(3);
-            } else {
-                tampilSalah('fb2', 'penjelasan2', 'Masih ada koefisien yang belum tepat.');
-            }
-        }
+    function ulangiLatihan1() {
+        resetPilihanState('s1k');
+        resetPilihanState('s1koef');
+        resetPilihanState('s1turun');
+        resetPilihanState('s1proses');
+        resetPilihanState('s1hasil');
 
-        function cekStep3() {
-            const v = document.getElementById('t1').value.trim();
-            if (v === '3') {
-                tampilBenar('fb3', 'penjelasan3', 'Benar, koefisien pertama langsung diturunkan.');
-                kunciStepLama(3);
-                bukaStep(4);
-            } else {
-                tampilSalah('fb3', 'penjelasan3', 'Masih salah. Coba lihat koefisien pertama.');
-            }
-        }
+        document.getElementById('latihanFeedback1').innerHTML = '';
+        document.getElementById('latihanPenjelasan1').style.display = 'none';
+    }
 
-        function cekStep4() {
-            const a = document.getElementById('s41').value.trim();
-            const b = document.getElementById('s42').value.trim();
+    function ulangiLatihan2() {
+        const ids = ['s2m1', 's2m2', 's2m3', 's2b1', 's2b2', 's2b3', 's2q1', 's2q2', 's2q3', 's2sisa'];
 
-            if (a === '3' && b === '8') {
-                tampilBenar('fb4', 'penjelasan4', 'Benar, hasil perkalian dan penjumlahan sudah tepat.');
-                kunciStepLama(4);
-                bukaStep(5);
-            } else {
-                tampilSalah('fb4', 'penjelasan4', 'Periksa lagi hasil kali dan hasil jumlahnya.');
-            }
-        }
+        ids.forEach(id => {
+            cekInputKosong(document.getElementById(id));
+        });
 
-        function cekStep5() {
-            const a = document.getElementById('s51').value.trim();
-            const b = document.getElementById('s52').value.trim();
-            const c = document.getElementById('s53').value.trim();
-            const d = document.getElementById('s54').value.trim();
-
-            if (a === '8' && b === '6' && c === '6' && d === '7') {
-                tampilBenar('fb5', 'penjelasan5', 'Benar, proses Horner sudah selesai.');
-                kunciStepLama(5);
-                bukaStep(6);
-            } else {
-                tampilSalah('fb5', 'penjelasan5', 'Masih ada hasil yang belum tepat. Coba ulangi prosesnya.');
-            }
-        }
-
-        function cekStep6() {
-            const t61 = document.getElementById('t61').value.trim();
-            const t62 = document.getElementById('t62').value.trim();
-            const t63 = document.getElementById('t63').value.trim();
-            const t64 = document.getElementById('t64').value.trim();
-            const t65 = document.getElementById('t65').value.trim();
-            const t66 = document.getElementById('t66').value.trim();
-
-            if (t61 === '3' && t62 === '8' && t63 === '6' &&
-                t64 === '8' && t65 === '6' && t66 === '7') {
-                tampilBenar('fb6', 'penjelasan6', 'Benar, tabel Horner sudah lengkap.');
-                kunciStepLama(6);
-                bukaStep(7);
-            } else {
-                tampilSalah('fb6', 'penjelasan6', 'Masih ada isian tabel yang belum tepat.');
-            }
-        }
-
-        function cekStep7() {
-            const h1 = document.getElementById('h1').value.trim();
-            const h2 = document.getElementById('h2').value.trim();
-            const h3 = document.getElementById('h3').value.trim();
-            const sisa = document.getElementById('sisa').value.trim();
-            const qx1 = document.getElementById('qx1').value.trim();
-            const qx2 = document.getElementById('qx2').value.trim();
-            const qx3 = document.getElementById('qx3').value.trim();
-
-            if (
-                h1 === '3' && h2 === '8' && h3 === '6' &&
-                sisa === '7' &&
-                qx1 === '3' && qx2 === '8' && qx3 === '6'
-            ) {
-                tampilBenar('fb7', 'penjelasan7', 'Hebat, hasil bagi dan sisa sudah benar.');
-            } else {
-                tampilSalah('fb7', 'penjelasan7', 'Coba cek lagi koefisien hasil bagi, bentuk Q(x), dan sisanya.');
-            }
-        }
-
-        function selectOption(group, btn, value) {
-            latihanJawaban[group] = value;
-
-            const wrapper = document.querySelector(`[data-group="${group}"]`);
-            if (!wrapper) return;
-
-            wrapper.querySelectorAll('.pilihan-btn').forEach(item => {
-                item.classList.remove('selected', 'wrong', 'correct');
-            });
-
-            btn.classList.add('selected');
-        }
-
-        function resetPilihanState(group) {
-            const wrapper = document.querySelector(`[data-group="${group}"]`);
-            if (!wrapper) return;
-
-            wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
-                btn.classList.remove('correct', 'wrong', 'selected');
-            });
-
-            latihanJawaban[group] = '';
-        }
-
-        function resetWarnaSaja(group) {
-            const wrapper = document.querySelector(`[data-group="${group}"]`);
-            if (!wrapper) return;
-
-            wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
-                btn.classList.remove('correct', 'wrong');
-            });
-        }
-
-        function tandaiSemuaBenar(group, jawabanBenarValue) {
-            const wrapper = document.querySelector(`[data-group="${group}"]`);
-            if (!wrapper) return;
-
-            wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
-                btn.classList.remove('correct', 'wrong');
-                const onclickText = btn.getAttribute('onclick') || '';
-                const isCorrectButton = onclickText.includes(`'${jawabanBenarValue}'`);
-
-                if (isCorrectButton) {
-                    btn.classList.add('correct');
-                }
-            });
-        }
-
-        function tandaiYangDipilihSalah(group, jawabanBenarValue) {
-            const wrapper = document.querySelector(`[data-group="${group}"]`);
-            if (!wrapper) return;
-
-            wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
-                btn.classList.remove('correct', 'wrong');
-
-                const onclickText = btn.getAttribute('onclick') || '';
-                const isCorrectButton = onclickText.includes(`'${jawabanBenarValue}'`);
-                const isSelected = btn.classList.contains('selected');
-
-                if (isSelected && !isCorrectButton) {
-                    btn.classList.add('wrong');
-                }
-            });
-        }
-
-        function cekLatihan1() {
-            resetWarnaSaja('s1k');
-            resetWarnaSaja('s1koef');
-            resetWarnaSaja('s1turun');
-            resetWarnaSaja('s1proses');
-            resetWarnaSaja('s1hasil');
-
-            const benar =
-                latihanJawaban.s1k === '2' &&
-                latihanJawaban.s1koef === '4,3,-5,2' &&
-                latihanJawaban.s1turun === '4' &&
-                latihanJawaban.s1proses === '4,11,17' &&
-                latihanJawaban.s1hasil === '4x2+11x+17,sisa36';
-
-            const feedback = document.getElementById('latihanFeedback1');
-            const penjelasan = document.getElementById('latihanPenjelasan1');
-            const soal2 = document.getElementById('latihanSoal2');
-
-            if (benar) {
-                tandaiSemuaBenar('s1k', '2');
-                tandaiSemuaBenar('s1koef', '4,3,-5,2');
-                tandaiSemuaBenar('s1turun', '4');
-                tandaiSemuaBenar('s1proses', '4,11,17');
-                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
-
-                feedback.innerHTML = 'Benar. Soal nomor 2 sekarang muncul.';
-                feedback.className = 'latihan-feedback success';
-                penjelasan.style.display = 'block';
-                soal2.classList.remove('latihan-hidden');
-                soal2.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                tandaiYangDipilihSalah('s1k', '2');
-                tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
-                tandaiYangDipilihSalah('s1turun', '4');
-                tandaiYangDipilihSalah('s1proses', '4,11,17');
-                tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
-
-                feedback.innerHTML = `
-                            Masih ada pilihan yang salah pada soal nomor 1.
-                            <br>
-                            <button type="button" class="btn-langkah" style="margin-top:10px;" onclick="ulangiLatihan1()">Ulangi</button>
-                        `;
-                feedback.className = 'latihan-feedback error';
-                penjelasan.style.display = 'none';
-            }
-        }
-
-        function cekLatihan2() {
-            const s2m1 = document.getElementById('s2m1');
-            const s2m2 = document.getElementById('s2m2');
-            const s2m3 = document.getElementById('s2m3');
-            const s2b1 = document.getElementById('s2b1');
-            const s2b2 = document.getElementById('s2b2');
-            const s2b3 = document.getElementById('s2b3');
-            const s2q1 = document.getElementById('s2q1');
-            const s2q2 = document.getElementById('s2q2');
-            const s2q3 = document.getElementById('s2q3');
-            const s2sisa = document.getElementById('s2sisa');
-
-            const feedback = document.getElementById('latihanFeedback2');
-            const penjelasan = document.getElementById('latihanPenjelasan2');
-            const finalNote = document.getElementById('latihanFinalNote');
-
-            const c1 = s2m1.value.trim() === '4';
-            const c2 = s2m2.value.trim() === '6';
-            const c3 = s2m3.value.trim() === '20';
-            const c4 = s2b1.value.trim() === '3';
-            const c5 = s2b2.value.trim() === '10';
-            const c6 = s2b3.value.trim() === '12';
-            const c7 = s2q1.value.trim() === '2';
-            const c8 = s2q2.value.trim() === '3';
-            const c9 = s2q3.value.trim() === '10';
-            const c10 = s2sisa.value.trim() === '12';
-
-            setStatusInput(s2m1, c1);
-            setStatusInput(s2m2, c2);
-            setStatusInput(s2m3, c3);
-            setStatusInput(s2b1, c4);
-            setStatusInput(s2b2, c5);
-            setStatusInput(s2b3, c6);
-            setStatusInput(s2q1, c7);
-            setStatusInput(s2q2, c8);
-            setStatusInput(s2q3, c9);
-            setStatusInput(s2sisa, c10);
-
-            if (c1 && c2 && c3 && c4 && c5 && c6 && c7 && c8 && c9 && c10) {
-                feedback.innerHTML = 'Benar. Kedua soal sudah selesai.';
-                feedback.className = 'latihan-feedback success';
-                penjelasan.style.display = 'block';
-                document.getElementById('latihanPenjelasan1').style.display = 'block';
-                finalNote.style.display = 'block';
-            } else {
-                feedback.innerHTML = `
-                            Masih ada isian yang salah pada soal nomor 2.
-                            <br>
-                            <button type="button" class="btn-langkah" style="margin-top:10px;" onclick="ulangiLatihan2()">Ulangi</button>
-                        `;
-                feedback.className = 'latihan-feedback error';
-                penjelasan.style.display = 'none';
-            }
-        }
-
-        function cekInputKosong(el) {
-            if (!el) return;
-            el.value = '';
-            el.classList.remove('input-benar', 'input-salah');
-        }
-
-        function ulangiLatihan1() {
-            resetPilihanState('s1k');
-            resetPilihanState('s1koef');
-            resetPilihanState('s1turun');
-            resetPilihanState('s1proses');
-            resetPilihanState('s1hasil');
-
-            document.getElementById('latihanFeedback1').innerHTML = '';
-            document.getElementById('latihanPenjelasan1').style.display = 'none';
-        }
-
-        function ulangiLatihan2() {
-            const ids = ['s2m1', 's2m2', 's2m3', 's2b1', 's2b2', 's2b3', 's2q1', 's2q2', 's2q3', 's2sisa'];
-
-            ids.forEach(id => {
-                cekInputKosong(document.getElementById(id));
-            });
-
-            document.getElementById('latihanFeedback2').innerHTML = '';
-            document.getElementById('latihanPenjelasan2').style.display = 'none';
-        }
-        
-    </script>
+        document.getElementById('latihanFeedback2').innerHTML = '';
+        document.getElementById('latihanPenjelasan2').style.display = 'none';
+    }
+</script>
 @endsection
 
 @section('nav')

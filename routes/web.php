@@ -28,11 +28,12 @@ Route::middleware('auth:siswa')->group(function () {
 
     Route::view('/petakonsep', 'siswa.petakonsep')->name('petakonsep');
     Route::view('/pendahuluan', 'siswa.pendahuluan')->name('pendahuluan');
+
     Route::view('/pengertianpolinomial', 'siswa.pengertianpolinomial')->name('pengertianpolinomial');
     Route::view('/derajatsuatupolinomial', 'siswa.derajatsuatupolinomial')->name('derajatsuatupolinomial');
     Route::view('/fungsipolinomialdangrafiknya', 'siswa.fungsipolinomialdangrafiknya')->name('fungsipolinomialdangrafiknya');
-
     Route::view('/kuisa', 'siswa.kuisa')->name('kuisa');
+    
     Route::view('/penjumlahanpolinomial', 'siswa.penjumlahanpolinomial')->name('penjumlahanpolinomial');
     Route::view('/penguranganpolinomial', 'siswa.penguranganpolinomial')->name('penguranganpolinomial');
     Route::view('/perkalianpolinomial', 'siswa.perkalianpolinomial')->name('perkalianpolinomial');
@@ -42,6 +43,13 @@ Route::middleware('auth:siswa')->group(function () {
     Route::view('/metodehorner', 'siswa.metodehorner')->name('metodehorner');
     Route::view('/teoremasisa', 'siswa.teoremasisa')->name('teoremasisa');
     Route::view('/kuisc', 'siswa.kuisc')->name('kuisc');
+
+    Route::view('/teoremafaktor', 'siswa.teoremafaktor')->name('teoremafaktor');
+    Route::view('/faktordanpembuatnol', 'siswa.faktordanpembuatnol')->name('faktordanpembuatnol');
+    Route::view('/kuisd', 'siswa.kuisd')->name('kuisd');
+
+    Route::view('/identitaspolinomial', 'siswa.identitaspolinomial')->name('identitaspolinomial');
+    Route::view('/kuise', 'siswa.kuise')->name('kuise');
 });
 
 // ==================== GURU AUTH ====================
