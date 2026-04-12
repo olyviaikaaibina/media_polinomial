@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Polimathica</title>
 
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
@@ -47,7 +45,6 @@
       overflow: hidden;
     }
 
-    /* NAVBAR */
     .navbar-polymathica {
       border-bottom: 1px solid var(--sage-line);
       background: #ffffff;
@@ -93,26 +90,22 @@
       color: var(--sage-dark);
     }
 
-    /* LAYOUT */
     .layout-wrapper {
       height: calc(100vh - var(--navbar-height));
       overflow: hidden;
       position: relative;
     }
 
-    /* SIDEBAR */
     .sidebar {
       width: var(--sidebar-width);
       background: #AAB99A;
       padding: 1.6rem 1.2rem 1.2rem 1.2rem;
       overflow-y: auto;
-
       position: fixed;
       top: var(--navbar-height);
       left: 0;
       height: calc(100vh - var(--navbar-height));
       z-index: 1020;
-
       transition: transform 0.25s ease;
       will-change: transform;
     }
@@ -150,7 +143,6 @@
       font-size: 0.85rem;
       font-weight: 600;
       margin-bottom: 12px;
-
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -181,18 +173,12 @@
       margin-bottom: 14px;
     }
 
-    /* ✅ FIX UTAMA:
-       Garis samping jangan pakai border-left biasa (karena ketutup background item).
-       Pakai pseudo-element ::before supaya garis selalu terlihat. */
     .dropdown-content {
       display: none;
       margin-left: 10px;
       margin-top: 8px;
-
-      /* ruang agar item tidak menimpa garis */
       padding-left: 16px;
       padding-top: 2px;
-
       position: relative;
       width: calc(100% - 10px);
     }
@@ -218,11 +204,9 @@
       font-size: 0.8rem;
       text-decoration: none;
       color: var(--text-main);
-
       white-space: normal;
       word-break: break-word;
       line-height: 1.4;
-
       border: 1px solid rgba(79, 74, 63, 0.10);
       backdrop-filter: blur(2px);
     }
@@ -237,13 +221,11 @@
       border-color: rgba(79, 74, 63, 0.28);
       color: var(--text-main);
       font-weight: 800;
-
       border-left: 6px solid var(--sage-dark);
       padding-left: 14px;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
     }
 
-    /* MAIN CONTENT */
     .main-content {
       margin-left: var(--sidebar-width);
       height: calc(100vh - var(--navbar-height));
@@ -307,7 +289,6 @@
       pointer-events: none;
     }
 
-    /* HANDLE (tombol ☰ saat sidebar tertutup) */
     .sidebar-handle {
       position: fixed;
       left: 14px;
@@ -346,7 +327,6 @@
       transform: translateX(2px) scale(0.97);
     }
 
-    /* MOBILE */
     @media (max-width: 991.98px) {
       body {
         overflow: auto;
@@ -387,19 +367,15 @@
 
 <body>
 
-  <!-- overlay (mobile) -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- handle (desktop saat sidebar tertutup) -->
   <div class="sidebar-handle">
     <button type="button" id="openSidebarHandle" aria-label="Buka Sidebar">☰</button>
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-polymathica px-4 fixed-top">
     <div class="container-fluid">
 
-      <!-- LOGO -->
       <a class="brand-inline" href="{{ route('landingpage') }}">
         <img src="{{ asset('img/2.png') }}" alt="Logo" class="logo-img">
         <span class="logo-word">POLIMATHICA</span>
@@ -435,18 +411,14 @@
     </div>
   </nav>
 
-  <!-- LAYOUT -->
   <div class="layout-wrapper">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
-      <!-- tombol ☰ di sidebar (saat terbuka) -->
       <div class="d-flex justify-content-start mb-3">
         <button class="btn-sidebar-toggle" type="button" id="toggleSidebar" aria-label="Toggle Sidebar">☰</button>
       </div>
 
-      <!-- ✅ DROPDOWN: PENGANTAR -->
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Pengantar</span>
@@ -466,7 +438,6 @@
         </div>
       </div>
 
-      <!-- ✅ DROPDOWN: POLINOMIAL & FUNGSI POLINOMIAL -->
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Polinomial & Fungsi Polinomial</span>
@@ -489,7 +460,8 @@
             Fungsi Polinomial dan Grafiknya
           </a>
 
-          <a href="{{ route('kuisa') }}" class="dropdown-item {{ request()->routeIs('kuisa') ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', 1) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 1 ? 'active' : '' }}">
             Kuis A
           </a>
         </div>
@@ -500,20 +472,25 @@
           <span>Penjumlahan, Pengurangan dan Perkalian</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
+
         <div class="dropdown-content">
           <a href="{{ route('penjumlahanpolinomial') }}"
             class="dropdown-item {{ request()->routeIs('penjumlahanpolinomial') ? 'active' : '' }}">
             Penjumlahan Polinomial
           </a>
+
           <a href="{{ route('penguranganpolinomial') }}"
             class="dropdown-item {{ request()->routeIs('penguranganpolinomial') ? 'active' : '' }}">
             Pengurangan Polinomial
           </a>
+
           <a href="{{ route('perkalianpolinomial') }}"
             class="dropdown-item {{ request()->routeIs('perkalianpolinomial') ? 'active' : '' }}">
             Perkalian Polinomial
           </a>
-          <a href="{{ route('kuisb') }}" class="dropdown-item {{ request()->routeIs('kuisb') ? 'active' : '' }}">
+
+          <a href="{{ route('quiz.show', 2) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 2 ? 'active' : '' }}">
             Kuis B
           </a>
         </div>
@@ -524,20 +501,25 @@
           <span>Pembagian Polinomial</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
+
         <div class="dropdown-content">
           <a href="{{ route('pembagianbersusun') }}"
             class="dropdown-item {{ request()->routeIs('pembagianbersusun') ? 'active' : '' }}">
             Pembagian Bersusun
           </a>
+
           <a href="{{ route('metodehorner') }}"
             class="dropdown-item {{ request()->routeIs('metodehorner') ? 'active' : '' }}">
             Metode Horner
           </a>
+
           <a href="{{ route('teoremasisa') }}"
             class="dropdown-item {{ request()->routeIs('teoremasisa') ? 'active' : '' }}">
             Teorema Sisa
           </a>
-          <a href="{{ route('kuisc') }}" class="dropdown-item {{ request()->routeIs('kuisc') ? 'active' : '' }}">
+
+          <a href="{{ route('quiz.show', 3) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 3 ? 'active' : '' }}">
             Kuis C
           </a>
         </div>
@@ -548,16 +530,20 @@
           <span>Faktor & Pembuat Nol</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
+
         <div class="dropdown-content">
           <a href="{{ route('teoremafaktor') }}"
             class="dropdown-item {{ request()->routeIs('teoremafaktor') ? 'active' : '' }}">
             Teorema Faktor
           </a>
+
           <a href="{{ route('faktordanpembuatnol') }}"
             class="dropdown-item {{ request()->routeIs('faktordanpembuatnol') ? 'active' : '' }}">
             Faktor dan Pembuat Nol
           </a>
-          <a href="{{ route('kuisd') }}" class="dropdown-item {{ request()->routeIs('kuisd') ? 'active' : '' }}">
+
+          <a href="{{ route('quiz.show', 4) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 4 ? 'active' : '' }}">
             Kuis D
           </a>
         </div>
@@ -568,12 +554,15 @@
           <span>Identitas Polinomial</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
+
         <div class="dropdown-content">
           <a href="{{ route('identitaspolinomial') }}"
             class="dropdown-item {{ request()->routeIs('identitaspolinomial') ? 'active' : '' }}">
             Identitas Polinomial
           </a>
-          <a href="{{ route('kuise') }}" class="dropdown-item {{ request()->routeIs('kuise') ? 'active' : '' }}">
+
+          <a href="{{ route('quiz.show', 5) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 5 ? 'active' : '' }}">
             Kuis E
           </a>
         </div>
@@ -587,7 +576,6 @@
 
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main class="main-content">
       <div class="main-inner">
         <div class="content-scroll">
@@ -602,12 +590,10 @@
 
   </div>
 
-  <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
 
   <script>
-    // ====== SIDEBAR TOGGLE ======
     const toggleBtn = document.getElementById('toggleSidebar');
     const overlay = document.getElementById('sidebarOverlay');
     const handleBtn = document.getElementById('openSidebarHandle');
@@ -631,38 +617,38 @@
     if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
 
     if (handleBtn) {
-      handleBtn.addEventListener('click', () => {
+      handleBtn.addEventListener('click', function () {
         document.body.classList.remove('sidebar-collapsed');
       });
     }
 
     if (overlay) overlay.addEventListener('click', closeSidebarMobile);
 
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function () {
       if (!isMobile()) closeSidebarMobile();
     });
 
-    // ====== DROPDOWN ACCORDION (1 terbuka) ======
     const groups = document.querySelectorAll(".dropdown-group");
 
     function closeAllDropdowns(exceptGroup = null) {
-      groups.forEach(g => {
+      groups.forEach(function (g) {
         if (exceptGroup && g === exceptGroup) return;
 
         g.classList.remove("is-open");
         const btn = g.querySelector(".dropdown-toggle-btn");
         const content = g.querySelector(".dropdown-content");
+
         if (btn) btn.classList.remove("open");
         if (content) content.style.display = "none";
       });
     }
 
-    groups.forEach(group => {
+    groups.forEach(function (group) {
       const btn = group.querySelector(".dropdown-toggle-btn");
       const content = group.querySelector(".dropdown-content");
       if (!btn || !content) return;
 
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", function () {
         const isOpen = group.classList.contains("is-open");
 
         if (isOpen) {
@@ -678,11 +664,12 @@
       });
     });
 
-    // auto-open dropdown yang punya link active (1 saja)
     (function openActiveDropdown() {
       let opened = false;
-      groups.forEach(group => {
+
+      groups.forEach(function (group) {
         const activeLink = group.querySelector(".dropdown-item.active");
+
         if (activeLink && !opened) {
           closeAllDropdowns(group);
 

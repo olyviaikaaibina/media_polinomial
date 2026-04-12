@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuruAuthController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizSiswaController;
 use App\Http\Controllers\SiswaAuthController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,7 @@ Route::middleware('auth:siswa')->group(function () {
     Route::view('/derajatsuatupolinomial', 'siswa.derajatsuatupolinomial')->name('derajatsuatupolinomial');
     Route::view('/fungsipolinomialdangrafiknya', 'siswa.fungsipolinomialdangrafiknya')->name('fungsipolinomialdangrafiknya');
     Route::view('/kuisa', 'siswa.kuisa')->name('kuisa');
-    
+
     Route::view('/penjumlahanpolinomial', 'siswa.penjumlahanpolinomial')->name('penjumlahanpolinomial');
     Route::view('/penguranganpolinomial', 'siswa.penguranganpolinomial')->name('penguranganpolinomial');
     Route::view('/perkalianpolinomial', 'siswa.perkalianpolinomial')->name('perkalianpolinomial');
@@ -50,6 +51,9 @@ Route::middleware('auth:siswa')->group(function () {
 
     Route::view('/identitaspolinomial', 'siswa.identitaspolinomial')->name('identitaspolinomial');
     Route::view('/kuise', 'siswa.kuise')->name('kuise');
+
+    Route::get('/quiz/{id}', [QuizSiswaController::class, 'show'])->name('quiz.show');
+    Route::post('/quiz/{id}/submit', [QuizSiswaController::class, 'submit'])->name('quiz.submit');
 });
 
 // ==================== GURU AUTH ====================
