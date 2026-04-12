@@ -3116,7 +3116,6 @@
         </div>
     </div>
 
-    </div>
 @endsection
 
 @section('nav')
