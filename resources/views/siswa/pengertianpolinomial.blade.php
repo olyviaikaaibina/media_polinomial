@@ -1,16 +1,15 @@
 @extends('layout.halamanmateri')
 
 @section('content')
-    <!-- KaTeX (taruh di sini kalau belum ada di layout) -->
+    <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false}
-            ]
-        });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ]
+                    });"></script>
 
     <style>
         :root {
@@ -35,14 +34,12 @@
             --red: #d64545;
             --red-soft: #fff3f3;
 
-            /* ✅ Warna definisi seperti gambar 2 */
-            --def-bg: #f5c9b9;         /* peach */
-            --def-pill: #7fb06a;       /* hijau pill */
+            --def-bg: #f5c9b9;
+            --def-pill: #7fb06a;
             --def-pill-border: #2e7d32;
-            --def-formula-bg: #f6f7f9; /* kotak rumus */
+            --def-formula-bg: #f6f7f9;
         }
 
-        /* ===== Layout ===== */
         .materi-wrap {
             max-width: 980px;
             margin: 0 auto;
@@ -52,7 +49,6 @@
             padding: 20px 14px 40px;
         }
 
-        /* ===== Header ===== */
         .top-title {
             display: flex;
             align-items: baseline;
@@ -72,15 +68,11 @@
             color: var(--green);
         }
 
-        /* ===== Card ===== */
         .card {
             border-radius: 16px;
             padding: 20px 22px;
             background: #fff;
-
-            /* ✅ jarak antar card (lebih lega) */
             margin: 0 0 40px 0;
-
             box-shadow: 0 10px 28px rgba(0, 0, 0, .05);
             border: 1px solid rgba(0, 0, 0, .05);
         }
@@ -95,7 +87,6 @@
             border-left: 6px solid #2e8b57;
         }
 
-        /* ===== Tujuan Pembelajaran ===== */
         .tujuan-card {
             background: linear-gradient(135deg, #fff6f0 0%, #ffffff 100%);
             border-left: 8px solid var(--orange);
@@ -127,17 +118,13 @@
             text-align: justify;
         }
 
-        /* ===== Section Title ===== */
         .section-title {
             font-size: 30px;
             font-weight: 800;
             color: var(--green);
-
-            /* ✅ jarak section lebih lega */
             margin: 48px 0 18px;
         }
 
-        /* ===== Title Box ===== */
         .title-box {
             display: flex;
             align-items: center;
@@ -148,7 +135,6 @@
             margin-bottom: 12px;
         }
 
-        /* ===== Text ===== */
         .card p {
             margin: 10px 0;
             text-align: justify;
@@ -161,13 +147,15 @@
             color: var(--muted);
         }
 
-        .card li { margin: 6px 0; }
+        .card li {
+            margin: 6px 0;
+        }
 
-        .highlight { font-weight: 700; color: #000; }
+        .highlight {
+            font-weight: 700;
+            color: #000;
+        }
 
-        /* ==================================================
-           FORMULA: PANAH DEKAT, SESUAI TARGET (RAPI)
-           ================================================== */
         .formula-annot {
             margin: 14px 0 18px;
             border-radius: 18px;
@@ -206,9 +194,20 @@
             white-space: nowrap;
         }
 
-        .pill.koef { background: var(--koef-bg); color: var(--koef-tx); }
-        .pill.var { background: var(--var-bg); color: var(--var-tx); }
-        .pill.konst { background: var(--konst-bg); color: var(--konst-tx); }
+        .pill.koef {
+            background: var(--koef-bg);
+            color: var(--koef-tx);
+        }
+
+        .pill.var {
+            background: var(--var-bg);
+            color: var(--var-tx);
+        }
+
+        .pill.konst {
+            background: var(--konst-bg);
+            color: var(--konst-tx);
+        }
 
         .grp::before {
             content: "";
@@ -218,7 +217,7 @@
             bottom: 38px;
             width: 2px;
             height: 18px;
-            background: rgba(0,0,0,.40);
+            background: rgba(0, 0, 0, .40);
         }
 
         .grp::after {
@@ -231,10 +230,9 @@
             height: 0;
             border-left: 6px solid transparent;
             border-right: 6px solid transparent;
-            border-bottom: 8px solid rgba(0,0,0,.40);
+            border-bottom: 8px solid rgba(0, 0, 0, .40);
         }
 
-        /* ===== Question Box ===== */
         .question {
             background: #f4faf5;
             border: 1px solid rgba(27, 122, 42, .18);
@@ -256,9 +254,6 @@
             margin-bottom: 8px;
         }
 
-        /* ==============================
-           ✅ CONTOH DALAM BENTUK KARTU
-           ============================== */
         .contoh-wrap {
             margin-top: 18px;
             padding: 18px;
@@ -278,7 +273,10 @@
             border: 1px solid rgba(0, 0, 0, .08);
         }
 
-        .contoh-sub { margin: 0 0 14px; color: var(--muted); }
+        .contoh-sub {
+            margin: 0 0 14px;
+            color: var(--muted);
+        }
 
         .kartu-grid {
             display: grid;
@@ -288,21 +286,24 @@
 
         .kartu {
             border-radius: 16px;
-            border: 1px solid rgba(0,0,0,.10);
+            border: 1px solid rgba(0, 0, 0, .10);
             background: #fff;
             padding: 14px 14px;
-            box-shadow: 0 10px 20px rgba(0,0,0,.04);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .04);
             cursor: pointer;
             transition: transform .12s ease, box-shadow .12s ease;
             user-select: none;
             outline: none;
         }
 
-        .kartu:hover { transform: translateY(-2px); box-shadow: 0 14px 26px rgba(0,0,0,.06); }
+        .kartu:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(0, 0, 0, .06);
+        }
 
         .kartu-top {
-            display:flex;
-            align-items:center;
+            display: flex;
+            align-items: center;
             justify-content: flex-end;
             gap: 10px;
             margin-bottom: 8px;
@@ -313,7 +314,7 @@
             font-size: 12px;
             padding: 6px 10px;
             border-radius: 999px;
-            border: 1px solid rgba(0,0,0,.10);
+            border: 1px solid rgba(0, 0, 0, .10);
             background: #fff;
             color: var(--muted);
         }
@@ -325,38 +326,53 @@
             margin-bottom: 6px;
         }
 
-        .kartu-hint { color: var(--muted); font-size: 14px; margin: 0; }
+        .kartu-hint {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0;
+        }
 
         .kartu-penjelasan {
             margin-top: 10px;
             padding: 10px 12px;
             border-radius: 12px;
-            border: 1px solid rgba(91,155,213,.20);
+            border: 1px solid rgba(91, 155, 213, .20);
             background: #f8fbff;
             color: var(--muted);
             display: none;
             animation: fadeIn .15s ease;
         }
 
-        .kartu.open .kartu-penjelasan { display: block; }
+        .kartu.open .kartu-penjelasan {
+            display: block;
+        }
 
         .kartu.open .kartu-tag {
             color: #0f5f22;
-            border-color: rgba(27,122,42,.18);
-            background: rgba(27,122,42,.06);
+            border-color: rgba(27, 122, 42, .18);
+            background: rgba(27, 122, 42, .06);
         }
 
-        .kartu.open { border-color: rgba(27,122,42,.18); }
+        .kartu.open {
+            border-color: rgba(27, 122, 42, .18);
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-2px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .kartu-actions {
-            display:flex;
-            gap:10px;
-            align-items:center;
+            display: flex;
+            gap: 10px;
+            align-items: center;
             flex-wrap: wrap;
             margin-top: 14px;
         }
@@ -364,39 +380,39 @@
         .btnx {
             padding: 8px 14px;
             border-radius: 12px;
-            border: 1px solid rgba(0,0,0,.14);
+            border: 1px solid rgba(0, 0, 0, .14);
             background: #fff;
             cursor: pointer;
             font-weight: 800;
         }
-        .btnx.primary { border-color: rgba(27,122,42,.25); }
-        .btnx.ghost { border-color: rgba(91,155,213,.25); }
 
-        /* ====== WADAH P5 ====== */
-        .p5-host {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            height: 760px;
-            margin: 12px auto 0;
-            overflow: hidden;
-            border-radius: 18px;
-            box-sizing: border-box;
+        .btnx.primary {
+            border-color: rgba(27, 122, 42, .25);
         }
 
-        /* ==============================
-           QUIZ
-           ============================== */
-        .quiz-list { margin: 10px 0 0 18px; }
-        .quiz-item { margin: 12px 0 16px; }
-        .quiz-q { margin-bottom: 6px; color: var(--text); }
+        .btnx.ghost {
+            border-color: rgba(91, 155, 213, .25);
+        }
 
-        .quiz-input{
+        .quiz-list {
+            margin: 10px 0 0 18px;
+        }
+
+        .quiz-item {
+            margin: 12px 0 16px;
+        }
+
+        .quiz-q {
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .quiz-input {
             width: 100%;
             max-width: 520px;
             padding: 10px 12px;
             border-radius: 10px;
-            border: 1px solid rgba(0,0,0,.18);
+            border: 1px solid rgba(0, 0, 0, .18);
             outline: none;
             font-family: "Times New Roman", Times, serif;
             font-size: 16px;
@@ -404,12 +420,12 @@
             background: #fff;
         }
 
-        .quiz-input:focus{
-            border-color: rgba(27,122,42,.5);
-            box-shadow: 0 0 0 3px rgba(27,122,42,.10);
+        .quiz-input:focus {
+            border-color: rgba(27, 122, 42, .5);
+            box-shadow: 0 0 0 3px rgba(27, 122, 42, .10);
         }
 
-        .quiz-actions{
+        .quiz-actions {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -417,52 +433,59 @@
             flex-wrap: wrap;
         }
 
-        .quiz-check, .quiz-reset, .quiz-checkall{
+        .quiz-check,
+        .quiz-reset,
+        .quiz-checkall {
             padding: 8px 14px;
             border-radius: 10px;
-            border: 1px solid rgba(0,0,0,.14);
+            border: 1px solid rgba(0, 0, 0, .14);
             background: #fff;
             cursor: pointer;
             font-weight: 700;
         }
 
-        .quiz-check{ border-color: rgba(27,122,42,.25); }
-        .quiz-reset{ border-color: rgba(224,112,43,.25); }
+        .quiz-check {
+            border-color: rgba(27, 122, 42, .25);
+        }
 
-        .quiz-feedback{
+        .quiz-reset {
+            border-color: rgba(224, 112, 43, .25);
+        }
+
+        .quiz-feedback {
             font-weight: 800;
             padding: 6px 10px;
             border-radius: 10px;
             display: inline-block;
         }
 
-        .quiz-feedback.ok{
+        .quiz-feedback.ok {
             color: #0f5f22;
-            background: rgba(27,122,42,.10);
-            border: 1px solid rgba(27,122,42,.18);
+            background: rgba(27, 122, 42, .10);
+            border: 1px solid rgba(27, 122, 42, .18);
         }
 
-        .quiz-feedback.no{
+        .quiz-feedback.no {
             color: #8a2b00;
-            background: rgba(224,112,43,.10);
-            border: 1px solid rgba(224,112,43,.18);
+            background: rgba(224, 112, 43, .10);
+            border: 1px solid rgba(224, 112, 43, .18);
         }
 
-        .quiz-summary{
+        .quiz-summary {
             margin-left: 10px;
             font-weight: 800;
             color: var(--green);
         }
 
-        /* ========= KUNCI MATERI (AMAN UNTUK p5) ========= */
-        #materi-lanjutan{
+        #materi-lanjutan {
             height: 0;
             overflow: hidden;
             opacity: 0;
             pointer-events: none;
             margin: 0;
         }
-        #materi-lanjutan.show{
+
+        #materi-lanjutan.show {
             height: auto;
             overflow: visible;
             opacity: 1;
@@ -470,94 +493,92 @@
             margin: initial;
         }
 
-        /* ==============================
-           ✅ CONTOH POLINOMIAL: BOX GRID (baru)
-           ============================== */
-        .contoh-grid2{
+        .contoh-grid2 {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
             margin-top: 10px;
         }
 
-        .contoh-card2{
+        .contoh-card2 {
             border-radius: 16px;
-            border: 1px solid rgba(0,0,0,.10);
+            border: 1px solid rgba(0, 0, 0, .10);
             background: #fff;
             padding: 14px 14px;
-            box-shadow: 0 10px 20px rgba(0,0,0,.04);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .04);
         }
 
-        .contoh-head2{
-            display:flex;
-            align-items:center;
+        .contoh-head2 {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 10px;
             margin-bottom: 10px;
         }
 
-        .badge2{
-            display:inline-flex;
-            align-items:center;
+        .badge2 {
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
             font-weight: 900;
             font-size: 12px;
             padding: 6px 10px;
             border-radius: 999px;
-            border: 1px solid rgba(0,0,0,.10);
+            border: 1px solid rgba(0, 0, 0, .10);
             white-space: nowrap;
         }
 
-        .badge2.ok{
+        .badge2.ok {
             color: var(--green);
-            background: rgba(27,122,42,.08);
-            border-color: rgba(27,122,42,.18);
+            background: rgba(27, 122, 42, .08);
+            border-color: rgba(27, 122, 42, .18);
         }
 
-        .badge2.no{
+        .badge2.no {
             color: var(--red);
-            background: rgba(214,69,69,.08);
-            border-color: rgba(214,69,69,.18);
+            background: rgba(214, 69, 69, .08);
+            border-color: rgba(214, 69, 69, .18);
         }
 
-        .badge2.info{
+        .badge2.info {
             color: var(--blue);
-            background: rgba(45,108,223,.08);
-            border-color: rgba(45,108,223,.18);
+            background: rgba(45, 108, 223, .08);
+            border-color: rgba(45, 108, 223, .18);
         }
 
-        .contoh-ekspresi2{
+        .contoh-ekspresi2 {
             font-size: 22px;
             font-weight: 900;
             color: #000;
             margin: 6px 0 8px;
         }
 
-        .contoh-desc2{ margin: 0; color: var(--muted); text-align: justify; }
+        .contoh-desc2 {
+            margin: 0;
+            color: var(--muted);
+            text-align: justify;
+        }
 
-        .contoh-note2{
+        .contoh-note2 {
             margin-top: 10px;
             padding: 10px 12px;
             border-radius: 12px;
             background: var(--blue-soft);
-            border: 1px solid rgba(45,108,223,.18);
+            border: 1px solid rgba(45, 108, 223, .18);
             color: var(--muted);
         }
 
-        /* ==================================================
-           ✅ DEFINISI (Persis seperti gambar ke-2)
-           ================================================== */
-        .definisi-block{
+        .definisi-block {
             position: relative;
             border-radius: 26px;
             background: var(--def-bg);
             padding: 36px 26px 30px;
-            margin: 34px 0 40px 0; /* ✅ jarak bawah lebih lega */
-            box-shadow: 0 10px 28px rgba(0,0,0,.05);
-            border: 1px solid rgba(0,0,0,.06);
+            margin: 34px 0 40px 0;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .05);
+            border: 1px solid rgba(0, 0, 0, .06);
         }
 
-        .definisi-pill{
+        .definisi-pill {
             position: absolute;
             top: -18px;
             left: 26px;
@@ -568,12 +589,11 @@
             padding: 10px 28px;
             border-radius: 999px;
             border: 2px solid var(--def-pill-border);
-            box-shadow: 0 10px 18px rgba(0,0,0,.08);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, .08);
             text-transform: uppercase;
         }
 
-        /* ✅ teks definisi rapi, tidak bold */
-        .definisi-text{
+        .definisi-text {
             margin: 0;
             font-size: 17px;
             font-weight: 400;
@@ -582,41 +602,227 @@
             text-align: justify;
         }
 
-        .definisi-formula{
-            margin: 18px auto 0;
-            max-width: 680px;
-            border-radius: 18px;
-            background: var(--def-formula-bg);
-            border: 1px solid rgba(0,0,0,.10);
-            padding: 18px 18px;
-            text-align: center;
-            box-shadow: 0 12px 24px rgba(0,0,0,.08);
+        .quiz-box-new {
+            background: transparent;
+            padding: 0;
+            border: none;
+            border-radius: 0;
         }
 
-        .definisi-formula .katex-display{
-            margin: 0; /* biar rapat seperti gambar */
+        .quiz-item-plain {
+            padding: 14px 0 18px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        /* Responsive */
+        .quiz-item-plain:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-soal-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2b2b2b;
+            margin-bottom: 6px;
+        }
+
+        .quiz-ekspresi {
+            font-size: 30px;
+            font-weight: 700;
+            color: #000;
+            margin: 8px 0 12px;
+        }
+
+        .quiz-options-new {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .quiz-options-new label {
+            font-size: 15px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .feedback-box {
+            margin-top: 8px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .feedback-box.correct {
+            display: block;
+            background: #e7f8ec;
+            color: #1b7a2a;
+            border: 1px solid #b7e0c2;
+        }
+
+        .feedback-box.wrong {
+            display: block;
+            background: #ffecec;
+            color: #b30000;
+            border: 1px solid #f1c3c3;
+        }
+
+        .result-box {
+            margin-top: 14px;
+            font-weight: bold;
+            color: var(--green);
+        }
+
         @media (max-width: 780px) {
-            .kartu-grid { grid-template-columns: 1fr; }
-            .contoh-grid2 { grid-template-columns: 1fr; }
-            .definisi-text { font-size: 16px; }
+
+            .kartu-grid,
+            .contoh-grid2 {
+                grid-template-columns: 1fr;
+            }
+
+            .definisi-text {
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 640px) {
-            .top-title .judul { font-size: 24px; }
-            .top-title .label { font-size: 22px; }
-            .card { padding: 16px 16px; margin-bottom: 32px; }
-            .p5-host { height: 720px; }
-            .tujuan-card { padding: 18px 18px; }
+            .top-title .judul {
+                font-size: 24px;
+            }
 
-            .formula-expr { font-size: 30px; }
-            .pill { font-size: 12px; padding: 7px 12px; }
-            .grp { padding-bottom: 56px; }
+            .top-title .label {
+                font-size: 22px;
+            }
 
-            .definisi-block{ padding: 34px 18px 26px; }
-            .definisi-pill{ left: 18px; padding: 9px 22px; }
+            .card {
+                padding: 16px 16px;
+                margin-bottom: 32px;
+            }
+
+            .tujuan-card {
+                padding: 18px 18px;
+            }
+
+            .formula-expr {
+                font-size: 30px;
+            }
+
+            .pill {
+                font-size: 12px;
+                padding: 7px 12px;
+            }
+
+            .grp {
+                padding-bottom: 56px;
+            }
+
+            .definisi-block {
+                padding: 34px 18px 26px;
+            }
+
+            .definisi-pill {
+                left: 18px;
+                padding: 9px 22px;
+            }
+
+            .quiz-ekspresi {
+                font-size: 24px;
+            }
+
+            .quiz-options-new {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        .contoh-note2 {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: var(--blue-soft);
+            border: 1px solid rgba(45, 108, 223, .18);
+            color: var(--muted);
+        }
+
+        .contoh-grid-interaktif {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .contoh-card-interaktif {
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, .10);
+            background: #fff;
+            padding: 14px 14px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .04);
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+            user-select: none;
+            outline: none;
+        }
+
+        .contoh-card-interaktif:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(0, 0, 0, .06);
+        }
+
+        .contoh-card-interaktif.open {
+            border-color: rgba(27, 122, 42, .20);
+            box-shadow: 0 14px 26px rgba(0, 0, 0, .06);
+        }
+
+        .contoh-head-interaktif {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contoh-ekspresi-interaktif {
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            margin: 6px 0 8px;
+        }
+
+        .contoh-hint-interaktif {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contoh-penjelasan-interaktif {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: #f8fbff;
+            border: 1px solid rgba(45, 108, 223, .18);
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .contoh-card-interaktif.open .contoh-penjelasan-interaktif {
+            display: block;
+        }
+
+        .contoh-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 780px) {
+            .contoh-grid-interaktif {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
@@ -627,7 +833,6 @@
             <div class="judul">Polinomial dan Fungsi Polinomial</div>
         </div>
 
-        {{-- Tujuan Pembelajaran --}}
         <div class="card tujuan-card">
             <div class="tujuan-header">
                 <h3 class="title">Tujuan Pembelajaran</h3>
@@ -640,10 +845,8 @@
             </ol>
         </div>
 
-        {{-- Section --}}
         <div class="section-title">1. Pengertian Polinomial</div>
 
-        {{-- Eksplorasi --}}
         <div class="card card-orange">
             <div class="title-box">🧭 Eksplorasi</div>
 
@@ -709,7 +912,6 @@
                 dengan pangkat variabel berupa bilangan cacah.
             </p>
 
-            {{-- Pertanyaan Eksplorasi --}}
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Pertanyaan Eksplorasi</div>
 
@@ -763,7 +965,6 @@
             </div>
         </div>
 
-        {{-- Materi lanjutan (terkunci) --}}
         <div id="materi-lanjutan">
             <p>
                 Sebelum memahami pengertian polinomial secara menyeluruh, ada baiknya kita mempelajari terlebih dahulu
@@ -775,14 +976,15 @@
                 bilangan cacah, atau hasil kali antara bilangan dan satu atau lebih variabel berpangkat bilangan cacah.
             </p>
 
-            {{-- CONTOH KARTU --}}
             <div class="contoh-wrap" id="contoh-kartu">
                 <div class="contoh-badge">CONTOH</div>
                 <p class="contoh-sub">Klik setiap kartu untuk melihat penjelasan (tap di HP juga bisa).</p>
 
                 <div class="kartu-grid">
                     <div class="kartu" tabindex="0">
-                        <div class="kartu-top"><div class="kartu-tag">Klik untuk penjelasan</div></div>
+                        <div class="kartu-top">
+                            <div class="kartu-tag">Klik untuk penjelasan</div>
+                        </div>
                         <div class="kartu-ekspresi">$6x^2$</div>
                         <p class="kartu-hint">Apakah ini monomial?</p>
                         <div class="kartu-penjelasan">
@@ -791,7 +993,9 @@
                     </div>
 
                     <div class="kartu" tabindex="0">
-                        <div class="kartu-top"><div class="kartu-tag">Klik untuk penjelasan</div></div>
+                        <div class="kartu-top">
+                            <div class="kartu-tag">Klik untuk penjelasan</div>
+                        </div>
                         <div class="kartu-ekspresi">$-6$</div>
                         <p class="kartu-hint">Termasuk monomial?</p>
                         <div class="kartu-penjelasan">
@@ -800,7 +1004,9 @@
                     </div>
 
                     <div class="kartu" tabindex="0">
-                        <div class="kartu-top"><div class="kartu-tag">Klik untuk penjelasan</div></div>
+                        <div class="kartu-top">
+                            <div class="kartu-tag">Klik untuk penjelasan</div>
+                        </div>
                         <div class="kartu-ekspresi">$\frac{1}{6}x^2$</div>
                         <p class="kartu-hint">Koefisien pecahan boleh?</p>
                         <div class="kartu-penjelasan">
@@ -809,7 +1015,9 @@
                     </div>
 
                     <div class="kartu" tabindex="0">
-                        <div class="kartu-top"><div class="kartu-tag">Klik untuk penjelasan</div></div>
+                        <div class="kartu-top">
+                            <div class="kartu-tag">Klik untuk penjelasan</div>
+                        </div>
                         <div class="kartu-ekspresi">$5x + 2x^2$</div>
                         <p class="kartu-hint">Ini monomial atau bukan?</p>
                         <div class="kartu-penjelasan">
@@ -824,104 +1032,120 @@
                 </div>
 
                 <p style="margin:10px 0 0; text-align:justify; color: var(--muted);">
-                    Jika monomial tidak memiliki variabel, maka disebut konstanta, seperti $-8$ atau $25$. Sedangkan bilangan
+                    Jika monomial tidak memiliki variabel, maka disebut konstanta, seperti $-8$ atau $25$. Sedangkan
+                    bilangan
                     yang menjadi faktor pengali variabel disebut koefisien. Monomial merupakan bagian dari polinomial. Sama
-                    seperti penjumlahan dua bilangan real menghasilkan bilangan real, penjumlahan dua atau lebih monomial akan
+                    seperti penjumlahan dua bilangan real menghasilkan bilangan real, penjumlahan dua atau lebih monomial
+                    akan
                     membentuk polinomial.
                 </p>
             </div>
 
-            {{-- ✅ DEFINISI (GAMBAR 2) --}}
             <div class="definisi-block">
                 <div class="definisi-pill">DEFINISI</div>
 
                 <p class="definisi-text">
-                    Polinomial adalah bentuk aljabar yang terdiri atas satu monomial atau penjumlahan dari dua atau lebih monomial.
+                    Polinomial adalah bentuk aljabar yang terdiri atas satu monomial atau penjumlahan dari dua atau lebih
+                    monomial.
                     Setiap monomial penyusun polinomial disebut <i>suku</i>.
                     Selain itu, polinomial memuat satu variabel yang berpangkat bilangan bulat positif.
                 </p>
             </div>
 
-            {{-- CONTOH --}}
             <div class="card card-green">
                 <div class="title-box">🧪 Contoh</div>
 
                 <div class="contoh-note2">
-                    Tips cepat: Polinomial punya pangkat variabel 0, 1, 2, 3, ... (tidak negatif) dan tidak ada variabel di penyebut / akar.
+                    Tips cepat: klik tiap contoh untuk melihat alasan kenapa termasuk polinomial atau bukan polinomial.
                 </div>
 
-                <div class="contoh-grid2">
-                    <div class="contoh-card2">
-                        <div class="contoh-head2">
+                <div class="contoh-grid-interaktif" id="contoh-interaktif">
+                    <div class="contoh-card-interaktif" tabindex="0">
+                        <div class="contoh-head-interaktif">
                             <span class="badge2 ok">✅ Polinomial</span>
                             <span class="badge2 info">Pangkat valid</span>
                         </div>
-                        <div class="contoh-ekspresi2">$3x^2 + 2x + 1$</div>
-                        <p class="contoh-desc2">
-                            Semua suku memiliki pangkat bilangan bulat tidak negatif, jadi ini termasuk polinomial.
-                        </p>
+                        <div class="contoh-ekspresi-interaktif">$3x^2 + 2x + 1$</div>
+                        <p class="contoh-hint-interaktif">Klik untuk melihat penjelasan.</p>
+                        <div class="contoh-penjelasan-interaktif">
+                            Bentuk ini termasuk <b>polinomial</b> karena semua sukunya memiliki pangkat variabel
+                            berupa bilangan bulat tidak negatif, yaitu 2, 1, dan 0.
+                            Tidak ada variabel di penyebut dan tidak ada akar.
+                        </div>
                     </div>
 
-                    <div class="contoh-card2">
-                        <div class="contoh-head2">
+                    <div class="contoh-card-interaktif" tabindex="0">
+                        <div class="contoh-head-interaktif">
                             <span class="badge2 ok">✅ Polinomial</span>
                             <span class="badge2 info">Monomial dijumlah</span>
                         </div>
-                        <div class="contoh-ekspresi2">$5a^3b - 4a + 7$</div>
-                        <p class="contoh-desc2">
-                            Terdiri dari beberapa monomial (pangkat a dan b bilangan cacah), jadi termasuk polinomial.
-                        </p>
+                        <div class="contoh-ekspresi-interaktif">$5a^3b - 4a + 7$</div>
+                        <p class="contoh-hint-interaktif">Klik untuk melihat penjelasan.</p>
+                        <div class="contoh-penjelasan-interaktif">
+                            Bentuk ini termasuk <b>polinomial</b> karena tersusun dari beberapa monomial.
+                            Pangkat variabel $a$ dan $b$ adalah bilangan cacah, dan tidak ada variabel
+                            di penyebut maupun akar.
+                        </div>
                     </div>
 
-                    <div class="contoh-card2">
-                        <div class="contoh-head2">
+                    <div class="contoh-card-interaktif" tabindex="0">
+                        <div class="contoh-head-interaktif">
                             <span class="badge2 no">❌ Bukan Polinomial</span>
                             <span class="badge2 info">Variabel di penyebut</span>
                         </div>
-                        <div class="contoh-ekspresi2">$\frac{1}{x} + 2$</div>
-                        <p class="contoh-desc2">
-                            Ada variabel di penyebut ($x$), sehingga bukan polinomial.
-                        </p>
+                        <div class="contoh-ekspresi-interaktif">$\frac{1}{x} + 2$</div>
+                        <p class="contoh-hint-interaktif">Klik untuk melihat penjelasan.</p>
+                        <div class="contoh-penjelasan-interaktif">
+                            Bentuk ini <b>bukan polinomial</b> karena ada variabel $x$ di penyebut.
+                            Bentuk $\frac{1}{x}$ setara dengan $x^{-1}$, sedangkan pangkat negatif
+                            tidak diperbolehkan dalam polinomial.
+                        </div>
                     </div>
 
-                    <div class="contoh-card2">
-                        <div class="contoh-head2">
+                    <div class="contoh-card-interaktif" tabindex="0">
+                        <div class="contoh-head-interaktif">
                             <span class="badge2 no">❌ Bukan Polinomial</span>
                             <span class="badge2 info">Pangkat pecahan</span>
                         </div>
-                        <div class="contoh-ekspresi2">$\sqrt{x} + 5$</div>
-                        <p class="contoh-desc2">
-                            $\sqrt{x}$ setara dengan $x^{\frac{1}{2}}$ (pangkat pecahan), sehingga bukan polinomial.
-                        </p>
+                        <div class="contoh-ekspresi-interaktif">$\sqrt{x} + 5$</div>
+                        <p class="contoh-hint-interaktif">Klik untuk melihat penjelasan.</p>
+                        <div class="contoh-penjelasan-interaktif">
+                            Bentuk ini <b>bukan polinomial</b> karena $\sqrt{x}$ dapat ditulis sebagai
+                            $x^{\frac{1}{2}}$. Pangkat pecahan tidak memenuhi syarat polinomial.
+                        </div>
                     </div>
+                </div>
+
+                <div class="contoh-actions">
+                    <button type="button" class="btnx primary" id="btn-buka-contoh">Buka Semua</button>
+                    <button type="button" class="btnx ghost" id="btn-tutup-contoh">Tutup Semua</button>
                 </div>
             </div>
 
-            {{-- EMBED p5.js --}}
             <div class="card card-green">
                 <div class="title-box">📝 Latihan</div>
 
-                <div id="p5-interaktif-1a" class="p5-host">
-                    <noscript>Aktifkan JavaScript untuk melihat latihan interaktif.</noscript>
+                <div class="quiz-box-new">
+                    <div id="quiz-container"></div>
+
+                    <div style="margin-top: 15px;">
+                        <button id="checkBtn" class="btnx primary" type="button">Cek Jawaban</button>
+                        <button id="resetBtn" class="btnx ghost" type="button">Reset</button>
+                    </div>
+
+                    <div id="resultBox" class="result-box"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Pastikan p5.js sudah ada sebelum interaktif1a.js -->
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.min.js"></script>
-        <script src="{{ asset('js/interaktif1a.js') }}"></script>
-
-        {{-- ==========================
-            JS QUIZ (cek benar/salah) + UNLOCK
-           ========================== --}}
         <script>
-            (function() {
+            (function () {
                 const normalize = (s) =>
                     (s || "")
-                    .toLowerCase()
-                    .trim()
-                    .replace(/\s+/g, "")
-                    .replace(/×/g, "x");
+                        .toLowerCase()
+                        .trim()
+                        .replace(/\s+/g, "")
+                        .replace(/×/g, "x");
 
                 const splitTokens = (s) => {
                     return (s || "")
@@ -1015,64 +1239,57 @@
                 const unlockMateri = () => {
                     const lanjut = document.getElementById("materi-lanjutan");
                     if (lanjut) lanjut.classList.add("show");
-
-                    requestAnimationFrame(() => {
-                        window.dispatchEvent(new Event("resize"));
-                    });
                 };
 
                 const quiz = document.getElementById("eksplorasi-quiz");
-                if (!quiz) return;
+                if (quiz) {
+                    const lanjutInit = document.getElementById("materi-lanjutan");
+                    if (lanjutInit) lanjutInit.classList.remove("show");
 
-                const lanjutInit = document.getElementById("materi-lanjutan");
-                if (lanjutInit) lanjutInit.classList.remove("show");
+                    quiz.querySelectorAll(".quiz-item").forEach(item => {
+                        const btnCheck = item.querySelector(".quiz-check");
+                        const btnReset = item.querySelector(".quiz-reset");
 
-                quiz.querySelectorAll(".quiz-item").forEach(item => {
-                    const btnCheck = item.querySelector(".quiz-check");
-                    const btnReset = item.querySelector(".quiz-reset");
+                        if (btnCheck) btnCheck.addEventListener("click", () => {
+                            checkItem(item);
 
-                    if (btnCheck) btnCheck.addEventListener("click", () => {
-                        checkItem(item);
-
-                        const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                        const allOk = items.every(it => it.querySelector(".quiz-feedback")?.classList.contains("ok"));
-                        if (allOk) {
-                            const summary = document.getElementById("quiz-summary");
-                            if (summary) summary.textContent = `Skor: ${items.length}/${items.length}`;
-                            unlockMateri();
-                        }
-                    });
-
-                    if (btnReset) btnReset.addEventListener("click", () => resetItem(item));
-                });
-
-                const btnAll = document.getElementById("quiz-check-all");
-                if (btnAll) {
-                    btnAll.addEventListener("click", () => {
-                        const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                        let correct = 0;
-
-                        items.forEach(item => {
-                            const ok = checkItem(item);
-                            if (ok) correct++;
+                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                            const allOk = items.every(it => it.querySelector(".quiz-feedback")?.classList.contains("ok"));
+                            if (allOk) {
+                                const summary = document.getElementById("quiz-summary");
+                                if (summary) summary.textContent = `Skor: ${items.length}/${items.length}`;
+                                unlockMateri();
+                            }
                         });
 
-                        const summary = document.getElementById("quiz-summary");
-                        if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
-
-                        if (correct === items.length) unlockMateri();
+                        if (btnReset) btnReset.addEventListener("click", () => resetItem(item));
                     });
+
+                    const btnAll = document.getElementById("quiz-check-all");
+                    if (btnAll) {
+                        btnAll.addEventListener("click", () => {
+                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                            let correct = 0;
+
+                            items.forEach(item => {
+                                const ok = checkItem(item);
+                                if (ok) correct++;
+                            });
+
+                            const summary = document.getElementById("quiz-summary");
+                            if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
+
+                            if (correct === items.length) unlockMateri();
+                        });
+                    }
                 }
             })();
         </script>
 
-        {{-- ==========================
-           ✅ JS KARTU-KARTU CONTOH (klik untuk buka/tutup)
-           ========================== --}}
         <script>
-            (function(){
+            (function () {
                 const wrap = document.getElementById('contoh-kartu');
-                if(!wrap) return;
+                if (!wrap) return;
 
                 const cards = Array.from(wrap.querySelectorAll('.kartu'));
                 const btnOpenAll = document.getElementById('btn-buka-semua');
@@ -1083,7 +1300,7 @@
                 cards.forEach(card => {
                     card.addEventListener('click', () => toggleCard(card));
                     card.addEventListener('keydown', (e) => {
-                        if(e.key === 'Enter' || e.key === ' ') {
+                        if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
                             toggleCard(card);
                         }
@@ -1092,6 +1309,167 @@
 
                 btnOpenAll?.addEventListener('click', () => cards.forEach(c => c.classList.add('open')));
                 btnCloseAll?.addEventListener('click', () => cards.forEach(c => c.classList.remove('open')));
+            })();
+        </script>
+
+        <script>
+            (function () {
+                const questions = [
+                    {
+                        expr: "$4x^3 - 2x + 5$",
+                        correct: "polinomial",
+                        explanation: "Benar, karena semua pangkat variabel adalah bilangan bulat tidak negatif."
+                    },
+                    {
+                        expr: "$\\frac{1}{y} + 2y$",
+                        correct: "bukan",
+                        explanation: "Benar, karena ada variabel di penyebut. Bentuk ini setara dengan $y^{-1} + 2y$ sehingga bukan polinomial."
+                    },
+                    {
+                        expr: "$\\sqrt{x} + 7$",
+                        correct: "bukan",
+                        explanation: "Benar, karena $\\sqrt{x} = x^{1/2}$. Pangkat pecahan tidak memenuhi syarat polinomial."
+                    },
+                    {
+                        expr: "$6a^2b + 3a - 8$",
+                        correct: "polinomial",
+                        explanation: "Benar, karena semua variabel memiliki pangkat bilangan cacah dan tidak ada variabel di penyebut atau akar."
+                    },
+                    {
+                        expr: "$3x^{-2} + 4$",
+                        correct: "bukan",
+                        explanation: "Benar, karena ada pangkat negatif pada variabel, sehingga bukan polinomial."
+                    }
+                ];
+
+                const container = document.getElementById("quiz-container");
+                const resultBox = document.getElementById("resultBox");
+                const checkBtn = document.getElementById("checkBtn");
+                const resetBtn = document.getElementById("resetBtn");
+
+                if (!container || !checkBtn || !resetBtn || !resultBox) return;
+
+                function renderQuiz() {
+                    container.innerHTML = "";
+
+                    questions.forEach((q, i) => {
+                        const div = document.createElement("div");
+                        div.className = "quiz-item-plain";
+                        div.innerHTML = `
+                                        <div class="quiz-soal-title">Soal ${i + 1}</div>
+                                        <div class="quiz-ekspresi">${q.expr}</div>
+
+                                        <div class="quiz-options-new">
+                                            <label>
+                                                <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                            </label>
+                                        </div>
+
+                                        <div class="feedback-box" id="fb${i}"></div>
+                                    `;
+                        container.appendChild(div);
+                    });
+
+                    if (typeof renderMathInElement === "function") {
+                        renderMathInElement(container, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
+                        });
+                    }
+                }
+
+                function checkAnswers() {
+                    let score = 0;
+
+                    questions.forEach((q, i) => {
+                        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                        const fb = document.getElementById(`fb${i}`);
+                        fb.className = "feedback-box";
+
+                        if (!selected) {
+                            fb.classList.add("wrong");
+                            fb.innerHTML = "Belum dijawab.";
+                            return;
+                        }
+
+                        if (selected.value === q.correct) {
+                            score++;
+                            fb.classList.add("correct");
+                            fb.innerHTML = `Benar ✅<br>${q.explanation}`;
+                        } else {
+                            fb.classList.add("wrong");
+                            fb.innerHTML = "Salah ❌<br>Coba cek lagi syarat polinomial: pangkat variabel harus bilangan cacah, tidak boleh di penyebut, dan tidak boleh berupa akar.";
+                        }
+                    });
+
+                    resultBox.innerHTML = `Skor: ${score}/${questions.length}`;
+
+                    if (typeof renderMathInElement === "function") {
+                        renderMathInElement(resultBox, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
+                        });
+                    }
+                }
+
+                function resetQuiz() {
+                    renderQuiz();
+                    resultBox.innerHTML = "";
+                }
+
+                checkBtn.addEventListener("click", checkAnswers);
+                resetBtn.addEventListener("click", resetQuiz);
+
+                renderQuiz();
+            })();
+        </script>
+
+        <script>
+            (function () {
+                const wrap = document.getElementById('contoh-interaktif');
+                if (!wrap) return;
+
+                const cards = Array.from(wrap.querySelectorAll('.contoh-card-interaktif'));
+                const btnBuka = document.getElementById('btn-buka-contoh');
+                const btnTutup = document.getElementById('btn-tutup-contoh');
+
+                const toggleCard = (card) => {
+                    card.classList.toggle('open');
+                };
+
+                cards.forEach((card) => {
+                    card.addEventListener('click', () => toggleCard(card));
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCard(card);
+                        }
+                    });
+                });
+
+                btnBuka?.addEventListener('click', () => {
+                    cards.forEach(card => card.classList.add('open'));
+                });
+
+                btnTutup?.addEventListener('click', () => {
+                    cards.forEach(card => card.classList.remove('open'));
+                });
+
+                if (typeof renderMathInElement === "function") {
+                    renderMathInElement(wrap, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false }
+                        ]
+                    });
+                }
             })();
         </script>
 

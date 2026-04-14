@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                        delimiters: [
-                            {left: '$$', right: '$$', display: true},
-                            {left: '$', right: '$', display: false}
-                        ]
-                    });">
-                    </script>
+                                    delimiters: [
+                                        {left: '$$', right: '$$', display: true},
+                                        {left: '$', right: '$', display: false}
+                                    ]
+                                });">
+                                </script>
 
     <style>
         :root {
@@ -538,6 +538,315 @@
                 padding: 38px 18px 18px;
             }
         }
+
+        /* ===== LATIHAN HTML CSS JS ===== */
+        .latihan-polinom-wrap {
+            background: linear-gradient(180deg, #f7f3df, #f5f0dc);
+            border-left: 6px solid #f59e0b;
+            padding: 18px 18px 28px;
+        }
+
+        .latihan-shell {
+            max-width: 780px;
+            margin: 0 auto;
+            border-left: 5px solid #f59e0b;
+            padding-left: 18px;
+        }
+
+        .latihan-header-box {
+            background: #f8f6ef;
+            border: 1px solid rgba(0, 0, 0, .08);
+            border-radius: 16px;
+            padding: 18px 20px 14px;
+            margin-bottom: 14px;
+        }
+
+        .latihan-main-title {
+            margin: 0 0 6px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e1e1e;
+            letter-spacing: .5px;
+        }
+
+        .latihan-main-subtitle {
+            margin: 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .level-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .level-card {
+            border-radius: 18px;
+            border: 2px solid #d9d9d9;
+            min-height: 106px;
+            padding: 14px 14px 14px 18px;
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            background: #fafafa;
+            transition: all .2s ease;
+            opacity: .9;
+        }
+
+        .level-card.active {
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        .level-card.locked {
+            opacity: .7;
+        }
+
+        #card-mudah {
+            background: #eef8ef;
+            border-color: #8fd19a;
+        }
+
+        #card-sedang {
+            background: #f2f7ff;
+            border-color: #b9d3f2;
+        }
+
+        #card-susah {
+            background: #fff3ec;
+            border-color: #efc0a3;
+        }
+
+        .level-bar {
+            width: 8px;
+            border-radius: 999px;
+            min-height: 100%;
+        }
+
+        .level-bar.green {
+            background: #4dbb63;
+        }
+
+        .level-bar.blue {
+            background: #8cbbe8;
+        }
+
+        .level-bar.orange {
+            background: #e5a06e;
+        }
+
+        .level-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .level-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #2b2b2b;
+            margin-bottom: 4px;
+        }
+
+        .level-sub {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .level-status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 800;
+            width: fit-content;
+            min-width: 140px;
+        }
+
+        .level-status.done {
+            background: #dff1e3;
+            color: #1f6c34;
+            border: 1px solid #b9dfc2;
+        }
+
+        .locked-pill {
+            background: #ececec;
+            color: #7b7b7b;
+            border: 1px solid #dedede;
+        }
+
+        .latihan-panel {
+            border-radius: 20px;
+            padding: 16px 16px 18px;
+            background: #fff;
+            border: 2px solid #ddd;
+        }
+
+        .latihan-panel.active {
+            display: block;
+        }
+
+        .panel-green {
+            border-color: #8fd19a;
+            background: #fbfffb;
+        }
+
+        .panel-blue {
+            border-color: #b9d3f2;
+            background: #fbfdff;
+        }
+
+        .panel-orange {
+            border-color: #efc0a3;
+            background: #fffdfa;
+        }
+
+        .panel-title {
+            margin: 0 0 2px;
+            font-size: 18px;
+            font-weight: 900;
+            color: #2d2d2d;
+        }
+
+        .panel-subtitle {
+            margin: 0 0 14px;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .soal-math-box {
+            background: #fff;
+            border: 2px solid rgba(0, 0, 0, .10);
+            border-radius: 16px;
+            min-height: 108px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            max-width: 560px;
+            padding: 12px;
+        }
+
+        .jawaban-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 800;
+            color: #333;
+        }
+
+        .jawaban-input {
+            width: 100%;
+            max-width: 560px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, .18);
+            background: #fff;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 17px;
+            outline: none;
+        }
+
+        .jawaban-input:disabled {
+            background: #f4f4f4;
+            color: #888;
+        }
+
+        .latihan-actions {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .latihan-btn {
+            padding: 9px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, .16);
+            background: #fff;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .latihan-btn:disabled {
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        .latihan-feedback {
+            font-weight: 900;
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .latihan-feedback.ok {
+            color: #145c2a;
+            background: rgba(27, 122, 42, .10);
+            border: 1px solid rgba(27, 122, 42, .18);
+        }
+
+        .latihan-feedback.no {
+            color: #8c2b00;
+            background: rgba(224, 112, 43, .10);
+            border: 1px solid rgba(224, 112, 43, .18);
+        }
+
+        .step-box {
+            margin-top: 16px;
+            border-radius: 14px;
+            background: #f8faf8;
+            border: 1px solid rgba(0, 0, 0, .08);
+            padding: 14px 16px;
+        }
+
+        .step-title {
+            font-weight: 900;
+            color: #1f4d2d;
+            margin-bottom: 8px;
+        }
+
+        .step-box ol {
+            margin: 0 0 0 22px;
+            color: #555;
+        }
+
+        .step-box li {
+            margin: 6px 0;
+            line-height: 1.8;
+        }
+
+        .step-result {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, .08);
+            font-weight: 800;
+            color: #222;
+        }
+
+        @media (max-width: 768px) {
+            .level-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .latihan-shell {
+                padding-left: 10px;
+            }
+
+            .latihan-main-title {
+                font-size: 24px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -631,8 +940,10 @@
             {{-- Penjelasan --}}
             <div class="penjelasan-plain">
                 <p>
-                    Sama seperti operasi penjumlahan pada bilangan real, penjumlahan pada polinomial dapat dilakukan dengan cara
-                    menggabungkan suku-suku yang sejenis, yaitu suku yang memiliki variabel yang sama, dan pangkat variabel yang
+                    Sama seperti operasi penjumlahan pada bilangan real, penjumlahan pada polinomial dapat dilakukan dengan
+                    cara
+                    menggabungkan suku-suku yang sejenis, yaitu suku yang memiliki variabel yang sama, dan pangkat variabel
+                    yang
                     sama.
                     Suku yang tidak sejenis tidak dapat dijumlahkan, sehingga tetap dituliskan apa adanya.
                 </p>
@@ -794,8 +1105,8 @@
                     <div style="margin-top:12px;">
                         <div class="contoh-row-title">Tuliskan hasil akhirnya:</div>
                         <div class="mini-actions" style="justify-content:flex-start;">
-                            <input id="contoh-final" class="hasil-input" style="max-width:420px; text-align:left;" type="text"
-                                placeholder="" />
+                            <input id="contoh-final" class="hasil-input" style="max-width:420px; text-align:left;"
+                                type="text" placeholder="" />
                             <button type="button" id="contoh-final-check" class="mini-btn">Cek</button>
                             <button type="button" id="contoh-final-reset" class="mini-btn">Reset</button>
                             <span id="contoh-final-fb" class="mini-feedback"></span>
@@ -822,21 +1133,175 @@
                 </div>
             </div>
 
-            {{-- ✅ KOTAK LATIHAN (p5 embed interaktif2a.js) --}}
-            <div class="card card-latihan">
-                <div class="p5-frame">
-                    <div id="p5-latihan"></div>
+            {{-- ✅ LATIHAN HTML CSS JS (ganti p5) --}}
+            <div class="card card-latihan latihan-polinom-wrap">
+                <div class="latihan-shell">
+
+                    <div class="latihan-header-box">
+                        <h3 class="latihan-main-title">LATIHAN</h3>
+                        <p class="latihan-main-subtitle">
+                            Kerjakan berurutan: MUDAH → SEDANG → SUSAH. Isi jawaban lalu klik Cek.
+                        </p>
+                    </div>
+
+                    <div class="level-cards">
+                        <div class="level-card active" id="card-mudah" data-level="mudah">
+                            <div class="level-bar green"></div>
+                            <div class="level-info">
+                                <div class="level-title">MUDAH</div>
+                                <div class="level-sub">Linear (y)</div>
+                                <div class="level-status done" id="status-mudah" style="display:none;">✔ Selesai</div>
+                            </div>
+                        </div>
+
+                        <div class="level-card locked" id="card-sedang" data-level="sedang">
+                            <div class="level-bar blue"></div>
+                            <div class="level-info">
+                                <div class="level-title">SEDANG</div>
+                                <div class="level-sub">Kuadrat (x^2)</div>
+                                <div class="level-status locked-pill" id="status-lock-sedang">🔒 Terkunci</div>
+                                <div class="level-status done" id="status-sedang" style="display:none;">✔ Selesai</div>
+                            </div>
+                        </div>
+
+                        <div class="level-card locked" id="card-susah" data-level="susah">
+                            <div class="level-bar orange"></div>
+                            <div class="level-info">
+                                <div class="level-title">SUSAH</div>
+                                <div class="level-sub">Kubik (x^3)</div>
+                                <div class="level-status locked-pill" id="status-lock-susah">🔒 Terkunci</div>
+                                <div class="level-status done" id="status-susah" style="display:none;">✔ Selesai</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- PANEL MUDAH --}}
+                    <div class="latihan-panel panel-green active" id="panel-mudah">
+                        <h4 class="panel-title">Soal MUDAH</h4>
+                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+
+                        <div class="soal-math-box">
+                            $$\begin{aligned}
+                            &\ \ \ 6y - 4\\
+                            &+\, 3y + 10\\
+                            \hline
+                            \end{aligned}$$
+                        </div>
+
+                        <label class="jawaban-label">Jawaban:</label>
+                        <input type="text" id="jawaban-mudah" class="jawaban-input" placeholder="Contoh: 9y+6">
+
+                        <div class="latihan-actions">
+                            <button type="button" class="latihan-btn" id="cek-mudah">Cek</button>
+                            <button type="button" class="latihan-btn" id="reset-mudah">Reset</button>
+                            <span class="latihan-feedback" id="fb-mudah"></span>
+                        </div>
+
+                        <div class="step-box" id="step-mudah" style="display:none;">
+                            <div class="step-title">Penjelasan:</div>
+                            <ol>
+                                <li>Kelompokkan suku sejenis: <b>6y</b> dengan <b>3y</b>, dan konstanta <b>-4</b> dengan
+                                    <b>10</b>.
+                                </li>
+                                <li>Jumlahkan koefisien suku <b>y</b>: \(6y + 3y = 9y\).</li>
+                                <li>Jumlahkan konstanta: \(-4 + 10 = 6\).</li>
+                                <li>Jadi hasil akhirnya adalah <b>\(9y + 6\)</b>.</li>
+                            </ol>
+                            <div class="step-result">Hasil: $$9y+6$$</div>
+                        </div>
+                    </div>
+
+                    {{-- PANEL SEDANG --}}
+                    <div class="latihan-panel panel-blue" id="panel-sedang" style="display:none;">
+                        <h4 class="panel-title">Soal SEDANG</h4>
+                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+
+                        <div class="soal-math-box">
+                            $$\begin{aligned}
+                            &\ \ \ 2x^2 + 3x - 5\\
+                            &+\, 4x^2 - x + 1\\
+                            \hline
+                            \end{aligned}$$
+                        </div>
+
+                        <label class="jawaban-label">Jawaban:</label>
+                        <input type="text" id="jawaban-sedang" class="jawaban-input" placeholder="Contoh: 6x^2+2x-4"
+                            disabled>
+
+                        <div class="latihan-actions">
+                            <button type="button" class="latihan-btn" id="cek-sedang" disabled>Cek</button>
+                            <button type="button" class="latihan-btn" id="reset-sedang" disabled>Reset</button>
+                            <span class="latihan-feedback" id="fb-sedang"></span>
+                        </div>
+
+                        <div class="step-box" id="step-sedang" style="display:none;">
+                            <div class="step-title">Penjelasan:</div>
+                            <ol>
+                                <li>Kelompokkan suku sejenis:
+                                    <b>\(2x^2\)</b> dengan <b>\(4x^2\)</b>,
+                                    <b>\(3x\)</b> dengan <b>\(-x\)</b>,
+                                    dan <b>\(-5\)</b> dengan <b>\(1\)</b>.
+                                </li>
+                                <li>Jumlahkan suku kuadrat: \(2x^2 + 4x^2 = 6x^2\).</li>
+                                <li>Jumlahkan suku linear: \(3x + (-x) = 2x\).</li>
+                                <li>Jumlahkan konstanta: \(-5 + 1 = -4\).</li>
+                                <li>Jadi hasil akhirnya adalah <b>\(6x^2 + 2x - 4\)</b>.</li>
+                            </ol>
+                            <div class="step-result">Hasil: $$6x^2+2x-4$$</div>
+                        </div>
+                    </div>
+
+                    {{-- PANEL SUSAH --}}
+                    <div class="latihan-panel panel-orange" id="panel-susah" style="display:none;">
+                        <h4 class="panel-title">Soal SUSAH</h4>
+                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+
+                        <div class="soal-math-box">
+                            $$\begin{aligned}
+                            &\ \ \ 7x^3 - 2x + 9\\
+                            &+\, 5x^3 + 8x - 3\\
+                            \hline
+                            \end{aligned}$$
+                        </div>
+
+                        <label class="jawaban-label">Jawaban:</label>
+                        <input type="text" id="jawaban-susah" class="jawaban-input" placeholder="Contoh: 12x^3+6x+6"
+                            disabled>
+
+                        <div class="latihan-actions">
+                            <button type="button" class="latihan-btn" id="cek-susah" disabled>Cek</button>
+                            <button type="button" class="latihan-btn" id="reset-susah" disabled>Reset</button>
+                            <span class="latihan-feedback" id="fb-susah"></span>
+                        </div>
+
+                        <div class="step-box" id="step-susah" style="display:none;">
+                            <div class="step-title">Penjelasan:</div>
+                            <ol>
+                                <li>Kelompokkan suku sejenis:
+                                    <b>\(7x^3\)</b> dengan <b>\(5x^3\)</b>,
+                                    <b>\(-2x\)</b> dengan <b>\(8x\)</b>,
+                                    dan <b>\(9\)</b> dengan <b>\(-3\)</b>.
+                                </li>
+                                <li>Jumlahkan suku kubik: \(7x^3 + 5x^3 = 12x^3\).</li>
+                                <li>Jumlahkan suku linear: \(-2x + 8x = 6x\).</li>
+                                <li>Jumlahkan konstanta: \(9 + (-3) = 6\).</li>
+                                <li>Jadi hasil akhirnya adalah <b>\(12x^3 + 6x + 6\)</b>.</li>
+                            </ol>
+                            <div class="step-result">Hasil: $$12x^3+6x+6$$</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div> {{-- end #materi-lanjutan --}}
 
 
-        {{-- =========================
-        JS QUIZ + KaTeX rerender (punyamu)
-        ========================== --}}
         <script>
             (function () {
+                /* =========================
+                   UTILITIES
+                ========================== */
                 const normalize = (s) =>
                     (s || "")
                         .toLowerCase()
@@ -844,17 +1309,26 @@
                         .replace(/\s+/g, "")
                         .replace(/×/g, "x")
                         .replace(/–/g, "-")
-                        .replace(/−/g, "-");
+                        .replace(/−/g, "-")
+                        .replace(/\+\-/g, "-");
 
-                const normalizePolyX = (raw) => {
+                const normalizePoly = (raw) => {
                     let s = normalize(raw);
                     if (!s) return "";
-                    s = s.replace(/x3/g, "x^3").replace(/x2/g, "x^2");
-                    s = s.replace(/\+\-/g, "-");
-                    s = s.replace(/x\^1/g, "x");
-                    // rapikan 1x -> x, -1x -> -x
-                    s = s.replace(/(^|[+\-])1x/g, "$1x");
-                    s = s.replace(/(^|[+\-])\-1x/g, "$1-x"); // defensive
+
+                    s = s
+                        .replace(/x3/g, "x^3")
+                        .replace(/x2/g, "x^2")
+                        .replace(/y3/g, "y^3")
+                        .replace(/y2/g, "y^2")
+                        .replace(/x\^1/g, "x")
+                        .replace(/y\^1/g, "y")
+                        .replace(/(^|[+\-])1x/g, "$1x")
+                        .replace(/(^|[+\-])1y/g, "$1y")
+                        .replace(/(^|[+\-])\-1x/g, "$1-x")
+                        .replace(/(^|[+\-])\-1y/g, "$1-y")
+                        .replace(/^\+/, "");
+
                     return s;
                 };
 
@@ -873,10 +1347,12 @@
 
                 const renderInlineKatex = (container, latex) => {
                     if (!container) return;
+
                     if (!window.katex || !window.katex.render) {
                         container.textContent = latex;
                         return;
                     }
+
                     try {
                         window.katex.render(latex, container, {
                             throwOnError: false,
@@ -893,53 +1369,18 @@
                             window.renderMathInElement(document.body, {
                                 delimiters: [
                                     { left: "$$", right: "$$", display: true },
-                                    { left: "$", right: "$", display: false },
-                                ],
+                                    { left: "$", right: "$", display: false }
+                                ]
                             });
                         }
                     } catch (e) { }
                 };
 
-                // ✅ FIX p5: load p5 + interaktif2a.js hanya setelah unlock (agar ukuran canvas benar)
-                let latihanLoaded = false;
-                const loadLatihanOnce = () => {
-                    if (latihanLoaded) return;
-                    latihanLoaded = true;
-
-                    const loadScript = (src, cb) => {
-                        const s = document.createElement("script");
-                        s.src = src;
-                        s.onload = () => cb && cb();
-                        document.body.appendChild(s);
-                    };
-
-                    // load p5 dulu, lalu interaktif2a.js
-                    loadScript("https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js", () => {
-                        loadScript("{{ asset('js/interaktif2a.js') }}");
-                    });
-                };
-
-                // ✅ Unlock materi-lanjutan jika 3/3 eksplorasi benar semua
+                /* =========================
+                   EKSPLORASI QUIZ
+                ========================== */
                 const materiLanjutan = document.getElementById("materi-lanjutan");
-                const updateUnlock = () => {
-                    const quiz = document.getElementById("eksplorasi-quiz");
-                    if (!quiz || !materiLanjutan) return;
 
-                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                    const correct = items.filter(it =>
-                        it.querySelector(".quiz-feedback")?.classList.contains("ok")
-                    ).length;
-
-                    const unlocked = (correct === items.length);
-                    materiLanjutan.style.display = unlocked ? "block" : "none";
-
-                    if (unlocked) {
-                        rerenderKatex();
-                        loadLatihanOnce(); // ✅ p5 baru jalan setelah terlihat
-                    }
-                };
-
-                // ---------- Eksplorasi quiz ----------
                 const clearFeedback = (item) => {
                     const fb = item.querySelector(".quiz-feedback");
                     if (!fb) return;
@@ -973,7 +1414,7 @@
                     if (type === "oneof") {
                         const expected = normalize(item.getAttribute("data-answer") || "");
                         const val = normalize(valRaw);
-                        const ok = (val === expected) || val.startsWith(expected);
+                        const ok = val === expected || val.startsWith(expected);
                         showFeedback(item, ok, "Benar ✅", "Belum tepat ❌");
                         return ok;
                     }
@@ -982,37 +1423,63 @@
                     return false;
                 };
 
+                const updateUnlock = () => {
+                    const quiz = document.getElementById("eksplorasi-quiz");
+                    if (!quiz || !materiLanjutan) return;
+
+                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                    const correct = items.filter((it) =>
+                        it.querySelector(".quiz-feedback")?.classList.contains("ok")
+                    ).length;
+
+                    const unlocked = correct === items.length;
+                    materiLanjutan.style.display = unlocked ? "block" : "none";
+
+                    if (unlocked) {
+                        rerenderKatex();
+                        initLatihanPolinom();
+                    }
+                };
+
                 const quiz = document.getElementById("eksplorasi-quiz");
                 if (quiz) {
-                    quiz.querySelectorAll(".quiz-item").forEach(item => {
+                    quiz.querySelectorAll(".quiz-item").forEach((item) => {
                         const btnCheck = item.querySelector(".quiz-check");
                         const btnReset = item.querySelector(".quiz-reset");
 
-                        if (btnCheck) btnCheck.addEventListener("click", () => {
-                            checkItem(item);
+                        if (btnCheck) {
+                            btnCheck.addEventListener("click", () => {
+                                checkItem(item);
 
-                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                            const correct = items.filter(it => it.querySelector(".quiz-feedback")?.classList.contains("ok")).length;
+                                const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                                const correct = items.filter((it) =>
+                                    it.querySelector(".quiz-feedback")?.classList.contains("ok")
+                                ).length;
 
-                            const summary = document.getElementById("quiz-summary");
-                            if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
+                                const summary = document.getElementById("quiz-summary");
+                                if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
 
-                            updateUnlock();
-                            rerenderKatex();
-                        });
+                                updateUnlock();
+                                rerenderKatex();
+                            });
+                        }
 
-                        if (btnReset) btnReset.addEventListener("click", () => {
-                            resetItem(item);
+                        if (btnReset) {
+                            btnReset.addEventListener("click", () => {
+                                resetItem(item);
 
-                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                            const correct = items.filter(it => it.querySelector(".quiz-feedback")?.classList.contains("ok")).length;
+                                const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                                const correct = items.filter((it) =>
+                                    it.querySelector(".quiz-feedback")?.classList.contains("ok")
+                                ).length;
 
-                            const summary = document.getElementById("quiz-summary");
-                            if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
+                                const summary = document.getElementById("quiz-summary");
+                                if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
 
-                            updateUnlock();
-                            rerenderKatex();
-                        });
+                                updateUnlock();
+                                rerenderKatex();
+                            });
+                        }
                     });
 
                     const btnAll = document.getElementById("quiz-check-all");
@@ -1021,7 +1488,7 @@
                             const items = Array.from(quiz.querySelectorAll(".quiz-item"));
                             let correct = 0;
 
-                            items.forEach(item => {
+                            items.forEach((item) => {
                                 const ok = checkItem(item);
                                 if (ok) correct++;
                             });
@@ -1035,7 +1502,9 @@
                     }
                 }
 
-                // ---------- CONTOH interaktif (punyamu) ----------
+                /* =========================
+                   CONTOH INTERAKTIF
+                ========================== */
                 const contoh = document.getElementById("contoh-interaktif");
                 if (contoh) {
                     const rows = Array.from(contoh.querySelectorAll(".contoh-item"));
@@ -1051,6 +1520,7 @@
                             input.disabled = true;
                             input.style.display = "none";
                         }
+
                         if (box) {
                             box.style.display = "flex";
                             renderInlineKatex(box, latex);
@@ -1067,19 +1537,21 @@
                             input.style.display = "block";
                             input.value = "";
                         }
+
                         if (box) {
                             box.style.display = "none";
                             box.innerHTML = "";
                         }
+
                         clearFb(fb);
                     };
 
                     const checkRow = (row) => {
-                        const ans = normalizePolyX(row.getAttribute("data-answer") || "");
+                        const ans = normalizePoly(row.getAttribute("data-answer") || "");
                         const input = row.querySelector(".hasil-input");
                         const fb = row.querySelector(".mini-feedback");
 
-                        const user = normalizePolyX(input ? input.value : "");
+                        const user = normalizePoly(input ? input.value : "");
                         const ok = !!user && user === ans;
 
                         setFb(fb, ok);
@@ -1088,32 +1560,40 @@
                         return ok;
                     };
 
-                    rows.forEach(row => {
+                    rows.forEach((row) => {
                         const btnC = row.querySelector(".contoh-check");
                         const btnR = row.querySelector(".contoh-reset");
 
-                        if (btnC) btnC.addEventListener("click", () => {
-                            checkRow(row);
-                            rerenderKatex();
-                        });
+                        if (btnC) {
+                            btnC.addEventListener("click", () => {
+                                checkRow(row);
+                                rerenderKatex();
+                            });
+                        }
 
-                        if (btnR) btnR.addEventListener("click", () => {
-                            resetToInput(row);
-                            rerenderKatex();
-                        });
+                        if (btnR) {
+                            btnR.addEventListener("click", () => {
+                                resetToInput(row);
+                                rerenderKatex();
+                            });
+                        }
                     });
 
-                    // hasil akhir
                     const finalInput = document.getElementById("contoh-final");
                     const finalFb = document.getElementById("contoh-final-fb");
                     const finalCanonical = "7x^3+2x^2-x+2";
-                    const finalAns = normalizePolyX(finalCanonical);
+                    const finalAns = normalizePoly(finalCanonical);
 
-                    const lockSehingga = () => { if (sehinggaBox) sehinggaBox.style.display = "none"; };
-                    const unlockSehingga = () => { if (sehinggaBox) sehinggaBox.style.display = "block"; };
+                    const lockSehingga = () => {
+                        if (sehinggaBox) sehinggaBox.style.display = "none";
+                    };
+
+                    const unlockSehingga = () => {
+                        if (sehinggaBox) sehinggaBox.style.display = "block";
+                    };
 
                     const checkFinal = () => {
-                        const user = normalizePolyX(finalInput ? finalInput.value : "");
+                        const user = normalizePoly(finalInput ? finalInput.value : "");
                         const ok = !!user && user === finalAns;
 
                         setFb(finalFb, ok);
@@ -1128,19 +1608,22 @@
                     const btnFinalCheck = document.getElementById("contoh-final-check");
                     const btnFinalReset = document.getElementById("contoh-final-reset");
 
-                    if (btnFinalCheck) btnFinalCheck.addEventListener("click", () => {
-                        checkFinal();
-                        rerenderKatex();
-                    });
+                    if (btnFinalCheck) {
+                        btnFinalCheck.addEventListener("click", () => {
+                            checkFinal();
+                            rerenderKatex();
+                        });
+                    }
 
-                    if (btnFinalReset) btnFinalReset.addEventListener("click", () => {
-                        if (finalInput) finalInput.value = "";
-                        clearFb(finalFb);
-                        lockSehingga();
-                        rerenderKatex();
-                    });
+                    if (btnFinalReset) {
+                        btnFinalReset.addEventListener("click", () => {
+                            if (finalInput) finalInput.value = "";
+                            clearFb(finalFb);
+                            lockSehingga();
+                            rerenderKatex();
+                        });
+                    }
 
-                    // cek semua
                     const btnAll = document.getElementById("contoh-check-all");
                     const summary = document.getElementById("contoh-summary");
 
@@ -1148,7 +1631,10 @@
                         btnAll.addEventListener("click", () => {
                             let correct = 0;
 
-                            rows.forEach(r => { if (checkRow(r)) correct++; });
+                            rows.forEach((r) => {
+                                if (checkRow(r)) correct++;
+                            });
+
                             if (checkFinal()) correct++;
 
                             const total = rows.length + 1;
@@ -1161,7 +1647,248 @@
                     lockSehingga();
                 }
 
-                // awalnya terkunci
+                /* =========================
+                   LATIHAN 3 LEVEL
+                ========================== */
+                let latihanInited = false;
+
+                function initLatihanPolinom() {
+                    if (latihanInited) return;
+
+                    const rootExists =
+                        document.getElementById("panel-mudah") ||
+                        document.getElementById("jawaban-mudah") ||
+                        document.getElementById("cek-mudah");
+
+                    if (!rootExists) return;
+
+                    latihanInited = true;
+
+                    const inputMudah = document.getElementById("jawaban-mudah");
+                    const inputSedang = document.getElementById("jawaban-sedang");
+                    const inputSusah = document.getElementById("jawaban-susah");
+
+                    const fbMudah = document.getElementById("fb-mudah");
+                    const fbSedang = document.getElementById("fb-sedang");
+                    const fbSusah = document.getElementById("fb-susah");
+
+                    const stepMudah = document.getElementById("step-mudah");
+                    const stepSedang = document.getElementById("step-sedang");
+                    const stepSusah = document.getElementById("step-susah");
+
+                    const btnCekMudah = document.getElementById("cek-mudah");
+                    const btnResetMudah = document.getElementById("reset-mudah");
+
+                    const btnCekSedang = document.getElementById("cek-sedang");
+                    const btnResetSedang = document.getElementById("reset-sedang");
+
+                    const btnCekSusah = document.getElementById("cek-susah");
+                    const btnResetSusah = document.getElementById("reset-susah");
+
+                    const panelSedang = document.getElementById("panel-sedang");
+                    const panelSusah = document.getElementById("panel-susah");
+
+                    const cardMudah = document.getElementById("card-mudah");
+                    const cardSedang = document.getElementById("card-sedang");
+                    const cardSusah = document.getElementById("card-susah");
+
+                    const statusMudah = document.getElementById("status-mudah");
+                    const statusSedang = document.getElementById("status-sedang");
+                    const statusSusah = document.getElementById("status-susah");
+
+                    const statusLockSedang = document.getElementById("status-lock-sedang");
+                    const statusLockSusah = document.getElementById("status-lock-susah");
+
+                    const latihanData = {
+                        mudah: { answer: "9y+6" },
+                        sedang: { answer: "6x^2+2x-4" },
+                        susah: { answer: "12x^3+6x+6" }
+                    };
+
+                    const state = {
+                        mudah: false,
+                        sedang: false,
+                        susah: false
+                    };
+
+                    const aktifkanSedang = () => {
+                        if (panelSedang) panelSedang.style.display = "block";
+                        if (inputSedang) inputSedang.disabled = false;
+                        if (btnCekSedang) btnCekSedang.disabled = false;
+                        if (btnResetSedang) btnResetSedang.disabled = false;
+                        if (cardSedang) cardSedang.classList.remove("locked");
+                        if (cardSedang) cardSedang.classList.add("active");
+                        if (statusLockSedang) statusLockSedang.style.display = "none";
+                        rerenderKatex();
+                    };
+
+                    const aktifkanSusah = () => {
+                        if (panelSusah) panelSusah.style.display = "block";
+                        if (inputSusah) inputSusah.disabled = false;
+                        if (btnCekSusah) btnCekSusah.disabled = false;
+                        if (btnResetSusah) btnResetSusah.disabled = false;
+                        if (cardSusah) cardSusah.classList.remove("locked");
+                        if (cardSusah) cardSusah.classList.add("active");
+                        if (statusLockSusah) statusLockSusah.style.display = "none";
+                        rerenderKatex();
+                    };
+
+                    const tandaiSelesai = (level) => {
+                        if (level === "mudah") {
+                            if (statusMudah) statusMudah.style.display = "inline-flex";
+                            if (cardMudah) cardMudah.classList.add("active");
+                        }
+                        if (level === "sedang") {
+                            if (statusSedang) statusSedang.style.display = "inline-flex";
+                            if (cardSedang) cardSedang.classList.add("active");
+                        }
+                        if (level === "susah") {
+                            if (statusSusah) statusSusah.style.display = "inline-flex";
+                            if (cardSusah) cardSusah.classList.add("active");
+                        }
+                    };
+
+                    const checkJawaban = (userValue, expected) => {
+                        return normalizePoly(userValue) === normalizePoly(expected);
+                    };
+
+                    const checkMudah = () => {
+                        if (!inputMudah) return;
+
+                        const ok = checkJawaban(inputMudah.value, latihanData.mudah.answer);
+
+                        if (ok) {
+                            state.mudah = true;
+                            setFb(fbMudah, true, "Benar ✅ Level MUDAH selesai");
+                            if (stepMudah) stepMudah.style.display = "block";
+                            inputMudah.disabled = true;
+                            if (btnCekMudah) btnCekMudah.disabled = true;
+                            tandaiSelesai("mudah");
+                            aktifkanSedang();
+                        } else {
+                            state.mudah = false;
+                            setFb(fbMudah, false, "", "Jawaban salah. Selesaikan soal MUDAH dulu sebelum lanjut.");
+                            if (stepMudah) stepMudah.style.display = "none";
+                        }
+
+                        rerenderKatex();
+                    };
+
+                    const checkSedang = () => {
+                        if (!state.mudah) {
+                            setFb(fbSedang, false, "", "Selesaikan level MUDAH dulu.");
+                            return;
+                        }
+
+                        if (!inputSedang) return;
+
+                        const ok = checkJawaban(inputSedang.value, latihanData.sedang.answer);
+
+                        if (ok) {
+                            state.sedang = true;
+                            setFb(fbSedang, true, "Benar ✅ Level SEDANG selesai");
+                            if (stepSedang) stepSedang.style.display = "block";
+                            inputSedang.disabled = true;
+                            if (btnCekSedang) btnCekSedang.disabled = true;
+                            tandaiSelesai("sedang");
+                            aktifkanSusah();
+                        } else {
+                            state.sedang = false;
+                            setFb(fbSedang, false, "", "Jawaban salah. Soal SUSAH masih terkunci sampai SEDANG benar.");
+                            if (stepSedang) stepSedang.style.display = "none";
+                        }
+
+                        rerenderKatex();
+                    };
+
+                    const checkSusah = () => {
+                        if (!state.sedang) {
+                            setFb(fbSusah, false, "", "Selesaikan level SEDANG dulu.");
+                            return;
+                        }
+
+                        if (!inputSusah) return;
+
+                        const ok = checkJawaban(inputSusah.value, latihanData.susah.answer);
+
+                        if (ok) {
+                            state.susah = true;
+                            setFb(fbSusah, true, "Benar ✅ Semua level selesai");
+                            if (stepSusah) stepSusah.style.display = "block";
+                            inputSusah.disabled = true;
+                            if (btnCekSusah) btnCekSusah.disabled = true;
+                            tandaiSelesai("susah");
+                        } else {
+                            state.susah = false;
+                            setFb(fbSusah, false, "", "Jawaban salah. Perbaiki dulu soal SUSAH ini.");
+                            if (stepSusah) stepSusah.style.display = "none";
+                        }
+
+                        rerenderKatex();
+                    };
+
+                    const resetMudah = () => {
+                        if (inputMudah && !state.mudah) inputMudah.value = "";
+                        clearFb(fbMudah);
+                        if (stepMudah) stepMudah.style.display = "none";
+                    };
+
+                    const resetSedang = () => {
+                        if (!state.mudah) return;
+                        if (inputSedang && !state.sedang) inputSedang.value = "";
+                        clearFb(fbSedang);
+                        if (stepSedang) stepSedang.style.display = "none";
+                    };
+
+                    const resetSusah = () => {
+                        if (!state.sedang) return;
+                        if (inputSusah && !state.susah) inputSusah.value = "";
+                        clearFb(fbSusah);
+                        if (stepSusah) stepSusah.style.display = "none";
+                    };
+
+                    if (btnCekMudah) btnCekMudah.addEventListener("click", checkMudah);
+                    if (btnResetMudah) btnResetMudah.addEventListener("click", resetMudah);
+
+                    if (btnCekSedang) btnCekSedang.addEventListener("click", checkSedang);
+                    if (btnResetSedang) btnResetSedang.addEventListener("click", resetSedang);
+
+                    if (btnCekSusah) btnCekSusah.addEventListener("click", checkSusah);
+                    if (btnResetSusah) btnResetSusah.addEventListener("click", resetSusah);
+
+                    if (inputMudah) {
+                        inputMudah.addEventListener("keydown", (e) => {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                checkMudah();
+                            }
+                        });
+                    }
+
+                    if (inputSedang) {
+                        inputSedang.addEventListener("keydown", (e) => {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                checkSedang();
+                            }
+                        });
+                    }
+
+                    if (inputSusah) {
+                        inputSusah.addEventListener("keydown", (e) => {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                checkSusah();
+                            }
+                        });
+                    }
+
+                    rerenderKatex();
+                }
+
+                /* =========================
+                   INIT
+                ========================== */
                 updateUnlock();
                 rerenderKatex();
             })();
@@ -1171,11 +1898,11 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('kuisa') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+<a href="{{ route('kuisa') }}" class="btn-nav prev-btn">
+    ← Previous
+</a>
 
-    <a href="{{ route('penguranganpolinomial') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+<a href="{{ route('penguranganpolinomial') }}" class="btn-nav next-btn">
+    Next →
+</a>
 @endsection

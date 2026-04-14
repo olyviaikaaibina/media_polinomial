@@ -26,6 +26,26 @@
     .register-img {
         max-width: 420px;
         width: 100%;
+        animation: floatingImage 4s ease-in-out infinite;
+        transform-origin: center;
+    }
+
+    @keyframes floatingImage {
+        0% {
+            transform: translateY(0px);
+        }
+        25% {
+            transform: translateY(-10px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        75% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
     }
 
     .register-card {
@@ -62,6 +82,17 @@
         margin-bottom: 14px;
         outline: none;
         background: #fff;
+    }
+
+    .register-row {
+        display: flex;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .register-col {
+        flex: 1;
+        min-width: 0;
     }
 
     .password-wrapper {
@@ -151,6 +182,13 @@
     input[type="password"] {
         appearance: none !important;
     }
+
+    @media (max-width: 768px) {
+        .register-row {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
 </style>
 
 <div class="register-wrapper">
@@ -204,20 +242,26 @@
                     required
                 >
 
-                <label class="register-label">Jenis Kelamin</label>
-                <select name="jenis_kelamin" class="register-input" style="height: 46px;" required>
-                    <option value="" disabled {{ old('jenis_kelamin') ? '' : 'selected' }}>Pilih jenis kelamin</option>
-                    <option value="Laki-Laki" {{ old('jenis_kelamin') == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
-                    <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                </select>
+                <div class="register-row">
+                    <div class="register-col">
+                        <label class="register-label">Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="register-input" style="height: 46px;" required>
+                            <option value="" disabled {{ old('jenis_kelamin') ? '' : 'selected' }}>Pilih jenis kelamin</option>
+                            <option value="Laki-Laki" {{ old('jenis_kelamin') == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                            <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                        </select>
+                    </div>
 
-                <label class="register-label">Kelas</label>
-                <select name="kelas" class="register-input" style="height: 46px;" required>
-                    <option value="" disabled {{ old('kelas') ? '' : 'selected' }}>Pilih kelas</option>
-                    <option value="XI1" {{ old('kelas') == 'XI1' ? 'selected' : '' }}>XI1</option>
-                    <option value="XI2" {{ old('kelas') == 'XI2' ? 'selected' : '' }}>XI2</option>
-                    <option value="XI3" {{ old('kelas') == 'XI3' ? 'selected' : '' }}>XI3</option>
-                </select>
+                    <div class="register-col">
+                        <label class="register-label">Kelas</label>
+                        <select name="kelas" class="register-input" style="height: 46px;" required>
+                            <option value="" disabled {{ old('kelas') ? '' : 'selected' }}>Pilih kelas</option>
+                            <option value="XI1" {{ old('kelas') == 'XI1' ? 'selected' : '' }}>XI1</option>
+                            <option value="XI2" {{ old('kelas') == 'XI2' ? 'selected' : '' }}>XI2</option>
+                            <option value="XI3" {{ old('kelas') == 'XI3' ? 'selected' : '' }}>XI3</option>
+                        </select>
+                    </div>
+                </div>
 
                 <label class="register-label">Password</label>
                 <div class="password-wrapper">

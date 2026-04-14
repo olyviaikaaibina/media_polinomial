@@ -4,14 +4,12 @@
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false}
-            ]
-        });"></script>
-
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+                                delimiters: [
+                                    {left: '$$', right: '$$', display: true},
+                                    {left: '$', right: '$', display: false}
+                                ]
+                            });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -227,7 +225,7 @@
             transform: translateY(0);
         }
 
-        /* ===== CONTOH (interaktif pill) ===== */
+        /* ===== CONTOH ===== */
         .contoh-sub {
             color: var(--muted);
             font-size: 14px;
@@ -334,7 +332,7 @@
             display: block;
         }
 
-        /* ===== DEFINISI (card peach) ===== */
+        /* ===== DEFINISI ===== */
         .definisi-card {
             position: relative;
             margin: 0 0 18px;
@@ -386,8 +384,7 @@
             height: 100% !important;
         }
 
-        /* === UI BAR untuk DOM p5 (MARI MENCOBA interaktif1b) === */
-        #p5-interaktif-1b .p5-ui{
+        #p5-interaktif-1b .p5-ui {
             position: absolute;
             top: 12px;
             left: 12px;
@@ -399,58 +396,25 @@
             z-index: 5;
             padding: 10px 12px;
             border-radius: 14px;
-            background: rgba(255,255,255,.92);
-            border: 1px solid rgba(0,0,0,.10);
-            box-shadow: 0 8px 18px rgba(0,0,0,.06);
-        }
-        #p5-interaktif-1b .p5-ui select,
-        #p5-interaktif-1b .p5-ui input,
-        #p5-interaktif-1b .p5-ui button{
-            font-family: "Times New Roman", Times, serif;
-            font-size: 16px;
-            padding: 8px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,.18);
-            outline: none;
-            margin: 0;
-            position: static;
-        }
-        #p5-interaktif-1b canvas{
-            position: absolute;
-            inset: 0;
-            z-index: 1;
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid rgba(0, 0, 0, .10);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .06);
         }
 
-        /* === UI BAR untuk DOM p5 (LATIHAN interaktif1b1) === */
-        #p5-interaktif-1b1 .p5-ui{
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-            z-index: 5;
-            padding: 10px 12px;
-            border-radius: 14px;
-            background: rgba(255,255,255,.92);
-            border: 1px solid rgba(0,0,0,.10);
-            box-shadow: 0 8px 18px rgba(0,0,0,.06);
-        }
-        #p5-interaktif-1b1 .p5-ui select,
-        #p5-interaktif-1b1 .p5-ui input,
-        #p5-interaktif-1b1 .p5-ui button{
+        #p5-interaktif-1b .p5-ui select,
+        #p5-interaktif-1b .p5-ui input,
+        #p5-interaktif-1b .p5-ui button {
             font-family: "Times New Roman", Times, serif;
             font-size: 16px;
             padding: 8px 10px;
             border-radius: 10px;
-            border: 1px solid rgba(0,0,0,.18);
+            border: 1px solid rgba(0, 0, 0, .18);
             outline: none;
             margin: 0;
             position: static;
         }
-        #p5-interaktif-1b1 canvas{
+
+        #p5-interaktif-1b canvas {
             position: absolute;
             inset: 0;
             z-index: 1;
@@ -527,22 +491,22 @@
             margin: 0 0 10px;
         }
 
-        /* ====== INTERAKTIF CONTOH SOAL (jawab derajat) ====== */
+        /* ====== INTERAKTIF CONTOH SOAL ====== */
         .sol-quiz {
             margin-top: 12px;
             display: grid;
             gap: 12px;
         }
 
-        .sol-quiz-item{
+        .sol-quiz-item {
             border: 2px solid var(--outer-line);
             border-radius: 14px;
             padding: 12px 14px;
             background: #fff;
-            box-shadow: 0 8px 18px rgba(0,0,0,.04);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
         }
 
-        .sol-quiz-head{
+        .sol-quiz-head {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -550,12 +514,12 @@
             justify-content: space-between;
         }
 
-        .sol-quiz-title{
+        .sol-quiz-title {
             font-weight: 900;
             color: #1f1f1f;
         }
 
-        .sol-quiz-form{
+        .sol-quiz-form {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -563,52 +527,57 @@
             justify-content: flex-end;
         }
 
-        .sol-input{
+        .sol-input {
             width: 120px;
             padding: 10px 12px;
             border-radius: 12px;
-            border: 1px solid rgba(0,0,0,.18);
+            border: 1px solid rgba(0, 0, 0, .18);
             outline: none;
             font-family: "Times New Roman", Times, serif;
             font-size: 16px;
         }
 
-        .sol-btn{
+        .sol-btn {
             padding: 10px 14px;
             border-radius: 12px;
             border: none;
             cursor: pointer;
             font-weight: 900;
             font-family: "Times New Roman", Times, serif;
-            box-shadow: 0 4px 10px rgba(0,0,0,.10);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .10);
         }
 
-        .sol-btn.check{
-            background: rgba(43,108,176,.12);
+        .sol-btn.check {
+            background: rgba(43, 108, 176, .12);
             color: #1e3a8a;
-            border: 1px solid rgba(43,108,176,.25);
+            border: 1px solid rgba(43, 108, 176, .25);
         }
 
-        .sol-btn.show{
-            background: rgba(27,122,42,.12);
+        .sol-btn.show {
+            background: rgba(27, 122, 42, .12);
             color: #0f5f22;
-            border: 1px solid rgba(27,122,42,.22);
+            border: 1px solid rgba(27, 122, 42, .22);
         }
 
-        .sol-btn.show:disabled{
+        .sol-btn.show:disabled {
             opacity: .55;
             cursor: not-allowed;
         }
 
-        .sol-feedback{
+        .sol-feedback {
             margin-top: 10px;
             font-weight: 900;
         }
 
-        .sol-feedback.ok{ color:#0f5f22; }
-        .sol-feedback.no{ color:#7a2b2b; }
+        .sol-feedback.ok {
+            color: #0f5f22;
+        }
 
-        .sol-quiz-math{
+        .sol-feedback.no {
+            color: #7a2b2b;
+        }
+
+        .sol-quiz-math {
             margin-top: 10px;
             text-align: center;
             font-size: 20px;
@@ -616,27 +585,183 @@
             user-select: none;
         }
 
-        /* ===== CARD LATIHAN WRAP ===== */
-        .latihan-wrap{
-            border: 2px solid var(--outer-line);
-            border-radius: 18px;
-            overflow: hidden;
-            background: #fff;
-            padding: 12px;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, .04);
+        /* ===== LATIHAN: TANPA CARD TAMBAHAN DI DALAM CARD ===== */
+        .latihan-card-fit {
+            padding-bottom: 18px;
         }
 
-        @media (max-width:640px) {
-            .top-title .judul { font-size: 24px; }
-            .top-title .label { font-size: 22px; }
-            .card { padding: 16px; }
-            .lead-text { font-size: 16px; }
-            .rumus { font-size: 16px; }
-            .rumus-eks { font-size: 18px; }
-            .contoh-row { grid-template-columns: 1fr; }
-            .mono-box { font-size: 16px; }
-            .p5-host { height: 720px; }
-            .sol-grid { grid-template-columns: 1fr; }
+        #latihanBoard {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .lat-section {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0, 0, 0, .08);
+        }
+
+        .yellow {
+            background: #f4e7ad;
+        }
+
+        .blue {
+            background: #dce9fb;
+        }
+
+        .pink {
+            background: #f3d2db;
+        }
+
+        .green {
+            background: #dceccd;
+        }
+
+        .lat-title {
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+            font-size: 16px;
+        }
+
+        .lat-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .lat-line>span {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lat-input,
+        .lat-select,
+        #winnerTerm {
+            width: 120px;
+            min-width: 120px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, .18);
+            background: #fff;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .lat-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .lat-btn {
+            padding: 9px 14px;
+            background: #4f81c7;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 900;
+            font-family: "Times New Roman", Times, serif;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .10);
+        }
+
+        .lat-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .lat-feedback {
+            font-weight: 900;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .lat-final {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: #fff;
+            border: 2px dashed var(--outer-line);
+            font-weight: 900;
+            color: var(--green);
+            text-align: center;
+        }
+
+        .ok {
+            color: #0f5f22;
+        }
+
+        .no {
+            color: #7a2b2b;
+        }
+
+        @media (max-width: 640px) {
+            .top-title .judul {
+                font-size: 24px;
+            }
+
+            .top-title .label {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .lead-text {
+                font-size: 16px;
+            }
+
+            .rumus {
+                font-size: 16px;
+            }
+
+            .rumus-eks {
+                font-size: 18px;
+            }
+
+            .contoh-row {
+                grid-template-columns: 1fr;
+            }
+
+            .mono-box {
+                font-size: 16px;
+            }
+
+            .p5-host {
+                height: 720px;
+            }
+
+            .sol-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lat-line {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lat-input,
+            .lat-select,
+            #winnerTerm {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .lat-actions {
+                justify-content: stretch;
+            }
+
+            .lat-btn {
+                width: 100%;
+            }
         }
     </style>
 
@@ -746,7 +871,8 @@
                         <div class="contoh-row">
                             <div class="mono-box">$$x^2y^7$$</div>
                             <div class="explain" id="ex2">
-                                Derajat monomial ini adalah <b>9</b>, karena jumlah pangkat variabel $x$ dan $y$ adalah $2 + 7 = 9$.
+                                Derajat monomial ini adalah <b>9</b>, karena jumlah pangkat variabel $x$ dan $y$ adalah $2 +
+                                7 = 9$.
                             </div>
                         </div>
 
@@ -760,7 +886,8 @@
                         <div class="contoh-row" style="margin-bottom:0;">
                             <div class="mono-box">$$2.17x^3yz^3$$</div>
                             <div class="explain" id="ex4">
-                                Derajat monomial ini adalah <b>7</b>, karena jumlah pangkat variabel $x$, $y$, dan $z$ adalah $3 + 1 + 3 = 7$.
+                                Derajat monomial ini adalah <b>7</b>, karena jumlah pangkat variabel $x$, $y$, dan $z$
+                                adalah $3 + 1 + 3 = 7$.
                             </div>
                         </div>
                     </div>
@@ -792,7 +919,8 @@
                         Untuk mengetahui derajat suatu monomial, kita cukup memperhatikan pangkat variabel-variabel yang
                         menyusunnya.
                         <br><br>
-                        Di dalam sebuah polinomial, suku yang memiliki pangkat variabel paling besar disebut sebagai <b>suku utama</b>.
+                        Di dalam sebuah polinomial, suku yang memiliki pangkat variabel paling besar disebut sebagai <b>suku
+                            utama</b>.
                         Derajat suku inilah yang menentukan derajat polinomial secara keseluruhan.
                     </p>
                 </div>
@@ -898,18 +1026,107 @@
                     yaitu pangkat tertinggi dari variabel yang muncul dalam polinomial tersebut.
                 </p>
             </div>
-
-            {{-- ✅ CARD 7: Latihan (interaktif1b1.js) --}}
-            <div class="card card-try">
+            {{-- ✅ CARD 7: Latihan (langsung pas di card) --}}
+            <div class="card card-try latihan-card-fit">
                 <div class="title-box">🎯 Latihan</div>
 
-                <div class="latihan-wrap">
-                    <div id="p5-interaktif-1b1" class="p5-host">
-                        <noscript>Aktifkan JavaScript untuk melihat latihan interaktif.</noscript>
+                <div id="latihanBoard">
+
+                    <div class="lat-section yellow">
+                        <div class="lat-title">1. Tebak Cepat (True or False)</div>
+
+                        <div class="lat-line">
+                            <span>a. Bentuk <b>9x<sup>4</sup>y<sup>2</sup></b> memiliki derajat 6.</span>
+                            <select class="lat-select" data-answer="true">
+                                <option value="">Pilih</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        </div>
+
+                        <div class="lat-line">
+                            <span>b. Suku <b>−7</b> selalu memiliki derajat 0.</span>
+                            <select class="lat-select" data-answer="true">
+                                <option value="">Pilih</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        </div>
+
+                        <div class="lat-feedback" id="fb-truefalse"></div>
                     </div>
+
+                    <div class="lat-section blue">
+                        <div class="lat-title">2. Pilih Pemenangnya! (Suku Paling Kuat)</div>
+
+                        <p style="margin:6px 0;">
+                            Perhatikan polinomial:
+                            <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>
+                        </p>
+
+                        <p style="margin:6px 0;">Suku dengan pangkat tertinggi memimpin saat x besar.</p>
+
+                        <div class="lat-line">
+                            <span><b>Suku paling kuat:</b></span>
+                            <select id="winnerTerm">
+                                <option value="">Pilih suku</option>
+                                <option value="3x5">3x⁵</option>
+                                <option value="-2x3">−2x³</option>
+                                <option value="10x">10x</option>
+                            </select>
+                        </div>
+
+                        <div class="lat-line">
+                            <span><b>Derajat polinomial:</b></span>
+                            <input type="number" id="winnerDegree" class="lat-input" placeholder="isi">
+                        </div>
+
+                        <div class="lat-feedback" id="fb-winner"></div>
+                    </div>
+
+                    <div class="lat-section pink">
+                        <div class="lat-title">3. Isi Kotak Misteri (Menjumlah Pangkat)</div>
+
+                        <p style="margin:6px 0;">
+                            Tentukan derajat monomial:
+                            <b>4a<sup>3</sup>b<sup>2</sup>c</b>
+                        </p>
+
+                        <div class="lat-line">
+                            <span></span>
+                            <input type="number" id="mysteryDegree" class="lat-input" placeholder="isi">
+                        </div>
+
+                        <div class="lat-feedback" id="fb-mystery"></div>
+                    </div>
+
+                    <div class="lat-section green">
+                        <div class="lat-title">4. Detektif Polinomial (Sebutkan Alasannya!)</div>
+
+                        <p style="margin:6px 0;">
+                            <b>G(x,y) = 5x<sup>2</sup>y<sup>3</sup> − xy + 4</b>
+                        </p>
+
+                        <div class="lat-line">
+                            <span>a. Derajat tertinggi:</span>
+                            <input type="number" id="detectHighest" class="lat-input" placeholder="isi">
+                        </div>
+
+                        <div class="lat-line">
+                            <span>b. Derajat polinomial G(x,y):</span>
+                            <input type="number" id="detectPoly" class="lat-input" placeholder="isi">
+                        </div>
+
+                        <div class="lat-actions">
+                            <button type="button" class="lat-btn" id="btnCheckLatihan">Cek Jawaban</button>
+                        </div>
+
+                        <div class="lat-feedback" id="fb-detect"></div>
+                    </div>
+
+                    <div class="lat-final" id="latihanFinalScore"></div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -918,10 +1135,6 @@
 
     {{-- interaktif lama --}}
     <script src="{{ asset('js/interaktif1b.js') }}"></script>
-
-    {{-- ✅ interaktif latihan baru --}}
-    <script src="{{ asset('js/interaktif1b1.js') }}"></script>
-
     <script>
         (function () {
             // ===== QUIZ unlock bagian lanjutan =====
@@ -1112,6 +1325,100 @@
                 });
             }
         })();
+
+        // ===== LATIHAN HTML CSS JS (tanpa p5) =====
+        const btnCheckLatihan = document.getElementById("btnCheckLatihan");
+
+        if (btnCheckLatihan) {
+            const tfSelects = Array.from(document.querySelectorAll(".lat-select"));
+            const fbTrueFalse = document.getElementById("fb-truefalse");
+            const fbWinner = document.getElementById("fb-winner");
+            const fbMystery = document.getElementById("fb-mystery");
+            const fbDetect = document.getElementById("fb-detect");
+            const finalScore = document.getElementById("latihanFinalScore");
+
+            const winnerTerm = document.getElementById("winnerTerm");
+            const winnerDegree = document.getElementById("winnerDegree");
+            const mysteryDegree = document.getElementById("mysteryDegree");
+            const detectHighest = document.getElementById("detectHighest");
+            const detectPoly = document.getElementById("detectPoly");
+
+            const setFb = (el, ok, text) => {
+                if (!el) return;
+                el.classList.remove("ok", "no");
+                el.classList.add(ok ? "ok" : "no");
+                el.textContent = text;
+            };
+
+            btnCheckLatihan.addEventListener("click", () => {
+                let score = 0;
+                let total = 5;
+
+                // 1. True / False
+                let tfCorrect = 0;
+                tfSelects.forEach(sel => {
+                    if (sel.value && sel.value === sel.dataset.answer) {
+                        tfCorrect++;
+                    }
+                });
+
+                if (tfCorrect === 2) {
+                    score += 1;
+                    setFb(fbTrueFalse, true, "✅ Benar semua pada bagian True/False.");
+                } else {
+                    setFb(fbTrueFalse, false, "❌ Masih ada jawaban True/False yang belum tepat.");
+                }
+
+                // 2. Suku paling kuat
+                const winnerOk =
+                    winnerTerm.value === "3x5" &&
+                    parseInt(winnerDegree.value || "", 10) === 5;
+
+                if (winnerOk) {
+                    score += 1;
+                    setFb(fbWinner, true, "✅ Tepat! Suku paling kuat adalah 3x⁵ dan derajat polinomialnya 5.");
+                } else {
+                    setFb(fbWinner, false, "❌ Coba lagi. Lihat suku dengan pangkat tertinggi.");
+                }
+
+                // 3. Kotak misteri
+                const mysteryOk = parseInt(mysteryDegree.value || "", 10) === 6;
+                if (mysteryOk) {
+                    score += 1;
+                    setFb(fbMystery, true, "✅ Benar! Derajat 4a³b²c adalah 3 + 2 + 1 = 6.");
+                } else {
+                    setFb(fbMystery, false, "❌ Belum tepat. Jumlahkan semua pangkat variabel.");
+                }
+
+                // 4. Detektif a
+                const detectHighestOk = parseInt(detectHighest.value || "", 10) === 5;
+                if (detectHighestOk) {
+                    score += 1;
+                }
+
+                // 5. Detektif b
+                const detectPolyOk = parseInt(detectPoly.value || "", 10) === 5;
+                if (detectPolyOk) {
+                    score += 1;
+                }
+
+                if (detectHighestOk && detectPolyOk) {
+                    setFb(fbDetect, true, "✅ Benar! Suku tertinggi berasal dari 5x²y³, jadi derajat tertinggi = 5 dan derajat polinomial = 5.");
+                } else {
+                    setFb(fbDetect, false, "❌ Bagian detektif belum tepat. Periksa derajat tiap suku lalu ambil yang terbesar.");
+                }
+
+                if (finalScore) {
+                    finalScore.textContent = `Skor Latihan: ${score}/${total}`;
+
+                    if (score === total) {
+                        finalScore.innerHTML = `🎉 Skor Latihan: ${score}/${total} — Hebat! Semua jawaban benar.`;
+                    }
+                }
+
+                requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+            });
+        }
     </script>
 @endsection
 

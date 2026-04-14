@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                delimiters: [
-                                    {left: '$$', right: '$$', display: true},
-                                    {left: '$', right: '$', display: false}
-                                ]
-                            });"></script>
+                                                                                            delimiters: [
+                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                {left: '$', right: '$', display: false}
+                                                                                            ]
+                                                                                        });"></script>
 
     <style>
         :root {
@@ -1206,6 +1206,152 @@
                 font-size: 17px;
             }
         }
+
+        .hint-box {
+            margin: 10px 0 14px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(27, 122, 42, .06);
+            border-left: 4px solid #97a97c;
+            color: #374151;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .hint-title {
+            font-weight: 900;
+            color: #1f4f29;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .hint-chip-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .hint-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #f6fbf6;
+            border: 1px solid rgba(27, 122, 42, .16);
+            color: #2f5d39;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .susun-step-label {
+            font-weight: 900;
+            color: #1f4f29;
+            margin: 10px 0 6px;
+            font-size: 15px;
+        }
+
+        /* Bikin card full lebar */
+        .interactive-card-c {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+        }
+
+        /* Pastikan parent juga tidak membatasi */
+        .section-split {
+            width: 100%;
+        }
+
+        /* Supaya isi dalamnya ikut melebar */
+        .susun-card {
+            width: 100%;
+        }
+
+        /* Table ikut full */
+        .susun-wrap {
+            width: 100%;
+        }
+
+        .susun-table {
+            width: 100%;
+        }
+
+        /* Biar input tidak kecil */
+        .susun-input {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .hint-toggle {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            /* kalau layar kecil tetap aman */
+            gap: 6px;
+        }
+
+        .hint-btn {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 6px;
+            background: transparent;
+            border: 1px solid #97a97c;
+            color: #1f4f29;
+        }
+
+        .hint-btn:hover {
+            background: #dff0e3;
+            transform: translateY(-1px);
+        }
+
+        .hint-content {
+            display: none;
+            margin-left: 10px;
+            /* jarak dari tombol */
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(27, 122, 42, .05);
+            border-left: 3px solid #97a97c;
+            color: #374151;
+            font-size: 13px;
+            line-height: 1.5;
+
+            display: inline-block;
+            /* penting: supaya ke samping */
+            vertical-align: middle;
+
+            max-width: none;
+            /* hilangkan batas lebar */
+            white-space: nowrap;
+            /* supaya tidak turun ke bawah */
+        }
+    </style>
+
+    <style>
+        .tip-step-card {
+            background: #ffffff;
+            border: 1px solid rgba(27, 122, 42, .10);
+            border-radius: 16px;
+            padding: 14px 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .03);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+            cursor: pointer;
+        }
+
+        .tip-step-card:hover {
+            box-shadow: 0 14px 24px rgba(0, 0, 0, .10);
+        }
+
+        .tip-step-card .tip-step-num,
+        .tip-step-card .tip-step-text {
+            transition: transform 0.18s ease;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1402,7 +1548,13 @@
 
                         <div class="step-card step-item" data-answer="12">
                             <div class="step-title">Langkah 1: Hitung koefisien</div>
-                            <input class="step-input" type="text" placeholder="Isi jawaban" />
+                            <div class="step-explain">
+                                Perhatikan angka yang ada di depan variabel.
+                                Pada bentuk <b>$(3x^2)(4x^3)$</b>, koefisiennya adalah <b>3</b> dan <b>4</b>.
+                                Kalikan kedua angka tersebut:
+                                <br>
+                            </div>
+                            <input class="step-input" type="text" placeholder="Isi jawaban koefisien" />
                             <div class="step-actions">
                                 <button type="button" class="step-check">Cek</button>
                                 <button type="button" class="step-reset">Reset</button>
@@ -1412,7 +1564,13 @@
 
                         <div class="step-card step-item" data-answer="x^5">
                             <div class="step-title">Langkah 2: Hitung pangkat variabel</div>
-                            <input class="step-input" type="text" placeholder="Isi jawaban" />
+                            <div class="step-explain">
+                                Sekarang perhatikan variabelnya.
+                                Karena sama-sama memiliki variabel <b>x</b>, maka pangkatnya dijumlahkan:
+                                <br>
+
+                            </div>
+                            <input class="step-input" type="text" placeholder="Isi jawaban variabel" />
                             <div class="step-actions">
                                 <button type="button" class="step-check">Cek</button>
                                 <button type="button" class="step-reset">Reset</button>
@@ -1422,7 +1580,15 @@
 
                         <div class="step-card step-item" data-answer="12x^5">
                             <div class="step-title">Langkah 3: Gabungkan hasil akhir</div>
-                            <input class="step-input" type="text" placeholder="Isi jawaban" />
+                            <div class="step-explain">
+                                Gabungkan hasil dari langkah 1 dan langkah 2.
+                                <br>
+                                Koefisien = <b>12</b>
+                                <br>
+                                Variabel = <b>$x^5$</b>
+                                <br>
+                            </div>
+                            <input class="step-input" type="text" placeholder="Isi hasil akhir" />
                             <div class="step-actions">
                                 <button type="button" class="step-check">Cek</button>
                                 <button type="button" class="step-reset">Reset</button>
@@ -1445,6 +1611,7 @@
                             <ol class="penjelasan-mini-list">
                                 <li>Koefisien: $$3 \times 4 = 12$$</li>
                                 <li>Variabel: $$x^2 \cdot x^3 = x^{2+3}=x^5$$</li>
+                                <li>Gabungkan keduanya menjadi $$12x^5$$</li>
                             </ol>
                             <div class="penjelasan-final">
                                 $$\boxed{(3x^2)(4x^3)=12x^5}$$
@@ -1453,7 +1620,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- =========================
             A. LATIHAN
             ========================== --}}
@@ -1956,7 +2122,7 @@
                 </div>
 
                 <div class="section-split">
-                    <div class="submateri-title">Contoh Interaktif Sederhana</div>
+                    <div class="submateri-title">Contoh</div>
 
                     <div class="interactive-card-c" id="contoh-c">
                         <div class="contoh-row-title">Selesaikan perkalian berikut:</div>
@@ -1981,11 +2147,37 @@
                                         <td colspan="2"></td>
                                     </tr>
 
+                                    <tr>
+                                        <td></td>
+                                        <td class="susun-result-cell" style="text-align:left;">
+                                            <div class="hint-toggle">
+                                                <div class="hint-btn">Hint</div>
+                                                <div class="hint-content">
+                                                    Kalikan <b>3</b> ke semua suku pada <b>(x + 2)</b>.
+                                                    Fokus dulu pada hasil perkalian dengan bilangan tetap.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
                                     <tr class="susun-item-c" data-answer="3x+6">
                                         <td></td>
                                         <td class="susun-result-cell">
                                             <input class="susun-input" type="text" placeholder="Baris 1" />
                                             <span class="susun-feedback"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td class="susun-result-cell" style="text-align:left;">
+                                            <div class="hint-toggle">
+                                                <div class="hint-btn">Hint</div>
+                                                <div class="hint-content">
+                                                    Kalikan <b>x</b> ke semua suku pada <b>(x + 2)</b>.
+                                                    Saat variabel sama dikalikan, pangkat dijumlahkan.
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
 
@@ -1999,6 +2191,19 @@
 
                                     <tr class="line">
                                         <td colspan="2"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td class="susun-result-cell" style="text-align:left;">
+                                            <div class="hint-toggle">
+                                                <div class="hint-btn">Hint</div>
+                                                <div class="hint-content">
+                                                    Jumlahkan hasil dari Baris 1 dan Baris 2.
+                                                    Gabungkan suku-suku sejenis agar lebih sederhana.
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                     <tr class="susun-item-c" data-answer="x^2+5x+6">
@@ -2033,7 +2238,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- =========================
             C. LATIHAN
             ========================== --}}
@@ -2178,13 +2382,13 @@
                             </div>
 
                             <div class="game-options">
-        
+
                                 <button type="button" class="game-option"
                                     data-value="x^3+x^2-10x-8">$$x^3+x^2-10x-8$$</button>
                                 <button type="button" class="game-option"
                                     data-value="x^3-x^2+10x-8">$$x^3-x^2+10x-8$$</button>
 
-                                 <button type="button" class="game-option"
+                                <button type="button" class="game-option"
                                     data-value="x^3-x^2-10x-8">$$x^3-x^2-10x-8$$</button>
                             </div>
                         </div>
@@ -2205,7 +2409,7 @@
                                     data-value="10x^3+4x^2+14x">$$10x^3+4x^2+14x$$</button>
                                 <button type="button" class="game-option"
                                     data-value="10x^3-4x^2+14x">$$10x^3-4x^2+14x$$</button>
-                        
+
                                 <button type="button" class="game-option"
                                     data-value="10x^3-4x^2+7x">$$10x^3-4x^2+7x$$</button>
                             </div>
@@ -2871,23 +3075,38 @@
                             const chosen = normalizePoly(option.getAttribute("data-value") || "");
                             const ok = chosen === answer;
 
-                            if (ok) {
-                                option.classList.add("correct");
-                                status.textContent = "Benar ✅";
-                                status.classList.remove("no");
-                                status.classList.add("ok");
-                            } else {
-                                option.classList.add("wrong");
+                            soalList.forEach((soal) => {
+                                const answer = normalizePoly(soal.getAttribute("data-answer") || "");
+                                const status = soal.querySelector(".game-status");
+                                const options = Array.from(soal.querySelectorAll(".game-option"));
 
-                                const correctOption = options.find(
-                                    (opt) => normalizePoly(opt.getAttribute("data-value") || "") === answer
-                                );
-                                if (correctOption) correctOption.classList.add("correct");
+                                options.forEach((option) => {
+                                    option.addEventListener("click", () => {
+                                        options.forEach((opt) => {
+                                            opt.classList.remove("selected", "correct", "wrong");
+                                        });
 
-                                status.textContent = "Coba lagi ✨";
-                                status.classList.remove("ok");
-                                status.classList.add("no");
-                            }
+                                        option.classList.add("selected");
+
+                                        const chosen = normalizePoly(option.getAttribute("data-value") || "");
+                                        const ok = chosen === answer;
+
+                                        if (ok) {
+                                            option.classList.add("correct");
+                                            status.textContent = "Benar ✅";
+                                            status.classList.remove("no");
+                                            status.classList.add("ok");
+                                        } else {
+                                            option.classList.add("wrong");
+                                            status.textContent = "Coba lagi ✨";
+                                            status.classList.remove("ok");
+                                            status.classList.add("no");
+                                        }
+
+                                        updateScoreText();
+                                    });
+                                });
+                            });
 
                             updateScoreText();
                         });
@@ -2921,15 +3140,73 @@
             })();
 
         </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const cards = document.querySelectorAll(".tip-step-card");
+
+                cards.forEach((card) => {
+                    card.addEventListener("mousemove", function (e) {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+
+                        const rotateX = -((y - centerY) / centerY) * 6;
+                        const rotateY = ((x - centerX) / centerX) * 6;
+
+                        card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+
+                        const num = card.querySelector(".tip-step-num");
+                        const text = card.querySelector(".tip-step-text");
+
+                        if (num) {
+                            num.style.transform = `translateZ(18px)`;
+                        }
+                        if (text) {
+                            text.style.transform = `translateZ(12px)`;
+                        }
+                    });
+
+                    card.addEventListener("mouseleave", function () {
+                        card.style.transform = "perspective(700px) rotateX(0deg) rotateY(0deg) translateY(0)";
+
+                        const num = card.querySelector(".tip-step-num");
+                        const text = card.querySelector(".tip-step-text");
+
+                        if (num) num.style.transform = "translateZ(0)";
+                        if (text) text.style.transform = "translateZ(0)";
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const hints = document.querySelectorAll(".hint-toggle");
+
+                hints.forEach((hint) => {
+                    const btn = hint.querySelector(".hint-btn");
+                    const content = hint.querySelector(".hint-content");
+
+                    btn.addEventListener("click", () => {
+                        const isOpen = content.style.display === "block";
+                        content.style.display = isOpen ? "none" : "block";
+                    });
+                });
+            });
+        </script>
     </div>
 @endsection
 
 @section('nav')
-<a href="{{ route('penguranganpolinomial') }}" class="btn-nav prev-btn">
-    ← Previous
-</a>
+    <a href="{{ route('penguranganpolinomial') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-<a href="{{ route('kuisb') }}" class="btn-nav next-btn">
-    Next →
-</a>
+    <a href="{{ route('kuisb') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection

@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- =========================
-        KaTeX
+    KaTeX
     ========================== --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -755,6 +755,7 @@
         }
 
         @media (max-width: 900px) {
+
             .latihan-dnd-wrap,
             .hasil-akhir-grid {
                 grid-template-columns: 1fr;
@@ -829,6 +830,61 @@
                 font-size: 14px;
             }
         }
+
+        .latihan-dnd-board {
+            background: #edf1f1;
+            border: 1px solid #d7dddd;
+            border-radius: 18px;
+            padding: 18px;
+            margin-top: 12px;
+            max-height: 78vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .bank-panel,
+        .slot-panel {
+            background: #f9f9f9;
+            border: 1px solid #d9d9d9;
+            border-radius: 16px;
+            padding: 14px;
+            min-height: 200px;
+        }
+
+        .slot-panel {
+            max-height: 62vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .drag-bank {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 62vh;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .drop-zone-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-height: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .latihan-dnd-board {
+                max-height: none;
+                overflow: visible;
+            }
+
+            .slot-panel,
+            .drag-bank {
+                max-height: none;
+                overflow: visible;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -884,7 +940,8 @@
                     <span>Pertanyaan</span>
                 </div>
 
-                <div class="eks-soal" data-answer="3" style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
+                <div class="eks-soal" data-answer="3"
+                    style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
                         1. Operasi yang paling tepat untuk menentukan banyak petak dan sisa lahan adalah ....
                     </div>
@@ -907,7 +964,8 @@
                     <div class="jawaban-status"></div>
                 </div>
 
-                <div class="eks-soal" data-answer="2" style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
+                <div class="eks-soal" data-answer="2"
+                    style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
                         2. Hasil bagi dari
                         <div class="rumus-box">$$(x^2 + 5x + 6)\div(x+1)$$</div>
@@ -932,7 +990,8 @@
                     <div class="jawaban-status"></div>
                 </div>
 
-                <div class="eks-soal" data-answer="1" style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px;">
+                <div class="eks-soal" data-answer="1"
+                    style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
                         3. Sisa pembagian tersebut adalah ....
                     </div>
@@ -969,18 +1028,17 @@
             </div>
 
             <p>
-                dengan syarat \(S(x)=0\) atau \(\deg S(x) < \deg Q(x)\).
-            </p>
+                dengan syarat \(S(x)=0\) atau \(\deg S(x) < \deg Q(x)\). </p>
 
-            <p>
-                Pada bentuk ini:
-            </p>
+                    <p>
+                        Pada bentuk ini:
+                    </p>
 
-            <ul>
-                <li>\(Q(x)\) disebut <b>pembagi</b>,</li>
-                <li>\(H(x)\) disebut <b>hasil bagi</b>,</li>
-                <li>\(S(x)\) disebut <b>sisa</b>.</li>
-            </ul>
+                    <ul>
+                        <li>\(Q(x)\) disebut <b>pembagi</b>,</li>
+                        <li>\(H(x)\) disebut <b>hasil bagi</b>,</li>
+                        <li>\(S(x)\) disebut <b>sisa</b>.</li>
+                    </ul>
         </div>
 
         <div class="section-label">ILUSTRASI</div>
@@ -1112,9 +1170,13 @@
                 </ol>
             </div>
         </div>
-
         <div class="section-label">CONTOH</div>
         <div class="contoh-card">
+            <div class="mini-title">
+                <span class="mini-icon">📘</span>
+                <span>Contoh Pembagian Bersusun</span>
+            </div>
+
             <p>Kerjakan pembagian polinomial berikut dengan pembagian bersusun:</p>
 
             <div class="rumus-box">
@@ -1126,237 +1188,280 @@
                 <li>Tentukan sisa \(s\)</li>
             </ul>
 
-            <div class="contoh-soft-box">
-                <p style="margin:0;">
-                    Bagian contoh ini dibuat bertahap supaya siswa lebih fokus pada pola
-                    <b>bagi → kali → kurang</b>.
-                </p>
-            </div>
-
             <div class="contoh-actions">
                 <button type="button" class="btn-materi btn-primary" id="btnMulaiContoh">Mulai Penyelesaian</button>
                 <button type="button" class="btn-materi btn-muted" id="btnResetContoh">Reset</button>
             </div>
-        </div>
 
-        <div class="step-interaktif-wrap" id="stepInteraktifWrap">
-            <div class="step-progress" id="stepProgressText">Langkah aktif: 1 dari 6</div>
+            <div class="step-interaktif-wrap" id="stepInteraktifWrap">
+                <div class="step-card" id="stepCard1">
+                    <div class="step-label">Langkah 1</div>
+                    <div class="step-question">
+                        Bagi suku tertinggi pembilang dengan suku tertinggi penyebut.
+                        <div class="rumus-box">$$\frac{2x^3}{x}=2x^2$$</div>
+                        Tuliskan suku pertama hasil bagi.
+                    </div>
 
-            <div class="step-card" id="stepCard1">
-                <div class="step-label">Langkah 1</div>
-                <div class="step-question">
-                    Bagi suku tertinggi pembilang dengan suku tertinggi penyebut.
-                    <div class="rumus-box">$$\frac{2x^3}{x}=2x^2$$</div>
-                    Tuliskan suku pertama hasil bagi.
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> bagi koefisien \(2 : 1\), lalu kurangi pangkat variabel
+                            \(x^3 : x = x^2\). Hasil akhirnya berbentuk satu suku.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer1" placeholder="Contoh: 2x^2">
+                    <div class="step-helper">Bagi koefisien, lalu kurangi pangkat variabel.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="1">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn1">Langkah
+                            Berikutnya</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback1"></div>
                 </div>
 
-                <input type="text" class="step-answer-input" id="answer1" placeholder="Contoh: 2x^2">
-                <div class="step-helper">Bagi koefisien, lalu kurangi pangkat variabel.</div>
+                <div class="step-card" id="stepCard2">
+                    <div class="step-label">Langkah 2</div>
+                    <div class="step-question">
+                        Kalikan suku hasil bagi pertama dengan penyebut.
+                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                        Tuliskan hasil perkaliannya.
+                    </div>
 
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="1">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn1">Langkah Berikutnya</button>
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> gunakan distributif. Kalikan \(2x^2\) ke setiap suku
+                            di dalam \((x+1)\), lalu gabungkan hasilnya.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer2" placeholder="Contoh: 2x^3+2x^2">
+                    <div class="step-helper">Gunakan sifat distributif.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="2">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn2">Langkah
+                            Berikutnya</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback2"></div>
                 </div>
 
-                <div class="step-feedback" id="feedback1"></div>
-            </div>
+                <div class="step-card" id="stepCard3">
+                    <div class="step-label">Langkah 3</div>
+                    <div class="step-question">
+                        Kurangkan hasil perkalian dari pembilang semula.
+                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                        Tuliskan sisa barunya.
+                    </div>
 
-            <div class="step-card" id="stepCard2">
-                <div class="step-label">Langkah 2</div>
-                <div class="step-question">
-                    Kalikan suku hasil bagi pertama dengan penyebut.
-                    <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                    Tuliskan hasil perkaliannya.
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> kurangkan suku yang sejenis. Hati-hati pada tanda negatif,
+                            karena semua suku pada hasil perkalian ikut berubah tanda saat dikurangkan.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer3" placeholder="Contoh: x^2-2x+1">
+                    <div class="step-helper">Kurangkan suku-suku yang sejenis.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="3">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn3">Langkah
+                            Berikutnya</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback3"></div>
                 </div>
 
-                <input type="text" class="step-answer-input" id="answer2" placeholder="Contoh: 2x^3+2x^2">
-                <div class="step-helper">Gunakan sifat distributif.</div>
+                <div class="step-card" id="stepCard4">
+                    <div class="step-label">Langkah 4</div>
+                    <div class="step-question">
+                        Bagi suku tertinggi yang baru dengan \(x\).
+                        <div class="rumus-box">$$\frac{x^2}{x}=x$$</div>
+                        Tuliskan suku kedua hasil bagi.
+                    </div>
 
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="2">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn2">Langkah Berikutnya</button>
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> ulangi pola langkah pertama, tetapi sekarang gunakan
+                            sisa baru. Ambil suku terdepan dari sisa, lalu bagi dengan suku terdepan penyebut.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer4" placeholder="Contoh: x">
+                    <div class="step-helper">Suku ini ditambahkan ke hasil bagi sebelumnya.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="4">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn4">Langkah
+                            Berikutnya</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback4"></div>
                 </div>
 
-                <div class="step-feedback" id="feedback2"></div>
-            </div>
+                <div class="step-card" id="stepCard5">
+                    <div class="step-label">Langkah 5</div>
+                    <div class="step-question">
+                        Kalikan \(x\) dengan \((x+1)\), lalu kurangkan.
+                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                        Tuliskan sisa baru yang diperoleh.
+                    </div>
 
-            <div class="step-card" id="stepCard3">
-                <div class="step-label">Langkah 3</div>
-                <div class="step-question">
-                    Kurangkan hasil perkalian dari pembilang semula.
-                    <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                    Tuliskan sisa barunya.
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> kerjakan dua tahap. Pertama, hasil bagi sementara dikalikan
+                            dengan penyebut. Kedua, hasilnya dikurangkan dari sisa sebelumnya.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer5" placeholder="Contoh: -3x+1">
+                    <div class="step-helper">Perhatikan tanda negatif pada saat pengurangan.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="5">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn5">Langkah
+                            Berikutnya</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback5"></div>
                 </div>
 
-                <input type="text" class="step-answer-input" id="answer3" placeholder="Contoh: x^2-2x+1">
-                <div class="step-helper">Kurangkan suku-suku yang sejenis.</div>
+                <div class="step-card" id="stepCard6">
+                    <div class="step-label">Langkah 6</div>
+                    <div class="step-question">
+                        Selesaikan pembagian sampai akhir.
+                        <div class="rumus-box">$$\frac{-3x}{x}=-3$$</div>
+                        Tuliskan hasil bagi akhir \(h(x)\) dan sisa \(s\).
+                    </div>
 
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="3">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn3">Langkah Berikutnya</button>
+                    <div class="contoh-soft-box" style="margin-bottom:12px;">
+                        <p style="margin:0;">
+                            <b>Cara menjawab:</b> lakukan satu putaran terakhir dengan pola yang sama.
+                            Setelah itu, tulis semua suku hasil bagi menjadi satu bentuk, lalu tentukan sisanya.
+                        </p>
+                    </div>
+
+                    <input type="text" class="step-answer-input" id="answer6" placeholder="Contoh: h(x)=2x^2+x-3, s=4">
+                    <div class="step-helper">Tulis dua informasi sekaligus: hasil bagi dan sisa.</div>
+
+                    <div class="step-btn-row">
+                        <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="6">Cek
+                            Jawaban</button>
+                        <button type="button" class="btn-materi btn-muted" id="stepResetBtnAkhir">Ulangi Lagi</button>
+                    </div>
+
+                    <div class="step-feedback" id="feedback6"></div>
                 </div>
 
-                <div class="step-feedback" id="feedback3"></div>
-            </div>
+                <div class="final-result" id="stepFinalBox">
+                    <p><b>Hasil akhir pembagian:</b></p>
 
-            <div class="step-card" id="stepCard4">
-                <div class="step-label">Langkah 4</div>
-                <div class="step-question">
-                    Bagi suku tertinggi yang baru dengan \(x\).
-                    <div class="rumus-box">$$\frac{x^2}{x}=x$$</div>
-                    Tuliskan suku kedua hasil bagi.
-                </div>
-
-                <input type="text" class="step-answer-input" id="answer4" placeholder="Contoh: x">
-                <div class="step-helper">Suku ini ditambahkan ke hasil bagi sebelumnya.</div>
-
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="4">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn4">Langkah Berikutnya</button>
-                </div>
-
-                <div class="step-feedback" id="feedback4"></div>
-            </div>
-
-            <div class="step-card" id="stepCard5">
-                <div class="step-label">Langkah 5</div>
-                <div class="step-question">
-                    Kalikan \(x\) dengan \((x+1)\), lalu kurangkan.
-                    <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                    <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                    Tuliskan sisa baru yang diperoleh.
-                </div>
-
-                <input type="text" class="step-answer-input" id="answer5" placeholder="Contoh: -3x+1">
-                <div class="step-helper">Perhatikan tanda negatif pada saat pengurangan.</div>
-
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="5">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-secondary step-next-btn" id="nextBtn5">Langkah Berikutnya</button>
-                </div>
-
-                <div class="step-feedback" id="feedback5"></div>
-            </div>
-
-            <div class="step-card" id="stepCard6">
-                <div class="step-label">Langkah 6</div>
-                <div class="step-question">
-                    Selesaikan pembagian sampai akhir.
-                    <div class="rumus-box">$$\frac{-3x}{x}=-3$$</div>
-                    Tuliskan hasil bagi akhir \(h(x)\) dan sisa \(s\).
-                </div>
-
-                <input type="text" class="step-answer-input" id="answer6" placeholder="Contoh: h(x)=2x^2+x-3, s=4">
-                <div class="step-helper">Tulis dua informasi sekaligus: hasil bagi dan sisa.</div>
-
-                <div class="step-btn-row">
-                    <button type="button" class="btn-materi btn-primary step-submit-btn" data-step="6">Cek Jawaban</button>
-                    <button type="button" class="btn-materi btn-muted" id="stepResetBtnAkhir">Ulangi Lagi</button>
-                </div>
-
-                <div class="step-feedback" id="feedback6"></div>
-            </div>
-
-            {{-- PENGGANTI TAMPILAN GARIS-GARIS --}}
-            <div class="final-result" id="stepFinalBox">
-                <p><b>Hasil akhir pembagian:</b></p>
-
-                <div class="langkah-stack-wrap">
-                    <div class="langkah-stack-card">
-                        <div class="stack-head">
-                            <div class="stack-title">Tahap 1</div>
-                            <div class="stack-chip">Bagi</div>
-                        </div>
-                        <div class="stack-body">
-                            <div class="stack-row">
-                                <div class="stack-row-label">Perhitungan</div>
-                                <div class="rumus-box">$$\frac{2x^3}{x}=2x^2$$</div>
+                    <div class="langkah-stack-wrap">
+                        <div class="langkah-stack-card">
+                            <div class="stack-head">
+                                <div class="stack-title">Tahap 1</div>
+                                <div class="stack-chip">Bagi</div>
                             </div>
-                            <div class="stack-row">
-                                <div class="stack-row-label">Suku hasil bagi sementara</div>
-                                <div class="rumus-box">$$2x^2$$</div>
+                            <div class="stack-body">
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Perhitungan</div>
+                                    <div class="rumus-box">$$\frac{2x^3}{x}=2x^2$$</div>
+                                </div>
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Suku hasil bagi sementara</div>
+                                    <div class="rumus-box">$$2x^2$$</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="langkah-stack-card">
+                            <div class="stack-head">
+                                <div class="stack-title">Tahap 2</div>
+                                <div class="stack-chip">Kali lalu Kurang</div>
+                            </div>
+                            <div class="stack-body">
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Hasil kali</div>
+                                    <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                </div>
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Sisa baru</div>
+                                    <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="langkah-stack-card">
+                            <div class="stack-head">
+                                <div class="stack-title">Tahap 3</div>
+                                <div class="stack-chip">Bagi</div>
+                            </div>
+                            <div class="stack-body">
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Perhitungan</div>
+                                    <div class="rumus-box">$$\frac{x^2}{x}=x$$</div>
+                                </div>
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Hasil bagi sementara</div>
+                                    <div class="rumus-box">$$2x^2+x$$</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="langkah-stack-card">
+                            <div class="stack-head">
+                                <div class="stack-title">Tahap 4</div>
+                                <div class="stack-chip">Kali lalu Kurang</div>
+                            </div>
+                            <div class="stack-body">
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Hasil kali</div>
+                                    <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                </div>
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Sisa baru</div>
+                                    <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="langkah-stack-card">
+                            <div class="stack-head">
+                                <div class="stack-title">Tahap 5</div>
+                                <div class="stack-chip">Akhir</div>
+                            </div>
+                            <div class="stack-body">
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Perhitungan</div>
+                                    <div class="rumus-box">$$\frac{-3x}{x}=-3$$</div>
+                                </div>
+                                <div class="stack-row">
+                                    <div class="stack-row-label">Hasil kali dan sisa akhir</div>
+                                    <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                    <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="langkah-stack-card">
-                        <div class="stack-head">
-                            <div class="stack-title">Tahap 2</div>
-                            <div class="stack-chip">Kali lalu Kurang</div>
+                    <div class="hasil-akhir-grid">
+                        <div class="hasil-chip">
+                            Hasil bagi:
+                            <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
                         </div>
-                        <div class="stack-body">
-                            <div class="stack-row">
-                                <div class="stack-row-label">Hasil kali</div>
-                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                            </div>
-                            <div class="stack-row">
-                                <div class="stack-row-label">Sisa baru</div>
-                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                            </div>
+                        <div class="hasil-chip">
+                            Sisa:
+                            <div class="rumus-box">$$s=4$$</div>
                         </div>
-                    </div>
-
-                    <div class="langkah-stack-card">
-                        <div class="stack-head">
-                            <div class="stack-title">Tahap 3</div>
-                            <div class="stack-chip">Bagi</div>
-                        </div>
-                        <div class="stack-body">
-                            <div class="stack-row">
-                                <div class="stack-row-label">Perhitungan</div>
-                                <div class="rumus-box">$$\frac{x^2}{x}=x$$</div>
-                            </div>
-                            <div class="stack-row">
-                                <div class="stack-row-label">Hasil bagi sementara</div>
-                                <div class="rumus-box">$$2x^2+x$$</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="langkah-stack-card">
-                        <div class="stack-head">
-                            <div class="stack-title">Tahap 4</div>
-                            <div class="stack-chip">Kali lalu Kurang</div>
-                        </div>
-                        <div class="stack-body">
-                            <div class="stack-row">
-                                <div class="stack-row-label">Hasil kali</div>
-                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                            </div>
-                            <div class="stack-row">
-                                <div class="stack-row-label">Sisa baru</div>
-                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="langkah-stack-card">
-                        <div class="stack-head">
-                            <div class="stack-title">Tahap 5</div>
-                            <div class="stack-chip">Akhir</div>
-                        </div>
-                        <div class="stack-body">
-                            <div class="stack-row">
-                                <div class="stack-row-label">Perhitungan</div>
-                                <div class="rumus-box">$$\frac{-3x}{x}=-3$$</div>
-                            </div>
-                            <div class="stack-row">
-                                <div class="stack-row-label">Hasil kali dan sisa akhir</div>
-                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hasil-akhir-grid">
-                    <div class="hasil-chip">
-                        Hasil bagi:
-                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                    </div>
-                    <div class="hasil-chip">
-                        Sisa:
-                        <div class="rumus-box">$$s=4$$</div>
                     </div>
                 </div>
             </div>
@@ -1379,7 +1484,7 @@
                 <div class="latihan-dnd-soal">
                     Soal:
                     \[
-                        (6x^5 - 4x^4 + 3x^3 - 12x^2 + 7x - 9)\div(2x - 3)
+                    (6x^5 - 4x^4 + 3x^3 - 12x^2 + 7x - 9)\div(2x - 3)
                     \]
                 </div>
 
@@ -1394,61 +1499,61 @@
                         <div class="drag-bank" id="dragItems">
                             <div class="drag-card" draggable="true" data-order="1">
                                 \[
-                                    \frac{6x^5}{2x}=3x^4
+                                \frac{6x^5}{2x}=3x^4
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="2">
                                 \[
-                                    (2x-3)(3x^4)=6x^5-9x^4
+                                (2x-3)(3x^4)=6x^5-9x^4
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="3">
                                 \[
-                                    -4x^4-(-9x^4)=5x^4
+                                -4x^4-(-9x^4)=5x^4
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="4">
                                 \[
-                                    \frac{5x^4}{2x}=\frac{5}{2}x^3
+                                \frac{5x^4}{2x}=\frac{5}{2}x^3
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="5">
                                 \[
-                                    (2x-3)\left(\frac{5}{2}x^3\right)=5x^4-\frac{15}{2}x^3
+                                (2x-3)\left(\frac{5}{2}x^3\right)=5x^4-\frac{15}{2}x^3
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="6">
                                 \[
-                                    3x^3-\left(-\frac{15}{2}x^3\right)=\frac{21}{2}x^3
+                                3x^3-\left(-\frac{15}{2}x^3\right)=\frac{21}{2}x^3
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="7">
                                 \[
-                                    \frac{\frac{21}{2}x^3}{2x}=\frac{21}{4}x^2
+                                \frac{\frac{21}{2}x^3}{2x}=\frac{21}{4}x^2
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="8">
                                 \[
-                                    (2x-3)\left(\frac{21}{4}x^2\right)=\frac{21}{2}x^3-\frac{63}{4}x^2
+                                (2x-3)\left(\frac{21}{4}x^2\right)=\frac{21}{2}x^3-\frac{63}{4}x^2
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="9">
                                 \[
-                                    -12x^2-\left(-\frac{63}{4}x^2\right)=\frac{15}{4}x^2
+                                -12x^2-\left(-\frac{63}{4}x^2\right)=\frac{15}{4}x^2
                                 \]
                             </div>
 
                             <div class="drag-card" draggable="true" data-order="10">
                                 \[
-                                    \frac{\frac{15}{4}x^2}{2x}=\frac{15}{8}x
+                                \frac{\frac{15}{4}x^2}{2x}=\frac{15}{8}x
                                 \]
                             </div>
                         </div>
@@ -1713,8 +1818,15 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                                Koefisien dibagi, lalu pangkat dikurangkan.
+                            </p>
                             <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                            Jadi suku pertama hasil bagi adalah \\(2x^2\\).
+                            <p style="margin-bottom:0;">
+                                Jadi suku pertama hasil bagi adalah \\(2x^2\\).
+                            </p>
                         </div>
                     `
                 },
@@ -1722,7 +1834,15 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Setelah mendapatkan suku hasil bagi, suku itu harus dikalikan ke seluruh penyebut
+                                agar bisa dikurangkan pada langkah berikutnya.
+                            </p>
                             <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                            <p style="margin-bottom:0;">
+                                Hasil inilah yang nanti ditempatkan di bawah pembilang untuk proses pengurangan.
+                            </p>
                         </div>
                     `
                 },
@@ -1730,7 +1850,15 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Sekarang kita kurangkan suku-suku sejenis. Saat mengurangkan,
+                                perhatikan perubahan tanda pada bentuk yang dikurangkan.
+                            </p>
                             <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                            <p style="margin-bottom:0;">
+                                Hasil ini menjadi sisa baru untuk langkah berikutnya.
+                            </p>
                         </div>
                     `
                 },
@@ -1738,8 +1866,15 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Ulangi pola yang sama. Ambil suku tertinggi dari sisa baru,
+                                lalu bagi dengan suku tertinggi penyebut.
+                            </p>
                             <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                            Jadi suku kedua hasil baginya adalah \\(x\\).
+                            <p style="margin-bottom:0;">
+                                Jadi suku kedua hasil bagi adalah \\(x\\).
+                            </p>
                         </div>
                     `
                 },
@@ -1747,8 +1882,16 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Suku \\(x\\) dikalikan ke penyebut, lalu hasilnya dikurangkan
+                                dari sisa sebelumnya.
+                            </p>
                             <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
                             <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                            <p style="margin-bottom:0;">
+                                Bentuk \\(-3x+1\\) adalah sisa baru yang akan diproses lagi.
+                            </p>
                         </div>
                     `
                 },
@@ -1756,11 +1899,20 @@
                     benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
+                            <p style="margin-top:0;">
+                                Penjelasan:
+                                Lakukan satu putaran terakhir dengan pola yang sama:
+                                bagi, kali, lalu kurang. Setelah itu semua suku hasil bagi digabungkan.
+                            </p>
                             <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
                             <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
                             <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
                             <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
                             <div class="rumus-box">$$s=4$$</div>
+                            <p style="margin-bottom:0;">
+                                Jadi hasil bagi diperoleh dari semua suku yang sudah muncul,
+                                sedangkan sisa adalah hasil pengurangan terakhir.
+                            </p>
                         </div>
                     `
                 }
@@ -1787,7 +1939,9 @@
             }
 
             function updateProgress() {
-                stepProgressText.textContent = 'Langkah aktif: ' + currentInteractiveStep + ' dari 6';
+                if (stepProgressText) {
+                    stepProgressText.textContent = 'Langkah aktif: ' + currentInteractiveStep + ' dari 6';
+                }
             }
 
             function showOnlyStep(stepNumber) {
@@ -1876,9 +2030,12 @@
                 resetContohInteraktif();
             });
 
-            document.getElementById('stepResetBtnAkhir').addEventListener('click', function () {
-                resetContohInteraktif();
-            });
+            const stepResetBtnAkhir = document.getElementById('stepResetBtnAkhir');
+            if (stepResetBtnAkhir) {
+                stepResetBtnAkhir.addEventListener('click', function () {
+                    resetContohInteraktif();
+                });
+            }
 
             document.querySelectorAll('.step-submit-btn').forEach((btn) => {
                 btn.addEventListener('click', function () {
@@ -1931,8 +2088,12 @@
             const resetDndBtn = document.getElementById('resetDndBtn');
             const dndFinalResult = document.getElementById('dndFinalResult');
             const dndProgressText = document.getElementById('dndProgressText');
+            const latihanBoard = document.querySelector('.latihan-dnd-board');
+            const slotPanel = document.querySelector('.slot-panel');
 
             let draggedCard = null;
+            let autoScrollFrame = null;
+            let lastPointerY = null;
 
             function updateSlotBadge(slot, type, text) {
                 const badge = slot.querySelector('.status-kecil');
@@ -2001,18 +2162,94 @@
                 shuffleCards(dragItemsContainer);
                 updateDndProgress();
                 renderMath(document.body);
+
+                if (latihanBoard) latihanBoard.scrollTop = 0;
+                if (slotPanel) slotPanel.scrollTop = 0;
+                if (dragItemsContainer) dragItemsContainer.scrollTop = 0;
             }
+
+            function getScrollableContainers() {
+                const containers = [];
+                if (slotPanel) containers.push(slotPanel);
+                if (latihanBoard) containers.push(latihanBoard);
+                if (dragItemsContainer) containers.push(dragItemsContainer);
+                return containers;
+            }
+
+            function autoScrollContainers(clientY) {
+                const edgeThreshold = 85;
+                const maxSpeed = 20;
+
+                getScrollableContainers().forEach((container) => {
+                    const rect = container.getBoundingClientRect();
+
+                    const canScrollDown = container.scrollTop + container.clientHeight < container.scrollHeight;
+                    const canScrollUp = container.scrollTop > 0;
+
+                    let delta = 0;
+
+                    const distanceTop = clientY - rect.top;
+                    const distanceBottom = rect.bottom - clientY;
+
+                    if (distanceTop < edgeThreshold && canScrollUp) {
+                        delta = -Math.ceil(((edgeThreshold - distanceTop) / edgeThreshold) * maxSpeed);
+                    } else if (distanceBottom < edgeThreshold && canScrollDown) {
+                        delta = Math.ceil(((edgeThreshold - distanceBottom) / edgeThreshold) * maxSpeed);
+                    }
+
+                    if (delta !== 0) {
+                        container.scrollTop += delta;
+                    }
+                });
+            }
+
+            function stopAutoScroll() {
+                if (autoScrollFrame) {
+                    cancelAnimationFrame(autoScrollFrame);
+                    autoScrollFrame = null;
+                }
+            }
+
+            function startAutoScrollTracking() {
+                stopAutoScroll();
+
+                function tick() {
+                    if (draggedCard && lastPointerY !== null) {
+                        autoScrollContainers(lastPointerY);
+                        autoScrollFrame = requestAnimationFrame(tick);
+                    }
+                }
+
+                autoScrollFrame = requestAnimationFrame(tick);
+            }
+
+            document.addEventListener('dragover', function (e) {
+                lastPointerY = e.clientY;
+            });
+
+            document.addEventListener('drop', function () {
+                stopAutoScroll();
+                lastPointerY = null;
+            });
+
+            document.addEventListener('dragend', function () {
+                stopAutoScroll();
+                lastPointerY = null;
+            });
 
             function attachDragEvents(card) {
                 card.addEventListener('dragstart', function () {
                     if (card.classList.contains('locked-correct')) return;
                     draggedCard = card;
                     card.classList.add('dragging');
+                    startAutoScrollTracking();
                 });
 
                 card.addEventListener('dragend', function () {
                     card.classList.remove('dragging');
                     draggedCard = null;
+                    stopAutoScroll();
+                    lastPointerY = null;
                 });
             }
 
@@ -2041,15 +2278,16 @@
                     const correctStep = slot.getAttribute('data-step');
                     const draggedOrder = draggedCard.getAttribute('data-order');
                     const hint = slot.querySelector('.drop-hint');
+                    const currentDraggedCard = draggedCard;
 
-                    if (existingCard && existingCard !== draggedCard) {
+                    if (existingCard && existingCard !== currentDraggedCard) {
                         if (existingCard.classList.contains('locked-correct')) {
                             return;
                         }
                         dragItemsContainer.appendChild(existingCard);
                     }
 
-                    slot.appendChild(draggedCard);
+                    slot.appendChild(currentDraggedCard);
                     slot.classList.add('filled');
                     if (hint) hint.style.display = 'none';
                     renderMath(slot);
@@ -2057,8 +2295,8 @@
 
                     if (draggedOrder === correctStep) {
                         slot.classList.add('correct');
-                        draggedCard.classList.add('locked-correct');
-                        draggedCard.setAttribute('draggable', 'false');
+                        currentDraggedCard.classList.add('locked-correct');
+                        currentDraggedCard.setAttribute('draggable', 'false');
                         updateSlotBadge(slot, 'benar', 'Benar');
                     } else {
                         slot.classList.add('wrong');
@@ -2070,8 +2308,8 @@
                             slot.classList.remove('filled');
                             if (hint) hint.style.display = 'inline';
 
-                            if (slot.contains(draggedCard) && !draggedCard.classList.contains('locked-correct')) {
-                                dragItemsContainer.appendChild(draggedCard);
+                            if (slot.contains(currentDraggedCard) && !currentDraggedCard.classList.contains('locked-correct')) {
+                                dragItemsContainer.appendChild(currentDraggedCard);
                                 renderMath(dragItemsContainer);
                             }
                         }, 850);

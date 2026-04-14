@@ -30,6 +30,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .materi-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.15);
+        background-color: #c6d6c2;
     }
 
     .materi-bab {
@@ -41,6 +49,12 @@
         color: #3d3a33;
         text-align: center;
         margin-bottom: 10px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .materi-card:hover .materi-bab {
+        transform: scale(1.08);
+        background-color: rgba(255, 255, 255, 0.85);
     }
 
     .materi-judul {
@@ -50,6 +64,11 @@
         color: #3d3a33;
         text-align: center;
         width: 100%;
+        transition: color 0.3s ease;
+    }
+
+    .materi-card:hover .materi-judul {
+        color: #2d2a24;
     }
 
     .materi-list {
@@ -62,6 +81,12 @@
 
     .materi-list li {
         margin-bottom: 4px;
+        transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .materi-card:hover .materi-list li {
+        transform: translateX(4px);
+        color: #3f3b34;
     }
 
     @media (max-width: 992px) {
@@ -74,6 +99,7 @@
         .daftar-materi-wrapper {
             padding: 16px;
         }
+
         .materi-grid {
             grid-template-columns: 1fr;
             gap: 20px;

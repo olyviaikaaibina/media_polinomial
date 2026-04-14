@@ -6,7 +6,7 @@
 
 <style>
     .about-wrapper {
-        background-color: #FDFDE8 !important;  /* SAMAKAN DENGAN HALAMAN LAIN */
+        background-color: #FDFDE8 !important;
         min-height: calc(100vh - 160px);
         padding: 32px 40px 60px;
         box-sizing: border-box;
@@ -20,13 +20,21 @@
         gap: 28px;
     }
 
-    /* KARTU UTAMA (putih, rounded) */
+    /* KARTU UTAMA */
     .info-card {
         background-color: #ffffff;
         border-radius: 16px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
         border: 1px solid #e7d9c8;
         overflow: hidden;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        cursor: pointer;
+    }
+
+    .info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+        border-color: #d5b08e;
     }
 
     /* BAR JUDUL KOTAK */
@@ -37,6 +45,12 @@
         align-items: center;
         gap: 10px;
         color: #fff;
+        transition: background 0.35s ease, padding 0.35s ease;
+    }
+
+    .info-card:hover .info-card-header {
+        background: linear-gradient(90deg, #a86741, #bf7d50);
+        padding-left: 24px;
     }
 
     .info-icon {
@@ -49,18 +63,34 @@
         justify-content: center;
         font-size: 12px;
         font-weight: 700;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .info-card:hover .info-icon {
+        transform: scale(1.08);
+        background-color: rgba(255, 255, 255, 0.4);
     }
 
     .info-card-title {
         font-size: 14px;
         font-weight: 600;
         letter-spacing: 0.5px;
+        transition: letter-spacing 0.3s ease;
+    }
+
+    .info-card:hover .info-card-title {
+        letter-spacing: 0.8px;
     }
 
     .info-card-body {
         padding: 24px 28px 26px;
         font-size: 14px;
         color: #5e554a;
+        transition: transform 0.3s ease;
+    }
+
+    .info-card:hover .info-card-body {
+        transform: translateY(-2px);
     }
 
     .info-card-body p {
@@ -77,6 +107,12 @@
         text-transform: uppercase;
         margin: 18px 0 22px;
         color: #3f3a33;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .info-card:hover .media-main-title {
+        transform: scale(1.01);
+        color: #2f2a24;
     }
 
     .media-main-title span {
@@ -97,10 +133,25 @@
         font-weight: 600;
         color: #4c4439;
         white-space: nowrap;
+        transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .info-value {
         color: #5e554a;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .info-card:hover .info-label,
+    .info-card:hover .info-value {
+        transform: translateX(3px);
+    }
+
+    .info-card:hover .info-label {
+        color: #3d372f;
+    }
+
+    .info-card:hover .info-value {
+        color: #51493f;
     }
 
     /* Daftar pustaka */
@@ -112,6 +163,12 @@
     .ref-list li {
         margin-bottom: 6px;
         line-height: 1.6;
+        transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .info-card:hover .ref-list li {
+        transform: translateX(4px);
+        color: #4a4339;
     }
 
     @media (max-width: 768px) {

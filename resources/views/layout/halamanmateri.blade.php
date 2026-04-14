@@ -376,8 +376,8 @@
   <nav class="navbar navbar-expand-lg navbar-polymathica px-4 fixed-top">
     <div class="container-fluid">
 
-      <a class="brand-inline" href="{{ route('landingpage') }}">
-        <img src="{{ asset('img/2.png') }}" alt="Logo" class="logo-img">
+      <a href="{{ route('landingpage') }}" class="brand-inline">
+        <img src="{{ asset('img/2.png') }}" alt="Logo Polimathica" class="logo-img">
         <span class="logo-word">POLIMATHICA</span>
       </a>
 

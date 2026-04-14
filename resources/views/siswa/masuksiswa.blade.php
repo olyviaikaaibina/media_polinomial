@@ -30,6 +30,26 @@
             max-width: 420px;
             width: 100%;
             height: auto;
+            animation: floatingImage 4s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        @keyframes floatingImage {
+            0% {
+                transform: translateY(0px);
+            }
+            25% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0px);
+            }
+            75% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* ====== CARD ====== */
