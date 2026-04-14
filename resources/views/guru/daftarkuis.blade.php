@@ -26,6 +26,7 @@
           <thead style="background-color:#EAD9C7;">
             <tr class="text-center">
               <th style="width:60px;">No</th>
+              <th>Gambar</th>
               <th class="text-start">Judul Kuis</th>
               <th class="text-start">Bab</th>
               <th class="text-start">Deskripsi</th>
@@ -40,6 +41,15 @@
             @forelse ($quizzes as $quiz)
               <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
+
+                <td class="text-center">
+                  @if($quiz->image)
+                    <img src="{{ asset('storage/' . $quiz->image) }}" alt="Gambar Kuis" width="80" height="80" style="object-fit: cover; border-radius: 8px;">
+                  @else
+                    <span class="text-muted">-</span>
+                  @endif
+                </td>
+
                 <td>{{ $quiz->title }}</td>
                 <td>{{ $quiz->bab->judul ?? 'Bab tidak ditemukan' }}</td>
                 <td>{{ $quiz->description }}</td>
@@ -73,7 +83,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form action="{{ route('updatekuis', $quiz->id) }}" method="POST">
+                    <form action="{{ route('updatekuis', $quiz->id) }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
 
@@ -117,6 +127,22 @@
                             <input type="number" step="0.01" name="kkm" class="form-control" value="{{ $quiz->kkm }}" min="0" max="100" required>
                           </div>
 
+                          <div class="col-12">
+                            <label class="form-label fw-semibold">Gambar Kuis</label>
+                            <input type="file" name="image" class="form-control" accept="image/*">
+                          </div>
+
+                          <div class="col-12">
+                            <label class="form-label fw-semibold">Preview Gambar Saat Ini</label>
+                            <div>
+                              @if($quiz->image)
+                                <img src="{{ asset('storage/' . $quiz->image) }}" alt="Preview Gambar" width="120" style="border-radius: 10px; object-fit: cover;">
+                              @else
+                                <span class="text-muted">Belum ada gambar</span>
+                              @endif
+                            </div>
+                          </div>
+
                         </div>
                       </div>
 
@@ -132,7 +158,7 @@
 
             @empty
               <tr>
-                <td colspan="8" class="text-center py-5">
+                <td colspan="9" class="text-center py-5">
                   <div class="text-muted">
                     <h5 class="mb-1">Belum ada data kuis</h5>
                     <small>Silakan tambahkan kuis terlebih dahulu</small>

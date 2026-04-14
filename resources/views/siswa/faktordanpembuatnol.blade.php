@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
-                                                        delimiters:[
-                                                            {left:'$$',right:'$$',display:true},
-                                                            {left:'$',right:'$',display:false}
-                                                        ]
-                                                    });"></script>
+                                delimiters:[
+                                    {left:'$$',right:'$$',display:true},
+                                    {left:'$',right:'$',display:false}
+                                ]
+                            });"></script>
 
     <style>
         :root {
@@ -79,9 +79,6 @@
             border-left: 7px solid #79aedd;
         }
 
-        /* =========================
-                               EKSPLORASI INTERAKTIF
-                            ========================= */
         .eksplorasi-text {
             font-size: 17px;
             line-height: 1.9;
@@ -275,7 +272,7 @@
         }
 
         .contoh-section {
-            margin-top: 34px;
+            margin-top: 30px;
         }
 
         .contoh-badge {
@@ -283,7 +280,7 @@
             align-items: center;
             justify-content: center;
             min-width: 170px;
-            padding: 14px 34px;
+            padding: 14px 28px;
             border-radius: 999px;
             background: var(--peach);
             border: 2px solid var(--peach-border);
@@ -297,13 +294,13 @@
         .contoh-card {
             background: #fff;
             border: 3px solid var(--green);
-            border-radius: 34px;
-            padding: 34px 32px 30px;
+            border-radius: 25px;
+            padding: 25px 25px 28px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, .03);
         }
 
         .contoh-title {
-            font-size: 26px;
+            font-size: 20px;
             font-weight: 800;
             color: #4a4a4a;
             margin-bottom: 16px;
@@ -312,12 +309,12 @@
         .contoh-persamaan {
             text-align: center;
             margin: 8px 0 22px;
-            font-size: 38px;
+            font-size: 25px;
             color: #4e4e4e;
         }
 
         .contoh-text {
-            font-size: 18px;
+            font-size: 15px;
             line-height: 1.8;
             color: #565656;
             margin-bottom: 26px;
@@ -450,7 +447,7 @@
         }
 
         .latihan-section {
-            margin-top: 40px;
+            margin-top: 28px;
         }
 
         .latihan-badge {
@@ -472,13 +469,13 @@
             background: #fff;
             border: 3px solid var(--blue);
             border-radius: 0;
-            padding: 34px 28px 30px;
+            padding: 28px 25px 25px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, .03);
             margin-bottom: 26px;
         }
 
         .latihan-card-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: #333;
             margin-bottom: 8px;
@@ -487,7 +484,7 @@
         .latihan-persamaan {
             text-align: center;
             margin: 10px 0 24px;
-            font-size: 36px;
+            font-size: 25px;
             color: #333;
         }
 
@@ -623,6 +620,122 @@
             margin-top: 8px;
         }
 
+        /* =========================
+                               GRAFIK HTML CSS JS
+                            ========================= */
+        .grafik-board {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            height: 420px;
+            margin-top: 10px;
+            border: 1.5px solid #d9e8f2;
+            border-radius: 18px;
+            background:
+                repeating-linear-gradient(to right,
+                    #eef3f7 0,
+                    #eef3f7 1px,
+                    transparent 1px,
+                    transparent 52px),
+                repeating-linear-gradient(to bottom,
+                    #eef3f7 0,
+                    #eef3f7 1px,
+                    transparent 1px,
+                    transparent 52px),
+                #fff;
+            overflow: hidden;
+        }
+
+        .grafik-label-top {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 14px;
+            color: #444;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+
+        .grafik-axis-x,
+        .grafik-axis-y {
+            position: absolute;
+            background: #444;
+            z-index: 2;
+        }
+
+        .grafik-axis-x {
+            height: 2px;
+            left: 20px;
+            right: 20px;
+            top: 50%;
+        }
+
+        .grafik-axis-y {
+            width: 2px;
+            top: 20px;
+            bottom: 20px;
+            left: 50%;
+        }
+
+        .grafik-arrow-x,
+        .grafik-arrow-y {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #444;
+            border-right: 2px solid #444;
+            z-index: 2;
+        }
+
+        .grafik-arrow-x {
+            right: 21px;
+            top: calc(50% - 6px);
+            transform: rotate(45deg);
+        }
+
+        .grafik-arrow-y {
+            left: calc(50% - 6px);
+            top: 21px;
+            transform: rotate(-45deg);
+        }
+
+        .grafik-tick-x,
+        .grafik-tick-y {
+            position: absolute;
+            background: #444;
+            z-index: 2;
+        }
+
+        .grafik-tick-x {
+            width: 2px;
+            height: 12px;
+            top: calc(50% - 5px);
+        }
+
+        .grafik-tick-y {
+            width: 12px;
+            height: 2px;
+            left: calc(50% - 5px);
+        }
+
+        .grafik-number {
+            position: absolute;
+            font-size: 12px;
+            color: #555;
+            z-index: 2;
+            transform: translate(-50%, -50%);
+        }
+
+        .grafik-number.y {
+            left: calc(50% - 18px);
+        }
+
+        .grafik-number.x {
+            top: calc(50% + 16px);
+        }
+
         @media (max-width: 768px) {
             .materi-wrap {
                 padding: 18px 12px 32px;
@@ -669,6 +782,525 @@
             .latihan-label {
                 font-size: 17px;
             }
+
+            .grafik-board {
+                height: 360px;
+            }
+        }
+
+        /* =========================
+                       GRAFIK INTERAKTIF MARI MENCOBA
+                    ========================= */
+        .grafik-box {
+            margin-top: 14px;
+        }
+
+        .grafik-board {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            height: 430px;
+            border: 1.5px solid #cfe0ee;
+            border-radius: 22px;
+            background:
+                repeating-linear-gradient(to right,
+                    #edf3f8 0,
+                    #edf3f8 1px,
+                    transparent 1px,
+                    transparent 58px),
+                repeating-linear-gradient(to bottom,
+                    #edf3f8 0,
+                    #edf3f8 1px,
+                    transparent 1px,
+                    transparent 54px),
+                #ffffff;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5);
+        }
+
+        .grafik-header-note {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            z-index: 4;
+            font-size: 14px;
+            color: #555;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .grafik-axis-x,
+        .grafik-axis-y {
+            position: absolute;
+            background: #4b4b4b;
+            z-index: 2;
+        }
+
+        .grafik-axis-x {
+            left: 22px;
+            right: 22px;
+            top: 50%;
+            height: 2px;
+        }
+
+        .grafik-axis-y {
+            top: 22px;
+            bottom: 22px;
+            left: 50%;
+            width: 2px;
+        }
+
+        .grafik-arrow-x,
+        .grafik-arrow-y {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #4b4b4b;
+            border-right: 2px solid #4b4b4b;
+            z-index: 3;
+        }
+
+        .grafik-arrow-x {
+            right: 23px;
+            top: calc(50% - 6px);
+            transform: rotate(45deg);
+        }
+
+        .grafik-arrow-y {
+            left: calc(50% - 6px);
+            top: 23px;
+            transform: rotate(-45deg);
+        }
+
+        .grafik-tick-x,
+        .grafik-tick-y {
+            position: absolute;
+            background: #4b4b4b;
+            z-index: 3;
+        }
+
+        .grafik-tick-x {
+            width: 2px;
+            height: 12px;
+            top: calc(50% - 5px);
+        }
+
+        .grafik-tick-y {
+            width: 12px;
+            height: 2px;
+            left: calc(50% - 5px);
+        }
+
+        .grafik-number {
+            position: absolute;
+            z-index: 3;
+            font-size: 12px;
+            color: #666;
+            transform: translate(-50%, -50%);
+            user-select: none;
+        }
+
+        .grafik-number.x {
+            top: calc(50% + 17px);
+        }
+
+        .grafik-number.y {
+            left: calc(50% - 18px);
+        }
+
+        .grafik-click-point {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 2px solid #2d9cdb;
+            background: #fff;
+            z-index: 5;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            cursor: pointer;
+            transition: .18s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+        }
+
+        .grafik-click-point:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: #f4fbff;
+        }
+
+        .grafik-click-point.correct {
+            background: #7fc46d;
+            border-color: #4f9f40;
+        }
+
+        .grafik-click-point.wrong {
+            background: #ef8f8a;
+            border-color: #d25852;
+        }
+
+        .grafik-click-point.disabled {
+            pointer-events: none;
+        }
+
+        .grafik-curve-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .grafik-feedback-mini {
+            margin-top: 12px;
+            display: none;
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .grafik-feedback-mini.show {
+            display: block;
+        }
+
+        .grafik-feedback-mini.success {
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            color: #2d6a31;
+        }
+
+        .grafik-feedback-mini.error {
+            background: #fff1f0;
+            border: 1px solid #f3b8b5;
+            color: #b23b35;
+        }
+
+        .grafik-penjelasan {
+            display: none;
+            margin-top: 16px;
+            background: #f4fbff;
+            border: 1px solid #cfe2f2;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #43627d;
+            line-height: 1.8;
+        }
+
+        .grafik-penjelasan.show {
+            display: block;
+        }
+
+        .grafik-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .grafik-chip {
+            background: #f7fbff;
+            border: 1px solid #d7ebf8;
+            color: #2d6996;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .grafik-board {
+                height: 360px;
+            }
+
+            .grafik-header-note {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+        }
+
+        /* =========================
+               GRAFIK INTERAKTIF MARI MENCOBA
+            ========================= */
+        .grafik-box {
+            margin-top: 14px;
+        }
+
+        .grafik-board {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            height: 430px;
+            border: 1.5px solid #cfe0ee;
+            border-radius: 22px;
+            background:
+                repeating-linear-gradient(to right,
+                    #edf3f8 0,
+                    #edf3f8 1px,
+                    transparent 1px,
+                    transparent 58px),
+                repeating-linear-gradient(to bottom,
+                    #edf3f8 0,
+                    #edf3f8 1px,
+                    transparent 1px,
+                    transparent 54px),
+                #ffffff;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .grafik-header-note {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            z-index: 6;
+            font-size: 14px;
+            color: #555;
+            background: rgba(255, 255, 255, 0.93);
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .grafik-axis-x,
+        .grafik-axis-y {
+            position: absolute;
+            background: #4b4b4b;
+            z-index: 2;
+        }
+
+        .grafik-axis-x {
+            left: 22px;
+            right: 22px;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .grafik-axis-y {
+            top: 22px;
+            bottom: 22px;
+            width: 2px;
+            transform: translateX(-50%);
+        }
+
+        .grafik-arrow-x,
+        .grafik-arrow-y {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #4b4b4b;
+            border-right: 2px solid #4b4b4b;
+            z-index: 3;
+        }
+
+        .grafik-arrow-x {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .grafik-arrow-y {
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .grafik-tick-x,
+        .grafik-tick-y {
+            position: absolute;
+            background: #4b4b4b;
+            z-index: 3;
+        }
+
+        .grafik-tick-x {
+            width: 2px;
+            height: 12px;
+            transform: translate(-50%, -50%);
+        }
+
+        .grafik-tick-y {
+            width: 12px;
+            height: 2px;
+            transform: translate(-50%, -50%);
+        }
+
+        .grafik-number {
+            position: absolute;
+            z-index: 3;
+            font-size: 12px;
+            color: #666;
+            user-select: none;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .grafik-number.x {
+            transform: translateX(-50%);
+        }
+
+        .grafik-number.y {
+            transform: translateY(-50%);
+        }
+
+        .grafik-click-point {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 2px solid #2d9cdb;
+            background: #ffffff;
+            z-index: 5;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .grafik-click-point:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: #f4fbff;
+        }
+
+        .grafik-click-point.correct {
+            background: #7fc46d;
+            border-color: #4f9f40;
+        }
+
+        .grafik-click-point.wrong {
+            background: #ef8f8a;
+            border-color: #d25852;
+        }
+
+        .grafik-click-point.disabled {
+            pointer-events: none;
+        }
+
+        .grafik-curve-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .grafik-feedback-mini {
+            display: none;
+            margin-top: 12px;
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .grafik-feedback-mini.show {
+            display: block;
+        }
+
+        .grafik-feedback-mini.success {
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            color: #2d6a31;
+        }
+
+        .grafik-feedback-mini.error {
+            background: #fff1f0;
+            border: 1px solid #f3b8b5;
+            color: #b23b35;
+        }
+
+        .grafik-penjelasan {
+            display: none;
+            margin-top: 16px;
+            background: #f4fbff;
+            border: 1px solid #cfe2f2;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #43627d;
+            line-height: 1.8;
+        }
+
+        .grafik-penjelasan.show {
+            display: block;
+        }
+
+        .grafik-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .grafik-chip {
+            background: #f7fbff;
+            border: 1px solid #d7ebf8;
+            color: #2d6996;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .grafik-board {
+                height: 360px;
+            }
+
+            .grafik-header-note {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .grafik-click-point {
+                width: 16px;
+                height: 16px;
+            }
+
+            .grafik-number {
+                font-size: 11px;
+            }
+        }
+
+        /* =========================
+       FIX BIAR BAGIAN INI KECIL
+    ========================= */
+
+        /* card utama */
+        .latihan-card {
+            padding: 16px 14px !important;
+        }
+
+        /* kotak tiap soal (INI YANG PALING NGARUH) */
+        .latihan-item {
+            padding: 12px 12px !important;
+            border-radius: 14px;
+        }
+
+        /* judul soal */
+        .latihan-label {
+            font-size: 15px !important;
+            margin-bottom: 6px;
+        }
+
+        /* rumus */
+        .latihan-persamaan {
+            font-size: 20px !important;
+            margin-bottom: 14px;
+        }
+
+        /* input */
+        .input-jawaban {
+            font-size: 13px !important;
+            padding: 8px 10px !important;
+            min-width: 180px !important;
+        }
+
+        /* tombol */
+        .btn-cek {
+            font-size: 12px !important;
+            padding: 7px 12px !important;
+        }
+
+        /* badge */
+        .latihan-badge {
+            font-size: 16px !important;
+            padding: 8px 20px !important;
         }
     </style>
 
@@ -682,7 +1314,8 @@
 
         <p>
             Pada materi sebelumnya, kamu telah mempelajari Teorema Faktor, yaitu prinsip penting yang menghubungkan antara
-            pembuat nol suatu fungsi polinomial dengan faktornya. Teorema tersebut menyatakan bahwa: </p>
+            pembuat nol suatu fungsi polinomial dengan faktornya. Teorema tersebut menyatakan bahwa:
+        </p>
 
         <div class="card card-eksplorasi">
             <div class="title-box blue">🧭 Eksplorasi</div>
@@ -782,12 +1415,15 @@
                 </div>
             </div>
         </div>
+
         <div class="teorema-box">
             Jika $P(c)=0$, maka $(x-c)$ adalah faktor dari $P(x)$
         </div>
 
-        <p>ini akan memperluas pemahaman tersebut dengan menghubungkan faktor polinomial dengan grafik fungsi polinomial,
-            terutama pada titik potong grafik dengan sumbu-x.</p>
+        <p>
+            ini akan memperluas pemahaman tersebut dengan menghubungkan faktor polinomial dengan grafik fungsi polinomial,
+            terutama pada titik potong grafik dengan sumbu-x.
+        </p>
 
         <div class="subjudul">Pembuat Nol (Akar) Polinomial</div>
 
@@ -989,25 +1625,25 @@
                 <div class="latihan-card-title">Diberikan fungsi polinomial berikut:</div>
 
                 <div class="latihan-persamaan">
-                    $$f(x)=x^4-5x^3+2x^2+20x-24$$
+                    $$f(x)=x^4-x^3-7x^2+x+6$$
                 </div>
 
                 {{-- 1 --}}
                 <div class="latihan-item">
                     <div class="latihan-label">1. Pembuat nol</div>
                     <div class="input-row">
-                        <input id="m1" class="input-jawaban" placeholder="Contoh: 2,3,-2,-1">
+                        <input id="m1" class="input-jawaban" placeholder="Contoh: -2,-1,1,3">
                         <button class="btn-cek" onclick="cekMari(1)">Cek Jawaban</button>
                     </div>
                     <div id="fb1" class="feedback-box"></div>
 
                     <div id="step1" class="penjelasan-wrap">
                         <div class="answer-box">
-                            $$x=2,\;3,\;-2,\;-1$$
+                            $$x=-2,\;-1,\;1,\;3$$
                         </div>
                         <div class="langkah-step">
                             <div class="step-head">Langkah</div>
-                            <p>Uji faktor dari 24 hingga menemukan nilai yang membuat $f(x)=0$.</p>
+                            <p>Uji faktor dari 6 hingga ditemukan nilai-nilai yang membuat $f(x)=0$.</p>
                         </div>
                     </div>
                 </div>
@@ -1016,14 +1652,14 @@
                 <div class="latihan-item">
                     <div class="latihan-label">2. Pemfaktoran</div>
                     <div class="input-row">
-                        <input id="m2" class="input-jawaban" placeholder="(x-2)(x-3)(x+2)(x+1)">
+                        <input id="m2" class="input-jawaban" placeholder="(x+2)(x+1)(x-1)(x-3)">
                         <button class="btn-cek" onclick="cekMari(2)">Cek Jawaban</button>
                     </div>
                     <div id="fb2" class="feedback-box"></div>
 
                     <div id="step2" class="penjelasan-wrap">
                         <div class="answer-box">
-                            $$f(x)=(x-2)(x-3)(x+2)(x+1)$$
+                            $$f(x)=(x+2)(x+1)(x-1)(x-3)$$
                         </div>
                     </div>
                 </div>
@@ -1032,14 +1668,14 @@
                 <div class="latihan-item">
                     <div class="latihan-label">3. Titik potong sumbu-x</div>
                     <div class="input-row">
-                        <input id="m3" class="input-jawaban" placeholder="(2,0),(3,0),(-2,0),(-1,0)">
+                        <input id="m3" class="input-jawaban" placeholder="(-2,0),(-1,0),(1,0),(3,0)">
                         <button class="btn-cek" onclick="cekMari(3)">Cek Jawaban</button>
                     </div>
                     <div id="fb3" class="feedback-box"></div>
 
                     <div id="step3" class="penjelasan-wrap">
                         <div class="answer-box">
-                            $$(2,0),(3,0),(-2,0),(-1,0)$$
+                            $$(-2,0),(-1,0),(1,0),(3,0)$$
                         </div>
                     </div>
                 </div>
@@ -1048,29 +1684,59 @@
                 <div class="latihan-item">
                     <div class="latihan-label">4. Titik potong sumbu-y</div>
                     <div class="input-row">
-                        <input id="m4" class="input-jawaban" placeholder="(0,-24)">
+                        <input id="m4" class="input-jawaban" placeholder="(0,6)">
                         <button class="btn-cek" onclick="cekMari(4)">Cek Jawaban</button>
                     </div>
                     <div id="fb4" class="feedback-box"></div>
 
                     <div id="step4" class="penjelasan-wrap">
                         <div class="answer-box">
-                            $$(0,-24)$$
+                            $$(0,6)$$
                         </div>
                     </div>
                 </div>
 
-                {{-- 5 --}}
                 <div class="latihan-item">
-                    <div class="latihan-label">5. Grafik</div>
+                    <div class="latihan-label">e. Grafik</div>
 
-                    <div class="graph-placeholder" style="min-height:420px;">
-                        {{-- KOSONG UNTUK GRAFIK --}}
+                    <div class="grafik-box">
+                        <div id="grafik-mc4" class="graph-placeholder" style="min-height:430px;">
+                            Grafik akan aktif setelah nomor 1–4 benar semua.
+                        </div>
+
+                        <div id="grafikFeedback" class="grafik-feedback-mini"></div>
+
+                        <div id="grafikPenjelasan" class="grafik-penjelasan">
+                            <b>Penjelasan:</b><br>
+                            Karena
+                            $$f(x)=x^4-x^3-7x^2+x+6=(x+2)(x+1)(x-1)(x-3),$$
+                            maka pembuat nolnya adalah:
+                            $$x=-2,\;-1,\;1,\;3$$
+
+                            Artinya grafik memotong sumbu-$x$ di titik:
+                            $$(-2,0),\;(-1,0),\;(1,0),\;(3,0)$$
+
+                            Setelah semua titik potong sumbu-$x$ benar dipilih, kurva polinomial dapat digambar
+                            sehingga terlihat hubungan antara <b>faktor</b>, <b>pembuat nol</b>, dan
+                            <b>grafik fungsi</b>.
+
+                            <div class="grafik-chip-row">
+                                <div class="grafik-chip">Akar: -2</div>
+                                <div class="grafik-chip">Akar: -1</div>
+                                <div class="grafik-chip">Akar: 1</div>
+                                <div class="grafik-chip">Akar: 3</div>
+                                <div class="grafik-chip">Titik potong y: (0,6)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-note">
+                        Klik titik pada sumbu-x. Jika benar akan berwarna hijau, jika salah akan berwarna merah.
+                        Setelah semua titik benar ditemukan, kurva grafik akan muncul otomatis.
                     </div>
                 </div>
-
-                <div class="note-box">
-                    Jawaban harus benar dulu agar penjelasan muncul.
+                <div class="small-note">
+                    Grafik ditampilkan kosong terlebih dahulu seperti bidang koordinat.
                 </div>
             </div>
         </div>
@@ -1125,7 +1791,7 @@
 
                 <hr style="margin:40px 0;">
 
-                {{-- SOAL 2 (SEBELUMNYA SOAL 3) --}}
+                {{-- SOAL 2 --}}
                 <div class="latihan-card-title">2. Diberikan fungsi polinomial berikut:</div>
 
                 <div class="latihan-persamaan">
@@ -1168,11 +1834,6 @@
                     <div id="feedbackSoal3d" class="feedback-box"></div>
                 </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">e. Grafik</div>
-                    <div class="graph-placeholder" style="min-height:420px;"></div>
-                </div>
-
                 <div id="statusSoal3" class="status-selesai">
                     Semua bagian pada soal 2 sudah selesai.
                 </div>
@@ -1182,14 +1843,27 @@
                 </div>
 
             </div>
-
-            <div class="note-box">
-                Penjelasan muncul jika semua bagian benar.
-            </div>
         </div>
+    </div>
     </div>
 
     <script>
+        let mariGrafikAktif = false;
+        let grafikMc4Solved = false;
+
+        const progress = {
+            soal1: { a: false, b: false, c: false },
+            soal3: { a: false, b: false, c: false, d: false }
+        };
+
+        const grafikMc4Config = {
+            roots: [-2, -1, 1, 3],
+            xmin: -6,
+            xmax: 6,
+            ymin: -4,
+            ymax: 4
+        };
+
         function toggleJawaban(id, btn) {
             const box = document.getElementById(id);
             box.classList.toggle('show');
@@ -1204,7 +1878,7 @@
         }
 
         function normalizeText(text) {
-            return text
+            return (text || '')
                 .toLowerCase()
                 .replace(/\s+/g, '')
                 .replace(/\$/g, '')
@@ -1230,6 +1904,7 @@
 
         function showFeedback(id, type, message) {
             const el = document.getElementById(id);
+            if (!el) return;
             el.className = 'feedback-box show ' + type;
             el.innerHTML = message;
             renderMathSafe();
@@ -1240,6 +1915,7 @@
                 renderMathInElement(document.body, {
                     delimiters: [
                         { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$$', display: true },
                         { left: '$', right: '$', display: false }
                     ]
                 });
@@ -1270,23 +1946,15 @@
 
             renderMathSafe();
         }
-        const progress = {
-            soal1: { a: false, b: false, c: false },
-            soal3: { a: false, b: false, c: false, d: false }
-        };
 
         function cekProgressSoal1() {
             const selesai = progress.soal1.a && progress.soal1.b && progress.soal1.c;
             const status = document.getElementById('statusSoal1');
             const penjelasan = document.getElementById('penjelasanSoal1');
 
-            if (selesai) {
-                status.classList.add('show');
-                penjelasan.classList.add('show');
-            } else {
-                status.classList.remove('show');
-                penjelasan.classList.remove('show');
-            }
+            if (status) status.classList.toggle('show', selesai);
+            if (penjelasan) penjelasan.classList.toggle('show', selesai);
+
             renderMathSafe();
         }
 
@@ -1295,54 +1963,345 @@
             const status = document.getElementById('statusSoal3');
             const penjelasan = document.getElementById('penjelasanSoal3');
 
-            if (selesai) {
-                status.classList.add('show');
-                penjelasan.classList.add('show');
-            } else {
-                status.classList.remove('show');
-                penjelasan.classList.remove('show');
-            }
+            if (status) status.classList.toggle('show', selesai);
+            if (penjelasan) penjelasan.classList.toggle('show', selesai);
+
             renderMathSafe();
         }
 
         function norm(t) {
-            return t.toLowerCase().replace(/\s/g, '');
+            return (t || '').toLowerCase().replace(/\s/g, '');
+        }
+
+        function extractCoordinatePairs(text) {
+            const cleaned = normalizeText(text);
+            const matches = cleaned.match(/\(-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?\)/g);
+            return matches ? matches.map(item => item.replace(/\s/g, '')) : [];
+        }
+
+        function semuaMariSudahBenar() {
+            return (
+                document.getElementById('step1')?.classList.contains('show') &&
+                document.getElementById('step2')?.classList.contains('show') &&
+                document.getElementById('step3')?.classList.contains('show') &&
+                document.getElementById('step4')?.classList.contains('show')
+            );
+        }
+
+        function fxMc4(x) {
+            return (x ** 4) - (x ** 3) - 7 * (x ** 2) + x + 6;
+        }
+
+        function xToPercent(x) {
+            const { xmin, xmax } = grafikMc4Config;
+            return ((x - xmin) / (xmax - xmin)) * 100;
+        }
+
+        function yToPercent(y) {
+            const { ymin, ymax } = grafikMc4Config;
+            return ((ymax - y) / (ymax - ymin)) * 100;
+        }
+
+        function buildTicksX() {
+            let html = '';
+            for (let x = -5; x <= 5; x++) {
+                html += `<div class="grafik-tick-x" style="left:${xToPercent(x)}%;"></div>`;
+            }
+            return html;
+        }
+
+        function buildTicksY() {
+            let html = '';
+            for (let y = -3; y <= 7; y++) {
+                html += `<div class="grafik-tick-y" style="top:${yToPercent(y)}%;"></div>`;
+            }
+            return html;
+        }
+
+        function buildLabelsX() {
+            let html = '';
+            for (let x = -5; x <= 5; x++) {
+                const extraClass = x === 0 ? ' origin' : '';
+                html += `<div class="grafik-number x${extraClass}" style="left:${xToPercent(x)}%;">${x}</div>`;
+            }
+            return html;
+        }
+
+        function buildLabelsY() {
+            let html = '';
+            for (let y = 7; y >= -3; y--) {
+                const extraClass = y === 0 ? ' origin' : '';
+                html += `<div class="grafik-number y${extraClass}" style="top:${yToPercent(y)}%;">${y}</div>`;
+            }
+            return html;
+        }
+
+        function buildClickablePoints() {
+            let html = '';
+            for (let x = -5; x <= 5; x++) {
+                html += `
+                            <button
+                                type="button"
+                                class="grafik-click-point"
+                                data-x="${x}"
+                                style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
+                                onclick="cekTitikGrafikMc4(this)"
+                                aria-label="Titik x ${x}">
+                            </button>
+                        `;
+            }
+            return html;
+        }
+
+        function buildGrafikInteraktifMc4() {
+            return `
+                        <div class="grafik-board">
+                            <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
+
+                            <div class="grafik-axis-x"></div>
+                            <div class="grafik-axis-y"></div>
+                            <div class="grafik-arrow-x"></div>
+                            <div class="grafik-arrow-y"></div>
+
+                            ${buildTicksX()}
+                            ${buildTicksY()}
+                            ${buildLabelsX()}
+                            ${buildLabelsY()}
+
+                            <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+
+                            ${buildClickablePoints()}
+                        </div>
+                    `;
+        }
+
+        function aktifkanGrafikMari() {
+            const box = document.getElementById('grafik-mc4');
+            const tools = document.getElementById('grafik-mc4-tools');
+            const feedback = document.getElementById('grafikFeedback');
+            const penjelasan = document.getElementById('grafikPenjelasan');
+
+            if (!box) return;
+
+            mariGrafikAktif = true;
+            grafikMc4Solved = false;
+
+            box.className = '';
+            box.style.minHeight = 'unset';
+            box.style.padding = '0';
+            box.style.background = 'transparent';
+            box.style.border = 'none';
+            box.innerHTML = buildGrafikInteraktifMc4();
+
+            if (tools) tools.style.display = 'flex';
+
+            if (feedback) {
+                feedback.className = 'grafik-feedback-mini';
+                feedback.innerHTML = '';
+            }
+
+            if (penjelasan) {
+                penjelasan.classList.remove('show');
+            }
+        }
+
+        function nonaktifkanGrafikMari() {
+            const box = document.getElementById('grafik-mc4');
+            const tools = document.getElementById('grafik-mc4-tools');
+            const feedback = document.getElementById('grafikFeedback');
+            const penjelasan = document.getElementById('grafikPenjelasan');
+
+            mariGrafikAktif = false;
+            grafikMc4Solved = false;
+
+            if (box) {
+                box.className = 'graph-placeholder';
+                box.style.minHeight = '430px';
+                box.style.padding = '20px';
+                box.style.background = 'linear-gradient(180deg, #fcfefb, #f7fbf5)';
+                box.style.border = '2px dashed #cfdcc8';
+                box.style.borderRadius = '20px';
+                box.innerHTML = 'Grafik akan aktif setelah a–d benar semua.';
+            }
+
+            if (tools) tools.style.display = 'none';
+
+            if (feedback) {
+                feedback.className = 'grafik-feedback-mini';
+                feedback.innerHTML = '';
+            }
+
+            if (penjelasan) {
+                penjelasan.classList.remove('show');
+            }
+        }
+
+        function resetGrafikMc4() {
+            if (semuaMariSudahBenar()) {
+                aktifkanGrafikMari();
+            } else {
+                nonaktifkanGrafikMari();
+            }
+        }
+
+        function cekTitikGrafikMc4(btn) {
+            if (!btn || grafikMc4Solved) return;
+
+            const x = Number(btn.dataset.x);
+            const benar = grafikMc4Config.roots.includes(x);
+            const feedback = document.getElementById('grafikFeedback');
+
+            btn.classList.remove('correct', 'wrong');
+            btn.classList.add(benar ? 'correct' : 'wrong');
+            btn.classList.add('disabled');
+
+            if (feedback) {
+                feedback.className = 'grafik-feedback-mini show ' + (benar ? 'success' : 'error');
+                feedback.innerHTML = benar
+                    ? `✅ Benar. Titik <b>(${x}, 0)</b> adalah titik potong dengan sumbu-x.`
+                    : `❌ Titik <b>(${x}, 0)</b> bukan titik potong dengan sumbu-x.`;
+            }
+
+            cekSemuaTitikGrafikMc4();
+        }
+
+        function cekSemuaTitikGrafikMc4() {
+            const benarDipilih = Array.from(document.querySelectorAll('.grafik-click-point.correct'))
+                .map(el => Number(el.dataset.x))
+                .sort((a, b) => a - b);
+
+            const target = [...grafikMc4Config.roots].sort((a, b) => a - b);
+
+            if (JSON.stringify(benarDipilih) === JSON.stringify(target)) {
+                grafikMc4Solved = true;
+
+                document.querySelectorAll('.grafik-click-point').forEach(btn => {
+                    btn.classList.add('disabled');
+                });
+
+                tampilkanKurvaMc4();
+
+                const feedback = document.getElementById('grafikFeedback');
+                const penjelasan = document.getElementById('grafikPenjelasan');
+
+                if (feedback) {
+                    feedback.className = 'grafik-feedback-mini show success';
+                    feedback.innerHTML = '🎉 Semua titik potong sumbu-x sudah benar. Kurva grafik ditampilkan.';
+                }
+
+                if (penjelasan) {
+                    penjelasan.classList.add('show');
+                }
+
+                renderMathSafe();
+            }
+        }
+
+        function tampilkanKurvaMc4() {
+            const svg = document.getElementById('grafikCurveLayer');
+            if (!svg) return;
+
+            let d = '';
+            let drawing = false;
+
+            for (let i = 0; i <= 500; i++) {
+                const x = grafikMc4Config.xmin + (i / 500) * (grafikMc4Config.xmax - grafikMc4Config.xmin);
+                const y = fxMc4(x);
+
+                if (y < grafikMc4Config.ymin || y > grafikMc4Config.ymax) {
+                    drawing = false;
+                    continue;
+                }
+
+                const sx = xToPercent(x);
+                const sy = yToPercent(y);
+
+                if (!drawing) {
+                    d += `M ${sx} ${sy} `;
+                    drawing = true;
+                } else {
+                    d += `L ${sx} ${sy} `;
+                }
+            }
+
+            const rootDots = grafikMc4Config.roots.map(x => {
+                return `<circle cx="${xToPercent(x)}" cy="${yToPercent(0)}" r="1.15" fill="#4f9f40"></circle>`;
+            }).join('');
+
+            const yDot = `<circle cx="${xToPercent(0)}" cy="${yToPercent(6)}" r="1.15" fill="#f2994a"></circle>`;
+
+            svg.innerHTML = `
+                        <path
+                            d="${d}"
+                            fill="none"
+                            stroke="#2d9cdb"
+                            stroke-width="0.7"
+                            vector-effect="non-scaling-stroke"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                        </path>
+                        ${rootDots}
+                        ${yDot}
+                    `;
         }
 
         function cekMari(no) {
             let val = norm(document.getElementById('m' + no).value);
-
             let benar = false;
 
             if (no == 1) {
-                benar = ['2,3,-2,-1', '2,3,-1,-2'].includes(val);
-            }
-            if (no == 2) {
-                benar = val.includes('(x-2)') && val.includes('(x-3)') && val.includes('(x+2)') && val.includes('(x+1)');
-            }
-            if (no == 3) {
-                benar = val.includes('(2,0)') && val.includes('(3,0)');
-            }
-            if (no == 4) {
-                benar = val.includes('(0,-24)');
+                const user = splitAndClean(document.getElementById('m1').value).map(item => item.replace(/^x=/, ''));
+                const answer = ['-2', '-1', '1', '3'];
+                benar = sameSet(user, answer);
             }
 
-            let fb = document.getElementById('fb' + no);
-            let step = document.getElementById('step' + no);
+            if (no == 2) {
+                benar =
+                    val.includes('(x+2)') &&
+                    val.includes('(x+1)') &&
+                    val.includes('(x-1)') &&
+                    val.includes('(x-3)');
+            }
+
+            if (no == 3) {
+                const user = extractCoordinatePairs(document.getElementById('m3').value);
+                const answer = ['(-2,0)', '(-1,0)', '(1,0)', '(3,0)'];
+                benar = sameSet(user, answer);
+            }
+
+            if (no == 4) {
+                const validAnswers = ['(0,6)', '0,6'].map(item => normalizeText(item));
+                benar = validAnswers.includes(normalizeText(document.getElementById('m4').value));
+            }
+
+            const fb = document.getElementById('fb' + no);
+            const step = document.getElementById('step' + no);
 
             if (benar) {
-                fb.className = 'feedback-box show success';
-                fb.innerHTML = '✅ Benar!';
+                if (fb) {
+                    fb.className = 'feedback-box show success';
+                    fb.innerHTML = '✅ Benar!';
+                }
                 if (step) step.classList.add('show');
             } else {
-                fb.className = 'feedback-box show error';
-                fb.innerHTML = '❌ Salah, coba lagi sampai benar';
+                if (fb) {
+                    fb.className = 'feedback-box show error';
+                    fb.innerHTML = '❌ Salah, coba lagi sampai benar';
+                }
                 if (step) step.classList.remove('show');
             }
+
+            if (semuaMariSudahBenar()) {
+                aktifkanGrafikMari();
+            } else {
+                nonaktifkanGrafikMari();
+            }
+
+            renderMathSafe();
         }
 
         function cekSoal1(bagian) {
-            const input = document.getElementById('soal1' + bagian).value.trim();
+            const input = document.getElementById('soal1' + bagian)?.value.trim();
 
             if (!input) {
                 showFeedback('feedbackSoal1' + bagian, 'error', 'Jawaban belum diisi.');
@@ -1401,7 +2360,7 @@
         }
 
         function cekSoal3(bagian) {
-            const input = document.getElementById('soal3' + bagian).value.trim();
+            const input = document.getElementById('soal3' + bagian)?.value.trim();
 
             if (!input) {
                 showFeedback('feedbackSoal3' + bagian, 'error', 'Jawaban belum diisi.');
@@ -1447,7 +2406,7 @@
             }
 
             if (bagian === 'c') {
-                const user = splitAndClean(input);
+                const user = extractCoordinatePairs(input);
                 const answer = ['(4,0)', '(2,0)', '(-2,0)', '(-1,0)'];
 
                 if (sameSet(user, answer)) {
@@ -1473,6 +2432,17 @@
 
             cekProgressSoal3();
         }
+
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                if (semuaMariSudahBenar()) {
+                    aktifkanGrafikMari();
+                } else {
+                    nonaktifkanGrafikMari();
+                }
+                renderMathSafe();
+            }, 300);
+        });
     </script>
 @endsection
 

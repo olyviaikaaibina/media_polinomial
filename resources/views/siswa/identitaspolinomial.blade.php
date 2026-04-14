@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                        delimiters: [
-                                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                                        ]
-                                                                                                                                                    });"></script>
+                                                                                                                                                                                delimiters: [
+                                                                                                                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                    {left: '$', right: '$', display: false}
+                                                                                                                                                                                ]
+                                                                                                                                                                            });"></script>
 
     <style>
         :root {
@@ -953,6 +953,448 @@
                 font-size: 14px;
             }
         }
+
+        /* =========================
+                       LATIHAN DRAG & DROP
+                    ========================= */
+        .latihan-drag-wrap {
+            margin-top: 38px;
+        }
+
+        .latihan-drag-header {
+            display: inline-block;
+            background: #8c8c8c;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 10px 38px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            letter-spacing: .3px;
+        }
+
+        .latihan-drag-card {
+            border: 2px solid #2997d3;
+            background: #fff;
+            padding: 20px 16px 24px;
+            border-radius: 16px;
+        }
+
+        .latihan-drag-intro {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .latihan-drag-section {
+            margin-top: 18px;
+            padding: 18px 16px;
+            border-radius: 16px;
+            background: #f8fcff;
+            border: 1px solid #d7ecf8;
+        }
+
+        .latihan-drag-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f4e72;
+            margin-bottom: 16px;
+        }
+
+        .drag-area-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .drag-dropzone {
+            border: 2px dashed #b8cad6;
+            border-radius: 16px;
+            background: #f9f9f9;
+            min-height: 145px;
+            padding: 14px;
+            transition: .2s ease;
+        }
+
+        .drag-dropzone.over,
+        .pair-target.over {
+            background: #eef8ff;
+            border-color: #2997d3;
+        }
+
+        .drag-dropzone-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #295b77;
+            margin-bottom: 10px;
+        }
+
+        .drag-dropzone-body {
+            min-height: 80px;
+        }
+
+        .drag-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px;
+            background: #fffaf5;
+            border: 1px dashed #e4c8b0;
+            border-radius: 14px;
+        }
+
+        .drag-bank.vertical {
+            flex-direction: column;
+        }
+
+        .drag-item {
+            background: #fff;
+            border: 1.5px solid #d9d9d9;
+            border-radius: 14px;
+            padding: 12px 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .04);
+            cursor: grab;
+            transition: .18s ease;
+            user-select: none;
+        }
+
+        .drag-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .drag-item.dragging {
+            opacity: .45;
+        }
+
+        .drag-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf6ea;
+            color: #1b7a2a;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .drag-math {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .pair-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 16px;
+        }
+
+        .pair-heading {
+            font-size: 15px;
+            font-weight: 800;
+            color: #2f8b3a;
+            margin-bottom: 12px;
+        }
+
+        .pair-target {
+            background: #fff;
+            border: 2px dashed #cfcfcf;
+            border-radius: 16px;
+            padding: 14px;
+            min-height: 100px;
+            margin-bottom: 12px;
+            transition: .2s ease;
+        }
+
+        .pair-soal {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pair-slot-text {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .drag-action-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .drag-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .15s ease;
+            background: #e9ecef;
+            color: #222;
+        }
+
+        .drag-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .drag-btn-primary {
+            background: #2997d3;
+            color: #fff;
+        }
+
+        .drag-feedback,
+        .drag-summary {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .drag-feedback.show,
+        .drag-summary.show {
+            display: block;
+        }
+
+        .drag-feedback.ok,
+        .drag-summary.ok {
+            background: #e3f6e7;
+            border: 1px solid #5ea86a;
+            color: #1f5f2a;
+        }
+
+        .drag-feedback.no,
+        .drag-summary.no {
+            background: #fde8e8;
+            border: 1px solid #d16c6c;
+            color: #8a2525;
+        }
+
+        @media (max-width: 768px) {
+
+            .drag-area-row,
+            .pair-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .drag-math,
+            .pair-soal {
+                font-size: 16px;
+            }
+
+            .latihan-drag-header {
+                font-size: 17px;
+                padding: 9px 26px;
+            }
+        }
+
+        .latihan-drag-wrap {
+            margin-top: 38px;
+        }
+
+        .latihan-drag-header {
+            display: inline-block;
+            background: #8c8c8c;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 10px 38px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            letter-spacing: .3px;
+        }
+
+        .latihan-drag-card {
+            border: 2px solid #2997d3;
+            background: #fff;
+            padding: 20px 16px 24px;
+            border-radius: 16px;
+        }
+
+        .latihan-drag-intro {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .latihan-drag-section {
+            margin-top: 18px;
+            padding: 18px 16px;
+            border-radius: 16px;
+            background: #f8fcff;
+            border: 1px solid #d7ecf8;
+        }
+
+        .latihan-drag-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f4e72;
+            margin-bottom: 16px;
+        }
+
+        .drag-area-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .drag-dropzone {
+            border: 2px dashed #b8cad6;
+            border-radius: 16px;
+            background: #f9f9f9;
+            min-height: 145px;
+            padding: 14px;
+            transition: .2s ease;
+        }
+
+        .drag-dropzone.over {
+            background: #eef8ff;
+            border-color: #2997d3;
+        }
+
+        .drag-dropzone-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #295b77;
+            margin-bottom: 10px;
+        }
+
+        .drag-dropzone-body {
+            min-height: 80px;
+        }
+
+        .drag-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px;
+            background: #fffaf5;
+            border: 1px dashed #e4c8b0;
+            border-radius: 14px;
+        }
+
+        .drag-item {
+            background: #fff;
+            border: 1.5px solid #d9d9d9;
+            border-radius: 14px;
+            padding: 12px 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .04);
+            cursor: grab;
+            transition: .18s ease;
+            user-select: none;
+            width: calc(50% - 6px);
+        }
+
+        .drag-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .drag-item.dragging {
+            opacity: .45;
+        }
+
+        .drag-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf6ea;
+            color: #1b7a2a;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .drag-math {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .drag-action-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .drag-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .15s ease;
+            background: #e9ecef;
+            color: #222;
+        }
+
+        .drag-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .drag-btn-primary {
+            background: #2997d3;
+            color: #fff;
+        }
+
+        .drag-feedback,
+        .drag-summary {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .drag-feedback.show,
+        .drag-summary.show {
+            display: block;
+        }
+
+        .drag-feedback.ok,
+        .drag-summary.ok {
+            background: #e3f6e7;
+            border: 1px solid #5ea86a;
+            color: #1f5f2a;
+        }
+
+        .drag-feedback.no,
+        .drag-summary.no {
+            background: #fde8e8;
+            border: 1px solid #d16c6c;
+            color: #8a2525;
+        }
+
+        @media (max-width: 768px) {
+            .drag-area-row {
+                grid-template-columns: 1fr;
+            }
+
+            .drag-item {
+                width: 100%;
+            }
+
+            .drag-math {
+                font-size: 16px;
+            }
+
+            .latihan-drag-header {
+                font-size: 17px;
+                padding: 9px 26px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1657,6 +2099,70 @@
                     </div>
                 </div>
             </div>
+
+            <div class="latihan-drag-wrap" id="latihan-drag-identitas-lima">
+                <div class="latihan-drag-header">LATIHAN</div>
+
+                <div class="latihan-drag-card">
+                    <p class="latihan-drag-intro">
+                        Seret setiap kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.
+                        Setelah semua kartu disusun, tekan <b>Cek Jawaban</b> untuk melihat hasil dan penjelasannya.
+                    </p>
+
+                    <div class="latihan-drag-section">
+                        <div class="latihan-drag-title">A. Apakah ini identitas polinomial?</div>
+
+                        <div class="drag-area-row">
+                            <div class="drag-dropzone" data-role="identitas-zone">
+                                <div class="drag-dropzone-title">IDENTITAS</div>
+                                <div class="drag-dropzone-body" id="zone-identitas-lima"></div>
+                            </div>
+
+                            <div class="drag-dropzone" data-role="bukan-zone">
+                                <div class="drag-dropzone-title">BUKAN IDENTITAS</div>
+                                <div class="drag-dropzone-body" id="zone-bukan-lima"></div>
+                            </div>
+                        </div>
+
+                        <div class="drag-bank" id="bank-identitas-lima">
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q1">
+                                <div class="drag-number">1</div>
+                                <div class="drag-math">$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="bukan" data-id="q2">
+                                <div class="drag-number">2</div>
+                                <div class="drag-math">$(2y+5)(2y-5) = 4y^2 - 10y - 25$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q3">
+                                <div class="drag-number">3</div>
+                                <div class="drag-math">$(x+a)(x-a) = x^2 - a^2$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="bukan" data-id="q4">
+                                <div class="drag-number">4</div>
+                                <div class="drag-math">$(x-4)^2 = x^2 - 4$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q5">
+                                <div class="drag-number">5</div>
+                                <div class="drag-math">$a^3 + b^3 = (a+b)(a^2-ab+b^2)$</div>
+                            </div>
+                        </div>
+
+                        <div class="drag-action-row">
+                            <button type="button" class="drag-btn drag-btn-primary" id="cek-identitas-lima">Cek
+                                Jawaban</button>
+                            <button type="button" class="drag-btn" id="reset-identitas-lima">Ulangi</button>
+                        </div>
+
+                        <div class="drag-summary" id="summary-identitas-lima"></div>
+
+                        <div class="drag-feedback" id="feedback-identitas-lima"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
             (function () {
@@ -1780,24 +2286,24 @@
                     if (jawaban === benar1 || jawaban === benar2) {
                         quizItem.classList.add('benar');
                         penjelasan.innerHTML = `
-                                                                ✔ <b>Benar!</b> Jawabanmu tepat.
-                                                                Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
-                                                                $16 = 4^2$, sehingga:
-                                                                $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
-                                                                Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
-                                                                atau <b>$(x-4)(x+4)$</b>.
-                                                            `;
+                                                                                        ✔ <b>Benar!</b> Jawabanmu tepat.
+                                                                                        Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
+                                                                                        $16 = 4^2$, sehingga:
+                                                                                        $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
+                                                                                        Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
+                                                                                        atau <b>$(x-4)(x+4)$</b>.
+                                                                                    `;
                     } else {
                         quizItem.classList.add('salah');
                         penjelasan.innerHTML = `
-                                                                ✘ <b>Jawabanmu belum tepat.</b>
-                                                                Bentuk $x^2 - 16$ harus dikenali sebagai:
-                                                                $$x^2 - 16 = x^2 - 4^2$$
-                                                                lalu gunakan identitas:
-                                                                $$a^2 - b^2 = (a+b)(a-b)$$
-                                                                sehingga hasil yang benar adalah:
-                                                                $$x^2 - 16 = (x+4)(x-4).$$
-                                                            `;
+                                                                                        ✘ <b>Jawabanmu belum tepat.</b>
+                                                                                        Bentuk $x^2 - 16$ harus dikenali sebagai:
+                                                                                        $$x^2 - 16 = x^2 - 4^2$$
+                                                                                        lalu gunakan identitas:
+                                                                                        $$a^2 - b^2 = (a+b)(a-b)$$
+                                                                                        sehingga hasil yang benar adalah:
+                                                                                        $$x^2 - 16 = (x+4)(x-4).$$
+                                                                                    `;
                     }
 
                     if (typeof renderMathInElement === 'function') {
@@ -2107,14 +2613,414 @@
                 });
             })();
         </script>
+
+        <script>
+            (function () {
+                const latihanRoot = document.getElementById('latihan-drag-identitas');
+                if (!latihanRoot) return;
+
+                const draggableItems = latihanRoot.querySelectorAll('.drag-item');
+                const dropzones = latihanRoot.querySelectorAll('.drag-dropzone');
+                const pairTargets = latihanRoot.querySelectorAll('.pair-target');
+
+                const bankSoal = document.getElementById('bank-soal-identitas');
+                const bankFaktor = document.getElementById('bank-faktorisasi');
+
+                const btnCek = document.getElementById('cek-latihan-drag');
+                const btnReset = document.getElementById('reset-latihan-drag');
+
+                const feedbackIdentitas = document.getElementById('feedback-identitas-drag');
+                const feedbackFaktorisasi = document.getElementById('feedback-faktorisasi-drag');
+                const summary = document.getElementById('summary-latihan-drag');
+
+                let activeDrag = null;
+
+                draggableItems.forEach((item) => {
+                    item.addEventListener('dragstart', function () {
+                        activeDrag = this;
+                        this.classList.add('dragging');
+                    });
+
+                    item.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
+                    });
+                });
+
+                dropzones.forEach((zone) => {
+                    zone.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        this.classList.add('over');
+                    });
+
+                    zone.addEventListener('dragleave', function () {
+                        this.classList.remove('over');
+                    });
+
+                    zone.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        this.classList.remove('over');
+                        if (!activeDrag) return;
+
+                        const body = this.querySelector('.drag-dropzone-body');
+                        if (body && activeDrag.dataset.answer) {
+                            body.appendChild(activeDrag);
+                            rerenderMath();
+                        }
+                    });
+                });
+
+                pairTargets.forEach((target) => {
+                    target.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        this.classList.add('over');
+                    });
+
+                    target.addEventListener('dragleave', function () {
+                        this.classList.remove('over');
+                    });
+
+                    target.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        this.classList.remove('over');
+                        if (!activeDrag) return;
+                        if (!activeDrag.classList.contains('factor-item')) return;
+
+                        const existing = this.querySelector('.factor-item');
+                        if (existing) {
+                            bankFaktor.appendChild(existing);
+                        }
+
+                        this.appendChild(activeDrag);
+                        rerenderMath();
+                    });
+                });
+
+                function rerenderMath() {
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(latihanRoot, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
+                        });
+                    }
+                }
+
+                function tampilkanBox(el, type, html) {
+                    el.className = 'drag-feedback show ' + type;
+                    el.innerHTML = html;
+                }
+
+                function tampilkanSummary(type, html) {
+                    summary.className = 'drag-summary show ' + type;
+                    summary.innerHTML = html;
+                }
+
+                btnCek?.addEventListener('click', function () {
+                    let skor = 0;
+                    const total = 4;
+
+                    // ===== CEK BAGIAN A =====
+                    let benarIdentitas = 0;
+
+                    const cardsIdentitas = document.querySelectorAll('#zone-identitas .drag-item');
+                    const cardsBukan = document.querySelectorAll('#zone-bukan-identitas .drag-item');
+
+                    cardsIdentitas.forEach((card) => {
+                        if (card.dataset.answer === 'identitas') benarIdentitas++;
+                    });
+
+                    cardsBukan.forEach((card) => {
+                        if (card.dataset.answer === 'bukan') benarIdentitas++;
+                    });
+
+                    skor += benarIdentitas;
+
+                    if (benarIdentitas === 2) {
+                        tampilkanBox(
+                            feedbackIdentitas,
+                            'ok',
+                            `✔ Bagian A benar semua.<br>
+                                <b>Penjelasan:</b><br>
+                                1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
+                                2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
+                                $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
+                        );
+                    } else {
+                        tampilkanBox(
+                            feedbackIdentitas,
+                            'no',
+                            `✘ Bagian A belum tepat semuanya.<br>
+                                <b>Petunjuk:</b><br>
+                                Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
+                        );
+                    }
+
+                    // ===== CEK BAGIAN B =====
+                    let benarFaktor = 0;
+
+                    pairTargets.forEach((target) => {
+                        const card = target.querySelector('.factor-item');
+                        if (card && card.dataset.pairAnswer === target.dataset.pair) {
+                            benarFaktor++;
+                        }
+                    });
+
+                    skor += benarFaktor;
+
+                    if (benarFaktor === 2) {
+                        tampilkanBox(
+                            feedbackFaktorisasi,
+                            'ok',
+                            `✔ Bagian B benar semua.<br>
+                                <b>Penjelasan:</b><br>
+                                3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
+                                4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
+                        );
+                    } else {
+                        tampilkanBox(
+                            feedbackFaktorisasi,
+                            'no',
+                            `✘ Bagian B masih ada yang belum tepat.<br>
+                                <b>Petunjuk:</b><br>
+                                - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
+                                - $27p^3+125$ cocok dengan jumlah dua kubik.`
+                        );
+                    }
+
+                    if (skor === total) {
+                        tampilkanSummary(
+                            'ok',
+                            `🎉 Skor kamu <b>${skor}/${total}</b>. Semua jawaban benar. Bagus sekali!`
+                        );
+                    } else {
+                        tampilkanSummary(
+                            'no',
+                            `Skor kamu <b>${skor}/${total}</b>. Coba susun lagi kartunya lalu tekan <b>Cek Jawaban</b>.`
+                        );
+                    }
+
+                    rerenderMath();
+                });
+
+                btnReset?.addEventListener('click', function () {
+                    feedbackIdentitas.className = 'drag-feedback';
+                    feedbackIdentitas.innerHTML = '';
+
+                    feedbackFaktorisasi.className = 'drag-feedback';
+                    feedbackFaktorisasi.innerHTML = '';
+
+                    summary.className = 'drag-summary';
+                    summary.innerHTML = '';
+
+                    document.querySelectorAll('#zone-identitas .drag-item, #zone-bukan-identitas .drag-item').forEach((card) => {
+                        bankSoal.appendChild(card);
+                    });
+
+                    pairTargets.forEach((target) => {
+                        const card = target.querySelector('.factor-item');
+                        if (card) {
+                            bankFaktor.appendChild(card);
+                        }
+                    });
+
+                    rerenderMath();
+                });
+
+                rerenderMath();
+            })();
+        </script>
+
+        <script>
+            (function () {
+                const root = document.getElementById('latihan-drag-identitas-lima');
+                if (!root) return;
+
+                const bank = document.getElementById('bank-identitas-lima');
+                const zoneIdentitas = document.getElementById('zone-identitas-lima');
+                const zoneBukan = document.getElementById('zone-bukan-lima');
+
+                const dropzones = root.querySelectorAll('.drag-dropzone');
+                const btnCek = document.getElementById('cek-identitas-lima');
+                const btnReset = document.getElementById('reset-identitas-lima');
+                const summary = document.getElementById('summary-identitas-lima');
+                const feedback = document.getElementById('feedback-identitas-lima');
+
+                let activeDrag = null;
+
+                function initDragItems() {
+                    const items = root.querySelectorAll('.drag-item');
+
+                    items.forEach((item) => {
+                        item.addEventListener('dragstart', function () {
+                            activeDrag = this;
+                            this.classList.add('dragging');
+                        });
+
+                        item.addEventListener('dragend', function () {
+                            this.classList.remove('dragging');
+                        });
+                    });
+                }
+
+                function rerenderMath() {
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(root, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
+                        });
+                    }
+                }
+
+                function setSummary(type, html) {
+                    summary.className = 'drag-summary show ' + type;
+                    summary.innerHTML = html;
+                }
+
+                function setFeedback(type, html) {
+                    feedback.className = 'drag-feedback show ' + type;
+                    feedback.innerHTML = html;
+                }
+
+                dropzones.forEach((zone) => {
+                    zone.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        this.classList.add('over');
+                    });
+
+                    zone.addEventListener('dragleave', function () {
+                        this.classList.remove('over');
+                    });
+
+                    zone.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        this.classList.remove('over');
+
+                        if (!activeDrag) return;
+                        const body = this.querySelector('.drag-dropzone-body');
+                        if (!body) return;
+
+                        body.appendChild(activeDrag);
+                        rerenderMath();
+                    });
+                });
+
+                btnCek?.addEventListener('click', function () {
+                    const semuaKartu = root.querySelectorAll('.drag-item');
+                    const diIdentitas = zoneIdentitas.querySelectorAll('.drag-item');
+                    const diBukan = zoneBukan.querySelectorAll('.drag-item');
+
+                    if (semuaKartu.length !== 5) return;
+
+                    const totalTersusun = diIdentitas.length + diBukan.length;
+
+                    if (totalTersusun < 5) {
+                        setSummary('no', 'Semua kartu harus dipindahkan dulu ke kotak jawaban sebelum dicek.');
+                        setFeedback('no', 'Masih ada kartu yang belum disusun. Seret semua kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.');
+                        return;
+                    }
+
+                    let skor = 0;
+
+                    diIdentitas.forEach((card) => {
+                        if (card.dataset.answer === 'identitas') skor++;
+                    });
+
+                    diBukan.forEach((card) => {
+                        if (card.dataset.answer === 'bukan') skor++;
+                    });
+
+                    if (skor === 5) {
+                        setSummary('ok', '🎉 Skor kamu <b>5/5</b>. Semua jawaban benar.');
+                    } else {
+                        setSummary('no', `Skor kamu <b>${skor}/5</b>. Masih ada jawaban yang perlu diperbaiki.`);
+                    }
+
+                    setFeedback(
+                        skor === 5 ? 'ok' : 'no',
+                        `
+                    <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
+
+                    <div style="margin-bottom:12px;">
+                        <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
+                        Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
+                        hasilnya selalu:
+                        $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
+                        Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
+                    </div>
+
+                    <div style="margin-bottom:12px;">
+                        <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
+                        Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
+                        $$ (a+b)(a-b)=a^2-b^2 $$
+                        dengan $a=2y$ dan $b=5$, sehingga:
+                        $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
+                        Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
+                        Maka pernyataan ini <b>bukan identitas</b>.
+                    </div>
+
+                    <div style="margin-bottom:12px;">
+                        <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
+                        Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
+                        $$ (x+a)(x-a)=x^2-a^2 $$
+                        Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
+                        <b>identitas polinomial</b>.
+                    </div>
+
+                    <div style="margin-bottom:12px;">
+                        <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
+                        Gunakan rumus <b>kuadrat selisih dua suku</b>:
+                        $$ (a-b)^2 = a^2 - 2ab + b^2 $$
+                        dengan $a=x$ dan $b=4$, maka:
+                        $$ (x-4)^2 = x^2 - 8x + 16 $$
+                        Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
+                        maka ini <b>bukan identitas</b>.
+                    </div>
+
+                    <div style="margin-bottom:4px;">
+                        <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
+                        Ini adalah rumus baku <b>jumlah dua kubik</b>:
+                        $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
+                        Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
+                        <b>identitas polinomial</b>.
+                    </div>
+                    `
+                    );
+
+                    rerenderMath();
+                });
+
+                btnReset?.addEventListener('click', function () {
+                    const cardsInZones = root.querySelectorAll('#zone-identitas-lima .drag-item, #zone-bukan-lima .drag-item');
+
+                    cardsInZones.forEach((card) => {
+                        bank.appendChild(card);
+                    });
+
+                    summary.className = 'drag-summary';
+                    summary.innerHTML = '';
+
+                    feedback.className = 'drag-feedback';
+                    feedback.innerHTML = '';
+
+                    rerenderMath();
+                });
+
+                initDragItems();
+                rerenderMath();
+            })();
+        </script>
+    </div>
 @endsection
 
 @section('nav')
-        <a href="{{ route('kuisd') }}" class="btn-nav prev-btn">
-            ← Previous
-        </a>
+    <a href="{{ route('kuisd') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-        <a href="{{ route('kuise') }}" class="btn-nav next-btn">
-            Next →
-        </a>
+    <a href="{{ route('kuise') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection

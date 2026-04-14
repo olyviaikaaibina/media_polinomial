@@ -7,6 +7,7 @@ use App\Models\QuizQuestion;
 use App\Models\QuizOption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class QuizQuestionController extends Controller
 {
@@ -20,22 +21,28 @@ class QuizQuestionController extends Controller
     public function store(Request $request, $quizId)
     {
         $request->validate([
-            'question_text' => 'required|string',
-            'option_a' => 'required|string',
-            'option_b' => 'required|string',
-            'option_c' => 'required|string',
-            'option_d' => 'required|string',
-            'correct_option' => 'required|in:A,B,C,D',
+            'question_text'   => 'required|string',
+            'question_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'option_a'        => 'required|string',
+            'option_b'        => 'required|string',
+            'option_c'        => 'required|string',
+            'option_d'        => 'required|string',
+            'correct_option'  => 'required|in:A,B,C,D',
         ]);
 
         DB::transaction(function () use ($request, $quizId) {
-            $nextOrder = QuizQuestion::where('quiz_id', $quizId)->max('question_order') + 1;
+            $nextOrder = (QuizQuestion::where('quiz_id', $quizId)->max('question_order') ?? 0) + 1;
+
+            $imagePath = null;
+            if ($request->hasFile('question_image')) {
+                $imagePath = $request->file('question_image')->store('question_images', 'public');
+            }
 
             $question = QuizQuestion::create([
-                'quiz_id' => $quizId,
-                'question_text' => $request->question_text,
-                'question_image' => null,
-                'question_order' => $nextOrder,
+                'quiz_id'         => $quizId,
+                'question_text'   => $request->question_text,
+                'question_image'  => $imagePath,
+                'question_order'  => $nextOrder,
             ]);
 
             $options = [
@@ -47,11 +54,11 @@ class QuizQuestionController extends Controller
 
             foreach ($options as $label => $text) {
                 QuizOption::create([
-                    'question_id' => $question->id,
-                    'option_label' => $label,
-                    'option_text' => $text,
-                    'option_image' => null,
-                    'is_correct' => $request->correct_option === $label ? 1 : 0,
+                    'question_id'   => $question->id,
+                    'option_label'  => $label,
+                    'option_text'   => $text,
+                    'option_image'  => null,
+                    'is_correct'    => $request->correct_option === $label ? 1 : 0,
                 ]);
             }
 
@@ -73,20 +80,31 @@ class QuizQuestionController extends Controller
     public function update(Request $request, $questionId)
     {
         $request->validate([
-            'question_text' => 'required|string',
-            'option_a' => 'required|string',
-            'option_b' => 'required|string',
-            'option_c' => 'required|string',
-            'option_d' => 'required|string',
-            'correct_option' => 'required|in:A,B,C,D',
+            'question_text'   => 'required|string',
+            'question_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'option_a'        => 'required|string',
+            'option_b'        => 'required|string',
+            'option_c'        => 'required|string',
+            'option_d'        => 'required|string',
+            'correct_option'  => 'required|in:A,B,C,D',
         ]);
 
         DB::transaction(function () use ($request, $questionId) {
             $question = QuizQuestion::with('options', 'quiz')->findOrFail($questionId);
 
-            $question->update([
+            $data = [
                 'question_text' => $request->question_text,
-            ]);
+            ];
+
+            if ($request->hasFile('question_image')) {
+                if ($question->question_image && Storage::disk('public')->exists($question->question_image)) {
+                    Storage::disk('public')->delete($question->question_image);
+                }
+
+                $data['question_image'] = $request->file('question_image')->store('question_images', 'public');
+            }
+
+            $question->update($data);
 
             $map = [
                 'A' => $request->option_a,
@@ -98,12 +116,13 @@ class QuizQuestionController extends Controller
             foreach ($question->options as $option) {
                 $option->update([
                     'option_text' => $map[$option->option_label] ?? '',
-                    'is_correct' => $request->correct_option === $option->option_label ? 1 : 0,
+                    'is_correct'  => $request->correct_option === $option->option_label ? 1 : 0,
                 ]);
             }
         });
 
         $question = QuizQuestion::findOrFail($questionId);
+
         return redirect()->route('kuis.soal', $question->quiz_id)->with('success', 'Soal berhasil diupdate.');
     }
 
@@ -113,12 +132,19 @@ class QuizQuestionController extends Controller
         $quizId = $question->quiz_id;
 
         DB::transaction(function () use ($question, $quizId) {
+            if ($question->question_image && Storage::disk('public')->exists($question->question_image)) {
+                Storage::disk('public')->delete($question->question_image);
+            }
+
             $question->delete();
 
-            $remaining = QuizQuestion::where('quiz_id', $quizId)->orderBy('question_order')->get();
+            $remaining = QuizQuestion::where('quiz_id', $quizId)
+                ->orderBy('question_order')
+                ->get();
 
             foreach ($remaining as $index => $item) {
-                $item->update(['question_order' => $index + 1]);
+                $item->question_order = $index + 1;
+                $item->save();
             }
 
             Quiz::where('id', $quizId)->update([

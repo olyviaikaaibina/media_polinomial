@@ -1019,7 +1019,7 @@
 
         .contoh-rasional-box p,
         .contoh-rasional-box li {
-            font-size: 16px;
+            font-size: 13px;
             line-height: 1.8;
             color: #222;
         }
@@ -1037,7 +1037,7 @@
 
         .soal-rumus {
             text-align: center;
-            font-size: 30px;
+            font-size: 20px;
             margin: 8px 0 18px;
             color: #555;
         }
@@ -1051,7 +1051,7 @@
         }
 
         .langkah-title {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 800;
             color: #1b7a2a;
             margin-bottom: 8px;
@@ -1220,7 +1220,7 @@
             background: var(--latihan-head);
             color: #fff;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 18px;
             letter-spacing: .5px;
             padding: 10px 32px;
             border-radius: 10px;
@@ -1230,7 +1230,7 @@
         .latihan-box {
             border: 3px solid var(--latihan-border);
             background: #fff;
-            padding: 22px 22px 28px;
+            padding: 18px 18px 20px;
         }
 
         .latihan-box>ol {
@@ -1244,14 +1244,14 @@
         }
 
         .latihan-soal-text {
-            font-size: 20px;
+            font-size: 17px;
             color: #222;
             line-height: 1.6;
         }
 
         .latihan-soal-rumus {
             text-align: center;
-            font-size: 30px;
+            font-size: 25px;
             color: #333;
             margin: 10px 0 16px;
         }
@@ -1825,7 +1825,6 @@
                 </p>
 
                 <div class="rumus-box">
-                    <div class="rumus-label">MODEL FUNGSI</div>
                     <div class="rumus-besar">
                         \[
                         P(x)=x^3-2x^2+x+1
