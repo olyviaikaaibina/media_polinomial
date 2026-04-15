@@ -1802,464 +1802,463 @@
         </div>
     </div>
 
-    <script>
+   <script>
+    let langkahTerbuka = 0;
 
-        function bukaEksplorasiStep(stepId) {
-            const el = document.getElementById(stepId);
-            if (el) {
-                el.classList.remove('locked-step');
-            }
+    function bukaEksplorasiStep(stepId) {
+        const el = document.getElementById(stepId);
+        if (el) {
+            el.classList.remove('locked-step');
         }
+    }
 
-        function resetEksplorasiPenjelasan(feedbackId, penjelasanId) {
-            const feedback = document.getElementById(feedbackId);
-            const penjelasan = document.getElementById(penjelasanId);
+    function resetEksplorasiPenjelasan(feedbackId, penjelasanId) {
+        const feedback = document.getElementById(feedbackId);
+        const penjelasan = document.getElementById(penjelasanId);
 
-            feedback.innerHTML = '';
-            feedback.className = 'latihan-feedback';
+        feedback.innerHTML = '';
+        feedback.className = 'latihan-feedback';
 
-            if (penjelasan) {
-                penjelasan.innerHTML = '';
-                penjelasan.classList.remove('show');
-            }
+        if (penjelasan) {
+            penjelasan.innerHTML = '';
+            penjelasan.classList.remove('show');
         }
+    }
 
-        function cekEksplorasi1() {
-            const p1 = normalisasiInput(document.getElementById('eksplorasiP1').value);
-            const p3 = normalisasiInput(document.getElementById('eksplorasiP3').value);
+    function cekEksplorasi1() {
+        const p1 = normalisasiInput(document.getElementById('eksplorasiP1').value);
+        const p3 = normalisasiInput(document.getElementById('eksplorasiP3').value);
 
-            const feedback = document.getElementById('eksplorasiFeedback1');
-            const penjelasan = document.getElementById('eksplorasiPenjelasan1');
+        const feedback = document.getElementById('eksplorasiFeedback1');
+        const penjelasan = document.getElementById('eksplorasiPenjelasan1');
 
-            if (p1 === '0' && p3 === '0') {
-                feedback.className = 'latihan-feedback benar';
-                feedback.innerHTML = 'Jawaban benar. Nilai yang kamu hitung sudah tepat.';
-
-                penjelasan.innerHTML = `
-                                Untuk polinomial <em>P(x) = x<sup>2</sup> − 4x + 3</em>:
-                                <br><br>
-                                <strong>P(1)</strong> = 1<sup>2</sup> − 4(1) + 3 = 1 − 4 + 3 = <strong>0</strong>
-                                <br>
-                                <strong>P(3)</strong> = 3<sup>2</sup> − 4(3) + 3 = 9 − 12 + 3 = <strong>0</strong>
-                                <br><br>
-                                Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 0</strong> dan
-                                <strong>P(3) = 0</strong>.
-                            `;
-                penjelasan.classList.add('show');
-
-                bukaEksplorasiStep('eksplorasiCard2');
-            } else {
-                feedback.className = 'latihan-feedback salah';
-                feedback.innerHTML = 'Masih ada jawaban yang salah. Coba hitung lagi sampai kedua nilai benar.';
-                penjelasan.classList.remove('show');
-            }
-        }
-
-        function cekEksplorasi2() {
-            const p1 = normalisasiInput(document.getElementById('eksplorasiP1').value);
-            const p3 = normalisasiInput(document.getElementById('eksplorasiP3').value);
-
-            const sisa1 = normalisasiInput(document.getElementById('dugaanSisa1').value);
-            const sisa2 = normalisasiInput(document.getElementById('dugaanSisa2').value);
-
-            const feedback = document.getElementById('eksplorasiFeedback2');
-            const penjelasan = document.getElementById('eksplorasiPenjelasan2');
-
-            if (p1 === '' || p3 === '') {
-                feedback.className = 'latihan-feedback salah';
-                feedback.innerHTML = 'Sebaiknya kerjakan Aktivitas 1 terlebih dahulu agar lebih mudah.';
-                return;
-            }
-
-            if (sisa1 === '0' && sisa2 === '0') {
-                feedback.className = 'latihan-feedback benar';
-                feedback.innerHTML = 'Jawaban benar. Dugaan sisamu sudah tepat.';
-            } else {
-                feedback.className = 'latihan-feedback salah';
-                feedback.innerHTML = 'Jawaban masih salah. Gunakan hasil dari Aktivitas 1.';
-            }
-        }
-        function bukaLangkahSubstitusi(langkah) {
-            if (langkah > langkahTerbuka + 1) {
-                return;
-            }
-
-            const tombol = document.getElementById('btnLangkah' + langkah);
-            if (tombol.classList.contains('locked')) {
-                return;
-            }
-
-            const hasil = document.getElementById('hasilLangkah' + langkah);
-
-            if (!hasil.classList.contains('show')) {
-                hasil.classList.add('show');
-                tombol.classList.add('active');
-
-                if (langkah > langkahTerbuka) {
-                    langkahTerbuka = langkah;
-                }
-
-                const nextLangkah = langkah + 1;
-                const nextButton = document.getElementById('btnLangkah' + nextLangkah);
-
-                if (nextButton) {
-                    nextButton.classList.remove('locked');
-                }
-            }
-        }
-
-        function showHornerInfo(button, text) {
-            const allButtons = document.querySelectorAll('.horner-cell-btn');
-            allButtons.forEach(btn => btn.classList.remove('active'));
-
-            button.classList.add('active');
-            document.getElementById('hornerInfoBox').innerHTML = text;
-        }
-
-        function showPembagiExplanation(id, button) {
-            const allRows = document.querySelectorAll('.tabel-interaktif tbody tr');
-            const allButtons = document.querySelectorAll('.btn-pembagi');
-            const box = document.getElementById('penjelasanPembagiBox');
-
-            allRows.forEach(row => row.classList.remove('baris-aktif'));
-            allButtons.forEach(btn => btn.classList.remove('active'));
-
-            button.classList.add('active');
-            document.getElementById('rowPembagi' + id).classList.add('baris-aktif');
-
-            if (id === 1) {
-                box.innerHTML = `
-                                                                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                                                                    Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                                                                    <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                                                                    <div class="rumus-penjelasan">Sisa = P(2)</div>
-                                                                    Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                                                                    cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                                                                `;
-            } else if (id === 2) {
-                box.innerHTML = `
-                                                                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                                                                    Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                                                                    <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                                                                    <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                                                                    Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                                                                    disubstitusikan ke polinomial justru <strong>−3</strong>.
-                                                                `;
-            } else if (id === 3) {
-                box.innerHTML = `
-                                                                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                                                                    Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                                                                    Maka sisanya diperoleh dari
-                                                                    <div class="rumus-penjelasan">Sisa = P(0)</div>
-                                                                    Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                                                                    sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                                                                `;
-            }
-        }
-
-        function normalisasiInput(text) {
-            return text
-                .toString()
-                .trim()
-                .toLowerCase()
-                .replace(/\s+/g, '')
-                .replace(/−/g, '-');
-        }
-
-        function bukaStep(stepNumber) {
-            const step = document.getElementById('stepCard' + stepNumber);
-            if (step) {
-                step.classList.remove('locked-step');
-            }
-        }
-
-        function tampilkanBenar(feedbackId, penjelasanId, pesanFeedback, isiPenjelasan) {
-            const feedback = document.getElementById(feedbackId);
-            const penjelasan = document.getElementById(penjelasanId);
-
+        if (p1 === '0' && p3 === '0') {
             feedback.className = 'latihan-feedback benar';
-            feedback.innerHTML = 'Jawaban benar. ' + pesanFeedback;
+            feedback.innerHTML = 'Jawaban benar. Nilai yang kamu hitung sudah tepat.';
 
-            penjelasan.innerHTML = isiPenjelasan;
+            penjelasan.innerHTML = `
+                Untuk polinomial <em>P(x) = x<sup>2</sup> − 4x + 3</em>:
+                <br><br>
+                <strong>P(1)</strong> = 1<sup>2</sup> − 4(1) + 3 = 1 − 4 + 3 = <strong>0</strong>
+                <br>
+                <strong>P(3)</strong> = 3<sup>2</sup> − 4(3) + 3 = 9 − 12 + 3 = <strong>0</strong>
+                <br><br>
+                Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 0</strong> dan
+                <strong>P(3) = 0</strong>.
+            `;
+            penjelasan.classList.add('show');
+
+            bukaEksplorasiStep('eksplorasiCard2');
+        } else {
+            feedback.className = 'latihan-feedback salah';
+            feedback.innerHTML = 'Masih ada jawaban yang salah. Coba hitung lagi sampai kedua nilai benar.';
+            penjelasan.classList.remove('show');
+        }
+    }
+
+    function cekEksplorasi2() {
+        const p1 = normalisasiInput(document.getElementById('eksplorasiP1').value);
+        const p3 = normalisasiInput(document.getElementById('eksplorasiP3').value);
+
+        const sisa1 = normalisasiInput(document.getElementById('dugaanSisa1').value);
+        const sisa2 = normalisasiInput(document.getElementById('dugaanSisa2').value);
+
+        const feedback = document.getElementById('eksplorasiFeedback2');
+        const penjelasan = document.getElementById('eksplorasiPenjelasan2');
+
+        if (p1 === '' || p3 === '') {
+            feedback.className = 'latihan-feedback salah';
+            feedback.innerHTML = 'Sebaiknya kerjakan Aktivitas 1 terlebih dahulu agar lebih mudah.';
+            return;
+        }
+
+        if (sisa1 === '0' && sisa2 === '0') {
+            feedback.className = 'latihan-feedback benar';
+            feedback.innerHTML = 'Jawaban benar. Dugaan sisamu sudah tepat.';
+        } else {
+            feedback.className = 'latihan-feedback salah';
+            feedback.innerHTML = 'Jawaban masih salah. Gunakan hasil dari Aktivitas 1.';
+        }
+    }
+
+    function bukaLangkahSubstitusi(langkah) {
+        if (langkah > langkahTerbuka + 1) {
+            return;
+        }
+
+        const tombol = document.getElementById('btnLangkah' + langkah);
+        if (!tombol || tombol.classList.contains('locked')) {
+            return;
+        }
+
+        const hasil = document.getElementById('hasilLangkah' + langkah);
+        if (!hasil) {
+            return;
+        }
+
+        if (!hasil.classList.contains('show')) {
+            hasil.classList.add('show');
+            tombol.classList.add('active');
+
+            if (langkah > langkahTerbuka) {
+                langkahTerbuka = langkah;
+            }
+
+            const nextLangkah = langkah + 1;
+            const nextButton = document.getElementById('btnLangkah' + nextLangkah);
+
+            if (nextButton) {
+                nextButton.classList.remove('locked');
+            }
+        }
+    }
+
+    function showHornerInfo(button, text) {
+        const allButtons = document.querySelectorAll('.horner-cell-btn');
+        allButtons.forEach(btn => btn.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById('hornerInfoBox').innerHTML = text;
+    }
+
+    function showPembagiExplanation(id, button) {
+        const allRows = document.querySelectorAll('.tabel-interaktif tbody tr');
+        const allButtons = document.querySelectorAll('.btn-pembagi');
+        const box = document.getElementById('penjelasanPembagiBox');
+
+        allRows.forEach(row => row.classList.remove('baris-aktif'));
+        allButtons.forEach(btn => btn.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById('rowPembagi' + id).classList.add('baris-aktif');
+
+        if (id === 1) {
+            box.innerHTML = `
+                <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                <div class="rumus-penjelasan">Sisa = P(2)</div>
+                Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+            `;
+        } else if (id === 2) {
+            box.innerHTML = `
+                <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                disubstitusikan ke polinomial justru <strong>−3</strong>.
+            `;
+        } else if (id === 3) {
+            box.innerHTML = `
+                <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                Maka sisanya diperoleh dari
+                <div class="rumus-penjelasan">Sisa = P(0)</div>
+                Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+            `;
+        }
+    }
+
+    function normalisasiInput(text) {
+        return text
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .replace(/−/g, '-');
+    }
+
+    function bukaStep(stepNumber) {
+        const step = document.getElementById('stepCard' + stepNumber);
+        if (step) {
+            step.classList.remove('locked-step');
+        }
+    }
+
+    function tampilkanBenar(feedbackId, penjelasanId, pesanFeedback, isiPenjelasan) {
+        const feedback = document.getElementById(feedbackId);
+        const penjelasan = document.getElementById(penjelasanId);
+
+        feedback.className = 'latihan-feedback benar';
+        feedback.innerHTML = 'Jawaban benar. ' + pesanFeedback;
+
+        penjelasan.innerHTML = isiPenjelasan;
+        penjelasan.classList.add('show');
+    }
+
+    function tampilkanSalah(feedbackId, pesan) {
+        const feedback = document.getElementById(feedbackId);
+        feedback.className = 'latihan-feedback salah';
+        feedback.innerHTML = pesan;
+    }
+
+    function cekStep1() {
+        const jawaban = normalisasiInput(document.getElementById('jawabStep1').value);
+
+        if (jawaban === '3') {
+            tampilkanBenar(
+                'feedbackStep1',
+                'penjelasanStep1',
+                'Nilai c sudah tepat.',
+                'Pembagi <em>(x − 3)</em> dibandingkan dengan bentuk umum <em>(x − c)</em>. Dari sini terlihat bahwa <strong>c = 3</strong>. Jadi, langkah pertama adalah mengenali nilai yang ada setelah tanda minus pada pembagi.'
+            );
+            bukaStep(2);
+        } else {
+            tampilkanSalah(
+                'feedbackStep1',
+                'Jawaban masih salah. Perhatikan bahwa pembagi <em>(x − 3)</em> memiliki bentuk <em>(x − c)</em>. Coba lagi sampai benar.'
+            );
+        }
+    }
+
+    function cekStep2() {
+        const jawaban = normalisasiInput(document.getElementById('jawabStep2').value);
+
+        if (jawaban === 'p(3)' || jawaban === 'p3') {
+            tampilkanBenar(
+                'feedbackStep2',
+                'penjelasanStep2',
+                'Bentuk substitusi sudah benar.',
+                'Karena <strong>c = 3</strong>, maka menurut Teorema Sisa kita harus menghitung <strong>P(3)</strong>. Artinya, setiap <em>x</em> pada polinomial diganti dengan <em>3</em>.'
+            );
+            bukaStep(3);
+        } else {
+            tampilkanSalah(
+                'feedbackStep2',
+                'Jawaban masih salah. Karena pembaginya <em>(x − 3)</em>, maka yang dihitung adalah <strong>P(3)</strong>, bukan nilai lain. Coba lagi.'
+            );
+        }
+    }
+
+    function cekStep3() {
+        const jawaban = normalisasiInput(document.getElementById('jawabStep3').value);
+
+        if (jawaban === '23') {
+            tampilkanBenar(
+                'feedbackStep3',
+                'penjelasanStep3',
+                'Perhitunganmu benar.',
+                'Nilai <em>P(3)</em> dihitung sebagai <em>3<sup>3</sup> − 4(3) + 8 = 27 − 12 + 8 = 23</em>. Jadi hasil substitusi polinomial pada <em>x = 3</em> adalah <strong>23</strong>.'
+            );
+            bukaStep(4);
+        } else {
+            tampilkanSalah(
+                'feedbackStep3',
+                'Jawaban masih salah. Hitung bertahap: <em>3³ = 27</em>, lalu <em>−4(3) = −12</em>, sehingga <em>27 − 12 + 8</em>. Coba lagi sampai benar.'
+            );
+        }
+    }
+
+    function cekStep4() {
+        const jawaban = normalisasiInput(document.getElementById('jawabStep4').value);
+
+        if (jawaban === '23') {
+            tampilkanBenar(
+                'feedbackStep4',
+                'penjelasanStep4',
+                'Kesimpulanmu benar.',
+                'Karena Teorema Sisa menyatakan bahwa sisa pembagian oleh <em>(x − c)</em> adalah <em>P(c)</em>, dan tadi diperoleh <strong>P(3) = 23</strong>, maka <strong>sisa pembagiannya adalah 23</strong>.'
+            );
+
+            document.getElementById('penjelasanLengkapAkhir').style.display = 'block';
+        } else {
+            tampilkanSalah(
+                'feedbackStep4',
+                'Jawaban masih salah. Ingat, sisa pembagian = <strong>P(c)</strong>. Karena tadi <strong>P(3) = 23</strong>, maka sisanya juga <strong>23</strong>. Coba lagi.'
+            );
+        }
+    }
+
+    function normalizeAnswer(text) {
+        return text.toString().trim().toLowerCase().replace(/\s+/g, '').replace(/−/g, '-');
+    }
+
+    function unlockCardStep(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.classList.remove('locked-step');
+        }
+    }
+
+    function setFeedback(feedbackId, penjelasanId, isBenar, feedbackText, penjelasanText = '') {
+        const feedback = document.getElementById(feedbackId);
+        const penjelasan = document.getElementById(penjelasanId);
+
+        feedback.className = isBenar ? 'latihan-feedback benar' : 'latihan-feedback salah';
+        feedback.innerHTML = feedbackText;
+
+        if (isBenar && penjelasan) {
+            penjelasan.innerHTML = penjelasanText;
             penjelasan.classList.add('show');
         }
+    }
 
-        function tampilkanSalah(feedbackId, pesan) {
-            const feedback = document.getElementById(feedbackId);
+    function tandaiPilihan(button, benar) {
+        const parent = button.parentElement;
+        const allBtns = parent.querySelectorAll('.opsi-btn');
+        allBtns.forEach(btn => btn.classList.remove('active-benar', 'active-salah'));
+
+        button.classList.add(benar ? 'active-benar' : 'active-salah');
+    }
+
+    function cekPilihanSoal1Step1(button, value) {
+        if (value === '3') {
+            tandaiPilihan(button, true);
+            setFeedback(
+                'soal1Feedback1',
+                'soal1Penjelasan1',
+                true,
+                'Jawaban benar. Nilai c tepat.',
+                'Pembagi <em>(x − 3)</em> sesuai dengan bentuk umum <em>(x − c)</em>, sehingga diperoleh <strong>c = 3</strong>.'
+            );
+            unlockCardStep('soal1Step2');
+        } else {
+            tandaiPilihan(button, false);
+            setFeedback(
+                'soal1Feedback1',
+                'soal1Penjelasan1',
+                false,
+                'Jawaban masih salah. Perhatikan bentuk <em>(x − c)</em>. Coba lagi.'
+            );
+        }
+    }
+
+    function cekSoal1Step2() {
+        const jawab = normalizeAnswer(document.getElementById('jawabSoal1Step2').value);
+
+        if (jawab === '103') {
+            setFeedback(
+                'soal1Feedback2',
+                'soal1Penjelasan2',
+                true,
+                'Jawaban benar. Nilai P(3) tepat.',
+                'Perhitungannya: <em>6(27) - 5(9) + 2(3) - 20 = 162 - 45 + 6 - 20 = 103</em>. Jadi <strong>P(3) = 103</strong>.'
+            );
+            unlockCardStep('soal1Step3');
+        } else {
+            setFeedback(
+                'soal1Feedback2',
+                'soal1Penjelasan2',
+                false,
+                'Jawaban masih salah. Hitung bertahap: <em>3³ = 27</em>, lalu lanjutkan sampai selesai.'
+            );
+        }
+    }
+
+    function cekPilihanSoal1Step3(button, value) {
+        if (value === '103') {
+            tandaiPilihan(button, true);
+            setFeedback(
+                'soal1Feedback3',
+                'soal1Penjelasan3',
+                true,
+                'Jawaban benar. Sisa pembagian tepat.',
+                'Karena sisa pembagian oleh <em>(x − 3)</em> adalah <strong>P(3)</strong>, dan tadi didapat <strong>P(3) = 103</strong>, maka sisanya adalah <strong>103</strong>.'
+            );
+            document.getElementById('soal1FinalBox').style.display = 'block';
+        } else {
+            tandaiPilihan(button, false);
+            setFeedback(
+                'soal1Feedback3',
+                'soal1Penjelasan3',
+                false,
+                'Jawaban masih salah. Ingat, sisa pembagian = <strong>P(3)</strong>. Coba lagi.'
+            );
+        }
+    }
+
+    function cekPilihanSoal2Step1(button, value) {
+        if (value === '1') {
+            tandaiPilihan(button, true);
+            setFeedback(
+                'soal2Feedback1',
+                'soal2Penjelasan1',
+                true,
+                'Jawaban benar. Nilai c tepat.',
+                'Pembagi <em>(x − 1)</em> berarti sesuai bentuk <em>(x − c)</em>, sehingga <strong>c = 1</strong>.'
+            );
+            unlockCardStep('soal2Step2');
+        } else {
+            tandaiPilihan(button, false);
+            setFeedback(
+                'soal2Feedback1',
+                'soal2Penjelasan1',
+                false,
+                'Jawaban masih salah. Coba cocokkan dengan bentuk <em>(x − c)</em>.'
+            );
+        }
+    }
+
+    function cekPilihanSoal2Step2(button, value) {
+        if (value === 'benar') {
+            tandaiPilihan(button, true);
+            setFeedback(
+                'soal2Feedback2',
+                'soal2Penjelasan2',
+                true,
+                'Jawaban benar. Koefisien lengkap sudah tepat.',
+                'Karena ada suku yang hilang yaitu <em>x<sup>5</sup></em>, <em>x<sup>3</sup></em>, dan <em>x<sup>2</sup></em>, maka koefisien lengkap harus ditulis <strong>2, 0, -3, 0, 0, 7, -5</strong>.'
+            );
+            unlockCardStep('soal2Step3');
+        } else {
+            tandaiPilihan(button, false);
+            setFeedback(
+                'soal2Feedback2',
+                'soal2Penjelasan2',
+                false,
+                'Jawaban masih salah. Pada metode Horner, semua derajat harus lengkap, termasuk yang koefisiennya 0.'
+            );
+        }
+    }
+
+    function cekHornerSoal2() {
+        const jawaban = {
+            h1: '2',
+            h2: '2',
+            h3: '-1',
+            h4: '-1',
+            h5: '-1',
+            h6: '6',
+            h7: '2',
+            h8: '-1',
+            h9: '-1',
+            h10: '-1',
+            h11: '6',
+            h12: '1'
+        };
+
+        let benarSemua = true;
+
+        for (let id in jawaban) {
+            const input = document.getElementById(id);
+            const nilai = input.value.trim().replace(/−/g, '-');
+
+            if (nilai === jawaban[id]) {
+                input.style.borderColor = '#53a653';
+                input.style.backgroundColor = '#eef8ea';
+            } else {
+                input.style.borderColor = '#d96b5f';
+                input.style.backgroundColor = '#fff1ef';
+                benarSemua = false;
+            }
+        }
+
+        const feedback = document.getElementById('feedbackHorner2');
+
+        if (benarSemua) {
+            feedback.className = 'latihan-feedback benar';
+            feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat.';
+            document.getElementById('soal2FinalBox').style.display = 'block';
+        } else {
             feedback.className = 'latihan-feedback salah';
-            feedback.innerHTML = pesan;
+            feedback.innerHTML = 'Masih ada isian yang salah. Periksa lagi langkah Horner.';
+            document.getElementById('soal2FinalBox').style.display = 'none';
         }
-
-        function cekStep1() {
-            const jawaban = normalisasiInput(document.getElementById('jawabStep1').value);
-
-            if (jawaban === '3') {
-                tampilkanBenar(
-                    'feedbackStep1',
-                    'penjelasanStep1',
-                    'Nilai c sudah tepat.',
-                    'Pembagi <em>(x − 3)</em> dibandingkan dengan bentuk umum <em>(x − c)</em>. Dari sini terlihat bahwa <strong>c = 3</strong>. Jadi, langkah pertama adalah mengenali nilai yang ada setelah tanda minus pada pembagi.'
-                );
-                bukaStep(2);
-            } else {
-                tampilkanSalah(
-                    'feedbackStep1',
-                    'Jawaban masih salah. Perhatikan bahwa pembagi <em>(x − 3)</em> memiliki bentuk <em>(x − c)</em>. Coba lagi sampai benar.'
-                );
-            }
-        }
-
-        function cekStep2() {
-            const jawaban = normalisasiInput(document.getElementById('jawabStep2').value);
-
-            if (jawaban === 'p(3)' || jawaban === 'p3') {
-                tampilkanBenar(
-                    'feedbackStep2',
-                    'penjelasanStep2',
-                    'Bentuk substitusi sudah benar.',
-                    'Karena <strong>c = 3</strong>, maka menurut Teorema Sisa kita harus menghitung <strong>P(3)</strong>. Artinya, setiap <em>x</em> pada polinomial diganti dengan <em>3</em>.'
-                );
-                bukaStep(3);
-            } else {
-                tampilkanSalah(
-                    'feedbackStep2',
-                    'Jawaban masih salah. Karena pembaginya <em>(x − 3)</em>, maka yang dihitung adalah <strong>P(3)</strong>, bukan nilai lain. Coba lagi.'
-                );
-            }
-        }
-
-        function cekStep3() {
-            const jawaban = normalisasiInput(document.getElementById('jawabStep3').value);
-
-            if (jawaban === '23') {
-                tampilkanBenar(
-                    'feedbackStep3',
-                    'penjelasanStep3',
-                    'Perhitunganmu benar.',
-                    'Nilai <em>P(3)</em> dihitung sebagai <em>3<sup>3</sup> − 4(3) + 8 = 27 − 12 + 8 = 23</em>. Jadi hasil substitusi polinomial pada <em>x = 3</em> adalah <strong>23</strong>.'
-                );
-                bukaStep(4);
-            } else {
-                tampilkanSalah(
-                    'feedbackStep3',
-                    'Jawaban masih salah. Hitung bertahap: <em>3³ = 27</em>, lalu <em>−4(3) = −12</em>, sehingga <em>27 − 12 + 8</em>. Coba lagi sampai benar.'
-                );
-            }
-        }
-
-        function cekStep4() {
-            const jawaban = normalisasiInput(document.getElementById('jawabStep4').value);
-
-            if (jawaban === '23') {
-                tampilkanBenar(
-                    'feedbackStep4',
-                    'penjelasanStep4',
-                    'Kesimpulanmu benar.',
-                    'Karena Teorema Sisa menyatakan bahwa sisa pembagian oleh <em>(x − c)</em> adalah <em>P(c)</em>, dan tadi diperoleh <strong>P(3) = 23</strong>, maka <strong>sisa pembagiannya adalah 23</strong>.'
-                );
-
-                document.getElementById('penjelasanLengkapAkhir').style.display = 'block';
-            } else {
-                tampilkanSalah(
-                    'feedbackStep4',
-                    'Jawaban masih salah. Ingat, sisa pembagian = <strong>P(c)</strong>. Karena tadi <strong>P(3) = 23</strong>, maka sisanya juga <strong>23</strong>. Coba lagi.'
-                );
-            }
-        }
-
-        function normalizeAnswer(text) {
-            return text.toString().trim().toLowerCase().replace(/\s+/g, '').replace(/−/g, '-');
-        }
-
-        function unlockCardStep(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove('locked-step');
-            }
-        }
-
-        function setFeedback(feedbackId, penjelasanId, isBenar, feedbackText, penjelasanText = '') {
-            const feedback = document.getElementById(feedbackId);
-            const penjelasan = document.getElementById(penjelasanId);
-
-            feedback.className = isBenar ? 'latihan-feedback benar' : 'latihan-feedback salah';
-            feedback.innerHTML = feedbackText;
-
-            if (isBenar && penjelasan) {
-                penjelasan.innerHTML = penjelasanText;
-                penjelasan.classList.add('show');
-            }
-        }
-
-        function tandaiPilihan(button, benar) {
-            const parent = button.parentElement;
-            const allBtns = parent.querySelectorAll('.opsi-btn');
-            allBtns.forEach(btn => btn.classList.remove('active-benar', 'active-salah'));
-
-            button.classList.add(benar ? 'active-benar' : 'active-salah');
-        }
-
-        // =========================
-        // SOAL 1
-        // =========================
-        function cekPilihanSoal1Step1(button, value) {
-            if (value === '3') {
-                tandaiPilihan(button, true);
-                setFeedback(
-                    'soal1Feedback1',
-                    'soal1Penjelasan1',
-                    true,
-                    'Jawaban benar. Nilai c tepat.',
-                    'Pembagi <em>(x − 3)</em> sesuai dengan bentuk umum <em>(x − c)</em>, sehingga diperoleh <strong>c = 3</strong>.'
-                );
-                unlockCardStep('soal1Step2');
-            } else {
-                tandaiPilihan(button, false);
-                setFeedback(
-                    'soal1Feedback1',
-                    'soal1Penjelasan1',
-                    false,
-                    'Jawaban masih salah. Perhatikan bentuk <em>(x − c)</em>. Coba lagi.'
-                );
-            }
-        }
-
-        function cekSoal1Step2() {
-            const jawab = normalizeAnswer(document.getElementById('jawabSoal1Step2').value);
-
-            if (jawab === '103') {
-                setFeedback(
-                    'soal1Feedback2',
-                    'soal1Penjelasan2',
-                    true,
-                    'Jawaban benar. Nilai P(3) tepat.',
-                    'Perhitungannya: <em>6(27) - 5(9) + 2(3) - 20 = 162 - 45 + 6 - 20 = 103</em>. Jadi <strong>P(3) = 103</strong>.'
-                );
-                unlockCardStep('soal1Step3');
-            } else {
-                setFeedback(
-                    'soal1Feedback2',
-                    'soal1Penjelasan2',
-                    false,
-                    'Jawaban masih salah. Hitung bertahap: <em>3³ = 27</em>, lalu lanjutkan sampai selesai.'
-                );
-            }
-        }
-
-        function cekPilihanSoal1Step3(button, value) {
-            if (value === '103') {
-                tandaiPilihan(button, true);
-                setFeedback(
-                    'soal1Feedback3',
-                    'soal1Penjelasan3',
-                    true,
-                    'Jawaban benar. Sisa pembagian tepat.',
-                    'Karena sisa pembagian oleh <em>(x − 3)</em> adalah <strong>P(3)</strong>, dan tadi didapat <strong>P(3) = 103</strong>, maka sisanya adalah <strong>103</strong>.'
-                );
-                document.getElementById('soal1FinalBox').style.display = 'block';
-            } else {
-                tandaiPilihan(button, false);
-                setFeedback(
-                    'soal1Feedback3',
-                    'soal1Penjelasan3',
-                    false,
-                    'Jawaban masih salah. Ingat, sisa pembagian = <strong>P(3)</strong>. Coba lagi.'
-                );
-            }
-        }
-
-        // =========================
-        // SOAL 2
-        // =========================
-        function cekPilihanSoal2Step1(button, value) {
-            if (value === '1') {
-                tandaiPilihan(button, true);
-                setFeedback(
-                    'soal2Feedback1',
-                    'soal2Penjelasan1',
-                    true,
-                    'Jawaban benar. Nilai c tepat.',
-                    'Pembagi <em>(x − 1)</em> berarti sesuai bentuk <em>(x − c)</em>, sehingga <strong>c = 1</strong>.'
-                );
-                unlockCardStep('soal2Step2');
-            } else {
-                tandaiPilihan(button, false);
-                setFeedback(
-                    'soal2Feedback1',
-                    'soal2Penjelasan1',
-                    false,
-                    'Jawaban masih salah. Coba cocokkan dengan bentuk <em>(x − c)</em>.'
-                );
-            }
-        }
-
-        function cekPilihanSoal2Step2(button, value) {
-            if (value === 'benar') {
-                tandaiPilihan(button, true);
-                setFeedback(
-                    'soal2Feedback2',
-                    'soal2Penjelasan2',
-                    true,
-                    'Jawaban benar. Koefisien lengkap sudah tepat.',
-                    'Karena ada suku yang hilang yaitu <em>x<sup>5</sup></em>, <em>x<sup>3</sup></em>, dan <em>x<sup>2</sup></em>, maka koefisien lengkap harus ditulis <strong>2, 0, -3, 0, 0, 7, -5</strong>.'
-                );
-                unlockCardStep('soal2Step3');
-            } else {
-                tandaiPilihan(button, false);
-                setFeedback(
-                    'soal2Feedback2',
-                    'soal2Penjelasan2',
-                    false,
-                    'Jawaban masih salah. Pada metode Horner, semua derajat harus lengkap, termasuk yang koefisiennya 0.'
-                );
-            }
-        }
-
-        function cekHornerSoal2() {
-            const jawaban = {
-                h1: '2',
-                h2: '2',
-                h3: '-1',
-                h4: '-1',
-                h5: '-1',
-                h6: '6',
-                h7: '2',
-                h8: '-1',
-                h9: '-1',
-                h10: '-1',
-                h11: '6',
-                h12: '1'
-            };
-
-            let benarSemua = true;
-
-            for (let id in jawaban) {
-                const input = document.getElementById(id);
-                const nilai = input.value.trim().replace(/−/g, '-');
-
-                if (nilai === jawaban[id]) {
-                    input.style.borderColor = '#53a653';
-                    input.style.backgroundColor = '#eef8ea';
-                } else {
-                    input.style.borderColor = '#d96b5f';
-                    input.style.backgroundColor = '#fff1ef';
-                    benarSemua = false;
-                }
-            }
-
-            const feedback = document.getElementById('feedbackHorner2');
-
-            if (benarSemua) {
-                feedback.className = 'latihan-feedback benar';
-                feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat.';
-                document.getElementById('soal2FinalBox').style.display = 'block';
-            } else {
-                feedback.className = 'latihan-feedback salah';
-                feedback.innerHTML = 'Masih ada isian yang salah. Periksa lagi langkah Horner.';
-                document.getElementById('soal2FinalBox').style.display = 'none';
-            }
-        }
-    </script>
+    }
+</script>
 @endsection
 
 @section('nav')

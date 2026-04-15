@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
-                                delimiters:[
-                                    {left:'$$',right:'$$',display:true},
-                                    {left:'$',right:'$',display:false}
-                                ]
-                            });"></script>
+                delimiters:[
+                    {left:'$$',right:'$$',display:true},
+                    {left:'$',right:'$',display:false}
+                ]
+            });"></script>
 
     <style>
         :root {
@@ -253,22 +253,102 @@
             position: relative;
             background: #e8ab95;
             border: 2px solid #df7d49;
-            border-radius: 20px;
-            padding: 32px 22px 22px;
-            margin-top: 30px;
+            border-radius: 28px;
+            padding: 56px 26px 24px;
+            margin-top: 42px;
+            box-shadow: 0 8px 24px rgba(223, 125, 73, 0.10);
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .custom-definisi::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 40%);
+            pointer-events: none;
+            border-radius: 28px;
         }
 
         .custom-label {
             position: absolute;
-            top: -18px;
-            left: 18px;
+            top: -22px;
+            left: 28px;
             background: #9bcc88;
             border: 2px solid #5ea34e;
             color: #233a1d;
-            padding: 8px 28px;
+            padding: 9px 30px;
             border-radius: 999px;
             font-weight: 800;
             font-size: 15px;
+            line-height: 1;
+            box-shadow: 0 6px 16px rgba(94, 163, 78, 0.18);
+            z-index: 5;
+            white-space: nowrap;
+        }
+
+        .definisi-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: #4f5b62;
+            margin: 0 0 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .definisi-rumus {
+            background: #fff;
+            border: 1.5px solid #f0d6c8;
+            border-radius: 22px;
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .definisi-rumus:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 24px rgba(0, 0, 0, 0.08);
+            background: #fffdfa;
+        }
+
+        .definisi-rumus .rumus-box {
+            margin: 0;
+            border: none;
+            background: transparent;
+            padding: 10px;
+        }
+
+        .definisi-penjelasan {
+            margin-top: 16px;
+            background: #fffaf7;
+            border: 1.5px solid #efc8b3;
+            border-radius: 18px;
+            padding: 16px 18px;
+            color: #6a5550;
+            line-height: 1.85;
+            font-size: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .definisi-penjelasan b {
+            color: #9a542c;
+        }
+
+        .definisi-highlight {
+            margin-top: 14px;
+            background: #fff3e8;
+            border-left: 5px solid #df7d49;
+            border-radius: 14px;
+            padding: 12px 14px;
+            color: #7b543d;
+            font-size: 14px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
         }
 
         .contoh-section {
@@ -455,11 +535,11 @@
             align-items: center;
             justify-content: center;
             min-width: 220px;
-            padding: 14px 34px;
+            padding: 8px 20px;
             border-radius: 999px;
             background: var(--gray-pill);
             color: #fff;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 800;
             letter-spacing: .4px;
             margin-bottom: 22px;
@@ -469,7 +549,7 @@
             background: #fff;
             border: 3px solid var(--blue);
             border-radius: 0;
-            padding: 28px 25px 25px;
+            padding: 16px 14px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, .03);
             margin-bottom: 26px;
         }
@@ -483,24 +563,24 @@
 
         .latihan-persamaan {
             text-align: center;
-            margin: 10px 0 24px;
-            font-size: 25px;
+            margin: 10px 0 14px;
+            font-size: 20px;
             color: #333;
         }
 
         .latihan-item {
             background: #fbfdff;
             border: 1px solid #d9e8f2;
-            border-radius: 22px;
-            padding: 18px 18px 16px;
+            border-radius: 14px;
+            padding: 12px;
             margin-bottom: 16px;
         }
 
         .latihan-label {
-            font-size: 19px;
+            font-size: 15px;
             font-weight: 800;
             color: #333;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .input-row {
@@ -512,13 +592,13 @@
 
         .input-jawaban {
             flex: 1 1 340px;
-            min-width: 260px;
+            min-width: 180px;
             border: 1.5px solid #d4dde5;
             background: #fff;
             color: #333;
             border-radius: 14px;
-            padding: 12px 14px;
-            font-size: 15px;
+            padding: 8px 10px;
+            font-size: 13px;
             outline: none;
             transition: .2s ease;
         }
@@ -532,9 +612,9 @@
             border: none;
             background: var(--blue);
             color: #fff;
-            padding: 11px 18px;
+            padding: 7px 12px;
             border-radius: 999px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             cursor: pointer;
             transition: .2s ease;
@@ -620,418 +700,16 @@
             margin-top: 8px;
         }
 
-        /* =========================
-                               GRAFIK HTML CSS JS
-                            ========================= */
+        .grafik-box {
+            margin-top: 14px;
+        }
+
         .grafik-board {
             position: relative;
             width: 100%;
-            max-width: 720px;
-            height: 420px;
+            max-width: 760px;
+            height: 430px;
             margin-top: 10px;
-            border: 1.5px solid #d9e8f2;
-            border-radius: 18px;
-            background:
-                repeating-linear-gradient(to right,
-                    #eef3f7 0,
-                    #eef3f7 1px,
-                    transparent 1px,
-                    transparent 52px),
-                repeating-linear-gradient(to bottom,
-                    #eef3f7 0,
-                    #eef3f7 1px,
-                    transparent 1px,
-                    transparent 52px),
-                #fff;
-            overflow: hidden;
-        }
-
-        .grafik-label-top {
-            position: absolute;
-            top: 12px;
-            left: 16px;
-            font-size: 14px;
-            color: #444;
-            z-index: 3;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 2px 6px;
-            border-radius: 8px;
-        }
-
-        .grafik-axis-x,
-        .grafik-axis-y {
-            position: absolute;
-            background: #444;
-            z-index: 2;
-        }
-
-        .grafik-axis-x {
-            height: 2px;
-            left: 20px;
-            right: 20px;
-            top: 50%;
-        }
-
-        .grafik-axis-y {
-            width: 2px;
-            top: 20px;
-            bottom: 20px;
-            left: 50%;
-        }
-
-        .grafik-arrow-x,
-        .grafik-arrow-y {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-top: 2px solid #444;
-            border-right: 2px solid #444;
-            z-index: 2;
-        }
-
-        .grafik-arrow-x {
-            right: 21px;
-            top: calc(50% - 6px);
-            transform: rotate(45deg);
-        }
-
-        .grafik-arrow-y {
-            left: calc(50% - 6px);
-            top: 21px;
-            transform: rotate(-45deg);
-        }
-
-        .grafik-tick-x,
-        .grafik-tick-y {
-            position: absolute;
-            background: #444;
-            z-index: 2;
-        }
-
-        .grafik-tick-x {
-            width: 2px;
-            height: 12px;
-            top: calc(50% - 5px);
-        }
-
-        .grafik-tick-y {
-            width: 12px;
-            height: 2px;
-            left: calc(50% - 5px);
-        }
-
-        .grafik-number {
-            position: absolute;
-            font-size: 12px;
-            color: #555;
-            z-index: 2;
-            transform: translate(-50%, -50%);
-        }
-
-        .grafik-number.y {
-            left: calc(50% - 18px);
-        }
-
-        .grafik-number.x {
-            top: calc(50% + 16px);
-        }
-
-        @media (max-width: 768px) {
-            .materi-wrap {
-                padding: 18px 12px 32px;
-            }
-
-            .top-title .label {
-                font-size: 22px;
-            }
-
-            .top-title .judul {
-                font-size: 24px;
-            }
-
-            .contoh-badge,
-            .latihan-badge {
-                min-width: auto;
-                font-size: 18px;
-                padding: 12px 28px;
-            }
-
-            .contoh-card,
-            .latihan-card {
-                border-radius: 24px;
-                padding: 24px 18px;
-            }
-
-            .contoh-title,
-            .latihan-card-title {
-                font-size: 22px;
-            }
-
-            .contoh-persamaan,
-            .latihan-persamaan {
-                font-size: 28px;
-            }
-
-            p,
-            .contoh-text,
-            .soal-list {
-                font-size: 16px;
-            }
-
-            .jawaban-label,
-            .latihan-label {
-                font-size: 17px;
-            }
-
-            .grafik-board {
-                height: 360px;
-            }
-        }
-
-        /* =========================
-                       GRAFIK INTERAKTIF MARI MENCOBA
-                    ========================= */
-        .grafik-box {
-            margin-top: 14px;
-        }
-
-        .grafik-board {
-            position: relative;
-            width: 100%;
-            max-width: 760px;
-            height: 430px;
-            border: 1.5px solid #cfe0ee;
-            border-radius: 22px;
-            background:
-                repeating-linear-gradient(to right,
-                    #edf3f8 0,
-                    #edf3f8 1px,
-                    transparent 1px,
-                    transparent 58px),
-                repeating-linear-gradient(to bottom,
-                    #edf3f8 0,
-                    #edf3f8 1px,
-                    transparent 1px,
-                    transparent 54px),
-                #ffffff;
-            overflow: hidden;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5);
-        }
-
-        .grafik-header-note {
-            position: absolute;
-            top: 14px;
-            left: 16px;
-            z-index: 4;
-            font-size: 14px;
-            color: #555;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 6px 10px;
-            border-radius: 10px;
-            font-weight: 600;
-        }
-
-        .grafik-axis-x,
-        .grafik-axis-y {
-            position: absolute;
-            background: #4b4b4b;
-            z-index: 2;
-        }
-
-        .grafik-axis-x {
-            left: 22px;
-            right: 22px;
-            top: 50%;
-            height: 2px;
-        }
-
-        .grafik-axis-y {
-            top: 22px;
-            bottom: 22px;
-            left: 50%;
-            width: 2px;
-        }
-
-        .grafik-arrow-x,
-        .grafik-arrow-y {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-top: 2px solid #4b4b4b;
-            border-right: 2px solid #4b4b4b;
-            z-index: 3;
-        }
-
-        .grafik-arrow-x {
-            right: 23px;
-            top: calc(50% - 6px);
-            transform: rotate(45deg);
-        }
-
-        .grafik-arrow-y {
-            left: calc(50% - 6px);
-            top: 23px;
-            transform: rotate(-45deg);
-        }
-
-        .grafik-tick-x,
-        .grafik-tick-y {
-            position: absolute;
-            background: #4b4b4b;
-            z-index: 3;
-        }
-
-        .grafik-tick-x {
-            width: 2px;
-            height: 12px;
-            top: calc(50% - 5px);
-        }
-
-        .grafik-tick-y {
-            width: 12px;
-            height: 2px;
-            left: calc(50% - 5px);
-        }
-
-        .grafik-number {
-            position: absolute;
-            z-index: 3;
-            font-size: 12px;
-            color: #666;
-            transform: translate(-50%, -50%);
-            user-select: none;
-        }
-
-        .grafik-number.x {
-            top: calc(50% + 17px);
-        }
-
-        .grafik-number.y {
-            left: calc(50% - 18px);
-        }
-
-        .grafik-click-point {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-radius: 999px;
-            border: 2px solid #2d9cdb;
-            background: #fff;
-            z-index: 5;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            cursor: pointer;
-            transition: .18s ease;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
-        }
-
-        .grafik-click-point:hover {
-            transform: translate(-50%, -50%) scale(1.08);
-            background: #f4fbff;
-        }
-
-        .grafik-click-point.correct {
-            background: #7fc46d;
-            border-color: #4f9f40;
-        }
-
-        .grafik-click-point.wrong {
-            background: #ef8f8a;
-            border-color: #d25852;
-        }
-
-        .grafik-click-point.disabled {
-            pointer-events: none;
-        }
-
-        .grafik-curve-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 4;
-            pointer-events: none;
-        }
-
-        .grafik-feedback-mini {
-            margin-top: 12px;
-            display: none;
-            border-radius: 14px;
-            padding: 12px 14px;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.7;
-        }
-
-        .grafik-feedback-mini.show {
-            display: block;
-        }
-
-        .grafik-feedback-mini.success {
-            background: #eef9ea;
-            border: 1px solid #b9deb0;
-            color: #2d6a31;
-        }
-
-        .grafik-feedback-mini.error {
-            background: #fff1f0;
-            border: 1px solid #f3b8b5;
-            color: #b23b35;
-        }
-
-        .grafik-penjelasan {
-            display: none;
-            margin-top: 16px;
-            background: #f4fbff;
-            border: 1px solid #cfe2f2;
-            border-radius: 16px;
-            padding: 14px 16px;
-            color: #43627d;
-            line-height: 1.8;
-        }
-
-        .grafik-penjelasan.show {
-            display: block;
-        }
-
-        .grafik-chip-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .grafik-chip {
-            background: #f7fbff;
-            border: 1px solid #d7ebf8;
-            color: #2d6996;
-            border-radius: 999px;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-            .grafik-board {
-                height: 360px;
-            }
-
-            .grafik-header-note {
-                font-size: 12px;
-                padding: 5px 8px;
-            }
-        }
-
-        /* =========================
-               GRAFIK INTERAKTIF MARI MENCOBA
-            ========================= */
-        .grafik-box {
-            margin-top: 14px;
-        }
-
-        .grafik-board {
-            position: relative;
-            width: 100%;
-            max-width: 760px;
-            height: 430px;
             border: 1.5px solid #cfe0ee;
             border-radius: 22px;
             background:
@@ -1050,6 +728,7 @@
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
+        .grafik-label-top,
         .grafik-header-note {
             position: absolute;
             top: 14px;
@@ -1073,6 +752,7 @@
         .grafik-axis-x {
             left: 22px;
             right: 22px;
+            top: 50%;
             height: 2px;
             transform: translateY(-50%);
         }
@@ -1080,6 +760,7 @@
         .grafik-axis-y {
             top: 22px;
             bottom: 22px;
+            left: 50%;
             width: 2px;
             transform: translateX(-50%);
         }
@@ -1095,10 +776,14 @@
         }
 
         .grafik-arrow-x {
+            right: 23px;
+            top: 50%;
             transform: translateY(-50%) rotate(45deg);
         }
 
         .grafik-arrow-y {
+            left: 50%;
+            top: 23px;
             transform: translateX(-50%) rotate(-45deg);
         }
 
@@ -1133,10 +818,12 @@
 
         .grafik-number.x {
             transform: translateX(-50%);
+            top: calc(50% + 14px);
         }
 
         .grafik-number.y {
             transform: translateY(-50%);
+            left: calc(50% + 12px);
         }
 
         .grafik-click-point {
@@ -1238,11 +925,86 @@
         }
 
         @media (max-width: 768px) {
+            .materi-wrap {
+                padding: 18px 12px 32px;
+            }
+
+            .top-title .label {
+                font-size: 22px;
+            }
+
+            .top-title .judul {
+                font-size: 24px;
+            }
+
+            .contoh-badge,
+            .latihan-badge {
+                min-width: auto;
+                font-size: 18px;
+                padding: 12px 28px;
+            }
+
+            .contoh-card,
+            .latihan-card {
+                border-radius: 24px;
+                padding: 24px 18px;
+            }
+
+            .contoh-title,
+            .latihan-card-title {
+                font-size: 22px;
+            }
+
+            .contoh-persamaan,
+            .latihan-persamaan {
+                font-size: 28px;
+            }
+
+            p,
+            .contoh-text,
+            .soal-list {
+                font-size: 16px;
+            }
+
+            .jawaban-label,
+            .latihan-label {
+                font-size: 17px;
+            }
+
+            .custom-definisi {
+                padding: 52px 16px 18px;
+                border-radius: 22px;
+                margin-top: 38px;
+            }
+
+            .custom-label {
+                top: -18px;
+                left: 18px;
+                padding: 8px 22px;
+                font-size: 13px;
+            }
+
+            .definisi-title {
+                font-size: 18px;
+                margin-top: 0;
+            }
+
+            .definisi-rumus {
+                border-radius: 18px;
+                padding: 14px 10px;
+            }
+
+            .definisi-penjelasan {
+                font-size: 14px;
+                padding: 14px;
+            }
+
             .grafik-board {
                 height: 360px;
             }
 
-            .grafik-header-note {
+            .grafik-header-note,
+            .grafik-label-top {
                 font-size: 12px;
                 padding: 5px 8px;
             }
@@ -1256,51 +1018,300 @@
                 font-size: 11px;
             }
         }
+    </style>
 
-        /* =========================
-       FIX BIAR BAGIAN INI KECIL
-    ========================= */
-
-        /* card utama */
-        .latihan-card {
-            padding: 16px 14px !important;
+    <style>
+        .konsep-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 22px;
+            margin-bottom: 26px;
         }
 
-        /* kotak tiap soal (INI YANG PALING NGARUH) */
-        .latihan-item {
-            padding: 12px 12px !important;
+        .konsep-card {
+            background: linear-gradient(180deg, #fffdfb, #fff7f1);
+            border: 2px solid #e7b08c;
+            border-radius: 24px;
+            padding: 18px 18px 16px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            overflow: hidden;
+        }
+
+        .konsep-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+            border-color: #df7d49;
+        }
+
+        .konsep-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .konsep-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #9bcc88;
+            border: 1.5px solid #5ea34e;
+            color: #233a1d;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .3px;
+            margin-bottom: 10px;
+        }
+
+        .konsep-title {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #4f5b62;
+        }
+
+        .konsep-arrow {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1.5px solid #ead0c1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #c86f3b;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .konsep-preview {
+            margin-top: 14px;
+            color: #76635a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .konsep-body {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.45s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        .konsep-card.active .konsep-body {
+            max-height: 700px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+
+        .konsep-card.active .konsep-arrow {
+            transform: rotate(180deg);
+            background: #fff8f3;
+        }
+
+        .konsep-card.active {
+            border-color: #df7d49;
+            box-shadow: 0 16px 30px rgba(223, 125, 73, 0.12);
+        }
+
+        .konsep-body p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.85;
+            color: #5d5d5d;
+        }
+
+        .konsep-highlight {
+            margin-top: 10px;
+            background: #fff3e8;
+            border-left: 5px solid #df7d49;
             border-radius: 14px;
+            padding: 12px 14px;
+            color: #7b543d;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        /* judul soal */
-        .latihan-label {
-            font-size: 15px !important;
-            margin-bottom: 6px;
+        .cara-box {
+            background: #fff8ec;
+            border: 1px solid #efd7a3;
+            border-radius: 14px;
+            padding: 12px 14px;
+            color: #7a5a1f;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 14px;
         }
 
-        /* rumus */
-        .latihan-persamaan {
-            font-size: 20px !important;
-            margin-bottom: 14px;
+        @media (max-width: 900px) {
+            .konsep-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .konsep-title {
+                font-size: 19px;
+            }
         }
 
-        /* input */
-        .input-jawaban {
-            font-size: 13px !important;
-            padding: 8px 10px !important;
-            min-width: 180px !important;
+        .definisi-modern {
+            position: relative;
+            margin-top: 36px;
+            padding: 32px 24px 24px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, #fff7f2 0%, #ffe9de 100%);
+            border: 2px solid #e59a72;
+            box-shadow: 0 10px 28px rgba(223, 125, 73, 0.10);
+            overflow: visible;
         }
 
-        /* tombol */
-        .btn-cek {
-            font-size: 12px !important;
-            padding: 7px 12px !important;
+        .definisi-badge {
+            position: absolute;
+            top: -16px;
+            left: 24px;
+            background: #8fcf7b;
+            color: #1f3a1a;
+            border: 2px solid #5ea34e;
+            border-radius: 999px;
+            padding: 8px 22px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            box-shadow: 0 6px 16px rgba(94, 163, 78, 0.18);
         }
 
-        /* badge */
-        .latihan-badge {
-            font-size: 16px !important;
-            padding: 8px 20px !important;
+        .definisi-header {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .definisi-header h3 {
+            margin: 0 0 8px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #7a3f1f;
+        }
+
+        .definisi-header p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #6b5a52;
+        }
+
+        .definisi-rumus-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .definisi-rumus-card {
+            background: #fffdfb;
+            border: 1.5px solid #f0c9b1;
+            border-radius: 22px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .definisi-rumus-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .rumus-label {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 800;
+            color: #b45f32;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .definisi-rumus-card .rumus-box {
+            margin: 0;
+            background: #fff;
+            border: 1px solid #f3ddd0;
+        }
+
+        .definisi-poin {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .definisi-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #f0ccb7;
+            border-radius: 18px;
+            padding: 14px 16px;
+            color: #5f514b;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .definisi-item .ikon {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            background: #df7d49;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            flex: 0 0 30px;
+            margin-top: 2px;
+        }
+
+        .definisi-kesimpulan {
+            background: #fff3e8;
+            border-left: 6px solid #df7d49;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #7b543d;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .definisi-modern {
+                padding: 28px 16px 18px;
+                border-radius: 22px;
+            }
+
+            .definisi-badge {
+                left: 16px;
+                top: -14px;
+                font-size: 12px;
+                padding: 7px 18px;
+            }
+
+            .definisi-header h3 {
+                font-size: 20px;
+            }
+
+            .definisi-rumus-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .definisi-item {
+                font-size: 14px;
+                padding: 12px 14px;
+            }
         }
     </style>
 
@@ -1346,7 +1357,6 @@
                 <b>$P(x)=0$</b>. Nilai tersebut disebut sebagai pembuat nol.
             </div>
 
-            {{-- SOAL 1 --}}
             <div class="eksplorasi-question">
                 <div class="eksplorasi-question-title">
                     1. Nilai $x$ yang membuat $P(x)=0$ adalah ...
@@ -1382,7 +1392,6 @@
                 </div>
             </div>
 
-            {{-- SOAL 2 --}}
             <div class="eksplorasi-question">
                 <div class="eksplorasi-question-title">
                     2. Arti hasil tersebut dalam kehidupan sehari-hari adalah ...
@@ -1425,60 +1434,132 @@
             terutama pada titik potong grafik dengan sumbu-x.
         </p>
 
-        <div class="subjudul">Pembuat Nol (Akar) Polinomial</div>
+        <div class="konsep-grid">
+            <div class="konsep-card" onclick="toggleKonsep(this)">
+                <div class="konsep-head">
+                    <div>
+                        <div class="konsep-badge">KONSEP 1</div>
+                        <div class="konsep-title">Pembuat Nol (Akar) Polinomial</div>
+                    </div>
+                    <div class="konsep-arrow">⌄</div>
+                </div>
 
-        <div class="full-box">
-            <p>Pembuat nol memenuhi:</p>
-            <div class="rumus-box">
-                $$P(x)=0$$
+                <div class="konsep-preview">
+                    Klik untuk melihat penjelasan tentang pembuat nol polinomial.
+                </div>
+
+                <div class="konsep-body">
+                    <p>Pembuat nol suatu polinomial adalah nilai $x$ yang membuat nilai polinomial sama dengan nol.</p>
+
+                    <div class="rumus-box">
+                        $$P(x)=0$$
+                    </div>
+
+                    <p>
+                        Jika suatu polinomial memiliki faktor $(x-a)$, maka saat $x=a$, nilai polinomial menjadi nol.
+                        Karena itu, grafik akan memotong sumbu-$x$ di titik yang sesuai.
+                    </p>
+
+                    <div class="konsep-highlight">
+                        <b>Intinya:</b> pembuat nol menunjukkan di mana grafik menyentuh atau memotong sumbu-$x$.
+                    </div>
+                </div>
             </div>
-            <p>Jika ada faktor $(x-a)$ maka grafik memotong sumbu-$x$ di $x=a$.</p>
-        </div>
 
-        {{-- HUBUNGAN --}}
-        <div class="subjudul">Hubungan Faktor dengan Grafik</div>
+            <div class="konsep-card" onclick="toggleKonsep(this)">
+                <div class="konsep-head">
+                    <div>
+                        <div class="konsep-badge">KONSEP 2</div>
+                        <div class="konsep-title">Hubungan Faktor dengan Grafik</div>
+                    </div>
+                    <div class="konsep-arrow">⌄</div>
+                </div>
 
-        <div class="full-box">
-            <p>Sifat hasil kali nol menyatakan:</p>
+                <div class="konsep-preview">
+                    Klik untuk melihat hubungan antara faktor dan titik potong grafik.
+                </div>
 
-            <div class="rumus-box">
-                $$A \cdot B = 0 \iff A = 0 \text{ atau } B = 0$$
+                <div class="konsep-body">
+                    <p>Sifat hasil kali nol menyatakan bahwa:</p>
+
+                    <div class="rumus-box">
+                        $$A \cdot B = 0 \iff A = 0 \text{ atau } B = 0$$
+                    </div>
+
+                    <p>Jika polinomial ditulis dalam bentuk faktor:</p>
+
+                    <div class="rumus-box">
+                        $$P(x)=(x-a)(x-b)(x-c)$$
+                    </div>
+
+                    <p>maka titik potong grafik dengan sumbu-$x$ adalah:</p>
+
+                    <div class="rumus-box">
+                        $$(a,0), (b,0), (c,0)$$
+                    </div>
+
+                    <div class="konsep-highlight">
+                        <b>Intinya:</b> setiap faktor linear memberi tahu letak titik potong grafik dengan sumbu-$x$.
+                    </div>
+                </div>
             </div>
-
-            <p>Karena itu, jika polinomial ditulis sebagai:</p>
-
-            <div class="rumus-box">
-                $$P(x) = (x-a)(x-b)(x-c)$$
-            </div>
-
-            <p>maka titik potong grafik dengan sumbu-$x$ adalah:</p>
-
-            <div class="rumus-box">
-                $$(a,0), (b,0), (c,0)$$
-            </div>
-
-            <p>
-                Hubungan ini memberikan cara yang cepat untuk menggambar grafik
-                polinomial tanpa menghitung terlalu banyak titik.
-            </p>
         </div>
 
         {{-- DEFINISI --}}
-        <div class="custom-definisi">
-            <div class="custom-label">DEFINISI</div>
+        <div class="definisi-modern">
+            <div class="definisi-badge">DEFINISI</div>
 
-            <p><b>Hubungan Faktor–Grafik</b></p>
-
-            <div class="rumus-box">
-                $$P(x) = (x-a)(x-b)(x-c)$$
+            <div class="definisi-header">
+                <h3>Hubungan Faktor dengan Grafik</h3>
+                <p>
+                    Bentuk faktor membantu kita langsung melihat titik potong grafik dengan sumbu-$x$.
+                </p>
             </div>
 
-            <div class="rumus-box">
-                $$(a,0), (b,0), (c,0)$$
+            <div class="definisi-rumus-wrap">
+                <div class="definisi-rumus-card">
+                    <div class="rumus-label">Bentuk faktor</div>
+                    <div class="rumus-box">
+                        $$P(x)=(x-a)(x-b)(x-c)$$
+                    </div>
+                </div>
+
+                <div class="definisi-rumus-card">
+                    <div class="rumus-label">Titik potong sumbu-$x$</div>
+                    <div class="rumus-box">
+                        $$(a,0),\ (b,0),\ (c,0)$$
+                    </div>
+                </div>
+            </div>
+
+            <div class="definisi-poin">
+                <div class="definisi-item">
+                    <span class="ikon">1</span>
+                    <div>
+                        Jika ada faktor <b>$(x-a)$</b>, maka saat <b>$x=a$</b>, nilai fungsi sama dengan <b>0</b>.
+                    </div>
+                </div>
+
+                <div class="definisi-item">
+                    <span class="ikon">2</span>
+                    <div>
+                        Artinya grafik memotong sumbu-$x$ di titik <b>$(a,0)$</b>.
+                    </div>
+                </div>
+
+                <div class="definisi-item">
+                    <span class="ikon">3</span>
+                    <div>
+                        Hal yang sama berlaku untuk faktor <b>$(x-b)$</b> dan <b>$(x-c)$</b>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="definisi-kesimpulan">
+                <b>Intinya:</b> setiap faktor linear menunjukkan letak titik potong grafik dengan sumbu-$x$.
             </div>
         </div>
 
-        {{-- CONTOH --}}
         <div class="contoh-section">
             <div class="contoh-badge">CONTOH</div>
 
@@ -1617,7 +1698,6 @@
             </div>
         </div>
 
-        {{-- MARI MENCOBA --}}
         <div class="latihan-section">
             <div class="latihan-badge">MARI MENCOBA</div>
 
@@ -1628,76 +1708,120 @@
                     $$f(x)=x^4-x^3-7x^2+x+6$$
                 </div>
 
-                {{-- 1 --}}
                 <div class="latihan-item">
                     <div class="latihan-label">1. Pembuat nol</div>
+
+                    <div class="cara-box">
+                        <b>Cara mengerjakan:</b><br>
+                        Cari nilai $x$ yang membuat fungsi bernilai nol. Kamu bisa mencoba
+                        beberapa nilai $x$ yang mungkin sampai hasilnya $0$.
+                    </div>
+
                     <div class="input-row">
-                        <input id="m1" class="input-jawaban" placeholder="Contoh: -2,-1,1,3">
+                        <input id="m1" class="input-jawaban" placeholder="Masukkan semua pembuat nol">
                         <button class="btn-cek" onclick="cekMari(1)">Cek Jawaban</button>
                     </div>
                     <div id="fb1" class="feedback-box"></div>
 
                     <div id="step1" class="penjelasan-wrap">
-                        <div class="answer-box">
-                            $$x=-2,\;-1,\;1,\;3$$
-                        </div>
                         <div class="langkah-step">
-                            <div class="step-head">Langkah</div>
-                            <p>Uji faktor dari 6 hingga ditemukan nilai-nilai yang membuat $f(x)=0$.</p>
+                            <div class="step-head">Penjelasan</div>
+                            <p>
+                                Pembuat nol adalah nilai $x$ yang menyebabkan nilai fungsi sama dengan nol.
+                                Jadi, setiap nilai $x$ yang membuat $f(x)=0$ termasuk pembuat nol fungsi ini.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {{-- 2 --}}
                 <div class="latihan-item">
                     <div class="latihan-label">2. Pemfaktoran</div>
+
+                    <div class="cara-box">
+                        <b>Cara mengerjakan:</b><br>
+                        Gunakan pembuat nol yang sudah ditemukan. Setiap pembuat nol
+                        diubah menjadi faktor, lalu tulis dalam bentuk perkalian.
+                    </div>
+
                     <div class="input-row">
-                        <input id="m2" class="input-jawaban" placeholder="(x+2)(x+1)(x-1)(x-3)">
+                        <input id="m2" class="input-jawaban" placeholder="Masukkan bentuk pemfaktoran">
                         <button class="btn-cek" onclick="cekMari(2)">Cek Jawaban</button>
                     </div>
                     <div id="fb2" class="feedback-box"></div>
 
                     <div id="step2" class="penjelasan-wrap">
-                        <div class="answer-box">
-                            $$f(x)=(x+2)(x+1)(x-1)(x-3)$$
+                        <div class="langkah-step">
+                            <div class="step-head">Penjelasan</div>
+                            <p>
+                                Jika suatu nilai $x=a$ merupakan pembuat nol, maka fungsi mempunyai faktor
+                                $(x-a)$. Karena itu, semua pembuat nol dapat diubah menjadi faktor-faktor linear.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {{-- 3 --}}
                 <div class="latihan-item">
                     <div class="latihan-label">3. Titik potong sumbu-x</div>
+
+                    <div class="cara-box">
+                        <b>Cara mengerjakan:</b><br>
+                        Titik potong sumbu-$x$ berasal dari pembuat nol. Tulis setiap
+                        nilai itu dalam bentuk titik $(x,0)$.
+                    </div>
+
                     <div class="input-row">
-                        <input id="m3" class="input-jawaban" placeholder="(-2,0),(-1,0),(1,0),(3,0)">
+                        <input id="m3" class="input-jawaban" placeholder="Masukkan titik potong sumbu-x">
                         <button class="btn-cek" onclick="cekMari(3)">Cek Jawaban</button>
                     </div>
                     <div id="fb3" class="feedback-box"></div>
 
                     <div id="step3" class="penjelasan-wrap">
-                        <div class="answer-box">
-                            $$(-2,0),(-1,0),(1,0),(3,0)$$
+                        <div class="langkah-step">
+                            <div class="step-head">Penjelasan</div>
+                            <p>
+                                Grafik memotong sumbu-$x$ saat nilai $y=0$. Karena pada sumbu-$x$ nilai
+                                ordinat selalu nol, maka pembuat nol langsung ditulis menjadi titik
+                                dengan bentuk $(x,0)$.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {{-- 4 --}}
                 <div class="latihan-item">
                     <div class="latihan-label">4. Titik potong sumbu-y</div>
+
+                    <div class="cara-box">
+                        <b>Cara mengerjakan:</b><br>
+                        Ganti $x$ dengan 0 pada fungsi. Hasil yang diperoleh menjadi
+                        titik potong sumbu-$y$.
+                    </div>
+
                     <div class="input-row">
-                        <input id="m4" class="input-jawaban" placeholder="(0,6)">
+                        <input id="m4" class="input-jawaban" placeholder="Masukkan titik potong sumbu-y">
                         <button class="btn-cek" onclick="cekMari(4)">Cek Jawaban</button>
                     </div>
                     <div id="fb4" class="feedback-box"></div>
 
                     <div id="step4" class="penjelasan-wrap">
-                        <div class="answer-box">
-                            $$(0,6)$$
+                        <div class="langkah-step">
+                            <div class="step-head">Penjelasan</div>
+                            <p>
+                                Titik potong sumbu-$y$ diperoleh saat $x=0$ karena semua titik pada sumbu-$y$
+                                memiliki absis nol. Jadi, cukup substitusikan $x=0$ ke fungsi, lalu tulis
+                                hasilnya sebagai titik koordinat.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="latihan-item">
-                    <div class="latihan-label">e. Grafik</div>
+                    <div class="latihan-label">5. Grafik</div>
+
+                    <div class="cara-box">
+                        <b>Cara mengerjakan:</b><br>
+                        Gunakan titik potong sumbu-$x$ dan sumbu-$y$ yang sudah kamu
+                        dapatkan. Setelah itu, pilih titik yang benar pada grafik.
+                    </div>
 
                     <div class="grafik-box">
                         <div id="grafik-mc4" class="graph-placeholder" style="min-height:430px;">
@@ -1708,46 +1832,29 @@
 
                         <div id="grafikPenjelasan" class="grafik-penjelasan">
                             <b>Penjelasan:</b><br>
-                            Karena
-                            $$f(x)=x^4-x^3-7x^2+x+6=(x+2)(x+1)(x-1)(x-3),$$
-                            maka pembuat nolnya adalah:
-                            $$x=-2,\;-1,\;1,\;3$$
-
-                            Artinya grafik memotong sumbu-$x$ di titik:
-                            $$(-2,0),\;(-1,0),\;(1,0),\;(3,0)$$
-
-                            Setelah semua titik potong sumbu-$x$ benar dipilih, kurva polinomial dapat digambar
-                            sehingga terlihat hubungan antara <b>faktor</b>, <b>pembuat nol</b>, dan
-                            <b>grafik fungsi</b>.
+                            Grafik fungsi dapat dibaca dari titik-titik pentingnya.
+                            Titik potong sumbu-$x$ berasal dari pembuat nol, sedangkan
+                            titik potong sumbu-$y$ didapat saat $x=0$. Setelah titik yang
+                            benar ditemukan, kurva grafik akan terlihat sehingga hubungan
+                            antara fungsi, faktor, dan grafik menjadi lebih jelas.
 
                             <div class="grafik-chip-row">
-                                <div class="grafik-chip">Akar: -2</div>
-                                <div class="grafik-chip">Akar: -1</div>
-                                <div class="grafik-chip">Akar: 1</div>
-                                <div class="grafik-chip">Akar: 3</div>
-                                <div class="grafik-chip">Titik potong y: (0,6)</div>
+                                <div class="grafik-chip">Cari pembuat nol</div>
+                                <div class="grafik-chip">Tentukan titik x</div>
+                                <div class="grafik-chip">Cari titik y</div>
+                                <div class="grafik-chip">Lihat grafik</div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="small-note">
-                        Klik titik pada sumbu-x. Jika benar akan berwarna hijau, jika salah akan berwarna merah.
-                        Setelah semua titik benar ditemukan, kurva grafik akan muncul otomatis.
-                    </div>
-                </div>
-                <div class="small-note">
-                    Grafik ditampilkan kosong terlebih dahulu seperti bidang koordinat.
                 </div>
             </div>
         </div>
 
-        {{-- LATIHAN --}}
         <div class="latihan-section">
             <div class="latihan-badge">LATIHAN</div>
 
             <div class="latihan-card">
 
-                {{-- SOAL 1 --}}
                 <div class="latihan-card-title">1. Faktorkan polinomial berikut secara lengkap:</div>
 
                 <div class="latihan-persamaan">
@@ -1791,7 +1898,6 @@
 
                 <hr style="margin:40px 0;">
 
-                {{-- SOAL 2 --}}
                 <div class="latihan-card-title">2. Diberikan fungsi polinomial berikut:</div>
 
                 <div class="latihan-persamaan">
@@ -1845,7 +1951,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     <script>
         let mariGrafikAktif = false;
@@ -1860,8 +1965,8 @@
             roots: [-2, -1, 1, 3],
             xmin: -6,
             xmax: 6,
-            ymin: -4,
-            ymax: 4
+            ymin: -8,
+            ymax: 8
         };
 
         function toggleJawaban(id, btn) {
@@ -1915,7 +2020,6 @@
                 renderMathInElement(document.body, {
                     delimiters: [
                         { left: '$$', right: '$$', display: true },
-                        { left: '$', right: '$$', display: true },
                         { left: '$', right: '$', display: false }
                     ]
                 });
@@ -2004,41 +2108,39 @@
 
         function buildTicksX() {
             let html = '';
-            for (let x = -5; x <= 5; x++) {
-                html += `<div class="grafik-tick-x" style="left:${xToPercent(x)}%;"></div>`;
+            for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
+                html += `<div class="grafik-tick-x" style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"></div>`;
             }
             return html;
         }
 
         function buildTicksY() {
             let html = '';
-            for (let y = -3; y <= 7; y++) {
-                html += `<div class="grafik-tick-y" style="top:${yToPercent(y)}%;"></div>`;
+            for (let y = grafikMc4Config.ymin + 1; y <= grafikMc4Config.ymax - 1; y++) {
+                html += `<div class="grafik-tick-y" style="left:${xToPercent(0)}%; top:${yToPercent(y)}%;"></div>`;
             }
             return html;
         }
 
         function buildLabelsX() {
             let html = '';
-            for (let x = -5; x <= 5; x++) {
-                const extraClass = x === 0 ? ' origin' : '';
-                html += `<div class="grafik-number x${extraClass}" style="left:${xToPercent(x)}%;">${x}</div>`;
+            for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
+                html += `<div class="grafik-number x" style="left:${xToPercent(x)}%;">${x}</div>`;
             }
             return html;
         }
 
         function buildLabelsY() {
             let html = '';
-            for (let y = 7; y >= -3; y--) {
-                const extraClass = y === 0 ? ' origin' : '';
-                html += `<div class="grafik-number y${extraClass}" style="top:${yToPercent(y)}%;">${y}</div>`;
+            for (let y = grafikMc4Config.ymax - 1; y >= grafikMc4Config.ymin + 1; y--) {
+                html += `<div class="grafik-number y" style="top:${yToPercent(y)}%;">${y}</div>`;
             }
             return html;
         }
 
         function buildClickablePoints() {
             let html = '';
-            for (let x = -5; x <= 5; x++) {
+            for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
                             <button
                                 type="button"
@@ -2058,10 +2160,10 @@
                         <div class="grafik-board">
                             <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
 
-                            <div class="grafik-axis-x"></div>
-                            <div class="grafik-axis-y"></div>
-                            <div class="grafik-arrow-x"></div>
-                            <div class="grafik-arrow-y"></div>
+                            <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
+                            <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
+                            <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
+                            <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
 
                             ${buildTicksX()}
                             ${buildTicksY()}
@@ -2077,7 +2179,6 @@
 
         function aktifkanGrafikMari() {
             const box = document.getElementById('grafik-mc4');
-            const tools = document.getElementById('grafik-mc4-tools');
             const feedback = document.getElementById('grafikFeedback');
             const penjelasan = document.getElementById('grafikPenjelasan');
 
@@ -2093,8 +2194,6 @@
             box.style.border = 'none';
             box.innerHTML = buildGrafikInteraktifMc4();
 
-            if (tools) tools.style.display = 'flex';
-
             if (feedback) {
                 feedback.className = 'grafik-feedback-mini';
                 feedback.innerHTML = '';
@@ -2107,7 +2206,6 @@
 
         function nonaktifkanGrafikMari() {
             const box = document.getElementById('grafik-mc4');
-            const tools = document.getElementById('grafik-mc4-tools');
             const feedback = document.getElementById('grafikFeedback');
             const penjelasan = document.getElementById('grafikPenjelasan');
 
@@ -2121,10 +2219,8 @@
                 box.style.background = 'linear-gradient(180deg, #fcfefb, #f7fbf5)';
                 box.style.border = '2px dashed #cfdcc8';
                 box.style.borderRadius = '20px';
-                box.innerHTML = 'Grafik akan aktif setelah a–d benar semua.';
+                box.innerHTML = 'Grafik akan aktif setelah nomor 1–4 benar semua.';
             }
-
-            if (tools) tools.style.display = 'none';
 
             if (feedback) {
                 feedback.className = 'grafik-feedback-mini';
@@ -2443,6 +2539,11 @@
                 renderMathSafe();
             }, 300);
         });
+
+        function toggleKonsep(card) {
+            card.classList.toggle('active');
+            renderMathSafe();
+        }
     </script>
 @endsection
 

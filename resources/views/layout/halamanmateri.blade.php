@@ -433,7 +433,7 @@
 
           <a href="{{ route('pendahuluan') }}"
             class="dropdown-item {{ request()->routeIs('pendahuluan') ? 'active' : '' }}">
-            Pendahuluan
+            Apersepsi
           </a>
         </div>
       </div>

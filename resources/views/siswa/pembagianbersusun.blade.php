@@ -494,7 +494,6 @@
             margin-top: 14px;
         }
 
-        /* ====== PENGGANTI TAMPILAN GARIS-GARIS ====== */
         .langkah-stack-wrap {
             display: grid;
             gap: 12px;
@@ -568,8 +567,8 @@
             font-weight: 700;
         }
 
-        /* ====== LATIHAN DRAG AND DROP ====== */
-        .latihan-dnd-board {
+        /* ====== LATIHAN BARU ====== */
+        .latihan-match-board {
             background: #edf1f1;
             border: 1px solid #d7dddd;
             border-radius: 18px;
@@ -577,312 +576,173 @@
             margin-top: 12px;
         }
 
-        .latihan-dnd-soal {
-            background: #dbe9ef;
-            border: 1px solid #b3cad5;
-            border-radius: 12px;
-            padding: 12px 14px;
-            font-size: 16px;
-            color: #3f4e57;
-            margin-bottom: 16px;
-            line-height: 1.8;
+        .latihan-match-top {
+            margin-bottom: 18px;
         }
 
-        .latihan-note {
-            background: #fff;
-            border: 1px solid #e6ddd2;
-            border-radius: 14px;
-            padding: 12px 14px;
-            margin-bottom: 16px;
-            color: #5e544c;
-        }
-
-        .latihan-dnd-wrap {
+        .isi-grid {
             display: grid;
-            grid-template-columns: 1.05fr 1fr;
-            gap: 18px;
-            align-items: start;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 12px;
         }
 
-        .bank-panel,
-        .slot-panel {
-            background: #f9f9f9;
-            border: 1px solid #d9d9d9;
-            border-radius: 16px;
-            padding: 14px;
+        .isi-slot {
+            min-height: 120px;
+            background: #fcfcfc;
+            border: 2px dashed #d8d2cb;
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+            transition: .2s ease;
         }
 
-        .panel-title {
+        .isi-slot.drag-over {
+            border-color: #7ba7b8;
+            background: #eef6f9;
+        }
+
+        .isi-slot.correct {
+            background: rgba(47, 143, 70, .12);
+            border-color: rgba(47, 143, 70, .5);
+        }
+
+        .isi-slot.wrong {
+            background: rgba(216, 74, 58, .10);
+            border-color: rgba(216, 74, 58, .35);
+        }
+
+        .isi-slot-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .isi-slot-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #655a51;
+        }
+
+        .isi-slot-body {
+            text-align: center;
+            line-height: 1.8;
+            color: #404040;
+        }
+
+        .isi-slot .drop-hint {
+            font-size: 12px;
+            color: #8a7d71;
+            text-align: center;
+        }
+
+        .langkah-bank-wrap {
+            margin-top: 10px;
+        }
+
+        .langkah-bank-title {
             font-size: 16px;
             font-weight: 700;
             color: var(--primary-green);
             margin-bottom: 12px;
         }
 
-        .drag-bank,
-        .drop-zone-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .langkah-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 12px;
         }
 
-        .drag-card {
+        .langkah-card {
             background: #ffffff;
             border: 1px solid #d8d3cc;
             border-radius: 14px;
-            padding: 13px 14px;
+            padding: 14px 12px;
             cursor: grab;
-            line-height: 1.7;
+            text-align: center;
+            font-weight: 700;
             color: #434343;
             transition: .2s ease;
             user-select: none;
-            box-shadow: 0 2px 7px rgba(0, 0, 0, .03);
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.03);
         }
 
-        .drag-card:hover {
+        .langkah-card:hover {
             background: #fcfaf8;
             transform: translateY(-1px);
         }
 
-        .drag-card.dragging {
-            opacity: .45;
+        .langkah-card.dragging {
+            opacity: .5;
         }
 
-        .drag-card.locked-correct {
-            background: var(--correct-soft);
-            border-color: rgba(47, 143, 70, .45);
-            color: #1f6830;
+        .langkah-card.locked-correct {
             cursor: default;
-            box-shadow: none;
+            background: rgba(47, 143, 70, .12);
+            border-color: rgba(47, 143, 70, .35);
+            color: #1f6830;
         }
 
-        .drop-slot {
-            min-height: 70px;
-            background: var(--slot-bg);
-            border: 2px dashed var(--slot-border);
-            border-radius: 14px;
-            padding: 10px 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 8px;
-            transition: .2s ease;
-        }
-
-        .drop-slot.drag-over {
-            border-color: #7ba7b8;
-            background: #eef6f9;
-        }
-
-        .drop-slot.correct {
-            background: var(--correct-soft);
-            border-color: rgba(47, 143, 70, .50);
-        }
-
-        .drop-slot.wrong {
-            background: var(--wrong-soft);
-            border-color: rgba(216, 74, 58, .50);
-        }
-
-        .drop-slot .drop-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .drop-slot .drop-label {
-            color: #655a51;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .drop-slot .drop-hint {
-            color: #8a7d71;
-            font-size: 13px;
-        }
-
-        .drop-slot.filled .drop-hint {
-            display: none;
-        }
-
-        .drop-slot .drag-card {
-            width: 100%;
-            margin: 0;
+        .isi-slot .langkah-card {
+            margin-top: 4px;
         }
 
         .status-kecil {
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 999px;
-            padding: 4px 10px;
             display: inline-flex;
             align-items: center;
-            width: fit-content;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
         }
 
         .status-kecil.netral {
-            background: #f3eee8;
-            color: #79695d;
-            border: 1px solid #e1d5c8;
+            background: #f1ece6;
+            color: #7a6656;
+            border: 1px solid #dfd2c6;
         }
 
         .status-kecil.benar {
-            background: rgba(47, 143, 70, .12);
+            background: rgba(47, 143, 70, 0.12);
             color: #1f6830;
-            border: 1px solid rgba(47, 143, 70, .30);
+            border: 1px solid rgba(47, 143, 70, 0.3);
         }
 
         .status-kecil.salah {
-            background: rgba(216, 74, 58, .10);
+            background: rgba(216, 74, 58, 0.1);
             color: #9a362c;
-            border: 1px solid rgba(216, 74, 58, .26);
+            border: 1px solid rgba(216, 74, 58, 0.25);
         }
 
         .progress-dnd {
             margin-top: 16px;
-            background: #fff;
-            border: 1px solid #dfd7cf;
+            background: #f7f2ec;
+            border: 1px solid #eadccf;
             border-radius: 14px;
             padding: 12px 14px;
-            color: #5a4f46;
-            font-size: 14.5px;
+            font-size: 15px;
+            color: #5d5248;
         }
 
-        .latihan-actions {
-            margin-top: 16px;
+        @media (max-width: 1024px) {
+
+            .isi-grid,
+            .langkah-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 640px) {
 
-            .latihan-dnd-wrap,
-            .hasil-akhir-grid {
+            .isi-grid,
+            .langkah-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .materi-wrap {
-                padding: 8px 2px 22px;
-            }
-
-            .bab-title {
-                font-size: 23px;
-            }
-
-            .tujuan-card,
-            .content-card,
-            .info-card,
-            .contoh-card,
-            .step-card,
-            .final-result,
-            .langkah-putih-card,
-            .latihan-card,
-            .langkah-stack-card {
-                padding: 16px;
-            }
-
-            .ilustrasi-actions,
-            .contoh-actions,
-            .step-btn-row,
-            .latihan-actions {
-                flex-direction: column;
-            }
-
-            .btn-materi {
-                width: 100%;
-            }
-
-            .materi-paragraf,
-            .tujuan-card li,
-            .content-card p,
-            .content-card li,
-            .info-card p,
-            .info-card li,
-            .contoh-card p,
-            .contoh-card li,
-            .step-question,
-            .step-feedback,
-            .final-result p,
-            .bersusun-intro,
-            .langkah-putih-card li,
-            .latihan-card p,
-            .latihan-card li,
-            .latihan-note,
-            .hasil-chip {
-                font-size: 15px;
-            }
-
-            .definisi-tab {
-                min-width: 145px;
-                height: 42px;
-                font-size: 14px;
-            }
-
-            .definisi-box {
-                padding: 28px 14px 10px;
-                margin-left: 0;
-            }
-
-            .latihan-dnd-soal,
-            .drag-card {
-                font-size: 14px;
-            }
-        }
-
-        .latihan-dnd-board {
-            background: #edf1f1;
-            border: 1px solid #d7dddd;
-            border-radius: 18px;
-            padding: 18px;
-            margin-top: 12px;
-            max-height: 78vh;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-
-        .bank-panel,
-        .slot-panel {
-            background: #f9f9f9;
-            border: 1px solid #d9d9d9;
-            border-radius: 16px;
-            padding: 14px;
-            min-height: 200px;
-        }
-
-        .slot-panel {
-            max-height: 62vh;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-
-        .drag-bank {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 62vh;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .drop-zone-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-height: 100%;
-        }
-
-        @media (max-width: 900px) {
-            .latihan-dnd-board {
-                max-height: none;
-                overflow: visible;
-            }
-
-            .slot-panel,
-            .drag-bank {
-                max-height: none;
-                overflow: visible;
             }
         }
     </style>
@@ -1170,6 +1030,7 @@
                 </ol>
             </div>
         </div>
+
         <div class="section-label">CONTOH</div>
         <div class="contoh-card">
             <div class="mini-title">
@@ -1475,12 +1336,275 @@
             </div>
 
             <p>
-                Geser setiap kartu ke kotak langkah yang sesuai. Jika benar, kartu akan berubah menjadi
-                <b>hijau</b> dan tidak bisa dipindah lagi. Jika salah, kartu akan berubah menjadi
-                <b>merah</b> lalu kembali sehingga masih bisa dicoba lagi.
+                Kotak <b>isi perhitungan</b> di atas bersifat tetap. Yang bisa digeser hanya
+                kotak <b>Langkah 1–10</b> di bawah. Cocokkan setiap langkah dengan isi
+                perhitungan yang benar.
             </p>
 
-            <div class="latihan-dnd-board">
+            <style>
+                /* ====== LATIHAN BARU LEBIH RAPI DAN KECIL ====== */
+                .latihan-match-board {
+                    background: #edf1f1;
+                    border: 1px solid #d7dddd;
+                    border-radius: 18px;
+                    padding: 16px;
+                    margin-top: 12px;
+                    overflow: hidden;
+                }
+
+                .latihan-dnd-soal {
+                    font-size: 15px;
+                    line-height: 1.7;
+                    margin-bottom: 8px;
+                    color: #404040;
+                    word-break: break-word;
+                }
+
+                .latihan-note {
+                    font-size: 14px;
+                    line-height: 1.7;
+                    color: #6b6b6b;
+                    margin-bottom: 14px;
+                }
+
+                .latihan-match-top {
+                    margin-bottom: 16px;
+                }
+
+                .panel-title,
+                .langkah-bank-title {
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: var(--primary-green);
+                    margin-bottom: 10px;
+                }
+
+                .isi-grid {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    gap: 10px;
+                    width: 100%;
+                }
+
+                .isi-slot {
+                    min-width: 0;
+                    min-height: 150px;
+                    background: #fcfcfc;
+                    border: 2px dashed #d8d2cb;
+                    border-radius: 14px;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 8px;
+                    transition: .2s ease;
+                    overflow: hidden;
+                }
+
+                .isi-slot.drag-over {
+                    border-color: #7ba7b8;
+                    background: #eef6f9;
+                }
+
+                .isi-slot.correct {
+                    background: rgba(47, 143, 70, .12);
+                    border-color: rgba(47, 143, 70, .5);
+                }
+
+                .isi-slot.wrong {
+                    background: rgba(216, 74, 58, .10);
+                    border-color: rgba(216, 74, 58, .35);
+                }
+
+                .isi-slot-head {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 2px;
+                }
+
+                .isi-slot-title {
+                    display: none;
+                }
+
+                .isi-slot-body {
+                    flex: 1;
+                    min-width: 0;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    line-height: 1.5;
+                    color: #404040;
+                    font-size: 13px;
+                    word-break: break-word;
+                }
+
+                .isi-slot-body .rumus-mini {
+                    width: 100%;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    padding: 2px 0;
+                }
+
+                .isi-slot-body .rumus-mini::-webkit-scrollbar {
+                    height: 4px;
+                }
+
+                .isi-slot .drop-hint {
+                    font-size: 11px;
+                    color: #8a7d71;
+                    text-align: center;
+                    line-height: 1.4;
+                }
+
+                .langkah-bank-wrap {
+                    margin-top: 12px;
+                }
+
+                .langkah-grid {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    gap: 10px;
+                    width: 100%;
+                }
+
+                .langkah-card {
+                    min-width: 0;
+                    background: #ffffff;
+                    border: 1px solid #d8d3cc;
+                    border-radius: 12px;
+                    padding: 10px 8px;
+                    cursor: grab;
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 13px;
+                    color: #434343;
+                    transition: .2s ease;
+                    user-select: none;
+                    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.03);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .langkah-card:hover {
+                    background: #fcfaf8;
+                    transform: translateY(-1px);
+                }
+
+                .langkah-card.dragging {
+                    opacity: .5;
+                }
+
+                .langkah-card.locked-correct {
+                    cursor: default;
+                    background: rgba(47, 143, 70, .12);
+                    border-color: rgba(47, 143, 70, .35);
+                    color: #1f6830;
+                }
+
+                .isi-slot .langkah-card {
+                    margin-top: 4px;
+                    white-space: normal;
+                }
+
+                .status-kecil {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 999px;
+                    padding: 4px 8px;
+                    font-size: 11px;
+                    font-weight: 700;
+                    line-height: 1;
+                    max-width: 100%;
+                }
+
+                .status-kecil.netral {
+                    background: #f1ece6;
+                    color: #7a6656;
+                    border: 1px solid #dfd2c6;
+                }
+
+                .status-kecil.benar {
+                    background: rgba(47, 143, 70, 0.12);
+                    color: #1f6830;
+                    border: 1px solid rgba(47, 143, 70, 0.3);
+                }
+
+                .status-kecil.salah {
+                    background: rgba(216, 74, 58, 0.1);
+                    color: #9a362c;
+                    border: 1px solid rgba(216, 74, 58, 0.25);
+                }
+
+                .progress-dnd {
+                    margin-top: 14px;
+                    background: #f7f2ec;
+                    border: 1px solid #eadccf;
+                    border-radius: 14px;
+                    padding: 10px 12px;
+                    font-size: 14px;
+                    color: #5d5248;
+                }
+
+                /* KaTeX di dalam kotak diperkecil */
+                .isi-slot-body .katex-display {
+                    margin: 0;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                }
+
+                .isi-slot-body .katex {
+                    font-size: 1em !important;
+                }
+
+                @media (max-width: 1200px) {
+
+                    .isi-grid,
+                    .langkah-grid {
+                        grid-template-columns: repeat(5, minmax(0, 1fr));
+                    }
+
+                    .isi-slot {
+                        min-height: 138px;
+                        padding: 9px;
+                    }
+
+                    .isi-slot-body {
+                        font-size: 12px;
+                    }
+
+                    .langkah-card {
+                        font-size: 12px;
+                        padding: 9px 6px;
+                    }
+                }
+
+                @media (max-width: 992px) {
+
+                    .isi-grid,
+                    .langkah-grid {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+                }
+
+                @media (max-width: 640px) {
+
+                    .isi-grid,
+                    .langkah-grid {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+
+                    .isi-slot {
+                        min-height: 128px;
+                    }
+                }
+            </style>
+
+            <div class="latihan-match-board">
                 <div class="latihan-dnd-soal">
                     Soal:
                     \[
@@ -1489,159 +1613,147 @@
                 </div>
 
                 <div class="latihan-note">
-                    Urutkan langkah berdasarkan pola:
-                    <b>bagi → kali → kurang → bagi → kali → kurang</b>, dan seterusnya.
+                    Isi perhitungan ditampilkan tetap. Geser <b>kotak Langkah</b> ke kotak isi perhitungan yang sesuai.
                 </div>
 
-                <div class="latihan-dnd-wrap">
-                    <div class="bank-panel">
-                        <div class="panel-title">Kartu Langkah</div>
-                        <div class="drag-bank" id="dragItems">
-                            <div class="drag-card" draggable="true" data-order="1">
-                                \[
-                                \frac{6x^5}{2x}=3x^4
-                                \]
+                <div class="latihan-match-top">
+                    <div class="panel-title">Isi Perhitungan</div>
+                    <div class="isi-grid" id="isiGrid">
+                        <div class="isi-slot" data-answer="1">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    \frac{6x^5}{2x}=3x^4
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="2">
-                                \[
-                                (2x-3)(3x^4)=6x^5-9x^4
-                                \]
+                        <div class="isi-slot" data-answer="2">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    (2x-3)(3x^4)=6x^5-9x^4
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="3">
-                                \[
-                                -4x^4-(-9x^4)=5x^4
-                                \]
+                        <div class="isi-slot" data-answer="3">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    -4x^4-(-9x^4)=5x^4
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="4">
-                                \[
-                                \frac{5x^4}{2x}=\frac{5}{2}x^3
-                                \]
+                        <div class="isi-slot" data-answer="4">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    \frac{5x^4}{2x}=\frac{5}{2}x^3
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="5">
-                                \[
-                                (2x-3)\left(\frac{5}{2}x^3\right)=5x^4-\frac{15}{2}x^3
-                                \]
+                        <div class="isi-slot" data-answer="5">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    (2x-3)\left(\frac{5}{2}x^3\right)=5x^4-\frac{15}{2}x^3
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="6">
-                                \[
-                                3x^3-\left(-\frac{15}{2}x^3\right)=\frac{21}{2}x^3
-                                \]
+                        <div class="isi-slot" data-answer="6">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    3x^3-\left(-\frac{15}{2}x^3\right)=\frac{21}{2}x^3
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="7">
-                                \[
-                                \frac{\frac{21}{2}x^3}{2x}=\frac{21}{4}x^2
-                                \]
+                        <div class="isi-slot" data-answer="7">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    \frac{\frac{21}{2}x^3}{2x}=\frac{21}{4}x^2
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="8">
-                                \[
-                                (2x-3)\left(\frac{21}{4}x^2\right)=\frac{21}{2}x^3-\frac{63}{4}x^2
-                                \]
+                        <div class="isi-slot" data-answer="8">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    (2x-3)\left(\frac{21}{4}x^2\right)=\frac{21}{2}x^3-\frac{63}{4}x^2
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="9">
-                                \[
-                                -12x^2-\left(-\frac{63}{4}x^2\right)=\frac{15}{4}x^2
-                                \]
+                        <div class="isi-slot" data-answer="9">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    -12x^2-\left(-\frac{63}{4}x^2\right)=\frac{15}{4}x^2
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
+                        </div>
 
-                            <div class="drag-card" draggable="true" data-order="10">
-                                \[
-                                \frac{\frac{15}{4}x^2}{2x}=\frac{15}{8}x
-                                \]
+                        <div class="isi-slot" data-answer="10">
+                            <div class="isi-slot-head">
+                                <span class="status-kecil netral">Belum diisi</span>
                             </div>
+                            <div class="isi-slot-body">
+                                <div class="rumus-mini">\[
+                                    \frac{\frac{15}{4}x^2}{2x}=\frac{15}{8}x
+                                    \]</div>
+                            </div>
+                            <div class="drop-hint">Taruh kotak langkah yang sesuai.</div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="slot-panel">
-                        <div class="panel-title">Susun ke Langkah yang Tepat</div>
-                        <div class="drop-zone-list" id="dropZones">
-                            <div class="drop-slot" data-step="1">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 1</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Letakkan kartu untuk tahap awal pembagian.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="2">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 2</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Biasanya berupa hasil perkalian dengan pembagi.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="3">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 3</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Lanjutkan dengan pengurangan.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="4">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 4</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Cari suku hasil bagi berikutnya.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="5">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 5</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Kalikan suku baru dengan pembagi.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="6">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 6</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Kurangkan kembali hasilnya.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="7">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 7</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Cari suku hasil bagi berikutnya lagi.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="8">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 8</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Tahap perkalian berikutnya.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="9">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 9</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Kurangi lagi untuk memperoleh bentuk baru.</span>
-                            </div>
-
-                            <div class="drop-slot" data-step="10">
-                                <div class="drop-head">
-                                    <span class="drop-label">Langkah 10</span>
-                                    <span class="status-kecil netral">Belum diisi</span>
-                                </div>
-                                <span class="drop-hint">Tahap pembagian berikutnya.</span>
-                            </div>
-                        </div>
+                <div class="langkah-bank-wrap">
+                    <div class="langkah-bank-title">Kotak Langkah 1–10</div>
+                    <div class="langkah-grid" id="langkahItems">
+                        <div class="langkah-card" draggable="true" data-step="1">Langkah 1</div>
+                        <div class="langkah-card" draggable="true" data-step="2">Langkah 2</div>
+                        <div class="langkah-card" draggable="true" data-step="3">Langkah 3</div>
+                        <div class="langkah-card" draggable="true" data-step="4">Langkah 4</div>
+                        <div class="langkah-card" draggable="true" data-step="5">Langkah 5</div>
+                        <div class="langkah-card" draggable="true" data-step="6">Langkah 6</div>
+                        <div class="langkah-card" draggable="true" data-step="7">Langkah 7</div>
+                        <div class="langkah-card" draggable="true" data-step="8">Langkah 8</div>
+                        <div class="langkah-card" draggable="true" data-step="9">Langkah 9</div>
+                        <div class="langkah-card" draggable="true" data-step="10">Langkah 10</div>
                     </div>
                 </div>
 
@@ -1664,158 +1776,164 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function renderMath(scope = document.body) {
-                if (window.renderMathInElement) {
-                    renderMathInElement(scope, {
-                        delimiters: [
-                            { left: '$$', right: '$$', display: true },
-                            { left: '\\[', right: '\\]', display: true },
-                            { left: '\\(', right: '\\)', display: false },
-                            { left: '$', right: '$', display: false }
-                        ],
-                        throwOnError: false
-                    });
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function renderMath(scope = document.body) {
+                    if (window.renderMathInElement) {
+                        renderMathInElement(scope, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '\\[', right: '\\]', display: true },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '$', right: '$', display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
                 }
-            }
 
-            renderMath(document.body);
+                renderMath(document.body);
 
-            /* =========================
-               Eksplorasi pilihan ganda
-            ========================== */
-            const soalItems = document.querySelectorAll('.eks-soal');
+                /* =========================
+                   Eksplorasi pilihan ganda
+                ========================== */
+                const soalItems = document.querySelectorAll('.eks-soal');
 
-            soalItems.forEach((soal) => {
-                const correctAnswer = soal.getAttribute('data-answer');
-                const buttons = soal.querySelectorAll('.opsi-btn');
-                const status = soal.querySelector('.jawaban-status');
+                soalItems.forEach((soal) => {
+                    const correctAnswer = soal.getAttribute('data-answer');
+                    const buttons = soal.querySelectorAll('.opsi-btn');
+                    const status = soal.querySelector('.jawaban-status');
 
-                buttons.forEach((btn) => {
-                    btn.addEventListener('click', function () {
-                        const choice = btn.getAttribute('data-choice');
+                    buttons.forEach((btn) => {
+                        btn.addEventListener('click', function () {
+                            const choice = btn.getAttribute('data-choice');
 
-                        buttons.forEach((b) => b.classList.remove('correct', 'wrong'));
+                            buttons.forEach((b) => b.classList.remove('correct', 'wrong'));
 
-                        if (choice === correctAnswer) {
-                            btn.classList.add('correct');
-                            status.textContent = 'Benar ✅';
-                            status.className = 'jawaban-status correct';
-                        } else {
-                            btn.classList.add('wrong');
-                            status.textContent = 'Jawaban masih kurang tepat.';
-                            status.className = 'jawaban-status wrong';
-                        }
+                            if (choice === correctAnswer) {
+                                btn.classList.add('correct');
+                                status.textContent = 'Benar ✅';
+                                status.className = 'jawaban-status correct';
+                            } else {
+                                btn.classList.add('wrong');
+                                status.textContent = 'Jawaban masih kurang tepat.';
+                                status.className = 'jawaban-status wrong';
+                            }
 
-                        renderMath(soal);
+                            renderMath(soal);
+                        });
                     });
                 });
-            });
 
-            /* =========================
-               Ilustrasi bertahap
-            ========================== */
-            const btnShowIlustrasi = document.getElementById('btnShowIlustrasi');
-            const btnNextLangkah = document.getElementById('btnNextLangkah');
-            const btnResetLangkah = document.getElementById('btnResetLangkah');
-            const ilustrasiContent = document.getElementById('ilustrasiContent');
+                /* =========================
+                   Ilustrasi bertahap
+                ========================== */
+                const btnShowIlustrasi = document.getElementById('btnShowIlustrasi');
+                const btnNextLangkah = document.getElementById('btnNextLangkah');
+                const btnResetLangkah = document.getElementById('btnResetLangkah');
+                const ilustrasiContent = document.getElementById('ilustrasiContent');
 
-            const langkahBoxes = [
-                document.getElementById('langkahBox1'),
-                document.getElementById('langkahBox2'),
-                document.getElementById('langkahBox3'),
-                document.getElementById('langkahBox4'),
-                document.getElementById('langkahBox5'),
-                document.getElementById('langkahBox6'),
-                document.getElementById('langkahBox7'),
-                document.getElementById('langkahBox8'),
-                document.getElementById('langkahBox9')
-            ];
+                const langkahBoxes = [
+                    document.getElementById('langkahBox1'),
+                    document.getElementById('langkahBox2'),
+                    document.getElementById('langkahBox3'),
+                    document.getElementById('langkahBox4'),
+                    document.getElementById('langkahBox5'),
+                    document.getElementById('langkahBox6'),
+                    document.getElementById('langkahBox7'),
+                    document.getElementById('langkahBox8'),
+                    document.getElementById('langkahBox9')
+                ];
 
-            const hasilBox = document.getElementById('hasilBox');
-            let currentLangkah = 0;
+                const hasilBox = document.getElementById('hasilBox');
+                let currentLangkah = 0;
 
-            function resetLangkah() {
-                currentLangkah = 0;
-                langkahBoxes.forEach(box => box.classList.remove('show'));
-                hasilBox.classList.remove('show');
-                btnNextLangkah.disabled = false;
-                btnNextLangkah.textContent = 'Buka Langkah 1';
-            }
-
-            btnShowIlustrasi.addEventListener('click', function () {
-                ilustrasiContent.classList.add('show');
-                renderMath(ilustrasiContent);
-            });
-
-            btnNextLangkah.addEventListener('click', function () {
-                ilustrasiContent.classList.add('show');
-
-                if (currentLangkah < langkahBoxes.length) {
-                    langkahBoxes[currentLangkah].classList.add('show');
-                    currentLangkah++;
-
-                    if (currentLangkah < langkahBoxes.length) {
-                        btnNextLangkah.textContent = 'Buka Langkah ' + (currentLangkah + 1);
-                    } else {
-                        btnNextLangkah.textContent = 'Tampilkan Hasil Akhir';
+                function resetLangkah() {
+                    currentLangkah = 0;
+                    langkahBoxes.forEach(box => box.classList.remove('show'));
+                    hasilBox.classList.remove('show');
+                    if (btnNextLangkah) {
+                        btnNextLangkah.disabled = false;
+                        btnNextLangkah.textContent = 'Buka Langkah 1';
                     }
-                } else {
-                    hasilBox.classList.add('show');
-                    btnNextLangkah.textContent = 'Semua Langkah Sudah Dibuka';
-                    btnNextLangkah.disabled = true;
                 }
 
-                renderMath(ilustrasiContent);
-            });
+                if (btnShowIlustrasi) {
+                    btnShowIlustrasi.addEventListener('click', function () {
+                        ilustrasiContent.classList.add('show');
+                        renderMath(ilustrasiContent);
+                    });
+                }
 
-            btnResetLangkah.addEventListener('click', function () {
-                resetLangkah();
-                ilustrasiContent.classList.add('show');
-                renderMath(ilustrasiContent);
-            });
+                if (btnNextLangkah) {
+                    btnNextLangkah.addEventListener('click', function () {
+                        ilustrasiContent.classList.add('show');
 
-            /* =========================
-               Contoh interaktif
-            ========================== */
-            const btnMulaiContoh = document.getElementById('btnMulaiContoh');
-            const btnResetContoh = document.getElementById('btnResetContoh');
-            const stepWrap = document.getElementById('stepInteraktifWrap');
-            const stepProgressText = document.getElementById('stepProgressText');
-            const finalBox = document.getElementById('stepFinalBox');
+                        if (currentLangkah < langkahBoxes.length) {
+                            langkahBoxes[currentLangkah].classList.add('show');
+                            currentLangkah++;
 
-            const allStepCards = [
-                document.getElementById('stepCard1'),
-                document.getElementById('stepCard2'),
-                document.getElementById('stepCard3'),
-                document.getElementById('stepCard4'),
-                document.getElementById('stepCard5'),
-                document.getElementById('stepCard6')
-            ];
+                            if (currentLangkah < langkahBoxes.length) {
+                                btnNextLangkah.textContent = 'Buka Langkah ' + (currentLangkah + 1);
+                            } else {
+                                btnNextLangkah.textContent = 'Tampilkan Hasil Akhir';
+                            }
+                        } else {
+                            hasilBox.classList.add('show');
+                            btnNextLangkah.textContent = 'Semua Langkah Sudah Dibuka';
+                            btnNextLangkah.disabled = true;
+                        }
 
-            let currentInteractiveStep = 1;
-            const unlockedSteps = { 1: true, 2: false, 3: false, 4: false, 5: false, 6: false };
+                        renderMath(ilustrasiContent);
+                    });
+                }
 
-            const jawabanBenar = {
-                1: ['2x^2', '2x2'],
-                2: ['2x^3+2x^2', '2x3+2x2'],
-                3: ['x^2-2x+1', 'x2-2x+1'],
-                4: ['x'],
-                5: ['-3x+1', '-3x1'],
-                6: [
-                    'h(x)=2x^2+x-3,s=4',
-                    'hx=2x^2+x-3,s=4',
-                    '2x^2+x-3,4',
-                    '2x2+x-3,4'
-                ]
-            };
+                if (btnResetLangkah) {
+                    btnResetLangkah.addEventListener('click', function () {
+                        resetLangkah();
+                        ilustrasiContent.classList.add('show');
+                        renderMath(ilustrasiContent);
+                    });
+                }
 
-            const feedbackText = {
-                1: {
-                    benar: `
+                /* =========================
+                   Contoh interaktif
+                ========================== */
+                const btnMulaiContoh = document.getElementById('btnMulaiContoh');
+                const btnResetContoh = document.getElementById('btnResetContoh');
+                const stepWrap = document.getElementById('stepInteraktifWrap');
+                const finalBox = document.getElementById('stepFinalBox');
+
+                const allStepCards = [
+                    document.getElementById('stepCard1'),
+                    document.getElementById('stepCard2'),
+                    document.getElementById('stepCard3'),
+                    document.getElementById('stepCard4'),
+                    document.getElementById('stepCard5'),
+                    document.getElementById('stepCard6')
+                ];
+
+                let currentInteractiveStep = 1;
+                const unlockedSteps = { 1: true, 2: false, 3: false, 4: false, 5: false, 6: false };
+
+                const jawabanBenar = {
+                    1: ['2x^2', '2x2'],
+                    2: ['2x^3+2x^2', '2x3+2x2'],
+                    3: ['x^2-2x+1', 'x2-2x+1'],
+                    4: ['x'],
+                    5: ['-3x+1', '-3x1'],
+                    6: [
+                        'h(x)=2x^2+x-3,s=4',
+                        'hx=2x^2+x-3,s=4',
+                        '2x^2+x-3,4',
+                        '2x2+x-3,4'
+                    ]
+                };
+
+                const feedbackText = {
+                    1: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1829,9 +1947,9 @@
                             </p>
                         </div>
                     `
-                },
-                2: {
-                    benar: `
+                    },
+                    2: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1845,9 +1963,9 @@
                             </p>
                         </div>
                     `
-                },
-                3: {
-                    benar: `
+                    },
+                    3: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1861,9 +1979,9 @@
                             </p>
                         </div>
                     `
-                },
-                4: {
-                    benar: `
+                    },
+                    4: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1877,9 +1995,9 @@
                             </p>
                         </div>
                     `
-                },
-                5: {
-                    benar: `
+                    },
+                    5: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1894,9 +2012,9 @@
                             </p>
                         </div>
                     `
-                },
-                6: {
-                    benar: `
+                    },
+                    6: {
+                        benar: `
                         <b>Benar ✅</b>
                         <div class="step-solution">
                             <p style="margin-top:0;">
@@ -1915,435 +2033,501 @@
                             </p>
                         </div>
                     `
-                }
-            };
-
-            function normalizeInput(str) {
-                return (str || '')
-                    .toLowerCase()
-                    .replace(/\s+/g, '')
-                    .replace(/−/g, '-')
-                    .replace(/,/g, '.')
-                    .replace(/\*/g, '')
-                    .replace(/\\,/g, '')
-                    .replace(/\{/g, '')
-                    .replace(/\}/g, '')
-                    .replace(/\\left/g, '')
-                    .replace(/\\right/g, '')
-                    .replace(/[()]/g, '');
-            }
-
-            function isCorrect(step, userValue) {
-                const normalized = normalizeInput(userValue);
-                return jawabanBenar[step].some(item => normalizeInput(item) === normalized);
-            }
-
-            function updateProgress() {
-                if (stepProgressText) {
-                    stepProgressText.textContent = 'Langkah aktif: ' + currentInteractiveStep + ' dari 6';
-                }
-            }
-
-            function showOnlyStep(stepNumber) {
-                if (!unlockedSteps[stepNumber]) return;
-
-                stepWrap.classList.add('show');
-
-                allStepCards.forEach((card, index) => {
-                    const nomor = index + 1;
-                    card.classList.remove('active');
-                    if (nomor === stepNumber) {
-                        card.classList.add('active');
                     }
-                });
+                };
 
-                currentInteractiveStep = stepNumber;
-                updateProgress();
-                renderMath(stepWrap);
-            }
+                function normalizeInput(str) {
+                    return (str || '')
+                        .toLowerCase()
+                        .replace(/\s+/g, '')
+                        .replace(/−/g, '-')
+                        .replace(/,/g, '.')
+                        .replace(/\*/g, '')
+                        .replace(/\\,/g, '')
+                        .replace(/\{/g, '')
+                        .replace(/\}/g, '')
+                        .replace(/\\left/g, '')
+                        .replace(/\\right/g, '')
+                        .replace(/[()]/g, '');
+                }
 
-            function resetContohInteraktif() {
-                currentInteractiveStep = 1;
+                function isCorrect(step, userValue) {
+                    const normalized = normalizeInput(userValue);
+                    return jawabanBenar[step].some(item => normalizeInput(item) === normalized);
+                }
 
-                Object.keys(unlockedSteps).forEach(key => {
-                    unlockedSteps[key] = false;
-                });
-                unlockedSteps[1] = true;
+                function showOnlyStep(stepNumber) {
+                    if (!unlockedSteps[stepNumber]) return;
 
-                allStepCards.forEach((card, index) => {
-                    const step = index + 1;
-                    card.classList.remove('active', 'done');
+                    stepWrap.classList.add('show');
 
+                    allStepCards.forEach((card, index) => {
+                        const nomor = index + 1;
+                        card.classList.remove('active');
+                        if (nomor === stepNumber) {
+                            card.classList.add('active');
+                        }
+                    });
+
+                    currentInteractiveStep = stepNumber;
+                    renderMath(stepWrap);
+                }
+
+                function resetContohInteraktif() {
+                    currentInteractiveStep = 1;
+
+                    Object.keys(unlockedSteps).forEach(key => {
+                        unlockedSteps[key] = false;
+                    });
+                    unlockedSteps[1] = true;
+
+                    allStepCards.forEach((card, index) => {
+                        const step = index + 1;
+                        card.classList.remove('active', 'done');
+
+                        const input = document.getElementById('answer' + step);
+                        const feedback = document.getElementById('feedback' + step);
+                        const nextBtn = document.getElementById('nextBtn' + step);
+
+                        if (input) {
+                            input.value = '';
+                            input.disabled = false;
+                        }
+
+                        if (feedback) {
+                            feedback.className = 'step-feedback';
+                            feedback.innerHTML = '';
+                        }
+
+                        if (nextBtn) {
+                            nextBtn.classList.remove('show');
+                            nextBtn.disabled = true;
+                        }
+                    });
+
+                    finalBox.classList.remove('show');
+                    showOnlyStep(1);
+                }
+
+                function unlockNextStep(step) {
+                    const nextStep = step + 1;
+                    if (unlockedSteps[nextStep] !== undefined) {
+                        unlockedSteps[nextStep] = true;
+                    }
+                }
+
+                function setCorrectState(step) {
+                    const currentCard = document.getElementById('stepCard' + step);
                     const input = document.getElementById('answer' + step);
-                    const feedback = document.getElementById('feedback' + step);
                     const nextBtn = document.getElementById('nextBtn' + step);
 
-                    if (input) {
-                        input.value = '';
-                        input.disabled = false;
-                    }
+                    currentCard.classList.add('done');
 
-                    if (feedback) {
-                        feedback.className = 'step-feedback';
-                        feedback.innerHTML = '';
-                    }
+                    if (input) input.disabled = true;
 
                     if (nextBtn) {
-                        nextBtn.classList.remove('show');
-                        nextBtn.disabled = true;
+                        nextBtn.classList.add('show');
+                        nextBtn.disabled = false;
                     }
-                });
 
-                finalBox.classList.remove('show');
-                showOnlyStep(1);
-            }
-
-            function unlockNextStep(step) {
-                const nextStep = step + 1;
-                if (unlockedSteps[nextStep] !== undefined) {
-                    unlockedSteps[nextStep] = true;
-                }
-            }
-
-            function setCorrectState(step) {
-                const currentCard = document.getElementById('stepCard' + step);
-                const input = document.getElementById('answer' + step);
-                const nextBtn = document.getElementById('nextBtn' + step);
-
-                currentCard.classList.add('done');
-
-                if (input) input.disabled = true;
-
-                if (nextBtn) {
-                    nextBtn.classList.add('show');
-                    nextBtn.disabled = false;
+                    unlockNextStep(step);
                 }
 
-                unlockNextStep(step);
-            }
-
-            btnMulaiContoh.addEventListener('click', function () {
-                showOnlyStep(1);
-            });
-
-            btnResetContoh.addEventListener('click', function () {
-                resetContohInteraktif();
-            });
-
-            const stepResetBtnAkhir = document.getElementById('stepResetBtnAkhir');
-            if (stepResetBtnAkhir) {
-                stepResetBtnAkhir.addEventListener('click', function () {
-                    resetContohInteraktif();
-                });
-            }
-
-            document.querySelectorAll('.step-submit-btn').forEach((btn) => {
-                btn.addEventListener('click', function () {
-                    const step = parseInt(btn.getAttribute('data-step'));
-                    const input = document.getElementById('answer' + step);
-                    const feedback = document.getElementById('feedback' + step);
-                    const userValue = input.value;
-
-                    if (!userValue.trim()) {
-                        feedback.className = 'step-feedback wrong';
-                        feedback.innerHTML = '<b>Jawaban belum diisi.</b>';
-                        return;
-                    }
-
-                    if (isCorrect(step, userValue)) {
-                        feedback.className = 'step-feedback correct';
-                        feedback.innerHTML = feedbackText[step].benar;
-                        setCorrectState(step);
-
-                        if (step === 6) {
-                            finalBox.classList.add('show');
-                        }
-                    } else {
-                        feedback.className = 'step-feedback wrong';
-                        feedback.innerHTML = '<b>Jawaban masih salah. Coba periksa lagi pembagian, perkalian, atau pengurangannya.</b>';
-                    }
-
-                    renderMath(stepWrap);
-                });
-            });
-
-            for (let i = 1; i <= 5; i++) {
-                const nextBtn = document.getElementById('nextBtn' + i);
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function () {
-                        if (!unlockedSteps[i + 1]) return;
-                        showOnlyStep(i + 1);
+                if (btnMulaiContoh) {
+                    btnMulaiContoh.addEventListener('click', function () {
+                        showOnlyStep(1);
                     });
                 }
-            }
 
-            resetLangkah();
-            resetContohInteraktif();
-
-            /* =========================
-               Drag and Drop Latihan
-            ========================== */
-            const dragItemsContainer = document.getElementById('dragItems');
-            const dropSlots = document.querySelectorAll('.drop-slot');
-            const resetDndBtn = document.getElementById('resetDndBtn');
-            const dndFinalResult = document.getElementById('dndFinalResult');
-            const dndProgressText = document.getElementById('dndProgressText');
-            const latihanBoard = document.querySelector('.latihan-dnd-board');
-            const slotPanel = document.querySelector('.slot-panel');
-
-            let draggedCard = null;
-            let autoScrollFrame = null;
-            let lastPointerY = null;
-
-            function updateSlotBadge(slot, type, text) {
-                const badge = slot.querySelector('.status-kecil');
-                if (!badge) return;
-                badge.className = 'status-kecil ' + type;
-                badge.textContent = text;
-            }
-
-            function clearSlotState(slot) {
-                slot.classList.remove('correct', 'wrong', 'drag-over');
-            }
-
-            function updateDndProgress() {
-                let correctCount = 0;
-
-                dropSlots.forEach((slot) => {
-                    const placedCard = slot.querySelector('.drag-card');
-                    const step = slot.getAttribute('data-step');
-
-                    if (placedCard && placedCard.getAttribute('data-order') === step) {
-                        correctCount++;
-                    }
-                });
-
-                dndProgressText.textContent = 'Kemajuan: ' + correctCount + ' dari 10 langkah sudah benar.';
-
-                if (correctCount === 10) {
-                    dndFinalResult.classList.add('show');
-                } else {
-                    dndFinalResult.classList.remove('show');
-                }
-            }
-
-            function resetSingleSlot(slot) {
-                clearSlotState(slot);
-                slot.classList.remove('filled');
-                updateSlotBadge(slot, 'netral', 'Belum diisi');
-
-                const card = slot.querySelector('.drag-card');
-                if (card) {
-                    card.classList.remove('locked-correct');
-                    card.setAttribute('draggable', 'true');
-                    dragItemsContainer.appendChild(card);
+                if (btnResetContoh) {
+                    btnResetContoh.addEventListener('click', function () {
+                        resetContohInteraktif();
+                    });
                 }
 
-                const hint = slot.querySelector('.drop-hint');
-                if (hint) hint.style.display = 'inline';
-            }
-
-            function shuffleCards(container) {
-                const cards = Array.from(container.querySelectorAll('.drag-card'));
-                for (let i = cards.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [cards[i], cards[j]] = [cards[j], cards[i]];
-                }
-                cards.forEach(card => container.appendChild(card));
-            }
-
-            function resetDndExercise() {
-                dndFinalResult.classList.remove('show');
-
-                dropSlots.forEach((slot) => {
-                    resetSingleSlot(slot);
-                });
-
-                shuffleCards(dragItemsContainer);
-                updateDndProgress();
-                renderMath(document.body);
-
-                if (latihanBoard) latihanBoard.scrollTop = 0;
-                if (slotPanel) slotPanel.scrollTop = 0;
-                if (dragItemsContainer) dragItemsContainer.scrollTop = 0;
-            }
-
-            function getScrollableContainers() {
-                const containers = [];
-                if (slotPanel) containers.push(slotPanel);
-                if (latihanBoard) containers.push(latihanBoard);
-                if (dragItemsContainer) containers.push(dragItemsContainer);
-                return containers;
-            }
-
-            function autoScrollContainers(clientY) {
-                const edgeThreshold = 85;
-                const maxSpeed = 20;
-
-                getScrollableContainers().forEach((container) => {
-                    const rect = container.getBoundingClientRect();
-
-                    const canScrollDown = container.scrollTop + container.clientHeight < container.scrollHeight;
-                    const canScrollUp = container.scrollTop > 0;
-
-                    let delta = 0;
-
-                    const distanceTop = clientY - rect.top;
-                    const distanceBottom = rect.bottom - clientY;
-
-                    if (distanceTop < edgeThreshold && canScrollUp) {
-                        delta = -Math.ceil(((edgeThreshold - distanceTop) / edgeThreshold) * maxSpeed);
-                    } else if (distanceBottom < edgeThreshold && canScrollDown) {
-                        delta = Math.ceil(((edgeThreshold - distanceBottom) / edgeThreshold) * maxSpeed);
-                    }
-
-                    if (delta !== 0) {
-                        container.scrollTop += delta;
-                    }
-                });
-            }
-
-            function stopAutoScroll() {
-                if (autoScrollFrame) {
-                    cancelAnimationFrame(autoScrollFrame);
-                    autoScrollFrame = null;
-                }
-            }
-
-            function startAutoScrollTracking() {
-                stopAutoScroll();
-
-                function tick() {
-                    if (draggedCard && lastPointerY !== null) {
-                        autoScrollContainers(lastPointerY);
-                        autoScrollFrame = requestAnimationFrame(tick);
-                    }
+                const stepResetBtnAkhir = document.getElementById('stepResetBtnAkhir');
+                if (stepResetBtnAkhir) {
+                    stepResetBtnAkhir.addEventListener('click', function () {
+                        resetContohInteraktif();
+                    });
                 }
 
-                autoScrollFrame = requestAnimationFrame(tick);
-            }
+                document.querySelectorAll('.step-submit-btn').forEach((btn) => {
+                    btn.addEventListener('click', function () {
+                        const step = parseInt(btn.getAttribute('data-step'), 10);
+                        const input = document.getElementById('answer' + step);
+                        const feedback = document.getElementById('feedback' + step);
+                        const userValue = input.value;
 
-            document.addEventListener('dragover', function (e) {
-                lastPointerY = e.clientY;
-            });
-
-            document.addEventListener('drop', function () {
-                stopAutoScroll();
-                lastPointerY = null;
-            });
-
-            document.addEventListener('dragend', function () {
-                stopAutoScroll();
-                lastPointerY = null;
-            });
-
-            function attachDragEvents(card) {
-                card.addEventListener('dragstart', function () {
-                    if (card.classList.contains('locked-correct')) return;
-                    draggedCard = card;
-                    card.classList.add('dragging');
-                    startAutoScrollTracking();
-                });
-
-                card.addEventListener('dragend', function () {
-                    card.classList.remove('dragging');
-                    draggedCard = null;
-                    stopAutoScroll();
-                    lastPointerY = null;
-                });
-            }
-
-            document.querySelectorAll('.drag-card').forEach((card) => {
-                attachDragEvents(card);
-            });
-
-            dropSlots.forEach((slot) => {
-                slot.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                    slot.classList.add('drag-over');
-                });
-
-                slot.addEventListener('dragleave', function () {
-                    slot.classList.remove('drag-over');
-                });
-
-                slot.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    slot.classList.remove('drag-over');
-
-                    if (!draggedCard) return;
-                    if (draggedCard.classList.contains('locked-correct')) return;
-
-                    const existingCard = slot.querySelector('.drag-card');
-                    const correctStep = slot.getAttribute('data-step');
-                    const draggedOrder = draggedCard.getAttribute('data-order');
-                    const hint = slot.querySelector('.drop-hint');
-                    const currentDraggedCard = draggedCard;
-
-                    if (existingCard && existingCard !== currentDraggedCard) {
-                        if (existingCard.classList.contains('locked-correct')) {
+                        if (!userValue.trim()) {
+                            feedback.className = 'step-feedback wrong';
+                            feedback.innerHTML = '<b>Jawaban belum diisi.</b>';
                             return;
                         }
-                        dragItemsContainer.appendChild(existingCard);
-                    }
 
-                    slot.appendChild(currentDraggedCard);
-                    slot.classList.add('filled');
-                    if (hint) hint.style.display = 'none';
-                    renderMath(slot);
-                    clearSlotState(slot);
+                        if (isCorrect(step, userValue)) {
+                            feedback.className = 'step-feedback correct';
+                            feedback.innerHTML = feedbackText[step].benar;
+                            setCorrectState(step);
 
-                    if (draggedOrder === correctStep) {
-                        slot.classList.add('correct');
-                        currentDraggedCard.classList.add('locked-correct');
-                        currentDraggedCard.setAttribute('draggable', 'false');
-                        updateSlotBadge(slot, 'benar', 'Benar');
-                    } else {
-                        slot.classList.add('wrong');
-                        updateSlotBadge(slot, 'salah', 'Salah');
-
-                        setTimeout(() => {
-                            clearSlotState(slot);
-                            updateSlotBadge(slot, 'netral', 'Belum diisi');
-                            slot.classList.remove('filled');
-                            if (hint) hint.style.display = 'inline';
-
-                            if (slot.contains(currentDraggedCard) && !currentDraggedCard.classList.contains('locked-correct')) {
-                                dragItemsContainer.appendChild(currentDraggedCard);
-                                renderMath(dragItemsContainer);
+                            if (step === 6) {
+                                finalBox.classList.add('show');
                             }
-                        }, 850);
-                    }
+                        } else {
+                            feedback.className = 'step-feedback wrong';
+                            feedback.innerHTML = '<b>Jawaban masih salah. Coba periksa lagi pembagian, perkalian, atau pengurangannya.</b>';
+                        }
 
-                    updateDndProgress();
+                        renderMath(stepWrap);
+                    });
                 });
+
+                for (let i = 1; i <= 5; i++) {
+                    const nextBtn = document.getElementById('nextBtn' + i);
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', function () {
+                            if (!unlockedSteps[i + 1]) return;
+                            showOnlyStep(i + 1);
+                        });
+                    }
+                }
+
+                resetLangkah();
+                resetContohInteraktif();
+
+                /* =========================
+                   Drag and Drop Latihan Baru
+                ========================== */
+                const langkahItemsContainer = document.getElementById('langkahItems');
+                const isiSlots = document.querySelectorAll('.isi-slot');
+                const resetDndBtn = document.getElementById('resetDndBtn');
+                const dndFinalResult = document.getElementById('dndFinalResult');
+                const dndProgressText = document.getElementById('dndProgressText');
+
+                let draggedCard = null;
+
+                function updateSlotBadge(slot, type, text) {
+                    const badge = slot.querySelector('.status-kecil');
+                    if (!badge) return;
+                    badge.className = 'status-kecil ' + type;
+                    badge.textContent = text;
+                }
+
+                function clearSlotState(slot) {
+                    slot.classList.remove('correct', 'wrong', 'drag-over');
+                }
+
+                function updateDndProgress() {
+                    let correctCount = 0;
+
+                    isiSlots.forEach((slot) => {
+                        const placedCard = slot.querySelector('.langkah-card');
+                        const answer = slot.getAttribute('data-answer');
+
+                        if (placedCard && placedCard.getAttribute('data-step') === answer) {
+                            correctCount++;
+                        }
+                    });
+
+                    dndProgressText.textContent = 'Kemajuan: ' + correctCount + ' dari 10 langkah sudah benar.';
+
+                    if (correctCount === 10) {
+                        dndFinalResult.classList.add('show');
+                    } else {
+                        dndFinalResult.classList.remove('show');
+                    }
+                }
+
+                function shuffleCards(container) {
+                    const cards = Array.from(container.querySelectorAll('.langkah-card'));
+                    for (let i = cards.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [cards[i], cards[j]] = [cards[j], cards[i]];
+                    }
+                    cards.forEach(card => container.appendChild(card));
+                }
+
+                function resetDndExercise() {
+                    dndFinalResult.classList.remove('show');
+
+                    isiSlots.forEach((slot) => {
+                        clearSlotState(slot);
+                        updateSlotBadge(slot, 'netral', 'Belum diisi');
+
+                        const hint = slot.querySelector('.drop-hint');
+                        if (hint) hint.style.display = 'block';
+
+                        const placedCard = slot.querySelector('.langkah-card');
+                        if (placedCard) {
+                            placedCard.classList.remove('locked-correct');
+                            langkahItemsContainer.appendChild(placedCard);
+                        }
+                    });
+
+                    shuffleCards(langkahItemsContainer);
+                    updateDndProgress();
+                    renderMath(document.body);
+                }
+
+                document.querySelectorAll('.langkah-card').forEach((card) => {
+                    card.addEventListener('dragstart', function () {
+                        if (card.classList.contains('locked-correct')) return;
+                        draggedCard = card;
+                        card.classList.add('dragging');
+                    });
+
+                    card.addEventListener('dragend', function () {
+                        card.classList.remove('dragging');
+                    });
+                });
+
+                isiSlots.forEach((slot) => {
+                    slot.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        slot.classList.add('drag-over');
+                    });
+
+                    slot.addEventListener('dragleave', function () {
+                        slot.classList.remove('drag-over');
+                    });
+
+                    slot.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        slot.classList.remove('drag-over');
+
+                        if (!draggedCard) return;
+
+                        const answer = slot.getAttribute('data-answer');
+                        const draggedStep = draggedCard.getAttribute('data-step');
+                        const hint = slot.querySelector('.drop-hint');
+                        const existingCard = slot.querySelector('.langkah-card');
+
+                        if (existingCard && existingCard !== draggedCard) {
+                            if (existingCard.classList.contains('locked-correct')) {
+                                draggedCard = null;
+                                return;
+                            }
+                            langkahItemsContainer.appendChild(existingCard);
+                        }
+
+                        slot.appendChild(draggedCard);
+
+                        if (draggedStep === answer) {
+                            clearSlotState(slot);
+                            slot.classList.add('correct');
+                            updateSlotBadge(slot, 'benar', 'Benar');
+                            if (hint) hint.style.display = 'none';
+                            draggedCard.classList.add('locked-correct');
+                        } else {
+                            clearSlotState(slot);
+                            slot.classList.add('wrong');
+                            updateSlotBadge(slot, 'salah', 'Salah');
+                            if (hint) hint.style.display = 'none';
+
+                            const wrongCard = draggedCard;
+                            setTimeout(() => {
+                                if (!wrongCard.classList.contains('locked-correct')) {
+                                    langkahItemsContainer.appendChild(wrongCard);
+                                }
+                                clearSlotState(slot);
+                                updateSlotBadge(slot, 'netral', 'Belum diisi');
+                                if (hint) hint.style.display = 'block';
+                                updateDndProgress();
+                            }, 700);
+                        }
+
+                        draggedCard = null;
+                        updateDndProgress();
+                        renderMath(document.body);
+                    });
+                });
+
+                if (resetDndBtn) {
+                    resetDndBtn.addEventListener('click', function () {
+                        resetDndExercise();
+                    });
+                }
+
+                resetDndExercise();
+                renderMath(document.body);
             });
+        </script>
 
-            dragItemsContainer.addEventListener('dragover', function (e) {
-                e.preventDefault();
-            });
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function renderMath(scope = document.body) {
+                    if (window.renderMathInElement) {
+                        renderMathInElement(scope, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '\\[', right: '\\]', display: true },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '$', right: '$', display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
+                }
 
-            dragItemsContainer.addEventListener('drop', function (e) {
-                e.preventDefault();
+                renderMath(document.body);
 
-                if (!draggedCard) return;
-                if (draggedCard.classList.contains('locked-correct')) return;
+                const langkahItemsContainer = document.getElementById('langkahItems');
+                const isiSlots = document.querySelectorAll('.isi-slot');
+                const resetDndBtn = document.getElementById('resetDndBtn');
+                const dndFinalResult = document.getElementById('dndFinalResult');
+                const dndProgressText = document.getElementById('dndProgressText');
 
-                dragItemsContainer.appendChild(draggedCard);
-                renderMath(dragItemsContainer);
-            });
+                let draggedCard = null;
 
-            resetDndBtn.addEventListener('click', function () {
+                function updateSlotBadge(slot, type, text) {
+                    const badge = slot.querySelector('.status-kecil');
+                    if (!badge) return;
+                    badge.className = 'status-kecil ' + type;
+                    badge.textContent = text;
+                }
+
+                function clearSlotState(slot) {
+                    slot.classList.remove('correct', 'wrong', 'drag-over');
+                }
+
+                function updateDndProgress() {
+                    let correctCount = 0;
+
+                    isiSlots.forEach((slot) => {
+                        const placedCard = slot.querySelector('.langkah-card');
+                        const answer = slot.getAttribute('data-answer');
+
+                        if (placedCard && placedCard.getAttribute('data-step') === answer) {
+                            correctCount++;
+                        }
+                    });
+
+                    dndProgressText.textContent = 'Kemajuan: ' + correctCount + ' dari 10 langkah sudah benar.';
+
+                    if (correctCount === 10) {
+                        dndFinalResult.classList.add('show');
+                    } else {
+                        dndFinalResult.classList.remove('show');
+                    }
+                }
+
+                function shuffleCards(container) {
+                    const cards = Array.from(container.querySelectorAll('.langkah-card'));
+                    for (let i = cards.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [cards[i], cards[j]] = [cards[j], cards[i]];
+                    }
+                    cards.forEach(card => container.appendChild(card));
+                }
+
+                function resetDndExercise() {
+                    dndFinalResult.classList.remove('show');
+
+                    isiSlots.forEach((slot) => {
+                        clearSlotState(slot);
+                        updateSlotBadge(slot, 'netral', 'Belum diisi');
+
+                        const hint = slot.querySelector('.drop-hint');
+                        if (hint) hint.style.display = 'block';
+
+                        const placedCard = slot.querySelector('.langkah-card');
+                        if (placedCard) {
+                            placedCard.classList.remove('locked-correct');
+                            langkahItemsContainer.appendChild(placedCard);
+                        }
+                    });
+
+                    shuffleCards(langkahItemsContainer);
+                    updateDndProgress();
+                    renderMath(document.body);
+                }
+
+                document.querySelectorAll('.langkah-card').forEach((card) => {
+                    card.addEventListener('dragstart', function () {
+                        if (card.classList.contains('locked-correct')) return;
+                        draggedCard = card;
+                        card.classList.add('dragging');
+                    });
+
+                    card.addEventListener('dragend', function () {
+                        card.classList.remove('dragging');
+                    });
+                });
+
+                isiSlots.forEach((slot) => {
+                    slot.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        slot.classList.add('drag-over');
+                    });
+
+                    slot.addEventListener('dragleave', function () {
+                        slot.classList.remove('drag-over');
+                    });
+
+                    slot.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        slot.classList.remove('drag-over');
+
+                        if (!draggedCard) return;
+
+                        const answer = slot.getAttribute('data-answer');
+                        const draggedStep = draggedCard.getAttribute('data-step');
+                        const hint = slot.querySelector('.drop-hint');
+                        const existingCard = slot.querySelector('.langkah-card');
+
+                        if (existingCard && existingCard !== draggedCard) {
+                            if (existingCard.classList.contains('locked-correct')) {
+                                draggedCard = null;
+                                return;
+                            }
+                            langkahItemsContainer.appendChild(existingCard);
+                        }
+
+                        slot.appendChild(draggedCard);
+
+                        if (draggedStep === answer) {
+                            clearSlotState(slot);
+                            slot.classList.add('correct');
+                            updateSlotBadge(slot, 'benar', 'Benar');
+                            if (hint) hint.style.display = 'none';
+                            draggedCard.classList.add('locked-correct');
+                        } else {
+                            clearSlotState(slot);
+                            slot.classList.add('wrong');
+                            updateSlotBadge(slot, 'salah', 'Salah');
+                            if (hint) hint.style.display = 'none';
+
+                            const wrongCard = draggedCard;
+                            setTimeout(() => {
+                                if (!wrongCard.classList.contains('locked-correct')) {
+                                    langkahItemsContainer.appendChild(wrongCard);
+                                }
+                                clearSlotState(slot);
+                                updateSlotBadge(slot, 'netral', 'Belum diisi');
+                                if (hint) hint.style.display = 'block';
+                                updateDndProgress();
+                            }, 700);
+                        }
+
+                        draggedCard = null;
+                        updateDndProgress();
+                        renderMath(document.body);
+                    });
+                });
+
+                if (resetDndBtn) {
+                    resetDndBtn.addEventListener('click', function () {
+                        resetDndExercise();
+                    });
+                }
+
                 resetDndExercise();
             });
-
-            resetDndExercise();
-            renderMath(document.body);
-        });
-    </script>
+        </script>
+        </div>
 @endsection
 
-@section('nav')
+    @section('nav')
     <a href="{{ route('kuisb') }}" class="btn-nav prev-btn">
         ← Previous
     </a>
@@ -2351,4 +2535,4 @@
     <a href="{{ route('metodehorner') }}" class="btn-nav next-btn">
         Next →
     </a>
-@endsection
+    @endsection
