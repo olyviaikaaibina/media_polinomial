@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                        delimiters: [
-                            {left: '$$', right: '$$', display: true},
-                            {left: '$', right: '$', display: false}
-                        ]
-                    });"></script>
+                                        delimiters: [
+                                            {left: '$$', right: '$$', display: true},
+                                            {left: '$', right: '$', display: false}
+                                        ]
+                                    });"></script>
 
     <style>
         :root {
@@ -433,23 +433,13 @@
             flex-wrap: wrap;
         }
 
-        .quiz-check,
-        .quiz-reset,
-        .quiz-checkall {
+        .quiz-reset {
             padding: 8px 14px;
             border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, .14);
+            border: 1px solid rgba(224, 112, 43, .25);
             background: #fff;
             cursor: pointer;
             font-weight: 700;
-        }
-
-        .quiz-check {
-            border-color: rgba(27, 122, 42, .25);
-        }
-
-        .quiz-reset {
-            border-color: rgba(224, 112, 43, .25);
         }
 
         .quiz-feedback {
@@ -472,25 +462,25 @@
         }
 
         .quiz-summary {
-            margin-left: 10px;
+            margin-left: 0;
+            margin-top: 10px;
             font-weight: 800;
             color: var(--green);
+            display: block;
         }
 
+        /* Materi lanjutan disembunyikan dulu */
         #materi-lanjutan {
-            height: 0;
-            overflow: hidden;
+            display: none;
             opacity: 0;
-            pointer-events: none;
-            margin: 0;
+            transform: translateY(8px);
+            transition: opacity .35s ease, transform .35s ease;
         }
 
         #materi-lanjutan.show {
-            height: auto;
-            overflow: visible;
+            display: block;
             opacity: 1;
-            pointer-events: auto;
-            margin: initial;
+            transform: translateY(0);
         }
 
         .contoh-grid2 {
@@ -677,7 +667,8 @@
         @media (max-width: 780px) {
 
             .kartu-grid,
-            .contoh-grid2 {
+            .contoh-grid2,
+            .contoh-grid-interaktif {
                 grid-template-columns: 1fr;
             }
 
@@ -734,15 +725,6 @@
                 flex-direction: column;
                 gap: 8px;
             }
-        }
-
-        .contoh-note2 {
-            margin-top: 10px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            background: var(--blue-soft);
-            border: 1px solid rgba(45, 108, 223, .18);
-            color: var(--muted);
         }
 
         .contoh-grid-interaktif {
@@ -817,12 +799,6 @@
             align-items: center;
             flex-wrap: wrap;
             margin-top: 14px;
-        }
-
-        @media (max-width: 780px) {
-            .contoh-grid-interaktif {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 
@@ -924,8 +900,7 @@
 
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
+
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -937,8 +912,7 @@
 
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
+            
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -951,17 +925,13 @@
 
                         <input class="quiz-input" type="text" placeholder="ya / tidak" />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
+                           
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
                 </ol>
 
-                <div style="margin-top:10px;">
-                    <button type="button" id="quiz-check-all" class="quiz-checkall">Cek Semua</button>
-                    <span id="quiz-summary" class="quiz-summary"></span>
-                </div>
+                <span id="quiz-summary" class="quiz-summary"></span>
             </div>
         </div>
 
@@ -1160,7 +1130,9 @@
                 const setEqual = (a, b) => {
                     const A = new Set(a), B = new Set(b);
                     if (A.size !== B.size) return false;
-                    for (const x of A) if (!B.has(x)) return false;
+                    for (const x of A) {
+                        if (!B.has(x)) return false;
+                    }
                     return true;
                 };
 
@@ -1195,11 +1167,17 @@
                     const el = item.querySelector(".quiz-input");
                     if (el) el.value = "";
                     clearFeedback(item);
+                    updateSummaryAndUnlock();
                 };
 
                 const checkItem = (item) => {
                     const type = item.getAttribute("data-type");
                     const valRaw = getInputValue(item);
+
+                    if (!valRaw.trim()) {
+                        clearFeedback(item);
+                        return false;
+                    }
 
                     if (type === "set") {
                         const expected = item.getAttribute("data-answer") || "";
@@ -1236,52 +1214,82 @@
                     return false;
                 };
 
+                const materiLanjutan = document.getElementById("materi-lanjutan");
+                const summary = document.getElementById("quiz-summary");
+                let isUnlocked = false;
+
                 const unlockMateri = () => {
-                    const lanjut = document.getElementById("materi-lanjutan");
-                    if (lanjut) lanjut.classList.add("show");
+                    if (!materiLanjutan || isUnlocked) return;
+
+                    isUnlocked = true;
+                    materiLanjutan.style.display = "block";
+
+                    requestAnimationFrame(() => {
+                        materiLanjutan.classList.add("show");
+                    });
+
+                    setTimeout(() => {
+                        materiLanjutan.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                    }, 150);
+                };
+
+                const updateSummaryAndUnlock = () => {
+                    const quiz = document.getElementById("eksplorasi-quiz");
+                    if (!quiz) return;
+
+                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                    const total = items.length;
+                    let filled = 0;
+                    let correct = 0;
+
+                    items.forEach(item => {
+                        const val = getInputValue(item).trim();
+                        if (val !== "") filled++;
+
+                        const fb = item.querySelector(".quiz-feedback");
+                        if (fb && fb.classList.contains("ok")) correct++;
+                    });
+
+                    if (summary) {
+                        if (filled === 0) {
+                            summary.textContent = "";
+                        } else if (correct === total) {
+                            summary.textContent = `Semua jawaban benar ✅ Materi berikutnya sudah dibuka.`;
+                        } else {
+                            summary.textContent = `Jawaban benar: ${correct}/${total}`;
+                        }
+                    }
+
+                    if (correct === total) {
+                        unlockMateri();
+                    }
                 };
 
                 const quiz = document.getElementById("eksplorasi-quiz");
                 if (quiz) {
-                    const lanjutInit = document.getElementById("materi-lanjutan");
-                    if (lanjutInit) lanjutInit.classList.remove("show");
-
                     quiz.querySelectorAll(".quiz-item").forEach(item => {
-                        const btnCheck = item.querySelector(".quiz-check");
+                        const input = item.querySelector(".quiz-input");
                         const btnReset = item.querySelector(".quiz-reset");
 
-                        if (btnCheck) btnCheck.addEventListener("click", () => {
-                            checkItem(item);
-
-                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                            const allOk = items.every(it => it.querySelector(".quiz-feedback")?.classList.contains("ok"));
-                            if (allOk) {
-                                const summary = document.getElementById("quiz-summary");
-                                if (summary) summary.textContent = `Skor: ${items.length}/${items.length}`;
-                                unlockMateri();
-                            }
-                        });
-
-                        if (btnReset) btnReset.addEventListener("click", () => resetItem(item));
-                    });
-
-                    const btnAll = document.getElementById("quiz-check-all");
-                    if (btnAll) {
-                        btnAll.addEventListener("click", () => {
-                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                            let correct = 0;
-
-                            items.forEach(item => {
-                                const ok = checkItem(item);
-                                if (ok) correct++;
+                        if (input) {
+                            input.addEventListener("input", () => {
+                                checkItem(item);
+                                updateSummaryAndUnlock();
                             });
 
-                            const summary = document.getElementById("quiz-summary");
-                            if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
+                            input.addEventListener("blur", () => {
+                                checkItem(item);
+                                updateSummaryAndUnlock();
+                            });
+                        }
 
-                            if (correct === items.length) unlockMateri();
-                        });
-                    }
+                        if (btnReset) {
+                            btnReset.addEventListener("click", () => resetItem(item));
+                        }
+                    });
                 }
             })();
         </script>
@@ -1356,20 +1364,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                                        <div class="quiz-soal-title">Soal ${i + 1}</div>
-                                        <div class="quiz-ekspresi">${q.expr}</div>
+                                            <div class="quiz-soal-title">Soal ${i + 1}</div>
+                                            <div class="quiz-ekspresi">${q.expr}</div>
 
-                                        <div class="quiz-options-new">
-                                            <label>
-                                                <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                                            </label>
-                                        </div>
+                                            <div class="quiz-options-new">
+                                                <label>
+                                                    <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                                </label>
+                                            </div>
 
-                                        <div class="feedback-box" id="fb${i}"></div>
-                                    `;
+                                            <div class="feedback-box" id="fb${i}"></div>
+                                        `;
                         container.appendChild(div);
                     });
 
@@ -1473,15 +1481,207 @@
             })();
         </script>
 
+        <script>
+            (function () {
+                const normalize = (s) =>
+                    (s || "")
+                        .toLowerCase()
+                        .trim()
+                        .replace(/\s+/g, "")
+                        .replace(/×/g, "x");
+
+                const splitTokens = (s) => {
+                    return (s || "")
+                        .toLowerCase()
+                        .replace(/;/g, ",")
+                        .split(",")
+                        .flatMap(part => part.trim().split(/\s+/))
+                        .map(t => normalize(t))
+                        .filter(Boolean);
+                };
+
+                const setEqual = (a, b) => {
+                    const A = new Set(a);
+                    const B = new Set(b);
+
+                    if (A.size !== B.size) return false;
+                    for (const x of A) {
+                        if (!B.has(x)) return false;
+                    }
+                    return true;
+                };
+
+                const clearFeedback = (item) => {
+                    const fb = item.querySelector(".quiz-feedback");
+                    if (!fb) return;
+                    fb.classList.remove("ok", "no");
+                    fb.textContent = "";
+                };
+
+                const showFeedback = (item, ok, msgOk, msgNo) => {
+                    const fb = item.querySelector(".quiz-feedback");
+                    if (!fb) return;
+
+                    fb.classList.remove("ok", "no");
+                    fb.classList.add(ok ? "ok" : "no");
+                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Salah ❌");
+                };
+
+                const toYN = (raw) => {
+                    const v = (raw || "").toLowerCase().trim();
+
+                    if (["ya", "y", "benar", "iya"].includes(v)) return "ya";
+                    if (["tidak", "t", "tdk", "salah", "gak", "nggak"].includes(v)) return "tidak";
+
+                    return "";
+                };
+
+                const getInputValue = (item) => {
+                    const el = item.querySelector(".quiz-input");
+                    return el ? el.value : "";
+                };
+
+                const materiLanjutan = document.getElementById("materi-lanjutan");
+                const summary = document.getElementById("quiz-summary");
+                let isUnlocked = false;
+
+                const unlockMateri = () => {
+                    if (!materiLanjutan || isUnlocked) return;
+
+                    isUnlocked = true;
+                    materiLanjutan.style.display = "block";
+
+                    requestAnimationFrame(() => {
+                        materiLanjutan.classList.add("show");
+                    });
+                };
+
+                const lockMateri = () => {
+                    if (!materiLanjutan) return;
+
+                    isUnlocked = false;
+                    materiLanjutan.classList.remove("show");
+                    materiLanjutan.style.display = "none";
+                };
+
+                const checkItem = (item) => {
+                    const type = item.getAttribute("data-type");
+                    const valRaw = getInputValue(item);
+
+                    if (!valRaw.trim()) {
+                        clearFeedback(item);
+                        return false;
+                    }
+
+                    if (type === "set") {
+                        const expected = item.getAttribute("data-answer") || "";
+                        const expTokens = splitTokens(expected);
+                        const userTokens = splitTokens(valRaw);
+                        const ok = setEqual(userTokens, expTokens);
+
+                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
+                        return true; // tetap dianggap terjawab
+                    }
+
+                    if (type === "oneof") {
+                        const expected = normalize(item.getAttribute("data-answer") || "");
+                        const val = normalize(valRaw);
+                        const ok = (val === expected) || val.startsWith(expected);
+
+                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
+                        return true; // tetap dianggap terjawab
+                    }
+
+                    if (type === "yn") {
+                        const expected = normalize(item.getAttribute("data-answer") || "ya");
+                        const yn = toYN(valRaw);
+
+                        if (!yn) {
+                            showFeedback(item, false, "", "Gunakan ya / tidak ❌");
+                            return true; // tetap dianggap terjawab karena input sudah diisi
+                        }
+
+                        const ok = (yn === expected);
+                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
+                        return true; // tetap dianggap terjawab
+                    }
+
+                    showFeedback(item, false, "", "Tipe soal belum dikenali.");
+                    return true;
+                };
+
+                const updateSummaryAndUnlock = () => {
+                    const quiz = document.getElementById("eksplorasi-quiz");
+                    if (!quiz) return;
+
+                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                    const total = items.length;
+
+                    let filled = 0;
+
+                    items.forEach(item => {
+                        const val = getInputValue(item).trim();
+                        if (val !== "") filled++;
+                    });
+
+                    if (summary) {
+                        if (filled === 0) {
+                            summary.textContent = "";
+                        } else if (filled === total) {
+                            summary.textContent = "Semua eksplorasi sudah dijawab ✅ Materi berikutnya sudah dibuka.";
+                        } else {
+                            summary.textContent = `Terjawab: ${filled}/${total}`;
+                        }
+                    }
+
+                    if (filled === total) {
+                        unlockMateri();
+                    } else {
+                        lockMateri();
+                    }
+                };
+
+                const resetItem = (item) => {
+                    const el = item.querySelector(".quiz-input");
+                    if (el) el.value = "";
+                    clearFeedback(item);
+                    updateSummaryAndUnlock();
+                };
+
+                const quiz = document.getElementById("eksplorasi-quiz");
+                if (quiz) {
+                    quiz.querySelectorAll(".quiz-item").forEach(item => {
+                        const input = item.querySelector(".quiz-input");
+                        const btnReset = item.querySelector(".quiz-reset");
+
+                        if (input) {
+                            input.addEventListener("input", () => {
+                                checkItem(item);
+                                updateSummaryAndUnlock();
+                            });
+
+                            input.addEventListener("blur", () => {
+                                checkItem(item);
+                                updateSummaryAndUnlock();
+                            });
+                        }
+
+                        if (btnReset) {
+                            btnReset.addEventListener("click", () => resetItem(item));
+                        }
+                    });
+                }
+            })();
+        </script>
     </div>
 @endsection
 
 @section('nav')
-    <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+<a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+    ← Previous
+</a>
 
-    <a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+<a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav next-btn">
+    Next →
+</a>
 @endsection

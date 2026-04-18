@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                            delimiters: [
-                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                            ]
-                                                                                                                                        });"></script>
+                                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                                            ]
+                                                                                                                                                                                        });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -570,8 +570,8 @@
         }
 
         /* =========================
-                                                                                   CONTOH INTERAKTIF MODEL BARU
-                                                                                   ========================= */
+                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
+                                                                                                                                   ========================= */
         .ci-card {
             border-radius: 18px;
             padding: 18px;
@@ -1043,8 +1043,8 @@
         }
 
         /* =========================================================
-                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
-                                                                            ========================================================= */
+                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
+                                                                                                                            ========================================================= */
         .endbeh-table-wrap {
             overflow-x: auto;
             margin-top: 14px;
@@ -1214,8 +1214,8 @@
         }
 
         /* =========================================================
-                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
-                                                                            ========================================================= */
+                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
+                                                                                                                            ========================================================= */
         .contoh-card {
             border-radius: 16px;
             padding: 20px 22px;
@@ -1439,6 +1439,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
         .latihan-title-row {
             display: flex;
             justify-content: flex-start;
@@ -1694,11 +1695,11 @@
                             </div>
                             <div class="box">
                                 <div class="lbl">Nilai f(x)</div>
-                                <div class="val" id="kpiFx">-3</div>
+                                <div class="val" id="kpiFx">—</div>
                             </div>
                             <div class="box">
                                 <div class="lbl">Arah Perubahan</div>
-                                <div class="val" id="kpiTrend">Turun</div>
+                                <div class="val" id="kpiTrend">—</div>
                             </div>
                         </div>
 
@@ -1713,6 +1714,9 @@
                                     <br>
                                     <input type="number" id="studentFx" class="pick"
                                         style="max-width:180px; margin-top:8px;">
+                                    <div id="statusFx" class="mini-badge" style="margin-top:8px; width:fit-content;">
+                                        Belum dijawab
+                                    </div>
                                 </div>
                             </div>
 
@@ -1727,6 +1731,9 @@
                                         <option value="bawah">Di bawah sumbu-x</option>
                                         <option value="sumbu">Tepat pada sumbu-x</option>
                                     </select>
+                                    <div id="statusPos" class="mini-badge" style="margin-top:8px; width:fit-content;">
+                                        Belum dijawab
+                                    </div>
                                 </div>
                             </div>
 
@@ -1741,17 +1748,20 @@
                                         <option value="Turun">Turun</option>
                                         <option value="Tetap">Tetap</option>
                                     </select>
+                                    <div id="statusTrend" class="mini-badge" style="margin-top:8px; width:fit-content;">
+                                        Belum dijawab
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCheckExplore">✅ Cek Jawaban</button>
                                 <button type="button" class="btn-reset" id="btnResetExplore">↺ Reset</button>
-                                <button type="button" class="btn-reset" id="btnShowExplain">💡 Lihat Pembahasan</button>
+                                <button type="button" class="btn-reset" id="btnShowExplain" disabled>💡 Lihat
+                                    Pembahasan</button>
                             </div>
 
                             <div class="feedback" id="feedbackExplore">
-                                Amati grafiknya, lalu isi jawabanmu.
+                                Amati grafiknya, lalu isi semua jawabanmu.
                             </div>
                         </div>
 
@@ -1806,594 +1816,618 @@
                 </div>
             </div>
         </div>
-        {{-- =========================
-        Materi lain (tetap)
-        ========================= --}}
-        <div class="card card-example">
-            <p>
-                Polinomial bukan hanya sekadar bentuk aljabar yang terdiri atas beberapa suku.
-                Polinomial juga dapat digunakan untuk membentuk suatu fungsi yang disebut fungsi polinomial.
-                Ketika sebuah polinomial diberi variabel bebas, misalnya variabel x, maka setiap nilai x yang dimasukkan ke
-                dalam polinomial
-                tersebut akan menghasilkan suatu nilai fungsi.
-                Dengan demikian, fungsi polinomial dapat dipahami sebagai polinomial yang dijalankan atau dioperasikan
-                sebagai fungsi.
-            </p>
-        </div>
-
-        <div class="card definisi-card">
-            <div class="definisi-label">DEFINISI</div>
-            <p class="highlight" style="margin-top:6px;">Fungsi polinomial dalam variabel $x$ memiliki bentuk umum:</p>
-
-            <div class="rumus" style="background:#f7f9fc;">
-                $$P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$$
-            </div>
-
-            <p class="highlight" style="margin-top:10px;">Dengan ketentuan:</p>
-            <ul>
-                <li>$a_n,\ldots,a_0$ adalah bilangan real</li>
-                <li>$a_n \ne 0$</li>
-                <li>$n$ adalah bilangan cacah $(0,1,2,3,\ldots)$</li>
-                <li><b>Derajat fungsi</b> adalah pangkat tertinggi</li>
-                <li><b>Suku utama</b> adalah suku dengan pangkat tertinggi</li>
-                <li><b>Koefisien utama</b> adalah koefisien pada suku utama</li>
-            </ul>
-        </div>
 
         {{-- =========================
-        ✅ MATERI TAMBAHAN (DITAMBAHKAN DI BAWAH DEFINISI)
+        SEMUA MATERI LANJUTAN DISEMBUNYIKAN DULU
         ========================= --}}
-        <div class="card card-example">
-            <p>
-                Sebelum mempelajari lebih jauh tentang sifat-sifat fungsi polinomial, perhatikan
-                beberapa contoh fungsi polinomial berikut. Setiap fungsi dianalisis berdasarkan
-                bentuknya, derajatnya, jumlah sukunya, serta suku utamanya. Tabel ini akan membantu
-                Anda memahami bagaimana struktur sebuah fungsi polinomial dibentuk.
-            </p>
-
-            <div class="table-wrap">
-                <table class="poli" aria-label="Tabel contoh fungsi polinomial">
-                    <thead>
-                        <tr>
-                            <th>fungsi</th>
-                            <th>Derajat</th>
-                            <th>Jumlah Suku</th>
-                            <th>Suku Utama</th>
-                            <th>Koefisien Utama</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>$9x^2$</td>
-                            <td>2</td>
-                            <td>1 suku</td>
-                            <td>$9x^2$</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td>$5x^4-3x^2+8$</td>
-                            <td>4</td>
-                            <td>3 suku</td>
-                            <td>$5x^4$</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>$7x^3+x^2-4x+2-6$</td>
-                            <td>3</td>
-                            <td>5 suku</td>
-                            <td>$7x^3$</td>
-                            <td>7</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p>
-                Untuk memahami bentuk suatu fungsi polinomial, salah satu cara yang paling
-                sederhana adalah dengan menggambar grafiknya. Grafik ini menunjukkan
-                bagaimana nilai fungsi berubah terhadap nilai variabel $x$. Proses menggambarnya
-                dapat dilakukan secara manual menggunakan langkah-langkah berikut.
-            </p>
-        </div>
-
-        {{-- =========================
-        CONTOH INTERAKTIF MODEL BARU
-        ========================= --}}
-        <div class="ci-card">
-            <div class="ci-shell">
-                <div class="ci-pill">CONTOH INTERAKTIF</div>
-
-                <div class="ci-head">
-                    <div class="title">Gambarlah grafik fungsi</div>
-                    <div class="fx">f(x) = x² − 2x − 3</div>
-                </div>
-
-                <p class="ci-sub">
-                    Klik chip titik atau geser slider untuk melihat koordinatnya dan posisinya pada grafik.
+        <div id="materiLanjutan" style="display:none;">
+            {{-- =========================
+            Materi lain (tetap)
+            ========================= --}}
+            <div class="card card-example">
+                <p>
+                    Polinomial bukan hanya sekadar bentuk aljabar yang terdiri atas beberapa suku.
+                    Polinomial juga dapat digunakan untuk membentuk suatu fungsi yang disebut fungsi polinomial.
+                    Ketika sebuah polinomial diberi variabel bebas, misalnya variabel x, maka setiap nilai x yang dimasukkan
+                    ke
+                    dalam polinomial
+                    tersebut akan menghasilkan suatu nilai fungsi.
+                    Dengan demikian, fungsi polinomial dapat dipahami sebagai polinomial yang dijalankan atau dioperasikan
+                    sebagai fungsi.
                 </p>
+            </div>
 
-                <div class="ci-layout">
-                    {{-- KIRI --}}
-                    <div class="ci-panel">
-                        <div class="ci-label">✦ Pilih Bagian yang Dilihat</div>
-                        <div class="ci-chip-row">
-                            <button type="button" class="ci-chip active" data-ci-mode="nilai">Nilai</button>
-                            <button type="button" class="ci-chip" data-ci-mode="potongx">Potong x</button>
-                            <button type="button" class="ci-chip" data-ci-mode="potongy">Potong y</button>
-                            <button type="button" class="ci-chip" data-ci-mode="vertex">Vertex</button>
-                        </div>
+            <div class="card definisi-card">
+                <div class="definisi-label">DEFINISI</div>
+                <p class="highlight" style="margin-top:6px;">Fungsi polinomial dalam variabel $x$ memiliki bentuk umum:</p>
 
-                        <div class="ci-range-wrap">
-                            <div class="ci-range-label">Geser untuk memilih x</div>
-                            <input id="ciRangeX" class="ci-range" type="range" min="-2" max="4" step="1" value="0">
-                        </div>
-
-                        <div class="ci-mini-grid">
-                            <div class="ci-mini-box">
-                                <div class="mini-lbl">x</div>
-                                <div class="mini-val" id="ciValX">0</div>
-                            </div>
-                            <div class="ci-mini-box">
-                                <div class="mini-lbl">F(X)</div>
-                                <div class="mini-val" id="ciValFx">-3</div>
-                            </div>
-                        </div>
-
-                        <div class="ci-calc-title">Perhitungan cepat:</div>
-                        <div class="ci-calc-box">
-                            <div id="ciCalcMain">f(x) = x² − 2x − 3</div>
-                            <div id="ciCalcSub">f(0) = 0² − 2(0) − 3 = -3</div>
-                        </div>
-
-                        <div class="ci-calc-title">Klik salah satu titik:</div>
-                        <div class="ci-point-row">
-                            <button type="button" class="ci-point-btn" data-x="-2">(-2, 5)</button>
-                            <button type="button" class="ci-point-btn" data-x="-1">(-1, 0)</button>
-                            <button type="button" class="ci-point-btn active" data-x="0">(0, -3)</button>
-                            <button type="button" class="ci-point-btn" data-x="1">(1, -4)</button>
-                            <button type="button" class="ci-point-btn" data-x="2">(2, -3)</button>
-                            <button type="button" class="ci-point-btn" data-x="3">(3, 0)</button>
-                            <button type="button" class="ci-point-btn" data-x="4">(4, 5)</button>
-                        </div>
-                    </div>
-
-                    {{-- KANAN --}}
-                    <div class="ci-graph-card">
-                        <div class="ci-graph-head">
-                            <div class="left">
-                                <span class="ci-dot-icon"></span>
-                                <span>Grafik (klik titik/label)</span>
-                            </div>
-                            <div class="ci-active-text" id="ciActivePointText">Titik aktif: (0, -3)</div>
-                        </div>
-
-                        <div class="ci-canvas-wrap">
-                            <canvas id="ciGraphCanvas"></canvas>
-                        </div>
-
-                        <div class="ci-footnote">
-                            Klik titik pada grafik atau tombol titik di sebelah kiri untuk memilih titik yang diamati.
-                        </div>
-                    </div>
+                <div class="rumus" style="background:#f7f9fc;">
+                    $$P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$$
                 </div>
+
+                <p class="highlight" style="margin-top:10px;">Dengan ketentuan:</p>
+                <ul>
+                    <li>$a_n,\ldots,a_0$ adalah bilangan real</li>
+                    <li>$a_n \ne 0$</li>
+                    <li>$n$ adalah bilangan cacah $(0,1,2,3,\ldots)$</li>
+                    <li><b>Derajat fungsi</b> adalah pangkat tertinggi</li>
+                    <li><b>Suku utama</b> adalah suku dengan pangkat tertinggi</li>
+                    <li><b>Koefisien utama</b> adalah koefisien pada suku utama</li>
+                </ul>
             </div>
-        </div>
-
-        {{-- =========================
-        MATERI TAMBAHAN (tanpa card)
-        ========================= --}}
-        <div class="materi-inline">
-            <p class="inline-lead">
-                Yuk lihat bagaimana bentuk grafik berubah dari fungsi derajat 0 hingga derajat 5!
-                Mulai dari garis datar, garis miring, lengkungan parabola, hingga gelombang-gelombang unik yang muncul pada
-                derajat lebih tinggi.
-                Semua grafik ditampilkan berdampingan agar kamu bisa dengan mudah membandingkan bentuknya.
-            </p>
-
-            <div class="materi-figure">
-                <img src="{{ asset('img/10.png') }}" alt="Perbandingan grafik fungsi polinomial derajat 0 sampai 5">
-            </div>
-
-            <p class="inline-lead">
-                Salah satu ciri penting dari grafik fungsi polinomial adalah perilaku ujungnya, yaitu kecenderungan grafik
-                ketika nilai <b>x</b> bergerak menuju tak hingga atau menuju negatif tak hingga. Perilaku ujung ini
-                sepenuhnya
-                ditentukan oleh suku utama dari polinom, karena suku tersebut memiliki pengaruh paling besar dibandingkan
-                suku-suku lainnya saat bernilai sangat besar.
-            </p>
-
-            <div class="endbeh-table-wrap">
-                <table class="endbeh" aria-label="Tabel perilaku ujung fungsi polinomial">
-                    <thead>
-                        <tr>
-                            <th style="width:130px;">N<br>(Derajat)</th>
-                            <th>Koefisien Utama (a<sub>n</sub> &gt; 0)</th>
-                            <th>Koefisien Utama (a<sub>n</sub> &lt; 0)</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td class="col-n">Genap</td>
-
-                            <td>
-                                <div class="endbeh-cell">
-                                    <div class="endbeh-tagrow">
-                                        <span class="endbeh-pill green">n genap</span>
-                                        <span class="endbeh-pill blue">a<sub>n</sub> &gt; 0</span>
-                                    </div>
-
-                                    <ul class="endbeh-bullets">
-                                        <li>Grafik menuju <b>atas</b> di ujung kiri dan ujung kanan.</li>
-                                        <li><b>Perilaku ujung:</b> (x→−∞, y→+∞) dan (x→+∞, y→+∞)</li>
-                                    </ul>
-
-                                    <details class="img-toggle">
-                                        <summary>
-                                            <span>📌 Lihat ilustrasi grafik</span>
-                                            <span class="hint">Klik untuk buka</span>
-                                        </summary>
-                                        <div class="imgbox">
-                                            <img src="{{ asset('img/11.png') }}"
-                                                alt="Ilustrasi perilaku ujung: an > 0 dan n genap">
-                                        </div>
-                                    </details>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="endbeh-cell">
-                                    <div class="endbeh-tagrow">
-                                        <span class="endbeh-pill green">n genap</span>
-                                        <span class="endbeh-pill blue">a<sub>n</sub> &lt; 0</span>
-                                    </div>
-
-                                    <ul class="endbeh-bullets">
-                                        <li>Grafik menuju <b>bawah</b> di ujung kiri dan ujung kanan.</li>
-                                        <li><b>Perilaku ujung:</b> (x→−∞, y→−∞) dan (x→+∞, y→−∞)</li>
-                                    </ul>
-
-                                    <details class="img-toggle">
-                                        <summary>
-                                            <span>📌 Lihat ilustrasi grafik</span>
-                                            <span class="hint">Klik untuk buka</span>
-                                        </summary>
-                                        <div class="imgbox">
-                                            <img src="{{ asset('img/12.png') }}"
-                                                alt="Ilustrasi perilaku ujung: an < 0 dan n genap">
-                                        </div>
-                                    </details>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="col-n">Ganjil</td>
-
-                            <td>
-                                <div class="endbeh-cell">
-                                    <div class="endbeh-tagrow">
-                                        <span class="endbeh-pill green">n ganjil</span>
-                                        <span class="endbeh-pill blue">a<sub>n</sub> &gt; 0</span>
-                                    </div>
-
-                                    <ul class="endbeh-bullets">
-                                        <li>Grafik menuju <b>bawah</b> di ujung kiri dan <b>atas</b> di ujung kanan.</li>
-                                        <li><b>Perilaku ujung:</b> (x→−∞, y→−∞) dan (x→+∞, y→+∞)</li>
-                                    </ul>
-
-                                    <details class="img-toggle">
-                                        <summary>
-                                            <span>📌 Lihat ilustrasi grafik</span>
-                                            <span class="hint">Klik untuk buka</span>
-                                        </summary>
-                                        <div class="imgbox">
-                                            <img src="{{ asset('img/13.png') }}"
-                                                alt="Ilustrasi perilaku ujung: an > 0 dan n ganjil">
-                                        </div>
-                                    </details>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="endbeh-cell">
-                                    <div class="endbeh-tagrow">
-                                        <span class="endbeh-pill green">n ganjil</span>
-                                        <span class="endbeh-pill blue">a<sub>n</sub> &lt; 0</span>
-                                    </div>
-
-                                    <ul class="endbeh-bullets">
-                                        <li>Grafik menuju <b>atas</b> di ujung kiri dan <b>bawah</b> di ujung kanan.</li>
-                                        <li><b>Perilaku ujung:</b> (x→−∞, y→+∞) dan (x→+∞, y→−∞)</li>
-                                    </ul>
-
-                                    <details class="img-toggle">
-                                        <summary>
-                                            <span>📌 Lihat ilustrasi grafik</span>
-                                            <span class="hint">Klik untuk buka</span>
-                                        </summary>
-                                        <div class="imgbox">
-                                            <img src="{{ asset('img/14.png') }}"
-                                                alt="Ilustrasi perilaku ujung: an < 0 dan n ganjil">
-                                        </div>
-                                    </details>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="endbeh-note">
-                <b>Ingat:</b> Perilaku ujung ditentukan oleh <b>suku utama</b> (pangkat tertinggi) dan <b>koefisien
-                    utamanya</b>.
-                Jadi, cukup lihat <b>n</b> (ganjil/genap) dan tanda <b>a<sub>n</sub></b> (positif/negatif) untuk menebak
-                arah ujung grafik.
-            </div>
-
-            <p class="inline-lead">
-                Dengan kata lain, meskipun sebuah polinom memiliki banyak suku, bentuk grafik pada bagian ujung kiri dan
-                kanan sebenarnya mengikuti pola yang berasal dari pangkat tertinggi dan koefisien utamanya. Sifat inilah
-                yang
-                memungkinkan kita memperkirakan arah grafik tanpa harus menggambar seluruh kurva secara detail.
-            </p>
 
             {{-- =========================
-            ✅ PINDAH: CARD CONTOH DI BAWAH KALIMAT "Dengan kata lain..."
+            ✅ MATERI TAMBAHAN (DITAMBAHKAN DI BAWAH DEFINISI)
             ========================= --}}
-            <div class="contoh-card" id="contohInteraktifCard">
-                <div class="contoh-pill">CONTOH</div>
-
-                <div class="contoh-box">
-                    <p class="contoh-instruksi">
-                        Dengan mengidentifikasi <b>perilaku ujungnya</b>, pasangkan setiap fungsi polinomial berikut
-                        dengan salah satu grafik <b>A–C</b> yang telah diberikan.
-                    </p>
-
-                    <div class="contoh-grid">
-                        <div class="grafik-row">
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/A.png') }}" alt="Grafik A">
-                                <div class="grafik-label">A</div>
-                            </div>
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/B.png') }}" alt="Grafik B">
-                                <div class="grafik-label">B</div>
-                            </div>
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/C.png') }}" alt="Grafik C">
-                                <div class="grafik-label">C</div>
-                            </div>
-                        </div>
-
-                        <div class="match-area">
-                            <div class="match-row">
-                                <div class="fx">1) $g(x)=x^4-4x^2+3$</div>
-                                <div>
-                                    <select class="pick" id="pick1">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="match-row">
-                                <div class="fx">2) $h(x)=-x^6+4x^3-x$</div>
-                                <div>
-                                    <select class="pick" id="pick2">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="match-row">
-                                <div class="fx">3) $f(x)=2x^3-5x^2+x+1$</div>
-                                <div>
-                                    <select class="pick" id="pick3">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCekContoh">✅ Cek Jawaban</button>
-                                <button type="button" class="btn-reset" id="btnResetContoh">↺ Reset</button>
-                            </div>
-
-                            <div class="feedback" id="feedbackContoh">
-                                Pilih jawaban untuk nomor 1–3, lalu klik <b>Cek Jawaban</b>.
-                            </div>
-
-                            <div id="penyelesaianContoh">
-                                <p style="margin: 14px 0 8px; font-weight:900; color:#111;">Penyelesaian:</p>
-                                <p style="margin:0 0 10px; color:var(--muted); text-align:justify;">
-                                    Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi <b>suku utama</b>,
-                                    <b>derajat</b>,
-                                    <b>tanda koefisien utama</b>, lalu tentukan <b>perilaku ujung</b>.
-                                </p>
-
-                                <div class="solve-table-wrap">
-                                    <table class="solve" aria-label="Tabel penyelesaian perilaku ujung">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Suku Utama</th>
-                                                <th>Derajat</th>
-                                                <th>Tanda Koef</th>
-                                                <th>Perilaku Ujung</th>
-                                                <th>Grafik</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>$x^4$</td>
-                                                <td>4</td>
-                                                <td>Positif</td>
-                                                <td>kiri ↑, kanan ↑</td>
-                                                <td><b>B</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>$-x^6$</td>
-                                                <td>6</td>
-                                                <td>Negatif</td>
-                                                <td>kiri ↓, kanan ↓</td>
-                                                <td><b>C</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>$2x^3$</td>
-                                                <td>3</td>
-                                                <td>Positif</td>
-                                                <td>kiri ↓, kanan ↑</td>
-                                                <td><b>A</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="note" style="margin-top:12px;">
-                                    <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah. Derajat ganjil → ujung kiri
-                                    dan kanan berlawanan arah.
-                                    Tanda koefisien utama menentukan apakah ujung kanan naik atau turun.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card card-example">
-            <div class="latihan-title-row">
-                <div class="latihan-badge">LATIHAN</div>
-            </div>
-
-            {{-- 1. Analisis Fungsi Polinomial --}}
-            <section class="latihan-section">
-                <h3>1. Analisis Fungsi Polinomial</h3>
-                <div class="latihan-rumus">Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b></div>
-                <p class="latihan-sub">Tentukan:</p>
-
-                <div class="latihan-grid">
-                    <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
-                    <input type="text" id="a1" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">b. Jumlah sukunya</div>
-                    <input type="text" id="a2" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">c. Suku utamanya</div>
-                    <input type="text" id="a3" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">d. Koefisien utamanya</div>
-                    <input type="text" id="a4" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">e. Perilaku ujung grafiknya</div>
-                    <input type="text" id="a5" class="latihan-input" placeholder="Contoh: kiri turun kanan naik">
-                </div>
-            </section>
-
-            {{-- 2. Grafik Fungsi Kuadrat --}}
-            <section class="latihan-section">
-                <h3>2. Grafik Fungsi Kuadrat</h3>
-                <div class="latihan-rumus">Diberikan fungsi <b>f(x) = x² − 2x − 8</b></div>
-                <p class="latihan-sub">Tentukan pula:</p>
-
-                <div class="latihan-grid">
-                    <div class="soal-label">a. Titik potong dengan sumbu-x</div>
-                    <input type="text" id="b1" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">b. Titik potong dengan sumbu-y</div>
-                    <input type="text" id="b2" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">c. Vertex / titik puncak</div>
-                    <input type="text" id="b3" class="latihan-input" placeholder="Jawaban...">
-                </div>
-            </section>
-
-            {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
-            <section class="latihan-section">
-                <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
-                <p class="latihan-sub">
-                    Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
+            <div class="card card-example">
+                <p>
+                    Sebelum mempelajari lebih jauh tentang sifat-sifat fungsi polinomial, perhatikan
+                    beberapa contoh fungsi polinomial berikut. Setiap fungsi dianalisis berdasarkan
+                    bentuknya, derajatnya, jumlah sukunya, serta suku utamanya. Tabel ini akan membantu
+                    Anda memahami bagaimana struktur sebuah fungsi polinomial dibentuk.
                 </p>
 
-                <div class="grafik-box">
-                    <div class="grafik-caption">Grafik A, B, C:</div>
-                    <div class="grafik-row">
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/A.png') }}" alt="Grafik A">
-                            <div class="grafik-huruf">A</div>
+                <div class="table-wrap">
+                    <table class="poli" aria-label="Tabel contoh fungsi polinomial">
+                        <thead>
+                            <tr>
+                                <th>fungsi</th>
+                                <th>Derajat</th>
+                                <th>Jumlah Suku</th>
+                                <th>Suku Utama</th>
+                                <th>Koefisien Utama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$9x^2$</td>
+                                <td>2</td>
+                                <td>1 suku</td>
+                                <td>$9x^2$</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>$5x^4-3x^2+8$</td>
+                                <td>4</td>
+                                <td>3 suku</td>
+                                <td>$5x^4$</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>$7x^3+x^2-4x+2-6$</td>
+                                <td>3</td>
+                                <td>5 suku</td>
+                                <td>$7x^3$</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    Untuk memahami bentuk suatu fungsi polinomial, salah satu cara yang paling
+                    sederhana adalah dengan menggambar grafiknya. Grafik ini menunjukkan
+                    bagaimana nilai fungsi berubah terhadap nilai variabel $x$. Proses menggambarnya
+                    dapat dilakukan secara manual menggunakan langkah-langkah berikut.
+                </p>
+            </div>
+
+            {{-- =========================
+            CONTOH INTERAKTIF MODEL BARU
+            ========================= --}}
+            <div class="ci-card">
+                <div class="ci-shell">
+                    <div class="ci-pill">CONTOH INTERAKTIF</div>
+
+                    <div class="ci-head">
+                        <div class="title">Gambarlah grafik fungsi</div>
+                        <div class="fx">f(x) = x² − 2x − 3</div>
+                    </div>
+
+                    <p class="ci-sub">
+                        Geser slider atau klik titik untuk melihat nilai fungsi dan informasi penting pada grafik.
+                    </p>
+
+                    <div class="ci-layout">
+                        {{-- KIRI --}}
+                        <div class="ci-panel">
+                            <div class="ci-range-wrap">
+                                <div class="ci-range-label">Geser untuk memilih x</div>
+                                <input id="ciRangeX" class="ci-range" type="range" min="-2" max="4" step="1" value="0">
+                            </div>
+
+                            <div class="ci-mini-grid">
+                                <div class="ci-mini-box">
+                                    <div class="mini-lbl">x</div>
+                                    <div class="mini-val" id="ciValX">0</div>
+                                </div>
+                                <div class="ci-mini-box">
+                                    <div class="mini-lbl">F(X)</div>
+                                    <div class="mini-val" id="ciValFx">-3</div>
+                                </div>
+                            </div>
+
+                            <div class="ci-calc-title">Perhitungan cepat:</div>
+                            <div class="ci-calc-box">
+                                <div id="ciCalcMain">f(x) = x² − 2x − 3</div>
+                                <div id="ciCalcSub">f(0) = 0² − 2(0) − 3 = -3</div>
+                            </div>
+
+                            <div class="ci-calc-title">Informasi grafik:</div>
+                            <div class="ci-calc-box ci-info-dynamic-box">
+                                <div id="ciInfoPotongX" class="ci-info-item">
+                                    <b>Potong sumbu-x:</b> x yang dipilih belum dicek.
+                                </div>
+
+                                <div id="ciInfoPotongY" class="ci-info-item">
+                                    <b>Potong sumbu-y:</b> x yang dipilih belum dicek.
+                                </div>
+
+                                <div id="ciInfoVertex" class="ci-info-item">
+                                    <b>Vertex:</b> x yang dipilih belum dicek.
+                                </div>
+                            </div>
+
+                            <div class="ci-calc-title">Klik salah satu titik:</div>
+                            <div class="ci-point-row">
+                                <button type="button" class="ci-point-btn" data-x="-2">(-2, 5)</button>
+                                <button type="button" class="ci-point-btn" data-x="-1">(-1, 0)</button>
+                                <button type="button" class="ci-point-btn active" data-x="0">(0, -3)</button>
+                                <button type="button" class="ci-point-btn" data-x="1">(1, -4)</button>
+                                <button type="button" class="ci-point-btn" data-x="2">(2, -3)</button>
+                                <button type="button" class="ci-point-btn" data-x="3">(3, 0)</button>
+                                <button type="button" class="ci-point-btn" data-x="4">(4, 5)</button>
+                            </div>
                         </div>
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/B.png') }}" alt="Grafik B">
-                            <div class="grafik-huruf">B</div>
+
+                        {{-- KANAN --}}
+                        <div class="ci-graph-card">
+                            <div class="ci-graph-head">
+                                <div class="left">
+                                    <span class="ci-dot-icon"></span>
+                                    <span>Grafik (klik titik/label)</span>
+                                </div>
+                                <div class="ci-active-text" id="ciActivePointText">Titik aktif: (0, -3)</div>
+                            </div>
+
+                            <div class="ci-canvas-wrap">
+                                <canvas id="ciGraphCanvas"></canvas>
+                            </div>
+
+                            <div class="ci-footnote" id="ciGraphDescription">
+                                Grafik berbentuk <b>parabola membuka ke atas</b>. Dari kiri ke kanan, grafik
+                                <b>turun sampai titik puncak/vertex (1, -4)</b>, lalu <b>naik lagi</b>.
+                                Jadi perilaku ujungnya adalah <b>naik-naik</b>:
+                                saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                            </div>
                         </div>
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/C.png') }}" alt="Grafik C">
-                            <div class="grafik-huruf">C</div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- =========================
+            MATERI TAMBAHAN (tanpa card)
+            ========================= --}}
+            <div class="materi-inline">
+                <p class="inline-lead">
+                    Yuk lihat bagaimana bentuk grafik berubah dari fungsi derajat 0 hingga derajat 5!
+                    Mulai dari garis datar, garis miring, lengkungan parabola, hingga gelombang-gelombang unik yang muncul
+                    pada
+                    derajat lebih tinggi.
+                    Semua grafik ditampilkan berdampingan agar kamu bisa dengan mudah membandingkan bentuknya.
+                </p>
+
+                <div class="materi-figure">
+                    <img src="{{ asset('img/10.png') }}" alt="Perbandingan grafik fungsi polinomial derajat 0 sampai 5">
+                </div>
+
+                <p class="inline-lead">
+                    Salah satu ciri penting dari grafik fungsi polinomial adalah perilaku ujungnya, yaitu kecenderungan
+                    grafik
+                    ketika nilai <b>x</b> bergerak menuju tak hingga atau menuju negatif tak hingga. Perilaku ujung ini
+                    sepenuhnya
+                    ditentukan oleh suku utama dari polinom, karena suku tersebut memiliki pengaruh paling besar
+                    dibandingkan
+                    suku-suku lainnya saat bernilai sangat besar.
+                </p>
+
+                <div class="endbeh-table-wrap">
+                    <table class="endbeh" aria-label="Tabel perilaku ujung fungsi polinomial">
+                        <thead>
+                            <tr>
+                                <th style="width:130px;">N<br>(Derajat)</th>
+                                <th>Koefisien Utama (a<sub>n</sub> &gt; 0)</th>
+                                <th>Koefisien Utama (a<sub>n</sub> &lt; 0)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="col-n">Genap</td>
+
+                                <td>
+                                    <div class="endbeh-cell">
+                                        <div class="endbeh-tagrow">
+                                            <span class="endbeh-pill green">n genap</span>
+                                            <span class="endbeh-pill blue">a<sub>n</sub> &gt; 0</span>
+                                        </div>
+
+                                        <ul class="endbeh-bullets">
+                                            <li>Grafik menuju <b>atas</b> di ujung kiri dan ujung kanan.</li>
+                                            <li><b>Perilaku ujung:</b> (x→−∞, y→+∞) dan (x→+∞, y→+∞)</li>
+                                        </ul>
+
+                                        <details class="img-toggle">
+                                            <summary>
+                                                <span>📌 Lihat ilustrasi grafik</span>
+                                                <span class="hint">Klik untuk buka</span>
+                                            </summary>
+                                            <div class="imgbox">
+                                                <img src="{{ asset('img/11.png') }}"
+                                                    alt="Ilustrasi perilaku ujung: an > 0 dan n genap">
+                                            </div>
+                                        </details>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="endbeh-cell">
+                                        <div class="endbeh-tagrow">
+                                            <span class="endbeh-pill green">n genap</span>
+                                            <span class="endbeh-pill blue">a<sub>n</sub> &lt; 0</span>
+                                        </div>
+
+                                        <ul class="endbeh-bullets">
+                                            <li>Grafik menuju <b>bawah</b> di ujung kiri dan ujung kanan.</li>
+                                            <li><b>Perilaku ujung:</b> (x→−∞, y→−∞) dan (x→+∞, y→−∞)</li>
+                                        </ul>
+
+                                        <details class="img-toggle">
+                                            <summary>
+                                                <span>📌 Lihat ilustrasi grafik</span>
+                                                <span class="hint">Klik untuk buka</span>
+                                            </summary>
+                                            <div class="imgbox">
+                                                <img src="{{ asset('img/12.png') }}"
+                                                    alt="Ilustrasi perilaku ujung: an < 0 dan n genap">
+                                            </div>
+                                        </details>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-n">Ganjil</td>
+
+                                <td>
+                                    <div class="endbeh-cell">
+                                        <div class="endbeh-tagrow">
+                                            <span class="endbeh-pill green">n ganjil</span>
+                                            <span class="endbeh-pill blue">a<sub>n</sub> &gt; 0</span>
+                                        </div>
+
+                                        <ul class="endbeh-bullets">
+                                            <li>Grafik menuju <b>bawah</b> di ujung kiri dan <b>atas</b> di ujung kanan.
+                                            </li>
+                                            <li><b>Perilaku ujung:</b> (x→−∞, y→−∞) dan (x→+∞, y→+∞)</li>
+                                        </ul>
+
+                                        <details class="img-toggle">
+                                            <summary>
+                                                <span>📌 Lihat ilustrasi grafik</span>
+                                                <span class="hint">Klik untuk buka</span>
+                                            </summary>
+                                            <div class="imgbox">
+                                                <img src="{{ asset('img/13.png') }}"
+                                                    alt="Ilustrasi perilaku ujung: an > 0 dan n ganjil">
+                                            </div>
+                                        </details>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="endbeh-cell">
+                                        <div class="endbeh-tagrow">
+                                            <span class="endbeh-pill green">n ganjil</span>
+                                            <span class="endbeh-pill blue">a<sub>n</sub> &lt; 0</span>
+                                        </div>
+
+                                        <ul class="endbeh-bullets">
+                                            <li>Grafik menuju <b>atas</b> di ujung kiri dan <b>bawah</b> di ujung kanan.
+                                            </li>
+                                            <li><b>Perilaku ujung:</b> (x→−∞, y→+∞) dan (x→+∞, y→−∞)</li>
+                                        </ul>
+
+                                        <details class="img-toggle">
+                                            <summary>
+                                                <span>📌 Lihat ilustrasi grafik</span>
+                                                <span class="hint">Klik untuk buka</span>
+                                            </summary>
+                                            <div class="imgbox">
+                                                <img src="{{ asset('img/14.png') }}"
+                                                    alt="Ilustrasi perilaku ujung: an < 0 dan n ganjil">
+                                            </div>
+                                        </details>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="endbeh-note">
+                    <b>Ingat:</b> Perilaku ujung ditentukan oleh <b>suku utama</b> (pangkat tertinggi) dan <b>koefisien
+                        utamanya</b>.
+                    Jadi, cukup lihat <b>n</b> (ganjil/genap) dan tanda <b>a<sub>n</sub></b> (positif/negatif) untuk menebak
+                    arah ujung grafik.
+                </div>
+
+                <p class="inline-lead">
+                    Dengan kata lain, meskipun sebuah polinom memiliki banyak suku, bentuk grafik pada bagian ujung kiri dan
+                    kanan sebenarnya mengikuti pola yang berasal dari pangkat tertinggi dan koefisien utamanya. Sifat inilah
+                    yang
+                    memungkinkan kita memperkirakan arah grafik tanpa harus menggambar seluruh kurva secara detail.
+                </p>
+
+                {{-- =========================
+                ✅ PINDAH: CARD CONTOH DI BAWAH KALIMAT "Dengan kata lain..."
+                ========================= --}}
+                <div class="contoh-card" id="contohInteraktifCard">
+                    <div class="contoh-pill">CONTOH</div>
+
+                    <div class="contoh-box">
+                        <p class="contoh-instruksi">
+                            Dengan mengidentifikasi <b>perilaku ujungnya</b>, pasangkan setiap fungsi polinomial berikut
+                            dengan salah satu grafik <b>A–C</b> yang telah diberikan.
+                        </p>
+
+                        <div class="contoh-grid">
+                            <div class="grafik-row">
+                                <div class="grafik-card">
+                                    <img src="{{ asset('img/A.png') }}" alt="Grafik A">
+                                    <div class="grafik-label">A</div>
+                                </div>
+                                <div class="grafik-card">
+                                    <img src="{{ asset('img/B.png') }}" alt="Grafik B">
+                                    <div class="grafik-label">B</div>
+                                </div>
+                                <div class="grafik-card">
+                                    <img src="{{ asset('img/C.png') }}" alt="Grafik C">
+                                    <div class="grafik-label">C</div>
+                                </div>
+                            </div>
+
+                            <div class="match-area">
+                                <div class="match-row">
+                                    <div class="fx">1) $g(x)=x^4-4x^2+3$</div>
+                                    <div>
+                                        <select class="pick" id="pick1">
+                                            <option value="">Pilih grafik…</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="match-row">
+                                    <div class="fx">2) $h(x)=-x^6+4x^3-x$</div>
+                                    <div>
+                                        <select class="pick" id="pick2">
+                                            <option value="">Pilih grafik…</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="match-row">
+                                    <div class="fx">3) $f(x)=2x^3-5x^2+x+1$</div>
+                                    <div>
+                                        <select class="pick" id="pick3">
+                                            <option value="">Pilih grafik…</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="btn-row">
+                                    <button type="button" class="btn-cek" id="btnCekContoh">✅ Cek Jawaban</button>
+                                    <button type="button" class="btn-reset" id="btnResetContoh">↺ Reset</button>
+                                </div>
+
+                                <div class="feedback" id="feedbackContoh">
+                                    Pilih jawaban untuk nomor 1–3, lalu klik <b>Cek Jawaban</b>.
+                                </div>
+
+                                <div id="penyelesaianContoh">
+                                    <p style="margin: 14px 0 8px; font-weight:900; color:#111;">Penyelesaian:</p>
+                                    <p style="margin:0 0 10px; color:var(--muted); text-align:justify;">
+                                        Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi <b>suku
+                                            utama</b>,
+                                        <b>derajat</b>,
+                                        <b>tanda koefisien utama</b>, lalu tentukan <b>perilaku ujung</b>.
+                                    </p>
+
+                                    <div class="solve-table-wrap">
+                                        <table class="solve" aria-label="Tabel penyelesaian perilaku ujung">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Suku Utama</th>
+                                                    <th>Derajat</th>
+                                                    <th>Tanda Koef</th>
+                                                    <th>Perilaku Ujung</th>
+                                                    <th>Grafik</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>$x^4$</td>
+                                                    <td>4</td>
+                                                    <td>Positif</td>
+                                                    <td>kiri ↑, kanan ↑</td>
+                                                    <td><b>B</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>$-x^6$</td>
+                                                    <td>6</td>
+                                                    <td>Negatif</td>
+                                                    <td>kiri ↓, kanan ↓</td>
+                                                    <td><b>C</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>$2x^3$</td>
+                                                    <td>3</td>
+                                                    <td>Positif</td>
+                                                    <td>kiri ↓, kanan ↑</td>
+                                                    <td><b>A</b></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="note" style="margin-top:12px;">
+                                        <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah. Derajat ganjil → ujung
+                                        kiri
+                                        dan kanan berlawanan arah.
+                                        Tanda koefisien utama menentukan apakah ujung kanan naik atau turun.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="match-table">
-                    <div class="match-header fungsi-col">Fungsinya</div>
-                    <div class="match-header jawaban-col">Jawaban</div>
-                    <div class="match-header perilaku-col">Perilaku Ujung</div>
-                    <div class="match-header cocok-col">Cocok</div>
-
-                    <div class="fungsi-col"><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
-                    <div class="jawaban-col">
-                        <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
-                    <div class="perilaku-col">
-                        <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik">
-                    </div>
-                    <div class="cocok-col">
-                        <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
-
-                    <div class="fungsi-col"><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
-                    <div class="jawaban-col">
-                        <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
-                    <div class="perilaku-col">
-                        <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik">
-                    </div>
-                    <div class="cocok-col">
-                        <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
-
-                    <div class="fungsi-col"><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
-                    <div class="jawaban-col">
-                        <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
-                    <div class="perilaku-col">
-                        <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun">
-                    </div>
-                    <div class="cocok-col">
-                        <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C">
-                    </div>
+            <div class="card card-example">
+                <div class="latihan-title-row">
+                    <div class="latihan-badge">LATIHAN</div>
                 </div>
 
-                <div class="latihan-actions bawah">
-                    <button type="button" class="latihan-btn" id="cekLatihanBtn">CEK JAWABAN</button>
-                    <button type="button" class="latihan-btn reset" id="resetLatihanBtn">RESET</button>
-                </div>
+                {{-- 1. Analisis Fungsi Polinomial --}}
+                <section class="latihan-section">
+                    <h3>1. Analisis Fungsi Polinomial</h3>
+                    <div class="latihan-rumus">Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b></div>
+                    <p class="latihan-sub">Tentukan:</p>
 
-                <div id="hasilLatihan" class="hasil-latihan">
-                    Isi jawaban terlebih dahulu, lalu klik <b>Cek Jawaban</b>.
-                </div>
-            </section>
+                    <div class="latihan-grid">
+                        <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
+                        <input type="text" id="a1" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">b. Jumlah sukunya</div>
+                        <input type="text" id="a2" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">c. Suku utamanya</div>
+                        <input type="text" id="a3" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">d. Koefisien utamanya</div>
+                        <input type="text" id="a4" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">e. Perilaku ujung grafiknya</div>
+                        <input type="text" id="a5" class="latihan-input" placeholder="Contoh: kiri turun kanan naik">
+                    </div>
+                </section>
+
+                {{-- 2. Grafik Fungsi Kuadrat --}}
+                <section class="latihan-section">
+                    <h3>2. Grafik Fungsi Kuadrat</h3>
+                    <div class="latihan-rumus">Diberikan fungsi <b>f(x) = x² − 2x − 8</b></div>
+                    <p class="latihan-sub">Tentukan pula:</p>
+
+                    <div class="latihan-grid">
+                        <div class="soal-label">a. Titik potong dengan sumbu-x</div>
+                        <input type="text" id="b1" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">b. Titik potong dengan sumbu-y</div>
+                        <input type="text" id="b2" class="latihan-input" placeholder="Jawaban...">
+
+                        <div class="soal-label">c. Vertex / titik puncak</div>
+                        <input type="text" id="b3" class="latihan-input" placeholder="Jawaban...">
+                    </div>
+                </section>
+
+                {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
+                <section class="latihan-section">
+                    <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
+                    <p class="latihan-sub">
+                        Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
+                    </p>
+
+                    <div class="grafik-box">
+                        <div class="grafik-caption">Grafik A, B, C:</div>
+                        <div class="grafik-row">
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/A.png') }}" alt="Grafik A">
+                                <div class="grafik-huruf">A</div>
+                            </div>
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/B.png') }}" alt="Grafik B">
+                                <div class="grafik-huruf">B</div>
+                            </div>
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/C.png') }}" alt="Grafik C">
+                                <div class="grafik-huruf">C</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="match-table">
+                        <div class="match-header fungsi-col">Fungsinya</div>
+                        <div class="match-header jawaban-col">Jawaban</div>
+                        <div class="match-header perilaku-col">Perilaku Ujung</div>
+                        <div class="match-header cocok-col">Cocok</div>
+
+                        <div class="fungsi-col"><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
+                        <div class="jawaban-col">
+                            <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+                        <div class="perilaku-col">
+                            <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik">
+                        </div>
+                        <div class="cocok-col">
+                            <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+
+                        <div class="fungsi-col"><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
+                        <div class="jawaban-col">
+                            <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+                        <div class="perilaku-col">
+                            <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik">
+                        </div>
+                        <div class="cocok-col">
+                            <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+
+                        <div class="fungsi-col"><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
+                        <div class="jawaban-col">
+                            <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+                        <div class="perilaku-col">
+                            <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun">
+                        </div>
+                        <div class="cocok-col">
+                            <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C">
+                        </div>
+                    </div>
+
+                    <div class="latihan-actions bawah">
+                        <button type="button" class="latihan-btn" id="cekLatihanBtn">CEK JAWABAN</button>
+                        <button type="button" class="latihan-btn reset" id="resetLatihanBtn">RESET</button>
+                    </div>
+
+                    <div id="hasilLatihan" class="hasil-latihan">
+                        Isi jawaban terlebih dahulu, lalu klik <b>Cek Jawaban</b>.
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
     {{-- =========================
@@ -2430,13 +2464,19 @@
             const studentFx = document.getElementById('studentFx');
             const studentPos = document.getElementById('studentPos');
             const studentTrend = document.getElementById('studentTrend');
+
+            const statusFx = document.getElementById('statusFx');
+            const statusPos = document.getElementById('statusPos');
+            const statusTrend = document.getElementById('statusTrend');
+
             const feedbackExplore = document.getElementById('feedbackExplore');
-            const btnCheckExplore = document.getElementById('btnCheckExplore');
             const btnResetExplore = document.getElementById('btnResetExplore');
             const btnShowExplain = document.getElementById('btnShowExplain');
 
             const canvas = document.getElementById('expGraph');
             const ctx = canvas ? canvas.getContext('2d') : null;
+
+            let exploreInfoUnlocked = false;
 
             function fx(x) {
                 return x * x - 2 * x - 3;
@@ -2454,10 +2494,32 @@
                 return 'Tetap';
             }
 
-            function getPositionLabel(y) {
-                if (y > 0) return 'di atas sumbu-x';
-                if (y < 0) return 'di bawah sumbu-x';
-                return 'tepat pada sumbu-x';
+            function setMiniStatus(el, state, text) {
+                if (!el) return;
+                el.className = 'mini-badge';
+                if (state === 'ok') el.classList.add('good');
+                if (state === 'bad') el.classList.add('info');
+                el.textContent = text;
+            }
+
+            function allAnswered() {
+                return (
+                    studentFx?.value !== '' &&
+                    !!studentPos?.value &&
+                    !!studentTrend?.value
+                );
+            }
+
+            function updateKPIVisibility(x, y, trend) {
+                if (kpiX) kpiX.textContent = x;
+
+                if (exploreInfoUnlocked) {
+                    if (kpiFx) kpiFx.textContent = y;
+                    if (kpiTrend) kpiTrend.textContent = trend;
+                } else {
+                    if (kpiFx) kpiFx.textContent = '—';
+                    if (kpiTrend) kpiTrend.textContent = '—';
+                }
             }
 
             function resizeCanvas() {
@@ -2653,7 +2715,7 @@
             }
 
             function showExplanation() {
-                if (!slider || !explainBox) return;
+                if (!slider || !explainBox || !allAnswered()) return;
                 const x = parseInt(slider.value, 10);
                 const y = fx(x);
                 const trend = getCorrectTrend(x);
@@ -2662,11 +2724,69 @@
                 updateExplanation(x, y, trend);
             }
 
-            function resetStudentAnswerState() {
-                if (feedbackExplore) {
-                    feedbackExplore.className = "feedback";
-                    feedbackExplore.innerHTML = "Amati grafiknya, lalu isi jawabanmu.";
+            function validateExploreAnswers() {
+                if (!slider || !feedbackExplore) return;
+
+                const x = parseInt(slider.value, 10);
+                const y = fx(x);
+                const posisiBenar = getCorrectPosition(y);
+                const trendBenar = getCorrectTrend(x);
+
+                if (studentFx?.value === '') {
+                    setMiniStatus(statusFx, '', 'Belum dijawab');
+                } else if (Number(studentFx.value) === y) {
+                    setMiniStatus(statusFx, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusFx, 'bad', 'Salah');
                 }
+
+                if (!studentPos?.value) {
+                    setMiniStatus(statusPos, '', 'Belum dijawab');
+                } else if (studentPos.value === posisiBenar) {
+                    setMiniStatus(statusPos, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusPos, 'bad', 'Salah');
+                }
+
+                if (!studentTrend?.value) {
+                    setMiniStatus(statusTrend, '', 'Belum dijawab');
+                } else if (studentTrend.value === trendBenar) {
+                    setMiniStatus(statusTrend, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusTrend, 'bad', 'Salah');
+                }
+
+                if (allAnswered()) {
+                    exploreInfoUnlocked = true;
+                    updateKPIVisibility(x, y, trendBenar);
+
+                    if (btnShowExplain) btnShowExplain.disabled = false;
+
+                    feedbackExplore.className = 'feedback ok';
+                    feedbackExplore.innerHTML =
+                        `✅ Semua soal sudah terjawab. Status jawaban terdeteksi otomatis, dan pembahasan sekarang bisa dibuka.`;
+                } else {
+                    exploreInfoUnlocked = false;
+                    updateKPIVisibility(x, y, trendBenar);
+
+                    if (btnShowExplain) btnShowExplain.disabled = true;
+                    feedbackExplore.className = 'feedback';
+                    feedbackExplore.innerHTML = 'Semua jawaban sudah diisi.';
+                    hideExplanation();
+                }
+            }
+
+            function resetStudentAnswerState() {
+                setMiniStatus(statusFx, '', 'Belum dijawab');
+                setMiniStatus(statusPos, '', 'Belum dijawab');
+                setMiniStatus(statusTrend, '', 'Belum dijawab');
+
+                if (feedbackExplore) {
+                    feedbackExplore.className = 'feedback';
+                    feedbackExplore.innerHTML = 'Amati grafiknya, lalu isi jawabanmu.';
+                }
+
+                if (btnShowExplain) btnShowExplain.disabled = true;
                 setInsight('', 'Insight: siap diamati');
             }
 
@@ -2677,67 +2797,39 @@
                 const y = fx(x);
                 const trend = getCorrectTrend(x);
 
-                if (kpiX) kpiX.textContent = x;
-                if (kpiFx) kpiFx.textContent = y;
-                if (kpiTrend) kpiTrend.textContent = trend;
+                updateKPIVisibility(x, y, trend);
+
                 if (coordChip) coordChip.textContent = `Titik: (${x}, ${y})`;
 
                 resizeCanvas();
                 drawGraph(x);
             }
 
-            btnCheckExplore?.addEventListener('click', function () {
-                if (!slider || !feedbackExplore) return;
-
-                const x = parseInt(slider.value, 10);
-                const y = fx(x);
-                const posisiBenar = getCorrectPosition(y);
-                const trendBenar = getCorrectTrend(x);
-
-                const belum = [];
-                if (studentFx?.value === "") belum.push("nilai f(x)");
-                if (!studentPos?.value) belum.push("posisi titik");
-                if (!studentTrend?.value) belum.push("arah perubahan");
-
-                if (belum.length) {
-                    feedbackExplore.className = "feedback bad";
-                    feedbackExplore.innerHTML = `⚠️ Lengkapi dulu: <b>${belum.join(", ")}</b>.`;
-                    hideExplanation();
-                    return;
-                }
-
-                const benarFx = Number(studentFx.value) === y;
-                const benarPos = studentPos.value === posisiBenar;
-                const benarTrend = studentTrend.value === trendBenar;
-
-                if (benarFx && benarPos && benarTrend) {
-                    feedbackExplore.className = "feedback ok";
-                    feedbackExplore.innerHTML =
-                        `✅ Bagus! Jawabanmu benar. Untuk <b>x=${x}</b>, diperoleh <b>f(x)=${y}</b>.`;
-                } else {
-                    const koreksi = [];
-                    if (!benarFx) koreksi.push(`nilai fungsi yang benar adalah <b>${y}</b>`);
-                    if (!benarPos) koreksi.push(`posisi titik yang benar adalah <b>${getPositionLabel(y)}</b>`);
-                    if (!benarTrend) koreksi.push(`arah perubahan yang benar adalah <b>${trendBenar}</b>`);
-
-                    feedbackExplore.className = "feedback bad";
-                    feedbackExplore.innerHTML = `❌ Jawaban belum tepat. ${koreksi.join(", ")}.`;
-                }
-
-                showExplanation();
-            });
+            studentFx?.addEventListener('input', validateExploreAnswers);
+            studentPos?.addEventListener('change', validateExploreAnswers);
+            studentTrend?.addEventListener('change', validateExploreAnswers);
 
             btnResetExplore?.addEventListener('click', function () {
-                if (studentFx) studentFx.value = "";
-                if (studentPos) studentPos.value = "";
-                if (studentTrend) studentTrend.value = "";
+                if (studentFx) studentFx.value = '';
+                if (studentPos) studentPos.value = '';
+                if (studentTrend) studentTrend.value = '';
+
+                exploreInfoUnlocked = false;
+
+                if (slider) {
+                    const x = parseInt(slider.value, 10);
+                    updateKPIVisibility(x, fx(x), getCorrectTrend(x));
+                }
+
                 hideExplanation();
                 resetStudentAnswerState();
                 rerenderMath(document.body);
             });
 
             btnShowExplain?.addEventListener('click', function () {
-                showExplanation();
+                if (allAnswered()) {
+                    showExplanation();
+                }
             });
 
             if (slider && canvas && ctx) {
@@ -2747,8 +2839,14 @@
                 });
 
                 slider.addEventListener('input', () => {
+                    exploreInfoUnlocked = false;
                     updateExplorerUI();
                     hideExplanation();
+
+                    if (studentFx) studentFx.value = '';
+                    if (studentPos) studentPos.value = '';
+                    if (studentTrend) studentTrend.value = '';
+
                     resetStudentAnswerState();
                 });
 
@@ -2863,10 +2961,13 @@
             const calcSub = document.getElementById('ciCalcSub');
             const activeText = document.getElementById('ciActivePointText');
 
-            const chips = Array.from(document.querySelectorAll('.ci-chip'));
+            const infoPotongX = document.getElementById('ciInfoPotongX');
+            const infoPotongY = document.getElementById('ciInfoPotongY');
+            const infoVertex = document.getElementById('ciInfoVertex');
+            const graphDescription = document.getElementById('ciGraphDescription');
+
             const pointBtns = Array.from(document.querySelectorAll('.ci-point-btn'));
 
-            let mode = 'nilai';
             let selectedX = 0;
 
             const specialPoints = [
@@ -2883,16 +2984,64 @@
                 return x * x - 2 * x - 3;
             }
 
-            function setActiveChip(targetMode) {
-                chips.forEach(chip => {
-                    chip.classList.toggle('active', chip.dataset.ciMode === targetMode);
-                });
-            }
-
             function setActivePointButton(xVal) {
                 pointBtns.forEach(btn => {
                     btn.classList.toggle('active', Number(btn.dataset.x) === xVal);
                 });
+            }
+
+            function updateInfoTambahan() {
+                const y = fx(selectedX);
+
+                const isPotongX = (y === 0);
+                const isPotongY = (selectedX === 0);
+                const isVertex = (selectedX === 1 && y === -4);
+
+                if (infoPotongX) {
+                    infoPotongX.className = 'ci-info-item';
+                    if (isPotongX) infoPotongX.classList.add('match');
+
+                    infoPotongX.innerHTML = isPotongX
+                        ? `<b>Potong sumbu-x:</b> untuk x = ${selectedX}, diperoleh f(${selectedX}) = 0, jadi titiknya adalah <b>(${selectedX}, 0)</b>.`
+                        : `<b>Potong sumbu-x:</b> untuk x = ${selectedX}, diperoleh f(${selectedX}) = ${y}, jadi <b>bukan</b> titik potong sumbu-x.`;
+                }
+
+                if (infoPotongY) {
+                    infoPotongY.className = 'ci-info-item';
+                    if (isPotongY) infoPotongY.classList.add('match');
+
+                    infoPotongY.innerHTML = isPotongY
+                        ? `<b>Potong sumbu-y:</b> karena x = 0, titiknya adalah <b>(0, ${y})</b>.`
+                        : `<b>Potong sumbu-y:</b> titik potong sumbu-y hanya terjadi saat <b>x = 0</b>. Sekarang x = ${selectedX}.`;
+                }
+
+                if (infoVertex) {
+                    infoVertex.className = 'ci-info-item';
+                    if (isVertex) infoVertex.classList.add('match');
+
+                    infoVertex.innerHTML = isVertex
+                        ? `<b>Vertex:</b> untuk x = 1 diperoleh titik minimum <b>(1, -4)</b>.`
+                        : `<b>Vertex:</b> vertex fungsi ini tetap di <b>(1, -4)</b>. Sekarang titik aktifnya adalah <b>(${selectedX}, ${y})</b>.`;
+                }
+
+                if (graphDescription) {
+                    let posisiGrafik = '';
+                    if (selectedX < 1) {
+                        posisiGrafik = `Pada x = ${selectedX}, titik berada di bagian grafik yang <b>menurun</b>.`;
+                    } else if (selectedX > 1) {
+                        posisiGrafik = `Pada x = ${selectedX}, titik berada di bagian grafik yang <b>menaik</b>.`;
+                    } else {
+                        posisiGrafik = `Pada x = 1, titik berada tepat di <b>vertex</b>.`;
+                    }
+
+                    graphDescription.innerHTML = `
+                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                            ${posisiGrafik}
+                                            Perilaku ujungnya adalah <b>naik-naik</b>:
+                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                        `;
+                }
             }
 
             function syncUI() {
@@ -2902,26 +3051,14 @@
                 if (valX) valX.textContent = selectedX;
                 if (valFx) valFx.textContent = y;
                 if (activeText) activeText.textContent = `Titik aktif: (${selectedX}, ${y})`;
+
                 if (calcSub) {
                     calcSub.textContent = `f(${selectedX}) = ${selectedX}² − 2(${selectedX}) − 3 = ${y}`;
                 }
 
+                updateInfoTambahan();
                 setActivePointButton(selectedX);
                 drawGraph();
-            }
-
-            function chooseByMode(newMode) {
-                mode = newMode;
-                setActiveChip(mode);
-
-                if (mode === 'potongx') {
-                    selectedX = -1;
-                } else if (mode === 'potongy') {
-                    selectedX = 0;
-                } else if (mode === 'vertex') {
-                    selectedX = 1;
-                }
-                syncUI();
             }
 
             function resizeCanvas() {
@@ -3110,47 +3247,19 @@
 
                 if (found && minDist <= 22) {
                     selectedX = found.x;
-                    if (selectedX === -1 || selectedX === 3) {
-                        mode = 'potongx';
-                    } else if (selectedX === 0) {
-                        mode = 'potongy';
-                    } else if (selectedX === 1) {
-                        mode = 'vertex';
-                    } else {
-                        mode = 'nilai';
-                    }
-                    setActiveChip(mode);
                     syncUI();
                 }
             }
 
-            chips.forEach(chip => {
-                chip.addEventListener('click', function () {
-                    chooseByMode(this.dataset.ciMode);
-                });
-            });
-
             pointBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     selectedX = Number(this.dataset.x);
-                    if (selectedX === -1 || selectedX === 3) {
-                        mode = 'potongx';
-                    } else if (selectedX === 0) {
-                        mode = 'potongy';
-                    } else if (selectedX === 1) {
-                        mode = 'vertex';
-                    } else {
-                        mode = 'nilai';
-                    }
-                    setActiveChip(mode);
                     syncUI();
                 });
             });
 
             range?.addEventListener('input', function () {
                 selectedX = Number(this.value);
-                mode = 'nilai';
-                setActiveChip(mode);
                 syncUI();
             });
 
@@ -3167,6 +3276,453 @@
                     syncUI();
                 });
             }
+        })();
+    </script>
+    <script>
+        (function () {
+            const rerenderMath = (root) => {
+                if (window.renderMathInElement) {
+                    renderMathInElement(root || document.body, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false }
+                        ]
+                    });
+                }
+            };
+
+            const slider = document.getElementById('expX');
+            const kpiX = document.getElementById('kpiX');
+            const kpiFx = document.getElementById('kpiFx');
+            const kpiTrend = document.getElementById('kpiTrend');
+            const insightChip = document.getElementById('expInsightChip');
+            const coordChip = document.getElementById('expCoordChip');
+
+            const txtSub = document.getElementById('txtSub');
+            const txtPoint = document.getElementById('txtPoint');
+            const txtPos = document.getElementById('txtPos');
+            const txtIdea = document.getElementById('txtIdea');
+            const explainBox = document.getElementById('expExplain');
+
+            const studentFx = document.getElementById('studentFx');
+            const studentPos = document.getElementById('studentPos');
+            const studentTrend = document.getElementById('studentTrend');
+
+            const statusFx = document.getElementById('statusFx');
+            const statusPos = document.getElementById('statusPos');
+            const statusTrend = document.getElementById('statusTrend');
+
+            const feedbackExplore = document.getElementById('feedbackExplore');
+            const btnResetExplore = document.getElementById('btnResetExplore');
+            const btnShowExplain = document.getElementById('btnShowExplain');
+
+            const materiLanjutan = document.getElementById('materiLanjutan');
+            const materiLockedInfo = document.getElementById('materiLockedInfo');
+
+            const canvas = document.getElementById('expGraph');
+            const ctx = canvas ? canvas.getContext('2d') : null;
+
+            let exploreInfoUnlocked = false;
+
+            function fx(x) {
+                return x * x - 2 * x - 3;
+            }
+
+            function getCorrectPosition(y) {
+                if (y > 0) return 'atas';
+                if (y < 0) return 'bawah';
+                return 'sumbu';
+            }
+
+            function getCorrectTrend(x) {
+                if (x < 1) return 'Turun';
+                if (x > 1) return 'Naik';
+                return 'Tetap';
+            }
+
+            function setMiniStatus(el, state, text) {
+                if (!el) return;
+                el.className = 'mini-badge';
+                if (state === 'ok') el.classList.add('good');
+                if (state === 'bad') el.classList.add('info');
+                el.textContent = text;
+            }
+
+            function allAnswered() {
+                return (
+                    studentFx?.value !== '' &&
+                    !!studentPos?.value &&
+                    !!studentTrend?.value
+                );
+            }
+
+            function lockMateri() {
+                exploreInfoUnlocked = false;
+
+                if (materiLanjutan) materiLanjutan.style.display = 'none';
+                if (materiLockedInfo) {
+                    materiLockedInfo.className = 'info-feedback';
+                    materiLockedInfo.innerHTML = 'Selesaikan semua pertanyaan pada bagian eksplorasi terlebih dahulu agar materi berikutnya terbuka.';
+                }
+
+                if (btnShowExplain) btnShowExplain.disabled = true;
+            }
+
+            function unlockMateri() {
+                exploreInfoUnlocked = true;
+
+                if (materiLanjutan) materiLanjutan.style.display = 'block';
+                if (materiLockedInfo) {
+                    materiLockedInfo.className = 'info-feedback ok';
+                    materiLockedInfo.innerHTML = '✅ Semua jawaban eksplorasi sudah diisi..';
+                }
+
+                if (btnShowExplain) btnShowExplain.disabled = false;
+            }
+
+            function updateKPIVisibility(x, y, trend) {
+                if (kpiX) kpiX.textContent = x;
+
+                if (exploreInfoUnlocked) {
+                    if (kpiFx) kpiFx.textContent = y;
+                    if (kpiTrend) kpiTrend.textContent = trend;
+                } else {
+                    if (kpiFx) kpiFx.textContent = '—';
+                    if (kpiTrend) kpiTrend.textContent = '—';
+                }
+            }
+
+            function resizeCanvas() {
+                if (!canvas || !ctx) return;
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = Math.floor(rect.width * dpr);
+                canvas.height = Math.floor(rect.height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax) {
+                const sx = pad + (x - xMin) * (W - 2 * pad) / (xMax - xMin);
+                const sy = (H - pad) - (y - yMin) * (H - 2 * pad) / (yMax - yMin);
+                return { sx, sy };
+            }
+
+            function drawGraph(x0) {
+                if (!canvas || !ctx) return;
+
+                const rect = canvas.getBoundingClientRect();
+                const W = rect.width;
+                const H = rect.height;
+                const pad = 28;
+
+                const xMin = -6, xMax = 6;
+
+                let minY = Infinity, maxY = -Infinity;
+                for (let x = xMin; x <= xMax; x += 0.25) {
+                    const y = fx(x);
+                    minY = Math.min(minY, y);
+                    maxY = Math.max(maxY, y);
+                }
+                const yMin = Math.floor(minY - 2);
+                const yMax = Math.ceil(maxY + 2);
+
+                ctx.clearRect(0, 0, W, H);
+                ctx.fillStyle = 'rgba(243,247,255,.45)';
+                ctx.fillRect(0, 0, W, H);
+
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(0,0,0,.06)';
+                for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x += 1) {
+                    const p1 = worldToScreen(x, yMin, W, H, pad, xMin, xMax, yMin, yMax);
+                    const p2 = worldToScreen(x, yMax, W, H, pad, xMin, xMax, yMin, yMax);
+                    ctx.beginPath();
+                    ctx.moveTo(p1.sx, p1.sy);
+                    ctx.lineTo(p2.sx, p2.sy);
+                    ctx.stroke();
+                }
+
+                for (let y = yMin; y <= yMax; y += 2) {
+                    const p1 = worldToScreen(xMin, y, W, H, pad, xMin, xMax, yMin, yMax);
+                    const p2 = worldToScreen(xMax, y, W, H, pad, xMin, xMax, yMin, yMax);
+                    ctx.beginPath();
+                    ctx.moveTo(p1.sx, p1.sy);
+                    ctx.lineTo(p2.sx, p2.sy);
+                    ctx.stroke();
+                }
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(0,0,0,.28)';
+                const oy = worldToScreen(xMin, 0, W, H, pad, xMin, xMax, yMin, yMax).sy;
+                const ox = worldToScreen(0, yMin, W, H, pad, xMin, xMax, yMin, yMax).sx;
+
+                if (0 >= yMin && 0 <= yMax) {
+                    ctx.beginPath();
+                    ctx.moveTo(pad, oy);
+                    ctx.lineTo(W - pad, oy);
+                    ctx.stroke();
+                }
+
+                if (0 >= xMin && 0 <= xMax) {
+                    ctx.beginPath();
+                    ctx.moveTo(ox, pad);
+                    ctx.lineTo(ox, H - pad);
+                    ctx.stroke();
+                }
+
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = 'rgba(43,108,176,.90)';
+                ctx.beginPath();
+                let started = false;
+                const samples = 240;
+
+                for (let i = 0; i <= samples; i++) {
+                    const x = xMin + (xMax - xMin) * (i / samples);
+                    const y = fx(x);
+                    const p = worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax);
+                    if (!started) {
+                        ctx.moveTo(p.sx, p.sy);
+                        started = true;
+                    } else {
+                        ctx.lineTo(p.sx, p.sy);
+                    }
+                }
+                ctx.stroke();
+
+                const y0 = fx(x0);
+                const p0 = worldToScreen(x0, y0, W, H, pad, xMin, xMax, yMin, yMax);
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(27,122,42,.18)';
+                ctx.beginPath();
+                ctx.moveTo(p0.sx, pad);
+                ctx.lineTo(p0.sx, H - pad);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(pad, p0.sy);
+                ctx.lineTo(W - pad, p0.sy);
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(27,122,42,.95)';
+                ctx.beginPath();
+                ctx.arc(p0.sx, p0.sy, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = 'rgba(255,255,255,.95)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(p0.sx, p0.sy, 9, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            const SPECIAL = {
+                vertex: { x: 1, y: -4 }
+            };
+
+            function setInsight(kind, text) {
+                if (!insightChip) return;
+                insightChip.classList.remove('ok', 'warn');
+                insightChip.textContent = text;
+                if (kind) {
+                    insightChip.classList.add(kind === 'ok' ? 'ok' : 'warn');
+                }
+            }
+
+            function updateExplanation(x, y, trend) {
+                if (txtSub) {
+                    txtSub.innerHTML = `Masukkan $x=${x}$ ke fungsi: $f(${x})=${x}^2-2(${x})-3=${y}$.`;
+                }
+
+                if (txtPoint) {
+                    txtPoint.innerHTML = `Titik saat ini adalah $(${x},${y})$.`;
+                }
+
+                const posisi = (y > 0)
+                    ? `Titik <b>di atas</b> sumbu-x (positif).`
+                    : (y < 0)
+                        ? `Titik <b>di bawah</b> sumbu-x (negatif).`
+                        : `Titik tepat <b>di sumbu-x</b> (akar).`;
+
+                const arah = (trend === 'Naik')
+                    ? `Nilai $f(x)$ <b>naik</b>.`
+                    : (trend === 'Turun')
+                        ? `Nilai $f(x)$ <b>turun</b>.`
+                        : `Nilai $f(x)$ <b>tetap</b>.`;
+
+                if (txtPos) {
+                    txtPos.innerHTML = `${posisi} ${arah}`;
+                }
+
+                const isVertex = (x === SPECIAL.vertex.x && y === SPECIAL.vertex.y);
+
+                if (txtIdea) {
+                    if (y === 0) {
+                        txtIdea.innerHTML = `✅ Ini <b>titik potong sumbu-x</b> karena $f(${x})=0$.`;
+                    } else if (isVertex) {
+                        txtIdea.innerHTML = `⭐ Ini <b>titik puncak (minimum)</b> yaitu $(1,-4)$.`;
+                    } else if (x < 1) {
+                        txtIdea.innerHTML = `Mendekati $x=1$, nilai $f(x)$ cenderung <b>mengecil</b>.`;
+                    } else {
+                        txtIdea.innerHTML = `Lewat $x=1$, nilai $f(x)$ cenderung <b>membesar</b>.`;
+                    }
+                }
+
+                if (y === 0) {
+                    setInsight('ok', 'Insight: titik potong sumbu-x');
+                } else if (isVertex) {
+                    setInsight('ok', 'Insight: titik puncak');
+                } else {
+                    setInsight('warn', 'Insight: amati perubahan');
+                }
+
+                rerenderMath(explainBox);
+            }
+
+            function hideExplanation() {
+                if (explainBox) explainBox.style.display = 'none';
+            }
+
+            function showExplanation() {
+                if (!slider || !explainBox || !allAnswered()) return;
+                const x = parseInt(slider.value, 10);
+                const y = fx(x);
+                const trend = getCorrectTrend(x);
+
+                explainBox.style.display = 'block';
+                updateExplanation(x, y, trend);
+            }
+
+            function validateExploreAnswers() {
+                if (!slider || !feedbackExplore) return;
+
+                const x = parseInt(slider.value, 10);
+                const y = fx(x);
+                const posisiBenar = getCorrectPosition(y);
+                const trendBenar = getCorrectTrend(x);
+
+                if (studentFx?.value === '') {
+                    setMiniStatus(statusFx, '', 'Belum dijawab');
+                } else if (Number(studentFx.value) === y) {
+                    setMiniStatus(statusFx, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusFx, 'bad', 'Salah');
+                }
+
+                if (!studentPos?.value) {
+                    setMiniStatus(statusPos, '', 'Belum dijawab');
+                } else if (studentPos.value === posisiBenar) {
+                    setMiniStatus(statusPos, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusPos, 'bad', 'Salah');
+                }
+
+                if (!studentTrend?.value) {
+                    setMiniStatus(statusTrend, '', 'Belum dijawab');
+                } else if (studentTrend.value === trendBenar) {
+                    setMiniStatus(statusTrend, 'ok', 'Benar');
+                } else {
+                    setMiniStatus(statusTrend, 'bad', 'Salah');
+                }
+
+                if (allAnswered()) {
+                    unlockMateri();
+                    updateKPIVisibility(x, y, trendBenar);
+
+                    feedbackExplore.className = 'feedback ok';
+                    feedbackExplore.innerHTML =
+                        `✅ Semua jawaban eksplorasi sudah diisi.`;
+                } else {
+                    lockMateri();
+                    updateKPIVisibility(x, y, trendBenar);
+
+                    feedbackExplore.className = 'feedback';
+                    feedbackExplore.innerHTML =
+                        `Isi semua jawaban eksplorasi terlebih dahulu agar materi berikutnya terbuka.`;
+
+                    hideExplanation();
+                }
+            }
+
+            function resetStudentAnswerState() {
+                setMiniStatus(statusFx, '', 'Belum dijawab');
+                setMiniStatus(statusPos, '', 'Belum dijawab');
+                setMiniStatus(statusTrend, '', 'Belum dijawab');
+
+                if (feedbackExplore) {
+                    feedbackExplore.className = 'feedback';
+                    feedbackExplore.innerHTML = 'Amati grafiknya, lalu isi semua jawabanmu.';
+                }
+
+                setInsight('', 'Insight: siap diamati');
+                lockMateri();
+            }
+
+            function updateExplorerUI() {
+                if (!slider) return;
+
+                const x = parseInt(slider.value, 10);
+                const y = fx(x);
+                const trend = getCorrectTrend(x);
+
+                updateKPIVisibility(x, y, trend);
+
+                if (coordChip) coordChip.textContent = `Titik: (${x}, ${y})`;
+
+                resizeCanvas();
+                drawGraph(x);
+            }
+
+            studentFx?.addEventListener('input', validateExploreAnswers);
+            studentPos?.addEventListener('change', validateExploreAnswers);
+            studentTrend?.addEventListener('change', validateExploreAnswers);
+
+            btnResetExplore?.addEventListener('click', function () {
+                if (studentFx) studentFx.value = '';
+                if (studentPos) studentPos.value = '';
+                if (studentTrend) studentTrend.value = '';
+
+                hideExplanation();
+                resetStudentAnswerState();
+
+                if (slider) {
+                    const x = parseInt(slider.value, 10);
+                    updateKPIVisibility(x, fx(x), getCorrectTrend(x));
+                }
+
+                rerenderMath(document.body);
+            });
+
+            btnShowExplain?.addEventListener('click', function () {
+                if (allAnswered()) {
+                    showExplanation();
+                }
+            });
+
+            if (slider && canvas && ctx) {
+                window.addEventListener('resize', () => {
+                    resizeCanvas();
+                    updateExplorerUI();
+                });
+
+                slider.addEventListener('input', () => {
+                    if (studentFx) studentFx.value = '';
+                    if (studentPos) studentPos.value = '';
+                    if (studentTrend) studentTrend.value = '';
+
+                    hideExplanation();
+                    resetStudentAnswerState();
+                    updateExplorerUI();
+                });
+
+                requestAnimationFrame(() => {
+                    resizeCanvas();
+                    updateExplorerUI();
+                    hideExplanation();
+                    resetStudentAnswerState();
+                });
+            }
+
+            rerenderMath(document.body);
         })();
     </script>
 
@@ -3204,48 +3760,96 @@
                 return (v || "")
                     .toString()
                     .toLowerCase()
-                    .replace(/\s+/g, " ")
+                    .replace(/\s+/g, "")
+                    .replace(/[\(\)]/g, "")
+                    .replace(/,/g, ",")
+                    .replace(/−/g, "-")
                     .replace(/\^/g, "")
                     .replace(/³/g, "3")
-                    .replace(/−/g, "-")
                     .trim();
             }
 
             function cekKhusus(id, val) {
                 const v = normal(val);
 
+                if (id === "a1") {
+                    return v === "3";
+                }
+
+                if (id === "a2") {
+                    return v === "3" || v === "3suku";
+                }
+
                 if (id === "a3") {
-                    return ["7x3", "7x^3", "7x³"].includes(v);
+                    return v.includes("7x3");
+                }
+
+                if (id === "a4") {
+                    return v === "7";
                 }
 
                 if (id === "a5") {
-                    return [
-                        "kiri turun kanan naik",
-                        "turun naik",
-                        "kiri turun, kanan naik"
-                    ].includes(v);
+                    return v.includes("turun") && v.includes("naik");
                 }
 
                 if (id === "b1") {
-                    return [
-                        "(-2,0) dan (4,0)",
-                        "(4,0) dan (-2,0)",
-                        "x=-2 dan x=4",
-                        "x=4 dan x=-2"
-                    ].includes(v);
+                    return (
+                        (v.includes("-2") && v.includes("4")) ||
+                        v === "x=-2danx=4" ||
+                        v === "x=4danx=-2"
+                    );
                 }
 
                 if (id === "b2") {
-                    return ["(0,-8)", "0,-8"].includes(v);
+                    return (
+                        v === "0,-8" ||
+                        v === "0,-8" ||
+                        (v.includes("0") && v.includes("-8"))
+                    );
                 }
 
                 if (id === "b3") {
-                    return ["(1,-9)", "1,-9"].includes(v);
+                    return (
+                        v === "1,-9" ||
+                        (v.includes("1") && v.includes("-9"))
+                    );
                 }
 
-                if (id === "c1u") return ["turun-naik", "turun naik"].includes(v);
-                if (id === "c2u") return ["naik-naik", "naik naik"].includes(v);
-                if (id === "c3u") return ["turun-turun", "turun turun"].includes(v);
+                if (id === "c1") {
+                    return v.toUpperCase() === "A";
+                }
+
+                if (id === "c1u") {
+                    return v.includes("turun") && v.includes("naik");
+                }
+
+                if (id === "c1c") {
+                    return v.toUpperCase() === "A";
+                }
+
+                if (id === "c2") {
+                    return v.toUpperCase() === "B";
+                }
+
+                if (id === "c2u") {
+                    return v.includes("naik") && !v.includes("turun");
+                }
+
+                if (id === "c2c") {
+                    return v.toUpperCase() === "B";
+                }
+
+                if (id === "c3") {
+                    return v.toUpperCase() === "C";
+                }
+
+                if (id === "c3u") {
+                    return v.includes("turun") && !v.includes("naik");
+                }
+
+                if (id === "c3c") {
+                    return v.toUpperCase() === "C";
+                }
 
                 return normal(jawabBenar[id]) === v;
             }

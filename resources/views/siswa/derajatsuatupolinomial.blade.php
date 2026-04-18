@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                delimiters: [
-                                    {left: '$$', right: '$$', display: true},
-                                    {left: '$', right: '$', display: false}
-                                ]
-                            });"></script>
+                                            delimiters: [
+                                                {left: '$$', right: '$$', display: true},
+                                                {left: '$', right: '$', display: false}
+                                            ]
+                                        });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -211,7 +211,7 @@
             color: var(--green);
         }
 
-        /* ===== BAGIAN LANJUTAN (LOCK) ===== */
+        /* ===== BAGIAN LANJUTAN ===== */
         .locked {
             display: none;
             opacity: 0;
@@ -801,7 +801,7 @@
             </div>
 
             <div class="quiz3" id="quiz3">
-                <div class="qitem" data-q="1">
+                <div class="qitem" data-q="1" data-done="0">
                     <div class="qtitle">Soal 1</div>
                     <div class="qhint">Klik suku yang memiliki <b>derajat tertinggi</b>.</div>
                     <div class="rumus-eks">
@@ -813,7 +813,7 @@
                     <div class="feedback"></div>
                 </div>
 
-                <div class="qitem" data-q="2">
+                <div class="qitem" data-q="2" data-done="0">
                     <div class="qtitle">Soal 2</div>
                     <div class="qhint">Klik suku yang memiliki <b>derajat 1</b>.</div>
                     <div class="rumus-eks">
@@ -825,7 +825,7 @@
                     <div class="feedback"></div>
                 </div>
 
-                <div class="qitem" data-q="3">
+                <div class="qitem" data-q="3" data-done="0">
                     <div class="qtitle">Soal 3</div>
                     <div class="qhint">Klik suku yang merupakan <b>konstanta</b> (derajat 0).</div>
                     <div class="rumus-eks">
@@ -841,7 +841,7 @@
             </div>
         </div>
 
-        {{-- BAGIAN LANJUTAN --}}
+        {{-- BAGIAN LANJUTAN: AWALNYA TERSEMBUNYI --}}
         <div id="bagianLanjutan" class="locked">
 
             {{-- CARD 2: Contoh --}}
@@ -933,12 +933,11 @@
                 <p class="highlight">Tentukan derajat dari polinomial berikut:</p>
 
                 <div class="sol-quiz" id="solQuiz">
-                    <div class="sol-quiz-item" data-sol="sol1" data-answer="5">
+                    <div class="sol-quiz-item" data-sol="sol1" data-answer="5" data-done="0">
                         <div class="sol-quiz-head">
                             <div class="sol-quiz-title">Soal 1</div>
                             <div class="sol-quiz-form">
                                 <input class="sol-input" type="number" inputmode="numeric" placeholder="Jawaban derajat">
-                                <button type="button" class="sol-btn check">Cek</button>
                                 <button type="button" class="sol-btn show" disabled>Lihat penyelesaian</button>
                             </div>
                         </div>
@@ -946,12 +945,11 @@
                         <div class="sol-feedback"></div>
                     </div>
 
-                    <div class="sol-quiz-item" data-sol="sol2" data-answer="5">
+                    <div class="sol-quiz-item" data-sol="sol2" data-answer="5" data-done="0">
                         <div class="sol-quiz-head">
                             <div class="sol-quiz-title">Soal 2</div>
                             <div class="sol-quiz-form">
                                 <input class="sol-input" type="number" inputmode="numeric" placeholder="Jawaban derajat">
-                                <button type="button" class="sol-btn check">Cek</button>
                                 <button type="button" class="sol-btn show" disabled>Lihat penyelesaian</button>
                             </div>
                         </div>
@@ -959,12 +957,11 @@
                         <div class="sol-feedback"></div>
                     </div>
 
-                    <div class="sol-quiz-item" data-sol="sol3" data-answer="6">
+                    <div class="sol-quiz-item" data-sol="sol3" data-answer="6" data-done="0">
                         <div class="sol-quiz-head">
                             <div class="sol-quiz-title">Soal 3</div>
                             <div class="sol-quiz-form">
                                 <input class="sol-input" type="number" inputmode="numeric" placeholder="Jawaban derajat">
-                                <button type="button" class="sol-btn check">Cek</button>
                                 <button type="button" class="sol-btn show" disabled>Lihat penyelesaian</button>
                             </div>
                         </div>
@@ -973,7 +970,6 @@
                     </div>
                 </div>
 
-                {{-- ✅ Jangan tampilkan grid penyelesaian sampai semua benar --}}
                 <div id="solUnlockAll" style="display:none;">
                     <div class="title-box" style="margin-top:18px;">🧩 Penyelesaian</div>
 
@@ -1026,7 +1022,8 @@
                     yaitu pangkat tertinggi dari variabel yang muncul dalam polinomial tersebut.
                 </p>
             </div>
-            {{-- ✅ CARD 7: Latihan (langsung pas di card) --}}
+
+            {{-- CARD 7: Latihan --}}
             <div class="card card-try latihan-card-fit">
                 <div class="title-box">🎯 Latihan</div>
 
@@ -1137,22 +1134,31 @@
     <script src="{{ asset('js/interaktif1b.js') }}"></script>
     <script>
         (function () {
-            // ===== QUIZ unlock bagian lanjutan =====
+            // ===== QUIZ eksplorasi: semua soal harus DIJAWAB, tidak harus benar =====
             const quiz = document.getElementById("quiz3");
-            const qitems = Array.from(quiz.querySelectorAll(".qitem"));
+            const qitems = quiz ? Array.from(quiz.querySelectorAll(".qitem")) : [];
             const summary = document.getElementById("quizSummary");
             const bagianLanjutan = document.getElementById("bagianLanjutan");
 
+            const unlockMateri = () => {
+                if (!bagianLanjutan) return;
+                bagianLanjutan.classList.add("show");
+                requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+            };
+
             const updateSummary = () => {
                 const done = qitems.filter(q => q.dataset.done === "1").length;
-                if (summary) summary.textContent = `Skor: ${done}/${qitems.length}`;
 
-                if (done === qitems.length && bagianLanjutan) {
-                    bagianLanjutan.classList.add("show");
-                    requestAnimationFrame(() => {
-                        window.dispatchEvent(new Event("resize"));
-                        bagianLanjutan.scrollIntoView({ behavior: "smooth", block: "start" });
-                    });
+                if (summary) {
+                    if (done < qitems.length) {
+                        summary.textContent = `Progress eksplorasi: ${done}/${qitems.length}`;
+                    } else {
+                        summary.textContent = `Semua soal sudah dijawab.`;
+                    }
+                }
+
+                if (qitems.length > 0 && done === qitems.length) {
+                    unlockMateri();
                 }
             };
 
@@ -1173,15 +1179,22 @@
                         reset();
 
                         const isCorrect = t.dataset.correct === "1";
+                        qitem.dataset.done = "1";
+
                         if (isCorrect) {
                             t.classList.add("correct");
-                            qitem.dataset.done = "1";
-                            if (feedback) { feedback.classList.add("ok"); feedback.textContent = "✅ Benar!"; }
+                            if (feedback) {
+                                feedback.classList.add("ok");
+                                feedback.textContent = "✅ Benar!";
+                            }
                         } else {
                             t.classList.add("wrong");
-                            qitem.dataset.done = "0";
-                            if (feedback) { feedback.classList.add("no"); feedback.textContent = "❌ Belum tepat, coba lagi."; }
+                            if (feedback) {
+                                feedback.classList.add("no");
+                                feedback.textContent = "❌ Salah!";
+                            }
                         }
+
                         updateSummary();
                     });
                 });
@@ -1214,7 +1227,7 @@
                 });
             }
 
-            // ===== TOGGLE PENYELESAIAN (ACCORDION) - LOCK sampai semua benar =====
+            // ===== TOGGLE PENYELESAIAN (ACCORDION) =====
             const solBoxes = Array.from(document.querySelectorAll(".sol-box"));
             const solContents = Array.from(document.querySelectorAll(".sol-content"));
             const solUnlockAll = document.getElementById("solUnlockAll");
@@ -1249,7 +1262,7 @@
                 });
             });
 
-            // ===== INTERAKTIF CONTOH SOAL: input jawaban -> buka penyelesaian per soal =====
+            // ===== INTERAKTIF CONTOH SOAL: OTOMATIS TANPA TOMBOL CEK =====
             const solQuiz = document.getElementById("solQuiz");
             if (solQuiz) {
                 const items = Array.from(solQuiz.querySelectorAll(".sol-quiz-item"));
@@ -1275,31 +1288,42 @@
                     const solId = item.dataset.sol;
 
                     const input = item.querySelector(".sol-input");
-                    const btnCheck = item.querySelector(".sol-btn.check");
                     const btnShow = item.querySelector(".sol-btn.show");
                     const fb = item.querySelector(".sol-feedback");
 
                     const setFeedback = (ok, text) => {
+                        if (!fb) return;
                         fb.classList.remove("ok", "no");
                         fb.classList.add(ok ? "ok" : "no");
                         fb.textContent = text;
                     };
 
-                    const check = () => {
-                        const val = parseInt((input.value || "").trim(), 10);
+                    const checkAuto = () => {
+                        const raw = (input.value || "").trim();
+
+                        if (raw === "") {
+                            item.dataset.done = "0";
+                            btnShow.disabled = true;
+                            if (fb) {
+                                fb.classList.remove("ok", "no");
+                                fb.textContent = "";
+                            }
+                            return;
+                        }
+
+                        const val = parseInt(raw, 10);
+
                         if (Number.isNaN(val)) {
                             item.dataset.done = "0";
-                            setFeedback(false, "⚠️ Isi jawaban derajat terlebih dahulu.");
                             btnShow.disabled = true;
+                            setFeedback(false, "❌ Salah!");
                             return;
                         }
 
                         if (val === ans) {
                             item.dataset.done = "1";
-                            setFeedback(true, "✅ Benar! Penyelesaian terbuka.");
                             btnShow.disabled = false;
-                            btnShow.focus();
-                            openSolution(solId);
+                            setFeedback(true, "✅ Benar! Penyelesaian terbuka.");
 
                             if (checkAllSolved()) {
                                 allSolved = true;
@@ -1308,25 +1332,23 @@
                             }
                         } else {
                             item.dataset.done = "0";
-                            setFeedback(false, "❌ Belum tepat. Coba periksa derajat tiap suku, lalu ambil yang tertinggi.");
                             btnShow.disabled = true;
+                            setFeedback(false, "❌ Salah!");
                         }
                     };
 
-                    btnCheck.addEventListener("click", check);
-                    btnShow.addEventListener("click", () => openSolution(solId));
+                    input.addEventListener("input", checkAuto);
+                    input.addEventListener("change", checkAuto);
 
-                    input.addEventListener("keydown", (e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            check();
-                        }
+                    btnShow.addEventListener("click", () => {
+                        if (btnShow.disabled) return;
+                        openSolution(solId);
                     });
                 });
             }
         })();
 
-        // ===== LATIHAN HTML CSS JS (tanpa p5) =====
+        // ===== LATIHAN HTML CSS JS =====
         const btnCheckLatihan = document.getElementById("btnCheckLatihan");
 
         if (btnCheckLatihan) {

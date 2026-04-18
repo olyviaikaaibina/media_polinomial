@@ -6,12 +6,13 @@
     ========================== --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                            delimiters: [
-                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                {left: '$', right: '$', display: false}
-                                                                                            ]
-                                                                                        });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+                                                                                                                                    delimiters: [
+                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                    ]
+                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -310,6 +311,34 @@
             margin-left: 10px;
             font-weight: 900;
             color: #1e3a8a;
+        }
+
+        .quiz-feedback,
+        .step-feedback,
+        .mini-feedback,
+        .blank-feedback,
+        .susun-feedback {
+            display: none;
+        }
+
+        .quiz-input.is-correct,
+        .step-input.is-correct,
+        .hasil-input.is-correct,
+        .blank-input.is-correct,
+        .susun-input.is-correct {
+            border: 2px solid #1b7a2a !important;
+            background: rgba(27, 122, 42, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(27, 122, 42, 0.08);
+        }
+
+        .quiz-input.is-wrong,
+        .step-input.is-wrong,
+        .hasil-input.is-wrong,
+        .blank-input.is-wrong,
+        .susun-input.is-wrong {
+            border: 2px solid #e0702b !important;
+            background: rgba(224, 112, 43, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(224, 112, 43, 0.08);
         }
 
         #after-eksplorasi[aria-hidden="true"] {
@@ -1328,6 +1357,34 @@
             white-space: nowrap;
             /* supaya tidak turun ke bawah */
         }
+
+        .quiz-input.is-correct,
+        .step-input.is-correct,
+        .hasil-input.is-correct,
+        .blank-input.is-correct,
+        .susun-input.is-correct {
+            border: 2px solid #1b7a2a !important;
+            background: rgba(27, 122, 42, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(27, 122, 42, 0.08);
+        }
+
+        .quiz-input.is-wrong,
+        .step-input.is-wrong,
+        .hasil-input.is-wrong,
+        .blank-input.is-wrong,
+        .susun-input.is-wrong {
+            border: 2px solid #e0702b !important;
+            background: rgba(224, 112, 43, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(224, 112, 43, 0.08);
+        }
+
+        .quiz-feedback,
+        .step-feedback,
+        .mini-feedback,
+        .blank-feedback,
+        .susun-feedback {
+            display: none;
+        }
     </style>
 
     <style>
@@ -1374,14 +1431,12 @@
 
             <p>
                 Banjarmasin dikenal sebagai <b>Kota Seribu Sungai</b>. Kehidupan masyarakatnya sangat dekat dengan sungai
-                seperti
-                Sungai Martapura, Sungai Barito, dan Pasar Terapung.
+                seperti Sungai Martapura, Sungai Barito, dan Pasar Terapung.
             </p>
 
             <p>
                 Untuk menjaga kebersihan sungai, pemerintah kota melaksanakan program <b>pengolahan sampah sungai</b> yang
-                melibatkan
-                <b>beberapa kelompok kerja</b>.
+                melibatkan <b>beberapa kelompok kerja</b>.
             </p>
 
             <p><b>Misalkan:</b><br>
@@ -1410,8 +1465,6 @@
                         <div class="quiz-q">Jika $x=1$ (hari kerja ke-1), berapa nilai $A(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -1420,8 +1473,6 @@
                         <div class="quiz-q">Jika $x=1$ (hari kerja ke-1), berapa nilai $B(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -1433,18 +1484,15 @@
                         </div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
                 </ol>
-
-                <div style="margin-top:10px;">
-                    <button type="button" id="quiz-check-all" class="quiz-checkall">Cek Semua</button>
-                    <span id="quiz-summary" class="quiz-summary"></span>
-                </div>
             </div>
+        </div>
+
+        <div style="margin-top:10px;">
+            <span id="quiz-summary" class="quiz-summary"></span>
         </div>
 
         <div id="after-eksplorasi" aria-hidden="true">
@@ -1493,7 +1541,8 @@
                     <div class="tip-example-box">
                         <div class="tip-example-title">Ingat pola ini:</div>
                         <div class="tip-example-desc">
-                            Kalau ada satu suku di depan kurung, berarti suku itu harus masuk ke semua suku di dalam kurung.
+                            Kalau ada satu suku di depan kurung, berarti suku itu harus masuk ke semua suku di dalam
+                            kurung.
                         </div>
                         <div class="rumus-box" style="margin-bottom:0;">
                             $$a(b+c+d)=ab+ac+ad$$
@@ -1556,8 +1605,6 @@
                             </div>
                             <input class="step-input" type="text" placeholder="Isi jawaban koefisien" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1568,12 +1615,9 @@
                                 Sekarang perhatikan variabelnya.
                                 Karena sama-sama memiliki variabel <b>x</b>, maka pangkatnya dijumlahkan:
                                 <br>
-
                             </div>
                             <input class="step-input" type="text" placeholder="Isi jawaban variabel" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1590,8 +1634,6 @@
                             </div>
                             <input class="step-input" type="text" placeholder="Isi hasil akhir" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1620,6 +1662,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- =========================
             A. LATIHAN
             ========================== --}}
@@ -1636,8 +1679,6 @@
                             <div class="step-title">Koefisien</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1646,8 +1687,6 @@
                             <div class="step-title">Pangkat variabel</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1656,8 +1695,6 @@
                             <div class="step-title">Hasil akhir</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1675,8 +1712,6 @@
                             <div class="step-title">Koefisien</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1685,8 +1720,6 @@
                             <div class="step-title">Pangkat variabel</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1695,8 +1728,6 @@
                             <div class="step-title">Hasil akhir</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1714,8 +1745,6 @@
                             <div class="step-title">Koefisien</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1724,8 +1753,6 @@
                             <div class="step-title">Pangkat variabel</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1734,8 +1761,6 @@
                             <div class="step-title">Hasil akhir</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1789,8 +1814,6 @@
                                             <input class="hasil-input" type="text" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
-                                                <button type="button" class="mini-btn contoh-check-b">Cek</button>
-                                                <button type="button" class="mini-btn contoh-reset-b">Reset</button>
                                                 <span class="mini-feedback"></span>
                                             </div>
                                         </td>
@@ -1804,8 +1827,6 @@
                                             <input class="hasil-input" type="text" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
-                                                <button type="button" class="mini-btn contoh-check-b">Cek</button>
-                                                <button type="button" class="mini-btn contoh-reset-b">Reset</button>
                                                 <span class="mini-feedback"></span>
                                             </div>
                                         </td>
@@ -1818,8 +1839,6 @@
                                             <input class="hasil-input" type="text" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
-                                                <button type="button" class="mini-btn contoh-check-b">Cek</button>
-                                                <button type="button" class="mini-btn contoh-reset-b">Reset</button>
                                                 <span class="mini-feedback"></span>
                                             </div>
                                         </td>
@@ -1833,8 +1852,6 @@
                             <div class="mini-actions" style="justify-content:flex-start;">
                                 <input id="contoh-final-b" class="hasil-input" style="max-width:420px; text-align:left;"
                                     type="text" />
-                                <button type="button" id="contoh-final-check-b" class="mini-btn">Cek</button>
-                                <button type="button" id="contoh-final-reset-b" class="mini-btn">Reset</button>
                                 <span id="contoh-final-fb-b" class="mini-feedback"></span>
                             </div>
 
@@ -1888,8 +1905,6 @@
                             <div class="step-title">Hasil perkalian pertama: $4x(3x^2)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1898,8 +1913,6 @@
                             <div class="step-title">Hasil perkalian kedua: $4x(-2x)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1908,8 +1921,6 @@
                             <div class="step-title">Hasil perkalian ketiga: $4x(5)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1918,8 +1929,6 @@
                             <div class="step-title">Gabungkan semuanya</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1937,8 +1946,6 @@
                             <div class="step-title">Hasil perkalian pertama: $2x(5x^2)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1947,8 +1954,6 @@
                             <div class="step-title">Hasil perkalian kedua: $2x(x)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1957,8 +1962,6 @@
                             <div class="step-title">Hasil perkalian ketiga: $2x(-3)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1967,8 +1970,6 @@
                             <div class="step-title">Gabungkan semuanya</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1986,8 +1987,6 @@
                             <div class="step-title">Hasil perkalian pertama: $-3x(4x^2)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -1996,8 +1995,6 @@
                             <div class="step-title">Hasil perkalian kedua: $-3x(-x)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -2006,8 +2003,6 @@
                             <div class="step-title">Hasil perkalian ketiga: $-3x(2)$</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -2016,8 +2011,6 @@
                             <div class="step-title">Gabungkan semuanya</div>
                             <input class="step-input" type="text" />
                             <div class="step-actions">
-                                <button type="button" class="step-check">Cek</button>
-                                <button type="button" class="step-reset">Reset</button>
                                 <span class="step-feedback"></span>
                             </div>
                         </div>
@@ -2029,6 +2022,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- =========================
             C. POLINOMIAL × POLINOMIAL
             ========================== --}}
@@ -2048,7 +2042,6 @@
 
                 <div class="metode-grid">
 
-                    {{-- METODE DISTRIBUSI --}}
                     <div class="metode-card distribusi">
                         <div class="metode-title">Metode Distribusi</div>
                         <div class="metode-subtitle">
@@ -2069,7 +2062,6 @@
                         </div>
                     </div>
 
-                    {{-- METODE BERSUSUN --}}
                     <div class="metode-card bersusun">
                         <div class="metode-title">Metode Bersusun</div>
                         <div class="metode-subtitle">
@@ -2218,7 +2210,6 @@
 
                             <div class="susun-actions">
                                 <button type="button" class="mini-btn" id="contoh-c-checkall">Cek Semua</button>
-                                <button type="button" class="mini-btn" id="contoh-c-reset">Reset</button>
                                 <span class="blank-summary" id="contoh-c-summary"></span>
                             </div>
                         </div>
@@ -2238,6 +2229,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- =========================
             C. LATIHAN
             ========================== --}}
@@ -2290,7 +2282,6 @@
 
                         <div class="blank-actions">
                             <button type="button" class="blank-checkall" data-target="blank-c1">Cek Semua</button>
-                            <button type="button" class="blank-reset" data-target="blank-c1">Reset</button>
                             <span class="blank-summary" id="summary-blank-c1"></span>
                         </div>
 
@@ -2345,7 +2336,6 @@
 
                         <div class="blank-actions">
                             <button type="button" class="blank-checkall" data-target="blank-c2">Cek Semua</button>
-                            <button type="button" class="blank-reset" data-target="blank-c2">Reset</button>
                             <span class="blank-summary" id="summary-blank-c2"></span>
                         </div>
 
@@ -2360,6 +2350,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="game-latihan-card" id="game-latihan">
                 <div class="game-latihan-head">LATIHAN </div>
 
@@ -2370,7 +2361,6 @@
 
                     <div class="game-grid">
 
-                        <!-- Soal A -->
                         <div class="game-soal" data-answer="x^3-x^2-10x-8">
                             <div class="game-soal-top">
                                 <div class="game-label">a. Hitung hasil dari</div>
@@ -2382,18 +2372,15 @@
                             </div>
 
                             <div class="game-options">
-
                                 <button type="button" class="game-option"
                                     data-value="x^3+x^2-10x-8">$$x^3+x^2-10x-8$$</button>
                                 <button type="button" class="game-option"
                                     data-value="x^3-x^2+10x-8">$$x^3-x^2+10x-8$$</button>
-
                                 <button type="button" class="game-option"
                                     data-value="x^3-x^2-10x-8">$$x^3-x^2-10x-8$$</button>
                             </div>
                         </div>
 
-                        <!-- Soal B -->
                         <div class="game-soal" data-answer="10x^3-4x^2+14x">
                             <div class="game-soal-top">
                                 <div class="game-label">b. Hitung hasil dari</div>
@@ -2409,13 +2396,11 @@
                                     data-value="10x^3+4x^2+14x">$$10x^3+4x^2+14x$$</button>
                                 <button type="button" class="game-option"
                                     data-value="10x^3-4x^2+14x">$$10x^3-4x^2+14x$$</button>
-
                                 <button type="button" class="game-option"
                                     data-value="10x^3-4x^2+7x">$$10x^3-4x^2+7x$$</button>
                             </div>
                         </div>
 
-                        <!-- Soal C -->
                         <div class="game-soal" data-answer="-12y^5">
                             <div class="game-soal-top">
                                 <div class="game-label">c. Hitung hasil dari</div>
@@ -2442,8 +2427,8 @@
                     </div>
 
                     <div class="game-final-note" id="game-final-note">
-                        Hebat! Semua soal sudah dikerjakan. Periksa lagi kalau masih ada yang salah, lalu coba sampai benar
-                        semua.
+                        Hebat! Semua soal sudah dikerjakan. Periksa lagi kalau masih ada yang salah, lalu coba
+                        sampai benar semua.
                     </div>
                 </div>
             </div>
@@ -2451,6 +2436,7 @@
 
         <script>
             (function () {
+
                 const normalize = (s) =>
                     (s || "")
                         .toLowerCase()
@@ -2466,15 +2452,12 @@
 
                     s = s
                         .replace(/\*\*/g, "^")
-                        .replace(/([a-z])\((\-?\d+)\)/g, "$1^$2");
-
-                    s = s.replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
-                        const prev = full[offset - 1] || "";
-                        if (prev === "^") return match;
-                        return `${varName}^${power}`;
-                    });
-
-                    s = s
+                        .replace(/([a-z])\((\-?\d+)\)/g, "$1^$2")
+                        .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
+                            const prev = full[offset - 1] || "";
+                            if (prev === "^") return match;
+                            return `${varName}^${power}`;
+                        })
                         .replace(/\+\-/g, "-")
                         .replace(/(^|[+\-])1x/g, "$1x")
                         .replace(/(^|[+\-])-1x/g, "$1-x")
@@ -2484,17 +2467,38 @@
                     return s;
                 };
 
-                const setFb = (el, ok, okText = "Benar ✅", noText = "Belum tepat ❌") => {
+                const setInputState = (input, ok) => {
+                    if (!input) return;
+                    input.classList.remove("is-correct", "is-wrong");
+                    input.classList.add(ok ? "is-correct" : "is-wrong");
+                };
+
+                const clearInputState = (input) => {
+                    if (!input) return;
+                    input.classList.remove("is-correct", "is-wrong");
+                };
+
+                const setFb = (el, ok, showText = true) => {
                     if (!el) return;
+
                     el.classList.remove("ok", "no");
+
+                    if (!showText) {
+                        el.textContent = "";
+                        el.style.display = "none";
+                        return;
+                    }
+
+                    el.style.display = "inline-block";
                     el.classList.add(ok ? "ok" : "no");
-                    el.textContent = ok ? okText : noText;
+                    el.textContent = ok ? "Benar" : "Salah";
                 };
 
                 const clearFb = (el) => {
                     if (!el) return;
                     el.classList.remove("ok", "no");
                     el.textContent = "";
+                    el.style.display = "none";
                 };
 
                 const renderInlineKatex = (container, latex) => {
@@ -2525,34 +2529,56 @@
 
                 hideAfterEksplorasi();
 
-                // Eksplorasi
+                // =========================
+                // EKSPLORASI AUTO CHECK
+                // =========================
                 const quiz = document.getElementById("eksplorasi-quiz");
+
                 if (quiz) {
                     const items = Array.from(quiz.querySelectorAll(".quiz-item"));
 
                     const checkItem = (item) => {
                         const input = item.querySelector(".quiz-input");
                         const fb = item.querySelector(".quiz-feedback");
-                        const user = normalizePoly(input ? input.value : "");
+
+                        const rawValue = input ? input.value.trim() : "";
+                        const user = normalizePoly(rawValue);
                         const ans = normalizePoly(item.getAttribute("data-answer") || "");
-                        const ok = !!user && user === ans;
-                        setFb(fb, ok);
+
+                        if (!rawValue) {
+                            clearFb(fb);
+                            clearInputState(input);
+                            return null;
+                        }
+
+                        const ok = user === ans;
+                        setFb(fb, ok, true);
+                        setInputState(input, ok);
                         return ok;
                     };
 
-                    const updateScore = () => {
-                        const correct = items.filter(it =>
-                            it.querySelector(".quiz-feedback")?.classList.contains("ok")
-                        ).length;
-
-                        const total = items.length;
+                    const updateEksplorasiState = () => {
                         const summary = document.getElementById("quiz-summary");
+                        const total = items.length;
+
+                        let correct = 0;
+                        let filled = 0;
+
+                        items.forEach(item => {
+                            const input = item.querySelector(".quiz-input");
+                            const value = input ? input.value.trim() : "";
+
+                            if (value !== "") filled++;
+
+                            const result = checkItem(item);
+                            if (result === true) correct++;
+                        });
 
                         if (summary) {
-                            summary.textContent = `Skor: ${correct}/${total}`;
+                            summary.textContent = `Terisi: ${filled}/${total} | Benar: ${correct}/${total}`;
                         }
 
-                        if (correct === total) {
+                        if (filled === total) {
                             showAfterEksplorasi();
                         } else {
                             hideAfterEksplorasi();
@@ -2561,53 +2587,25 @@
 
                     items.forEach(item => {
                         const input = item.querySelector(".quiz-input");
-                        const btnCheck = item.querySelector(".quiz-check");
-                        const btnReset = item.querySelector(".quiz-reset");
-                        const fb = item.querySelector(".quiz-feedback");
-
-                        if (btnCheck) {
-                            btnCheck.addEventListener("click", () => {
-                                checkItem(item);
-                                updateScore();
-                            });
-                        }
-
-                        if (btnReset) {
-                            btnReset.addEventListener("click", () => {
-                                if (input) input.value = "";
-                                clearFb(fb);
-                                updateScore();
-                            });
-                        }
 
                         if (input) {
+                            input.addEventListener("input", updateEksplorasiState);
+                            input.addEventListener("blur", updateEksplorasiState);
                             input.addEventListener("keydown", (e) => {
                                 if (e.key === "Enter") {
                                     e.preventDefault();
-                                    checkItem(item);
-                                    updateScore();
+                                    updateEksplorasiState();
                                 }
-                            });
-
-                            input.addEventListener("input", () => {
-                                clearFb(fb);
-                                updateScore();
                             });
                         }
                     });
 
-                    const btnAll = document.getElementById("quiz-check-all");
-                    if (btnAll) {
-                        btnAll.addEventListener("click", () => {
-                            items.forEach(checkItem);
-                            updateScore();
-                        });
-                    }
-
-                    updateScore();
+                    updateEksplorasiState();
                 }
 
-                // Tip board
+                // =========================
+                // TIP BOARD
+                // =========================
                 const tipBoard = document.getElementById("tipBoard");
                 const tipFlashBtn = document.getElementById("tipFlashBtn");
                 if (tipBoard && tipFlashBtn) {
@@ -2618,8 +2616,12 @@
                     });
                 }
 
-                // Generic step block
-                function bindStepBlock(blockId, resultBoxId = null, explanationId = null) {
+                // =========================
+                // GENERIC STEP BLOCK
+                // contoh  = warna saja
+                // latihan = warna + teks
+                // =========================
+                function bindStepBlock(blockId, resultBoxId = null, explanationId = null, showText = true) {
                     const block = document.getElementById(blockId);
                     if (!block) return;
 
@@ -2631,62 +2633,48 @@
                     const checkItem = (item) => {
                         const input = item.querySelector(".step-input");
                         const fb = item.querySelector(".step-feedback");
-                        const user = normalizePoly(input ? input.value : "");
+                        const raw = input ? input.value.trim() : "";
+                        const user = normalizePoly(raw);
                         const ans = normalizePoly(item.getAttribute("data-answer") || "");
-                        const ok = !!user && user === ans;
-                        setFb(fb, ok);
+
+                        if (!raw) {
+                            clearFb(fb);
+                            clearInputState(input);
+                            return null;
+                        }
+
+                        const ok = user === ans;
+                        setFb(fb, ok, showText);
+                        setInputState(input, ok);
                         return ok;
                     };
 
                     const updateScore = () => {
-                        const correct = items.filter(it =>
-                            it.querySelector(".step-feedback")?.classList.contains("ok")
-                        ).length;
+                        let correct = 0;
                         const total = items.length;
+
+                        items.forEach(item => {
+                            const result = checkItem(item);
+                            if (result === true) correct++;
+                        });
 
                         if (summary) {
                             summary.textContent = `Skor: ${correct}/${total}`;
                         }
 
                         const done = correct === total;
-
                         if (resultBox) resultBox.style.display = done ? "block" : "none";
                         if (explanationBox) explanationBox.style.display = done ? "block" : "none";
                     };
 
                     items.forEach(item => {
                         const input = item.querySelector(".step-input");
-                        const btnCheck = item.querySelector(".step-check");
-                        const btnReset = item.querySelector(".step-reset");
                         const fb = item.querySelector(".step-feedback");
 
-                        if (btnCheck) {
-                            btnCheck.addEventListener("click", () => {
-                                checkItem(item);
-                                updateScore();
-                            });
-                        }
-
-                        if (btnReset) {
-                            btnReset.addEventListener("click", () => {
-                                if (input) input.value = "";
-                                clearFb(fb);
-                                updateScore();
-                            });
-                        }
-
                         if (input) {
-                            input.addEventListener("keydown", (e) => {
-                                if (e.key === "Enter") {
-                                    e.preventDefault();
-                                    checkItem(item);
-                                    updateScore();
-                                }
-                            });
-
                             input.addEventListener("input", () => {
                                 clearFb(fb);
-                                updateScore();
+                                clearInputState(input);
                             });
                         }
                     });
@@ -2694,23 +2682,28 @@
                     const btnAll = block.querySelector(`.step-checkall[data-target="${blockId}"]`);
                     if (btnAll) {
                         btnAll.addEventListener("click", () => {
-                            items.forEach(checkItem);
                             updateScore();
                         });
                     }
 
-                    updateScore();
+                    if (resultBox) resultBox.style.display = "none";
+                    if (explanationBox) explanationBox.style.display = "none";
                 }
 
-                bindStepBlock("contoh-a", "result-contoh-a", "penjelasan-a");
-                bindStepBlock("practice-a1");
-                bindStepBlock("practice-a2");
-                bindStepBlock("practice-a3");
-                bindStepBlock("practice-b1");
-                bindStepBlock("practice-b2");
-                bindStepBlock("practice-b3");
+                // Contoh = tanpa teks
+                bindStepBlock("contoh-a", "result-contoh-a", "penjelasan-a", false);
 
-                // Contoh B
+                // Mari mencoba = dengan teks
+                bindStepBlock("practice-a1", null, null, true);
+                bindStepBlock("practice-a2", null, null, true);
+                bindStepBlock("practice-a3", null, null, true);
+                bindStepBlock("practice-b1", null, null, true);
+                bindStepBlock("practice-b2", null, null, true);
+                bindStepBlock("practice-b3", null, null, true);
+
+                // =========================
+                // CONTOH B (warna saja, tanpa teks)
+                // =========================
                 const contohB = document.getElementById("contoh-b");
                 if (contohB) {
                     const rows = Array.from(contohB.querySelectorAll(".contoh-item-b"));
@@ -2734,7 +2727,7 @@
                         }
                     };
 
-                    const resetToInput = (row) => {
+                    const restoreRowInput = (row) => {
                         const input = row.querySelector(".hasil-input");
                         const box = row.querySelector(".katex-answer");
                         const fb = row.querySelector(".mini-feedback");
@@ -2742,7 +2735,6 @@
                         if (input) {
                             input.disabled = false;
                             input.style.display = "block";
-                            input.value = "";
                         }
 
                         if (box) {
@@ -2751,31 +2743,44 @@
                         }
 
                         clearFb(fb);
+                        clearInputState(input);
                     };
 
                     const checkRow = (row) => {
                         const ans = normalizePoly(row.getAttribute("data-answer") || "");
                         const input = row.querySelector(".hasil-input");
                         const fb = row.querySelector(".mini-feedback");
-                        const user = normalizePoly(input ? input.value : "");
-                        const ok = !!user && user === ans;
-                        setFb(fb, ok);
-                        if (ok) showKatexAnswer(row);
+                        const raw = input ? input.value.trim() : "";
+                        const user = normalizePoly(raw);
+
+                        if (!raw) {
+                            restoreRowInput(row);
+                            return null;
+                        }
+
+                        const ok = user === ans;
+                        setFb(fb, ok, false);
+                        setInputState(input, ok);
+
+                        if (ok) {
+                            showKatexAnswer(row);
+                        } else {
+                            restoreRowInput(row);
+                            if (input) {
+                                input.value = raw;
+                                setInputState(input, false);
+                            }
+                            setFb(fb, false, false);
+                        }
+
                         return ok;
                     };
-
-                    rows.forEach(row => {
-                        const btnC = row.querySelector(".contoh-check-b");
-                        const btnR = row.querySelector(".contoh-reset-b");
-
-                        if (btnC) btnC.addEventListener("click", () => checkRow(row));
-                        if (btnR) btnR.addEventListener("click", () => resetToInput(row));
-                    });
 
                     const finalInput = document.getElementById("contoh-final-b");
                     const finalFb = document.getElementById("contoh-final-fb-b");
                     const finalCanonical = "6x^3-15x^2+12x";
                     const finalAns = normalizePoly(finalCanonical);
+                    const summary = document.getElementById("contoh-summary-b");
 
                     const lockSehingga = () => {
                         if (sehinggaBox) sehinggaBox.style.display = "none";
@@ -2788,50 +2793,72 @@
                     };
 
                     const checkFinal = () => {
-                        const user = normalizePoly(finalInput ? finalInput.value : "");
-                        const ok = !!user && user === finalAns;
-                        setFb(finalFb, ok);
-                        if (ok && finalInput) finalInput.value = finalCanonical;
-                        if (ok) unlockSehingga();
-                        else lockSehingga();
+                        const raw = finalInput ? finalInput.value.trim() : "";
+                        const user = normalizePoly(raw);
+
+                        if (!raw) {
+                            clearFb(finalFb);
+                            clearInputState(finalInput);
+                            lockSehingga();
+                            return null;
+                        }
+
+                        const ok = user === finalAns;
+                        setFb(finalFb, ok, false);
+                        setInputState(finalInput, ok);
+
+                        if (ok && finalInput) {
+                            finalInput.value = finalCanonical;
+                            unlockSehingga();
+                        } else {
+                            lockSehingga();
+                        }
+
                         return ok;
                     };
 
-                    const btnFinalCheck = document.getElementById("contoh-final-check-b");
-                    const btnFinalReset = document.getElementById("contoh-final-reset-b");
+                    rows.forEach(row => {
+                        const input = row.querySelector(".hasil-input");
+                        if (input) {
+                            input.addEventListener("input", () => {
+                                const fb = row.querySelector(".mini-feedback");
+                                clearFb(fb);
+                                clearInputState(input);
+                            });
+                        }
+                    });
 
-                    if (btnFinalCheck) {
-                        btnFinalCheck.addEventListener("click", () => checkFinal());
-                    }
-
-                    if (btnFinalReset) {
-                        btnFinalReset.addEventListener("click", () => {
-                            if (finalInput) finalInput.value = "";
+                    if (finalInput) {
+                        finalInput.addEventListener("input", () => {
                             clearFb(finalFb);
+                            clearInputState(finalInput);
                             lockSehingga();
                         });
                     }
 
                     const btnAll = document.getElementById("contoh-check-all-b");
-                    const summary = document.getElementById("contoh-summary-b");
-
                     if (btnAll) {
                         btnAll.addEventListener("click", () => {
                             let correct = 0;
-                            rows.forEach(r => {
-                                if (checkRow(r)) correct++;
-                            });
-                            if (checkFinal()) correct++;
 
-                            const total = rows.length + 1;
-                            if (summary) summary.textContent = `Skor: ${correct}/${total}`;
+                            rows.forEach(row => {
+                                const result = checkRow(row);
+                                if (result === true) correct++;
+                            });
+
+                            const finalResult = checkFinal();
+                            if (finalResult === true) correct++;
+
+                            if (summary) summary.textContent = `Skor: ${correct}/${rows.length + 1}`;
                         });
                     }
 
                     lockSehingga();
                 }
 
-                // Contoh C
+                // =========================
+                // CONTOH C (warna saja, tanpa teks)
+                // =========================
                 const contohC = document.getElementById("contoh-c");
                 if (contohC) {
                     const items = Array.from(contohC.querySelectorAll(".susun-item-c"));
@@ -2841,26 +2868,30 @@
                     const checkItem = (item) => {
                         const input = item.querySelector(".susun-input");
                         const fb = item.querySelector(".susun-feedback");
-                        const user = normalizePoly(input ? input.value : "");
+                        const raw = input ? input.value.trim() : "";
+                        const user = normalizePoly(raw);
                         const ans = normalizePoly(item.getAttribute("data-answer") || "");
-                        const ok = !!user && user === ans;
-                        setFb(fb, ok);
+
+                        if (!raw) {
+                            clearFb(fb);
+                            clearInputState(input);
+                            return null;
+                        }
+
+                        const ok = user === ans;
+                        setFb(fb, ok, false);
+                        setInputState(input, ok);
                         return ok;
                     };
 
-                    const clearItem = (item) => {
-                        const input = item.querySelector(".susun-input");
-                        const fb = item.querySelector(".susun-feedback");
-
-                        if (input) input.value = "";
-                        clearFb(fb);
-                    };
-
                     const updateScore = () => {
-                        const correct = items.filter(it =>
-                            it.querySelector(".susun-feedback")?.classList.contains("ok")
-                        ).length;
+                        let correct = 0;
                         const total = items.length;
+
+                        items.forEach(item => {
+                            const result = checkItem(item);
+                            if (result === true) correct++;
+                        });
 
                         if (summary) {
                             summary.textContent = `Skor: ${correct}/${total}`;
@@ -2876,43 +2907,27 @@
                         const fb = item.querySelector(".susun-feedback");
 
                         if (input) {
-                            input.addEventListener("keydown", (e) => {
-                                if (e.key === "Enter") {
-                                    e.preventDefault();
-                                    checkItem(item);
-                                    updateScore();
-                                }
-                            });
-
                             input.addEventListener("input", () => {
                                 clearFb(fb);
-                                updateScore();
+                                clearInputState(input);
                             });
                         }
                     });
 
                     const btnCheckAll = document.getElementById("contoh-c-checkall");
-                    const btnReset = document.getElementById("contoh-c-reset");
-
                     if (btnCheckAll) {
-                        btnCheckAll.addEventListener("click", () => {
-                            items.forEach(checkItem);
-                            updateScore();
-                        });
+                        btnCheckAll.addEventListener("click", updateScore);
                     }
 
-                    if (btnReset) {
-                        btnReset.addEventListener("click", () => {
-                            items.forEach(clearItem);
-                            updateScore();
-                        });
-                    }
-
-                    updateScore();
+                    if (summary) summary.textContent = "";
+                    if (explanation) explanation.style.display = "none";
                 }
 
-                // Blank practice
-                function bindBlankBlock(blockId, answerBoxId = null) {
+                // =========================
+                // BLANK PRACTICE
+                // latihan = dengan teks
+                // =========================
+                function bindBlankBlock(blockId, answerBoxId = null, showText = true) {
                     const block = document.getElementById(blockId);
                     if (!block) return;
 
@@ -2923,26 +2938,20 @@
                     const checkItem = (item) => {
                         const input = item.querySelector(".blank-input");
                         const fb = item.querySelector(".blank-feedback");
-                        const user = normalizePoly(input ? input.value : "");
+                        const raw = input ? input.value.trim() : "";
+                        const user = normalizePoly(raw);
                         const ans = normalizePoly(item.getAttribute("data-answer") || "");
-                        const ok = !!user && user === ans;
-                        setFb(fb, ok);
+
+                        if (!raw) {
+                            clearFb(fb);
+                            clearInputState(input);
+                            return null;
+                        }
+
+                        const ok = user === ans;
+                        setFb(fb, ok, showText);
+                        setInputState(input, ok);
                         return ok;
-                    };
-
-                    const updateScore = () => {
-                        const correct = items.filter(it =>
-                            it.querySelector(".blank-feedback")?.classList.contains("ok")
-                        ).length;
-                        const total = items.length;
-
-                        if (summary) {
-                            summary.textContent = `Skor: ${correct}/${total}`;
-                        }
-
-                        if (answerBox) {
-                            answerBox.style.display = correct === total ? "block" : "none";
-                        }
                     };
 
                     items.forEach(item => {
@@ -2950,195 +2959,41 @@
                         const fb = item.querySelector(".blank-feedback");
 
                         if (input) {
-                            input.addEventListener("keydown", (e) => {
-                                if (e.key === "Enter") {
-                                    e.preventDefault();
-                                    checkItem(item);
-                                    updateScore();
-                                }
-                            });
-
                             input.addEventListener("input", () => {
                                 clearFb(fb);
-                                updateScore();
-                            });
-
-                            input.addEventListener("blur", () => {
-                                if ((input.value || "").trim() !== "") {
-                                    checkItem(item);
-                                    updateScore();
-                                }
+                                clearInputState(input);
                             });
                         }
                     });
 
                     const btnCheckAll = block.querySelector(`.blank-checkall[data-target="${blockId}"]`);
-                    const btnReset = block.querySelector(`.blank-reset[data-target="${blockId}"]`);
-
                     if (btnCheckAll) {
                         btnCheckAll.addEventListener("click", () => {
-                            items.forEach(checkItem);
-                            updateScore();
-                        });
-                    }
+                            let correct = 0;
 
-                    if (btnReset) {
-                        btnReset.addEventListener("click", () => {
                             items.forEach(item => {
-                                const input = item.querySelector(".blank-input");
-                                const fb = item.querySelector(".blank-feedback");
-
-                                if (input) input.value = "";
-                                clearFb(fb);
+                                const result = checkItem(item);
+                                if (result === true) correct++;
                             });
-                            updateScore();
+
+                            if (summary) {
+                                summary.textContent = `Skor: ${correct}/${items.length}`;
+                            }
+
+                            if (answerBox) {
+                                answerBox.style.display = correct === items.length ? "block" : "none";
+                            }
                         });
                     }
 
-                    updateScore();
+                    if (summary) summary.textContent = "";
+                    if (answerBox) answerBox.style.display = "none";
                 }
 
-                bindBlankBlock("blank-c1", "answer-blank-c1");
-                bindBlankBlock("blank-c2", "answer-blank-c2");
+                bindBlankBlock("blank-c1", "answer-blank-c1", true);
+                bindBlankBlock("blank-c2", "answer-blank-c2", true);
+
             })();
-
-            (function () {
-                const normalize = (s) =>
-                    (s || "")
-                        .toLowerCase()
-                        .trim()
-                        .replace(/\s+/g, "")
-                        .replace(/×/g, "x")
-                        .replace(/–/g, "-")
-                        .replace(/−/g, "-");
-
-                const normalizePoly = (raw) => {
-                    let s = normalize(raw);
-                    if (!s) return "";
-                    s = s
-                        .replace(/\*\*/g, "^")
-                        .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
-                            const prev = full[offset - 1] || "";
-                            if (prev === "^") return match;
-                            return `${varName}^${power}`;
-                        })
-                        .replace(/\+\-/g, "-")
-                        .replace(/(^|[+\-])1x/g, "$1x")
-                        .replace(/(^|[+\-])-1x/g, "$1-x")
-                        .replace(/\^1(?!\d)/g, "");
-                    return s;
-                };
-
-                const game = document.getElementById("game-latihan");
-                if (!game) return;
-
-                const soalList = Array.from(game.querySelectorAll(".game-soal"));
-                const scoreEl = document.getElementById("game-score");
-                const finalNote = document.getElementById("game-final-note");
-
-                function updateScoreText() {
-                    let correct = 0;
-                    let answered = 0;
-
-                    soalList.forEach((soal) => {
-                        const selected = soal.querySelector(".game-option.selected");
-                        if (selected) answered++;
-
-                        const answer = normalizePoly(soal.getAttribute("data-answer") || "");
-                        const chosen = selected ? normalizePoly(selected.getAttribute("data-value") || "") : "";
-
-                        if (selected && chosen === answer) correct++;
-                    });
-
-                    scoreEl.textContent = `Skor: ${correct}/${soalList.length}`;
-
-                    if (answered === soalList.length) {
-                        finalNote.style.display = "block";
-                    } else {
-                        finalNote.style.display = "none";
-                    }
-                }
-
-                soalList.forEach((soal) => {
-                    const answer = normalizePoly(soal.getAttribute("data-answer") || "");
-                    const status = soal.querySelector(".game-status");
-                    const options = Array.from(soal.querySelectorAll(".game-option"));
-
-                    options.forEach((option) => {
-                        option.addEventListener("click", () => {
-                            options.forEach((opt) => {
-                                opt.classList.remove("selected", "correct", "wrong");
-                            });
-
-                            option.classList.add("selected");
-
-                            const chosen = normalizePoly(option.getAttribute("data-value") || "");
-                            const ok = chosen === answer;
-
-                            soalList.forEach((soal) => {
-                                const answer = normalizePoly(soal.getAttribute("data-answer") || "");
-                                const status = soal.querySelector(".game-status");
-                                const options = Array.from(soal.querySelectorAll(".game-option"));
-
-                                options.forEach((option) => {
-                                    option.addEventListener("click", () => {
-                                        options.forEach((opt) => {
-                                            opt.classList.remove("selected", "correct", "wrong");
-                                        });
-
-                                        option.classList.add("selected");
-
-                                        const chosen = normalizePoly(option.getAttribute("data-value") || "");
-                                        const ok = chosen === answer;
-
-                                        if (ok) {
-                                            option.classList.add("correct");
-                                            status.textContent = "Benar ✅";
-                                            status.classList.remove("no");
-                                            status.classList.add("ok");
-                                        } else {
-                                            option.classList.add("wrong");
-                                            status.textContent = "Coba lagi ✨";
-                                            status.classList.remove("ok");
-                                            status.classList.add("no");
-                                        }
-
-                                        updateScoreText();
-                                    });
-                                });
-                            });
-
-                            updateScoreText();
-                        });
-                    });
-                });
-
-                const checkScoreBtn = document.getElementById("game-check-score");
-                if (checkScoreBtn) {
-                    checkScoreBtn.addEventListener("click", updateScoreText);
-                }
-
-                const resetBtn = document.getElementById("game-reset");
-                if (resetBtn) {
-                    resetBtn.addEventListener("click", () => {
-                        soalList.forEach((soal) => {
-                            const status = soal.querySelector(".game-status");
-                            const options = soal.querySelectorAll(".game-option");
-
-                            options.forEach((opt) => {
-                                opt.classList.remove("selected", "correct", "wrong");
-                            });
-
-                            status.textContent = "Belum dijawab";
-                            status.classList.remove("ok", "no");
-                        });
-
-                        scoreEl.textContent = "";
-                        finalNote.style.display = "none";
-                    });
-                }
-            })();
-
         </script>
 
         <script>
@@ -3162,12 +3017,8 @@
                         const num = card.querySelector(".tip-step-num");
                         const text = card.querySelector(".tip-step-text");
 
-                        if (num) {
-                            num.style.transform = `translateZ(18px)`;
-                        }
-                        if (text) {
-                            text.style.transform = `translateZ(12px)`;
-                        }
+                        if (num) num.style.transform = `translateZ(18px)`;
+                        if (text) text.style.transform = `translateZ(12px)`;
                     });
 
                     card.addEventListener("mouseleave", function () {

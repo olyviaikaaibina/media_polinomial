@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                    delimiters: [
-                                        {left: '$$', right: '$$', display: true},
-                                        {left: '$', right: '$', display: false}
-                                    ]
-                                });">
-                                </script>
+                                                                    delimiters: [
+                                                                        {left: '$$', right: '$$', display: true},
+                                                                        {left: '$', right: '$', display: false}
+                                                                    ]
+                                                                });">
+                                                                </script>
 
     <style>
         :root {
@@ -335,15 +335,13 @@
             flex-wrap: wrap;
         }
 
-        .quiz-check,
-        .quiz-reset,
-        .quiz-checkall {
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, .14);
-            background: #fff;
-            cursor: pointer;
-            font-weight: 800;
+        .quiz-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            min-height: 36px;
         }
 
         .quiz-feedback {
@@ -847,6 +845,186 @@
                 font-size: 24px;
             }
         }
+
+        /* ===== CARD SUKU SEJENIS ===== */
+        .jenis-card {
+            position: relative;
+            overflow: hidden;
+            padding: 24px 24px 22px;
+            border-left: 7px solid #2e8b57;
+            background:
+                radial-gradient(circle at top right, rgba(167, 210, 156, .22), transparent 28%),
+                linear-gradient(180deg, #f7fcf8 0%, #ffffff 100%);
+        }
+
+        .jenis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .jenis-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e9f7ec;
+            color: #1b7a2a;
+            border: 1px solid #b8dfbf;
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .jenis-title {
+            margin: 0 0 6px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #1f6a38;
+            line-height: 1.25;
+        }
+
+        .jenis-subtitle {
+            margin: 0;
+            color: #5a5a5a;
+            font-size: 15px;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+
+        .jenis-icon-wrap {
+            flex-shrink: 0;
+        }
+
+        .jenis-icon {
+            width: 74px;
+            height: 74px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #c8ebce, #8fd19a);
+            color: #14532d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            font-weight: 900;
+            box-shadow: 0 12px 24px rgba(46, 139, 87, .18);
+        }
+
+        .jenis-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .jenis-info-card {
+            border-radius: 16px;
+            padding: 16px 16px 14px;
+            border: 1px solid rgba(0, 0, 0, .08);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
+        }
+
+        .jenis-info-card.good {
+            background: linear-gradient(180deg, #edf9f0, #ffffff);
+            border-left: 5px solid #3fa75a;
+        }
+
+        .jenis-info-card.bad {
+            background: linear-gradient(180deg, #fff4ee, #ffffff);
+            border-left: 5px solid #e58d5c;
+        }
+
+        .jenis-info-head {
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: #1f2937;
+        }
+
+        .jenis-info-text {
+            color: #5b5b5b;
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .jenis-table-wrap {
+            margin-top: 8px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(46, 139, 87, .14);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, .05);
+        }
+
+        .jenis-table {
+            min-width: 760px;
+        }
+
+        .jenis-table th {
+            background: linear-gradient(180deg, #9fd08e, #8fc77b);
+            color: #143d21;
+            font-size: 18px;
+            padding: 15px 14px;
+        }
+
+        .jenis-table td {
+            padding: 18px 14px;
+            font-size: 17px;
+            transition: background .2s ease;
+        }
+
+        .jenis-table tbody tr:nth-child(even) td {
+            background: #fbfdfb;
+        }
+
+        .jenis-table tbody tr:hover td {
+            background: #f3fbf4;
+        }
+
+        .jenis-note {
+            margin-top: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #fffbea;
+            border: 1px solid #f2df9b;
+            border-left: 5px solid #e6b93d;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #5c4b16;
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .jenis-note-icon {
+            font-size: 20px;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .jenis-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .jenis-title {
+                font-size: 23px;
+            }
+
+            .jenis-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .jenis-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+                border-radius: 16px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -899,8 +1077,6 @@
                         <div class="quiz-q">Jika $y=1$ (hari kerja ke-1), berapa nilai $T(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -909,8 +1085,6 @@
                         <div class="quiz-q">Jika $y=1$ (hari kerja ke-1), berapa nilai $U(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -920,15 +1094,12 @@
                         </div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-                            <button type="button" class="quiz-check">Cek</button>
-                            <button type="button" class="quiz-reset">Reset</button>
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
                 </ol>
 
                 <div style="margin-top:10px;">
-                    <button type="button" id="quiz-check-all" class="quiz-checkall">Cek Semua</button>
                     <span id="quiz-summary" class="quiz-summary"></span>
                 </div>
             </div>
@@ -975,11 +1146,38 @@
             {{-- =========================
             CARD 1: Tabel Suku Sejenis
             ========================= --}}
-            <div class="card card-green">
-                <div class="title-box">Contoh Suku Sejenis dan Bukan Suku Sejenis</div>
+            <div class="card card-green jenis-card">
+                <div class="jenis-header">
+                    <div>
+                        <h3 class="jenis-title">Contoh Suku Sejenis dan Bukan Suku Sejenis</h3>
+                        <p class="jenis-subtitle">
+                            Perhatikan bahwa suku sejenis harus memiliki <b>variabel yang sama</b> dan
+                            <b>pangkat yang sama</b>.
+                        </p>
+                    </div>
+                    <div class="jenis-icon-wrap">
+                        <div class="jenis-icon">∑</div>
+                    </div>
+                </div>
 
-                <div class="table-wrap">
-                    <table class="materi-table">
+                <div class="jenis-info-grid">
+                    <div class="jenis-info-card good">
+                        <div class="jenis-info-head">✅ Suku Sejenis</div>
+                        <div class="jenis-info-text">
+                            Bisa dijumlahkan atau dikurangkan karena bentuk variabel dan pangkatnya sama.
+                        </div>
+                    </div>
+
+                    <div class="jenis-info-card bad">
+                        <div class="jenis-info-head">❌ Bukan Suku Sejenis</div>
+                        <div class="jenis-info-text">
+                            Tidak bisa langsung dijumlahkan karena variabel atau pangkatnya berbeda.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-wrap jenis-table-wrap">
+                    <table class="materi-table jenis-table">
                         <thead>
                             <tr>
                                 <th>Suku-suku sejenis</th>
@@ -1002,11 +1200,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <p style="margin-top:12px;">
-                    Suku-suku sejenis memiliki <b>variabel</b> yang sama dan <b>pangkat</b> variabel yang sama,
-                    sehingga koefisiennya dapat dijumlahkan.
-                </p>
             </div>
 
 
@@ -1019,11 +1212,14 @@
 
                 <div class="contoh-box" id="contoh-interaktif">
                     <div class="contoh-row-title">Hitunglah hasil dari:</div>
+
                     <div class="rumus-box" style="margin-top:8px;">
                         $$(3x^3+5x^2-2x+7) + (4x^3-3x^2+x-5)$$
                     </div>
 
-                    <div class="contoh-row-title" style="margin-top:12px;">Penyelesaian: Kelompokkan suku sejenis</div>
+                    <div class="contoh-row-title" style="margin-top:12px;">
+                        Penyelesaian: Kelompokkan suku sejenis
+                    </div>
 
                     <div class="table-wrap">
                         <table class="materi-table contoh-table">
@@ -1035,92 +1231,90 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Row 1 --}}
+
+                                <!-- Row 1 -->
                                 <tr class="contoh-item" data-answer="7x^3" data-canonical="7x^3" data-latex="7x^3">
                                     <td>$(3x^3 + 4x^3)$</td>
                                     <td>$(3 + 4)x^3$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" placeholder="" />
-                                        <div class="katex-answer" aria-hidden="true"></div>
+                                        <input class="hasil-input" type="text" />
+                                        <div class="katex-answer"></div>
 
                                         <div class="mini-actions">
-                                            <button type="button" class="mini-btn contoh-check">Cek</button>
-                                            <button type="button" class="mini-btn contoh-reset">Reset</button>
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                {{-- Row 2 --}}
+                                <!-- Row 2 -->
                                 <tr class="contoh-item" data-answer="2x^2" data-canonical="2x^2" data-latex="2x^2">
                                     <td>$(5x^2 - 3x^2)$</td>
                                     <td>$(5 - 3)x^2$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" placeholder="" />
-                                        <div class="katex-answer" aria-hidden="true"></div>
+                                        <input class="hasil-input" type="text" />
+                                        <div class="katex-answer"></div>
 
                                         <div class="mini-actions">
-                                            <button type="button" class="mini-btn contoh-check">Cek</button>
-                                            <button type="button" class="mini-btn contoh-reset">Reset</button>
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                {{-- Row 3 --}}
+                                <!-- Row 3 -->
                                 <tr class="contoh-item" data-answer="-x" data-canonical="-x" data-latex="-x">
                                     <td>$(-2x + x)$</td>
                                     <td>$(-2 + 1)x$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" placeholder="" />
-                                        <div class="katex-answer" aria-hidden="true"></div>
+                                        <input class="hasil-input" type="text" />
+                                        <div class="katex-answer"></div>
 
                                         <div class="mini-actions">
-                                            <button type="button" class="mini-btn contoh-check">Cek</button>
-                                            <button type="button" class="mini-btn contoh-reset">Reset</button>
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                {{-- Row 4 --}}
+                                <!-- Row 4 -->
                                 <tr class="contoh-item" data-answer="2" data-canonical="2" data-latex="2">
                                     <td>$(7 - 5)$</td>
                                     <td>$(7 - 5)$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" placeholder="" />
-                                        <div class="katex-answer" aria-hidden="true"></div>
+                                        <input class="hasil-input" type="text" />
+                                        <div class="katex-answer"></div>
 
                                         <div class="mini-actions">
-                                            <button type="button" class="mini-btn contoh-check">Cek</button>
-                                            <button type="button" class="mini-btn contoh-reset">Reset</button>
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
 
-                    <div style="margin-top:12px;">
+                    <!-- INPUT HASIL AKHIR -->
+                    <div style="margin-top:14px;">
                         <div class="contoh-row-title">Tuliskan hasil akhirnya:</div>
+
                         <div class="mini-actions" style="justify-content:flex-start;">
                             <input id="contoh-final" class="hasil-input" style="max-width:420px; text-align:left;"
-                                type="text" placeholder="" />
-                            <button type="button" id="contoh-final-check" class="mini-btn">Cek</button>
-                            <button type="button" id="contoh-final-reset" class="mini-btn">Reset</button>
+                                type="text" />
                             <span id="contoh-final-fb" class="mini-feedback"></span>
                         </div>
 
-                        <div class="mini-actions" style="justify-content:flex-start; margin-top:8px;">
-                            <button type="button" id="contoh-check-all" class="mini-btn">Cek Semua</button>
+                        <!-- CEK SEMUA -->
+                        <div class="mini-actions" style="margin-top:10px;">
+                            <button type="button" id="contoh-check-all" class="mini-btn">
+                                Cek Semua
+                            </button>
                             <span id="contoh-summary" style="font-weight:900; color:#1e3a8a;"></span>
                         </div>
                     </div>
 
-                    {{-- Sehingga: tampil jika hasil akhir benar --}}
+                    <!-- HASIL AKHIR -->
                     <div class="sehingga-box" id="sehingga-box">
                         <div class="contoh-row-title" style="margin-top:0;">Sehingga:</div>
+
                         <div class="rumus-box" style="margin-top:10px;">
                             $$\begin{aligned}
                             &\ \ \ 3x^3 + 5x^2 - 2x + 7\\
@@ -1130,167 +1324,152 @@
                             \end{aligned}$$
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            {{-- ✅ LATIHAN HTML CSS JS (ganti p5) --}}
             <div class="card card-latihan latihan-polinom-wrap">
-                <div class="latihan-shell">
+                <h3 class="latihan-main-title">LATIHAN</h3>
+                <p class="latihan-main-subtitle">
+                    Kerjakan berurutan: MUDAH → SEDANG → SUSAH. Isi jawaban lalu klik Cek.
+                </p>
 
-                    <div class="latihan-header-box">
-                        <h3 class="latihan-main-title">LATIHAN</h3>
-                        <p class="latihan-main-subtitle">
-                            Kerjakan berurutan: MUDAH → SEDANG → SUSAH. Isi jawaban lalu klik Cek.
-                        </p>
-                    </div>
-
-                    <div class="level-cards">
-                        <div class="level-card active" id="card-mudah" data-level="mudah">
-                            <div class="level-bar green"></div>
-                            <div class="level-info">
-                                <div class="level-title">MUDAH</div>
-                                <div class="level-sub">Linear (y)</div>
-                                <div class="level-status done" id="status-mudah" style="display:none;">✔ Selesai</div>
-                            </div>
-                        </div>
-
-                        <div class="level-card locked" id="card-sedang" data-level="sedang">
-                            <div class="level-bar blue"></div>
-                            <div class="level-info">
-                                <div class="level-title">SEDANG</div>
-                                <div class="level-sub">Kuadrat (x^2)</div>
-                                <div class="level-status locked-pill" id="status-lock-sedang">🔒 Terkunci</div>
-                                <div class="level-status done" id="status-sedang" style="display:none;">✔ Selesai</div>
-                            </div>
-                        </div>
-
-                        <div class="level-card locked" id="card-susah" data-level="susah">
-                            <div class="level-bar orange"></div>
-                            <div class="level-info">
-                                <div class="level-title">SUSAH</div>
-                                <div class="level-sub">Kubik (x^3)</div>
-                                <div class="level-status locked-pill" id="status-lock-susah">🔒 Terkunci</div>
-                                <div class="level-status done" id="status-susah" style="display:none;">✔ Selesai</div>
-                            </div>
+                <div class="level-cards">
+                    <div class="level-card active" id="card-mudah" data-level="mudah">
+                        <div class="level-bar green"></div>
+                        <div class="level-info">
+                            <div class="level-title">MUDAH</div>
+                            <div class="level-sub">Linear (y)</div>
+                            <div class="level-status done" id="status-mudah" style="display:none;">✔ Selesai</div>
                         </div>
                     </div>
 
-                    {{-- PANEL MUDAH --}}
-                    <div class="latihan-panel panel-green active" id="panel-mudah">
-                        <h4 class="panel-title">Soal MUDAH</h4>
-                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
-
-                        <div class="soal-math-box">
-                            $$\begin{aligned}
-                            &\ \ \ 6y - 4\\
-                            &+\, 3y + 10\\
-                            \hline
-                            \end{aligned}$$
-                        </div>
-
-                        <label class="jawaban-label">Jawaban:</label>
-                        <input type="text" id="jawaban-mudah" class="jawaban-input" placeholder="Contoh: 9y+6">
-
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-btn" id="cek-mudah">Cek</button>
-                            <button type="button" class="latihan-btn" id="reset-mudah">Reset</button>
-                            <span class="latihan-feedback" id="fb-mudah"></span>
-                        </div>
-
-                        <div class="step-box" id="step-mudah" style="display:none;">
-                            <div class="step-title">Penjelasan:</div>
-                            <ol>
-                                <li>Kelompokkan suku sejenis: <b>6y</b> dengan <b>3y</b>, dan konstanta <b>-4</b> dengan
-                                    <b>10</b>.
-                                </li>
-                                <li>Jumlahkan koefisien suku <b>y</b>: \(6y + 3y = 9y\).</li>
-                                <li>Jumlahkan konstanta: \(-4 + 10 = 6\).</li>
-                                <li>Jadi hasil akhirnya adalah <b>\(9y + 6\)</b>.</li>
-                            </ol>
-                            <div class="step-result">Hasil: $$9y+6$$</div>
+                    <div class="level-card locked" id="card-sedang" data-level="sedang">
+                        <div class="level-bar blue"></div>
+                        <div class="level-info">
+                            <div class="level-title">SEDANG</div>
+                            <div class="level-sub">Kuadrat (x^2)</div>
+                            <div class="level-status locked-pill" id="status-lock-sedang">🔒 Terkunci</div>
+                            <div class="level-status done" id="status-sedang" style="display:none;">✔ Selesai</div>
                         </div>
                     </div>
 
-                    {{-- PANEL SEDANG --}}
-                    <div class="latihan-panel panel-blue" id="panel-sedang" style="display:none;">
-                        <h4 class="panel-title">Soal SEDANG</h4>
-                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
-
-                        <div class="soal-math-box">
-                            $$\begin{aligned}
-                            &\ \ \ 2x^2 + 3x - 5\\
-                            &+\, 4x^2 - x + 1\\
-                            \hline
-                            \end{aligned}$$
-                        </div>
-
-                        <label class="jawaban-label">Jawaban:</label>
-                        <input type="text" id="jawaban-sedang" class="jawaban-input" placeholder="Contoh: 6x^2+2x-4"
-                            disabled>
-
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-btn" id="cek-sedang" disabled>Cek</button>
-                            <button type="button" class="latihan-btn" id="reset-sedang" disabled>Reset</button>
-                            <span class="latihan-feedback" id="fb-sedang"></span>
-                        </div>
-
-                        <div class="step-box" id="step-sedang" style="display:none;">
-                            <div class="step-title">Penjelasan:</div>
-                            <ol>
-                                <li>Kelompokkan suku sejenis:
-                                    <b>\(2x^2\)</b> dengan <b>\(4x^2\)</b>,
-                                    <b>\(3x\)</b> dengan <b>\(-x\)</b>,
-                                    dan <b>\(-5\)</b> dengan <b>\(1\)</b>.
-                                </li>
-                                <li>Jumlahkan suku kuadrat: \(2x^2 + 4x^2 = 6x^2\).</li>
-                                <li>Jumlahkan suku linear: \(3x + (-x) = 2x\).</li>
-                                <li>Jumlahkan konstanta: \(-5 + 1 = -4\).</li>
-                                <li>Jadi hasil akhirnya adalah <b>\(6x^2 + 2x - 4\)</b>.</li>
-                            </ol>
-                            <div class="step-result">Hasil: $$6x^2+2x-4$$</div>
+                    <div class="level-card locked" id="card-susah" data-level="susah">
+                        <div class="level-bar orange"></div>
+                        <div class="level-info">
+                            <div class="level-title">SUSAH</div>
+                            <div class="level-sub">Kubik (x^3)</div>
+                            <div class="level-status locked-pill" id="status-lock-susah">🔒 Terkunci</div>
+                            <div class="level-status done" id="status-susah" style="display:none;">✔ Selesai</div>
                         </div>
                     </div>
+                </div>
 
-                    {{-- PANEL SUSAH --}}
-                    <div class="latihan-panel panel-orange" id="panel-susah" style="display:none;">
-                        <h4 class="panel-title">Soal SUSAH</h4>
-                        <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+                <div class="latihan-panel active" id="panel-mudah">
+                    <h4 class="panel-title">Soal MUDAH</h4>
+                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
 
-                        <div class="soal-math-box">
-                            $$\begin{aligned}
-                            &\ \ \ 7x^3 - 2x + 9\\
-                            &+\, 5x^3 + 8x - 3\\
-                            \hline
-                            \end{aligned}$$
-                        </div>
-
-                        <label class="jawaban-label">Jawaban:</label>
-                        <input type="text" id="jawaban-susah" class="jawaban-input" placeholder="Contoh: 12x^3+6x+6"
-                            disabled>
-
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-btn" id="cek-susah" disabled>Cek</button>
-                            <button type="button" class="latihan-btn" id="reset-susah" disabled>Reset</button>
-                            <span class="latihan-feedback" id="fb-susah"></span>
-                        </div>
-
-                        <div class="step-box" id="step-susah" style="display:none;">
-                            <div class="step-title">Penjelasan:</div>
-                            <ol>
-                                <li>Kelompokkan suku sejenis:
-                                    <b>\(7x^3\)</b> dengan <b>\(5x^3\)</b>,
-                                    <b>\(-2x\)</b> dengan <b>\(8x\)</b>,
-                                    dan <b>\(9\)</b> dengan <b>\(-3\)</b>.
-                                </li>
-                                <li>Jumlahkan suku kubik: \(7x^3 + 5x^3 = 12x^3\).</li>
-                                <li>Jumlahkan suku linear: \(-2x + 8x = 6x\).</li>
-                                <li>Jumlahkan konstanta: \(9 + (-3) = 6\).</li>
-                                <li>Jadi hasil akhirnya adalah <b>\(12x^3 + 6x + 6\)</b>.</li>
-                            </ol>
-                            <div class="step-result">Hasil: $$12x^3+6x+6$$</div>
-                        </div>
+                    <div class="soal-math-box">
+                        $$\begin{aligned}
+                        &\ \ \ 6y - 4\\
+                        &+\, 3y + 10\\
+                        \hline
+                        \end{aligned}$$
                     </div>
 
+                    <label class="jawaban-label">Jawaban:</label>
+                    <input type="text" id="jawaban-mudah" class="jawaban-input" placeholder="">
+
+                    <div class="latihan-actions">
+                        <button type="button" class="latihan-btn" id="cek-mudah">Cek</button>
+                        <button type="button" class="latihan-btn" id="reset-mudah">Reset</button>
+                        <span class="latihan-feedback" id="fb-mudah"></span>
+                    </div>
+
+                    <div class="step-box" id="step-mudah" style="display:none;">
+                        <div class="step-title">Penjelasan:</div>
+                        <ol>
+                            <li>Kelompokkan suku sejenis: <b>6y</b> dengan <b>3y</b>, dan konstanta <b>-4</b> dengan
+                                <b>10</b>.
+                            </li>
+                            <li>Jumlahkan koefisien suku <b>y</b>: \(6y + 3y = 9y\).</li>
+                            <li>Jumlahkan konstanta: \(-4 + 10 = 6\).</li>
+                            <li>Jadi hasil akhirnya adalah <b>\(9y + 6\)</b>.</li>
+                        </ol>
+                        <div class="step-result">Hasil: $$9y+6$$</div>
+                    </div>
+                </div>
+
+                <div class="latihan-panel" id="panel-sedang" style="display:none;">
+                    <h4 class="panel-title">Soal SEDANG</h4>
+                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+
+                    <div class="soal-math-box">
+                        $$\begin{aligned}
+                        &\ \ \ 2x^2 + 3x - 5\\
+                        &+\, 4x^2 - x + 1\\
+                        \hline
+                        \end{aligned}$$
+                    </div>
+
+                    <label class="jawaban-label">Jawaban:</label>
+                    <input type="text" id="jawaban-sedang" class="jawaban-input" placeholder="" disabled>
+
+                    <div class="latihan-actions">
+                        <button type="button" class="latihan-btn" id="cek-sedang" disabled>Cek</button>
+                        <button type="button" class="latihan-btn" id="reset-sedang" disabled>Reset</button>
+                        <span class="latihan-feedback" id="fb-sedang"></span>
+                    </div>
+
+                    <div class="step-box" id="step-sedang" style="display:none;">
+                        <div class="step-title">Penjelasan:</div>
+                        <ol>
+                            <li>Kelompokkan suku sejenis: <b>\(2x^2\)</b> dengan <b>\(4x^2\)</b>, <b>\(3x\)</b> dengan
+                                <b>\(-x\)</b>, dan <b>\(-5\)</b> dengan <b>\(1\)</b>.
+                            </li>
+                            <li>Jumlahkan suku kuadrat: \(2x^2 + 4x^2 = 6x^2\).</li>
+                            <li>Jumlahkan suku linear: \(3x + (-x) = 2x\).</li>
+                            <li>Jumlahkan konstanta: \(-5 + 1 = -4\).</li>
+                            <li>Jadi hasil akhirnya adalah <b>\(6x^2 + 2x - 4\)</b>.</li>
+                        </ol>
+                        <div class="step-result">Hasil: $$6x^2+2x-4$$</div>
+                    </div>
+                </div>
+
+                <div class="latihan-panel" id="panel-susah" style="display:none;">
+                    <h4 class="panel-title">Soal SUSAH</h4>
+                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+
+                    <div class="soal-math-box">
+                        $$\begin{aligned}
+                        &\ \ \ 7x^3 - 2x + 9\\
+                        &+\, 5x^3 + 8x - 3\\
+                        \hline
+                        \end{aligned}$$
+                    </div>
+
+                    <label class="jawaban-label">Jawaban:</label>
+                    <input type="text" id="jawaban-susah" class="jawaban-input" placeholder="" disabled>
+
+                    <div class="latihan-actions">
+                        <button type="button" class="latihan-btn" id="cek-susah" disabled>Cek</button>
+                        <button type="button" class="latihan-btn" id="reset-susah" disabled>Reset</button>
+                        <span class="latihan-feedback" id="fb-susah"></span>
+                    </div>
+
+                    <div class="step-box" id="step-susah" style="display:none;">
+                        <div class="step-title">Penjelasan:</div>
+                        <ol>
+                            <li>Kelompokkan suku sejenis: <b>\(7x^3\)</b> dengan <b>\(5x^3\)</b>, <b>\(-2x\)</b> dengan
+                                <b>\(8x\)</b>, dan <b>\(9\)</b> dengan <b>\(-3\)</b>.
+                            </li>
+                            <li>Jumlahkan suku kubik: \(7x^3 + 5x^3 = 12x^3\).</li>
+                            <li>Jumlahkan suku linear: \(-2x + 8x = 6x\).</li>
+                            <li>Jumlahkan konstanta: \(9 + (-3) = 6\).</li>
+                            <li>Jadi hasil akhirnya adalah <b>\(12x^3 + 6x + 6\)</b>.</li>
+                        </ol>
+                        <div class="step-result">Hasil: $$12x^3+6x+6$$</div>
+                    </div>
                 </div>
             </div>
 
@@ -1377,8 +1556,8 @@
                 };
 
                 /* =========================
-                   EKSPLORASI QUIZ
-                ========================== */
+    EKSPLORASI QUIZ
+    ========================== */
                 const materiLanjutan = document.getElementById("materi-lanjutan");
 
                 const clearFeedback = (item) => {
@@ -1393,7 +1572,7 @@
                     if (!fb) return;
                     fb.classList.remove("ok", "no");
                     fb.classList.add(ok ? "ok" : "no");
-                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Belum tepat ❌");
+                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Salah ❌");
                 };
 
                 const getInputValue = (item) => {
@@ -1401,21 +1580,24 @@
                     return el ? el.value : "";
                 };
 
-                const resetItem = (item) => {
-                    const el = item.querySelector(".quiz-input");
-                    if (el) el.value = "";
-                    clearFeedback(item);
+                const isFilled = (item) => {
+                    return getInputValue(item).trim() !== "";
                 };
 
                 const checkItem = (item) => {
                     const type = item.getAttribute("data-type");
                     const valRaw = getInputValue(item);
 
+                    if (!valRaw.trim()) {
+                        clearFeedback(item);
+                        return null;
+                    }
+
                     if (type === "oneof") {
                         const expected = normalize(item.getAttribute("data-answer") || "");
                         const val = normalize(valRaw);
-                        const ok = val === expected || val.startsWith(expected);
-                        showFeedback(item, ok, "Benar ✅", "Belum tepat ❌");
+                        const ok = val === expected;
+                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
                         return ok;
                     }
 
@@ -1428,14 +1610,15 @@
                     if (!quiz || !materiLanjutan) return;
 
                     const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                    const correct = items.filter((it) =>
-                        it.querySelector(".quiz-feedback")?.classList.contains("ok")
-                    ).length;
+                    const filledCount = items.filter((it) => isFilled(it)).length;
+                    const allFilled = filledCount === items.length;
 
-                    const unlocked = correct === items.length;
-                    materiLanjutan.style.display = unlocked ? "block" : "none";
+                    const summary = document.getElementById("quiz-summary");
+                    if (summary) summary.textContent = `Terisi: ${filledCount}/${items.length}`;
 
-                    if (unlocked) {
+                    materiLanjutan.style.display = allFilled ? "block" : "none";
+
+                    if (allFilled) {
                         rerenderKatex();
                         initLatihanPolinom();
                     }
@@ -1443,68 +1626,30 @@
 
                 const quiz = document.getElementById("eksplorasi-quiz");
                 if (quiz) {
-                    quiz.querySelectorAll(".quiz-item").forEach((item) => {
-                        const btnCheck = item.querySelector(".quiz-check");
-                        const btnReset = item.querySelector(".quiz-reset");
+                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
 
-                        if (btnCheck) {
-                            btnCheck.addEventListener("click", () => {
-                                checkItem(item);
+                    items.forEach((item) => {
+                        const input = item.querySelector(".quiz-input");
+                        if (!input) return;
 
-                                const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                                const correct = items.filter((it) =>
-                                    it.querySelector(".quiz-feedback")?.classList.contains("ok")
-                                ).length;
-
-                                const summary = document.getElementById("quiz-summary");
-                                if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
-
-                                updateUnlock();
-                                rerenderKatex();
-                            });
-                        }
-
-                        if (btnReset) {
-                            btnReset.addEventListener("click", () => {
-                                resetItem(item);
-
-                                const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                                const correct = items.filter((it) =>
-                                    it.querySelector(".quiz-feedback")?.classList.contains("ok")
-                                ).length;
-
-                                const summary = document.getElementById("quiz-summary");
-                                if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
-
-                                updateUnlock();
-                                rerenderKatex();
-                            });
-                        }
-                    });
-
-                    const btnAll = document.getElementById("quiz-check-all");
-                    if (btnAll) {
-                        btnAll.addEventListener("click", () => {
-                            const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                            let correct = 0;
-
-                            items.forEach((item) => {
-                                const ok = checkItem(item);
-                                if (ok) correct++;
-                            });
-
-                            const summary = document.getElementById("quiz-summary");
-                            if (summary) summary.textContent = `Skor: ${correct}/${items.length}`;
-
+                        input.addEventListener("input", () => {
+                            checkItem(item);
                             updateUnlock();
                             rerenderKatex();
                         });
-                    }
+
+                        input.addEventListener("blur", () => {
+                            checkItem(item);
+                            updateUnlock();
+                            rerenderKatex();
+                        });
+                    });
                 }
 
+
                 /* =========================
-                   CONTOH INTERAKTIF
-                ========================== */
+      CONTOH INTERAKTIF (CEK SEMUA SAJA)
+    ========================== */
                 const contoh = document.getElementById("contoh-interaktif");
                 if (contoh) {
                     const rows = Array.from(contoh.querySelectorAll(".contoh-item"));
@@ -1513,7 +1658,7 @@
                     const showKatexAnswer = (row) => {
                         const input = row.querySelector(".hasil-input");
                         const box = row.querySelector(".katex-answer");
-                        const latex = row.getAttribute("data-latex") || row.getAttribute("data-canonical") || "";
+                        const latex = row.getAttribute("data-latex") || "";
 
                         if (input) {
                             input.value = row.getAttribute("data-canonical") || "";
@@ -1527,25 +1672,6 @@
                         }
                     };
 
-                    const resetToInput = (row) => {
-                        const input = row.querySelector(".hasil-input");
-                        const box = row.querySelector(".katex-answer");
-                        const fb = row.querySelector(".mini-feedback");
-
-                        if (input) {
-                            input.disabled = false;
-                            input.style.display = "block";
-                            input.value = "";
-                        }
-
-                        if (box) {
-                            box.style.display = "none";
-                            box.innerHTML = "";
-                        }
-
-                        clearFb(fb);
-                    };
-
                     const checkRow = (row) => {
                         const ans = normalizePoly(row.getAttribute("data-answer") || "");
                         const input = row.querySelector(".hasil-input");
@@ -1555,74 +1681,24 @@
                         const ok = !!user && user === ans;
 
                         setFb(fb, ok);
+
                         if (ok) showKatexAnswer(row);
 
                         return ok;
                     };
 
-                    rows.forEach((row) => {
-                        const btnC = row.querySelector(".contoh-check");
-                        const btnR = row.querySelector(".contoh-reset");
-
-                        if (btnC) {
-                            btnC.addEventListener("click", () => {
-                                checkRow(row);
-                                rerenderKatex();
-                            });
-                        }
-
-                        if (btnR) {
-                            btnR.addEventListener("click", () => {
-                                resetToInput(row);
-                                rerenderKatex();
-                            });
-                        }
-                    });
-
                     const finalInput = document.getElementById("contoh-final");
                     const finalFb = document.getElementById("contoh-final-fb");
-                    const finalCanonical = "7x^3+2x^2-x+2";
-                    const finalAns = normalizePoly(finalCanonical);
-
-                    const lockSehingga = () => {
-                        if (sehinggaBox) sehinggaBox.style.display = "none";
-                    };
-
-                    const unlockSehingga = () => {
-                        if (sehinggaBox) sehinggaBox.style.display = "block";
-                    };
+                    const finalAns = normalizePoly("7x^3+2x^2-x+2");
 
                     const checkFinal = () => {
                         const user = normalizePoly(finalInput ? finalInput.value : "");
                         const ok = !!user && user === finalAns;
 
                         setFb(finalFb, ok);
-                        if (ok && finalInput) finalInput.value = finalCanonical;
-
-                        if (ok) unlockSehingga();
-                        else lockSehingga();
 
                         return ok;
                     };
-
-                    const btnFinalCheck = document.getElementById("contoh-final-check");
-                    const btnFinalReset = document.getElementById("contoh-final-reset");
-
-                    if (btnFinalCheck) {
-                        btnFinalCheck.addEventListener("click", () => {
-                            checkFinal();
-                            rerenderKatex();
-                        });
-                    }
-
-                    if (btnFinalReset) {
-                        btnFinalReset.addEventListener("click", () => {
-                            if (finalInput) finalInput.value = "";
-                            clearFb(finalFb);
-                            lockSehingga();
-                            rerenderKatex();
-                        });
-                    }
 
                     const btnAll = document.getElementById("contoh-check-all");
                     const summary = document.getElementById("contoh-summary");
@@ -1638,15 +1714,22 @@
                             if (checkFinal()) correct++;
 
                             const total = rows.length + 1;
+
                             if (summary) summary.textContent = `Skor: ${correct}/${total}`;
+
+                            // tampilkan sehingga kalau semua benar
+                            if (correct === total) {
+                                if (sehinggaBox) sehinggaBox.style.display = "block";
+                            } else {
+                                if (sehinggaBox) sehinggaBox.style.display = "none";
+                            }
 
                             rerenderKatex();
                         });
                     }
 
-                    lockSehingga();
+                    if (sehinggaBox) sehinggaBox.style.display = "none";
                 }
-
                 /* =========================
                    LATIHAN 3 LEVEL
                 ========================== */
@@ -1898,11 +1981,11 @@
 @endsection
 
 @section('nav')
-<a href="{{ route('kuisa') }}" class="btn-nav prev-btn">
-    ← Previous
-</a>
+    <a href="{{ route('kuisa') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-<a href="{{ route('penguranganpolinomial') }}" class="btn-nav next-btn">
-    Next →
-</a>
+    <a href="{{ route('penguranganpolinomial') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection
