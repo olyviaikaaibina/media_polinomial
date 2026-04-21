@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             renderMathInElement(document.body, {
@@ -33,250 +32,488 @@
                 return checked ? normalize(checked.value) : '';
             }
 
-            function showStep(stepNumber) {
-                const el = document.getElementById('stepExplain' + stepNumber);
+            function toggleHint(id, btn) {
+                const el = document.getElementById(id);
+                if (!el) return;
+
+                const isOpen = el.classList.contains('show');
+                el.classList.toggle('show');
+
+                if (btn) {
+                    btn.textContent = isOpen ? 'Lihat Petunjuk Menjawab' : 'Sembunyikan Petunjuk';
+                }
+            }
+
+            function markInputState(el, isCorrect) {
+                if (!el) return;
+                el.classList.remove('input-correct', 'input-wrong');
+
+                if (isCorrect === true) {
+                    el.classList.add('input-correct');
+                } else if (isCorrect === false) {
+                    el.classList.add('input-wrong');
+                }
+            }
+
+            function showAutoFeedback(feedbackEl, isCorrect) {
+                if (!feedbackEl) return;
+                feedbackEl.textContent = isCorrect ? 'Benar' : 'Salah';
+                feedbackEl.className = isCorrect ? 'feedback ok show' : 'feedback no show';
+            }
+
+            function clearFeedback(feedbackEl) {
+                if (!feedbackEl) return;
+                feedbackEl.textContent = '';
+                feedbackEl.className = 'feedback';
+            }
+
+            function hideElement(id) {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            }
+
+            function showElement(id) {
+                const el = document.getElementById(id);
                 if (el) el.style.display = 'block';
+            }
+
+            // =========================
+            // SEMBUNYIKAN MATERI SETELAH EKSPLORASI
+            // =========================
+            const materiSetelahEksplorasi = document.getElementById('materiSetelahEksplorasi');
+
+            function hideMateriSetelahEksplorasi() {
+                if (materiSetelahEksplorasi) {
+                    materiSetelahEksplorasi.style.display = 'none';
+                }
+            }
+
+            function showMateriSetelahEksplorasi() {
+                if (materiSetelahEksplorasi) {
+                    materiSetelahEksplorasi.style.display = 'block';
+                }
+            }
+
+            hideMateriSetelahEksplorasi();
+
+            // =========================
+            // CONTOH 1
+            // =========================
+            function showStep(stepNumber) {
+                showElement('stepExplain' + stepNumber);
+            }
+
+            function hideStep(stepNumber) {
+                hideElement('stepExplain' + stepNumber);
             }
 
             function showFinalExplanation() {
-                const s1 = document.getElementById('step1Status').value === 'true';
-                const s2 = document.getElementById('step2Status').value === 'true';
-                const s3 = document.getElementById('step3Status').value === 'true';
-                const s4 = document.getElementById('step4Status').value === 'true';
-                const s5 = document.getElementById('step5Status').value === 'true';
+                const s1 = document.getElementById('step1Status')?.value === 'true';
+                const s2 = document.getElementById('step2Status')?.value === 'true';
+                const s3 = document.getElementById('step3Status')?.value === 'true';
+                const s4 = document.getElementById('step4Status')?.value === 'true';
+                const s5 = document.getElementById('step5Status')?.value === 'true';
 
                 const finalBox = document.getElementById('finalExplanation');
-                if (s1 && s2 && s3 && s4 && s5) {
-                    finalBox.style.display = 'block';
+                if (finalBox) {
+                    finalBox.style.display = (s1 && s2 && s3 && s4 && s5) ? 'block' : 'none';
                 }
             }
 
-            window.cekLangkah1 = function () {
-                const input = normalize(document.getElementById('jawabLangkah1').value);
+            function cekLangkah1Auto() {
+                const inputEl = document.getElementById('jawabLangkah1');
                 const feedback = document.getElementById('feedback1');
+                if (!inputEl) return;
 
-                if (input === '0') {
-                    feedback.textContent = 'Benar. Nilai P(1) = 0.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('step1Status').value = 'true';
-                    showStep(1);
-                } else {
-                    feedback.textContent = 'Belum tepat. Hitung 1^3 - 4(1)^2 - 1 + 4.';
-                    feedback.className = 'feedback no';
+                const input = normalize(inputEl.value);
+
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('step1Status').value = 'false';
+                    hideStep(1);
+                    showFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = input === '0';
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('step1Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showStep(1);
+                else hideStep(1);
 
                 showFinalExplanation();
             }
 
-            window.cekLangkah2 = function () {
-                const input = normalize(document.getElementById('jawabLangkah2').value);
+            function cekLangkah2Auto() {
+                const inputEl = document.getElementById('jawabLangkah2');
                 const feedback = document.getElementById('feedback2');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = ['x-1', '(x-1)'];
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Karena P(1)=0, maka x - 1 adalah faktor.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('step2Status').value = 'true';
-                    showStep(2);
-                } else {
-                    feedback.textContent = 'Belum tepat. Gunakan Teorema Faktor.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('step2Status').value = 'false';
+                    hideStep(2);
+                    showFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('step2Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showStep(2);
+                else hideStep(2);
 
                 showFinalExplanation();
             }
 
-            window.cekLangkah3 = function () {
-                const a = normalize(document.getElementById('hornerTop1').value);
-                const b = normalize(document.getElementById('hornerTop2').value);
-                const c = normalize(document.getElementById('hornerTop3').value);
-
+            function cekLangkah3Auto() {
+                const el1 = document.getElementById('hornerTop1');
+                const el2 = document.getElementById('hornerTop2');
+                const el3 = document.getElementById('hornerTop3');
                 const feedback = document.getElementById('feedback3');
+                if (!el1 || !el2 || !el3) return;
 
-                if (a === '1' && b === '-3' && c === '-4') {
-                    feedback.textContent = 'Benar. Baris kedua Horner sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('step3Status').value = 'true';
-                    showStep(3);
-                } else {
-                    feedback.textContent = 'Masih belum tepat. Isi hasil perkalian bertahap pada metode Horner.';
-                    feedback.className = 'feedback no';
+                const a = normalize(el1.value);
+                const b = normalize(el2.value);
+                const c = normalize(el3.value);
+
+                if (!(a || b || c)) {
+                    clearFeedback(feedback);
+                    [el1, el2, el3].forEach(el => markInputState(el, null));
+                    document.getElementById('step3Status').value = 'false';
+                    hideStep(3);
+                    showFinalExplanation();
+                    return;
                 }
+
+                const correctA = a === '1';
+                const correctB = b === '-3';
+                const correctC = c === '-4';
+                const isCorrect = correctA && correctB && correctC;
+
+                markInputState(el1, a ? correctA : null);
+                markInputState(el2, b ? correctB : null);
+                markInputState(el3, c ? correctC : null);
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('step3Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showStep(3);
+                else hideStep(3);
 
                 showFinalExplanation();
             }
 
-            window.cekLangkah4 = function () {
-                const a = normalize(document.getElementById('hornerBottom1').value);
-                const b = normalize(document.getElementById('hornerBottom2').value);
-                const c = normalize(document.getElementById('hornerBottom3').value);
-                const d = normalize(document.getElementById('hornerBottom4').value);
-
+            function cekLangkah4Auto() {
+                const el1 = document.getElementById('hornerBottom1');
+                const el2 = document.getElementById('hornerBottom2');
+                const el3 = document.getElementById('hornerBottom3');
+                const el4 = document.getElementById('hornerBottom4');
                 const feedback = document.getElementById('feedback4');
+                if (!el1 || !el2 || !el3 || !el4) return;
 
-                if (a === '1' && b === '-3' && c === '-4' && d === '0') {
-                    feedback.textContent = 'Benar. Baris hasil bawah Horner dan sisa sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('step4Status').value = 'true';
-                    showStep(4);
-                } else {
-                    feedback.textContent = 'Belum tepat. Coba hitung penjumlahan tiap kolom pada baris bawah.';
-                    feedback.className = 'feedback no';
+                const a = normalize(el1.value);
+                const b = normalize(el2.value);
+                const c = normalize(el3.value);
+                const d = normalize(el4.value);
+
+                if (!(a || b || c || d)) {
+                    clearFeedback(feedback);
+                    [el1, el2, el3, el4].forEach(el => markInputState(el, null));
+                    document.getElementById('step4Status').value = 'false';
+                    hideStep(4);
+                    showFinalExplanation();
+                    return;
                 }
+
+                const correctA = a === '1';
+                const correctB = b === '-3';
+                const correctC = c === '-4';
+                const correctD = d === '0';
+                const isCorrect = correctA && correctB && correctC && correctD;
+
+                markInputState(el1, a ? correctA : null);
+                markInputState(el2, b ? correctB : null);
+                markInputState(el3, c ? correctC : null);
+                markInputState(el4, d ? correctD : null);
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('step4Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showStep(4);
+                else hideStep(4);
 
                 showFinalExplanation();
             }
 
-            window.cekLangkah5 = function () {
-                const input = normalize(document.getElementById('jawabLangkah5').value);
+            function cekLangkah5Auto() {
+                const inputEl = document.getElementById('jawabLangkah5');
                 const feedback = document.getElementById('feedback5');
+                if (!inputEl) return;
 
-                const valid = [
-                    '(x-4)(x+1)',
-                    '(x+1)(x-4)'
-                ];
+                const input = normalize(inputEl.value);
+                const valid = ['(x-4)(x+1)', '(x+1)(x-4)'].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Faktorisasi kuadratnya tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('step5Status').value = 'true';
-                    showStep(5);
-                } else {
-                    feedback.textContent = 'Belum tepat. Cari dua bilangan yang hasil kalinya -4 dan jumlahnya -3.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('step5Status').value = 'false';
+                    hideStep(5);
+                    showFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('step5Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showStep(5);
+                else hideStep(5);
 
                 showFinalExplanation();
             }
+
+            window.cekLangkah1 = cekLangkah1Auto;
+            window.cekLangkah2 = cekLangkah2Auto;
+            window.cekLangkah3 = cekLangkah3Auto;
+            window.cekLangkah4 = cekLangkah4Auto;
+            window.cekLangkah5 = cekLangkah5Auto;
+
+            const autoInputsContoh1 = [
+                { id: 'jawabLangkah1', fn: cekLangkah1Auto },
+                { id: 'jawabLangkah2', fn: cekLangkah2Auto },
+                { id: 'hornerTop1', fn: cekLangkah3Auto },
+                { id: 'hornerTop2', fn: cekLangkah3Auto },
+                { id: 'hornerTop3', fn: cekLangkah3Auto },
+                { id: 'hornerBottom1', fn: cekLangkah4Auto },
+                { id: 'hornerBottom2', fn: cekLangkah4Auto },
+                { id: 'hornerBottom3', fn: cekLangkah4Auto },
+                { id: 'hornerBottom4', fn: cekLangkah4Auto },
+                { id: 'jawabLangkah5', fn: cekLangkah5Auto }
+            ];
+
+            autoInputsContoh1.forEach(item => {
+                const el = document.getElementById(item.id);
+                if (!el) return;
+                el.addEventListener('input', item.fn);
+                el.addEventListener('change', item.fn);
+            });
 
             // =========================
-            // CONTOH KEDUA - 6 LANGKAH
+            // CONTOH 2
             // =========================
             function showRasionalStep(stepNumber) {
-                const el = document.getElementById('rasionalExplain' + stepNumber);
-                if (el) el.style.display = 'block';
+                showElement('rasionalExplain' + stepNumber);
+            }
+
+            function hideRasionalStep(stepNumber) {
+                hideElement('rasionalExplain' + stepNumber);
             }
 
             function showRasionalFinalExplanation() {
-                const s1 = document.getElementById('rasionalStep1Status').value === 'true';
-                const s2 = document.getElementById('rasionalStep2Status').value === 'true';
-                const s3 = document.getElementById('rasionalStep3Status').value === 'true';
-                const s4 = document.getElementById('rasionalStep4Status').value === 'true';
-                const s5 = document.getElementById('rasionalStep5Status').value === 'true';
-                const s6 = document.getElementById('rasionalStep6Status').value === 'true';
+                const s1 = document.getElementById('rasionalStep1Status')?.value === 'true';
+                const s2 = document.getElementById('rasionalStep2Status')?.value === 'true';
+                const s3 = document.getElementById('rasionalStep3Status')?.value === 'true';
+                const s4 = document.getElementById('rasionalStep4Status')?.value === 'true';
+                const s5 = document.getElementById('rasionalStep5Status')?.value === 'true';
+                const s6 = document.getElementById('rasionalStep6Status')?.value === 'true';
 
                 const finalBox = document.getElementById('rasionalFinalExplanation');
-                if (s1 && s2 && s3 && s4 && s5 && s6) {
-                    finalBox.style.display = 'block';
+                if (finalBox) {
+                    finalBox.style.display = (s1 && s2 && s3 && s4 && s5 && s6) ? 'block' : 'none';
                 }
             }
 
-            window.cekRasionalLangkah1 = function () {
-                const input = normalize(document.getElementById('jawabRasional1').value);
+            function cekRasionalLangkah1Auto() {
+                const inputEl = document.getElementById('jawabRasional1');
                 const feedback = document.getElementById('rasionalFeedback1');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = [
                     '±1,±2,±4',
                     '+-1,+-2,+-4',
                     '1,2,4,-1,-2,-4',
                     '-1,-2,-4,1,2,4'
-                ];
+                ].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Kandidat pembuat nol rasionalnya adalah ±1, ±2, ±4.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep1Status').value = 'true';
-                    showRasionalStep(1);
-                } else {
-                    feedback.textContent = 'Belum tepat. Karena konstanta 4, kandidatnya berasal dari faktor-faktor 4.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('rasionalStep1Status').value = 'false';
+                    hideRasionalStep(1);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('rasionalStep1Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(1);
+                else hideRasionalStep(1);
 
                 showRasionalFinalExplanation();
             }
 
-            window.cekRasionalLangkah2 = function () {
-                const input = normalize(document.getElementById('jawabRasional2').value);
+            function cekRasionalLangkah2Auto() {
+                const inputEl = document.getElementById('jawabRasional2');
                 const feedback = document.getElementById('rasionalFeedback2');
+                if (!inputEl) return;
 
-                if (input === '1') {
-                    feedback.textContent = 'Benar. P(1)=0, jadi 1 adalah pembuat nol.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep2Status').value = 'true';
-                    showRasionalStep(2);
-                } else {
-                    feedback.textContent = 'Belum tepat. Coba substitusi x = 1 ke P(x).';
-                    feedback.className = 'feedback no';
+                const input = normalize(inputEl.value);
+
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('rasionalStep2Status').value = 'false';
+                    hideRasionalStep(2);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = input === '1';
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('rasionalStep2Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(2);
+                else hideRasionalStep(2);
 
                 showRasionalFinalExplanation();
             }
 
-            window.cekRasionalLangkah3 = function () {
-                const input = normalize(document.getElementById('jawabRasional3').value);
+            function cekRasionalLangkah3Auto() {
+                const inputEl = document.getElementById('jawabRasional3');
                 const feedback = document.getElementById('rasionalFeedback3');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = ['x-1', '(x-1)'];
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Karena P(1)=0, maka (x-1) adalah faktor.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep3Status').value = 'true';
-                    showRasionalStep(3);
-                } else {
-                    feedback.textContent = 'Belum tepat. Gunakan Teorema Faktor.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('rasionalStep3Status').value = 'false';
+                    hideRasionalStep(3);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('rasionalStep3Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(3);
+                else hideRasionalStep(3);
 
                 showRasionalFinalExplanation();
             }
 
-            window.cekRasionalLangkah4 = function () {
-                const a = normalize(document.getElementById('rasionalHornerTop1').value);
-                const b = normalize(document.getElementById('rasionalHornerTop2').value);
-                const c = normalize(document.getElementById('rasionalHornerTop3').value);
-
+            function cekRasionalLangkah4Auto() {
+                const el1 = document.getElementById('rasionalHornerTop1');
+                const el2 = document.getElementById('rasionalHornerTop2');
+                const el3 = document.getElementById('rasionalHornerTop3');
                 const feedback = document.getElementById('rasionalFeedback4');
+                if (!el1 || !el2 || !el3) return;
 
-                if (a === '1' && b === '-3' && c === '-4') {
-                    feedback.textContent = 'Benar. Baris kedua Horner sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep4Status').value = 'true';
-                    showRasionalStep(4);
-                } else {
-                    feedback.textContent = 'Belum tepat. Isi hasil perkalian bertahap pada baris kedua Horner.';
-                    feedback.className = 'feedback no';
+                const a = normalize(el1.value);
+                const b = normalize(el2.value);
+                const c = normalize(el3.value);
+
+                if (!(a || b || c)) {
+                    clearFeedback(feedback);
+                    [el1, el2, el3].forEach(el => markInputState(el, null));
+                    document.getElementById('rasionalStep4Status').value = 'false';
+                    hideRasionalStep(4);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const correctA = a === '1';
+                const correctB = b === '-3';
+                const correctC = c === '-4';
+                const isCorrect = correctA && correctB && correctC;
+
+                markInputState(el1, a ? correctA : null);
+                markInputState(el2, b ? correctB : null);
+                markInputState(el3, c ? correctC : null);
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('rasionalStep4Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(4);
+                else hideRasionalStep(4);
 
                 showRasionalFinalExplanation();
             }
 
-            window.cekRasionalLangkah5 = function () {
-                const a = normalize(document.getElementById('rasionalHornerBottom1').value);
-                const b = normalize(document.getElementById('rasionalHornerBottom2').value);
-                const c = normalize(document.getElementById('rasionalHornerBottom3').value);
-                const d = normalize(document.getElementById('rasionalHornerBottom4').value);
-
+            function cekRasionalLangkah5Auto() {
+                const el1 = document.getElementById('rasionalHornerBottom1');
+                const el2 = document.getElementById('rasionalHornerBottom2');
+                const el3 = document.getElementById('rasionalHornerBottom3');
+                const el4 = document.getElementById('rasionalHornerBottom4');
                 const feedback = document.getElementById('rasionalFeedback5');
+                if (!el1 || !el2 || !el3 || !el4) return;
 
-                if (a === '1' && b === '-3' && c === '-4' && d === '0') {
-                    feedback.textContent = 'Benar. Baris hasil bawah Horner dan sisa sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep5Status').value = 'true';
-                    showRasionalStep(5);
-                } else {
-                    feedback.textContent = 'Belum tepat. Coba hitung penjumlahan tiap kolom pada baris bawah.';
-                    feedback.className = 'feedback no';
+                const a = normalize(el1.value);
+                const b = normalize(el2.value);
+                const c = normalize(el3.value);
+                const d = normalize(el4.value);
+
+                if (!(a || b || c || d)) {
+                    clearFeedback(feedback);
+                    [el1, el2, el3, el4].forEach(el => markInputState(el, null));
+                    document.getElementById('rasionalStep5Status').value = 'false';
+                    hideRasionalStep(5);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const correctA = a === '1';
+                const correctB = b === '-3';
+                const correctC = c === '-4';
+                const correctD = d === '0';
+                const isCorrect = correctA && correctB && correctC && correctD;
+
+                markInputState(el1, a ? correctA : null);
+                markInputState(el2, b ? correctB : null);
+                markInputState(el3, c ? correctC : null);
+                markInputState(el4, d ? correctD : null);
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('rasionalStep5Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(5);
+                else hideRasionalStep(5);
 
                 showRasionalFinalExplanation();
             }
 
-            window.cekRasionalLangkah6 = function () {
-                const input = normalize(document.getElementById('jawabRasional6').value);
+            function cekRasionalLangkah6Auto() {
+                const inputEl = document.getElementById('jawabRasional6');
                 const feedback = document.getElementById('rasionalFeedback6');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = [
                     '(x-1)(x-4)(x+1)',
                     '(x-1)(x+1)(x-4)',
@@ -284,62 +521,110 @@
                     '(x-4)(x+1)(x-1)',
                     '(x+1)(x-1)(x-4)',
                     '(x+1)(x-4)(x-1)'
-                ];
+                ].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Faktorisasi lengkapnya tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('rasionalStep6Status').value = 'true';
-                    showRasionalStep(6);
-                } else {
-                    feedback.textContent = 'Belum tepat. Faktorkan dulu x² - 3x - 4 menjadi (x-4)(x+1).';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('rasionalStep6Status').value = 'false';
+                    hideRasionalStep(6);
+                    showRasionalFinalExplanation();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('rasionalStep6Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showRasionalStep(6);
+                else hideRasionalStep(6);
 
                 showRasionalFinalExplanation();
             }
+
+            window.cekRasionalLangkah1 = cekRasionalLangkah1Auto;
+            window.cekRasionalLangkah2 = cekRasionalLangkah2Auto;
+            window.cekRasionalLangkah3 = cekRasionalLangkah3Auto;
+            window.cekRasionalLangkah4 = cekRasionalLangkah4Auto;
+            window.cekRasionalLangkah5 = cekRasionalLangkah5Auto;
+            window.cekRasionalLangkah6 = cekRasionalLangkah6Auto;
+            window.toggleHint = toggleHint;
+
+            const autoInputsContoh2 = [
+                { id: 'jawabRasional1', fn: cekRasionalLangkah1Auto },
+                { id: 'jawabRasional2', fn: cekRasionalLangkah2Auto },
+                { id: 'jawabRasional3', fn: cekRasionalLangkah3Auto },
+                { id: 'rasionalHornerTop1', fn: cekRasionalLangkah4Auto },
+                { id: 'rasionalHornerTop2', fn: cekRasionalLangkah4Auto },
+                { id: 'rasionalHornerTop3', fn: cekRasionalLangkah4Auto },
+                { id: 'rasionalHornerBottom1', fn: cekRasionalLangkah5Auto },
+                { id: 'rasionalHornerBottom2', fn: cekRasionalLangkah5Auto },
+                { id: 'rasionalHornerBottom3', fn: cekRasionalLangkah5Auto },
+                { id: 'rasionalHornerBottom4', fn: cekRasionalLangkah5Auto },
+                { id: 'jawabRasional6', fn: cekRasionalLangkah6Auto }
+            ];
+
+            autoInputsContoh2.forEach(item => {
+                const el = document.getElementById(item.id);
+                if (!el) return;
+                el.addEventListener('input', item.fn);
+                el.addEventListener('change', item.fn);
+            });
 
             // =========================
             // LATIHAN 1
             // =========================
             function showLatihan1Step(stepNumber) {
-                const el = document.getElementById('latihan1Explain' + stepNumber);
-                if (el) el.style.display = 'block';
+                showElement('latihan1Explain' + stepNumber);
+            }
+
+            function hideLatihan1Step(stepNumber) {
+                hideElement('latihan1Explain' + stepNumber);
             }
 
             function showLatihan1Final() {
-                const s1 = document.getElementById('latihan1Step1Status').value === 'true';
-                const s2 = document.getElementById('latihan1Step2Status').value === 'true';
-                const s3 = document.getElementById('latihan1Step3Status').value === 'true';
-                const s4 = document.getElementById('latihan1Step4Status').value === 'true';
+                const s1 = document.getElementById('latihan1Step1Status')?.value === 'true';
+                const s2 = document.getElementById('latihan1Step2Status')?.value === 'true';
+                const s3 = document.getElementById('latihan1Step3Status')?.value === 'true';
+                const s4 = document.getElementById('latihan1Step4Status')?.value === 'true';
 
                 const finalBox = document.getElementById('latihan1FinalExplanation');
-                if (s1 && s2 && s3 && s4) {
-                    finalBox.style.display = 'block';
+                if (finalBox) {
+                    finalBox.style.display = (s1 && s2 && s3 && s4) ? 'block' : 'none';
                 }
             }
 
-            window.cekLatihan1Langkah1 = function () {
+            function cekLatihan1Langkah1Auto() {
                 const input = getSelectedValue('latihan1opsi1');
                 const feedback = document.getElementById('latihan1Feedback1');
 
-                if (input === 'pengelompokan') {
-                    feedback.textContent = 'Benar. Polinomial ini cocok difaktorkan dengan pengelompokan.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan1Step1Status').value = 'true';
-                    showLatihan1Step(1);
-                } else {
-                    feedback.textContent = 'Belum tepat. Perhatikan bahwa suku-sukunya dapat dikelompokkan menjadi dua pasangan.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    document.getElementById('latihan1Step1Status').value = 'false';
+                    hideLatihan1Step(1);
+                    showLatihan1Final();
+                    return;
                 }
+
+                const isCorrect = input === 'pengelompokan';
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('latihan1Step1Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan1Step(1);
+                else hideLatihan1Step(1);
 
                 showLatihan1Final();
             }
 
-            window.cekLatihan1Langkah2 = function () {
-                const input = normalize(document.getElementById('jawabLatihan1Langkah2').value);
+            function cekLatihan1Langkah2Manual() {
+                const inputEl = document.getElementById('jawabLatihan1Langkah2');
                 const feedback = document.getElementById('latihan1Feedback2');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = [
                     'x^2(x+2)-9(x+2)',
                     '(x^2)(x+2)-9(x+2)',
@@ -347,40 +632,56 @@
                     '(x²)(x+2)-9(x+2)'
                 ].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Bentuk pengelompokannya sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan1Step2Status').value = 'true';
-                    showLatihan1Step(2);
-                } else {
-                    feedback.textContent = 'Belum tepat. Kelompokkan menjadi (x³ + 2x²) dan (-9x - 18).';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('latihan1Step2Status').value = 'false';
+                    hideLatihan1Step(2);
+                    showLatihan1Final();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('latihan1Step2Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan1Step(2);
+                else hideLatihan1Step(2);
 
                 showLatihan1Final();
             }
 
-            window.cekLatihan1Langkah3 = function () {
+            function cekLatihan1Langkah3Auto() {
                 const input = getSelectedValue('latihan1opsi3');
                 const feedback = document.getElementById('latihan1Feedback3');
 
-                if (input === 'x+2') {
-                    feedback.textContent = 'Benar. Faktor persekutuannya adalah (x + 2).';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan1Step3Status').value = 'true';
-                    showLatihan1Step(3);
-                } else {
-                    feedback.textContent = 'Belum tepat. Ambil faktor persekutuan dari dua kelompok yang sudah terbentuk.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    document.getElementById('latihan1Step3Status').value = 'false';
+                    hideLatihan1Step(3);
+                    showLatihan1Final();
+                    return;
                 }
+
+                const isCorrect = input === 'x+2';
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('latihan1Step3Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan1Step(3);
+                else hideLatihan1Step(3);
 
                 showLatihan1Final();
             }
 
-            window.cekLatihan1Langkah4 = function () {
-                const input = normalize(document.getElementById('jawabLatihan1Langkah4').value);
+            function cekLatihan1Langkah4Manual() {
+                const inputEl = document.getElementById('jawabLatihan1Langkah4');
                 const feedback = document.getElementById('latihan1Feedback4');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = [
                     '(x+2)(x^2-9)',
                     '(x^2-9)(x+2)',
@@ -390,116 +691,180 @@
                     '(x+3)(x+2)(x-3)'
                 ].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Faktorisasi lengkapnya tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan1Step4Status').value = 'true';
-                    showLatihan1Step(4);
-                } else {
-                    feedback.textContent = 'Belum tepat. Setelah diperoleh (x + 2)(x² - 9), lanjutkan dengan selisih kuadrat.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('latihan1Step4Status').value = 'false';
+                    hideLatihan1Step(4);
+                    showLatihan1Final();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('latihan1Step4Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan1Step(4);
+                else hideLatihan1Step(4);
 
                 showLatihan1Final();
             }
+
+            window.cekLatihan1Langkah1 = cekLatihan1Langkah1Auto;
+            window.cekLatihan1Langkah2 = cekLatihan1Langkah2Manual;
+            window.cekLatihan1Langkah3 = cekLatihan1Langkah3Auto;
+            window.cekLatihan1Langkah4 = cekLatihan1Langkah4Manual;
 
             // =========================
             // LATIHAN 2
             // =========================
             function showLatihan2Step(stepNumber) {
-                const el = document.getElementById('latihan2Explain' + stepNumber);
-                if (el) el.style.display = 'block';
+                showElement('latihan2Explain' + stepNumber);
+            }
+
+            function hideLatihan2Step(stepNumber) {
+                hideElement('latihan2Explain' + stepNumber);
             }
 
             function showLatihan2Final() {
-                const s1 = document.getElementById('latihan2Step1Status').value === 'true';
-                const s2 = document.getElementById('latihan2Step2Status').value === 'true';
-                const s3 = document.getElementById('latihan2Step3Status').value === 'true';
-                const s4 = document.getElementById('latihan2Step4Status').value === 'true';
-                const s5 = document.getElementById('latihan2Step5Status').value === 'true';
+                const s1 = document.getElementById('latihan2Step1Status')?.value === 'true';
+                const s2 = document.getElementById('latihan2Step2Status')?.value === 'true';
+                const s3 = document.getElementById('latihan2Step3Status')?.value === 'true';
+                const s4 = document.getElementById('latihan2Step4Status')?.value === 'true';
+                const s5 = document.getElementById('latihan2Step5Status')?.value === 'true';
 
                 const finalBox = document.getElementById('latihan2FinalExplanation');
-                if (s1 && s2 && s3 && s4 && s5) {
-                    finalBox.style.display = 'block';
+                if (finalBox) {
+                    finalBox.style.display = (s1 && s2 && s3 && s4 && s5) ? 'block' : 'none';
                 }
             }
 
-            window.cekLatihan2Langkah1 = function () {
+            function cekLatihan2Langkah1Auto() {
                 const input = getSelectedValue('latihan2opsi1');
                 const feedback = document.getElementById('latihan2Feedback1');
+                const jawabanBenar = normalize('±1,±2,±3,±6,±1/2,±3/2');
 
-                if (input === '±1,±2,±3,±6,±1/2,±3/2') {
-                    feedback.textContent = 'Benar. Itulah kandidat pembuat nol rasionalnya.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan2Step1Status').value = 'true';
-                    showLatihan2Step(1);
-                } else {
-                    feedback.textContent = 'Belum tepat. Gunakan faktor konstanta 6 dibagi faktor koefisien utama 2.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    document.getElementById('latihan2Step1Status').value = 'false';
+                    hideLatihan2Step(1);
+                    showLatihan2Final();
+                    return;
                 }
+
+                const isCorrect = input === jawabanBenar;
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('latihan2Step1Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan2Step(1);
+                else hideLatihan2Step(1);
 
                 showLatihan2Final();
             }
 
-            window.cekLatihan2Langkah2 = function () {
-                const input = normalize(document.getElementById('jawabLatihan2Langkah2').value);
+            function cekLatihan2Langkah2Manual() {
+                const inputEl = document.getElementById('jawabLatihan2Langkah2');
                 const feedback = document.getElementById('latihan2Feedback2');
+                if (!inputEl) return;
 
-                if (input === '-2') {
-                    feedback.textContent = 'Benar. P(-2)=0, jadi -2 adalah salah satu pembuat nol.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan2Step2Status').value = 'true';
-                    showLatihan2Step(2);
-                } else {
-                    feedback.textContent = 'Belum tepat. Coba substitusi beberapa kandidat sederhana, misalnya ±1, ±2.';
-                    feedback.className = 'feedback no';
+                const input = normalize(inputEl.value);
+
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('latihan2Step2Status').value = 'false';
+                    hideLatihan2Step(2);
+                    showLatihan2Final();
+                    return;
                 }
+
+                const isCorrect = input === '-2';
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('latihan2Step2Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan2Step(2);
+                else hideLatihan2Step(2);
 
                 showLatihan2Final();
             }
 
-            window.cekLatihan2Langkah3 = function () {
+            function cekLatihan2Langkah3Auto() {
                 const input = getSelectedValue('latihan2opsi3');
                 const feedback = document.getElementById('latihan2Feedback3');
 
-                if (input === 'x+2') {
-                    feedback.textContent = 'Benar. Karena akar yang diperoleh adalah -2, maka faktor linearnya (x + 2).';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan2Step3Status').value = 'true';
-                    showLatihan2Step(3);
-                } else {
-                    feedback.textContent = 'Belum tepat. Jika c = -2 pembuat nol, maka faktornya adalah x - ( -2 ).';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    document.getElementById('latihan2Step3Status').value = 'false';
+                    hideLatihan2Step(3);
+                    showLatihan2Final();
+                    return;
                 }
+
+                const isCorrect = input === 'x+2';
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('latihan2Step3Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan2Step(3);
+                else hideLatihan2Step(3);
 
                 showLatihan2Final();
             }
 
-            window.cekLatihan2Langkah4 = function () {
-                const a = normalize(document.getElementById('latihan2Horner1').value);
-                const b = normalize(document.getElementById('latihan2Horner2').value);
-                const c = normalize(document.getElementById('latihan2Horner3').value);
-                const d = normalize(document.getElementById('latihan2Horner4').value);
-
+            function cekLatihan2Langkah4Manual() {
+                const el1 = document.getElementById('latihan2Horner1');
+                const el2 = document.getElementById('latihan2Horner2');
+                const el3 = document.getElementById('latihan2Horner3');
+                const el4 = document.getElementById('latihan2Horner4');
                 const feedback = document.getElementById('latihan2Feedback4');
 
-                if (a === '2' && b === '-7' && c === '3' && d === '0') {
-                    feedback.textContent = 'Benar. Hasil bawah Horner sudah tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan2Step4Status').value = 'true';
-                    showLatihan2Step(4);
-                } else {
-                    feedback.textContent = 'Belum tepat. Hasil bawah Horner harus memberi koefisien hasil bagi dan sisa 0.';
-                    feedback.className = 'feedback no';
+                if (!el1 || !el2 || !el3 || !el4) return;
+
+                const a = normalize(el1.value);
+                const b = normalize(el2.value);
+                const c = normalize(el3.value);
+                const d = normalize(el4.value);
+
+                if (!(a || b || c || d)) {
+                    clearFeedback(feedback);
+                    [el1, el2, el3, el4].forEach(el => markInputState(el, null));
+                    document.getElementById('latihan2Step4Status').value = 'false';
+                    hideLatihan2Step(4);
+                    showLatihan2Final();
+                    return;
                 }
+
+                const correctA = a === '-4';
+                const correctB = b === '14';
+                const correctC = c === '-6';
+                const correctD = d === '0';
+                const isCorrect = correctA && correctB && correctC && correctD;
+
+                markInputState(el1, a ? correctA : null);
+                markInputState(el2, b ? correctB : null);
+                markInputState(el3, c ? correctC : null);
+                markInputState(el4, d ? correctD : null);
+
+                showAutoFeedback(feedback, isCorrect);
+                document.getElementById('latihan2Step4Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan2Step(4);
+                else hideLatihan2Step(4);
 
                 showLatihan2Final();
             }
 
-            window.cekLatihan2Langkah5 = function () {
-                const input = normalize(document.getElementById('jawabLatihan2Langkah5').value);
+            function cekLatihan2Langkah5Manual() {
+                const inputEl = document.getElementById('jawabLatihan2Langkah5');
                 const feedback = document.getElementById('latihan2Feedback5');
+                if (!inputEl) return;
 
+                const input = normalize(inputEl.value);
                 const valid = [
                     '(x+2)(2x-1)(x-3)',
                     '(x+2)(x-3)(2x-1)',
@@ -509,60 +874,85 @@
                     '(x-3)(2x-1)(x+2)'
                 ].map(normalize);
 
-                if (valid.includes(input)) {
-                    feedback.textContent = 'Benar. Faktorisasi lengkapnya tepat.';
-                    feedback.className = 'feedback ok';
-                    document.getElementById('latihan2Step5Status').value = 'true';
-                    showLatihan2Step(5);
-                } else {
-                    feedback.textContent = 'Belum tepat. Setelah Horner diperoleh 2x² - 7x + 3, lalu faktorkan lagi.';
-                    feedback.className = 'feedback no';
+                if (!input) {
+                    clearFeedback(feedback);
+                    markInputState(inputEl, null);
+                    document.getElementById('latihan2Step5Status').value = 'false';
+                    hideLatihan2Step(5);
+                    showLatihan2Final();
+                    return;
                 }
+
+                const isCorrect = valid.includes(input);
+
+                showAutoFeedback(feedback, isCorrect);
+                markInputState(inputEl, isCorrect);
+                document.getElementById('latihan2Step5Status').value = isCorrect ? 'true' : 'false';
+
+                if (isCorrect) showLatihan2Step(5);
+                else hideLatihan2Step(5);
 
                 showLatihan2Final();
             }
 
+            window.cekLatihan2Langkah1 = cekLatihan2Langkah1Auto;
+            window.cekLatihan2Langkah2 = cekLatihan2Langkah2Manual;
+            window.cekLatihan2Langkah3 = cekLatihan2Langkah3Auto;
+            window.cekLatihan2Langkah4 = cekLatihan2Langkah4Manual;
+            window.cekLatihan2Langkah5 = cekLatihan2Langkah5Manual;
+
+            document.querySelectorAll('input[name="latihan1opsi1"]').forEach(el => {
+                el.addEventListener('change', cekLatihan1Langkah1Auto);
+            });
+
+            document.querySelectorAll('input[name="latihan1opsi3"]').forEach(el => {
+                el.addEventListener('change', cekLatihan1Langkah3Auto);
+            });
+
+            document.querySelectorAll('input[name="latihan2opsi1"]').forEach(el => {
+                el.addEventListener('change', cekLatihan2Langkah1Auto);
+            });
+
+            document.querySelectorAll('input[name="latihan2opsi3"]').forEach(el => {
+                el.addEventListener('change', cekLatihan2Langkah3Auto);
+            });
+
+            // =========================
+            // EKSPLORASI DRAG & DROP
+            // =========================
             // =========================
             // EKSPLORASI DRAG & DROP
             // =========================
             let draggedItem = null;
-            let solvedCount = 0;
-            const totalAnswers = 3;
+            let attemptedDrops = 0;
 
-            const progressFill = document.getElementById('progressFill');
-            const progressText = document.getElementById('progressText');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            const totalDropZones = dropZones.length;
+
             const finalBoxEks = document.getElementById('eksplorasiFinal');
-
-            const dropToExplanationMap = {
-                'drop-p1': 'explainP1',
-                'drop-p2': 'explainP2',
-                'drop-makna': 'explainMakna'
-            };
 
             const dropToStatusMap = {
                 'g1': 'statusEks1',
                 'g2': 'statusEks2'
             };
 
-            function updateProgress() {
-                const percent = (solvedCount / totalAnswers) * 100;
-                if (progressFill) progressFill.style.width = percent + '%';
-                if (progressText) progressText.textContent = solvedCount + ' / ' + totalAnswers + ' jawaban benar';
-
-                if (finalBoxEks) {
-                    if (solvedCount === totalAnswers) {
-                        finalBoxEks.classList.add('show');
-                    } else {
-                        finalBoxEks.classList.remove('show');
-                    }
-                }
+            function getBankByGroup(group) {
+                return group === 'g1'
+                    ? document.getElementById('answerBank1')
+                    : document.getElementById('answerBank2');
             }
 
-            function showStatus(group, message, type) {
+            function showStatus(group, isCorrect, customText = '') {
                 const el = document.getElementById(dropToStatusMap[group]);
                 if (!el) return;
-                el.textContent = message;
-                el.className = 'status-box show ' + type;
+
+                if (customText) {
+                    el.textContent = customText;
+                } else {
+                    el.textContent = isCorrect ? 'Benar' : 'Salah';
+                }
+
+                el.className = isCorrect ? 'status-box show success' : 'status-box show error';
             }
 
             function clearStatus(group) {
@@ -572,54 +962,153 @@
                 el.className = 'status-box';
             }
 
-            function lockCorrectDrop(dropZone, item) {
-                dropZone.innerHTML = '';
-                dropZone.appendChild(item);
-                dropZone.classList.add('filled', 'correct');
-                dropZone.classList.remove('wrong', 'hovered');
+            function hideExplanation(id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('show');
+            }
 
-                item.classList.add('locked');
-                item.setAttribute('draggable', 'false');
+            function showExplanation(id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('show');
 
-                if (!dropZone.dataset.solved) {
-                    dropZone.dataset.solved = 'true';
-                    solvedCount++;
-                    updateProgress();
-                }
-
-                const explainId = dropToExplanationMap[dropZone.id];
-                if (explainId) {
-                    const explainEl = document.getElementById(explainId);
-                    if (explainEl) explainEl.classList.add('show');
+                    const title = el.querySelector('h5');
+                    if (title) {
+                        if (id === 'explainGabungan') {
+                            title.innerHTML = 'Penjelasan';
+                        } else if (id === 'explainMakna') {
+                            title.innerHTML = 'Penjelasan Makna';
+                        }
+                    }
                 }
             }
 
-            function resetWrongDrop(dropZone, item) {
-                dropZone.classList.add('wrong');
-                setTimeout(() => {
-                    dropZone.classList.remove('wrong', 'filled');
-                    dropZone.innerHTML = '';
-                }, 250);
+            function isZoneAnswered(zoneId) {
+                const zone = document.getElementById(zoneId);
+                if (!zone) return false;
+                return !!zone.querySelector('.drag-item');
+            }
 
+            function isZoneCorrect(zoneId) {
+                const zone = document.getElementById(zoneId);
+                return zone && zone.dataset.solved === 'true';
+            }
+
+            // Soal 1: penjelasan muncul kalau P1 dan P2 SUDAH TERISI,
+            // tidak peduli benar atau salah
+            function updatePertanyaan1Explanation() {
+                const p1Terjawab = isZoneAnswered('drop-p1');
+                const p2Terjawab = isZoneAnswered('drop-p2');
+
+                if (p1Terjawab && p2Terjawab) {
+                    showExplanation('explainGabungan');
+                } else {
+                    hideExplanation('explainGabungan');
+                }
+            }
+
+            // Soal 2: kalau mau tetap muncul setelah terjawab, pakai answered juga
+            function updatePertanyaan2Explanation() {
+                const maknaTerjawab = isZoneAnswered('drop-makna');
+
+                if (maknaTerjawab) {
+                    showExplanation('explainMakna');
+                } else {
+                    hideExplanation('explainMakna');
+                }
+            }
+
+            function updateEksplorasiExplanations() {
+                updatePertanyaan1Explanation();
+                updatePertanyaan2Explanation();
+            }
+
+            function checkEksplorasiSelesai() {
+                if (attemptedDrops >= totalDropZones && totalDropZones > 0) {
+                    if (finalBoxEks) finalBoxEks.classList.add('show');
+                    showMateriSetelahEksplorasi();
+                } else {
+                    if (finalBoxEks) finalBoxEks.classList.remove('show');
+                    hideMateriSetelahEksplorasi();
+                }
+            }
+
+            function markAttempt(dropZone) {
+                if (!dropZone.dataset.attempted) {
+                    dropZone.dataset.attempted = 'true';
+                    attemptedDrops++;
+                }
+                checkEksplorasiSelesai();
+            }
+
+            function moveItemToBank(item, group) {
+                if (!item) return;
+                const bank = getBankByGroup(group);
+                if (bank) {
+                    item.classList.remove('dragging', 'locked');
+                    item.setAttribute('draggable', 'true');
+                    bank.appendChild(item);
+                }
+            }
+
+            function clearZoneState(zone) {
+                if (!zone) return;
+                zone.classList.remove('filled', 'correct', 'wrong', 'hovered');
+                delete zone.dataset.solved;
+            }
+
+            function setDropState(dropZone, item, isCorrect) {
+                dropZone.classList.remove('correct', 'wrong', 'filled');
+                item.classList.remove('locked');
+
+                if (isCorrect) {
+                    dropZone.classList.add('filled', 'correct');
+                    item.classList.add('locked');
+                    item.setAttribute('draggable', 'false');
+                    dropZone.dataset.solved = 'true';
+                } else {
+                    dropZone.classList.add('filled', 'wrong');
+                    item.setAttribute('draggable', 'true');
+                    delete dropZone.dataset.solved;
+                }
+            }
+
+            function evaluateDropZone(dropZone) {
+                const item = dropZone.querySelector('.drag-item');
+                if (!item) return;
+
+                const droppedValue = (item.dataset.value || '').toLowerCase().trim();
+                const correctAnswer = (dropZone.dataset.answer || '').toLowerCase().trim();
                 const group = dropZone.dataset.group;
-                showStatus(group, 'Belum tepat. Coba hitung kembali nilai fungsi atau pahami arti hasilnya.', 'error');
 
-                const bank = group === 'g1'
-                    ? document.getElementById('answerBank1')
-                    : document.getElementById('answerBank2');
+                const isCorrect = droppedValue === correctAnswer;
 
-                setTimeout(() => {
-                    if (bank) bank.appendChild(item);
-                    item.classList.remove('dragging');
-                }, 260);
+                setDropState(dropZone, item, isCorrect);
+                markAttempt(dropZone);
+
+                if (isCorrect) {
+                    showStatus(group, true, 'Benar');
+                } else {
+                    showStatus(group, false, 'Salah.');
+                }
+
+                updateEksplorasiExplanations();
             }
 
             function setupDragItems() {
                 document.querySelectorAll('.drag-item').forEach(item => {
                     item.addEventListener('dragstart', function () {
                         if (this.classList.contains('locked')) return;
+
                         draggedItem = this;
                         this.classList.add('dragging');
+
+                        const parent = this.parentElement;
+                        if (parent && parent.classList.contains('drop-zone')) {
+                            this.dataset.fromZone = parent.id;
+                        } else {
+                            this.dataset.fromZone = '';
+                        }
                     });
 
                     item.addEventListener('dragend', function () {
@@ -644,50 +1133,85 @@
                         e.preventDefault();
                         this.classList.remove('hovered');
 
-                        if (!draggedItem || this.dataset.solved === 'true') return;
+                        if (!draggedItem) return;
+                        if (this.dataset.solved === 'true') return;
 
-                        const droppedValue = (draggedItem.dataset.value || '').toLowerCase().trim();
-                        const correctAnswer = (this.dataset.answer || '').toLowerCase().trim();
                         const group = this.dataset.group;
-
                         clearStatus(group);
 
-                        if (droppedValue === correctAnswer) {
-                            lockCorrectDrop(this, draggedItem);
+                        const existingItem = this.querySelector('.drag-item');
 
-                            if (group === 'g1') {
-                                const p1Done = document.getElementById('drop-p1').dataset.solved === 'true';
-                                const p2Done = document.getElementById('drop-p2').dataset.solved === 'true';
-
-                                if (p1Done && p2Done) {
-                                    showStatus(group, 'Bagus. Semua nilai fungsi pada Eksplorasi 1 sudah benar.', 'success');
-                                } else {
-                                    showStatus(group, 'Benar. Lanjutkan ke kotak berikutnya.', 'success');
-                                }
-                            } else {
-                                showStatus(group, 'Tepat sekali. Makna hasil fungsi sudah benar.', 'success');
-                            }
-                        } else {
-                            resetWrongDrop(this, draggedItem);
+                        if (existingItem && existingItem !== draggedItem) {
+                            moveItemToBank(existingItem, group);
                         }
 
+                        const fromZoneId = draggedItem.dataset.fromZone;
+                        if (fromZoneId) {
+                            const fromZone = document.getElementById(fromZoneId);
+                            if (fromZone && fromZone !== this) {
+                                fromZone.innerHTML = '';
+                                clearZoneState(fromZone);
+                            }
+                        }
+
+                        this.innerHTML = '';
+                        this.appendChild(draggedItem);
+
+                        evaluateDropZone(this);
                         draggedItem = null;
                     });
                 });
             }
 
+            function setupBanks() {
+                document.querySelectorAll('.drag-bank').forEach(bank => {
+                    bank.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                    });
+
+                    bank.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        if (!draggedItem) return;
+                        if (draggedItem.classList.contains('locked')) return;
+
+                        const fromZoneId = draggedItem.dataset.fromZone;
+                        if (fromZoneId) {
+                            const fromZone = document.getElementById(fromZoneId);
+                            if (fromZone) {
+                                fromZone.innerHTML = '';
+                                clearZoneState(fromZone);
+                            }
+                        }
+
+                        draggedItem.classList.remove('dragging');
+                        this.appendChild(draggedItem);
+                        draggedItem = null;
+
+                        updateEksplorasiExplanations();
+                    });
+                });
+            }
+
             window.resetEksplorasi = function () {
-                solvedCount = 0;
-                updateProgress();
+                attemptedDrops = 0;
 
                 document.querySelectorAll('.drop-zone').forEach(zone => {
                     zone.innerHTML = '';
                     zone.classList.remove('filled', 'correct', 'wrong', 'hovered');
                     delete zone.dataset.solved;
+                    delete zone.dataset.attempted;
                 });
 
                 document.querySelectorAll('.explanation-box').forEach(box => {
                     box.classList.remove('show');
+                    const title = box.querySelector('h5');
+                    if (title) {
+                        if (box.id === 'explainGabungan') {
+                            title.innerHTML = 'Penjelasan';
+                        } else if (box.id === 'explainMakna') {
+                            title.innerHTML = 'Penjelasan Makna';
+                        }
+                    }
                 });
 
                 document.querySelectorAll('.status-box').forEach(box => {
@@ -696,36 +1220,56 @@
                 });
 
                 if (finalBoxEks) finalBoxEks.classList.remove('show');
+                hideMateriSetelahEksplorasi();
 
                 const bank1 = document.getElementById('answerBank1');
                 const bank2 = document.getElementById('answerBank2');
 
                 if (bank1) {
                     bank1.innerHTML = `
-                                                                                                                    <div class="drag-item" draggable="true" data-value="1">1</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="3">3</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="2">2</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="4">4</div>
-                                                                                                                `;
+                        <div class="drag-item" draggable="true" data-value="0">0</div>
+                        <div class="drag-item" draggable="true" data-value="-6">-6</div>
+                        <div class="drag-item" draggable="true" data-value="1">1</div>
+                        <div class="drag-item" draggable="true" data-value="4">4</div>
+                    `;
                 }
 
                 if (bank2) {
                     bank2.innerHTML = `
-                                                                                                                    <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
-                                                                                                                    <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
-                                                                                                                `;
+                        <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
+                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
+                        <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
+                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
+                    `;
                 }
 
                 setupDragItems();
+                setupBanks();
+
+                if (typeof renderMathInElement === 'function') {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            { left: "$$", right: "$$", display: true },
+                            { left: "\\(", right: "\\)", display: false },
+                            { left: "\\[", right: "\\]", display: true }
+                        ],
+                        throwOnError: false
+                    });
+                }
+
+                updateEksplorasiExplanations();
+                checkEksplorasiSelesai();
             };
 
             setupDragItems();
             setupDropZones();
-            updateProgress();
+            setupBanks();
+            updateEksplorasiExplanations();
+            checkEksplorasiSelesai();
+
         });
     </script>
+
 
     <style>
         :root {
@@ -858,37 +1402,177 @@
         }
 
         /* CARD UTAMA - FULL FLAT */
+        /* =========================
+                           CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
+                           ========================= */
         .card-eksplorasi {
             position: relative;
             overflow: hidden;
             background: #eaf3ff !important;
-            /* FULL SOFT BLUE */
             background-image: none !important;
             border: 1px solid #cfe3ff;
-            border-left: 6px solid #5b9bd5;
-            border-radius: 20px;
-            padding: 28px;
+            border-left: 3px solid #5b9bd5;
+            border-radius: 10px;
+            padding: 10px;
             box-shadow: none !important;
-            /* hilangkan efek depth berlebihan */
         }
 
-        /* MATIKAN SEMUA EFEK TAMBAHAN */
+        /* MATIKAN EFEK TAMBAHAN */
         .card-eksplorasi::before,
         .card-eksplorasi::after {
             display: none !important;
             content: none !important;
         }
 
-        /* HAPUS SEMUA GRADASI DI DALAM CARD */
+        /* HAPUS GRADASI DALAM */
         .card-eksplorasi * {
             background-image: none !important;
         }
 
-        /* PAKSA BACKGROUND DALAM JADI TRANSPARAN */
+        /* ISI DALAM */
         .eksplorasi-story,
         .explore-grid,
         .mini-card {
             background: transparent !important;
+        }
+
+        /* teks umum dalam eksplorasi */
+        .card-eksplorasi p,
+        .card-eksplorasi li {
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        /* judul eksplorasi */
+        .eksplorasi-bar {
+            margin-bottom: 10px;
+            gap: 6px;
+        }
+
+        .eksplorasi-bar h3 {
+            font-size: 14px;
+        }
+
+        /* grid pertanyaan 1 & 2 */
+        .explore-grid {
+            gap: 8px;
+            margin-top: 10px;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
+
+        /* MINI CARD */
+        .mini-card {
+            padding: 4px !important;
+        }
+
+        .mini-card h4 {
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .mini-card p {
+            font-size: 11px;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+
+        /* box rumus */
+        .rumus-box {
+            padding: 6px;
+            margin: 6px 0;
+            border-radius: 8px;
+        }
+
+        .rumus-box .rumus-label {
+            font-size: 9px;
+            padding: 2px 6px;
+            margin-bottom: 3px;
+        }
+
+        .rumus-box .rumus-besar {
+            font-size: 12px;
+        }
+
+        /* Label bank */
+        .bank-label {
+            font-size: 10px;
+            padding: 3px 8px;
+            margin-bottom: 6px;
+        }
+
+        /* Drag item */
+        .drag-item {
+            padding: 2px 5px;
+            font-size: 11px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* Bank lebih rapat */
+        .drag-bank {
+            gap: 4px;
+        }
+
+        /* catatan kecil */
+        .small-note {
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        /* Drop area */
+        .drop-list {
+            gap: 8px;
+        }
+
+        .drop-row {
+            grid-template-columns: 52px 1fr;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .drop-label {
+            font-size: 11px;
+            padding: 4px;
+            border-radius: 6px;
+        }
+
+        .drop-zone {
+            min-height: 23px;
+            padding: 2px 4px;
+            border-radius: 8px;
+        }
+
+        /* Placeholder */
+        .drop-zone::after {
+            font-size: 9px;
+        }
+
+        /* Penjelasan */
+        .explanation-box {
+            margin-top: 6px;
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        .explanation-box h5 {
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .explanation-box p {
+            font-size: 10px;
+            line-height: 1.35;
+            margin-bottom: 4px;
+        }
+
+        /* Status box */
+        .status-box {
+            font-size: 10px;
+            padding: 6px 8px;
+            margin-top: 6px;
+            border-radius: 8px;
         }
 
         p,
@@ -980,9 +1664,74 @@
             font-size: 1em;
         }
 
+        /* =========================
+       FIX POSISI BADGE CONTOH
+       ========================= */
+
+        /* hapus efek naik */
         .contoh-wrap {
-            margin-top: -3px;
-            /* atau 0 kalau mau nempel */
+            margin-top: 38px !important;
+            position: relative;
+        }
+
+        /* badge CONTOH diturunkan dan dibuat stabil */
+        .contoh-pill {
+            display: inline-block;
+            background: #e7ab97;
+            color: #5a2d18;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 10px 34px;
+            border-radius: 999px;
+            border: 1.5px solid #d98a63;
+            margin: 0 0 22px 0 !important;
+            position: relative;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            z-index: 3;
+        }
+
+        /* box contoh diberi jarak dari badge */
+        .contoh-area {
+            margin-top: 8px;
+            border: 2px solid #79bf6a;
+            border-radius: 22px;
+            background: #f6f8f3;
+            padding: 30px 24px 28px;
+        }
+
+        /* kalau ada contoh rasional, samakan juga */
+        .contoh-rasional-wrap {
+            margin-top: 38px !important;
+            position: relative;
+        }
+
+        .contoh-rasional-pill {
+            display: inline-block;
+            min-width: 110px;
+            text-align: center;
+            background: #eda98d;
+            color: #472819;
+            font-size: 18px;
+            font-weight: 800;
+            padding: 10px 30px;
+            border-radius: 999px;
+            border: 1.5px solid #dd7d54;
+            margin: 0 0 22px 0 !important;
+            position: relative;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            z-index: 3;
+        }
+
+        .contoh-rasional-box {
+            margin-top: 8px;
+            border: 2px solid #79bf6a;
+            border-radius: 22px;
+            background: #f6f8f3;
+            padding: 30px 24px 28px;
         }
 
 
@@ -1297,11 +2046,11 @@
         }
 
         /* =========================
-                                                                                   DRAG & DROP EKSPLORASI
-                                                                                ========================== */
+                                                                                                                                                                                                       DRAG & DROP EKSPLORASI
+                                                                                                                                                                                                    ========================== */
         /* =========================
-                                                                       CARD EKSPLORASI (FINAL)
-                                                                    ========================== */
+                                                                                                                                                                                           CARD EKSPLORASI (FINAL)
+                                                                                                                                                                                        ========================== */
 
         /* card utama */
         .card-eksplorasi {
@@ -1317,8 +2066,8 @@
         }
 
         /* =========================
-                                                                       JUDUL EKSPLORASI
-                                                                    ========================== */
+                                                                                                                                                                                           JUDUL EKSPLORASI
+                                                                                                                                                                                        ========================== */
 
         .eksplorasi-bar {
             display: flex;
@@ -1351,8 +2100,8 @@
         }
 
         /* =========================
-                                                                       MATIKAN HEADER LAMA
-                                                                    ========================== */
+                                                                                                                                                                                           MATIKAN HEADER LAMA
+                                                                                                                                                                                        ========================== */
 
         .eksplorasi-header,
         .eksplorasi-icon,
@@ -1363,8 +2112,8 @@
         }
 
         /* =========================
-                                                                       ISI TEKS
-                                                                    ========================== */
+                                                                                                                                                                                           ISI TEKS
+                                                                                                                                                                                        ========================== */
 
         .card-eksplorasi p,
         .card-eksplorasi li {
@@ -1374,8 +2123,8 @@
         }
 
         /* =========================
-                                                                       AREA STORY (TANPA KOTAK)
-                                                                    ========================== */
+                                                                                                                                                                                           AREA STORY (TANPA KOTAK)
+                                                                                                                                                                                        ========================== */
 
         .eksplorasi-story {
             position: relative;
@@ -1408,8 +2157,8 @@
         }
 
         /* =========================
-                                                                       RUMUS BOX (SEPERTI GAMBAR)
-                                                                    ========================== */
+                                                                                                                                                                                           RUMUS BOX (SEPERTI GAMBAR)
+                                                                                                                                                                                        ========================== */
 
         .rumus-box {
             background: #f7f7f7;
@@ -1438,8 +2187,8 @@
         }
 
         /* =========================
-                                                                       RESPONSIVE (BIAR AMAN)
-                                                                    ========================== */
+                                                                                                                                                                                           RESPONSIVE (BIAR AMAN)
+                                                                                                                                                                                        ========================== */
 
         @media (max-width: 768px) {
             .card-eksplorasi {
@@ -1831,6 +2580,515 @@
             margin: 8px 0;
             font-size: 18px;
         }
+
+        /* =========================
+                                                                                   SIFAT - VERSI FIX
+                                                                                   ========================= */
+
+        /* BOX MODERN */
+        .sifat-box.modern {
+            position: relative;
+            margin-top: 32px;
+            padding: 36px 24px 22px;
+            /* ruang atas untuk badge */
+            border-radius: 24px;
+            background: linear-gradient(180deg, #f9fcf8, #f2f8f1);
+            border: 2px solid #69a96b;
+            box-shadow: 0 10px 24px rgba(55, 104, 58, 0.08);
+            overflow: visible;
+            /* FIX: jangan hidden */
+        }
+
+        /* ORNAMEN BACKGROUND */
+        .sifat-box.modern::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(106, 168, 110, 0.12), transparent 28%),
+                radial-gradient(circle at bottom left, rgba(224, 112, 43, 0.10), transparent 24%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* BADGE SIFAT */
+        .sifat-badge {
+            position: absolute;
+            top: 10px;
+            /* FIX: jangan negatif */
+            left: 20px;
+            background: linear-gradient(135deg, #e7a07d, #d97d4f);
+            color: #fff;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: 2px solid #c96d40;
+            box-shadow: 0 6px 14px rgba(201, 109, 64, 0.22);
+            z-index: 10;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        /* HEADER */
+        .sifat-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sifat-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #79bf6a, #4f9b53);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(79, 155, 83, 0.20);
+            flex-shrink: 0;
+        }
+
+        .sifat-header h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #256b2d;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .sifat-header p {
+            margin: 4px 0 0;
+            font-size: 15px;
+            color: #5f6d5f;
+            line-height: 1.6;
+        }
+
+        /* RUMUS */
+        .sifat-rumus {
+            position: relative;
+            z-index: 1;
+            background: #fff;
+            border-radius: 18px;
+            padding: 16px 14px;
+            text-align: center;
+            border: 1.5px solid #d7e9d4;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .sifat-rumus.utama {
+            margin-bottom: 18px;
+            font-size: 1.08em;
+        }
+
+        /* SUBTITLE */
+        .sifat-subtitle {
+            position: relative;
+            z-index: 1;
+            font-size: 17px;
+            font-weight: 700;
+            color: #476047;
+            margin-bottom: 12px;
+        }
+
+        /* GRID */
+        .sifat-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .sifat-item {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #dbe9d8;
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        .sifat-item-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #5a4a42;
+            margin-bottom: 10px;
+        }
+
+        .sifat-rumus.kecil {
+            background: #f8fbf7;
+            border: 1px dashed #bdd4ba;
+            padding: 12px 10px;
+            border-radius: 14px;
+        }
+
+        /* HIGHLIGHT */
+        .sifat-highlight {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5ee, #fffaf7);
+            border: 1.5px solid #efc2a6;
+            border-radius: 18px;
+            padding: 14px 12px;
+            color: #8f4c22;
+            font-weight: 700;
+        }
+
+        /* KATEX */
+        .sifat-box.modern .katex-display {
+            margin: 0;
+        }
+
+        /* =========================
+                                                                                   SIFAT - VERSI SIMPLE
+                                                                                   ========================= */
+
+        .sifat-box {
+            position: relative;
+            background: #f8faf7;
+            border: 2px solid #5aa05a;
+            border-radius: 20px;
+            padding: 20px 22px 18px;
+            margin-top: 30px;
+            overflow: visible !important;
+        }
+
+        .sifat-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #e8a47f, #d98a5e);
+            color: #fff;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1.5px solid #c96f42;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+            line-height: 1;
+        }
+
+        .sifat-box p,
+        .sifat-box li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a4a42;
+        }
+
+        .sifat-box .katex-display {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        /* =========================
+                                                                                   RESPONSIVE
+                                                                                   ========================= */
+
+        @media (max-width: 768px) {
+            .sifat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-header {
+                align-items: flex-start;
+            }
+
+            .sifat-header h3 {
+                font-size: 21px;
+            }
+
+            .sifat-box.modern {
+                padding: 42px 18px 18px;
+            }
+
+            .sifat-badge {
+                top: 10px;
+                left: 16px;
+                font-size: 12px;
+                padding: 7px 16px;
+            }
+
+            .sifat-box {
+                padding: 18px 16px 16px;
+            }
+
+            .sifat-label {
+                font-size: 14px;
+                padding: 7px 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sifat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-header {
+                align-items: flex-start;
+            }
+
+            .sifat-header h3 {
+                font-size: 21px;
+            }
+        }
+
+        .btn-petunjuk {
+            margin-top: 10px;
+            margin-bottom: 12px;
+            background: #fff7ef;
+            color: #9b4d16;
+            border: 1.5px solid #e6b086;
+            border-radius: 10px;
+            padding: 9px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: .2s ease;
+        }
+
+        .btn-petunjuk:hover {
+            background: #fff1e4;
+        }
+
+        .cara-menjawab-box {
+            display: none;
+            margin: 10px 0 14px 0;
+            background: #f8fdf6;
+            border-left: 5px solid #79bf6a;
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .cara-menjawab-box.show {
+            display: block;
+            animation: fadeIn .25s ease;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.ok {
+            color: #1b7a2a;
+        }
+
+        .feedback.no {
+            color: #c0392b;
+        }
+
+        .input-jawaban.input-correct,
+        .horner-box.input-correct {
+            border: 2px solid #2e9b50 !important;
+            background: #f1fff5;
+            color: #1f6e38;
+        }
+
+        .input-jawaban.input-wrong,
+        .horner-box.input-wrong {
+            border: 2px solid #d64545 !important;
+            background: #fff5f5;
+            color: #9f1f1f;
+        }
+
+        .btn-petunjuk {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            background: #fff7ef;
+            color: #9b4d16;
+            border: 1.5px solid #e0a67f;
+            border-radius: 10px;
+            padding: 9px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-petunjuk:hover {
+            background: #fff1e7;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.ok {
+            background: #eefaf1;
+            border: 1px solid #bfe4c8;
+            color: #216d3d;
+        }
+
+        .feedback.no {
+            background: #fff3f3;
+            border: 1px solid #efc2c2;
+            color: #ad3030;
+        }
+
+        .latihan-wrap.modern {
+            margin-top: 34px;
+        }
+
+        .latihan-headbar {
+            margin-bottom: 16px;
+        }
+
+        .latihan-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7f8c8d, #9aa3a4);
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: .4px;
+            padding: 10px 24px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        .latihan-intro {
+            margin: 0;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .latihan-panel {
+            background: #ffffff;
+            border: 2px solid #2498d3;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .05);
+        }
+
+        .latihan-list {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        .latihan-item {
+            margin-bottom: 34px;
+            color: #222;
+        }
+
+        .latihan-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .latihan-question-card {
+            background: #f8fbff;
+            border: 1px solid #d7ebf8;
+            border-radius: 18px;
+            padding: 18px 18px 14px;
+            margin-bottom: 18px;
+        }
+
+        .step-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .step-item {
+            background: #fff;
+            border: 1px solid #e9eef3;
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .03);
+        }
+
+        .step-header {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #1b7a2a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-heading {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #1b7a2a;
+            margin-bottom: 4px;
+        }
+
+        .step-sub {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .step-body {
+            padding-left: 46px;
+        }
+
+        .step-explain {
+            display: none;
+            margin-top: 14px;
+            background: #f4fbf4;
+            border-left: 5px solid #79bf6a;
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .step-explain p,
+        .step-explain li {
+            font-size: 15px;
+            color: #4d5a4c;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .latihan-panel {
+                padding: 16px;
+            }
+
+            .step-body {
+                padding-left: 0;
+            }
+
+            .step-header {
+                flex-direction: row;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1876,7 +3134,7 @@
                 <div class="rumus-box">
                     <div class="rumus-besar">
                         \[
-                        P(x)=x^3-2x^2+x+1
+                        P(x)=x^3-4x^2-x+4
                         \]
                     </div>
                 </div>
@@ -1894,16 +3152,17 @@
             </div>
 
             <div class="explore-grid">
-                {{-- EKSPLORASI 1 --}}
+
+                <!-- PERTANYAAN 1 -->
                 <div class="mini-card">
                     <h4>Pertanyaan 1</h4>
                     <p>Hitung nilai fungsi berikut, lalu cocokkan dengan hasil yang benar.</p>
 
                     <div class="bank-label">Seret pilihan jawaban</div>
                     <div class="drag-bank" id="answerBank1">
+                        <div class="drag-item" draggable="true" data-value="0">0</div>
+                        <div class="drag-item" draggable="true" data-value="-6">-6</div>
                         <div class="drag-item" draggable="true" data-value="1">1</div>
-                        <div class="drag-item" draggable="true" data-value="3">3</div>
-                        <div class="drag-item" draggable="true" data-value="2">2</div>
                         <div class="drag-item" draggable="true" data-value="4">4</div>
                     </div>
 
@@ -1912,118 +3171,105 @@
                     <div class="drop-list" style="margin-top:16px;">
                         <div class="drop-row">
                             <div class="drop-label">\(P(1)\)</div>
-                            <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="1" data-group="g1"
+                            <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="0" data-group="g1"
                                 id="drop-p1"></div>
                         </div>
 
                         <div class="drop-row">
                             <div class="drop-label">\(P(2)\)</div>
-                            <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="3" data-group="g1"
+                            <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="-6" data-group="g1"
                                 id="drop-p2"></div>
                         </div>
                     </div>
 
                     <div id="statusEks1" class="status-box"></div>
 
-                    <div id="explainP1" class="explanation-box">
-                        <h5>✅ Penjelasan \(P(1)\)</h5>
-                        <p>Substitusikan \(x=1\) ke fungsi:</p>
-                        <p>
-                            \[
-                            P(1)=1^3-2(1)^2+1+1=1-2+1+1=1
-                            \]
-                        </p>
-                        <p>
-                            Jadi, pada hari ke-1 kain yang masih tersisa adalah <strong>1 kain</strong>.
-                        </p>
-                    </div>
+                    <div id="explainGabungan" class="explanation-box">
+                        <h5>Penjelasan</h5>
 
-                    <div id="explainP2" class="explanation-box">
-                        <h5>✅ Penjelasan \(P(2)\)</h5>
-                        <p>Substitusikan \(x=2\) ke fungsi:</p>
+                        <p>
+                            Untuk mengetahui banyak kain yang tersisa, kita substitusikan nilai \(x\) ke dalam fungsi
+                            \(P(x)\).
+                        </p>
+
+                        <p><strong>1. Saat \(x=1\):</strong></p>
                         <p>
                             \[
-                            P(2)=2^3-2(2)^2+2+1=8-8+2+1=3
+                            P(1)=1^3-4(1)^2-1+4=0
                             \]
                         </p>
                         <p>
-                            Jadi, pada hari ke-2 kain yang masih tersisa adalah <strong>3 kain</strong>.
+                            Artinya, pada hari ke-1 tidak ada kain yang tersisa (kain habis terjual).
+                        </p>
+
+                        <p><strong>2. Saat \(x=2\):</strong></p>
+                        <p>
+                            \[
+                            P(2)=2^3-4(2)^2-2+4=8-16-2+4=-6
+                            \]
+                        </p>
+                        <p>
+                            Nilai negatif menunjukkan bahwa model matematika tidak lagi sesuai dengan kondisi nyata,
+                            tetapi perhitungan secara aljabar tetap benar.
                         </p>
                     </div>
                 </div>
 
-                {{-- EKSPLORASI 2 --}}
+                <!-- PERTANYAAN 2 -->
                 <div class="mini-card">
                     <h4>Pertanyaan 2</h4>
                     <p>Perhatikan hasil berikut, lalu seret makna yang paling tepat.</p>
 
-                    <div class="rumus-box" style="margin-top:0;">
+                    <div class="rumus-box">
                         <div class="rumus-label">HASIL</div>
                         <div class="rumus-besar">
                             \[
-                            P(1)=1
+                            P(1)=0
                             \]
                         </div>
                     </div>
 
                     <div class="bank-label">Seret makna hasil</div>
                     <div class="drag-bank" id="answerBank2" style="flex-direction:column;">
-                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain
-                            tersisa</div>
-                        <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
-                        <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
-                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
+                        <div class="drag-item" draggable="true" data-value="kain habis terjual">
+                            Kain habis terjual
+                        </div>
+                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">
+                            Masih ada 1 kain tersisa
+                        </div>
+                        <div class="drag-item" draggable="true" data-value="produksi bertambah">
+                            Produksi bertambah
+                        </div>
+                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">
+                            Tidak ada perubahan
+                        </div>
                     </div>
 
                     <div class="drop-list" style="margin-top:16px;">
                         <div class="drop-row">
                             <div class="drop-label">Makna</div>
                             <div class="drop-zone" data-placeholder="Drop jawaban makna di sini"
-                                data-answer="masih ada 1 kain tersisa" data-group="g2" id="drop-makna"></div>
+                                data-answer="kain habis terjual" data-group="g2" id="drop-makna"></div>
                         </div>
                     </div>
 
                     <div id="statusEks2" class="status-box"></div>
 
                     <div id="explainMakna" class="explanation-box">
-                        <h5>✅ Penjelasan Makna Hasil</h5>
+                        <h5>Penjelasan Makna</h5>
                         <p>
-                            Nilai \(P(1)=1\) berarti saat \(x=1\) atau <strong>hari ke-1</strong>, banyak kain yang
-                            masih tersisa adalah <strong>1 kain</strong>.
+                            Nilai \(P(1)=0\) berarti pada hari ke-1 tidak ada kain yang tersisa.
                         </p>
                         <p>
-                            Jadi, jawaban yang tepat adalah <strong>“Masih ada 1 kain tersisa”</strong>.
+                            Dalam matematika, ini berarti \(x=1\) adalah pembuat nol,
+                            sehingga \((x-1)\) merupakan faktor dari polinomial.
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div id="eksplorasiFinal" class="eksplorasi-final">
-                <h4>🎉 Semua Eksplorasi Selesai</h4>
-                <p>
-                    Dari kegiatan drag and drop ini, kita belajar bahwa nilai fungsi diperoleh dengan
-                    <strong>mensubstitusikan nilai \(x\)</strong> ke dalam fungsi.
-                </p>
-                <p>
-                    Untuk fungsi
-                    \[
-                    P(x)=x^3-2x^2+x+1
-                    \]
-                    diperoleh:
-                </p>
-                <p>
-                    \[
-                    P(1)=1 \quad \text{dan} \quad P(2)=3
-                    \]
-                </p>
-                <p>
-                    Artinya, pada hari ke-1 masih tersisa <strong>1 kain</strong>, sedangkan pada hari ke-2 masih
-                    tersisa <strong>3 kain</strong>.
-                </p>
-            </div>
         </div>
 
-        <div class="materi-wrap">
+        <div id="materiSetelahEksplorasi">
 
             <!-- PARAGRAF PENGANTAR -->
             <p class="paragraf-pengantar">
@@ -2079,9 +3325,10 @@
                 </div>
             </div>
 
-            <!-- SIFAT -->
             <div class="sifat-box">
-                <div class="sifat-label">SIFAT</div>
+                <div class="sifat-label-wrap">
+                    <div class="sifat-label">SIFAT</div>
+                </div>
 
                 \[
                 P(c)=0 \iff (x-c)\ \text{merupakan faktor dari}\ P(x)
@@ -2102,1165 +3349,1212 @@
                 \]
             </div>
 
-        </div>
+            {{-- CONTOH PERTAMA --}}
+            <div class="contoh-wrap">
+                <div class="contoh-pill">CONTOH</div>
 
-        {{-- CONTOH PERTAMA --}}
-        <div class="contoh-wrap">
-            <div class="contoh-pill">CONTOH</div>
+                <div class="contoh-area">
+                    <div class="diket-plain">
+                        <div class="judul-kecil">Diketahui suatu polinomial</div>
 
-            <div class="contoh-area">
-                <div class="diket-plain">
-                    <div class="judul-kecil">Diketahui suatu polinomial</div>
+                        <div class="soal-rumus">
+                            \[
+                            P(x)=x^3-4x^2-x+4
+                            \]
+                        </div>
 
-                    <div class="soal-rumus">
-                        \[
-                        P(x)=x^3-4x^2-x+4
-                        \]
-                    </div>
-
-                    <p>
-                        Guru memperhatikan bahwa jumlah semua koefisien polinomial tersebut sama dengan 0.
-                        Oleh karena itu, ia menduga bahwa \(x-1\) merupakan salah satu faktor \(P(x)\).
-                        Buktikan dugaan tersebut dan gunakan hasilnya untuk memfaktorkan \(P(x)\) secara lengkap.
-                    </p>
-                </div>
-
-                <input type="hidden" id="step1Status" value="false">
-                <input type="hidden" id="step2Status" value="false">
-                <input type="hidden" id="step3Status" value="false">
-                <input type="hidden" id="step4Status" value="false">
-                <input type="hidden" id="step5Status" value="false">
-
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 1</div>
-                    <div class="langkah-sub">Hitung nilai \(P(1)\).</div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Untuk mencari nilai \(P(1)\), gantikan setiap \(x\) pada polinomial dengan \(1\).
-                        </p>
-                        <p>
-                            Setelah itu, hitung nilai setiap suku, lalu jumlahkan semuanya.
+                            Guru memperhatikan bahwa jumlah semua koefisien polinomial tersebut sama dengan 0.
+                            Oleh karena itu, ia menduga bahwa \(x-1\) merupakan salah satu faktor \(P(x)\).
+                            Buktikan dugaan tersebut dan gunakan hasilnya untuk memfaktorkan \(P(x)\) secara lengkap.
                         </p>
                     </div>
 
-                    <label>Masukkan nilai \(P(1)\):</label>
-                    <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="Contoh: 0">
+                    <input type="hidden" id="step1Status" value="false">
+                    <input type="hidden" id="step2Status" value="false">
+                    <input type="hidden" id="step3Status" value="false">
+                    <input type="hidden" id="step4Status" value="false">
+                    <input type="hidden" id="step5Status" value="false">
 
-                    <button class="btn-cek" onclick="cekLangkah1()">Cek Jawaban</button>
-                    <div id="feedback1" class="feedback"></div>
+                    <!-- LANGKAH 1 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 1</div>
+                        <div class="langkah-sub">Hitung nilai \(P(1)\).</div>
 
-                    <div id="stepExplain1" class="penjelasan-step">
-                        <p>Substitusikan \(x=1\) ke dalam polinomial:</p>
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah1', this)">Lihat Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintLangkah1">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Untuk mencari nilai \(P(1)\), gantikan setiap \(x\) pada polinomial dengan \(1\).
+                            </p>
+                            <p>
+                                Setelah itu, hitung nilai setiap suku, lalu jumlahkan semuanya.
+                            </p>
+                        </div>
+
+                        <label>Masukkan nilai \(P(1)\):</label>
+                        <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="Contoh: 0">
+                        <div id="feedback1" class="feedback"></div>
+
+                        <div id="stepExplain1" class="penjelasan-step">
+                            <p>Substitusikan \(x=1\) ke dalam polinomial:</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
+                                \]
+                            </p>
+                            <p>Jadi, benar bahwa \(P(1)=0\).</p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 2 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 2</div>
+                        <div class="langkah-sub">Gunakan Teorema Faktor.</div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah2', this)">Lihat Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintLangkah2">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Perhatikan hasil pada langkah sebelumnya.
+                                Jika nilai tersebut memenuhi syarat Teorema Faktor, maka tentukan bentuk faktor linearnya.
+                            </p>
+                        </div>
+
+                        <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
+                        <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="Contoh: x-1">
+                        <div id="feedback2" class="feedback"></div>
+
+                        <div id="stepExplain2" class="penjelasan-step">
+                            <p>Menurut Teorema Faktor, jika \(P(c)=0\), maka \((x-c)\) adalah faktor dari \(P(x)\).</p>
+                            <p style="margin-top:8px;">
+                                Karena \(P(1)=0\), maka:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                x-1 \text{ adalah faktor dari } P(x)
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 3 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 3</div>
+                        <div class="langkah-sub">
+                            Lengkapi baris kedua pada tabel Horner.
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah3', this)">Lihat Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintLangkah3">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Gunakan metode Horner dengan angka \(1\).
+                                Turunkan angka pertama, lalu kalikan dengan \(1\),
+                                kemudian jumlahkan dengan koefisien berikutnya secara bertahap.
+                            </p>
+                        </div>
+
+                        <div class="horner-caption">
+                            Isi kotak kosong. Baris pertama saja yang sudah diberikan.
+                        </div>
+
+                        <div class="horner-wrap">
+                            <table class="horner-table">
+                                <tr>
+                                    <td class="left-number">1</td>
+                                    <td class="horner-top horner-left">1</td>
+                                    <td class="horner-top">-4</td>
+                                    <td class="horner-top">-1</td>
+                                    <td class="horner-top">4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-left"></td>
+                                    <td><input type="text" id="hornerTop1" class="horner-box"></td>
+                                    <td><input type="text" id="hornerTop2" class="horner-box"></td>
+                                    <td><input type="text" id="hornerTop3" class="horner-box"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-bottom"></td>
+                                    <td class="horner-bottom"> </td>
+                                    <td class="horner-bottom"> </td>
+                                    <td class="horner-bottom"> </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="feedback3" class="feedback"></div>
+
+                        <div id="stepExplain3" class="penjelasan-step">
+                            <p>
+                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
+                            </p>
+                            <p style="margin-top:8px;">
+                                Jadi baris keduanya adalah:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                1,\ -3,\ -4
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 4 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 4</div>
+                        <div class="langkah-sub">
+                            Lengkapi baris hasil bawah Horner.
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah4', this)">Lihat Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintLangkah4">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Jumlahkan angka pada setiap kolom secara vertikal.
+                                Hasil penjumlahan ditulis pada baris bawah.
+                            </p>
+                            <p>
+                                Perhatikan bahwa angka terakhir menunjukkan sisa pembagian.
+                            </p>
+                        </div>
+
+                        <div class="horner-caption">
+                            Isi hasil bawah dan sisa pembagian.
+                        </div>
+
+                        <div class="horner-wrap">
+                            <table class="horner-table">
+                                <tr>
+                                    <td class="left-number">1</td>
+                                    <td class="horner-top horner-left">1</td>
+                                    <td class="horner-top">-4</td>
+                                    <td class="horner-top">-1</td>
+                                    <td class="horner-top">4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-left"></td>
+                                    <td>1</td>
+                                    <td>-3</td>
+                                    <td>-4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-bottom"><input type="text" id="hornerBottom1" class="horner-box"></td>
+                                    <td class="horner-bottom"><input type="text" id="hornerBottom2" class="horner-box"></td>
+                                    <td class="horner-bottom"><input type="text" id="hornerBottom3" class="horner-box"></td>
+                                    <td class="horner-sisa"><input type="text" id="hornerBottom4" class="horner-box"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="feedback4" class="feedback"></div>
+
+                        <div id="stepExplain4" class="penjelasan-step">
+                            <p>Baris bawah hasil Horner adalah:</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                1,\ -3,\ -4
+                                \]
+                            </p>
+                            <p>dan sisanya:</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                0
+                                \]
+                            </p>
+                            <p>
+                                Jadi hasil baginya adalah:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                x^2-3x-4
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 5 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 5</div>
+                        <div class="langkah-sub">
+                            Faktorkan hasil bagi \(x^2-3x-4\).
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah5', this)">Lihat Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintLangkah5">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Faktorkan bentuk kuadrat yang diperoleh.
+                                Carilah dua bilangan yang jika dikalikan menghasilkan konstanta,
+                                dan jika dijumlahkan menghasilkan koefisien tengah.
+                            </p>
+                        </div>
+
+                        <label>Tuliskan faktornya:</label>
+                        <input type="text" id="jawabLangkah5" class="input-jawaban" placeholder="Contoh: (x-4)(x+1)">
+                        <div id="feedback5" class="feedback"></div>
+
+                        <div id="stepExplain5" class="penjelasan-step">
+                            <p>
+                                Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan \(1\).
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                x^2-3x-4=(x-4)(x+1)
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PENJELASAN AKHIR -->
+                    <div id="finalExplanation" class="final-explanation">
+                        <h4>Penjelasan Lengkap</h4>
+
+                        <p>Kita telah memperoleh:</p>
+
                         <p style="margin-top:8px;">
                             \[
-                            P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
+                            P(1)=0
                             \]
                         </p>
-                        <p>Jadi, benar bahwa \(P(1)=0\).</p>
-                    </div>
-                </div>
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 2</div>
-                    <div class="langkah-sub">Gunakan Teorema Faktor.</div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Perhatikan hasil pada langkah sebelumnya.
-                            Jika nilai tersebut memenuhi syarat Teorema Faktor, maka tentukan bentuk faktor linearnya.
+                            Karena \(P(1)=0\), maka berdasarkan Teorema Faktor, \(x-1\) adalah faktor dari \(P(x)\).
                         </p>
-                    </div>
 
-                    <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
-                    <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="Contoh: x-1">
-
-                    <button class="btn-cek" onclick="cekLangkah2()">Cek Jawaban</button>
-                    <div id="feedback2" class="feedback"></div>
-
-                    <div id="stepExplain2" class="penjelasan-step">
-                        <p>Menurut Teorema Faktor, jika \(P(c)=0\), maka \((x-c)\) adalah faktor dari \(P(x)\).</p>
-                        <p style="margin-top:8px;">
-                            Karena \(P(1)=0\), maka:
-                        </p>
-                        <p style="margin-top:8px;">
-                            \[
-                            x-1 \text{ adalah faktor dari } P(x)
-                            \]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 3</div>
-                    <div class="langkah-sub">
-                        Lengkapi baris kedua pada tabel Horner.
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Gunakan metode Horner dengan angka \(1\).
-                            Turunkan angka pertama, lalu kalikan dengan \(1\),
-                            kemudian jumlahkan dengan koefisien berikutnya secara bertahap.
+                            Dengan metode Horner, diperoleh hasil bagi:
                         </p>
-                    </div>
 
-                    <div class="horner-caption">
-                        Isi kotak kosong. Baris pertama saja yang sudah diberikan.
-                    </div>
-
-                    <div class="horner-wrap">
-                        <table class="horner-table">
-                            <tr>
-                                <td class="left-number">1</td>
-                                <td class="horner-top horner-left">1</td>
-                                <td class="horner-top">-4</td>
-                                <td class="horner-top">-1</td>
-                                <td class="horner-top">4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-left"></td>
-                                <td><input type="text" id="hornerTop1" class="horner-box"></td>
-                                <td><input type="text" id="hornerTop2" class="horner-box"></td>
-                                <td><input type="text" id="hornerTop3" class="horner-box"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-bottom"></td>
-                                <td class="horner-bottom"> </td>
-                                <td class="horner-bottom"> </td>
-                                <td class="horner-bottom"> </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <button class="btn-cek" onclick="cekLangkah3()">Cek Jawaban</button>
-                    <div id="feedback3" class="feedback"></div>
-
-                    <div id="stepExplain3" class="penjelasan-step">
-                        <p>
-                            Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
-                        </p>
-                        <p style="margin-top:8px;">
-                            Jadi baris keduanya adalah:
-                        </p>
-                        <p style="margin-top:8px;">
-                            \[
-                            1,\ -3,\ -4
-                            \]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 4</div>
-                    <div class="langkah-sub">
-                        Lengkapi baris hasil bawah Horner.
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
-                        <p>
-                            Jumlahkan angka pada setiap kolom secara vertikal.
-                            Hasil penjumlahan ditulis pada baris bawah.
-                        </p>
-                        <p>
-                            Perhatikan bahwa angka terakhir menunjukkan sisa pembagian.
-                        </p>
-                    </div>
-
-                    <div class="horner-caption">
-                        Isi hasil bawah dan sisa pembagian.
-                    </div>
-
-                    <div class="horner-wrap">
-                        <table class="horner-table">
-                            <tr>
-                                <td class="left-number">1</td>
-                                <td class="horner-top horner-left">1</td>
-                                <td class="horner-top">-4</td>
-                                <td class="horner-top">-1</td>
-                                <td class="horner-top">4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-left"></td>
-                                <td>1</td>
-                                <td>-3</td>
-                                <td>-4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-bottom"><input type="text" id="hornerBottom1" class="horner-box"></td>
-                                <td class="horner-bottom"><input type="text" id="hornerBottom2" class="horner-box"></td>
-                                <td class="horner-bottom"><input type="text" id="hornerBottom3" class="horner-box"></td>
-                                <td class="horner-sisa"><input type="text" id="hornerBottom4" class="horner-box"></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <button class="btn-cek" onclick="cekLangkah4()">Cek Jawaban</button>
-                    <div id="feedback4" class="feedback"></div>
-
-                    <div id="stepExplain4" class="penjelasan-step">
-                        <p>Baris bawah hasil Horner adalah:</p>
-                        <p style="margin-top:8px;">
-                            \[
-                            1,\ -3,\ -4
-                            \]
-                        </p>
-                        <p>dan sisanya:</p>
-                        <p style="margin-top:8px;">
-                            \[
-                            0
-                            \]
-                        </p>
-                        <p>
-                            Jadi hasil baginya adalah:
-                        </p>
                         <p style="margin-top:8px;">
                             \[
                             x^2-3x-4
                             \]
                         </p>
-                    </div>
-                </div>
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 5</div>
-                    <div class="langkah-sub">
-                        Faktorkan hasil bagi \(x^2-3x-4\).
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Faktorkan bentuk kuadrat yang diperoleh.
-                            Carilah dua bilangan yang jika dikalikan menghasilkan konstanta,
-                            dan jika dijumlahkan menghasilkan koefisien tengah.
+                            Kemudian hasil bagi tersebut difaktorkan menjadi:
                         </p>
-                    </div>
 
-                    <label>Tuliskan faktornya:</label>
-                    <input type="text" id="jawabLangkah5" class="input-jawaban" placeholder="Contoh: (x-4)(x+1)">
-
-                    <button class="btn-cek" onclick="cekLangkah5()">Cek Jawaban</button>
-                    <div id="feedback5" class="feedback"></div>
-
-                    <div id="stepExplain5" class="penjelasan-step">
-                        <p>
-                            Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan \(1\).
-                        </p>
                         <p style="margin-top:8px;">
                             \[
                             x^2-3x-4=(x-4)(x+1)
                             \]
                         </p>
-                    </div>
-                </div>
 
-                <div id="finalExplanation" class="final-explanation">
-                    <h4>Penjelasan Lengkap</h4>
+                        <p>Jadi, faktorisasi lengkapnya adalah:</p>
 
-                    <p>Kita telah memperoleh:</p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        P(1)=0
-                        \]
-                    </p>
-
-                    <p>
-                        Karena \(P(1)=0\), maka berdasarkan Teorema Faktor, \(x-1\) adalah faktor dari \(P(x)\).
-                    </p>
-
-                    <p>
-                        Dengan metode Horner, diperoleh hasil bagi:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        x^2-3x-4
-                        \]
-                    </p>
-
-                    <p>
-                        Kemudian hasil bagi tersebut difaktorkan menjadi:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        x^2-3x-4=(x-4)(x+1)
-                        \]
-                    </p>
-
-                    <p>Jadi, faktorisasi lengkapnya adalah:</p>
-
-                    <div class="final-result">
-                        \[
-                        P(x)=(x-1)(x-4)(x+1)
-                        \]
+                        <div class="final-result">
+                            \[
+                            P(x)=(x-1)(x-4)(x+1)
+                            \]
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <p>
-            Selain menggunakan petunjuk khusus seperti pada contoh pertama, soal yang sama juga dapat diselesaikan
-            dengan cara yang lebih sistematis, yaitu menggunakan
-            <span class="highlight">Pembuat Nol Rasional</span>.
-        </p>
-
-        <p>
-            Dengan cara ini, kita mencari dulu semua kandidat akar rasional yang mungkin, lalu menguji salah satunya.
-            Setelah itu, langkah selanjutnya tetap dapat dilanjutkan dengan Teorema Faktor dan metode Horner.
-        </p>
-
-        {{-- SIFAT 2 --}}
-        <div class="sifat-box">
-            <div class="sifat-label">SIFAT</div>
-
-            <p>Misalkan polinomial</p>
-
-            \[
-            P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
-            \]
 
             <p>
-                memiliki koefisien dan konstanta yang semuanya bilangan bulat dengan
+                Selain menggunakan petunjuk khusus seperti pada contoh pertama, soal yang sama juga dapat diselesaikan
+                dengan cara yang lebih sistematis, yaitu menggunakan
+                <span class="highlight">Pembuat Nol Rasional</span>.
             </p>
-
-            \[
-            a_n \ne 0 \text{ dan } a_0 \ne 0
-            \]
 
             <p>
-                Jika polinomial \(P(x)\) tersebut memiliki pembuat nol rasional
+                Dengan cara ini, kita mencari dulu semua kandidat akar rasional yang mungkin, lalu menguji salah satunya.
+                Setelah itu, langkah selanjutnya tetap dapat dilanjutkan dengan Teorema Faktor dan metode Horner.
             </p>
 
-            \[
-            \frac{p}{q},
-            \]
+            {{-- SIFAT 2 --}}
+            <div class="sifat-box">
+                <div class="sifat-label">SIFAT</div>
 
-            <p>
-                maka \(p\) merupakan faktor dari \(a_0\) dan \(q\) merupakan faktor dari \(a_n\).
-            </p>
-        </div>
+                <p>Misalkan polinomial</p>
 
-        {{-- CONTOH KEDUA --}}
-        <div class="contoh-rasional-wrap">
-            <div class="contoh-rasional-pill">CONTOH</div>
+                \[
+                P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
+                \]
 
-            <div class="contoh-rasional-box">
-                <div class="diket-plain">
-                    <div class="judul-kecil">Faktorkan polinomial secara lengkap</div>
+                <p>
+                    memiliki koefisien dan konstanta yang semuanya bilangan bulat dengan
+                </p>
 
-                    <div class="soal-rumus">
-                        \[
-                        P(x)=x^3-4x^2-x+4
-                        \]
-                    </div>
+                \[
+                a_n \ne 0 \text{ dan } a_0 \ne 0
+                \]
 
-                    <p>
-                        Gunakan konsep <span class="highlight">Pembuat Nol Rasional</span>,
-                        lalu tentukan salah satu akar polinomial, gunakan metode Horner,
-                        dan faktorkan sampai bentuk paling sederhana.
-                    </p>
-                </div>
+                <p>
+                    Jika polinomial \(P(x)\) tersebut memiliki pembuat nol rasional
+                </p>
 
-                <input type="hidden" id="rasionalStep1Status" value="false">
-                <input type="hidden" id="rasionalStep2Status" value="false">
-                <input type="hidden" id="rasionalStep3Status" value="false">
-                <input type="hidden" id="rasionalStep4Status" value="false">
-                <input type="hidden" id="rasionalStep5Status" value="false">
-                <input type="hidden" id="rasionalStep6Status" value="false">
+                \[
+                \frac{p}{q},
+                \]
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 1</div>
-                    <div class="langkah-sub">
-                        Tentukan kandidat pembuat nol rasional dari polinomial.
-                    </div>
+                <p>
+                    maka \(p\) merupakan faktor dari \(a_0\) dan \(q\) merupakan faktor dari \(a_n\).
+                </p>
+            </div>
 
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
+            {{-- CONTOH KEDUA --}}
+            <div class="contoh-rasional-wrap">
+                <div class="contoh-rasional-pill">CONTOH</div>
+
+                <div class="contoh-rasional-box">
+                    <div class="diket-plain">
+                        <div class="judul-kecil">Faktorkan polinomial secara lengkap</div>
+
+                        <div class="soal-rumus">
+                            \[
+                            P(x)=x^3-4x^2-x+4
+                            \]
+                        </div>
+
                         <p>
-                            Perhatikan suku konstanta dan koefisien tertinggi dari polinomial, tentukan faktor-faktor dari
-                            keduanya, lalu bentuk semua kemungkinan akar rasional sesuai aturan pembuat nol rasional.
+                            Gunakan konsep <span class="highlight">Pembuat Nol Rasional</span>,
+                            lalu tentukan salah satu akar polinomial, gunakan metode Horner,
+                            dan faktorkan sampai bentuk paling sederhana.
                         </p>
                     </div>
 
-                    <label>Tuliskan kandidat pembuat nol rasional:</label>
-                    <input type="text" id="jawabRasional1" class="input-jawaban" placeholder="Contoh: ±1, ±2, ±4">
+                    <input type="hidden" id="rasionalStep1Status" value="false">
+                    <input type="hidden" id="rasionalStep2Status" value="false">
+                    <input type="hidden" id="rasionalStep3Status" value="false">
+                    <input type="hidden" id="rasionalStep4Status" value="false">
+                    <input type="hidden" id="rasionalStep5Status" value="false">
+                    <input type="hidden" id="rasionalStep6Status" value="false">
 
-                    <button class="btn-cek" onclick="cekRasionalLangkah1()">Cek Jawaban</button>
-                    <div id="rasionalFeedback1" class="feedback"></div>
+                    <!-- LANGKAH 1 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 1</div>
+                        <div class="langkah-sub">
+                            Tentukan kandidat pembuat nol rasional dari polinomial.
+                        </div>
 
-                    <div id="rasionalExplain1" class="penjelasan-step">
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional1', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional1">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Perhatikan suku konstanta dan koefisien tertinggi dari polinomial,
+                                tentukan faktor-faktor dari keduanya, lalu bentuk semua kemungkinan
+                                akar rasional sesuai aturan pembuat nol rasional.
+                            </p>
+                        </div>
+
+                        <label>Tuliskan kandidat pembuat nol rasional:</label>
+                        <input type="text" id="jawabRasional1" class="input-jawaban" placeholder="Contoh: ±1, ±2, ±4">
+
+                        <div id="rasionalFeedback1" class="feedback"></div>
+
+                        <div id="rasionalExplain1" class="penjelasan-step">
+                            <p>
+                                Karena konstanta \(a_0=4\), faktor-faktornya adalah \(\pm1,\pm2,\pm4\).
+                            </p>
+                            <p>
+                                Karena koefisien utama \(a_3=1\), faktor-faktornya adalah \(\pm1\).
+                            </p>
+                            <p style="margin-top:8px;">
+                                Jadi kandidat pembuat nol rasionalnya:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                \pm1,\ \pm2,\ \pm4
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 2 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 2</div>
+                        <div class="langkah-sub">
+                            Coba salah satu kandidat akar. Nilai yang membuat \(P(x)=0\) adalah?
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional2', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional2">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Uji satu per satu kandidat yang sudah diperoleh dengan mensubstitusikannya ke dalam
+                                polinomial, lalu pilih nilai yang membuat hasil polinomial sama dengan nol.
+                            </p>
+                        </div>
+
+                        <label>Masukkan salah satu pembuat nol:</label>
+                        <input type="text" id="jawabRasional2" class="input-jawaban" placeholder="Contoh: 1">
+
+                        <div id="rasionalFeedback2" class="feedback"></div>
+
+                        <div id="rasionalExplain2" class="penjelasan-step">
+                            <p>Substitusikan \(x=1\):</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
+                                \]
+                            </p>
+                            <p>Jadi, \(1\) adalah salah satu pembuat nol polinomial.</p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 3 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 3</div>
+                        <div class="langkah-sub">
+                            Gunakan Teorema Faktor.
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional3', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional3">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Gunakan pembuat nol yang sudah ditemukan pada langkah sebelumnya,
+                                lalu tentukan bentuk faktor linear yang bersesuaian berdasarkan Teorema Faktor.
+                            </p>
+                        </div>
+
+                        <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
+                        <input type="text" id="jawabRasional3" class="input-jawaban" placeholder="Contoh: x-1">
+
+                        <div id="rasionalFeedback3" class="feedback"></div>
+
+                        <div id="rasionalExplain3" class="penjelasan-step">
+                            <p>
+                                Karena \(P(1)=0\), maka menurut Teorema Faktor:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                (x-1) \text{ adalah faktor dari } P(x)
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 4 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 4</div>
+                        <div class="langkah-sub">
+                            Lengkapi baris kedua pada tabel Horner untuk pembagian dengan \(x-1\).
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional4', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional4">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Gunakan nilai pembagi Horner yang sesuai, turunkan koefisien pertama,
+                                lalu kalikan hasilnya dengan angka di kiri dan tuliskan secara bertahap
+                                pada baris kedua sampai semua kotak terisi.
+                            </p>
+                        </div>
+
+                        <div class="horner-caption">
+                            Isi dulu baris kedua Horner.
+                        </div>
+
+                        <div class="horner-wrap">
+                            <table class="horner-table">
+                                <tr>
+                                    <td class="left-number">1</td>
+                                    <td class="horner-top horner-left">1</td>
+                                    <td class="horner-top">-4</td>
+                                    <td class="horner-top">-1</td>
+                                    <td class="horner-top">4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-left"></td>
+                                    <td><input type="text" id="rasionalHornerTop1" class="horner-box"></td>
+                                    <td><input type="text" id="rasionalHornerTop2" class="horner-box"></td>
+                                    <td><input type="text" id="rasionalHornerTop3" class="horner-box"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-bottom"></td>
+                                    <td class="horner-bottom"> </td>
+                                    <td class="horner-bottom"> </td>
+                                    <td class="horner-bottom"> </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="rasionalFeedback4" class="feedback"></div>
+
+                        <div id="rasionalExplain4" class="penjelasan-step">
+                            <p>
+                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
+                            </p>
+                            <p style="margin-top:8px;">
+                                Jadi baris keduanya adalah:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                1,\ -3,\ -4
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 5 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 5</div>
+                        <div class="langkah-sub">
+                            Lengkapi baris terakhir Horner.
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional5', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional5">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Jumlahkan setiap kolom secara vertikal antara baris atas dan baris kedua,
+                                tuliskan hasilnya pada baris bawah, lalu perhatikan bahwa bilangan terakhir
+                                menunjukkan sisa pembagian.
+                            </p>
+                        </div>
+
+                        <div class="horner-caption">
+                            Isi baris hasil bawah dan sisa pembagian.
+                        </div>
+
+                        <div class="horner-wrap">
+                            <table class="horner-table">
+                                <tr>
+                                    <td class="left-number">1</td>
+                                    <td class="horner-top horner-left">1</td>
+                                    <td class="horner-top">-4</td>
+                                    <td class="horner-top">-1</td>
+                                    <td class="horner-top">4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-left"></td>
+                                    <td>1</td>
+                                    <td>-3</td>
+                                    <td>-4</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom1"
+                                            class="horner-box">
+                                    </td>
+                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom2"
+                                            class="horner-box">
+                                    </td>
+                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom3"
+                                            class="horner-box">
+                                    </td>
+                                    <td class="horner-sisa"><input type="text" id="rasionalHornerBottom4"
+                                            class="horner-box">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="rasionalFeedback5" class="feedback"></div>
+
+                        <div id="rasionalExplain5" class="penjelasan-step">
+                            <p>Baris bawah hasil Horner adalah:</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                1,\ -3,\ -4
+                                \]
+                            </p>
+                            <p>dan sisanya:</p>
+                            <p style="margin-top:8px;">
+                                \[
+                                0
+                                \]
+                            </p>
+                            <p>
+                                Jadi hasil baginya adalah:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                x^2-3x-4
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 6 -->
+                    <div class="langkah-card">
+                        <div class="langkah-title">Langkah 6</div>
+                        <div class="langkah-sub">
+                            Faktorkan polinomial secara lengkap.
+                        </div>
+
+                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional6', this)">Lihat
+                            Petunjuk
+                            Menjawab</button>
+
+                        <div class="cara-menjawab-box" id="hintRasional6">
+                            <div class="cara-menjawab-title">Cara menjawab:</div>
+                            <p>
+                                Gabungkan faktor linear yang sudah diperoleh dengan hasil bagi dari metode Horner,
+                                lalu faktorkan lagi bentuk kuadratnya sampai diperoleh bentuk paling sederhana.
+                            </p>
+                        </div>
+
+                        <label>Tuliskan faktorisasi lengkap:</label>
+                        <input type="text" id="jawabRasional6" class="input-jawaban" placeholder="Contoh: (x-1)(x-4)(x+1)">
+
+                        <div id="rasionalFeedback6" class="feedback"></div>
+
+                        <div id="rasionalExplain6" class="penjelasan-step">
+                            <p>
+                                Karena
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                x^2-3x-4=(x-4)(x+1)
+                                \]
+                            </p>
+                            <p>
+                                maka faktorisasi lengkap polinomial adalah:
+                            </p>
+                            <p style="margin-top:8px;">
+                                \[
+                                P(x)=(x-1)(x-4)(x+1)
+                                \]
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="rasionalFinalExplanation" class="final-explanation">
+                        <h4>Penjelasan Lengkap</h4>
+
                         <p>
-                            Karena konstanta \(a_0=4\), faktor-faktornya adalah \(\pm1,\pm2,\pm4\).
+                            Dari Teorema Pembuat Nol Rasional, kandidat akar rasional diperoleh dari faktor-faktor 4, yaitu:
                         </p>
-                        <p>
-                            Karena koefisien utama \(a_3=1\), faktor-faktornya adalah \(\pm1\).
-                        </p>
-                        <p style="margin-top:8px;">
-                            Jadi kandidat pembuat nol rasionalnya:
-                        </p>
+
                         <p style="margin-top:8px;">
                             \[
                             \pm1,\ \pm2,\ \pm4
                             \]
                         </p>
-                    </div>
-                </div>
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 2</div>
-                    <div class="langkah-sub">
-                        Coba salah satu kandidat akar. Nilai yang membuat \(P(x)=0\) adalah?
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Uji satu per satu kandidat yang sudah diperoleh dengan mensubstitusikannya ke dalam polinomial,
-                            lalu pilih nilai yang membuat hasil polinomial sama dengan nol.
+                            Setelah dicoba, diperoleh:
                         </p>
-                    </div>
 
-                    <label>Masukkan salah satu pembuat nol:</label>
-                    <input type="text" id="jawabRasional2" class="input-jawaban" placeholder="Contoh: 1">
-
-                    <button class="btn-cek" onclick="cekRasionalLangkah2()">Cek Jawaban</button>
-                    <div id="rasionalFeedback2" class="feedback"></div>
-
-                    <div id="rasionalExplain2" class="penjelasan-step">
-                        <p>Substitusikan \(x=1\):</p>
                         <p style="margin-top:8px;">
                             \[
-                            P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
+                            P(1)=0
                             \]
                         </p>
-                        <p>Jadi, \(1\) adalah salah satu pembuat nol polinomial.</p>
-                    </div>
-                </div>
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 3</div>
-                    <div class="langkah-sub">
-                        Gunakan Teorema Faktor.
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Gunakan pembuat nol yang sudah ditemukan pada langkah sebelumnya, lalu tentukan bentuk faktor
-                            linear yang bersesuaian berdasarkan Teorema Faktor.
+                            Maka \((x-1)\) adalah faktor dari \(P(x)\). Dengan metode Horner, hasil baginya:
                         </p>
-                    </div>
 
-                    <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
-                    <input type="text" id="jawabRasional3" class="input-jawaban" placeholder="Contoh: x-1">
-
-                    <button class="btn-cek" onclick="cekRasionalLangkah3()">Cek Jawaban</button>
-                    <div id="rasionalFeedback3" class="feedback"></div>
-
-                    <div id="rasionalExplain3" class="penjelasan-step">
-                        <p>
-                            Karena \(P(1)=0\), maka menurut Teorema Faktor:
-                        </p>
-                        <p style="margin-top:8px;">
-                            \[
-                            (x-1) \text{ adalah faktor dari } P(x)
-                            \]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 4</div>
-                    <div class="langkah-sub">
-                        Lengkapi baris kedua pada tabel Horner untuk pembagian dengan \(x-1\).
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
-                        <p>
-                            Gunakan nilai pembagi Horner yang sesuai, turunkan koefisien pertama, lalu kalikan hasilnya
-                            dengan angka di kiri dan tuliskan secara bertahap pada baris kedua sampai semua kotak terisi.
-                        </p>
-                    </div>
-
-                    <div class="horner-caption">
-                        Isi dulu baris kedua Horner.
-                    </div>
-
-                    <div class="horner-wrap">
-                        <table class="horner-table">
-                            <tr>
-                                <td class="left-number">1</td>
-                                <td class="horner-top horner-left">1</td>
-                                <td class="horner-top">-4</td>
-                                <td class="horner-top">-1</td>
-                                <td class="horner-top">4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-left"></td>
-                                <td><input type="text" id="rasionalHornerTop1" class="horner-box"></td>
-                                <td><input type="text" id="rasionalHornerTop2" class="horner-box"></td>
-                                <td><input type="text" id="rasionalHornerTop3" class="horner-box"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-bottom"></td>
-                                <td class="horner-bottom"> </td>
-                                <td class="horner-bottom"> </td>
-                                <td class="horner-bottom"> </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <button class="btn-cek" onclick="cekRasionalLangkah4()">Cek Jawaban</button>
-                    <div id="rasionalFeedback4" class="feedback"></div>
-
-                    <div id="rasionalExplain4" class="penjelasan-step">
-                        <p>
-                            Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
-                        </p>
-                        <p style="margin-top:8px;">
-                            Jadi baris keduanya adalah:
-                        </p>
-                        <p style="margin-top:8px;">
-                            \[
-                            1,\ -3,\ -4
-                            \]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 5</div>
-                    <div class="langkah-sub">
-                        Lengkapi baris terakhir Horner.
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
-                        <p>
-                            Jumlahkan setiap kolom secara vertikal antara baris atas dan baris kedua, tuliskan hasilnya pada
-                            baris bawah, lalu perhatikan bahwa bilangan terakhir menunjukkan sisa pembagian.
-                        </p>
-                    </div>
-
-                    <div class="horner-caption">
-                        Isi baris hasil bawah dan sisa pembagian.
-                    </div>
-
-                    <div class="horner-wrap">
-                        <table class="horner-table">
-                            <tr>
-                                <td class="left-number">1</td>
-                                <td class="horner-top horner-left">1</td>
-                                <td class="horner-top">-4</td>
-                                <td class="horner-top">-1</td>
-                                <td class="horner-top">4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-left"></td>
-                                <td>1</td>
-                                <td>-3</td>
-                                <td>-4</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="horner-bottom"><input type="text" id="rasionalHornerBottom1" class="horner-box">
-                                </td>
-                                <td class="horner-bottom"><input type="text" id="rasionalHornerBottom2" class="horner-box">
-                                </td>
-                                <td class="horner-bottom"><input type="text" id="rasionalHornerBottom3" class="horner-box">
-                                </td>
-                                <td class="horner-sisa"><input type="text" id="rasionalHornerBottom4" class="horner-box">
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <button class="btn-cek" onclick="cekRasionalLangkah5()">Cek Jawaban</button>
-                    <div id="rasionalFeedback5" class="feedback"></div>
-
-                    <div id="rasionalExplain5" class="penjelasan-step">
-                        <p>Baris bawah hasil Horner adalah:</p>
-                        <p style="margin-top:8px;">
-                            \[
-                            1,\ -3,\ -4
-                            \]
-                        </p>
-                        <p>dan sisanya:</p>
-                        <p style="margin-top:8px;">
-                            \[
-                            0
-                            \]
-                        </p>
-                        <p>
-                            Jadi hasil baginya adalah:
-                        </p>
                         <p style="margin-top:8px;">
                             \[
                             x^2-3x-4
                             \]
                         </p>
-                    </div>
-                </div>
 
-                <div class="langkah-card">
-                    <div class="langkah-title">Langkah 6</div>
-                    <div class="langkah-sub">
-                        Faktorkan polinomial secara lengkap.
-                    </div>
-
-                    <div class="cara-menjawab-box">
-                        <div class="cara-menjawab-title">Cara menjawab:</div>
                         <p>
-                            Gabungkan faktor linear yang sudah diperoleh dengan hasil bagi dari metode Horner, lalu
-                            faktorkan lagi bentuk kuadratnya sampai diperoleh bentuk paling sederhana.
+                            Lalu kita faktorkan lagi:
                         </p>
-                    </div>
 
-                    <label>Tuliskan faktorisasi lengkap:</label>
-                    <input type="text" id="jawabRasional6" class="input-jawaban" placeholder="Contoh: (x-1)(x-4)(x+1)">
-
-                    <button class="btn-cek" onclick="cekRasionalLangkah6()">Cek Jawaban</button>
-                    <div id="rasionalFeedback6" class="feedback"></div>
-
-                    <div id="rasionalExplain6" class="penjelasan-step">
-                        <p>
-                            Karena
-                        </p>
                         <p style="margin-top:8px;">
                             \[
                             x^2-3x-4=(x-4)(x+1)
                             \]
                         </p>
-                        <p>
-                            maka faktorisasi lengkap polinomial adalah:
-                        </p>
-                        <p style="margin-top:8px;">
+
+                        <p>Jadi, faktorisasi lengkapnya adalah:</p>
+
+                        <div class="final-result">
                             \[
                             P(x)=(x-1)(x-4)(x+1)
                             \]
-                        </p>
-                    </div>
-                </div>
-
-                <div id="rasionalFinalExplanation" class="final-explanation">
-                    <h4>Penjelasan Lengkap</h4>
-
-                    <p>
-                        Dari Teorema Pembuat Nol Rasional, kandidat akar rasional diperoleh dari faktor-faktor 4, yaitu:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        \pm1,\ \pm2,\ \pm4
-                        \]
-                    </p>
-
-                    <p>
-                        Setelah dicoba, diperoleh:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        P(1)=0
-                        \]
-                    </p>
-
-                    <p>
-                        Maka \((x-1)\) adalah faktor dari \(P(x)\). Dengan metode Horner, hasil baginya:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        x^2-3x-4
-                        \]
-                    </p>
-
-                    <p>
-                        Lalu kita faktorkan lagi:
-                    </p>
-
-                    <p style="margin-top:8px;">
-                        \[
-                        x^2-3x-4=(x-4)(x+1)
-                        \]
-                    </p>
-
-                    <p>Jadi, faktorisasi lengkapnya adalah:</p>
-
-                    <div class="final-result">
-                        \[
-                        P(x)=(x-1)(x-4)(x+1)
-                        \]
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {{-- LATIHAN --}}
-        <div class="latihan-wrap">
-            <div class="latihan-header">LATIHAN</div>
+            {{-- LATIHAN --}}
+            <div class="latihan-wrap">
+                <div class="latihan-header">LATIHAN</div>
 
-            <div class="latihan-box">
-                <ol>
-                    <li>
-                        <div class="latihan-soal-text">
-                            Faktorkan polinomial berikut secara lengkap:
-                        </div>
-
-                        <div class="latihan-soal-rumus">
-                            \[
-                            P(x)=x^3+2x^2-9x-18
-                            \]
-                        </div>
-
-                        <input type="hidden" id="latihan1Step1Status" value="false">
-                        <input type="hidden" id="latihan1Step2Status" value="false">
-                        <input type="hidden" id="latihan1Step3Status" value="false">
-                        <input type="hidden" id="latihan1Step4Status" value="false">
-
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 1</div>
-                            <div class="langkah-sub">
-                                Metode yang paling sesuai untuk memulai faktorisasi polinomial ini adalah:
+                <div class="latihan-box">
+                    <ol>
+                        <li>
+                            <div class="latihan-soal-text">
+                                Faktorkan polinomial berikut secara lengkap:
                             </div>
 
-                            <div class="opsi-wrap">
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi1" value="teorema faktor">
-                                    <span>Teorema Faktor langsung</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi1" value="pengelompokan">
-                                    <span>Metode pengelompokan</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi1" value="rumus abc">
-                                    <span>Rumus kuadrat/ABC</span>
-                                </label>
+                            <div class="latihan-soal-rumus">
+                                \[
+                                P(x)=x^3+2x^2-9x-18
+                                \]
                             </div>
 
-                            <button class="btn-cek" onclick="cekLatihan1Langkah1()">Cek Jawaban</button>
-                            <div id="latihan1Feedback1" class="feedback"></div>
+                            <input type="hidden" id="latihan1Step1Status" value="false">
+                            <input type="hidden" id="latihan1Step2Status" value="false">
+                            <input type="hidden" id="latihan1Step3Status" value="false">
+                            <input type="hidden" id="latihan1Step4Status" value="false">
 
-                            <div id="latihan1Explain1" class="penjelasan-step">
-                                <p>
-                                    Polinomial ini cocok dikelompokkan menjadi dua pasangan suku:
-                                </p>
+                            <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 1</div>
+                                <div class="langkah-sub">
+                                    Metode yang paling sesuai untuk memulai faktorisasi polinomial ini adalah:
+                                </div>
+
+                                <div class="opsi-wrap">
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi1" value="teorema faktor">
+                                        <span>Teorema Faktor langsung</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi1" value="pengelompokan">
+                                        <span>Metode pengelompokan</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi1" value="rumus abc">
+                                        <span>Rumus kuadrat/ABC</span>
+                                    </label>
+                                </div>
+
+                                <div id="latihan1Feedback1" class="feedback"></div>
+
+                                <div id="latihan1Explain1" class="penjelasan-step">
+                                    <p>
+                                        Polinomial ini cocok dikelompokkan menjadi dua pasangan suku:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        (x^3+2x^2)+(-9x-18)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 2</div>
+                                <div class="langkah-sub">
+                                    Tuliskan hasil pengelompokannya setelah masing-masing kelompok difaktorkan.
+                                </div>
+
+                                <label>Masukkan bentuk hasil pengelompokan:</label>
+                                <input type="text" id="jawabLatihan1Langkah2" class="input-jawaban"
+                                    placeholder="Contoh: x^2(x+2)-9(x+2)">
+
+                                <button class="btn-cek" onclick="cekLatihan1Langkah2()">Cek Jawaban</button>
+                                <div id="latihan1Feedback2" class="feedback"></div>
+
+                                <div id="latihan1Explain2" class="penjelasan-step">
+                                    <p>
+                                        Dari
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        (x^3+2x^2)+(-9x-18)
+                                        \]
+                                    </p>
+                                    <p>diperoleh</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2(x+2)-9(x+2)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 3</div>
+                                <div class="langkah-sub">
+                                    Faktor persekutuan dari dua kelompok tersebut adalah:
+                                </div>
+
+                                <div class="opsi-wrap">
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi3" value="x-2">
+                                        <span>\(x-2\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi3" value="x+2">
+                                        <span>\(x+2\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan1opsi3" value="x^2-9">
+                                        <span>\(x^2-9\)</span>
+                                    </label>
+                                </div>
+
+                                <div id="latihan1Feedback3" class="feedback"></div>
+
+                                <div id="latihan1Explain3" class="penjelasan-step">
+                                    <p>
+                                        Karena kedua kelompok sama-sama memuat \((x+2)\), maka:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2(x+2)-9(x+2)=(x+2)(x^2-9)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 4</div>
+                                <div class="langkah-sub">
+                                    Faktorkan polinomial hingga bentuk paling sederhana.
+                                </div>
+
+                                <label>Tuliskan faktorisasi lengkap:</label>
+                                <input type="text" id="jawabLatihan1Langkah4" class="input-jawaban"
+                                    placeholder="Contoh: (x+2)(x-3)(x+3)">
+
+                                <button class="btn-cek" onclick="cekLatihan1Langkah4()">Cek Jawaban</button>
+                                <div id="latihan1Feedback4" class="feedback"></div>
+
+                                <div id="latihan1Explain4" class="penjelasan-step">
+                                    <p>
+                                        Karena
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2-9=(x-3)(x+3)
+                                        \]
+                                    </p>
+                                    <p>maka:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        P(x)=(x+2)(x-3)(x+3)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="latihan1FinalExplanation" class="final-explanation">
+                                <h4>Pembahasan Soal 1</h4>
+
+                                <p>Polinomial difaktorkan dengan metode pengelompokan:</p>
+
                                 <p style="margin-top:8px;">
                                     \[
-                                    (x^3+2x^2)+(-9x-18)
+                                    x^3+2x^2-9x-18=(x^3+2x^2)+(-9x-18)
                                     \]
                                 </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 2</div>
-                            <div class="langkah-sub">
-                                Tuliskan hasil pengelompokannya setelah masing-masing kelompok difaktorkan.
-                            </div>
-
-                            <label>Masukkan bentuk hasil pengelompokan:</label>
-                            <input type="text" id="jawabLatihan1Langkah2" class="input-jawaban"
-                                placeholder="Contoh: x^2(x+2)-9(x+2)">
-
-                            <button class="btn-cek" onclick="cekLatihan1Langkah2()">Cek Jawaban</button>
-                            <div id="latihan1Feedback2" class="feedback"></div>
-
-                            <div id="latihan1Explain2" class="penjelasan-step">
-                                <p>
-                                    Dari
-                                </p>
                                 <p style="margin-top:8px;">
                                     \[
-                                    (x^3+2x^2)+(-9x-18)
+                                    =x^2(x+2)-9(x+2)
                                     \]
                                 </p>
-                                <p>diperoleh</p>
+
                                 <p style="margin-top:8px;">
                                     \[
-                                    x^2(x+2)-9(x+2)
+                                    =(x+2)(x^2-9)
                                     \]
                                 </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 3</div>
-                            <div class="langkah-sub">
-                                Faktor persekutuan dari dua kelompok tersebut adalah:
-                            </div>
-
-                            <div class="opsi-wrap">
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi3" value="x-2">
-                                    <span>\(x-2\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi3" value="x+2">
-                                    <span>\(x+2\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan1opsi3" value="x^2-9">
-                                    <span>\(x^2-9\)</span>
-                                </label>
-                            </div>
-
-                            <button class="btn-cek" onclick="cekLatihan1Langkah3()">Cek Jawaban</button>
-                            <div id="latihan1Feedback3" class="feedback"></div>
-
-                            <div id="latihan1Explain3" class="penjelasan-step">
-                                <p>
-                                    Karena kedua kelompok sama-sama memuat \((x+2)\), maka:
-                                </p>
                                 <p style="margin-top:8px;">
                                     \[
-                                    x^2(x+2)-9(x+2)=(x+2)(x^2-9)
+                                    =(x+2)(x-3)(x+3)
                                     \]
                                 </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 4</div>
-                            <div class="langkah-sub">
-                                Faktorkan polinomial hingga bentuk paling sederhana.
-                            </div>
-
-                            <label>Tuliskan faktorisasi lengkap:</label>
-                            <input type="text" id="jawabLatihan1Langkah4" class="input-jawaban"
-                                placeholder="Contoh: (x+2)(x-3)(x+3)">
-
-                            <button class="btn-cek" onclick="cekLatihan1Langkah4()">Cek Jawaban</button>
-                            <div id="latihan1Feedback4" class="feedback"></div>
-
-                            <div id="latihan1Explain4" class="penjelasan-step">
-                                <p>
-                                    Karena
-                                </p>
-                                <p style="margin-top:8px;">
-                                    \[
-                                    x^2-9=(x-3)(x+3)
-                                    \]
-                                </p>
-                                <p>maka:</p>
-                                <p style="margin-top:8px;">
+                                <div class="final-result">
                                     \[
                                     P(x)=(x+2)(x-3)(x+3)
                                     \]
-                                </p>
+                                </div>
                             </div>
-                        </div>
+                        </li>
 
-                        <div id="latihan1FinalExplanation" class="final-explanation">
-                            <h4>Pembahasan Soal 1</h4>
-
-                            <p>Polinomial difaktorkan dengan metode pengelompokan:</p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                x^3+2x^2-9x-18=(x^3+2x^2)+(-9x-18)
-                                \]
-                            </p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                =x^2(x+2)-9(x+2)
-                                \]
-                            </p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                =(x+2)(x^2-9)
-                                \]
-                            </p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                =(x+2)(x-3)(x+3)
-                                \]
-                            </p>
-
-                            <div class="final-result">
-                                \[
-                                P(x)=(x+2)(x-3)(x+3)
-                                \]
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="latihan-soal-text">
-                            Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial berikut,
-                            lalu faktorkan polinomial tersebut hingga bentuk paling sederhana:
-                        </div>
-
-                        <div class="latihan-soal-rumus">
-                            \[
-                            P(x)=2x^3-3x^2-11x+6
-                            \]
-                        </div>
-
-                        <input type="hidden" id="latihan2Step1Status" value="false">
-                        <input type="hidden" id="latihan2Step2Status" value="false">
-                        <input type="hidden" id="latihan2Step3Status" value="false">
-                        <input type="hidden" id="latihan2Step4Status" value="false">
-                        <input type="hidden" id="latihan2Step5Status" value="false">
-
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 1</div>
-                            <div class="langkah-sub">
-                                Pilih himpunan kandidat pembuat nol rasional yang benar.
+                        <li>
+                            <div class="latihan-soal-text">
+                                Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial berikut,
+                                lalu faktorkan polinomial tersebut hingga bentuk paling sederhana:
                             </div>
 
-                            <div class="opsi-wrap">
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6">
-                                    <span>\(\pm1,\pm2,\pm3,\pm6\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6,±1/2,±3/2">
-                                    <span>\(\pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi1" value="±1/2,±3/2">
-                                    <span>\(\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
-                                </label>
+                            <div class="latihan-soal-rumus">
+                                \[
+                                P(x)=2x^3-3x^2-11x+6
+                                \]
                             </div>
 
-                            <button class="btn-cek" onclick="cekLatihan2Langkah1()">Cek Jawaban</button>
-                            <div id="latihan2Feedback1" class="feedback"></div>
+                            <input type="hidden" id="latihan2Step1Status" value="false">
+                            <input type="hidden" id="latihan2Step2Status" value="false">
+                            <input type="hidden" id="latihan2Step3Status" value="false">
+                            <input type="hidden" id="latihan2Step4Status" value="false">
+                            <input type="hidden" id="latihan2Step5Status" value="false">
 
-                            <div id="latihan2Explain1" class="penjelasan-step">
-                                <p>
-                                    Faktor konstanta \(6\) adalah \(\pm1,\pm2,\pm3,\pm6\), sedangkan faktor koefisien
-                                    utama
-                                    \(2\) adalah \(\pm1,\pm2\).
-                                </p>
+                            <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 1</div>
+                                <div class="langkah-sub">
+                                    Pilih himpunan kandidat pembuat nol rasional yang benar.
+                                </div>
+
+                                <div class="opsi-wrap">
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6">
+                                        <span>\(\pm1,\pm2,\pm3,\pm6\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6,±1/2,±3/2">
+                                        <span>\(\pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi1" value="±1/2,±3/2">
+                                        <span>\(\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
+                                    </label>
+                                </div>
+
+                                <div id="latihan2Feedback1" class="feedback"></div>
+
+                                <div id="latihan2Explain1" class="penjelasan-step">
+                                    <p>
+                                        Faktor konstanta \(6\) adalah \(\pm1,\pm2,\pm3,\pm6\), sedangkan faktor koefisien
+                                        utama \(2\) adalah \(\pm1,\pm2\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        Maka kandidat pembuat nol rasional:
+                                        \[
+                                        \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 2</div>
+                                <div class="langkah-sub">
+                                    Salah satu pembuat nol polinomial adalah:
+                                </div>
+
+                                <label>Masukkan salah satu pembuat nol:</label>
+                                <input type="text" id="jawabLatihan2Langkah2" class="input-jawaban"
+                                    placeholder="Contoh: -2">
+
+                                <button class="btn-cek" onclick="cekLatihan2Langkah2()">Cek Jawaban</button>
+                                <div id="latihan2Feedback2" class="feedback"></div>
+
+                                <div id="latihan2Explain2" class="penjelasan-step">
+                                    <p>Jika dicoba \(x=-2\), maka:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        P(-2)=2(-2)^3-3(-2)^2-11(-2)+6=-16-12+22+6=0
+                                        \]
+                                    </p>
+                                    <p>Jadi, \(-2\) adalah salah satu pembuat nol.</p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 3</div>
+                                <div class="langkah-sub">
+                                    Jika pembuat nolnya \(-2\), maka faktor linearnya adalah:
+                                </div>
+
+                                <div class="opsi-wrap">
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi3" value="x-2">
+                                        <span>\(x-2\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi3" value="x+2">
+                                        <span>\(x+2\)</span>
+                                    </label>
+                                    <label class="opsi-item">
+                                        <input type="radio" name="latihan2opsi3" value="2x+2">
+                                        <span>\(2x+2\)</span>
+                                    </label>
+                                </div>
+
+                                <div id="latihan2Feedback3" class="feedback"></div>
+
+                                <div id="latihan2Explain3" class="penjelasan-step">
+                                    <p>
+                                        Jika \(c=-2\) adalah pembuat nol, maka faktor linearnya:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x-c=x-(-2)=x+2
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 4</div>
+                                <div class="langkah-sub">
+                                    Lengkapi baris hasil bawah Horner untuk pembagian dengan \(x+2\).
+                                </div>
+
+                                <div class="mini-note">
+                                    Isikan hasil bawah dan sisa pembagian.
+                                </div>
+
+                                <div class="horner-wrap">
+                                    <table class="horner-table">
+                                        <tr>
+                                            <td class="left-number">-2</td>
+                                            <td class="horner-top horner-left">2</td>
+                                            <td class="horner-top">-3</td>
+                                            <td class="horner-top">-11</td>
+                                            <td class="horner-top">6</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-left"></td>
+                                            <td class="horner-bottom"><input type="text" id="latihan2Horner1"
+                                                    class="horner-box"></td>
+                                            <td class="horner-bottom"><input type="text" id="latihan2Horner2"
+                                                    class="horner-box"></td>
+                                            <td class="horner-bottom"><input type="text" id="latihan2Horner3"
+                                                    class="horner-box"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-bottom">2</td>
+                                            <td class="horner-bottom">-7</td>
+                                            <td class="horner-bottom">3</td>
+                                            <td class="horner-sisa"><input type="text" id="latihan2Horner4"
+                                                    class="horner-box">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <button class="btn-cek" onclick="cekLatihan2Langkah4()">Cek Jawaban</button>
+                                <div id="latihan2Feedback4" class="feedback"></div>
+
+                                <div id="latihan2Explain4" class="penjelasan-step">
+                                    <p>
+                                        Dengan Horner untuk pembagi \(x+2\), diperoleh hasil bagi:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        2x^2-7x+3
+                                        \]
+                                    </p>
+                                    <p>dan sisa:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        0
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 5 = ISIAN => TETAP ADA TOMBOL -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 5</div>
+                                <div class="langkah-sub">
+                                    Faktorkan polinomial secara lengkap.
+                                </div>
+
+                                <label>Tuliskan faktorisasi lengkap:</label>
+                                <input type="text" id="jawabLatihan2Langkah5" class="input-jawaban"
+                                    placeholder="Contoh: (x+2)(2x-1)(x-3)">
+
+                                <button class="btn-cek" onclick="cekLatihan2Langkah5()">Cek Jawaban</button>
+                                <div id="latihan2Feedback5" class="feedback"></div>
+
+                                <div id="latihan2Explain5" class="penjelasan-step">
+                                    <p>
+                                        Karena
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        2x^2-7x+3=(2x-1)(x-3)
+                                        \]
+                                    </p>
+                                    <p>maka:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        P(x)=(x+2)(2x-1)(x-3)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="latihan2FinalExplanation" class="final-explanation">
+                                <h4>Pembahasan Soal 2</h4>
+
+                                <p>Dari Sifat Pembuat Nol Rasional, kandidat pembuat nol adalah:</p>
+
                                 <p style="margin-top:8px;">
-                                    Maka kandidat pembuat nol rasional:
                                     \[
                                     \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
                                     \]
                                 </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 2</div>
-                            <div class="langkah-sub">
-                                Salah satu pembuat nol polinomial adalah:
-                            </div>
+                                <p>Setelah dicoba, diperoleh:</p>
 
-                            <label>Masukkan salah satu pembuat nol:</label>
-                            <input type="text" id="jawabLatihan2Langkah2" class="input-jawaban" placeholder="Contoh: -2">
-
-                            <button class="btn-cek" onclick="cekLatihan2Langkah2()">Cek Jawaban</button>
-                            <div id="latihan2Feedback2" class="feedback"></div>
-
-                            <div id="latihan2Explain2" class="penjelasan-step">
-                                <p>Jika dicoba \(x=-2\), maka:</p>
                                 <p style="margin-top:8px;">
                                     \[
-                                    P(-2)=2(-2)^3-3(-2)^2-11(-2)+6=-16-12+22+6=0
+                                    P(-2)=0
                                     \]
                                 </p>
-                                <p>Jadi, \(-2\) adalah salah satu pembuat nol.</p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 3</div>
-                            <div class="langkah-sub">
-                                Jika pembuat nolnya \(-2\), maka faktor linearnya adalah:
-                            </div>
-
-                            <div class="opsi-wrap">
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi3" value="x-2">
-                                    <span>\(x-2\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi3" value="x+2">
-                                    <span>\(x+2\)</span>
-                                </label>
-                                <label class="opsi-item">
-                                    <input type="radio" name="latihan2opsi3" value="2x+2">
-                                    <span>\(2x+2\)</span>
-                                </label>
-                            </div>
-
-                            <button class="btn-cek" onclick="cekLatihan2Langkah3()">Cek Jawaban</button>
-                            <div id="latihan2Feedback3" class="feedback"></div>
-
-                            <div id="latihan2Explain3" class="penjelasan-step">
                                 <p>
-                                    Jika \(c=-2\) adalah pembuat nol, maka faktor linearnya:
+                                    Maka \((x+2)\) adalah faktor dari \(P(x)\). Dengan Horner diperoleh:
                                 </p>
-                                <p style="margin-top:8px;">
-                                    \[
-                                    x-c=x-(-2)=x+2
-                                    \]
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 4</div>
-                            <div class="langkah-sub">
-                                Lengkapi baris hasil bawah Horner untuk pembagian dengan \(x+2\).
-                            </div>
-
-                            <div class="mini-note">
-                                Isikan hasil bawah dan sisa pembagian.
-                            </div>
-
-                            <div class="horner-wrap">
-                                <table class="horner-table">
-                                    <tr>
-                                        <td class="left-number">-2</td>
-                                        <td class="horner-top horner-left">2</td>
-                                        <td class="horner-top">-3</td>
-                                        <td class="horner-top">-11</td>
-                                        <td class="horner-top">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="horner-left"></td>
-                                        <td class="horner-bottom"><input type="text" id="latihan2Horner1"
-                                                class="horner-box">
-                                        </td>
-                                        <td class="horner-bottom"><input type="text" id="latihan2Horner2"
-                                                class="horner-box">
-                                        </td>
-                                        <td class="horner-bottom"><input type="text" id="latihan2Horner3"
-                                                class="horner-box">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="horner-bottom">2</td>
-                                        <td class="horner-bottom">-7</td>
-                                        <td class="horner-bottom">3</td>
-                                        <td class="horner-sisa"><input type="text" id="latihan2Horner4" class="horner-box">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <button class="btn-cek" onclick="cekLatihan2Langkah4()">Cek Jawaban</button>
-                            <div id="latihan2Feedback4" class="feedback"></div>
-
-                            <div id="latihan2Explain4" class="penjelasan-step">
-                                <p>
-                                    Dengan Horner untuk pembagi \(x+2\), diperoleh hasil bagi:
-                                </p>
                                 <p style="margin-top:8px;">
                                     \[
                                     2x^2-7x+3
                                     \]
                                 </p>
-                                <p>dan sisa:</p>
-                                <p style="margin-top:8px;">
-                                    \[
-                                    0
-                                    \]
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="langkah-card">
-                            <div class="langkah-title">Langkah 5</div>
-                            <div class="langkah-sub">
-                                Faktorkan polinomial secara lengkap.
-                            </div>
+                                <p>Lalu difaktorkan lagi menjadi:</p>
 
-                            <label>Tuliskan faktorisasi lengkap:</label>
-                            <input type="text" id="jawabLatihan2Langkah5" class="input-jawaban"
-                                placeholder="Contoh: (x+2)(2x-1)(x-3)">
-
-                            <button class="btn-cek" onclick="cekLatihan2Langkah5()">Cek Jawaban</button>
-                            <div id="latihan2Feedback5" class="feedback"></div>
-
-                            <div id="latihan2Explain5" class="penjelasan-step">
-                                <p>
-                                    Karena
-                                </p>
                                 <p style="margin-top:8px;">
                                     \[
                                     2x^2-7x+3=(2x-1)(x-3)
                                     \]
                                 </p>
-                                <p>maka:</p>
-                                <p style="margin-top:8px;">
+
+                                <div class="final-result">
                                     \[
                                     P(x)=(x+2)(2x-1)(x-3)
                                     \]
-                                </p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div id="latihan2FinalExplanation" class="final-explanation">
-                            <h4>Pembahasan Soal 2</h4>
-
-                            <p>Dari Sifat Pembuat Nol Rasional, kandidat pembuat nol adalah:</p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
-                                \]
-                            </p>
-
-                            <p>Setelah dicoba, diperoleh:</p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                P(-2)=0
-                                \]
-                            </p>
-
-                            <p>
-                                Maka \((x+2)\) adalah faktor dari \(P(x)\). Dengan Horner diperoleh:
-                            </p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                2x^2-7x+3
-                                \]
-                            </p>
-
-                            <p>Lalu difaktorkan lagi menjadi:</p>
-
-                            <p style="margin-top:8px;">
-                                \[
-                                2x^2-7x+3=(2x-1)(x-3)
-                                \]
-                            </p>
-
-                            <div class="final-result">
-                                \[
-                                P(x)=(x+2)(2x-1)(x-3)
-                                \]
-                            </div>
-                        </div>
-                    </li>
-                </ol>
+                        </li>
+                    </ol>
+                </div>
             </div>
+
         </div>
     </div>
 

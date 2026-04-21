@@ -6,13 +6,12 @@
     ========================== --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
-                                                                                                                                    delimiters: [
-                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                    ]
-                                                                                                                                });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ]
+                    });"></script>
 
     <style>
         :root {
@@ -263,7 +262,8 @@
         .blank-check:hover,
         .blank-reset:hover,
         .blank-checkall:hover,
-        .tip-btn:hover {
+        .tip-btn:hover,
+        .game-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 10px 22px rgba(0, 0, 0, .06);
             transition: .12s ease;
@@ -341,8 +341,13 @@
             box-shadow: 0 0 0 3px rgba(224, 112, 43, 0.08);
         }
 
+        /* materi lanjutan disembunyikan dulu */
         #after-eksplorasi[aria-hidden="true"] {
             display: none;
+        }
+
+        #after-eksplorasi[aria-hidden="false"] {
+            display: block;
         }
 
         .tip-board {
@@ -436,6 +441,19 @@
             padding: 14px 12px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, .03);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+            cursor: pointer;
+        }
+
+        .tip-step-card:hover {
+            box-shadow: 0 14px 24px rgba(0, 0, 0, .10);
+        }
+
+        .tip-step-card .tip-step-num,
+        .tip-step-card .tip-step-text {
+            transition: transform 0.18s ease;
         }
 
         .tip-step-num {
@@ -610,11 +628,12 @@
             border: 1px solid rgba(0, 0, 0, .10);
             box-shadow: 0 10px 28px rgba(0, 0, 0, .04);
             background: #fff;
+            width: 100%;
         }
 
         table.materi-table {
             width: 100%;
-            min-width: 520px;
+            min-width: 430px;
             border-collapse: collapse;
             background: #fff;
         }
@@ -626,14 +645,16 @@
             border: 1px solid rgba(0, 0, 0, .18);
             font-weight: 900;
             text-align: center;
+            white-space: nowrap;
         }
 
         .materi-table td {
-            padding: 14px 12px;
+            padding: 12px 10px;
             border: 1px solid rgba(0, 0, 0, .10);
             text-align: center;
             vertical-align: middle;
             color: var(--muted);
+            white-space: nowrap;
         }
 
         .katex-answer {
@@ -846,46 +867,6 @@
             border: 1px solid rgba(0, 0, 0, .08);
         }
 
-        .table-wrap {
-            margin-top: 14px;
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .04);
-            background: #fff;
-        }
-
-        table.materi-table {
-            width: 100%;
-            min-width: 430px;
-            border-collapse: collapse;
-            background: #fff;
-        }
-
-        .materi-table th,
-        .materi-table td {
-            white-space: nowrap;
-        }
-
-        .materi-table th {
-            background: var(--th-bg);
-            color: var(--th-text);
-            padding: 10px 12px;
-            border: 1px solid rgba(0, 0, 0, .18);
-            font-weight: 900;
-            text-align: center;
-        }
-
-        .materi-table td {
-            padding: 12px 10px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            text-align: center;
-            vertical-align: middle;
-            color: var(--muted);
-        }
-
         .metode-note {
             margin-top: 14px;
             padding: 12px 14px;
@@ -898,25 +879,17 @@
         }
 
         .interactive-card-c {
-            max-width: 460px;
-            margin: 18px auto 0;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
             padding: 16px;
             border-radius: 16px;
             border: 1px solid rgba(27, 122, 42, .20);
             background: linear-gradient(180deg, #fcfffc, #fff);
         }
 
-        @media (max-width: 920px) {
-            .metode-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .interactive-card-c {
-                max-width: 100%;
-            }
-        }
-
         .susun-card {
+            width: 100%;
             margin-top: 12px;
             border: 1px solid rgba(27, 122, 42, .16);
             border-radius: 16px;
@@ -925,11 +898,13 @@
         }
 
         .susun-wrap {
+            width: 100%;
             overflow-x: auto;
             padding: 8px 2px;
         }
 
         .susun-table {
+            width: 100%;
             margin: 0 auto;
             border-collapse: collapse;
             font-size: 20px;
@@ -956,7 +931,8 @@
         }
 
         .susun-input {
-            width: 180px;
+            width: 100%;
+            max-width: 100%;
             padding: 9px 10px;
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, .15);
@@ -1157,12 +1133,6 @@
             font-family: "Times New Roman", Times, serif;
         }
 
-        .game-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 22px rgba(0, 0, 0, .05);
-            transition: .12s ease;
-        }
-
         .game-score {
             font-weight: 900;
             color: #1e3a8a;
@@ -1177,63 +1147,6 @@
             color: #244b2c;
             font-weight: 700;
             display: none;
-        }
-
-        @media (max-width: 760px) {
-            .game-options {
-                grid-template-columns: 1fr;
-            }
-
-            .game-latihan-head {
-                min-width: 150px;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 920px) {
-
-            .practice-wrap.sideways,
-            .blank-grid,
-            .metode-grid,
-            .tip-step-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .top-title .judul {
-                font-size: 24px;
-            }
-
-            .top-title .label {
-                font-size: 22px;
-            }
-
-            .card {
-                padding: 16px;
-            }
-
-            .lead-text {
-                font-size: 16px;
-            }
-
-            .susun-table {
-                min-width: 280px;
-                font-size: 18px;
-            }
-
-            .susun-input {
-                width: 140px;
-                font-size: 15px;
-            }
-
-            .tip-main-quote {
-                font-size: 22px;
-            }
-
-            .tip-label {
-                font-size: 17px;
-            }
         }
 
         .hint-box {
@@ -1281,43 +1194,10 @@
             font-size: 15px;
         }
 
-        /* Bikin card full lebar */
-        .interactive-card-c {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-        }
-
-        /* Pastikan parent juga tidak membatasi */
-        .section-split {
-            width: 100%;
-        }
-
-        /* Supaya isi dalamnya ikut melebar */
-        .susun-card {
-            width: 100%;
-        }
-
-        /* Table ikut full */
-        .susun-wrap {
-            width: 100%;
-        }
-
-        .susun-table {
-            width: 100%;
-        }
-
-        /* Biar input tidak kecil */
-        .susun-input {
-            width: 100%;
-            max-width: 100%;
-        }
-
         .hint-toggle {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            /* kalau layar kecil tetap aman */
             gap: 6px;
         }
 
@@ -1329,6 +1209,7 @@
             background: transparent;
             border: 1px solid #97a97c;
             color: #1f4f29;
+            cursor: pointer;
         }
 
         .hint-btn:hover {
@@ -1339,7 +1220,6 @@
         .hint-content {
             display: none;
             margin-left: 10px;
-            /* jarak dari tombol */
             padding: 6px 10px;
             border-radius: 8px;
             background: rgba(27, 122, 42, .05);
@@ -1347,67 +1227,70 @@
             color: #374151;
             font-size: 13px;
             line-height: 1.5;
-
-            display: inline-block;
-            /* penting: supaya ke samping */
             vertical-align: middle;
-
             max-width: none;
-            /* hilangkan batas lebar */
-            white-space: nowrap;
-            /* supaya tidak turun ke bawah */
+            white-space: normal;
         }
 
-        .quiz-input.is-correct,
-        .step-input.is-correct,
-        .hasil-input.is-correct,
-        .blank-input.is-correct,
-        .susun-input.is-correct {
-            border: 2px solid #1b7a2a !important;
-            background: rgba(27, 122, 42, 0.08) !important;
-            box-shadow: 0 0 0 3px rgba(27, 122, 42, 0.08);
+        @media (max-width: 920px) {
+
+            .metode-grid,
+            .practice-wrap.sideways,
+            .blank-grid,
+            .tip-step-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interactive-card-c {
+                max-width: 100%;
+            }
         }
 
-        .quiz-input.is-wrong,
-        .step-input.is-wrong,
-        .hasil-input.is-wrong,
-        .blank-input.is-wrong,
-        .susun-input.is-wrong {
-            border: 2px solid #e0702b !important;
-            background: rgba(224, 112, 43, 0.08) !important;
-            box-shadow: 0 0 0 3px rgba(224, 112, 43, 0.08);
+        @media (max-width: 760px) {
+            .game-options {
+                grid-template-columns: 1fr;
+            }
+
+            .game-latihan-head {
+                min-width: 150px;
+                font-size: 20px;
+            }
         }
 
-        .quiz-feedback,
-        .step-feedback,
-        .mini-feedback,
-        .blank-feedback,
-        .susun-feedback {
-            display: none;
-        }
-    </style>
+        @media (max-width: 640px) {
+            .top-title .judul {
+                font-size: 24px;
+            }
 
-    <style>
-        .tip-step-card {
-            background: #ffffff;
-            border: 1px solid rgba(27, 122, 42, .10);
-            border-radius: 16px;
-            padding: 14px 12px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .03);
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-            transform-style: preserve-3d;
-            will-change: transform;
-            cursor: pointer;
-        }
+            .top-title .label {
+                font-size: 22px;
+            }
 
-        .tip-step-card:hover {
-            box-shadow: 0 14px 24px rgba(0, 0, 0, .10);
-        }
+            .card {
+                padding: 16px;
+            }
 
-        .tip-step-card .tip-step-num,
-        .tip-step-card .tip-step-text {
-            transition: transform 0.18s ease;
+            .lead-text {
+                font-size: 16px;
+            }
+
+            .susun-table {
+                min-width: 280px;
+                font-size: 18px;
+            }
+
+            .susun-input {
+                width: 140px;
+                font-size: 15px;
+            }
+
+            .tip-main-quote {
+                font-size: 22px;
+            }
+
+            .tip-label {
+                font-size: 17px;
+            }
         }
     </style>
 
@@ -2352,7 +2235,7 @@
             </div>
 
             <div class="game-latihan-card" id="game-latihan">
-                <div class="game-latihan-head">LATIHAN </div>
+                <div class="game-latihan-head">LATIHAN</div>
 
                 <div class="game-latihan-box">
                     <p class="game-intro">
@@ -2578,6 +2461,7 @@
                             summary.textContent = `Terisi: ${filled}/${total} | Benar: ${correct}/${total}`;
                         }
 
+                        // tampil hanya jika semua soal eksplorasi sudah dikerjakan
                         if (filled === total) {
                             showAfterEksplorasi();
                         } else {
@@ -2618,8 +2502,6 @@
 
                 // =========================
                 // GENERIC STEP BLOCK
-                // contoh  = warna saja
-                // latihan = warna + teks
                 // =========================
                 function bindStepBlock(blockId, resultBoxId = null, explanationId = null, showText = true) {
                     const block = document.getElementById(blockId);
@@ -2690,10 +2572,7 @@
                     if (explanationBox) explanationBox.style.display = "none";
                 }
 
-                // Contoh = tanpa teks
                 bindStepBlock("contoh-a", "result-contoh-a", "penjelasan-a", false);
-
-                // Mari mencoba = dengan teks
                 bindStepBlock("practice-a1", null, null, true);
                 bindStepBlock("practice-a2", null, null, true);
                 bindStepBlock("practice-a3", null, null, true);
@@ -2702,7 +2581,7 @@
                 bindStepBlock("practice-b3", null, null, true);
 
                 // =========================
-                // CONTOH B (warna saja, tanpa teks)
+                // CONTOH B
                 // =========================
                 const contohB = document.getElementById("contoh-b");
                 if (contohB) {
@@ -2857,7 +2736,7 @@
                 }
 
                 // =========================
-                // CONTOH C (warna saja, tanpa teks)
+                // CONTOH C
                 // =========================
                 const contohC = document.getElementById("contoh-c");
                 if (contohC) {
@@ -2925,7 +2804,6 @@
 
                 // =========================
                 // BLANK PRACTICE
-                // latihan = dengan teks
                 // =========================
                 function bindBlankBlock(blockId, answerBoxId = null, showText = true) {
                     const block = document.getElementById(blockId);
@@ -3042,11 +2920,119 @@
                     const btn = hint.querySelector(".hint-btn");
                     const content = hint.querySelector(".hint-content");
 
+                    if (!btn || !content) return;
+
                     btn.addEventListener("click", () => {
                         const isOpen = content.style.display === "block";
                         content.style.display = isOpen ? "none" : "block";
                     });
                 });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const soalList = document.querySelectorAll(".game-soal");
+                const scoreEl = document.getElementById("game-score");
+                const finalNote = document.getElementById("game-final-note");
+                const btnCheck = document.getElementById("game-check-score");
+                const btnReset = document.getElementById("game-reset");
+
+                const simpleNormalize = (value) => {
+                    return (value || "")
+                        .toLowerCase()
+                        .replace(/\s+/g, "")
+                        .replace(/×/g, "x")
+                        .replace(/–/g, "-")
+                        .replace(/−/g, "-");
+                };
+
+                soalList.forEach((soal) => {
+                    const options = soal.querySelectorAll(".game-option");
+                    const status = soal.querySelector(".game-status");
+
+                    options.forEach((opt) => {
+                        opt.addEventListener("click", function () {
+                            options.forEach(o => o.classList.remove("selected"));
+                            this.classList.add("selected");
+
+                            status.textContent = "Sudah dipilih";
+                            status.classList.remove("ok", "no");
+                        });
+                    });
+                });
+
+                if (btnCheck) {
+                    btnCheck.addEventListener("click", function () {
+                        let benar = 0;
+                        let terjawab = 0;
+
+                        soalList.forEach((soal) => {
+                            const answer = simpleNormalize(soal.dataset.answer || "");
+                            const status = soal.querySelector(".game-status");
+                            const options = soal.querySelectorAll(".game-option");
+                            const selected = soal.querySelector(".game-option.selected");
+
+                            options.forEach(o => o.classList.remove("correct", "wrong"));
+
+                            if (!selected) {
+                                status.textContent = "Belum dijawab";
+                                status.classList.remove("ok", "no");
+                                return;
+                            }
+
+                            terjawab++;
+                            const value = simpleNormalize(selected.dataset.value || "");
+
+                            if (value === answer) {
+                                benar++;
+                                selected.classList.add("correct");
+                                status.textContent = "Benar";
+                                status.classList.remove("no");
+                                status.classList.add("ok");
+                            } else {
+                                selected.classList.add("wrong");
+                                status.textContent = "Salah";
+                                status.classList.remove("ok");
+                                status.classList.add("no");
+
+                                options.forEach((o) => {
+                                    const optVal = simpleNormalize(o.dataset.value || "");
+                                    if (optVal === answer) {
+                                        o.classList.add("correct");
+                                    }
+                                });
+                            }
+                        });
+
+                        if (scoreEl) {
+                            scoreEl.textContent = `Skor: ${benar}/${soalList.length}`;
+                        }
+
+                        if (finalNote) {
+                            finalNote.style.display = (terjawab === soalList.length) ? "block" : "none";
+                        }
+                    });
+                }
+
+                if (btnReset) {
+                    btnReset.addEventListener("click", function () {
+                        soalList.forEach((soal) => {
+                            const status = soal.querySelector(".game-status");
+                            const options = soal.querySelectorAll(".game-option");
+
+                            options.forEach((o) => {
+                                o.classList.remove("selected", "correct", "wrong");
+                            });
+
+                            status.textContent = "Belum dijawab";
+                            status.classList.remove("ok", "no");
+                        });
+
+                        if (scoreEl) scoreEl.textContent = "";
+                        if (finalNote) finalNote.style.display = "none";
+                    });
+                }
             });
         </script>
     </div>
