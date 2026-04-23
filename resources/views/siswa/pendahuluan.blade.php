@@ -56,6 +56,124 @@
             }
         }
 
+        .intro-wrap {
+            margin-bottom: 26px;
+        }
+
+        .konsep-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .konsep-card {
+            border-radius: 24px;
+            padding: 22px 20px;
+            background: #fff;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e8edf4;
+        }
+
+        .konsep-card.eksponen {
+            background: linear-gradient(135deg, #fffdf6 0%, #fff8e9 100%);
+            border: 1px solid #f2dfb4;
+        }
+
+        .konsep-card.aljabar {
+            background: linear-gradient(135deg, #f8fcff 0%, #eef6ff 100%);
+            border: 1px solid #d8e7fb;
+        }
+
+        .konsep-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .badge-eksponen {
+            background: #e0a11d;
+        }
+
+        .badge-aljabar {
+            background: #4b86d1;
+        }
+
+        .konsep-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .konsep-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #414141;
+        }
+
+        .mini-rumus {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px dashed #d7d7d7;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #2d3f54;
+        }
+
+        .ingat-box {
+            margin-bottom: 16px;
+            border-radius: 24px;
+            padding: 18px 18px 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+            border: 1px solid #e6ecf3;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .ingat-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #334250;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .ingat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .ingat-card {
+            background: #fff;
+            border: 1px solid #e3e8ef;
+            border-radius: 18px;
+            padding: 14px 10px;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .ingat-rumus {
+            font-size: 18px;
+            font-weight: 800;
+            color: #29405a;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .ingat-ket {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #66717b;
+        }
+
         .rumus-section {
             margin-top: 28px;
             text-align: center;
@@ -93,12 +211,6 @@
             background: linear-gradient(135deg, #fafdff 0%, #edf6ff 100%);
         }
 
-        .klik-info {
-            margin-top: 12px;
-            font-size: 14px;
-            color: #707070;
-        }
-
         .penjelasan-box {
             max-height: 0;
             opacity: 0;
@@ -108,7 +220,7 @@
         }
 
         .penjelasan-box.show {
-            max-height: 1200px;
+            max-height: 2200px;
             opacity: 1;
             transform: translateY(0);
             margin-top: 24px;
@@ -132,7 +244,7 @@
 
         .unsur-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 18px;
             margin-bottom: 24px;
         }
@@ -198,6 +310,24 @@
 
         .var-name {
             color: #d58900;
+        }
+
+        .suku-card {
+            border-top: 5px solid #6d8f6b;
+            background: linear-gradient(180deg, #fafffa 0%, #eef7ef 100%);
+        }
+
+        .suku-line {
+            background: #6d8f6b;
+        }
+
+        .suku-bubble {
+            border: 3px solid #6d8f6b;
+            color: #222;
+        }
+
+        .suku-name {
+            color: #557154;
         }
 
         .koef-card {
@@ -267,6 +397,10 @@
 
         .icon-var {
             background: #f2a31b;
+        }
+
+        .icon-suku {
+            background: #6d8f6b;
         }
 
         .icon-koef {
@@ -498,13 +632,6 @@
             margin-top: 12px;
         }
 
-        .opsi-grid-dua {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 12px;
-        }
-
         .opsi-card {
             border-radius: 18px;
             padding: 18px 16px;
@@ -589,158 +716,146 @@
             font-weight: 500;
         }
 
-        .konteks-box {
-            margin: 28px 0 10px;
-            padding: 26px 22px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, #f8fff7 0%, #eef8ff 100%);
-            border: 1px solid #dbe8d8;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+        .alur-box {
+            margin-top: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #fcfcf8 100%);
+            border: 1px solid #e6e4d8;
+            border-radius: 28px;
+            padding: 28px 26px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
         }
 
-        .konteks-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: #aebf98;
-            color: #fff;
-            font-size: 13px;
+        .alur-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .alur-title {
+            font-size: 26px;
             font-weight: 800;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
+            color: #2f3a30;
+            margin-bottom: 8px;
         }
 
-        .konteks-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: #2d3a2f;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-
-        .konteks-desc {
+        .alur-desc {
             font-size: 15px;
-            line-height: 1.9;
-            color: #3a3a3a;
-            text-align: justify;
-            margin-bottom: 22px;
+            color: #5f675d;
+            line-height: 1.8;
+            margin: 0;
         }
 
-        .lahan-grid {
+        .alur-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
-            margin-bottom: 24px;
+            margin-bottom: 26px;
         }
 
-        .lahan-card {
-            background: #fff;
-            border-radius: 22px;
-            padding: 22px 18px;
-            text-align: center;
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
-            transition: all 0.35s ease;
+        .alur-card {
             position: relative;
-            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e7e6dc;
+            border-radius: 22px;
+            padding: 22px 18px 18px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
 
-        .lahan-card:hover {
-            transform: translateY(-6px) scale(1.02);
+        .alur-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
         }
 
-        .lahan-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-        }
-
-        .lahan-card.sawah::before {
-            background: linear-gradient(90deg, #7cb342, #aed581);
-        }
-
-        .lahan-card.kebun::before {
-            background: linear-gradient(90deg, #ffb300, #ffd54f);
-        }
-
-        .lahan-card.kolam::before {
-            background: linear-gradient(90deg, #42a5f5, #90caf9);
-        }
-
-        .lahan-icon {
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .lahan-name {
+        .alur-step {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #aebf98;
+            color: #fff;
             font-size: 18px;
             font-weight: 800;
-            color: #2d3a2f;
-            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
         }
 
-        .lahan-form {
-            font-size: 30px;
+        .alur-card-title {
+            font-size: 20px;
             font-weight: 800;
-            color: #22313f;
-            margin-bottom: 8px;
-        }
-
-        .lahan-info {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #5a5a5a;
-        }
-
-        .total-luas-box {
-            margin-top: 6px;
-            padding: 24px 20px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #ffffff 0%, #f6fbff 100%);
-            border: 2px dashed #b7cde8;
-            text-align: center;
-        }
-
-        .total-label {
-            font-size: 16px;
-            font-weight: 700;
-            color: #5a6a72;
-            margin-bottom: 12px;
-        }
-
-        .total-rumus {
-            font-size: 34px;
-            font-weight: 800;
-            color: #2e4053;
-            line-height: 1.6;
+            color: #2f3a30;
             margin-bottom: 10px;
         }
 
-        .total-hasil {
-            display: inline-block;
-            margin-top: 6px;
-            padding: 12px 22px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8ff 100%);
-            border: 1px solid #cfe3d3;
+        .alur-card-text {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3b3b3b;
+            text-align: left;
+            min-height: 120px;
+        }
+
+        .alur-rumus {
+            margin-top: 14px;
+            text-align: center;
             font-size: 28px;
             font-weight: 800;
-            color: #22603a;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            color: #2e4053;
+            background: #f8faf7;
+            border: 1px dashed #cfd8c4;
+            border-radius: 16px;
+            padding: 14px 10px;
         }
 
-        .total-note {
-            margin-top: 14px;
-            font-size: 14px;
-            color: #666;
-            line-height: 1.8;
+        .hasil-box {
+            background: linear-gradient(135deg, #f8fbf5 0%, #f2f7ee 100%);
+            border: 1px solid #dfe7d7;
+            border-radius: 24px;
+            padding: 24px 20px;
+            text-align: center;
         }
 
-        .highlight-text {
-            color: #1f6f43;
+        .hasil-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #60705f;
+            margin-bottom: 10px;
+        }
+
+        .hasil-rumus {
+            font-size: 38px;
             font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .hasil-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4d554b;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 992px) {
+
+            .konsep-grid,
+            .alur-grid,
+            .ingat-grid,
+            .unsur-grid,
+            .opsi-grid,
+            .isian-wrap {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .alur-card-text {
+                min-height: auto;
+            }
+
+            .hasil-rumus {
+                font-size: 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -758,11 +873,12 @@
                 border-radius: 18px;
             }
 
+            .konsep-grid,
+            .ingat-grid,
             .unsur-grid,
             .opsi-grid,
-            .opsi-grid-dua,
             .isian-wrap,
-            .lahan-grid {
+            .alur-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -783,15 +899,7 @@
                 font-size: 15px;
             }
 
-            .konteks-title {
-                font-size: 20px;
-            }
-
-            .total-rumus {
-                font-size: 24px;
-            }
-
-            .total-hasil {
+            .hasil-rumus {
                 font-size: 22px;
             }
         }
@@ -868,311 +976,663 @@
         }
     </style>
 
+    <style>
+        .intro-wrap {
+            margin-bottom: 28px;
+        }
+
+        .konsep-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .konsep-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            padding: 24px 22px 22px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e7ecf2;
+            transition: all 0.3s ease;
+        }
+
+        .konsep-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .konsep-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7px;
+        }
+
+        .konsep-card.eksponen {
+            background: linear-gradient(135deg, #fffdf5 0%, #fff7df 100%);
+        }
+
+        .konsep-card.eksponen::before {
+            background: linear-gradient(90deg, #f0b429, #ffd56a);
+        }
+
+        .konsep-card.aljabar {
+            background: linear-gradient(135deg, #f7fbff 0%, #edf5ff 100%);
+        }
+
+        .konsep-card.aljabar::before {
+            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
+        }
+
+        .konsep-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 0.4px;
+        }
+
+        .badge-eksponen {
+            background: #d89b17;
+        }
+
+        .badge-aljabar {
+            background: #4e84cf;
+        }
+
+        .konsep-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #24313f;
+            margin-bottom: 10px;
+        }
+
+        .konsep-desc {
+            font-size: 14px;
+            line-height: 1.85;
+            color: #424242;
+        }
+
+        .mini-rumus {
+            margin-top: 14px;
+            padding: 13px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px dashed #d2d9e2;
+            text-align: center;
+            font-size: 23px;
+            font-weight: 800;
+            color: #2e4155;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .ringkasan-box {
+            margin-bottom: 16px;
+            border-radius: 26px;
+            padding: 20px 18px 18px;
+            background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+            border: 1px solid #e5ebf3;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .ringkasan-header {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .ringkasan-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #aebf98;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            margin-bottom: 10px;
+        }
+
+        .ringkasan-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 4px;
+        }
+
+        .ringkasan-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        .ingat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .ingat-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e4e9f0;
+            border-radius: 20px;
+            padding: 16px 12px 14px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .ingat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .ingat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .eksponen-card::before {
+            background: linear-gradient(90deg, #f0b429, #ffd56a);
+        }
+
+        .aljabar-card::before {
+            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
+        }
+
+        .ingat-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .ingat-rumus {
+            font-size: 20px;
+            font-weight: 800;
+            color: #29405a;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .ingat-ket {
+            font-size: 12.5px;
+            line-height: 1.65;
+            color: #66717b;
+        }
+
+        .note-mini {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #5f6770;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 992px) {
+
+            .konsep-grid,
+            .ingat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .konsep-grid,
+            .ingat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .konsep-title {
+                font-size: 20px;
+            }
+
+            .mini-rumus {
+                font-size: 20px;
+            }
+        }
+
+        .transisi-box {
+            margin: 26px 0 20px;
+            padding: 18px 20px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f7faf6 0%, #eef4ea 100%);
+            border: 1px solid #dce7d3;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .transisi-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .transisi-icon {
+            font-size: 28px;
+        }
+
+        .transisi-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 3px;
+        }
+
+        .transisi-desc {
+            font-size: 13px;
+            color: #5f6b5c;
+            line-height: 1.6;
+        }
+    </style>
+
     <div class="materi-container">
         <div class="materi-title">APERSEPSI</div>
 
+        <!-- PENGANTAR EKSPONEN DAN ALJABAR -->
+        <div class="intro-wrap">
+            <div class="konsep-grid">
+                <div class="konsep-card eksponen">
+                    <div class="konsep-title">Eksponen?</div>
+                    <div class="konsep-desc">
+                        Eksponen adalah bentuk singkat dari <strong>perkalian berulang</strong> pada bilangan yang sama.
+                        Jadi, <strong>x²</strong> berarti <strong>x × x</strong>.
+                        <div class="mini-rumus">x × x = x<sup>2</sup></div>
+                    </div>
+                </div>
+
+                <div class="konsep-card aljabar">
+                    <div class="konsep-title">Aljabar?</div>
+                    <div class="konsep-desc">
+                        Aljabar adalah bentuk matematika yang memuat <strong>angka</strong>,
+                        <strong>huruf/variabel</strong>, dan <strong>operasi hitung</strong>.
+                        Variabel dipakai untuk menyatakan nilai yang belum diketahui.
+                        <div class="mini-rumus">2x + 5</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIFAT EKSPONEN -->
+            <div class="ringkasan-box">
+                <div class="ringkasan-header">
+                    <div class="ringkasan-title">Sifat-Sifat Eksponen</div>
+                    <div class="ringkasan-subtitle">
+                        Sifat ini membantu menyederhanakan bentuk berpangkat dengan cepat.
+                    </div>
+                </div>
+
+                <div class="ingat-grid">
+                    <div class="ingat-card eksponen-card">
+                        <div class="ingat-icon">✦</div>
+                        <div class="ingat-rumus">a<sup>m</sup> × a<sup>n</sup></div>
+                        <div class="ingat-ket">= a<sup>m+n</sup><br>Pangkat dijumlahkan</div>
+                    </div>
+
+                    <div class="ingat-card eksponen-card">
+                        <div class="ingat-icon">✦</div>
+                        <div class="ingat-rumus">a<sup>m</sup> : a<sup>n</sup></div>
+                        <div class="ingat-ket">= a<sup>m-n</sup><br>dengan a ≠ 0</div>
+                    </div>
+
+                    <div class="ingat-card eksponen-card">
+                        <div class="ingat-icon">✦</div>
+                        <div class="ingat-rumus">(a<sup>m</sup>)<sup>n</sup></div>
+                        <div class="ingat-ket">= a<sup>mn</sup><br>Pangkat dikalikan</div>
+                    </div>
+
+                    <div class="ingat-card eksponen-card">
+                        <div class="ingat-icon">✦</div>
+                        <div class="ingat-rumus">a<sup>0</sup></div>
+                        <div class="ingat-ket">= 1<br>untuk a ≠ 0</div>
+                    </div>
+                </div>
+
+                <div class="note-mini">
+                    Contoh yang akan muncul pada apersepsi ini adalah <strong>x × x = x²</strong>.
+                </div>
+            </div>
+
+            <!-- SIFAT ALJABAR -->
+            <div class="ringkasan-box">
+                <div class="ringkasan-header">
+                    <div class="ringkasan-title">Konsep Dasar Aljabar</div>
+                    <div class="ringkasan-subtitle">
+                        Bagian ini menjadi pengingat singkat sebelum masuk ke bentuk aljabar pada cerita.
+                    </div>
+                </div>
+
+                <div class="ingat-grid">
+                    <div class="ingat-card aljabar-card">
+                        <div class="ingat-icon">◆</div>
+                        <div class="ingat-rumus">Suku sejenis</div>
+                        <div class="ingat-ket">dapat dijumlahkan atau dikurangkan</div>
+                    </div>
+
+                    <div class="ingat-card aljabar-card">
+                        <div class="ingat-icon">◆</div>
+                        <div class="ingat-rumus">ax + bx</div>
+                        <div class="ingat-ket">= (a+b)x</div>
+                    </div>
+
+                    <div class="ingat-card aljabar-card">
+                        <div class="ingat-icon">◆</div>
+                        <div class="ingat-rumus">ab</div>
+                        <div class="ingat-ket">berarti a × b</div>
+                    </div>
+
+                    <div class="ingat-card aljabar-card">
+                        <div class="ingat-icon">◆</div>
+                        <div class="ingat-rumus">Konstanta</div>
+                        <div class="ingat-ket">bilangan yang tidak memuat variabel</div>
+                    </div>
+                </div>
+
+                <div class="note-mini">
+                    Dalam bentuk <strong>3x² + 2x + 5</strong>, sukunya adalah <strong>3x²</strong>, <strong>2x</strong>,
+                    dan <strong>5</strong>.
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSISI KE CERITA -->
+        <div class="transisi-box">
+            <div class="transisi-content">
+                <div class="transisi-text">
+                    <div class="transisi-title">Sekarang kita lihat dalam kehidupan sehari-hari</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CERITA -->
         <p class="materi-text">
-            Kalimantan Selatan dikenal sebagai daerah lahan basah yang dimanfaatkan untuk berbagai
-            kegiatan seperti sawah rawa, kebun sayur, dan kolam ikan.
+            Seorang pedagang buah menyimpan buahnya di dalam beberapa kardus. Banyak buah dalam satu kardus
+            dinyatakan dengan <strong>x</strong>.
         </p>
 
         <div class="gambar-box">
-            <img src="{{ asset('img/15.png') }}" alt="Gambar sawah, kebun, dan kolam ikan">
+            <img src="{{ asset('img/kardusbuah.png') }}" alt="Gambar kardus buah">
         </div>
 
-        <p class="materi-text">
-            Setiap jenis lahan memiliki luas yang berbeda dan dapat dinyatakan dalam bentuk matematika
-            menggunakan simbol atau variabel. Misalnya, luas suatu lahan dapat dinyatakan dalam bentuk
-            2x, 3x², atau bilangan tetap.
-        </p>
-
-        <p class="materi-text">
-            Bentuk-bentuk tersebut merupakan bagian dari bentuk aljabar yang telah dipelajari sebelumnya.
-            Dalam bentuk aljabar, terdapat beberapa unsur penting seperti suku, variabel, koefisien,
-            dan konstanta.
-        </p>
-
-        <div class="rumus-section">
-            <div class="rumus-title">Klik rumus berikut untuk melihat unsur-unsurnya</div>
-
-            <div id="rumusTrigger" class="rumus-trigger">
-                x<sup>2</sup> - 4x + 1
+        <!-- MENYUSUN BENTUK ALJABAR -->
+        <div class="alur-box">
+            <div class="alur-header">
+                <h3 class="alur-title">Menyusun bentuk aljabar dari cerita kardus buah</h3>
+                <p class="alur-desc">
+                    Perhatikan bagaimana setiap bagian pada cerita diubah menjadi bentuk aljabar.
+                </p>
             </div>
 
-            <div id="penjelasanBox" class="penjelasan-box">
-                <div class="penjelasan-wrapper">
-                    <div class="penjelasan-heading">
-                        Unsur-unsur pada bentuk aljabar <strong>x<sup>2</sup> - 4x + 1</strong>
+            <div class="alur-grid">
+                <div class="alur-card">
+                    <div class="alur-step">1</div>
+                    <div class="alur-card-title">Susunan Persegi</div>
+                    <div class="alur-card-text">
+                        Terdapat <strong>3 susunan kardus berbentuk persegi</strong>.
+                        Setiap susunan terdiri atas <strong>x baris</strong> dan <strong>x kolom</strong>.
                     </div>
-
-                    <div class="unsur-grid">
-                        <div class="unsur-card var-card">
-                            <div class="unsur-line var-line"></div>
-                            <div class="unsur-bubble var-bubble">x<sup>2</sup></div>
-                            <div class="unsur-name var-name">Variabel</div>
-                            <div class="unsur-desc">
-                                Huruf yang mewakili nilai yang dapat berubah, yaitu <strong>x</strong>.
-                            </div>
-                        </div>
-
-                        <div class="unsur-card koef-card">
-                            <div class="unsur-line koef-line"></div>
-                            <div class="unsur-bubble koef-bubble">-4</div>
-                            <div class="unsur-name koef-name">Koefisien</div>
-                            <div class="unsur-desc">
-                                Bilangan yang mengalikan variabel pada suku <strong>-4x</strong>.
-                            </div>
-                        </div>
-
-                        <div class="unsur-card konst-card">
-                            <div class="unsur-line konst-line"></div>
-                            <div class="unsur-bubble konst-bubble">1</div>
-                            <div class="unsur-name konst-name">Konstanta</div>
-                            <div class="unsur-desc">
-                                Bilangan tetap yang tidak mengandung variabel.
-                            </div>
-                        </div>
+                    <div class="alur-rumus">
+                        x × x = x<sup>2</sup>
                     </div>
+                </div>
 
-                    <div class="detail-box">
-                        <div class="detail-item">
-                            <div class="detail-icon icon-var"></div>
-                            <div class="detail-text">
-                                <strong>Variabel</strong> adalah simbol dalam bentuk aljabar yang nilainya dapat berubah.
-                                Pada rumus ini, variabelnya adalah <strong>x</strong>.
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="detail-icon icon-koef"></div>
-                            <div class="detail-text">
-                                <strong>Koefisien</strong> adalah angka yang berada di depan variabel.
-                                Pada suku <strong>-4x</strong>, koefisiennya adalah <strong>-4</strong>.
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="detail-icon icon-konst"></div>
-                            <div class="detail-text">
-                                <strong>Konstanta</strong> adalah bilangan yang berdiri sendiri tanpa variabel,
-                                yaitu <strong>1</strong>.
-                            </div>
-                        </div>
+                <div class="alur-card">
+                    <div class="alur-step">2</div>
+                    <div class="alur-card-title">Kardus Tambahan</div>
+                    <div class="alur-card-text">
+                        Selain itu, ada <strong>2 kardus tambahan</strong> yang masing-masing berisi
+                        <strong>x buah</strong>.
                     </div>
+                    <div class="alur-rumus">
+                        2 × x = 2x
+                    </div>
+                </div>
+
+                <div class="alur-card">
+                    <div class="alur-step">3</div>
+                    <div class="alur-card-title">Buah Lepas</div>
+                    <div class="alur-card-text">
+                        Di luar kardus, terdapat <strong>5 buah lepas</strong> yang dinyatakan sebagai
+                        bilangan tetap.
+                    </div>
+                    <div class="alur-rumus">
+                        5
+                    </div>
+                </div>
+            </div>
+
+            <div class="hasil-box">
+                <div class="hasil-label">Maka bentuk aljabarnya adalah</div>
+                <div class="hasil-rumus">
+                    3x<sup>2</sup> + 2x + 5
+                </div>
+                <div class="hasil-text">
+                    Bentuk ini diperoleh dari penjumlahan:
+                    <strong>3 susunan persegi</strong>, <strong>2 kardus tambahan</strong>, dan
+                    <strong>5 buah lepas</strong>.
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="latihan-section">
-            <div class="question-card" id="questionCard1" data-question="1">
-                <div class="question-head">
-                    <div class="question-number">1</div>
-                    <div class="question-text">Apa yang dimaksud dengan suku, variabel, dan koefisien?</div>
-                </div>
+   <!-- UNSUR-UNSUR ALJABAR -->
+<div class="rumus-section">
+    <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
 
-                <div class="question-sub">Seret jawaban yang tepat ke kotak yang sesuai.</div>
+    <div id="rumusTrigger" class="rumus-trigger">
+        3x<sup>2</sup> + 2x + 5
+    </div>
 
-                <div class="drag-words" id="dragWords">
-                    <div class="drag-item" draggable="true" data-answer="suku">
-                        Bagian-bagian yang dipisahkan oleh tanda + atau -
-                    </div>
-                    <div class="drag-item" draggable="true" data-answer="variabel">
-                        Simbol atau huruf yang nilainya dapat berubah
-                    </div>
-                    <div class="drag-item" draggable="true" data-answer="koefisien">
-                        Bilangan yang mengalikan variabel
-                    </div>
-                </div>
-
-                <div class="drop-grid">
-                    <div class="drop-row">
-                        <div class="drop-label">Suku</div>
-                        <div class="drop-zone" data-match="suku">
-                            <span class="placeholder">Letakkan jawaban di sini</span>
-                        </div>
-                    </div>
-
-                    <div class="drop-row">
-                        <div class="drop-label">Variabel</div>
-                        <div class="drop-zone" data-match="variabel">
-                            <span class="placeholder">Letakkan jawaban di sini</span>
-                        </div>
-                    </div>
-
-                    <div class="drop-row">
-                        <div class="drop-label">Koefisien</div>
-                        <div class="drop-zone" data-match="koefisien">
-                            <span class="placeholder">Letakkan jawaban di sini</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="feedback1" class="feedback"></div>
+    <div id="penjelasanBox" class="penjelasan-box">
+        <div class="penjelasan-wrapper">
+            <div class="penjelasan-heading">
+                Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
             </div>
 
-            <div class="question-card" id="questionCard2" data-question="2">
-                <div class="question-head">
-                    <div class="question-number">2</div>
-                    <div class="question-text">Berapa banyak suku yang terdapat pada bentuk -4x + 1 dan x² − 4x + 1?</div>
-                </div>
-
-                <div class="question-sub">Isi jumlah suku dengan benar.</div>
-
-                <div class="isian-wrap">
-                    <div class="isian-group">
-                        <label class="isian-label">Jumlah suku pada <strong>-4x + 1</strong></label>
-                        <input type="text" id="jawab2a" class="isian-input" placeholder="Masukkan jawaban">
-                    </div>
-
-                    <div class="isian-group">
-                        <label class="isian-label">Jumlah suku pada <strong>x² − 4x + 1</strong></label>
-                        <input type="text" id="jawab2b" class="isian-input" placeholder="Masukkan jawaban">
+            <div class="unsur-grid">
+                <div class="unsur-card suku-card">
+                    <div class="unsur-line suku-line"></div>
+                    <div class="unsur-bubble suku-bubble">3</div>
+                    <div class="unsur-name suku-name">Banyak Suku</div>
+                    <div class="unsur-desc">
+                        Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
+                        tanda tambah atau tanda kurang.
                     </div>
                 </div>
 
-                <div id="feedback2" class="feedback"></div>
-            </div>
-
-            <div class="question-card" id="questionCard3" data-question="3">
-                <div class="question-head">
-                    <div class="question-number">3</div>
-                    <div class="question-text">Apa perbedaan antara bentuk 4x, x², dan 3x³?</div>
-                </div>
-
-                <div class="question-sub">Klik salah satu kotak jawaban yang paling tepat.</div>
-
-                <div class="opsi-grid" id="opsiSoal3">
-                    <div class="opsi-card" data-benar="false" data-choice-question="3">
-                        <div class="opsi-rumus">4x, x², 3x³</div>
-                        <div class="opsi-desc">
-                            Ketiganya sama karena semuanya hanya memiliki angka.
-                        </div>
-                    </div>
-
-                    <div class="opsi-card" data-benar="true" data-choice-question="3">
-                        <div class="opsi-rumus">4x, x², 3x³</div>
-                        <div class="opsi-desc">
-                            Perbedaannya terletak pada pangkat variabel: 4x berpangkat 1, x² berpangkat 2, dan 3x³
-                            berpangkat 3.
-                        </div>
-                    </div>
-
-                    <div class="opsi-card" data-benar="false" data-choice-question="3">
-                        <div class="opsi-rumus">4x, x², 3x³</div>
-                        <div class="opsi-desc">
-                            Ketiganya merupakan konstanta karena semuanya adalah bilangan tetap.
-                        </div>
+                <div class="unsur-card var-card">
+                    <div class="unsur-line var-line"></div>
+                    <div class="unsur-bubble var-bubble">x</div>
+                    <div class="unsur-name var-name">Variabel</div>
+                    <div class="unsur-desc">
+                        Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
+                        diketahui nilainya dengan jelas.
                     </div>
                 </div>
 
-                <div id="feedback3" class="feedback"></div>
-            </div>
-        </div>
-
-        <div class="konteks-box">
-            <div class="konteks-badge">KONTEKS NYATA</div>
-
-            <div class="konteks-title">
-                Luas lahan petani dapat dinyatakan dalam bentuk aljabar
-            </div>
-
-            <div class="konteks-desc">
-                Seorang petani di lahan basah mengelola beberapa jenis lahan. Luas sawah dinyatakan
-                dalam bentuk <strong>2x</strong>, luas kebun dinyatakan dalam bentuk <strong>3x<sup>2</sup></strong>,
-                dan luas kolam ikan dinyatakan dengan bilangan tetap <strong>5</strong>. Untuk mengetahui
-                <span class="highlight-text">total luas seluruh lahannya</span>, semua bentuk tersebut dijumlahkan.
-            </div>
-
-            <div class="lahan-grid">
-                <div class="lahan-card sawah">
-                    <div class="lahan-icon">🌾</div>
-                    <div class="lahan-name">Sawah Rawa</div>
-                    <div class="lahan-form">2x</div>
-                    <div class="lahan-info">
-                        Menyatakan luas lahan sawah yang bergantung pada nilai <strong>x</strong>.
+                <div class="unsur-card koef-card">
+                    <div class="unsur-line koef-line"></div>
+                    <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
+                    <div class="unsur-name koef-name">Koefisien</div>
+                    <div class="unsur-desc">
+                        Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
+                        suku pada bentuk aljabar.
                     </div>
                 </div>
 
-                <div class="lahan-card kebun">
-                    <div class="lahan-icon">🥬</div>
-                    <div class="lahan-name">Kebun Sayur</div>
-                    <div class="lahan-form">3x<sup>2</sup></div>
-                    <div class="lahan-info">
-                        Menyatakan luas kebun dengan variabel berpangkat dua.
-                    </div>
-                </div>
-
-                <div class="lahan-card kolam">
-                    <div class="lahan-icon">🐟</div>
-                    <div class="lahan-name">Kolam Ikan</div>
-                    <div class="lahan-form">5</div>
-                    <div class="lahan-info">
-                        Menyatakan luas tetap karena tidak mengandung variabel.
+                <div class="unsur-card konst-card">
+                    <div class="unsur-line konst-line"></div>
+                    <div class="unsur-bubble konst-bubble">5</div>
+                    <div class="unsur-name konst-name">Konstanta</div>
+                    <div class="unsur-desc">
+                        Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
+                        memuat variabel.
                     </div>
                 </div>
             </div>
 
-            <div class="total-luas-box">
-                <div class="total-label">Total luas lahan diperoleh dengan menjumlahkan semua bentuk:</div>
-                <div class="total-rumus">
-                    2x + 3x<sup>2</sup> + 5
+            <div class="detail-box">
+                <div class="detail-item">
+                    <div class="detail-icon icon-var"></div>
+                    <div class="detail-text">
+                        <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
+                        yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
+                        <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
+                        <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
+                        <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
+                    </div>
                 </div>
-                <div class="total-hasil">
-                    = 3x<sup>2</sup> + 2x + 5
+
+                <div class="detail-item">
+                    <div class="detail-icon icon-suku"></div>
+                    <div class="detail-text">
+                        <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
+                        variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
+                        operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
+                        <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
+                    </div>
                 </div>
-                <div class="total-note">
-                    Bentuk <strong>3x<sup>2</sup> + 2x + 5</strong> merupakan bentuk aljabar yang
-                    <strong>disusun dari variabel berpangkat tertinggi ke terendah</strong>,
-                    yaitu dimulai dari <strong>x<sup>2</sup></strong>, kemudian <strong>x</strong>,
-                    dan terakhir <strong>konstanta</strong>.
+
+                <div class="detail-item">
+                    <div class="detail-icon icon-koef"></div>
+                    <div class="detail-text">
+                        <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
+                        variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
+                        <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
+                        koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon icon-konst"></div>
+                    <div class="detail-text">
+                        <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
+                        bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
+                        <strong>5</strong>.
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="latihan-section">
-            <div class="question-card" id="questionCard4" data-question="4">
-                <div class="question-head">
-                    <div class="question-number">4</div>
-                    <div class="question-text">
-                        Perhatikan hasil penjumlahan luas lahan: <br>
-                        <strong>3x² + 2x + 5</strong>
+    <!-- SOAL ALJABAR -->
+    <div class="latihan-section">
+        <div class="question-card" id="questionCard1" data-question="1">
+            <div class="question-head">
+                <div class="question-number">1</div>
+                <div class="question-text">Pasangkan istilah dengan pengertiannya yang tepat.</div>
+            </div>
+
+            <div class="question-sub">Seret jawaban yang tepat ke kotak yang sesuai.</div>
+
+            <div class="drag-words" id="dragWords">
+                <div class="drag-item" draggable="true" data-answer="koefisien">
+                    Bilangan yang memuat variabel dari sebuah suku pada bentuk aljabar
+                </div>
+                <div class="drag-item" draggable="true" data-answer="suku">
+                    Variabel sekaligus koefisiennya atau konstanta pada bentuk aljabar yang dipisahkan oleh operasi
+                    jumlah atau selisih
+                </div>
+                <div class="drag-item" draggable="true" data-answer="variabel">
+                    Lambang pengganti pada suatu bilangan yang belum diketahui nilainya dengan jelas
+                </div>
+            </div>
+
+            <div class="drop-grid">
+                <div class="drop-row">
+                    <div class="drop-label">Suku</div>
+                    <div class="drop-zone" data-match="suku">
+                        <span class="placeholder">Letakkan jawaban di sini</span>
                     </div>
                 </div>
 
-                <div class="question-sub">
-                    1. Sebutkan suku-suku yang terdapat pada bentuk tersebut!
+                <div class="drop-row">
+                    <div class="drop-label">Variabel</div>
+                    <div class="drop-zone" data-match="variabel">
+                        <span class="placeholder">Letakkan jawaban di sini</span>
+                    </div>
+                </div>
+
+                <div class="drop-row">
+                    <div class="drop-label">Koefisien</div>
+                    <div class="drop-zone" data-match="koefisien">
+                        <span class="placeholder">Letakkan jawaban di sini</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback1" class="feedback"></div>
+        </div>
+
+        <div class="question-card" id="questionCard2" data-question="2">
+            <div class="question-head">
+                <div class="question-number">2</div>
+                <div class="question-text">
+                    Berapa banyak suku yang terdapat pada bentuk <strong>2x + 5</strong> dan
+                    <strong>3x² + 2x + 5</strong>?
+                </div>
+            </div>
+
+            <div class="question-sub">Isi jumlah suku dengan benar.</div>
+
+            <div class="isian-wrap">
+                <div class="isian-group">
+                    <label class="isian-label">Jumlah suku pada <strong>2x + 5</strong></label>
+                    <input type="text" id="jawab2a" class="isian-input" placeholder="Masukkan jawaban">
                 </div>
 
                 <div class="isian-group">
-                    <input type="text" id="jawab4a" class="isian-input" placeholder="Contoh: 3x², 2x, 5">
+                    <label class="isian-label">Jumlah suku pada <strong>3x² + 2x + 5</strong></label>
+                    <input type="text" id="jawab2b" class="isian-input" placeholder="Masukkan jawaban">
                 </div>
-
-                <div class="question-sub" style="margin-top:16px;">
-                    2. Banyak suku pada bentuk tersebut adalah
-                    <input type="text" id="jawab4b"
-                        style="width:80px; text-align:center; margin:0 6px; display:inline-block;" class="isian-input"> suku
-                </div>
-
-                <div class="question-sub" style="margin-top:18px;">
-                    3. Bentuk tersebut termasuk ke dalam bentuk aljabar atau bukan?
-                </div>
-
-                <div class="opsi-grid-dua" id="opsiSoal4">
-                    <div class="opsi-card" data-benar="true" data-choice-question="4">
-                        <div class="opsi-desc">
-                            Termasuk bentuk aljabar
-                        </div>
-                    </div>
-
-                    <div class="opsi-card" data-benar="false" data-choice-question="4">
-                        <div class="opsi-desc">
-                            Bukan bentuk aljabar
-                        </div>
-                    </div>
-                </div>
-
-                <div id="feedback4" class="feedback"></div>
             </div>
+
+            <div id="feedback2" class="feedback"></div>
+        </div>
+
+        <div class="question-card" id="questionCard3" data-question="3">
+            <div class="question-head">
+                <div class="question-number">3</div>
+                <div class="question-text">Apa makna dari bentuk <strong>x²</strong> pada cerita kardus buah?</div>
+            </div>
+
+            <div class="question-sub">Klik salah satu kotak jawaban yang paling tepat.</div>
+
+            <div class="opsi-grid" id="opsiSoal3">
+                <div class="opsi-card" data-benar="false" data-choice-question="3">
+                    <div class="opsi-rumus">x²</div>
+                    <div class="opsi-desc">
+                        Banyak buah lepas yang tidak dimasukkan ke dalam kardus.
+                    </div>
+                </div>
+
+                <div class="opsi-card" data-benar="true" data-choice-question="3">
+                    <div class="opsi-rumus">x²</div>
+                    <div class="opsi-desc">
+                        Banyak buah dalam satu susunan persegi, karena terdapat x baris dan x kolom sehingga
+                        menjadi x × x.
+                    </div>
+                </div>
+
+                <div class="opsi-card" data-benar="false" data-choice-question="3">
+                    <div class="opsi-rumus">x²</div>
+                    <div class="opsi-desc">
+                        Banyak kardus tambahan di luar susunan utama.
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback3" class="feedback"></div>
         </div>
     </div>
 
@@ -1188,8 +1648,7 @@
                 let selectedDragItem = null;
 
                 const selectedChoices = {
-                    3: null,
-                    4: null
+                    3: null
                 };
 
                 function paksaTampilFeedback(id, tipe, pesan) {
@@ -1378,7 +1837,6 @@
                     selectedChoices[question] = el;
 
                     if (question === '3') cekSoal3();
-                    if (question === '4') cekSoal4();
                 }
 
                 window.togglePenjelasan = function () {
@@ -1491,7 +1949,7 @@
                             'feedback2',
                             'success',
                             'Bagus. Jumlah suku pada kedua bentuk sudah benar.' +
-                            '<span class="explain">Penjelasan: bentuk <strong>-4x + 1</strong> memiliki 2 suku, yaitu <strong>-4x</strong> dan <strong>1</strong>. Bentuk <strong>x² - 4x + 1</strong> memiliki 3 suku, yaitu <strong>x²</strong>, <strong>-4x</strong>, dan <strong>1</strong>.</span>'
+                            '<span class="explain">Penjelasan: bentuk <strong>2x + 5</strong> memiliki 2 suku, yaitu <strong>2x</strong> dan <strong>5</strong>. Bentuk <strong>3x² + 2x + 5</strong> memiliki 3 suku, yaitu <strong>3x²</strong>, <strong>2x</strong>, dan <strong>5</strong>.</span>'
                         );
                     } else if (!kosongA || !kosongB) {
                         paksaTampilFeedback(
@@ -1521,70 +1979,14 @@
                         paksaTampilFeedback(
                             'feedback3',
                             'success',
-                            'Benar. Perbedaan utamanya terletak pada pangkat variabel.' +
-                            '<span class="explain">Penjelasan: pada <strong>4x</strong> pangkat variabel x adalah 1, pada <strong>x²</strong> pangkatnya 2, dan pada <strong>3x³</strong> pangkatnya 3. Jadi perbedaannya terletak pada derajat/pangkat variabel.</span>'
+                            'Benar. x² menyatakan banyak buah dalam satu susunan persegi.' +
+                            '<span class="explain">Penjelasan: satu susunan terdiri dari <strong>x baris</strong> dan <strong>x kolom</strong>, sehingga banyak buahnya adalah <strong>x × x = x²</strong>.</span>'
                         );
                     } else {
                         paksaTampilFeedback(
                             'feedback3',
                             'error',
-                            'Jawaban itu belum tepat. Coba perhatikan pangkat pada masing-masing bentuk.'
-                        );
-                    }
-                }
-
-                function cekSoal4() {
-                    const a = document.getElementById('jawab4a');
-                    const b = document.getElementById('jawab4b');
-                    const pilihan = selectedChoices[4];
-                    if (!a || !b) return;
-
-                    const valA = normalizeText(a.value);
-                    const valB = normalizeText(b.value);
-
-                    const kosongA = valA === '';
-                    const kosongB = valB === '';
-                    const belumPilih = !pilihan;
-
-                    a.classList.remove('correct', 'wrong');
-                    b.classList.remove('correct', 'wrong');
-
-                    document.querySelectorAll('#opsiSoal4 .opsi-card').forEach(card => {
-                        card.classList.remove('correct', 'wrong');
-                    });
-
-                    if (kosongA && kosongB && belumPilih) {
-                        resetFeedback('feedback4');
-                        return;
-                    }
-
-                    const ada3x2 = valA.includes('3x^2') || valA.includes('3x2');
-                    const ada2x = valA.includes('2x');
-                    const ada5 = valA.includes('5');
-
-                    const benarA = ada3x2 && ada2x && ada5;
-                    const benarB = (valB === '3' || valB === 'tiga');
-                    const benarPilihan = pilihan ? pilihan.getAttribute('data-benar') === 'true' : false;
-
-                    if (!kosongA) a.classList.add(benarA ? 'correct' : 'wrong');
-                    if (!kosongB) b.classList.add(benarB ? 'correct' : 'wrong');
-
-                    if (pilihan) {
-                        pilihan.classList.add(benarPilihan ? 'correct' : 'wrong');
-                    }
-
-                    if (!kosongA && !kosongB && pilihan && benarA && benarB && benarPilihan) {
-                        paksaTampilFeedback(
-                            'feedback4',
-                            'success',
-                            'Bagus. Semua jawaban pada soal 4 sudah benar.' +
-                            '<span class="explain">Penjelasan: bentuk <strong>3x² + 2x + 5</strong> memiliki tiga suku yaitu <strong>3x²</strong>, <strong>2x</strong>, dan <strong>5</strong>. Karena memuat variabel dan konstanta, bentuk ini termasuk <strong>bentuk aljabar</strong>.</span>'
-                        );
-                    } else {
-                        paksaTampilFeedback(
-                            'feedback4',
-                            'error',
-                            'Masih ada jawaban soal 4 yang belum tepat.'
+                            'Jawaban itu belum tepat. Coba ingat kembali bahwa x² berasal dari x × x.'
                         );
                     }
                 }
@@ -1598,13 +2000,9 @@
 
                 const jawab2a = document.getElementById('jawab2a');
                 const jawab2b = document.getElementById('jawab2b');
-                const jawab4a = document.getElementById('jawab4a');
-                const jawab4b = document.getElementById('jawab4b');
 
                 if (jawab2a) jawab2a.addEventListener('input', cekSoal2);
                 if (jawab2b) jawab2b.addEventListener('input', cekSoal2);
-                if (jawab4a) jawab4a.addEventListener('input', cekSoal4);
-                if (jawab4b) jawab4b.addEventListener('input', cekSoal4);
 
                 initDragDrop();
             }
