@@ -2,18 +2,17 @@
 <html lang="id">
 
 <head>
-    <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-        delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false}
-        ]
-    });">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ]
+        });">
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $quiz->title ?? 'Kuis Siswa' }}</title>
@@ -481,12 +480,17 @@
                 </div>
             </div>
 
-            <form action="{{ route('quiz.submit', $quiz->id) }}" method="POST" id="quizForm">
+            <form action="{{ route('quiz.submit', $quiz->id) }}"
+                  method="POST"
+                  id="quizForm"
+                  data-duration="{{ ($quiz->duration_minutes ?? 30) * 60 }}">
                 @csrf
 
                 @if(isset($attempt))
                     <input type="hidden" name="attempt_id" value="{{ $attempt->id }}">
                 @endif
+
+                <input type="hidden" name="time_spent" id="timeSpent" value="0">
 
                 <div class="quiz-content">
                     <div class="question-panel">
@@ -511,8 +515,9 @@
                                     <div class="options">
                                         @foreach ($question->options as $option)
                                             <label class="option-item">
-                                                <input type="radio" name="jawaban[{{ $question->id }}]"
-                                                    value="{{ $option->id }}">
+                                                <input type="radio"
+                                                       name="jawaban[{{ $question->id }}]"
+                                                       value="{{ $option->id }}">
                                                 <div class="option-content">
                                                     <span class="option-label">{{ $option->option_label ?? '?' }}</span>
                                                     <span class="option-text">{!! $option->option_text !!}</span>
@@ -586,9 +591,11 @@
             const submitSection = document.getElementById('submitSection');
             const quizForm = document.getElementById('quizForm');
             const timerElement = document.getElementById('timer');
+            const timeSpentInput = document.getElementById('timeSpent');
 
             let currentIndex = 0;
-            let totalSeconds = quizForm ? Number(quizForm.dataset.duration || 1800) : 1800;
+            let initialSeconds = quizForm ? Number(quizForm.dataset.duration || 1800) : 1800;
+            let totalSeconds = initialSeconds;
             let interval = null;
 
             function updateAnsweredStatus() {
@@ -662,12 +669,21 @@
                     timerElement.textContent = minutes + ':' + seconds;
                 }
 
+                const usedSeconds = initialSeconds - totalSeconds;
+                if (timeSpentInput) {
+                    timeSpentInput.value = usedSeconds > 0 ? usedSeconds : 0;
+                }
+
                 if (totalSeconds <= 0) {
                     if (interval) {
                         clearInterval(interval);
                     }
 
                     alert('Waktu habis. Jawaban akan dikumpulkan otomatis.');
+
+                    if (timeSpentInput) {
+                        timeSpentInput.value = initialSeconds;
+                    }
 
                     if (quizForm) {
                         quizForm.submit();
@@ -713,6 +729,15 @@
                     updateAnsweredStatus();
                 });
             });
+
+            if (quizForm) {
+                quizForm.addEventListener('submit', function () {
+                    const usedSeconds = initialSeconds - totalSeconds;
+                    if (timeSpentInput) {
+                        timeSpentInput.value = usedSeconds > 0 ? usedSeconds : 0;
+                    }
+                });
+            }
 
             if (slides.length > 0) {
                 showSlide(0);

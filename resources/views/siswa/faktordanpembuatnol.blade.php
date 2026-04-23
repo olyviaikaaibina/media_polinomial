@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
-                delimiters:[
-                    {left:'$$',right:'$$',display:true},
-                    {left:'$',right:'$',display:false}
-                ]
-            });"></script>
+                                                                                                            delimiters:[
+                                                                                                                {left:'$$',right:'$$',display:true},
+                                                                                                                {left:'$',right:'$',display:false}
+                                                                                                            ]
+                                                                                                        });"></script>
 
     <style>
         :root {
@@ -359,16 +359,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 170px;
-            padding: 14px 28px;
+            min-width: 120px;
+            padding: 8px 18px;
             border-radius: 999px;
             background: var(--peach);
             border: 2px solid var(--peach-border);
             color: #5b2d22;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: .5px;
-            margin-bottom: 22px;
+            letter-spacing: .3px;
+            margin-bottom: 16px;
         }
 
         .contoh-card {
@@ -1313,6 +1313,769 @@
                 padding: 12px 14px;
             }
         }
+
+        .info-card {
+            border-radius: 22px;
+            padding: 24px;
+            margin-top: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        /* CARD DEFINISI */
+        .definisi-card {
+            background: #fffaf4;
+            border: 2px solid #e7b08c;
+        }
+
+        /* CARD STRATEGI */
+        .strategi-card {
+            background: #f4faff;
+            border: 2px solid #9dc7e8;
+        }
+
+        /* BADGE */
+        .info-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 10px;
+            background: #9bcc88;
+            border: 2px solid #5ea34e;
+        }
+
+        /* TITLE */
+        .info-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        /* MINI CARD */
+        .info-mini-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        /* LANGKAH */
+        .langkah-cari-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .langkah-cari-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        /* NOMOR */
+        .langkah-cari-no {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #df7d49;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* CONTOH */
+        .contoh-kecil-box {
+            margin-top: 14px;
+            background: #eef7ff;
+            padding: 14px;
+            border-radius: 14px;
+        }
+
+        /* TIP */
+        .tip-box {
+            margin-top: 10px;
+            background: #eef9ea;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* =========================
+                                                                               CARD TAMBAHAN MATERI
+                                                                            ========================= */
+        .info-card {
+            position: relative;
+            margin-top: 24px;
+            padding: 24px 22px 22px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: -42px;
+            right: -42px;
+            width: 150px;
+            height: 150px;
+            border-radius: 999px;
+            opacity: .18;
+            pointer-events: none;
+        }
+
+        .definisi-card {
+            background: linear-gradient(180deg, #fffaf5 0%, #fff4ea 100%);
+            border: 2px solid #ebb894;
+        }
+
+        .definisi-card::before {
+            background: #f0b48f;
+        }
+
+        .strategi-card {
+            background: linear-gradient(180deg, #f6fbff 0%, #eef8ff 100%);
+            border: 2px solid #a9d0ec;
+        }
+
+        .strategi-card::before {
+            background: #87c3eb;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+            flex: 0 0 54px;
+        }
+
+        .info-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .9px;
+            color: #7f5a47;
+            background: rgba(255, 255, 255, .76);
+            border: 1px solid rgba(0, 0, 0, .08);
+            border-radius: 999px;
+            padding: 5px 12px;
+            margin-bottom: 8px;
+        }
+
+        .info-title {
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #3c2d26;
+            margin: 0;
+        }
+
+        .info-desc {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #5d5753;
+            margin: 0 0 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-mini-card {
+            background: rgba(255, 255, 255, .86);
+            border: 1.5px solid rgba(0, 0, 0, .08);
+            border-radius: 22px;
+            padding: 16px;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4);
+        }
+
+        .info-mini-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #b06137;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .info-highlight {
+            background: #fff8f1;
+            border-left: 5px solid #df7d49;
+            border-radius: 18px;
+            padding: 14px 16px;
+            color: #6c574d;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+                                                                               LANGKAH CARI PEMBUAT NOL
+                                                                            ========================= */
+        .langkah-cari-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .langkah-cari-card {
+            background: rgba(255, 255, 255, .88);
+            border-radius: 22px;
+            padding: 18px 16px;
+            border: 1.5px solid rgba(0, 0, 0, .08);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+            transition: transform .22s ease, box-shadow .22s ease;
+        }
+
+        .langkah-cari-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .langkah-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .langkah-cari-no {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            background: #df7d49;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 800;
+            flex: 0 0 34px;
+        }
+
+        .langkah-cari-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #355e9a;
+            line-height: 1.3;
+        }
+
+        .langkah-cari-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #5e5e5e;
+            margin-bottom: 12px;
+        }
+
+        .langkah-cari-tag {
+            display: inline-block;
+            background: #f5f8fb;
+            border: 1px solid #dbe7ef;
+            color: #58718a;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* =========================
+                                                                               CONTOH MINI + TIP
+                                                                            ========================= */
+        .contoh-mini {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, .84);
+            border: 1.5px solid #cae2f3;
+            border-radius: 22px;
+            padding: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contoh-mini-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2d6996;
+            margin-bottom: 12px;
+        }
+
+        .tip-box {
+            margin-top: 14px;
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            color: #2d6a31;
+            border-radius: 18px;
+            padding: 14px 16px;
+            font-size: 14px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+                                                                               RESPONSIVE
+                                                                            ========================= */
+        @media (max-width: 900px) {
+
+            .info-grid,
+            .langkah-cari-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-card {
+                padding: 20px 16px 18px;
+                border-radius: 22px;
+            }
+
+            .info-header {
+                align-items: flex-start;
+            }
+
+            .info-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+                border-radius: 14px;
+                flex: 0 0 46px;
+            }
+
+            .info-title {
+                font-size: 21px;
+            }
+
+            .info-desc {
+                font-size: 15px;
+            }
+
+            .info-mini-card,
+            .langkah-cari-card,
+            .contoh-mini {
+                border-radius: 18px;
+            }
+
+            .langkah-cari-title {
+                font-size: 17px;
+            }
+
+            .tip-box {
+                border-radius: 14px;
+                font-size: 13px;
+            }
+        }
+
+        /* =========================
+                                                                   STRATEGI INTERAKTIF
+                                                                ========================= */
+        .clickable-card {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .clickable-card .langkah-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .langkah-cari-title-wrap {
+            flex: 1;
+        }
+
+        .langkah-toggle-icon {
+            width: 32px;
+            height: 32px;
+            flex: 0 0 32px;
+            border-radius: 999px;
+            background: #f3f8fc;
+            border: 1px solid #dbe7ef;
+            color: #58718a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            transition: transform .25s ease, background .25s ease;
+        }
+
+        .clickable-card.active .langkah-toggle-icon {
+            transform: rotate(180deg);
+            background: #eaf4fb;
+        }
+
+        .langkah-detail {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height .45s ease, opacity .3s ease, margin-top .3s ease;
+            margin-top: 0;
+        }
+
+        .clickable-card.active .langkah-detail {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+
+        .langkah-detail-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #2d6996;
+            margin-bottom: 10px;
+        }
+
+        .langkah-detail-text {
+            font-size: 15px;
+            color: #565656;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .langkah-step-box {
+            background: #ffffff;
+            border: 1px solid #dbe7ef;
+            border-radius: 16px;
+            padding: 14px 14px 10px;
+            margin-bottom: 12px;
+        }
+
+        .langkah-step-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #355e9a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .hasil-akhir-box {
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #2d6a31;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        .clickable-card.active {
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .contoh-mini-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2d6996;
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+                                                       METODE INTERAKTIF
+                                                    ========================= */
+        .metode-wrap {
+            margin-top: 12px;
+        }
+
+        .metode-card {
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            background: rgba(255, 255, 255, .88);
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1.5px solid rgba(0, 0, 0, .08);
+        }
+
+        .metode-card.active {
+            border-color: #5fa8dc;
+            box-shadow: 0 12px 22px rgba(45, 156, 219, 0.12);
+            transform: translateY(-2px);
+            background: #ffffff;
+        }
+
+        .metode-card .langkah-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .langkah-cari-title-wrap {
+            flex: 1;
+        }
+
+        .metode-card .langkah-cari-text {
+            margin-top: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+                                                       PANEL CONTOH BERSAMA
+                                                    ========================= */
+        .contoh-bersama-box {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, .86);
+            border: 1.5px solid #cae2f3;
+            border-radius: 24px;
+            padding: 20px 18px;
+        }
+
+        .contoh-bersama-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 12px;
+            margin-bottom: 14px;
+        }
+
+        .contoh-bersama-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #eaf4fb;
+            border: 1px solid #b9d8ee;
+            color: #356b91;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .4px;
+        }
+
+        .contoh-bersama-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #2d6996;
+        }
+
+        .contoh-panel {
+            background: #f9fcff;
+            border: 1px solid #d9e9f5;
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        .contoh-panel-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .contoh-step-box {
+            background: #fff;
+            border: 1px solid #dbe7ef;
+            border-radius: 16px;
+            padding: 14px 14px 10px;
+            margin-bottom: 12px;
+        }
+
+        .contoh-step-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #355e9a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .contoh-hasil-box {
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            border-radius: 16px;
+            padding: 14px 16px;
+            color: #2d6a31;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .faktor-flow-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .faktor-arrow-btn {
+            border: none;
+            background: #fff3e8;
+            border: 2px solid #df7d49;
+            color: #9a542c;
+            border-radius: 999px;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .faktor-arrow-btn:hover {
+            transform: translateY(-2px);
+            background: #ffe9db;
+        }
+
+        .arrow-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .arrow-text {
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .cara-faktor-box {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1.5px solid #efcfba;
+            border-radius: 18px;
+            padding: 16px 18px;
+        }
+
+        .cara-faktor-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #9a542c;
+            margin-bottom: 10px;
+        }
+
+        .cara-faktor-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #6b5a52;
+            margin-bottom: 10px;
+        }
+
+        .cara-faktor-list {
+            margin: 8px 0 12px 20px;
+            color: #6b5a52;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .faktor-flow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faktor-arrow-btn {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contoh-bersama-box {
+                padding: 16px 14px;
+                border-radius: 18px;
+            }
+
+            .contoh-bersama-title {
+                font-size: 18px;
+            }
+
+            .contoh-panel {
+                padding: 14px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+
+    <style>
+        .latihan-item.locked {
+            opacity: 0.55;
+            pointer-events: none;
+            filter: grayscale(0.12);
+            user-select: none;
+        }
+
+        .latihan-item.locked .input-jawaban,
+        .latihan-item.locked .btn-cek,
+        .latihan-item.locked button {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .lock-note {
+            display: none;
+            margin-bottom: 12px;
+            background: #fff8ec;
+            border: 1px solid #efd7a3;
+            color: #7a5a1f;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .latihan-item.locked .lock-note {
+            display: block;
+        }
+    </style>
+
+    <style>
+        .materi-lanjutan.hidden {
+            display: none;
+        }
+
+        .materi-terkunci-note {
+            margin-top: 16px;
+            margin-bottom: 18px;
+            background: #fff8ec;
+            border: 1px solid #efd7a3;
+            color: #7a5a1f;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .03);
+        }
+
+        @media (max-width: 768px) {
+            .materi-terkunci-note {
+                font-size: 14px;
+                padding: 12px 14px;
+                border-radius: 12px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1324,8 +2087,9 @@
         </div>
 
         <p>
-            Pada materi sebelumnya, kamu telah mempelajari Teorema Faktor, yaitu prinsip penting yang menghubungkan antara
-            pembuat nol suatu fungsi polinomial dengan faktornya. Teorema tersebut menyatakan bahwa:
+            Pada materi sebelumnya, kamu telah mempelajari Teorema Faktor, yaitu prinsip penting yang
+            menghubungkan antara pembuat nol suatu fungsi polinomial dengan faktornya. Teorema tersebut
+            menyatakan bahwa:
         </p>
 
         <div class="card card-eksplorasi">
@@ -1425,538 +2189,669 @@
             </div>
         </div>
 
-        <div class="teorema-box">
-            Jika $P(c)=0$, maka $(x-c)$ adalah faktor dari $P(x)$
+        <div id="materiTerkunciNote" class="materi-terkunci-note">
+            Materi berikutnya akan muncul setelah kamu menjawab semua soal eksplorasi.
         </div>
 
-        <p>
-            ini akan memperluas pemahaman tersebut dengan menghubungkan faktor polinomial dengan grafik fungsi polinomial,
-            terutama pada titik potong grafik dengan sumbu-x.
-        </p>
+        <div id="materiLanjutan" class="materi-lanjutan hidden">
 
-        <div class="konsep-grid">
-            <div class="konsep-card" onclick="toggleKonsep(this)">
-                <div class="konsep-head">
+            <div class="teorema-box">
+                Jika $P(c)=0$, maka $(x-c)$ adalah faktor dari $P(x)$
+            </div>
+
+            <!-- DEFINISI FAKTOR -->
+            <div class="info-card definisi-card">
+                <div class="info-header">
                     <div>
-                        <div class="konsep-badge">KONSEP 1</div>
-                        <div class="konsep-title">Pembuat Nol (Akar) Polinomial</div>
+                        <div class="info-title">Apa itu Faktor Polinomial?</div>
                     </div>
-                    <div class="konsep-arrow">⌄</div>
                 </div>
 
-                <div class="konsep-preview">
-                    Klik untuk melihat penjelasan tentang pembuat nol polinomial.
-                </div>
+                <p class="info-desc">
+                    Faktor polinomial adalah bentuk aljabar yang jika dikalikan akan
+                    menghasilkan polinomial semula.
+                </p>
 
-                <div class="konsep-body">
-                    <p>Pembuat nol suatu polinomial adalah nilai $x$ yang membuat nilai polinomial sama dengan nol.</p>
-
-                    <div class="rumus-box">
-                        $$P(x)=0$$
+                <div class="info-grid faktor-flow-grid">
+                    <div class="info-mini-card">
+                        <div class="info-mini-title">Bentuk awal</div>
+                        <div class="rumus-box">
+                            $$x^2 - x - 2$$
+                        </div>
                     </div>
 
-                    <p>
-                        Jika suatu polinomial memiliki faktor $(x-a)$, maka saat $x=a$, nilai polinomial menjadi nol.
-                        Karena itu, grafik akan memotong sumbu-$x$ di titik yang sesuai.
+                    <button type="button" class="faktor-arrow-btn" onclick="toggleCaraFaktor(this)">
+                        <span class="arrow-icon">→</span>
+                        <span class="arrow-text">Lihat cara</span>
+                    </button>
+
+                    <div class="info-mini-card">
+                        <div class="info-mini-title">Bentuk faktor</div>
+                        <div class="rumus-box">
+                            $$(x-2)(x+1)$$
+                        </div>
+                    </div>
+                </div>
+
+                <div id="caraFaktorBox" class="cara-faktor-box" style="display: none;">
+                    <div class="cara-faktor-title">Cara mendapatkan faktor</div>
+
+                    <p class="cara-faktor-text">
+                        Cari <b>dua bilangan</b> yang:
                     </p>
 
-                    <div class="konsep-highlight">
-                        <b>Intinya:</b> pembuat nol menunjukkan di mana grafik menyentuh atau memotong sumbu-$x$.
+                    <ul class="cara-faktor-list">
+                        <li>hasil kalinya = <b>$-2$</b></li>
+                        <li>jumlahnya = <b>$-1$</b></li>
+                    </ul>
+
+                    <div class="rumus-box">
+                        $$-2 \text{ dan } 1$$
+                    </div>
+
+                    <p class="cara-faktor-text">
+                        Maka:
+                    </p>
+
+                    <div class="rumus-box">
+                        $$x^2 - x - 2 = (x-2)(x+1)$$
                     </div>
                 </div>
             </div>
 
-            <div class="konsep-card" onclick="toggleKonsep(this)">
-                <div class="konsep-head">
+            <div class="konsep-grid">
+                <div class="konsep-card" onclick="toggleKonsep(this)">
+                    <div class="konsep-head">
+                        <div>
+                            <div class="konsep-badge">KONSEP 1</div>
+                            <div class="konsep-title">Pembuat Nol (Akar) Polinomial</div>
+                        </div>
+                        <div class="konsep-arrow">⌄</div>
+                    </div>
+
+                    <div class="konsep-preview">
+                        Klik untuk melihat penjelasan tentang pembuat nol polinomial.
+                    </div>
+
+                    <div class="konsep-body">
+                        <p>Pembuat nol suatu polinomial adalah nilai $x$ yang membuat nilai polinomial sama dengan nol.</p>
+
+                        <div class="rumus-box">
+                            $$P(x)=0$$
+                        </div>
+
+                        <p>
+                            Jika suatu polinomial memiliki faktor $(x-a)$, maka saat $x=a$, nilai polinomial menjadi nol.
+                            Karena itu, grafik akan memotong sumbu-$x$ di titik yang sesuai.
+                        </p>
+
+                        <div class="konsep-highlight">
+                            <b>Intinya:</b> pembuat nol menunjukkan di mana grafik menyentuh atau memotong sumbu-$x$.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="konsep-card" onclick="toggleKonsep(this)">
+                    <div class="konsep-head">
+                        <div>
+                            <div class="konsep-badge">KONSEP 2</div>
+                            <div class="konsep-title">Hubungan Faktor dengan Grafik</div>
+                        </div>
+                        <div class="konsep-arrow">⌄</div>
+                    </div>
+
+                    <div class="konsep-preview">
+                        Klik untuk melihat hubungan antara faktor dan titik potong grafik.
+                    </div>
+
+                    <div class="konsep-body">
+                        <p>Sifat hasil kali nol menyatakan bahwa:</p>
+
+                        <div class="rumus-box">
+                            $$A \cdot B = 0 \iff A = 0 \text{ atau } B = 0$$
+                        </div>
+
+                        <p>Jika polinomial ditulis dalam bentuk faktor:</p>
+
+                        <div class="rumus-box">
+                            $$P(x)=(x-a)(x-b)(x-c)$$
+                        </div>
+
+                        <p>maka titik potong grafik dengan sumbu-$x$ adalah:</p>
+
+                        <div class="rumus-box">
+                            $$(a,0), (b,0), (c,0)$$
+                        </div>
+
+                        <div class="konsep-highlight">
+                            <b>Intinya:</b> setiap faktor linear memberi tahu letak titik potong grafik dengan sumbu-$x$.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- DEFINISI --}}
+            <div class="definisi-modern">
+                <div class="definisi-badge">DEFINISI</div>
+
+                <div class="definisi-header">
+                    <h3>Hubungan Faktor dengan Grafik</h3>
+                    <p>
+                        Bentuk faktor membantu kita langsung melihat titik potong grafik dengan sumbu-$x$.
+                    </p>
+                </div>
+
+                <div class="definisi-rumus-wrap">
+                    <div class="definisi-rumus-card">
+                        <div class="rumus-label">Bentuk faktor</div>
+                        <div class="rumus-box">
+                            $$P(x)=(x-a)(x-b)(x-c)$$
+                        </div>
+                    </div>
+
+                    <div class="definisi-rumus-card">
+                        <div class="rumus-label">Titik potong sumbu-$x$</div>
+                        <div class="rumus-box">
+                            $$(a,0),\ (b,0),\ (c,0)$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="definisi-poin">
+                    <div class="definisi-item">
+                        <span class="ikon">1</span>
+                        <div>
+                            Jika ada faktor <b>$(x-a)$</b>, maka saat <b>$x=a$</b>, nilai fungsi sama dengan <b>0</b>.
+                        </div>
+                    </div>
+
+                    <div class="definisi-item">
+                        <span class="ikon">2</span>
+                        <div>
+                            Artinya grafik memotong sumbu-$x$ di titik <b>$(a,0)$</b>.
+                        </div>
+                    </div>
+
+                    <div class="definisi-item">
+                        <span class="ikon">3</span>
+                        <div>
+                            Hal yang sama berlaku untuk faktor <b>$(x-b)$</b> dan <b>$(x-c)$</b>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="definisi-kesimpulan">
+                    <b>Intinya:</b> setiap faktor linear menunjukkan letak titik potong grafik dengan sumbu-$x$.
+                </div>
+            </div>
+
+            <!-- CARA MENCARI PEMBUAT NOL -->
+            <div class="info-card strategi-card">
+                <div class="info-header">
                     <div>
-                        <div class="konsep-badge">KONSEP 2</div>
-                        <div class="konsep-title">Hubungan Faktor dengan Grafik</div>
-                    </div>
-                    <div class="konsep-arrow">⌄</div>
-                </div>
-
-                <div class="konsep-preview">
-                    Klik untuk melihat hubungan antara faktor dan titik potong grafik.
-                </div>
-
-                <div class="konsep-body">
-                    <p>Sifat hasil kali nol menyatakan bahwa:</p>
-
-                    <div class="rumus-box">
-                        $$A \cdot B = 0 \iff A = 0 \text{ atau } B = 0$$
-                    </div>
-
-                    <p>Jika polinomial ditulis dalam bentuk faktor:</p>
-
-                    <div class="rumus-box">
-                        $$P(x)=(x-a)(x-b)(x-c)$$
-                    </div>
-
-                    <p>maka titik potong grafik dengan sumbu-$x$ adalah:</p>
-
-                    <div class="rumus-box">
-                        $$(a,0), (b,0), (c,0)$$
-                    </div>
-
-                    <div class="konsep-highlight">
-                        <b>Intinya:</b> setiap faktor linear memberi tahu letak titik potong grafik dengan sumbu-$x$.
+                        <div class="info-title">Cara Mencari Pembuat Nol</div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        {{-- DEFINISI --}}
-        <div class="definisi-modern">
-            <div class="definisi-badge">DEFINISI</div>
-
-            <div class="definisi-header">
-                <h3>Hubungan Faktor dengan Grafik</h3>
-                <p>
-                    Bentuk faktor membantu kita langsung melihat titik potong grafik dengan sumbu-$x$.
+                <p class="info-desc">
+                    Pembuat nol adalah nilai $x$ yang membuat fungsi bernilai nol,
+                    yaitu saat $P(x)=0$. Klik salah satu metode di bawah ini untuk
+                    melihat contoh pengerjaannya.
                 </p>
-            </div>
 
-            <div class="definisi-rumus-wrap">
-                <div class="definisi-rumus-card">
-                    <div class="rumus-label">Bentuk faktor</div>
-                    <div class="rumus-box">
-                        $$P(x)=(x-a)(x-b)(x-c)$$
-                    </div>
-                </div>
+                <div class="langkah-cari-wrap metode-wrap">
 
-                <div class="definisi-rumus-card">
-                    <div class="rumus-label">Titik potong sumbu-$x$</div>
-                    <div class="rumus-box">
-                        $$(a,0),\ (b,0),\ (c,0)$$
-                    </div>
-                </div>
-            </div>
-
-            <div class="definisi-poin">
-                <div class="definisi-item">
-                    <span class="ikon">1</span>
-                    <div>
-                        Jika ada faktor <b>$(x-a)$</b>, maka saat <b>$x=a$</b>, nilai fungsi sama dengan <b>0</b>.
-                    </div>
-                </div>
-
-                <div class="definisi-item">
-                    <span class="ikon">2</span>
-                    <div>
-                        Artinya grafik memotong sumbu-$x$ di titik <b>$(a,0)$</b>.
-                    </div>
-                </div>
-
-                <div class="definisi-item">
-                    <span class="ikon">3</span>
-                    <div>
-                        Hal yang sama berlaku untuk faktor <b>$(x-b)$</b> dan <b>$(x-c)$</b>.
-                    </div>
-                </div>
-            </div>
-
-            <div class="definisi-kesimpulan">
-                <b>Intinya:</b> setiap faktor linear menunjukkan letak titik potong grafik dengan sumbu-$x$.
-            </div>
-        </div>
-
-        <div class="contoh-section">
-            <div class="contoh-badge">CONTOH</div>
-
-            <div class="contoh-card">
-                <div class="contoh-title">Perhatikan fungsi polinomial berikut:</div>
-
-                <div class="contoh-persamaan">
-                    $$f(x)=x^2-x-2$$
-                </div>
-
-                <div class="contoh-text">
-                    Tentukan:
-                </div>
-
-                <ol class="soal-list" type="a">
-                    <li>Pembuat nol</li>
-                    <li>Bentuk pemfaktoran</li>
-                    <li>Titik potong dengan sumbu-$x$ dan sumbu-$y$</li>
-                    <li>Sketsa grafik sederhana</li>
-                </ol>
-
-                <div class="jawaban-item">
-                    <div class="jawaban-top">
-                        <div class="jawaban-label">a. Pembuat nol</div>
-                        <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban1', this)">
-                            Lihat Jawaban
-                        </button>
-                    </div>
-
-                    <div id="jawaban1" class="jawaban-content">
-                        <div class="answer-box">
-                            <div class="answer-title">Jawaban</div>
-                            <div class="rumus-box">
-                                $$x^2-x-2=0$$
-                            </div>
-                            <div class="rumus-box">
-                                $$(x-2)(x+1)=0$$
-                            </div>
-                            <div class="rumus-box">
-                                $$x=2 \quad \text{dan} \quad x=-1$$
+                    <!-- METODE 1 -->
+                    <button type="button" class="langkah-cari-card metode-card" onclick="showMetode('faktorisasi', this)">
+                        <div class="langkah-header">
+                            <div class="langkah-cari-no">1</div>
+                            <div class="langkah-cari-title-wrap">
+                                <div class="langkah-cari-title">Faktorisasi</div>
+                                <div class="langkah-cari-text">
+                                    Ubah polinomial ke bentuk faktor, lalu gunakan sifat hasil kali nol.
+                                </div>
+                                <div class="langkah-cari-tag">paling sering digunakan</div>
                             </div>
                         </div>
+                    </button>
 
-                        <div class="explain-box">
-                            <div class="answer-title">Penjelasan</div>
-                            <p>
-                                Untuk mencari pembuat nol, fungsi dibuat sama dengan nol:
-                                $$f(x)=0$$
-                            </p>
-                            <p>
-                                Kemudian difaktorkan:
-                                $$(x-2)(x+1)=0$$
-                            </p>
-                            <p>
-                                Berdasarkan sifat hasil kali nol, diperoleh:
-                                $$x=2 \quad \text{dan} \quad x=-1$$
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="jawaban-item">
-                    <div class="jawaban-top">
-                        <div class="jawaban-label">b. Bentuk pemfaktoran</div>
-                        <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban2', this)">
-                            Lihat Jawaban
-                        </button>
-                    </div>
-
-                    <div id="jawaban2" class="jawaban-content">
-                        <div class="answer-box">
-                            <div class="answer-title">Jawaban</div>
-                            <div class="rumus-box">
-                                $$f(x)=(x-2)(x+1)$$
+                    <!-- METODE 2 -->
+                    <button type="button" class="langkah-cari-card metode-card" onclick="showMetode('substitusi', this)">
+                        <div class="langkah-header">
+                            <div class="langkah-cari-no">2</div>
+                            <div class="langkah-cari-title-wrap">
+                                <div class="langkah-cari-title">Substitusi</div>
+                                <div class="langkah-cari-text">
+                                    Coba nilai sederhana seperti $1$, $2$, atau $-1$ sampai hasilnya nol.
+                                </div>
+                                <div class="langkah-cari-tag">cara cepat</div>
                             </div>
                         </div>
+                    </button>
 
-                        <div class="explain-box">
-                            <div class="answer-title">Penjelasan</div>
-                            <p>
-                                Carilah dua bilangan yang hasil kalinya $-2$ dan jumlahnya $-1$.
-                                Bilangan tersebut adalah $-2$ dan $1$.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="jawaban-item">
-                    <div class="jawaban-top">
-                        <div class="jawaban-label">c. Titik potong dengan sumbu-$x$ dan sumbu-$y$</div>
-                        <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban3', this)">
-                            Lihat Jawaban
-                        </button>
-                    </div>
-
-                    <div id="jawaban3" class="jawaban-content">
-                        <div class="answer-box">
-                            <div class="answer-title">Jawaban</div>
-                            <div class="rumus-box">
-                                $$\text{Titik potong sumbu-}x : (2,0) \text{ dan } (-1,0)$$
-                            </div>
-                            <div class="rumus-box">
-                                $$\text{Titik potong sumbu-}y : (0,-2)$$
+                    <!-- METODE 3 -->
+                    <button type="button" class="langkah-cari-card metode-card" onclick="showMetode('sintetik', this)">
+                        <div class="langkah-header">
+                            <div class="langkah-cari-no">3</div>
+                            <div class="langkah-cari-title-wrap">
+                                <div class="langkah-cari-title">Pembagian Sintetik</div>
+                                <div class="langkah-cari-text">
+                                    Digunakan untuk polinomial derajat tinggi agar lebih sistematis.
+                                </div>
+                                <div class="langkah-cari-tag">opsional</div>
                             </div>
                         </div>
-                    </div>
+                    </button>
                 </div>
 
-                <div class="jawaban-item">
-                    <div class="jawaban-top">
-                        <div class="jawaban-label">d. Sketsa grafik sederhana</div>
-                        <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban4', this)">
-                            Lihat Jawaban
-                        </button>
+                <!-- PANEL CONTOH BERSAMA -->
+                <div class="contoh-bersama-box" id="contohBersamaBox" style="display: none;">
+                    <div class="contoh-bersama-head">
+                        <div class="contoh-bersama-badge" id="metodeBadge"></div>
+                        <div class="contoh-bersama-title" id="metodeTitle"></div>
                     </div>
 
-                    <div id="jawaban4" class="jawaban-content">
-                        <div class="answer-box">
-                            <div class="answer-title">Jawaban</div>
-                            <ul class="custom-list">
-                                <li>Grafik berbentuk parabola terbuka ke atas</li>
-                                <li>Memotong sumbu-$x$ di $(-1,0)$ dan $(2,0)$</li>
-                                <li>Memotong sumbu-$y$ di $(0,-2)$</li>
-                            </ul>
-                            <div class="graph-placeholder">
-                                <img src="{{ asset('img/grafik4.2.png') }}" alt="Grafik 4.2"
-                                    style="max-width:100%; height:auto; border-radius:12px;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="note-box">
-                    Klik tombol <b>Lihat Jawaban</b> untuk menampilkan jawaban tiap bagian.
-                </div>
-            </div>
-        </div>
-
-        <div class="latihan-section">
-            <div class="latihan-badge">MARI MENCOBA</div>
-
-            <div class="latihan-card">
-                <div class="latihan-card-title">Diberikan fungsi polinomial berikut:</div>
-
-                <div class="latihan-persamaan">
-                    $$f(x)=x^4-x^3-7x^2+x+6$$
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">1. Pembuat nol</div>
-
-                    <div class="cara-box">
-                        <b>Cara mengerjakan:</b><br>
-                        Cari nilai $x$ yang membuat fungsi bernilai nol. Kamu bisa mencoba
-                        beberapa nilai $x$ yang mungkin sampai hasilnya $0$.
-                    </div>
-
-                    <div class="input-row">
-                        <input id="m1" class="input-jawaban" placeholder="Masukkan semua pembuat nol">
-                        <button class="btn-cek" onclick="cekMari(1)">Cek Jawaban</button>
-                    </div>
-                    <div id="fb1" class="feedback-box"></div>
-
-                    <div id="step1" class="penjelasan-wrap">
-                        <div class="langkah-step">
-                            <div class="step-head">Penjelasan</div>
-                            <p>
-                                Pembuat nol adalah nilai $x$ yang menyebabkan nilai fungsi sama dengan nol.
-                                Jadi, setiap nilai $x$ yang membuat $f(x)=0$ termasuk pembuat nol fungsi ini.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">2. Pemfaktoran</div>
-
-                    <div class="cara-box">
-                        <b>Cara mengerjakan:</b><br>
-                        Gunakan pembuat nol yang sudah ditemukan. Setiap pembuat nol
-                        diubah menjadi faktor, lalu tulis dalam bentuk perkalian.
-                    </div>
-
-                    <div class="input-row">
-                        <input id="m2" class="input-jawaban" placeholder="Masukkan bentuk pemfaktoran">
-                        <button class="btn-cek" onclick="cekMari(2)">Cek Jawaban</button>
-                    </div>
-                    <div id="fb2" class="feedback-box"></div>
-
-                    <div id="step2" class="penjelasan-wrap">
-                        <div class="langkah-step">
-                            <div class="step-head">Penjelasan</div>
-                            <p>
-                                Jika suatu nilai $x=a$ merupakan pembuat nol, maka fungsi mempunyai faktor
-                                $(x-a)$. Karena itu, semua pembuat nol dapat diubah menjadi faktor-faktor linear.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">3. Titik potong sumbu-x</div>
-
-                    <div class="cara-box">
-                        <b>Cara mengerjakan:</b><br>
-                        Titik potong sumbu-$x$ berasal dari pembuat nol. Tulis setiap
-                        nilai itu dalam bentuk titik $(x,0)$.
-                    </div>
-
-                    <div class="input-row">
-                        <input id="m3" class="input-jawaban" placeholder="Masukkan titik potong sumbu-x">
-                        <button class="btn-cek" onclick="cekMari(3)">Cek Jawaban</button>
-                    </div>
-                    <div id="fb3" class="feedback-box"></div>
-
-                    <div id="step3" class="penjelasan-wrap">
-                        <div class="langkah-step">
-                            <div class="step-head">Penjelasan</div>
-                            <p>
-                                Grafik memotong sumbu-$x$ saat nilai $y=0$. Karena pada sumbu-$x$ nilai
-                                ordinat selalu nol, maka pembuat nol langsung ditulis menjadi titik
-                                dengan bentuk $(x,0)$.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">4. Titik potong sumbu-y</div>
-
-                    <div class="cara-box">
-                        <b>Cara mengerjakan:</b><br>
-                        Ganti $x$ dengan 0 pada fungsi. Hasil yang diperoleh menjadi
-                        titik potong sumbu-$y$.
-                    </div>
-
-                    <div class="input-row">
-                        <input id="m4" class="input-jawaban" placeholder="Masukkan titik potong sumbu-y">
-                        <button class="btn-cek" onclick="cekMari(4)">Cek Jawaban</button>
-                    </div>
-                    <div id="fb4" class="feedback-box"></div>
-
-                    <div id="step4" class="penjelasan-wrap">
-                        <div class="langkah-step">
-                            <div class="step-head">Penjelasan</div>
-                            <p>
-                                Titik potong sumbu-$y$ diperoleh saat $x=0$ karena semua titik pada sumbu-$y$
-                                memiliki absis nol. Jadi, cukup substitusikan $x=0$ ke fungsi, lalu tulis
-                                hasilnya sebagai titik koordinat.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">5. Grafik</div>
-
-                    <div class="cara-box">
-                        <b>Cara mengerjakan:</b><br>
-                        Gunakan titik potong sumbu-$x$ dan sumbu-$y$ yang sudah kamu
-                        dapatkan. Setelah itu, pilih titik yang benar pada grafik.
-                    </div>
-
-                    <div class="grafik-box">
-                        <div id="grafik-mc4" class="graph-placeholder" style="min-height:430px;">
-                            Grafik akan aktif setelah nomor 1–4 benar semua.
-                        </div>
-
-                        <div id="grafikFeedback" class="grafik-feedback-mini"></div>
-
-                        <div id="grafikPenjelasan" class="grafik-penjelasan">
-                            <b>Penjelasan:</b><br>
-                            Grafik fungsi dapat dibaca dari titik-titik pentingnya.
-                            Titik potong sumbu-$x$ berasal dari pembuat nol, sedangkan
-                            titik potong sumbu-$y$ didapat saat $x=0$. Setelah titik yang
-                            benar ditemukan, kurva grafik akan terlihat sehingga hubungan
-                            antara fungsi, faktor, dan grafik menjadi lebih jelas.
-
-                            <div class="grafik-chip-row">
-                                <div class="grafik-chip">Cari pembuat nol</div>
-                                <div class="grafik-chip">Tentukan titik x</div>
-                                <div class="grafik-chip">Cari titik y</div>
-                                <div class="grafik-chip">Lihat grafik</div>
-                            </div>
-                        </div>
+                    <div id="metodeContent">
+                        <!-- isi akan dimasukkan JS -->
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="latihan-section">
-            <div class="latihan-badge">LATIHAN</div>
+            <div class="contoh-section">
+                <div class="contoh-badge">CONTOH</div>
 
-            <div class="latihan-card">
+                <div class="contoh-card">
+                    <div class="contoh-title">Perhatikan fungsi polinomial berikut:</div>
 
-                <div class="latihan-card-title">1. Faktorkan polinomial berikut secara lengkap:</div>
-
-                <div class="latihan-persamaan">
-                    $$P(x)=x^3-4x^2-11x+30$$
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">a. Tentukan salah satu pembuat nol</div>
-                    <div class="input-row">
-                        <input type="text" id="soal1a" class="input-jawaban" placeholder="Contoh: 2 atau x=2">
-                        <button type="button" class="btn-cek" onclick="cekSoal1('a')">Cek Jawaban</button>
+                    <div class="contoh-persamaan">
+                        $$f(x)=x^2-x-2$$
                     </div>
-                    <div id="feedbackSoal1a" class="feedback-box"></div>
-                </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">b. Tentukan semua pembuat nol</div>
-                    <div class="input-row">
-                        <input type="text" id="soal1b" class="input-jawaban" placeholder="Contoh: 2, 5, -3">
-                        <button type="button" class="btn-cek" onclick="cekSoal1('b')">Cek Jawaban</button>
+                    <div class="contoh-text">
+                        Tentukan:
                     </div>
-                    <div id="feedbackSoal1b" class="feedback-box"></div>
-                </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">c. Tentukan bentuk pemfaktoran lengkap</div>
-                    <div class="input-row">
-                        <input type="text" id="soal1c" class="input-jawaban" placeholder="Contoh: (x-2)(x-5)(x+3)">
-                        <button type="button" class="btn-cek" onclick="cekSoal1('c')">Cek Jawaban</button>
+                    <ol class="soal-list" type="a">
+                        <li>Pembuat nol</li>
+                        <li>Bentuk pemfaktoran</li>
+                        <li>Titik potong dengan sumbu-$x$ dan sumbu-$y$</li>
+                        <li>Sketsa grafik sederhana</li>
+                    </ol>
+
+                    <div class="jawaban-item">
+                        <div class="jawaban-top">
+                            <div class="jawaban-label">a. Pembuat nol</div>
+                            <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban1', this)">
+                                Lihat Jawaban
+                            </button>
+                        </div>
+
+                        <div id="jawaban1" class="jawaban-content">
+                            <div class="answer-box">
+                                <div class="answer-title">Jawaban</div>
+                                <div class="rumus-box">
+                                    $$x^2-x-2=0$$
+                                </div>
+                                <div class="rumus-box">
+                                    $$(x-2)(x+1)=0$$
+                                </div>
+                                <div class="rumus-box">
+                                    $$x=2 \quad \text{dan} \quad x=-1$$
+                                </div>
+                            </div>
+
+                            <div class="explain-box">
+                                <div class="answer-title">Penjelasan</div>
+                                <p>
+                                    Untuk mencari pembuat nol, fungsi dibuat sama dengan nol:
+                                    $$f(x)=0$$
+                                </p>
+                                <p>
+                                    Kemudian difaktorkan:
+                                    $$(x-2)(x+1)=0$$
+                                </p>
+                                <p>
+                                    Berdasarkan sifat hasil kali nol, diperoleh:
+                                    $$x=2 \quad \text{dan} \quad x=-1$$
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="feedbackSoal1c" class="feedback-box"></div>
-                </div>
 
-                <div id="statusSoal1" class="status-selesai">
-                    Semua bagian pada soal 1 sudah selesai.
-                </div>
+                    <div class="jawaban-item">
+                        <div class="jawaban-top">
+                            <div class="jawaban-label">b. Bentuk pemfaktoran</div>
+                            <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban2', this)">
+                                Lihat Jawaban
+                            </button>
+                        </div>
 
-                <div id="penjelasanSoal1" class="penjelasan-wrap">
-                    ...
-                </div>
+                        <div id="jawaban2" class="jawaban-content">
+                            <div class="answer-box">
+                                <div class="answer-title">Jawaban</div>
+                                <div class="rumus-box">
+                                    $$f(x)=(x-2)(x+1)$$
+                                </div>
+                            </div>
 
-                <hr style="margin:40px 0;">
-
-                <div class="latihan-card-title">2. Diberikan fungsi polinomial berikut:</div>
-
-                <div class="latihan-persamaan">
-                    $$f(x)=x^4-3x^3-8x^2+12x+16$$
-                </div>
-
-                <div class="latihan-item">
-                    <div class="latihan-label">a. Pembuat nol</div>
-                    <div class="input-row">
-                        <input type="text" id="soal3a" class="input-jawaban">
-                        <button class="btn-cek" onclick="cekSoal3('a')">Cek Jawaban</button>
+                            <div class="explain-box">
+                                <div class="answer-title">Penjelasan</div>
+                                <p>
+                                    Carilah dua bilangan yang hasil kalinya $-2$ dan jumlahnya $-1$.
+                                    Bilangan tersebut adalah $-2$ dan $1$.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="feedbackSoal3a" class="feedback-box"></div>
-                </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">b. Pemfaktoran</div>
-                    <div class="input-row">
-                        <input type="text" id="soal3b" class="input-jawaban">
-                        <button class="btn-cek" onclick="cekSoal3('b')">Cek Jawaban</button>
+                    <div class="jawaban-item">
+                        <div class="jawaban-top">
+                            <div class="jawaban-label">c. Titik potong dengan sumbu-$x$ dan sumbu-$y$</div>
+                            <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban3', this)">
+                                Lihat Jawaban
+                            </button>
+                        </div>
+
+                        <div id="jawaban3" class="jawaban-content">
+                            <div class="answer-box">
+                                <div class="answer-title">Jawaban</div>
+                                <div class="rumus-box">
+                                    $$\text{Titik potong sumbu-}x : (2,0) \text{ dan } (-1,0)$$
+                                </div>
+                                <div class="rumus-box">
+                                    $$\text{Titik potong sumbu-}y : (0,-2)$$
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="feedbackSoal3b" class="feedback-box"></div>
-                </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">c. Titik potong sumbu-x</div>
-                    <div class="input-row">
-                        <input type="text" id="soal3c" class="input-jawaban">
-                        <button class="btn-cek" onclick="cekSoal3('c')">Cek Jawaban</button>
+                    <div class="jawaban-item">
+                        <div class="jawaban-top">
+                            <div class="jawaban-label">d. Sketsa grafik sederhana</div>
+                            <button type="button" class="btn-jawaban" onclick="toggleJawaban('jawaban4', this)">
+                                Lihat Jawaban
+                            </button>
+                        </div>
+
+                        <div id="jawaban4" class="jawaban-content">
+                            <div class="answer-box">
+                                <div class="answer-title">Jawaban</div>
+                                <ul class="custom-list">
+                                    <li>Grafik berbentuk parabola terbuka ke atas</li>
+                                    <li>Memotong sumbu-$x$ di $(-1,0)$ dan $(2,0)$</li>
+                                    <li>Memotong sumbu-$y$ di $(0,-2)$</li>
+                                </ul>
+                                <div class="graph-placeholder">
+                                    <img src="{{ asset('img/grafik4.2.png') }}" alt="Grafik 4.2"
+                                        style="max-width:100%; height:auto; border-radius:12px;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="feedbackSoal3c" class="feedback-box"></div>
-                </div>
 
-                <div class="latihan-item">
-                    <div class="latihan-label">d. Titik potong sumbu-y</div>
-                    <div class="input-row">
-                        <input type="text" id="soal3d" class="input-jawaban">
-                        <button class="btn-cek" onclick="cekSoal3('d')">Cek Jawaban</button>
+                    <div class="note-box">
+                        Klik tombol <b>Lihat Jawaban</b> untuk menampilkan jawaban tiap bagian.
                     </div>
-                    <div id="feedbackSoal3d" class="feedback-box"></div>
                 </div>
-
-                <div id="statusSoal3" class="status-selesai">
-                    Semua bagian pada soal 2 sudah selesai.
-                </div>
-
-                <div id="penjelasanSoal3" class="penjelasan-wrap">
-                    ...
-                </div>
-
             </div>
+
+            <div class="latihan-section">
+                <div class="latihan-badge">MARI MENCOBA</div>
+
+                <div class="latihan-card">
+                    <div class="latihan-card-title">Diberikan fungsi polinomial berikut:</div>
+
+                    <div class="latihan-persamaan">
+                        $$f(x)=x^4-x^3-7x^2+x+6$$
+                    </div>
+
+                    <div class="latihan-item" id="mariItem1">
+                        <div class="latihan-label">1. Pembuat nol</div>
+
+                        <div class="cara-box">
+                            <b>Cara mengerjakan:</b><br>
+                            Cari nilai $x$ yang membuat fungsi bernilai nol. Kamu bisa mencoba
+                            beberapa nilai $x$ yang mungkin sampai hasilnya $0$.
+                        </div>
+
+                        <div class="input-row">
+                            <input id="m1" class="input-jawaban" placeholder="Masukkan semua pembuat nol">
+                            <button class="btn-cek" onclick="cekMari(1)">Cek Jawaban</button>
+                        </div>
+                        <div id="fb1" class="feedback-box"></div>
+
+                        <div id="step1" class="penjelasan-wrap">
+                            <div class="langkah-step">
+                                <div class="step-head">Penjelasan</div>
+                                <p>
+                                    Pembuat nol adalah nilai $x$ yang menyebabkan nilai fungsi sama dengan nol.
+                                    Jadi, setiap nilai $x$ yang membuat $f(x)=0$ termasuk pembuat nol fungsi ini.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="latihan-item" id="mariItem2">
+                        <div class="latihan-label">2. Pemfaktoran</div>
+
+                        <div class="cara-box">
+                            <b>Cara mengerjakan:</b><br>
+                            Gunakan pembuat nol yang sudah ditemukan. Setiap pembuat nol
+                            diubah menjadi faktor, lalu tulis dalam bentuk perkalian.
+                        </div>
+
+                        <div class="input-row">
+                            <input id="m2" class="input-jawaban" placeholder="Masukkan bentuk pemfaktoran">
+                            <button class="btn-cek" onclick="cekMari(2)">Cek Jawaban</button>
+                        </div>
+                        <div id="fb2" class="feedback-box"></div>
+
+                        <div id="step2" class="penjelasan-wrap">
+                            <div class="langkah-step">
+                                <div class="step-head">Penjelasan</div>
+                                <p>
+                                    Jika suatu nilai $x=a$ merupakan pembuat nol, maka fungsi mempunyai faktor
+                                    $(x-a)$. Karena itu, semua pembuat nol dapat diubah menjadi faktor-faktor linear.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="latihan-item" id="mariItem3">
+                        <div class="latihan-label">3. Titik potong sumbu-x</div>
+
+                        <div class="cara-box">
+                            <b>Cara mengerjakan:</b><br>
+                            Titik potong sumbu-$x$ berasal dari pembuat nol. Tulis setiap
+                            nilai itu dalam bentuk titik $(x,0)$.
+                        </div>
+
+                        <div class="input-row">
+                            <input id="m3" class="input-jawaban" placeholder="Masukkan titik potong sumbu-x">
+                            <button class="btn-cek" onclick="cekMari(3)">Cek Jawaban</button>
+                        </div>
+                        <div id="fb3" class="feedback-box"></div>
+
+                        <div id="step3" class="penjelasan-wrap">
+                            <div class="langkah-step">
+                                <div class="step-head">Penjelasan</div>
+                                <p>
+                                    Grafik memotong sumbu-$x$ saat nilai $y=0$. Karena pada sumbu-$x$ nilai
+                                    ordinat selalu nol, maka pembuat nol langsung ditulis menjadi titik
+                                    dengan bentuk $(x,0)$.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="latihan-item" id="mariItem4">
+                        <div class="latihan-label">4. Titik potong sumbu-y</div>
+
+                        <div class="cara-box">
+                            <b>Cara mengerjakan:</b><br>
+                            Ganti $x$ dengan 0 pada fungsi. Hasil yang diperoleh menjadi
+                            titik potong sumbu-$y$.
+                        </div>
+
+                        <div class="input-row">
+                            <input id="m4" class="input-jawaban" placeholder="Masukkan titik potong sumbu-y">
+                            <button class="btn-cek" onclick="cekMari(4)">Cek Jawaban</button>
+                        </div>
+                        <div id="fb4" class="feedback-box"></div>
+
+                        <div id="step4" class="penjelasan-wrap">
+                            <div class="langkah-step">
+                                <div class="step-head">Penjelasan</div>
+                                <p>
+                                    Titik potong sumbu-$y$ diperoleh saat $x=0$ karena semua titik pada sumbu-$y$
+                                    memiliki absis nol. Jadi, cukup substitusikan $x=0$ ke fungsi, lalu tulis
+                                    hasilnya sebagai titik koordinat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="latihan-item" id="mariItem5">
+                        <div class="latihan-label">5. Grafik</div>
+
+                        <div class="cara-box">
+                            <b>Cara mengerjakan:</b><br>
+                            Gunakan titik potong sumbu-$x$ dan sumbu-$y$ yang sudah kamu
+                            dapatkan. Setelah itu, pilih titik yang benar pada grafik.
+                        </div>
+
+                        <div class="grafik-box">
+                            <div id="grafik-mc4" class="graph-placeholder" style="min-height:430px;">
+                                Grafik akan aktif setelah nomor 1–4 benar semua.
+                            </div>
+
+                            <div id="grafikFeedback" class="grafik-feedback-mini"></div>
+
+                            <div id="grafikPenjelasan" class="grafik-penjelasan">
+                                <b>Penjelasan:</b><br>
+                                Grafik fungsi dapat dibaca dari titik-titik pentingnya.
+                                Titik potong sumbu-$x$ berasal dari pembuat nol, sedangkan
+                                titik potong sumbu-$y$ didapat saat $x=0$. Setelah titik yang
+                                benar ditemukan, kurva grafik akan terlihat sehingga hubungan
+                                antara fungsi, faktor, dan grafik menjadi lebih jelas.
+
+                                <div class="grafik-chip-row">
+                                    <div class="grafik-chip">Cari pembuat nol</div>
+                                    <div class="grafik-chip">Tentukan titik x</div>
+                                    <div class="grafik-chip">Cari titik y</div>
+                                    <div class="grafik-chip">Lihat grafik</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="latihan-section">
+                <div class="latihan-badge">LATIHAN</div>
+
+                <div class="latihan-card">
+                    <div class="latihan-card-title">1. Faktorkan polinomial berikut secara lengkap:</div>
+
+                    <div class="latihan-persamaan">
+                        $$P(x)=x^3-4x^2-11x+30$$
+                    </div>
+
+                    <div class="latihan-item" id="soal1Itema">
+                        <div class="latihan-label">a. Tentukan salah satu pembuat nol</div>
+                        <div class="input-row">
+                            <input type="text" id="soal1a" class="input-jawaban" placeholder="Contoh: 2 atau x=2">
+                            <button type="button" class="btn-cek" onclick="cekSoal1('a')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal1a" class="feedback-box"></div>
+                    </div>
+
+                    <div class="latihan-item" id="soal1Itemb">
+                        <div class="latihan-label">b. Tentukan semua pembuat nol</div>
+                        <div class="input-row">
+                            <input type="text" id="soal1b" class="input-jawaban" placeholder="Contoh: 2, 5, -3">
+                            <button type="button" class="btn-cek" onclick="cekSoal1('b')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal1b" class="feedback-box"></div>
+                    </div>
+
+                    <div class="latihan-item" id="soal1Itemc">
+                        <div class="latihan-label">c. Tentukan bentuk pemfaktoran lengkap</div>
+                        <div class="input-row">
+                            <input type="text" id="soal1c" class="input-jawaban" placeholder="Contoh: (x-2)(x-5)(x+3)">
+                            <button type="button" class="btn-cek" onclick="cekSoal1('c')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal1c" class="feedback-box"></div>
+                    </div>
+
+                    <div id="penjelasanSoal1" class="penjelasan-wrap">
+                        ...
+                    </div>
+
+                    <hr style="margin:40px 0;">
+
+                    <div class="latihan-card-title">2. Diberikan fungsi polinomial berikut:</div>
+
+                    <div class="latihan-persamaan">
+                        $$f(x)=x^4-3x^3-8x^2+12x+16$$
+                    </div>
+
+                    <div class="latihan-item" id="soal3Itema">
+                        <div class="latihan-label">a. Pembuat nol</div>
+                        <div class="input-row">
+                            <input type="text" id="soal3a" class="input-jawaban">
+                            <button class="btn-cek" onclick="cekSoal3('a')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal3a" class="feedback-box"></div>
+                    </div>
+
+                    <div class="latihan-item" id="soal3Itemb">
+                        <div class="latihan-label">b. Pemfaktoran</div>
+                        <div class="input-row">
+                            <input type="text" id="soal3b" class="input-jawaban">
+                            <button class="btn-cek" onclick="cekSoal3('b')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal3b" class="feedback-box"></div>
+                    </div>
+
+                    <div class="latihan-item" id="soal3Itemc">
+                        <div class="latihan-label">c. Titik potong sumbu-x</div>
+                        <div class="input-row">
+                            <input type="text" id="soal3c" class="input-jawaban">
+                            <button class="btn-cek" onclick="cekSoal3('c')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal3c" class="feedback-box"></div>
+                    </div>
+
+                    <div class="latihan-item" id="soal3Itemd">
+                        <div class="latihan-label">d. Titik potong sumbu-y</div>
+                        <div class="input-row">
+                            <input type="text" id="soal3d" class="input-jawaban">
+                            <button class="btn-cek" onclick="cekSoal3('d')">Cek Jawaban</button>
+                        </div>
+                        <div id="feedbackSoal3d" class="feedback-box"></div>
+                    </div>
+
+                    <div id="penjelasanSoal3" class="penjelasan-wrap">
+                        ...
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
     <script>
         let mariGrafikAktif = false;
         let grafikMc4Solved = false;
+        let activeMetode = null;
+
+        const eksplorasiProgress = {
+            1: false,
+            2: false
+        };
 
         const progress = {
+            mari: { 1: false, 2: false, 3: false, 4: false },
             soal1: { a: false, b: false, c: false },
             soal3: { a: false, b: false, c: false, d: false }
         };
@@ -1967,6 +2862,157 @@
             xmax: 6,
             ymin: -8,
             ymax: 8
+        };
+
+        const metodeMateriMap = {
+            faktorisasi: {
+                badge: 'Metode 1',
+                title: 'Contoh Faktorisasi',
+                html: `
+                    <div class="contoh-panel">
+                        <p class="contoh-panel-text">
+                            Tentukan pembuat nol dari:
+                        </p>
+
+                        <div class="rumus-box">
+                            $$x^2 - 5x + 6 = 0$$
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 1</div>
+                            <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
+                            <div class="rumus-box">
+                                $$-2 \\text{ dan } -3$$
+                            </div>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 2</div>
+                            <p>Faktorkan bentuk kuadratnya.</p>
+                            <div class="rumus-box">
+                                $$(x-2)(x-3)=0$$
+                            </div>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 3</div>
+                            <p>Gunakan sifat hasil kali nol.</p>
+                            <div class="rumus-box">
+                                $$x-2=0 \\quad \\text{atau} \\quad x-3=0$$
+                            </div>
+                            <div class="rumus-box">
+                                $$x=2 \\quad \\text{atau} \\quad x=3$$
+                            </div>
+                        </div>
+
+                        <div class="contoh-hasil-box">
+                            <b>Jadi, pembuat nolnya adalah:</b>
+                            <div class="rumus-box">
+                                $$x=2 \\text{ dan } x=3$$
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            substitusi: {
+                badge: 'Metode 2',
+                title: 'Contoh Substitusi',
+                html: `
+                    <div class="contoh-panel">
+                        <p class="contoh-panel-text">
+                            Tentukan pembuat nol dari:
+                        </p>
+
+                        <div class="rumus-box">
+                            $$P(x)=x^2-5x+6$$
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Coba x = 1</div>
+                            <div class="rumus-box">
+                                $$P(1)=1^2-5(1)+6=1-5+6=2$$
+                            </div>
+                            <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Coba x = 2</div>
+                            <div class="rumus-box">
+                                $$P(2)=2^2-5(2)+6=4-10+6=0$$
+                            </div>
+                            <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Coba x = 3</div>
+                            <div class="rumus-box">
+                                $$P(3)=3^2-5(3)+6=9-15+6=0$$
+                            </div>
+                            <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
+                        </div>
+
+                        <div class="contoh-hasil-box">
+                            <b>Jadi, pembuat nolnya adalah:</b>
+                            <div class="rumus-box">
+                                $$x=2 \\text{ dan } x=3$$
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            sintetik: {
+                badge: 'Metode 3',
+                title: 'Contoh Pembagian Sintetik',
+                html: `
+                    <div class="contoh-panel">
+                        <p class="contoh-panel-text">
+                            Tentukan salah satu pembuat nol dari:
+                        </p>
+
+                        <div class="rumus-box">
+                            $$P(x)=x^3-4x^2-11x+30$$
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 1</div>
+                            <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 2</div>
+                            <p>Gunakan pembagian sintetik dengan koefisien:</p>
+                            <div class="rumus-box">
+                                $$1 \\quad -4 \\quad -11 \\quad 30$$
+                            </div>
+                            <div class="rumus-box">
+                                $$\\begin{array}{r|rrrr}
+                                2 & 1 & -4 & -11 & 30 \\\\
+                                  &   & 2 & -4 & -30 \\\\
+                                \\hline
+                                  & 1 & -2 & -15 & 0
+                                \\end{array}$$
+                            </div>
+                        </div>
+
+                        <div class="contoh-step-box">
+                            <div class="contoh-step-title">Langkah 3</div>
+                            <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
+                            <div class="rumus-box">
+                                $$(x-2) \\text{ adalah faktor dari } P(x)$$
+                            </div>
+                        </div>
+
+                        <div class="contoh-hasil-box">
+                            <b>Kesimpulan:</b>
+                            <div class="rumus-box">
+                                $$x=2$$
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
         };
 
         function toggleJawaban(id, btn) {
@@ -2026,6 +3072,22 @@
             }
         }
 
+        function cekProgressEksplorasi() {
+            const semuaSudahDijawab = eksplorasiProgress[1] && eksplorasiProgress[2];
+            const materiLanjutan = document.getElementById('materiLanjutan');
+            const note = document.getElementById('materiTerkunciNote');
+
+            if (materiLanjutan) {
+                materiLanjutan.classList.toggle('hidden', !semuaSudahDijawab);
+            }
+
+            if (note) {
+                note.style.display = semuaSudahDijawab ? 'none' : 'block';
+            }
+
+            renderMathSafe();
+        }
+
         function cekOpsiEksplorasi(btn, isBenar, feedbackId, penjelasanId) {
             const parent = btn.parentElement;
             const semuaOpsi = parent.querySelectorAll('.opsi-btn');
@@ -2044,11 +3106,53 @@
             } else {
                 btn.classList.add('wrong');
                 feedback.className = 'eksplorasi-feedback show error';
-                feedback.innerHTML = '❌ Jawaban belum tepat. Coba pilih lagi.';
+                feedback.innerHTML = '❌ Jawaban belum tepat.';
                 penjelasan.classList.remove('show');
             }
 
+            if (feedbackId === 'fbEks1') {
+                eksplorasiProgress[1] = true;
+            }
+
+            if (feedbackId === 'fbEks2') {
+                eksplorasiProgress[2] = true;
+            }
+
+            cekProgressEksplorasi();
             renderMathSafe();
+        }
+
+        function setLockedState(itemId, locked) {
+            const el = document.getElementById(itemId);
+            if (!el) return;
+            el.classList.toggle('locked', locked);
+        }
+
+        function updateMariLocks() {
+            setLockedState('mariItem1', false);
+            setLockedState('mariItem2', !progress.mari[1]);
+            setLockedState('mariItem3', !progress.mari[2]);
+            setLockedState('mariItem4', !progress.mari[3]);
+            setLockedState('mariItem5', !progress.mari[4]);
+
+            if (progress.mari[1] && progress.mari[2] && progress.mari[3] && progress.mari[4]) {
+                aktifkanGrafikMari();
+            } else {
+                nonaktifkanGrafikMari();
+            }
+        }
+
+        function updateSoal1Locks() {
+            setLockedState('soal1Itema', false);
+            setLockedState('soal1Itemb', !progress.soal1.a);
+            setLockedState('soal1Itemc', !progress.soal1.b);
+        }
+
+        function updateSoal3Locks() {
+            setLockedState('soal3Itema', false);
+            setLockedState('soal3Itemb', !progress.soal3.a);
+            setLockedState('soal3Itemc', !progress.soal3.b);
+            setLockedState('soal3Itemd', !progress.soal3.c);
         }
 
         function cekProgressSoal1() {
@@ -2059,6 +3163,7 @@
             if (status) status.classList.toggle('show', selesai);
             if (penjelasan) penjelasan.classList.toggle('show', selesai);
 
+            updateSoal1Locks();
             renderMathSafe();
         }
 
@@ -2070,6 +3175,7 @@
             if (status) status.classList.toggle('show', selesai);
             if (penjelasan) penjelasan.classList.toggle('show', selesai);
 
+            updateSoal3Locks();
             renderMathSafe();
         }
 
@@ -2081,15 +3187,6 @@
             const cleaned = normalizeText(text);
             const matches = cleaned.match(/\(-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?\)/g);
             return matches ? matches.map(item => item.replace(/\s/g, '')) : [];
-        }
-
-        function semuaMariSudahBenar() {
-            return (
-                document.getElementById('step1')?.classList.contains('show') &&
-                document.getElementById('step2')?.classList.contains('show') &&
-                document.getElementById('step3')?.classList.contains('show') &&
-                document.getElementById('step4')?.classList.contains('show')
-            );
         }
 
         function fxMc4(x) {
@@ -2142,39 +3239,39 @@
             let html = '';
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
-                            <button
-                                type="button"
-                                class="grafik-click-point"
-                                data-x="${x}"
-                                style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
-                                onclick="cekTitikGrafikMc4(this)"
-                                aria-label="Titik x ${x}">
-                            </button>
-                        `;
+                    <button
+                        type="button"
+                        class="grafik-click-point"
+                        data-x="${x}"
+                        style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
+                        onclick="cekTitikGrafikMc4(this)"
+                        aria-label="Titik x ${x}">
+                    </button>
+                `;
             }
             return html;
         }
 
         function buildGrafikInteraktifMc4() {
             return `
-                        <div class="grafik-board">
-                            <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
+                <div class="grafik-board">
+                    <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
 
-                            <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
-                            <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
-                            <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
-                            <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
+                    <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
+                    <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
+                    <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
+                    <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
 
-                            ${buildTicksX()}
-                            ${buildTicksY()}
-                            ${buildLabelsX()}
-                            ${buildLabelsY()}
+                    ${buildTicksX()}
+                    ${buildTicksY()}
+                    ${buildLabelsX()}
+                    ${buildLabelsY()}
 
-                            <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+                    <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
 
-                            ${buildClickablePoints()}
-                        </div>
-                    `;
+                    ${buildClickablePoints()}
+                </div>
+            `;
         }
 
         function aktifkanGrafikMari() {
@@ -2182,7 +3279,7 @@
             const feedback = document.getElementById('grafikFeedback');
             const penjelasan = document.getElementById('grafikPenjelasan');
 
-            if (!box) return;
+            if (!box || mariGrafikAktif) return;
 
             mariGrafikAktif = true;
             grafikMc4Solved = false;
@@ -2229,14 +3326,6 @@
 
             if (penjelasan) {
                 penjelasan.classList.remove('show');
-            }
-        }
-
-        function resetGrafikMc4() {
-            if (semuaMariSudahBenar()) {
-                aktifkanGrafikMari();
-            } else {
-                nonaktifkanGrafikMari();
             }
         }
 
@@ -2327,21 +3416,25 @@
             const yDot = `<circle cx="${xToPercent(0)}" cy="${yToPercent(6)}" r="1.15" fill="#f2994a"></circle>`;
 
             svg.innerHTML = `
-                        <path
-                            d="${d}"
-                            fill="none"
-                            stroke="#2d9cdb"
-                            stroke-width="0.7"
-                            vector-effect="non-scaling-stroke"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-                        </path>
-                        ${rootDots}
-                        ${yDot}
-                    `;
+                <path
+                    d="${d}"
+                    fill="none"
+                    stroke="#2d9cdb"
+                    stroke-width="0.7"
+                    vector-effect="non-scaling-stroke"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                </path>
+                ${rootDots}
+                ${yDot}
+            `;
         }
 
         function cekMari(no) {
+            if (no === 2 && !progress.mari[1]) return;
+            if (no === 3 && !progress.mari[2]) return;
+            if (no === 4 && !progress.mari[3]) return;
+
             let val = norm(document.getElementById('m' + no).value);
             let benar = false;
 
@@ -2374,29 +3467,42 @@
             const step = document.getElementById('step' + no);
 
             if (benar) {
+                progress.mari[no] = true;
                 if (fb) {
                     fb.className = 'feedback-box show success';
                     fb.innerHTML = '✅ Benar!';
                 }
                 if (step) step.classList.add('show');
             } else {
+                progress.mari[no] = false;
                 if (fb) {
                     fb.className = 'feedback-box show error';
                     fb.innerHTML = '❌ Salah, coba lagi sampai benar';
                 }
                 if (step) step.classList.remove('show');
+
+                for (let i = no + 1; i <= 4; i++) {
+                    progress.mari[i] = false;
+
+                    const nextStep = document.getElementById('step' + i);
+                    const nextFb = document.getElementById('fb' + i);
+
+                    if (nextStep) nextStep.classList.remove('show');
+                    if (nextFb) {
+                        nextFb.className = 'feedback-box';
+                        nextFb.innerHTML = '';
+                    }
+                }
             }
 
-            if (semuaMariSudahBenar()) {
-                aktifkanGrafikMari();
-            } else {
-                nonaktifkanGrafikMari();
-            }
-
+            updateMariLocks();
             renderMathSafe();
         }
 
         function cekSoal1(bagian) {
+            if (bagian === 'b' && !progress.soal1.a) return;
+            if (bagian === 'c' && !progress.soal1.b) return;
+
             const input = document.getElementById('soal1' + bagian)?.value.trim();
 
             if (!input) {
@@ -2417,6 +3523,13 @@
                 } else {
                     showFeedback('feedbackSoal1a', 'error', 'Belum tepat. Coba uji faktor-faktor dari 30.');
                     progress.soal1.a = false;
+                    progress.soal1.b = false;
+                    progress.soal1.c = false;
+
+                    const fbB = document.getElementById('feedbackSoal1b');
+                    const fbC = document.getElementById('feedbackSoal1c');
+                    if (fbB) { fbB.className = 'feedback-box'; fbB.innerHTML = ''; }
+                    if (fbC) { fbC.className = 'feedback-box'; fbC.innerHTML = ''; }
                 }
             }
 
@@ -2430,6 +3543,10 @@
                 } else {
                     showFeedback('feedbackSoal1b', 'error', 'Masih belum tepat. Pastikan semua pembuat nol sudah lengkap.');
                     progress.soal1.b = false;
+                    progress.soal1.c = false;
+
+                    const fbC = document.getElementById('feedbackSoal1c');
+                    if (fbC) { fbC.className = 'feedback-box'; fbC.innerHTML = ''; }
                 }
             }
 
@@ -2456,6 +3573,10 @@
         }
 
         function cekSoal3(bagian) {
+            if (bagian === 'b' && !progress.soal3.a) return;
+            if (bagian === 'c' && !progress.soal3.b) return;
+            if (bagian === 'd' && !progress.soal3.c) return;
+
             const input = document.getElementById('soal3' + bagian)?.value.trim();
 
             if (!input) {
@@ -2477,6 +3598,17 @@
                 } else {
                     showFeedback('feedbackSoal3a', 'error', 'Masih belum tepat. Periksa kembali akar-akar fungsinya.');
                     progress.soal3.a = false;
+                    progress.soal3.b = false;
+                    progress.soal3.c = false;
+                    progress.soal3.d = false;
+
+                    ['b', 'c', 'd'].forEach(key => {
+                        const el = document.getElementById('feedbackSoal3' + key);
+                        if (el) {
+                            el.className = 'feedback-box';
+                            el.innerHTML = '';
+                        }
+                    });
                 }
             }
 
@@ -2498,6 +3630,16 @@
                 } else {
                     showFeedback('feedbackSoal3b', 'error', 'Belum tepat. Gunakan faktor linear dari semua pembuat nol.');
                     progress.soal3.b = false;
+                    progress.soal3.c = false;
+                    progress.soal3.d = false;
+
+                    ['c', 'd'].forEach(key => {
+                        const el = document.getElementById('feedbackSoal3' + key);
+                        if (el) {
+                            el.className = 'feedback-box';
+                            el.innerHTML = '';
+                        }
+                    });
                 }
             }
 
@@ -2511,6 +3653,13 @@
                 } else {
                     showFeedback('feedbackSoal3c', 'error', 'Masih belum tepat. Titik potong sumbu-x berasal dari pembuat nol.');
                     progress.soal3.c = false;
+                    progress.soal3.d = false;
+
+                    const fbD = document.getElementById('feedbackSoal3d');
+                    if (fbD) {
+                        fbD.className = 'feedback-box';
+                        fbD.innerHTML = '';
+                    }
                 }
             }
 
@@ -2529,22 +3678,89 @@
             cekProgressSoal3();
         }
 
-        window.addEventListener('load', function () {
-            setTimeout(() => {
-                if (semuaMariSudahBenar()) {
-                    aktifkanGrafikMari();
-                } else {
-                    nonaktifkanGrafikMari();
-                }
-                renderMathSafe();
-            }, 300);
-        });
+        function showMetode(key, btn) {
+            const data = metodeMateriMap[key];
+            if (!data) return;
+
+            const panel = document.getElementById('contohBersamaBox');
+            const badge = document.getElementById('metodeBadge');
+            const title = document.getElementById('metodeTitle');
+            const content = document.getElementById('metodeContent');
+
+            if (!panel || !badge || !title || !content) return;
+
+            if (activeMetode === key) {
+                document.querySelectorAll('.metode-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+
+                panel.style.display = 'none';
+                badge.innerHTML = '';
+                title.innerHTML = '';
+                content.innerHTML = '';
+                activeMetode = null;
+                return;
+            }
+
+            document.querySelectorAll('.metode-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            btn.classList.add('active');
+
+            badge.innerHTML = data.badge;
+            title.innerHTML = data.title;
+            content.innerHTML = data.html;
+
+            panel.style.display = 'block';
+            activeMetode = key;
+
+            renderMathSafe();
+        }
 
         function toggleKonsep(card) {
             card.classList.toggle('active');
             renderMathSafe();
         }
+
+        function toggleCaraFaktor(btn) {
+            const box = document.getElementById('caraFaktorBox');
+            if (!box) return;
+
+            if (box.style.display === 'none' || box.style.display === '') {
+                box.style.display = 'block';
+                btn.querySelector('.arrow-text').textContent = 'Sembunyikan cara';
+            } else {
+                box.style.display = 'none';
+                btn.querySelector('.arrow-text').textContent = 'Lihat cara';
+            }
+
+            renderMathSafe();
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                updateMariLocks();
+                updateSoal1Locks();
+                updateSoal3Locks();
+                cekProgressEksplorasi();
+
+                const panel = document.getElementById('contohBersamaBox');
+                if (panel) {
+                    panel.style.display = 'none';
+                }
+
+                document.querySelectorAll('.metode-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+
+                activeMetode = null;
+                renderMathSafe();
+            }, 300);
+        });
     </script>
+
+
 @endsection
 
 @section('nav')
@@ -2552,7 +3768,7 @@
         ← Previous
     </a>
 
-    <a href="{{ route('kuisd') }}" class="btn-nav next-btn">
+    <a href="{{ route('quiz.show', 4) }}" class="btn-nav next-btn">
         Next →
     </a>
 @endsection

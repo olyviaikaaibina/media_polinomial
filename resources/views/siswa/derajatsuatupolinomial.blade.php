@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                            delimiters: [
-                                                {left: '$$', right: '$$', display: true},
-                                                {left: '$', right: '$', display: false}
-                                            ]
-                                        });"></script>
+                                                        delimiters: [
+                                                            {left: '$$', right: '$$', display: true},
+                                                            {left: '$', right: '$', display: false}
+                                                        ]
+                                                    });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -763,6 +763,33 @@
                 width: 100%;
             }
         }
+
+        /* ===== LATIHAN BERURUTAN ===== */
+        .lat-section.disabled {
+            opacity: .55;
+            pointer-events: none;
+            filter: grayscale(.15);
+            position: relative;
+        }
+
+        .lat-lock-msg {
+            margin-top: 8px;
+            font-weight: 900;
+            font-size: 14px;
+            color: #7a2b2b;
+        }
+
+        .lat-check-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .lat-status-done {
+            margin-top: 10px;
+            font-weight: 900;
+            color: #0f5f22;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1022,19 +1049,19 @@
                     yaitu pangkat tertinggi dari variabel yang muncul dalam polinomial tersebut.
                 </p>
             </div>
-
             {{-- CARD 7: Latihan --}}
             <div class="card card-try latihan-card-fit">
                 <div class="title-box">🎯 Latihan</div>
 
                 <div id="latihanBoard">
 
-                    <div class="lat-section yellow">
+                    {{-- SOAL 1 --}}
+                    <div class="lat-section yellow" id="latihan1" data-step="1" data-unlocked="1" data-done="0">
                         <div class="lat-title">1. Tebak Cepat (True or False)</div>
 
                         <div class="lat-line">
                             <span>a. Bentuk <b>9x<sup>4</sup>y<sup>2</sup></b> memiliki derajat 6.</span>
-                            <select class="lat-select" data-answer="true">
+                            <select class="lat-select tf1" data-answer="true">
                                 <option value="">Pilih</option>
                                 <option value="true">True</option>
                                 <option value="false">False</option>
@@ -1043,17 +1070,23 @@
 
                         <div class="lat-line">
                             <span>b. Suku <b>−7</b> selalu memiliki derajat 0.</span>
-                            <select class="lat-select" data-answer="true">
+                            <select class="lat-select tf1" data-answer="true">
                                 <option value="">Pilih</option>
                                 <option value="true">True</option>
                                 <option value="false">False</option>
                             </select>
                         </div>
 
+                        <div class="lat-check-row">
+                            <button type="button" class="lat-btn" id="btnCheck1">Cek Jawaban Soal 1</button>
+                        </div>
+
                         <div class="lat-feedback" id="fb-truefalse"></div>
+                        <div class="lat-status-done" id="done1"></div>
                     </div>
 
-                    <div class="lat-section blue">
+                    {{-- SOAL 2 --}}
+                    <div class="lat-section blue disabled" id="latihan2" data-step="2" data-unlocked="0" data-done="0">
                         <div class="lat-title">2. Pilih Pemenangnya! (Suku Paling Kuat)</div>
 
                         <p style="margin:6px 0;">
@@ -1078,10 +1111,17 @@
                             <input type="number" id="winnerDegree" class="lat-input" placeholder="isi">
                         </div>
 
+                        <div class="lat-check-row">
+                            <button type="button" class="lat-btn" id="btnCheck2">Cek Jawaban Soal 2</button>
+                        </div>
+
                         <div class="lat-feedback" id="fb-winner"></div>
+                        <div class="lat-status-done" id="done2"></div>
+                        <div class="lat-lock-msg" id="lock2">🔒 Selesaikan Soal 1 dengan benar terlebih dahulu.</div>
                     </div>
 
-                    <div class="lat-section pink">
+                    {{-- SOAL 3 --}}
+                    <div class="lat-section pink disabled" id="latihan3" data-step="3" data-unlocked="0" data-done="0">
                         <div class="lat-title">3. Isi Kotak Misteri (Menjumlah Pangkat)</div>
 
                         <p style="margin:6px 0;">
@@ -1094,10 +1134,17 @@
                             <input type="number" id="mysteryDegree" class="lat-input" placeholder="isi">
                         </div>
 
+                        <div class="lat-check-row">
+                            <button type="button" class="lat-btn" id="btnCheck3">Cek Jawaban Soal 3</button>
+                        </div>
+
                         <div class="lat-feedback" id="fb-mystery"></div>
+                        <div class="lat-status-done" id="done3"></div>
+                        <div class="lat-lock-msg" id="lock3">🔒 Selesaikan Soal 2 dengan benar terlebih dahulu.</div>
                     </div>
 
-                    <div class="lat-section green">
+                    {{-- SOAL 4 --}}
+                    <div class="lat-section green disabled" id="latihan4" data-step="4" data-unlocked="0" data-done="0">
                         <div class="lat-title">4. Detektif Polinomial (Sebutkan Alasannya!)</div>
 
                         <p style="margin:6px 0;">
@@ -1114,14 +1161,16 @@
                             <input type="number" id="detectPoly" class="lat-input" placeholder="isi">
                         </div>
 
-                        <div class="lat-actions">
-                            <button type="button" class="lat-btn" id="btnCheckLatihan">Cek Jawaban</button>
+                        <div class="lat-check-row">
+                            <button type="button" class="lat-btn" id="btnCheck4">Cek Jawaban Soal 4</button>
                         </div>
 
                         <div class="lat-feedback" id="fb-detect"></div>
+                        <div class="lat-status-done" id="done4"></div>
+                        <div class="lat-lock-msg" id="lock4">🔒 Selesaikan Soal 3 dengan benar terlebih dahulu.</div>
                     </div>
 
-                    <div class="lat-final" id="latihanFinalScore"></div>
+                    <div class="lat-final" id="latihanFinalScore">Selesaikan latihan secara berurutan.</div>
                 </div>
             </div>
         </div>
@@ -1349,15 +1398,32 @@
         })();
 
         // ===== LATIHAN HTML CSS JS =====
-        const btnCheckLatihan = document.getElementById("btnCheckLatihan");
+        (function () {
+            const latihan1 = document.getElementById("latihan1");
+            const latihan2 = document.getElementById("latihan2");
+            const latihan3 = document.getElementById("latihan3");
+            const latihan4 = document.getElementById("latihan4");
 
-        if (btnCheckLatihan) {
-            const tfSelects = Array.from(document.querySelectorAll(".lat-select"));
+            const btnCheck1 = document.getElementById("btnCheck1");
+            const btnCheck2 = document.getElementById("btnCheck2");
+            const btnCheck3 = document.getElementById("btnCheck3");
+            const btnCheck4 = document.getElementById("btnCheck4");
+
+            const tfSelects = Array.from(document.querySelectorAll(".tf1"));
             const fbTrueFalse = document.getElementById("fb-truefalse");
             const fbWinner = document.getElementById("fb-winner");
             const fbMystery = document.getElementById("fb-mystery");
             const fbDetect = document.getElementById("fb-detect");
             const finalScore = document.getElementById("latihanFinalScore");
+
+            const done1 = document.getElementById("done1");
+            const done2 = document.getElementById("done2");
+            const done3 = document.getElementById("done3");
+            const done4 = document.getElementById("done4");
+
+            const lock2 = document.getElementById("lock2");
+            const lock3 = document.getElementById("lock3");
+            const lock4 = document.getElementById("lock4");
 
             const winnerTerm = document.getElementById("winnerTerm");
             const winnerDegree = document.getElementById("winnerDegree");
@@ -1372,84 +1438,212 @@
                 el.textContent = text;
             };
 
-            btnCheckLatihan.addEventListener("click", () => {
-                let score = 0;
-                let total = 5;
+            const setDoneText = (el, text) => {
+                if (!el) return;
+                el.textContent = text;
+            };
 
-                // 1. True / False
-                let tfCorrect = 0;
-                tfSelects.forEach(sel => {
-                    if (sel.value && sel.value === sel.dataset.answer) {
-                        tfCorrect++;
+            const unlockSection = (section, lockEl) => {
+                if (!section) return;
+                section.classList.remove("disabled");
+                section.dataset.unlocked = "1";
+                if (lockEl) lockEl.style.display = "none";
+            };
+
+            const lockSection = (section, lockEl, message) => {
+                if (!section) return;
+                section.classList.add("disabled");
+                section.dataset.unlocked = "0";
+                section.dataset.done = "0";
+                if (lockEl) {
+                    lockEl.style.display = "block";
+                    lockEl.textContent = message;
+                }
+            };
+
+            const updateFinalScore = () => {
+                const score =
+                    (latihan1?.dataset.done === "1" ? 1 : 0) +
+                    (latihan2?.dataset.done === "1" ? 1 : 0) +
+                    (latihan3?.dataset.done === "1" ? 1 : 0) +
+                    (latihan4?.dataset.done === "1" ? 1 : 0);
+
+                if (!finalScore) return;
+
+                if (score < 4) {
+                    finalScore.innerHTML = `Progress latihan: ${score}/4 soal selesai benar.`;
+                } else {
+                    finalScore.innerHTML = `🎉 Hebat! Semua soal latihan selesai benar (4/4).`;
+                }
+            };
+
+            const resetSoal2 = () => {
+                if (winnerTerm) winnerTerm.value = "";
+                if (winnerDegree) winnerDegree.value = "";
+                if (fbWinner) {
+                    fbWinner.textContent = "";
+                    fbWinner.classList.remove("ok", "no");
+                }
+                setDoneText(done2, "");
+                lockSection(latihan2, lock2, "🔒 Selesaikan Soal 1 dengan benar terlebih dahulu.");
+            };
+
+            const resetSoal3 = () => {
+                if (mysteryDegree) mysteryDegree.value = "";
+                if (fbMystery) {
+                    fbMystery.textContent = "";
+                    fbMystery.classList.remove("ok", "no");
+                }
+                setDoneText(done3, "");
+                lockSection(latihan3, lock3, "🔒 Selesaikan Soal 2 dengan benar terlebih dahulu.");
+            };
+
+            const resetSoal4 = () => {
+                if (detectHighest) detectHighest.value = "";
+                if (detectPoly) detectPoly.value = "";
+                if (fbDetect) {
+                    fbDetect.textContent = "";
+                    fbDetect.classList.remove("ok", "no");
+                }
+                setDoneText(done4, "");
+                lockSection(latihan4, lock4, "🔒 Selesaikan Soal 3 dengan benar terlebih dahulu.");
+            };
+
+            // Kondisi awal
+            if (latihan1) {
+                latihan1.dataset.unlocked = "1";
+            }
+            resetSoal2();
+            resetSoal3();
+            resetSoal4();
+
+            // ===== SOAL 1 =====
+            if (btnCheck1) {
+                btnCheck1.addEventListener("click", () => {
+                    let tfCorrect = 0;
+
+                    tfSelects.forEach(sel => {
+                        if (sel.value && sel.value === sel.dataset.answer) {
+                            tfCorrect++;
+                        }
+                    });
+
+                    if (tfCorrect === 2) {
+                        latihan1.dataset.done = "1";
+                        setFb(fbTrueFalse, true, "Benar");
+                      
+                        unlockSection(latihan2, lock2);
+                    } else {
+                        latihan1.dataset.done = "0";
+                        setFb(fbTrueFalse, false, "❌ Jawaban Soal 1 belum tepat.");
+                        setDoneText(done1, "");
+
+                        resetSoal2();
+                        resetSoal3();
+                        resetSoal4();
                     }
+
+                    updateFinalScore();
+                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
                 });
+            }
 
-                if (tfCorrect === 2) {
-                    score += 1;
-                    setFb(fbTrueFalse, true, "✅ Benar semua pada bagian True/False.");
-                } else {
-                    setFb(fbTrueFalse, false, "❌ Masih ada jawaban True/False yang belum tepat.");
-                }
+            // ===== SOAL 2 =====
+            if (btnCheck2) {
+                btnCheck2.addEventListener("click", () => {
+                    if (!latihan2 || latihan2.dataset.unlocked !== "1") return;
 
-                // 2. Suku paling kuat
-                const winnerOk =
-                    winnerTerm.value === "3x5" &&
-                    parseInt(winnerDegree.value || "", 10) === 5;
+                    const winnerOk =
+                        winnerTerm &&
+                        winnerDegree &&
+                        winnerTerm.value === "3x5" &&
+                        parseInt(winnerDegree.value || "", 10) === 5;
 
-                if (winnerOk) {
-                    score += 1;
-                    setFb(fbWinner, true, "✅ Tepat! Suku paling kuat adalah 3x⁵ dan derajat polinomialnya 5.");
-                } else {
-                    setFb(fbWinner, false, "❌ Coba lagi. Lihat suku dengan pangkat tertinggi.");
-                }
+                    if (winnerOk) {
+                        latihan2.dataset.done = "1";
+                        setFb(fbWinner, true, "Tepat! Suku paling kuat adalah 3x⁵ dan derajat polinomialnya 5.");
+                      
+                        unlockSection(latihan3, lock3);
+                    } else {
+                        latihan2.dataset.done = "0";
+                        setFb(fbWinner, false, "Soal 2 belum tepat. Lihat suku dengan pangkat tertinggi.");
+                        setDoneText(done2, "");
 
-                // 3. Kotak misteri
-                const mysteryOk = parseInt(mysteryDegree.value || "", 10) === 6;
-                if (mysteryOk) {
-                    score += 1;
-                    setFb(fbMystery, true, "✅ Benar! Derajat 4a³b²c adalah 3 + 2 + 1 = 6.");
-                } else {
-                    setFb(fbMystery, false, "❌ Belum tepat. Jumlahkan semua pangkat variabel.");
-                }
-
-                // 4. Detektif a
-                const detectHighestOk = parseInt(detectHighest.value || "", 10) === 5;
-                if (detectHighestOk) {
-                    score += 1;
-                }
-
-                // 5. Detektif b
-                const detectPolyOk = parseInt(detectPoly.value || "", 10) === 5;
-                if (detectPolyOk) {
-                    score += 1;
-                }
-
-                if (detectHighestOk && detectPolyOk) {
-                    setFb(fbDetect, true, "✅ Benar! Suku tertinggi berasal dari 5x²y³, jadi derajat tertinggi = 5 dan derajat polinomial = 5.");
-                } else {
-                    setFb(fbDetect, false, "❌ Bagian detektif belum tepat. Periksa derajat tiap suku lalu ambil yang terbesar.");
-                }
-
-                if (finalScore) {
-                    finalScore.textContent = `Skor Latihan: ${score}/${total}`;
-
-                    if (score === total) {
-                        finalScore.innerHTML = `🎉 Skor Latihan: ${score}/${total} — Hebat! Semua jawaban benar.`;
+                        resetSoal3();
+                        resetSoal4();
                     }
-                }
 
-                requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-            });
-        }
+                    updateFinalScore();
+                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+                });
+            }
+
+            // ===== SOAL 3 =====
+            if (btnCheck3) {
+                btnCheck3.addEventListener("click", () => {
+                    if (!latihan3 || latihan3.dataset.unlocked !== "1") return;
+
+                    const mysteryOk =
+                        mysteryDegree &&
+                        parseInt(mysteryDegree.value || "", 10) === 6;
+
+                    if (mysteryOk) {
+                        latihan3.dataset.done = "1";
+                        setFb(fbMystery, true, "Benar! Derajat 4a³b²c adalah 3 + 2 + 1 = 6.");
+                        unlockSection(latihan4, lock4);
+                    } else {
+                        latihan3.dataset.done = "0";
+                        setFb(fbMystery, false, "Soal 3 belum tepat. Jumlahkan semua pangkat variabel.");
+                        setDoneText(done3, "");
+
+                        resetSoal4();
+                    }
+
+                    updateFinalScore();
+                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+                });
+            }
+
+            // ===== SOAL 4 =====
+            if (btnCheck4) {
+                btnCheck4.addEventListener("click", () => {
+                    if (!latihan4 || latihan4.dataset.unlocked !== "1") return;
+
+                    const detectHighestOk =
+                        detectHighest &&
+                        parseInt(detectHighest.value || "", 10) === 5;
+
+                    const detectPolyOk =
+                        detectPoly &&
+                        parseInt(detectPoly.value || "", 10) === 5;
+
+                    if (detectHighestOk && detectPolyOk) {
+                        latihan4.dataset.done = "1";
+                        setFb(fbDetect, true, "Benar! Suku tertinggi berasal dari 5x²y³, jadi derajat tertinggi = 5 dan derajat polinomial = 5.");
+                        setDoneText(done4, "Soal 4 selesai.");
+                    } else {
+                        latihan4.dataset.done = "0";
+                        setFb(fbDetect, false, "Bagian detektif belum tepat. Periksa derajat tiap suku lalu ambil yang terbesar.");
+                        setDoneText(done4, "");
+                    }
+
+                    updateFinalScore();
+                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+                });
+            }
+
+            updateFinalScore();
+        })();
+            
     </script>
 @endsection
 
 @section('nav')
-    <a href="{{ route('pengertianpolinomial') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+<a href="{{ route('pengertianpolinomial') }}" class="btn-nav prev-btn">
+    ← Previous
+</a>
 
-    <a href="{{ route('fungsipolinomialdangrafiknya') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+<a href="{{ route('fungsipolinomialdangrafiknya') }}" class="btn-nav next-btn">
+    Next →
+</a>
 @endsection

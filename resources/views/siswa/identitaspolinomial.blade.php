@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                    delimiters: [
-                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                    ]
-                                                                                                                                                                                                                                });"></script>
+                                                                                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                                                    });"></script>
 
     <style>
         :root {
@@ -233,7 +233,7 @@
         .contoh-badge {
             position: absolute;
             top: -20px;
-            left: 0;
+            left: 20px;
             min-width: 180px;
             text-align: center;
             background: #efb39f;
@@ -384,15 +384,18 @@
         }
 
         .mari-header {
-            display: inline-block;
-            background: #8c8c8c;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #7d7d7d, #9a9a9a);
             color: #fff;
             font-size: 20px;
-            font-weight: 700;
-            padding: 10px 38px;
+            font-weight: 800;
+            padding: 12px 30px;
             border-radius: 999px;
-            margin-bottom: 14px;
-            letter-spacing: .3px;
+            margin-bottom: 16px;
+            letter-spacing: .4px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
         }
 
         .mari-card {
@@ -955,8 +958,8 @@
         }
 
         /* =========================
-                                                                           LATIHAN DRAG & DROP
-                                                                        ========================= */
+                                                                                               LATIHAN DRAG & DROP
+                                                                                            ========================= */
         .latihan-drag-wrap {
             margin-top: 38px;
         }
@@ -1397,8 +1400,8 @@
         }
 
         /* =========================
-                                                SIFAT INTERAKTIF MODERN
-                                                ========================= */
+                                                                    SIFAT INTERAKTIF MODERN
+                                                                    ========================= */
         .sifat-interaktif {
             margin: 30px 0;
             padding: 26px 22px 24px;
@@ -1760,6 +1763,386 @@
                 font-size: 16px;
             }
         }
+
+        /* =========================
+               SIFAT INTERAKTIF - FINAL
+               ========================= */
+
+        .sifat-wrapper {
+            position: relative;
+            margin: 46px 0 30px;
+        }
+
+        .sifat-badge-modern {
+            position: absolute;
+            top: -18px;
+            left: 24px;
+            z-index: 10;
+            display: inline-block;
+            background: linear-gradient(135deg, #efb39f, #ffd5b8);
+            border: 2px solid #e0702b;
+            color: #2d2d2d;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            letter-spacing: .5px;
+            box-shadow: 0 8px 16px rgba(224, 112, 43, .15);
+        }
+
+        .sifat-interaktif {
+            margin: 0;
+            padding: 42px 22px 24px;
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at top right, rgba(255, 214, 165, .25), transparent 26%),
+                linear-gradient(180deg, #fffdf8 0%, #fff 100%);
+            border: 2px solid #4aa12f;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .sifat-header-modern {
+            margin-bottom: 18px;
+        }
+
+        .sifat-title-modern {
+            margin: 0 0 6px 0;
+            font-size: 28px;
+            color: #226b2d;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .sifat-subtitle-modern {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* FILTER */
+        .sifat-top-controls {
+            display: flex;
+            justify-content: flex-start;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 18px 0 20px;
+        }
+
+        .sifat-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sifat-tab {
+            border: none;
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            background: #f1f5ef;
+            color: #35533a;
+            transition: .2s ease;
+        }
+
+        .sifat-tab:hover {
+            transform: translateY(-1px);
+        }
+
+        .sifat-tab.active {
+            background: linear-gradient(135deg, #2f8b3a, #55a94f);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(47, 139, 58, .2);
+        }
+
+        /* GRID */
+        .sifat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .sifat-card-item {
+            text-align: left;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 16px 16px 15px;
+            background: #fff;
+            cursor: pointer;
+            transition: .22s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sifat-card-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(74, 161, 47, .08), rgba(224, 112, 43, .06));
+            opacity: 0;
+            transition: .22s ease;
+        }
+
+        .sifat-card-item:hover::before,
+        .sifat-card-item.active::before {
+            opacity: 1;
+        }
+
+        .sifat-card-item:hover {
+            transform: translateY(-3px);
+            border-color: #b8d6b0;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .06);
+        }
+
+        .sifat-card-item.active {
+            border-color: #4aa12f;
+            box-shadow: 0 10px 22px rgba(74, 161, 47, .12);
+        }
+
+        .sifat-no,
+        .sifat-mini,
+        .sifat-formula {
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+
+        .sifat-no {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #eaf6ea;
+            color: #1b7a2a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .sifat-mini {
+            font-size: 15px;
+            font-weight: 800;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+
+        .sifat-formula {
+            font-size: 18px;
+            color: #1d1d1d;
+            line-height: 1.5;
+        }
+
+        .sifat-card-item.hidden {
+            display: none;
+        }
+
+        /* DETAIL PANEL */
+        .sifat-detail-panel {
+            border-radius: 24px;
+            padding: 20px 18px;
+            background: linear-gradient(180deg, #f7fff4 0%, #fff 100%);
+            border: 1.5px solid #cde4c7;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
+        }
+
+        .sifat-detail-top {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .sifat-detail-kategori {
+            display: inline-block;
+            background: #2f8b3a;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 999px;
+            letter-spacing: .5px;
+        }
+
+        .sifat-detail-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 700;
+        }
+
+        .sifat-detail-title {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            color: #21592b;
+            font-weight: 900;
+        }
+
+        .sifat-detail-rumus {
+            font-size: 28px;
+            text-align: center;
+            padding: 14px 12px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px dashed #c9d9c2;
+            margin-bottom: 16px;
+        }
+
+        .sifat-detail-info-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .sifat-detail-box {
+            background: #fff;
+            border-radius: 18px;
+            padding: 16px;
+            border: 1px solid #ececec;
+        }
+
+        .sifat-detail-box.contoh {
+            border-left: 4px solid #e0702b;
+        }
+
+        .sifat-detail-box-title {
+            font-size: 15px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #2d2d2d;
+        }
+
+        .sifat-detail-box-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4c4c4c;
+        }
+
+        /* MINI QUIZ */
+        .sifat-mini-quiz {
+            margin-top: 18px;
+            border-radius: 22px;
+            padding: 18px 16px;
+            background: linear-gradient(135deg, #fff8f2, #fff);
+            border: 1px solid #edd8c4;
+        }
+
+        .sifat-mini-quiz-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #8a4f1d;
+            margin-bottom: 8px;
+        }
+
+        .sifat-mini-quiz-question {
+            font-size: 16px;
+            margin-bottom: 14px;
+            color: #333;
+        }
+
+        .sifat-mini-quiz-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .mini-quiz-btn {
+            border: 1.5px solid #d8d8d8;
+            background: #fff;
+            border-radius: 14px;
+            padding: 11px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .18s ease;
+        }
+
+        .mini-quiz-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .mini-quiz-btn.benar {
+            background: #dff5e3;
+            border-color: #2f9e44;
+            color: #155724;
+        }
+
+        .mini-quiz-btn.salah {
+            background: #fde2e2;
+            border-color: #d6336c;
+            color: #842029;
+        }
+
+        .sifat-mini-quiz-feedback {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .sifat-mini-quiz-feedback.show {
+            display: block;
+        }
+
+        .sifat-mini-quiz-feedback.benar {
+            background: #e3f6e7;
+            border: 1px solid #5ea86a;
+            color: #1f5f2a;
+        }
+
+        .sifat-mini-quiz-feedback.salah {
+            background: #fde8e8;
+            border: 1px solid #d16c6c;
+            color: #8a2525;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sifat-wrapper {
+                margin-top: 42px;
+            }
+
+            .sifat-badge-modern {
+                left: 16px;
+                top: -16px;
+                font-size: 13px;
+                padding: 7px 15px;
+            }
+
+            .sifat-interaktif {
+                padding: 38px 16px 20px;
+            }
+
+            .sifat-grid,
+            .sifat-detail-info-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-title-modern {
+                font-size: 23px;
+            }
+
+            .sifat-detail-title {
+                font-size: 20px;
+            }
+
+            .sifat-detail-rumus {
+                font-size: 22px;
+            }
+
+            .sifat-formula {
+                font-size: 16px;
+            }
+        }
     </style>
 
     <style>
@@ -1783,7 +2166,6 @@
         }
 
         .mari-header::before {
-            content: "✨";
             font-size: 18px;
         }
 
@@ -2126,6 +2508,28 @@
                 text-align: left;
             }
         }
+
+        .materi-lanjutan-hidden {
+            display: none;
+        }
+
+        .materi-lanjutan-hidden.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* optional biar lebih halus */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2264,6 +2668,7 @@
             </div>
         </div>
 
+        <div id="materi-lanjutan" class="materi-lanjutan-hidden">
         <div class="materi-paragraf">
             <p>
                 Pada bab-bab sebelumnya, kamu telah mempelajari berbagai operasi dan sifat
@@ -2308,134 +2713,147 @@
             </p>
         </div>
 
-        <div class="sifat-interaktif" id="sifat-interaktif">
-            <div class="sifat-header-modern">
-                <div class="sifat-badge-modern">SIFAT INTERAKTIF</div>
-                <h3 class="sifat-title-modern">Jelajahi Identitas Polinomial</h3>
-                <p class="sifat-subtitle-modern">
-                    Tekan kartu rumus untuk melihat nama identitas, bentuk lengkap, penjelasan, dan contoh penggunaannya.
-                </p>
-            </div>
+        <div class="sifat-wrapper">
 
-            <div class="sifat-top-controls">
-                <div class="sifat-tabs">
-                    <button type="button" class="sifat-tab active" data-filter="semua">Semua</button>
-                    <button type="button" class="sifat-tab" data-filter="kuadrat">Kuadrat</button>
-                    <button type="button" class="sifat-tab" data-filter="kubik">Kubik</button>
+            <!-- BADGE LUAR -->
+            <div class="sifat-badge-modern">SIFAT INTERAKTIF</div>
+
+            <div class="sifat-interaktif" id="sifat-interaktif">
+
+                <!-- HEADER -->
+                <div class="sifat-header-modern">
+                    <h3 class="sifat-title-modern">Jelajahi Identitas Polinomial</h3>
+                    <p class="sifat-subtitle-modern">
+                        Tekan kartu rumus untuk melihat nama identitas, bentuk lengkap, penjelasan, dan contoh
+                        penggunaannya.
+                    </p>
                 </div>
 
-                <button type="button" class="sifat-random-btn" id="btn-rumus-acak">
-                    🎲 Rumus Acak
-                </button>
-            </div>
-
-            <div class="sifat-grid" id="sifat-grid">
-                <button type="button" class="sifat-card-item active" data-kategori="kuadrat"
-                    data-title="Selisih Dua Kuadrat" data-rumus="a^2 - b^2 = (a+b)(a-b)"
-                    data-penjelasan="Dipakai saat bentuk polinomial terdiri dari dua kuadrat yang dikurangkan."
-                    data-contoh="x^2 - 16 = (x+4)(x-4)">
-                    <span class="sifat-no">1</span>
-                    <span class="sifat-mini">Selisih Dua Kuadrat</span>
-                    <span class="sifat-formula">$a^2 - b^2 = (a+b)(a-b)$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kuadrat"
-                    data-title="Kuadrat Penjumlahan Dua Suku" data-rumus="(a+b)^2 = a^2 + 2ab + b^2"
-                    data-penjelasan="Dipakai saat ada bentuk kuadrat dari dua suku yang dijumlahkan."
-                    data-contoh="(x+3)^2 = x^2 + 6x + 9">
-                    <span class="sifat-no">2</span>
-                    <span class="sifat-mini">Kuadrat Jumlah</span>
-                    <span class="sifat-formula">$(a+b)^2 = a^2 + 2ab + b^2$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kuadrat" data-title="Kuadrat Selisih Dua Suku"
-                    data-rumus="(a-b)^2 = a^2 - 2ab + b^2"
-                    data-penjelasan="Dipakai saat ada bentuk kuadrat dari dua suku yang dikurangkan."
-                    data-contoh="(x-5)^2 = x^2 - 10x + 25">
-                    <span class="sifat-no">3</span>
-                    <span class="sifat-mini">Kuadrat Selisih</span>
-                    <span class="sifat-formula">$(a-b)^2 = a^2 - 2ab + b^2$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Jumlah Dua Kubik"
-                    data-rumus="a^3 + b^3 = (a+b)(a^2-ab+b^2)"
-                    data-penjelasan="Dipakai untuk memfaktorkan bentuk jumlah dua kubik."
-                    data-contoh="x^3 + 8 = (x+2)(x^2 - 2x + 4)">
-                    <span class="sifat-no">4</span>
-                    <span class="sifat-mini">Jumlah Dua Kubik</span>
-                    <span class="sifat-formula">$a^3 + b^3 = (a+b)(a^2-ab+b^2)$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Selisih Dua Kubik"
-                    data-rumus="a^3 - b^3 = (a-b)(a^2+ab+b^2)"
-                    data-penjelasan="Dipakai untuk memfaktorkan bentuk selisih dua kubik."
-                    data-contoh="x^3 - 27 = (x-3)(x^2 + 3x + 9)">
-                    <span class="sifat-no">5</span>
-                    <span class="sifat-mini">Selisih Dua Kubik</span>
-                    <span class="sifat-formula">$a^3 - b^3 = (a-b)(a^2+ab+b^2)$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Kubik Penjumlahan Dua Suku"
-                    data-rumus="(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
-                    data-penjelasan="Dipakai saat bentuk kubik berasal dari penjumlahan dua suku."
-                    data-contoh="(x+2)^3 = x^3 + 6x^2 + 12x + 8">
-                    <span class="sifat-no">6</span>
-                    <span class="sifat-mini">Kubik Jumlah</span>
-                    <span class="sifat-formula">$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$</span>
-                </button>
-
-                <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Kubik Selisih Dua Suku"
-                    data-rumus="(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
-                    data-penjelasan="Dipakai saat bentuk kubik berasal dari selisih dua suku."
-                    data-contoh="(x-1)^3 = x^3 - 3x^2 + 3x - 1">
-                    <span class="sifat-no">7</span>
-                    <span class="sifat-mini">Kubik Selisih</span>
-                    <span class="sifat-formula">$(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$</span>
-                </button>
-            </div>
-
-            <div class="sifat-detail-panel" id="sifat-detail-panel">
-                <div class="sifat-detail-top">
-                    <span class="sifat-detail-kategori" id="detail-kategori">KUADRAT</span>
-                    <span class="sifat-detail-label">Identitas Terpilih</span>
-                </div>
-
-                <h4 class="sifat-detail-title" id="detail-title">Selisih Dua Kuadrat</h4>
-
-                <div class="sifat-detail-rumus" id="detail-rumus">
-                    $$a^2 - b^2 = (a+b)(a-b)$$
-                </div>
-
-                <div class="sifat-detail-info-wrap">
-                    <div class="sifat-detail-box">
-                        <div class="sifat-detail-box-title">Kapan dipakai?</div>
-                        <div class="sifat-detail-box-text" id="detail-penjelasan">
-                            Dipakai saat bentuk polinomial terdiri dari dua kuadrat yang dikurangkan.
-                        </div>
-                    </div>
-
-                    <div class="sifat-detail-box contoh">
-                        <div class="sifat-detail-box-title">Contoh</div>
-                        <div class="sifat-detail-box-text" id="detail-contoh">
-                            $$x^2 - 16 = (x+4)(x-4)$$
-                        </div>
+                <!-- FILTER -->
+                <div class="sifat-top-controls">
+                    <div class="sifat-tabs">
+                        <button type="button" class="sifat-tab active" data-filter="semua">Semua</button>
+                        <button type="button" class="sifat-tab" data-filter="kuadrat">Kuadrat</button>
+                        <button type="button" class="sifat-tab" data-filter="kubik">Kubik</button>
                     </div>
                 </div>
-            </div>
 
-            <div class="sifat-mini-quiz">
-                <div class="sifat-mini-quiz-title">Tebak rumus yang cocok</div>
-                <p class="sifat-mini-quiz-question">
-                    Bentuk <strong>$x^3 - 8$</strong> paling cocok menggunakan identitas...
-                </p>
+                <!-- GRID -->
+                <div class="sifat-grid" id="sifat-grid">
 
-                <div class="sifat-mini-quiz-options">
-                    <button type="button" class="mini-quiz-btn" data-answer="salah">Selisih dua kuadrat</button>
-                    <button type="button" class="mini-quiz-btn" data-answer="benar">Selisih dua kubik</button>
-                    <button type="button" class="mini-quiz-btn" data-answer="salah">Kuadrat penjumlahan dua suku</button>
+                    <button type="button" class="sifat-card-item active" data-kategori="kuadrat"
+                        data-title="Selisih Dua Kuadrat" data-rumus="a^2 - b^2 = (a+b)(a-b)"
+                        data-penjelasan="Dipakai saat bentuk polinomial terdiri dari dua kuadrat yang dikurangkan."
+                        data-contoh="x^2 - 16 = (x+4)(x-4)">
+                        <span class="sifat-no">1</span>
+                        <span class="sifat-mini">Selisih Dua Kuadrat</span>
+                        <span class="sifat-formula">$a^2 - b^2 = (a+b)(a-b)$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kuadrat"
+                        data-title="Kuadrat Penjumlahan Dua Suku" data-rumus="(a+b)^2 = a^2 + 2ab + b^2"
+                        data-penjelasan="Dipakai saat ada bentuk kuadrat dari dua suku yang dijumlahkan."
+                        data-contoh="(x+3)^2 = x^2 + 6x + 9">
+                        <span class="sifat-no">2</span>
+                        <span class="sifat-mini">Kuadrat Jumlah</span>
+                        <span class="sifat-formula">$(a+b)^2 = a^2 + 2ab + b^2$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kuadrat"
+                        data-title="Kuadrat Selisih Dua Suku" data-rumus="(a-b)^2 = a^2 - 2ab + b^2"
+                        data-penjelasan="Dipakai saat ada bentuk kuadrat dari dua suku yang dikurangkan."
+                        data-contoh="(x-5)^2 = x^2 - 10x + 25">
+                        <span class="sifat-no">3</span>
+                        <span class="sifat-mini">Kuadrat Selisih</span>
+                        <span class="sifat-formula">$(a-b)^2 = a^2 - 2ab + b^2$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Jumlah Dua Kubik"
+                        data-rumus="a^3 + b^3 = (a+b)(a^2-ab+b^2)"
+                        data-penjelasan="Dipakai untuk memfaktorkan bentuk jumlah dua kubik."
+                        data-contoh="x^3 + 8 = (x+2)(x^2 - 2x + 4)">
+                        <span class="sifat-no">4</span>
+                        <span class="sifat-mini">Jumlah Dua Kubik</span>
+                        <span class="sifat-formula">$a^3 + b^3 = (a+b)(a^2-ab+b^2)$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Selisih Dua Kubik"
+                        data-rumus="a^3 - b^3 = (a-b)(a^2+ab+b^2)"
+                        data-penjelasan="Dipakai untuk memfaktorkan bentuk selisih dua kubik."
+                        data-contoh="x^3 - 27 = (x-3)(x^2 + 3x + 9)">
+                        <span class="sifat-no">5</span>
+                        <span class="sifat-mini">Selisih Dua Kubik</span>
+                        <span class="sifat-formula">$a^3 - b^3 = (a-b)(a^2+ab+b^2)$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kubik"
+                        data-title="Kubik Penjumlahan Dua Suku" data-rumus="(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+                        data-penjelasan="Dipakai saat bentuk kubik berasal dari penjumlahan dua suku."
+                        data-contoh="(x+2)^3 = x^3 + 6x^2 + 12x + 8">
+                        <span class="sifat-no">6</span>
+                        <span class="sifat-mini">Kubik Jumlah</span>
+                        <span class="sifat-formula">$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$</span>
+                    </button>
+
+                    <button type="button" class="sifat-card-item" data-kategori="kubik" data-title="Kubik Selisih Dua Suku"
+                        data-rumus="(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
+                        data-penjelasan="Dipakai saat bentuk kubik berasal dari selisih dua suku."
+                        data-contoh="(x-1)^3 = x^3 - 3x^2 + 3x - 1">
+                        <span class="sifat-no">7</span>
+                        <span class="sifat-mini">Kubik Selisih</span>
+                        <span class="sifat-formula">$(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$</span>
+                    </button>
+
                 </div>
 
-                <div class="sifat-mini-quiz-feedback" id="mini-quiz-feedback"></div>
+                <!-- DETAIL -->
+                <div class="sifat-detail-panel" id="sifat-detail-panel">
+                    <div class="sifat-detail-top">
+                        <span class="sifat-detail-kategori" id="detail-kategori">KUADRAT</span>
+                        <span class="sifat-detail-label">Identitas Terpilih</span>
+                    </div>
+
+                    <h4 class="sifat-detail-title" id="detail-title">Selisih Dua Kuadrat</h4>
+
+                    <div class="sifat-detail-rumus" id="detail-rumus">
+                        $$a^2 - b^2 = (a+b)(a-b)$$
+                    </div>
+
+                    <div class="sifat-detail-info-wrap">
+                        <div class="sifat-detail-box">
+                            <div class="sifat-detail-box-title">Kapan dipakai?</div>
+                            <div class="sifat-detail-box-text" id="detail-penjelasan">
+                                Dipakai saat bentuk polinomial terdiri dari dua kuadrat yang dikurangkan.
+                            </div>
+                        </div>
+
+                        <div class="sifat-detail-box contoh">
+                            <div class="sifat-detail-box-title">Contoh</div>
+                            <div class="sifat-detail-box-text" id="detail-contoh">
+                                $$x^2 - 16 = (x+4)(x-4)$$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MINI QUIZ -->
+                <div class="sifat-mini-quiz">
+                    <div class="sifat-mini-quiz-title">Tebak rumus yang cocok</div>
+
+                    <p class="sifat-mini-quiz-question">
+                        Bentuk <strong>$x^3 - 8$</strong> paling cocok menggunakan identitas...
+                    </p>
+
+                    <div class="sifat-mini-quiz-options">
+                        <button type="button" class="mini-quiz-btn" data-answer="salah">Selisih dua kuadrat</button>
+                        <button type="button" class="mini-quiz-btn" data-answer="benar">Selisih dua kubik</button>
+                        <button type="button" class="mini-quiz-btn" data-answer="salah">Kuadrat penjumlahan dua
+                            suku</button>
+                    </div>
+
+                    <div class="sifat-mini-quiz-feedback" id="mini-quiz-feedback"></div>
+                </div>
+
             </div>
         </div>
         <div class="lanjutan-paragraf">
@@ -3065,1252 +3483,1337 @@
                     </div>
                 </div>
             </div>
-            <script>
-                (function () {
-                    const langkah = Array.from(document.querySelectorAll('#contoh-identitas .langkah-item'));
-                    const btnPrev = document.getElementById('btn-prev-langkah');
-                    const btnNext = document.getElementById('btn-next-langkah');
-                    const btnReset = document.getElementById('btn-reset-langkah');
-                    const indikator = document.getElementById('indikator-langkah');
+            </div>
+          <script>
+    (function () {
+        const langkah = Array.from(document.querySelectorAll('#contoh-identitas .langkah-item'));
+        const btnPrev = document.getElementById('btn-prev-langkah');
+        const btnNext = document.getElementById('btn-next-langkah');
+        const btnReset = document.getElementById('btn-reset-langkah');
+        const indikator = document.getElementById('indikator-langkah');
 
-                    if (!langkah.length) return;
+        if (!langkah.length) return;
 
-                    let index = 0;
+        let index = 0;
 
-                    function renderLangkah() {
-                        langkah.forEach((item, i) => {
-                            item.classList.toggle('active', i === index);
-                        });
+        function renderLangkah() {
+            langkah.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
 
-                        indikator.textContent = `Langkah ${index + 1} dari ${langkah.length}`;
+            indikator.textContent = `Langkah ${index + 1} dari ${langkah.length}`;
 
-                        btnPrev.disabled = index === 0;
-                        btnPrev.style.opacity = index === 0 ? '.5' : '1';
+            btnPrev.disabled = index === 0;
+            btnPrev.style.opacity = index === 0 ? '.5' : '1';
 
-                        btnNext.disabled = index === langkah.length - 1;
-                        btnNext.style.opacity = index === langkah.length - 1 ? '.5' : '1';
+            btnNext.disabled = index === langkah.length - 1;
+            btnNext.style.opacity = index === langkah.length - 1 ? '.5' : '1';
+        }
+
+        btnNext?.addEventListener('click', function () {
+            if (index < langkah.length - 1) {
+                index++;
+                renderLangkah();
+            }
+        });
+
+        btnPrev?.addEventListener('click', function () {
+            if (index > 0) {
+                index--;
+                renderLangkah();
+            }
+        });
+
+        btnReset?.addEventListener('click', function () {
+            index = 0;
+            renderLangkah();
+        });
+
+        renderLangkah();
+    })();
+
+    (function () {
+        const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
+
+        quizItems.forEach((item) => {
+            const correctAnswer = item.dataset.correct;
+            const options = item.querySelectorAll('.eksplorasi-opsi');
+            const feedback = item.querySelector('.eksplorasi-feedback');
+            const explanation = item.querySelector('.eksplorasi-penjelasan');
+
+            options.forEach((option) => {
+                option.addEventListener('click', function () {
+                    const selected = this.dataset.value;
+
+                    options.forEach((btn) => {
+                        btn.classList.remove('benar', 'salah');
+                        btn.disabled = false;
+                    });
+
+                    explanation.classList.remove('show');
+                    feedback.className = 'eksplorasi-feedback show';
+
+                    if (selected === correctAnswer) {
+                        this.classList.add('benar');
+                        feedback.classList.add('benar');
+                        feedback.innerHTML = '✔ Jawabanmu benar.';
+                        explanation.classList.add('show');
+                    } else {
+                        this.classList.add('salah');
+                        feedback.classList.add('salah');
+                        feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
                     }
 
-                    btnNext?.addEventListener('click', function () {
-                        if (index < langkah.length - 1) {
-                            index++;
-                            renderLangkah();
-                        }
-                    });
-
-                    btnPrev?.addEventListener('click', function () {
-                        if (index > 0) {
-                            index--;
-                            renderLangkah();
-                        }
-                    });
-
-                    btnReset?.addEventListener('click', function () {
-                        index = 0;
-                        renderLangkah();
-                    });
-
-                    renderLangkah();
-                })();
-
-                (function () {
-                    const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
-
-                    quizItems.forEach((item) => {
-                        const correctAnswer = item.dataset.correct;
-                        const options = item.querySelectorAll('.eksplorasi-opsi');
-                        const feedback = item.querySelector('.eksplorasi-feedback');
-                        const explanation = item.querySelector('.eksplorasi-penjelasan');
-
-                        options.forEach((option) => {
-                            option.addEventListener('click', function () {
-                                const selected = this.dataset.value;
-
-                                options.forEach((btn) => {
-                                    btn.classList.remove('benar', 'salah');
-                                    btn.disabled = false;
-                                });
-
-                                explanation.classList.remove('show');
-                                feedback.className = 'eksplorasi-feedback show';
-
-                                if (selected === correctAnswer) {
-                                    this.classList.add('benar');
-                                    feedback.classList.add('benar');
-                                    feedback.innerHTML = '✔ Jawabanmu benar.';
-                                    explanation.classList.add('show');
-                                } else {
-                                    this.classList.add('salah');
-                                    feedback.classList.add('salah');
-                                    feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
-                                }
-
-                                if (typeof renderMathInElement === 'function') {
-                                    renderMathInElement(item, {
-                                        delimiters: [
-                                            { left: '$$', right: '$$', display: true },
-                                            { left: '$', right: '$', display: false }
-                                        ]
-                                    });
-                                }
-                            });
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(item, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
                         });
-                    });
-                })();
-
-                (function () {
-                    const btnCek = document.getElementById('cek-jawaban-faktorisasi');
-                    const btnUlang = document.getElementById('ulangi-faktorisasi');
-                    const input = document.getElementById('jawaban-faktorisasi');
-                    const penjelasan = document.getElementById('penjelasan-faktorisasi');
-                    const langkahBox = document.getElementById('langkah-jawaban-faktorisasi');
-                    const quizItem = document.getElementById('quiz-faktorisasi-item');
-
-                    if (!btnCek || !btnUlang || !input || !penjelasan || !langkahBox || !quizItem) return;
-
-                    function normalisasiJawaban(teks) {
-                        return teks
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .toLowerCase();
                     }
-
-                    btnCek.addEventListener('click', function () {
-                        const jawaban = normalisasiJawaban(input.value);
-                        const benar1 = normalisasiJawaban('(x+4)(x-4)');
-                        const benar2 = normalisasiJawaban('(x-4)(x+4)');
-
-                        quizItem.classList.remove('benar', 'salah');
-                        penjelasan.style.display = 'block';
-                        langkahBox.style.display = 'block';
-
-                        if (jawaban === benar1 || jawaban === benar2) {
-                            quizItem.classList.add('benar');
-                            penjelasan.innerHTML = `
-                                                                                                                                            ✔ <b>Benar!</b> Jawabanmu tepat.
-                                                                                                                                            Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
-                                                                                                                                            $16 = 4^2$, sehingga:
-                                                                                                                                            $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
-                                                                                                                                            Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
-                                                                                                                                            atau <b>$(x-4)(x+4)$</b>.
-                                                                                                                                        `;
-                        } else {
-                            quizItem.classList.add('salah');
-                            penjelasan.innerHTML = `
-                                                                                                                                            ✘ <b>Jawabanmu belum tepat.</b>
-                                                                                                                                            Bentuk $x^2 - 16$ harus dikenali sebagai:
-                                                                                                                                            $$x^2 - 16 = x^2 - 4^2$$
-                                                                                                                                            lalu gunakan identitas:
-                                                                                                                                            $$a^2 - b^2 = (a+b)(a-b)$$
-                                                                                                                                            sehingga hasil yang benar adalah:
-                                                                                                                                            $$x^2 - 16 = (x+4)(x-4).$$
-                                                                                                                                        `;
-                        }
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        input.value = '';
-                        penjelasan.innerHTML = '';
-                        penjelasan.style.display = 'none';
-                        langkahBox.style.display = 'none';
-                        quizItem.classList.remove('benar', 'salah');
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    });
-                })();
-
-                (function () {
-                    const langkahFaktor = Array.from(document.querySelectorAll('#contoh-faktorisasi .langkah-faktor'));
-                    const btnPrevFaktor = document.getElementById('btn-prev-faktor');
-                    const btnNextFaktor = document.getElementById('btn-next-faktor');
-                    const btnResetFaktor = document.getElementById('btn-reset-faktor');
-                    const indikatorFaktor = document.getElementById('indikator-faktor');
-
-                    if (!langkahFaktor.length) return;
-
-                    let indexFaktor = 0;
-
-                    function renderLangkahFaktor() {
-                        langkahFaktor.forEach((item, i) => {
-                            item.classList.toggle('active', i === indexFaktor);
-                        });
-
-                        indikatorFaktor.textContent = `Langkah ${indexFaktor + 1} dari ${langkahFaktor.length}`;
-
-                        btnPrevFaktor.disabled = indexFaktor === 0;
-                        btnPrevFaktor.style.opacity = indexFaktor === 0 ? '.5' : '1';
-
-                        btnNextFaktor.disabled = indexFaktor === langkahFaktor.length - 1;
-                        btnNextFaktor.style.opacity = indexFaktor === langkahFaktor.length - 1 ? '.5' : '1';
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('contoh-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    btnNextFaktor?.addEventListener('click', function () {
-                        if (indexFaktor < langkahFaktor.length - 1) {
-                            indexFaktor++;
-                            renderLangkahFaktor();
-                        }
-                    });
-
-                    btnPrevFaktor?.addEventListener('click', function () {
-                        if (indexFaktor > 0) {
-                            indexFaktor--;
-                            renderLangkahFaktor();
-                        }
-                    });
-
-                    btnResetFaktor?.addEventListener('click', function () {
-                        indexFaktor = 0;
-                        renderLangkahFaktor();
-                    });
-
-                    renderLangkahFaktor();
-                })();
-
-                (function () {
-                    const btnCek = document.getElementById('cek-jawaban');
-                    const btnUlang = document.getElementById('ulangi');
-                    const btnNext = document.getElementById('next-step');
-
-                    const input = document.getElementById('jawaban');
-                    const penjelasan = document.querySelector('.penjelasan');
-                    const langkahBox = document.getElementById('langkah-jawaban');
-                    const langkah = document.querySelectorAll('#langkah-jawaban .langkah-item');
-
-                    let index = 0;
-
-                    btnCek.addEventListener('click', function () {
-                        const jawaban = input.value.replace(/\s/g, '');
-                        const benar1 = "(x+4)(x-4)";
-                        const benar2 = "(x-4)(x+4)";
-
-                        if (jawaban === benar1 || jawaban === benar2) {
-                            penjelasan.innerHTML = "✔ Benar! Ini adalah selisih dua kuadrat.";
-                            penjelasan.style.color = "green";
-                        } else {
-                            penjelasan.innerHTML = "✘ Salah! Coba lagi. Gunakan konsep selisih dua kuadrat.";
-                            penjelasan.style.color = "red";
-                        }
-
-                        langkahBox.style.display = "block";
-                    });
-
-                    btnNext.addEventListener('click', function () {
-                        langkah.forEach((l, i) => {
-                            l.classList.remove('active');
-                            if (i === index) l.classList.add('active');
-                        });
-
-                        if (index < langkah.length - 1) {
-                            index++;
-                        }
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        input.value = "";
-                        penjelasan.innerHTML = "";
-                        langkahBox.style.display = "none";
-                        index = 0;
-                        langkah.forEach(l => l.classList.remove('active'));
-                        langkah[0].classList.add('active');
-                    });
-                })();
-
-                (function () {
-                    function normalize(text) {
-                        return text
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function aktifkanStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        if (panel) panel.classList.remove('locked');
-                        if (input) input.disabled = false;
-                        if (btn) btn.disabled = false;
-                    }
-
-                    function setFeedback(step, status, message) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = message;
-
-                        if (status === 'benar') {
-                            explain.classList.add('show');
-                        } else {
-                            explain.classList.remove('show');
-                        }
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-modern'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    // STEP 1
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step1').value);
-
-                        if (
-                            val.includes('selisihduakubik') ||
-                            val.includes('selisihkubik')
-                        ) {
-                            setFeedback(1, 'benar', '✔ Benar! Bentuk $x^3 - 27$ adalah selisih dua kubik.');
-                            aktifkanStep(2);
-                        } else {
-                            setFeedback(1, 'salah', '✘ Belum tepat. Coba perhatikan bahwa $27 = 3^3$.');
-                        }
-                    });
-
-                    // STEP 2
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2').value);
-
-                        const benarA = val.includes('a=x') && val.includes('b=3');
-                        const benarB = val.includes('b=3') && val.includes('a=x');
-
-                        if (benarA || benarB) {
-                            setFeedback(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
-                            aktifkanStep(3);
-                        } else {
-                            setFeedback(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
-                        }
-                    });
-
-                    // STEP 3
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3').value);
-                        const opsi1 = normalize('(a-b)(a^2+ab+b^2)');
-                        const opsi2 = normalize('a^3-b^3=(a-b)(a^2+ab+b^2)');
-
-                        if (val === opsi1 || val === opsi2 || val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            setFeedback(3, 'benar', '✔ Benar! Itulah identitas selisih dua kubik.');
-                            aktifkanStep(4);
-                        } else {
-                            setFeedback(3, 'salah', '✘ Belum tepat. Ingat rumus: $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
-                        }
-                    });
-
-                    // STEP 4
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4').value);
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            setFeedback(4, 'benar', '✔ Benar! Hasil faktorisasinya tepat.');
-                            document.getElementById('latihan-final-note')?.classList.add('show');
-                        } else {
-                            setFeedback(4, 'salah', '✘ Jawaban belum tepat. Coba substitusi $a=x$ dan $b=3$ ke rumus.');
-                        }
-                    });
-                })();
-
-                (function () {
-                    function normalize(text) {
-                        return text
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function tampilkan(step, status, pesan) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = pesan;
-                        explain.classList.add('show');
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-modern'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step1').value);
-
-                        if (val.includes('selisihduakubik') || val.includes('selisihkubik')) {
-                            tampilkan(1, 'benar', '✔ Benar! $x^3 - 27$ adalah bentuk selisih dua kubik.');
-                        } else {
-                            tampilkan(1, 'salah', '✘ Belum tepat. Petunjuk: $27 = 3^3$, jadi bentuknya adalah selisih dua kubik.');
-                        }
-                    });
-
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2').value);
-                        const benar = (val.includes('a=x') && val.includes('b=3')) || (val.includes('b=3') && val.includes('a=x'));
-
-                        if (benar) {
-                            tampilkan(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
-                        } else {
-                            tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
-                        }
-                    });
-
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3').value);
-
-                        if (val.includes('a^3-b^3=') && val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            tampilkan(3, 'benar', '✔ Benar! Itu adalah identitas selisih dua kubik.');
-                        } else if (val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            tampilkan(3, 'benar', '✔ Benar! Bentuk faktor yang kamu tulis sudah sesuai.');
-                        } else {
-                            tampilkan(3, 'salah', '✘ Belum tepat. Rumusnya adalah $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
-                        }
-                    });
-
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4').value);
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            tampilkan(4, 'benar', '✔ Benar! Hasil faktorisasi sudah tepat.');
-                        } else {
-                            tampilkan(4, 'salah', '✘ Jawaban belum tepat. Gunakan $a=x$ dan $b=3$ pada rumus selisih dua kubik.');
-                        }
-                    });
-                })();
-            </script>
-
-            <script>
-                (function () {
-                    const latihanRoot = document.getElementById('latihan-drag-identitas');
-                    if (!latihanRoot) return;
-
-                    const draggableItems = latihanRoot.querySelectorAll('.drag-item');
-                    const dropzones = latihanRoot.querySelectorAll('.drag-dropzone');
-                    const pairTargets = latihanRoot.querySelectorAll('.pair-target');
-
-                    const bankSoal = document.getElementById('bank-soal-identitas');
-                    const bankFaktor = document.getElementById('bank-faktorisasi');
-
-                    const btnCek = document.getElementById('cek-latihan-drag');
-                    const btnReset = document.getElementById('reset-latihan-drag');
-
-                    const feedbackIdentitas = document.getElementById('feedback-identitas-drag');
-                    const feedbackFaktorisasi = document.getElementById('feedback-faktorisasi-drag');
-                    const summary = document.getElementById('summary-latihan-drag');
-
-                    let activeDrag = null;
-
-                    draggableItems.forEach((item) => {
-                        item.addEventListener('dragstart', function () {
-                            activeDrag = this;
-                            this.classList.add('dragging');
-                        });
-
-                        item.addEventListener('dragend', function () {
-                            this.classList.remove('dragging');
-                        });
-                    });
-
-                    dropzones.forEach((zone) => {
-                        zone.addEventListener('dragover', function (e) {
-                            e.preventDefault();
-                            this.classList.add('over');
-                        });
-
-                        zone.addEventListener('dragleave', function () {
-                            this.classList.remove('over');
-                        });
-
-                        zone.addEventListener('drop', function (e) {
-                            e.preventDefault();
-                            this.classList.remove('over');
-                            if (!activeDrag) return;
-
-                            const body = this.querySelector('.drag-dropzone-body');
-                            if (body && activeDrag.dataset.answer) {
-                                body.appendChild(activeDrag);
-                                rerenderMath();
-                            }
-                        });
-                    });
-
-                    pairTargets.forEach((target) => {
-                        target.addEventListener('dragover', function (e) {
-                            e.preventDefault();
-                            this.classList.add('over');
-                        });
-
-                        target.addEventListener('dragleave', function () {
-                            this.classList.remove('over');
-                        });
-
-                        target.addEventListener('drop', function (e) {
-                            e.preventDefault();
-                            this.classList.remove('over');
-                            if (!activeDrag) return;
-                            if (!activeDrag.classList.contains('factor-item')) return;
-
-                            const existing = this.querySelector('.factor-item');
-                            if (existing) {
-                                bankFaktor.appendChild(existing);
-                            }
-
-                            this.appendChild(activeDrag);
-                            rerenderMath();
-                        });
-                    });
-
-                    function rerenderMath() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(latihanRoot, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    function tampilkanBox(el, type, html) {
-                        el.className = 'drag-feedback show ' + type;
-                        el.innerHTML = html;
-                    }
-
-                    function tampilkanSummary(type, html) {
-                        summary.className = 'drag-summary show ' + type;
-                        summary.innerHTML = html;
-                    }
-
-                    btnCek?.addEventListener('click', function () {
-                        let skor = 0;
-                        const total = 4;
-
-                        // ===== CEK BAGIAN A =====
-                        let benarIdentitas = 0;
-
-                        const cardsIdentitas = document.querySelectorAll('#zone-identitas .drag-item');
-                        const cardsBukan = document.querySelectorAll('#zone-bukan-identitas .drag-item');
-
-                        cardsIdentitas.forEach((card) => {
-                            if (card.dataset.answer === 'identitas') benarIdentitas++;
-                        });
-
-                        cardsBukan.forEach((card) => {
-                            if (card.dataset.answer === 'bukan') benarIdentitas++;
-                        });
-
-                        skor += benarIdentitas;
-
-                        if (benarIdentitas === 2) {
-                            tampilkanBox(
-                                feedbackIdentitas,
-                                'ok',
-                                `✔ Bagian A benar semua.<br>
-                                                                                    <b>Penjelasan:</b><br>
-                                                                                    1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
-                                                                                    2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
-                                                                                    $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
-                            );
-                        } else {
-                            tampilkanBox(
-                                feedbackIdentitas,
-                                'no',
-                                `✘ Bagian A belum tepat semuanya.<br>
-                                                                                    <b>Petunjuk:</b><br>
-                                                                                    Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
-                            );
-                        }
-
-                        // ===== CEK BAGIAN B =====
-                        let benarFaktor = 0;
-
-                        pairTargets.forEach((target) => {
-                            const card = target.querySelector('.factor-item');
-                            if (card && card.dataset.pairAnswer === target.dataset.pair) {
-                                benarFaktor++;
-                            }
-                        });
-
-                        skor += benarFaktor;
-
-                        if (benarFaktor === 2) {
-                            tampilkanBox(
-                                feedbackFaktorisasi,
-                                'ok',
-                                `✔ Bagian B benar semua.<br>
-                                                                                    <b>Penjelasan:</b><br>
-                                                                                    3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
-                                                                                    4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
-                            );
-                        } else {
-                            tampilkanBox(
-                                feedbackFaktorisasi,
-                                'no',
-                                `✘ Bagian B masih ada yang belum tepat.<br>
-                                                                                    <b>Petunjuk:</b><br>
-                                                                                    - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
-                                                                                    - $27p^3+125$ cocok dengan jumlah dua kubik.`
-                            );
-                        }
-
-                        if (skor === total) {
-                            tampilkanSummary(
-                                'ok',
-                                `🎉 Skor kamu <b>${skor}/${total}</b>. Semua jawaban benar. Bagus sekali!`
-                            );
-                        } else {
-                            tampilkanSummary(
-                                'no',
-                                `Skor kamu <b>${skor}/${total}</b>. Coba susun lagi kartunya lalu tekan <b>Cek Jawaban</b>.`
-                            );
-                        }
-
-                        rerenderMath();
-                    });
-
-                    btnReset?.addEventListener('click', function () {
-                        feedbackIdentitas.className = 'drag-feedback';
-                        feedbackIdentitas.innerHTML = '';
-
-                        feedbackFaktorisasi.className = 'drag-feedback';
-                        feedbackFaktorisasi.innerHTML = '';
-
-                        summary.className = 'drag-summary';
-                        summary.innerHTML = '';
-
-                        document.querySelectorAll('#zone-identitas .drag-item, #zone-bukan-identitas .drag-item').forEach((card) => {
-                            bankSoal.appendChild(card);
-                        });
-
-                        pairTargets.forEach((target) => {
-                            const card = target.querySelector('.factor-item');
-                            if (card) {
-                                bankFaktor.appendChild(card);
-                            }
-                        });
-
-                        rerenderMath();
-                    });
-
+                });
+            });
+        });
+    })();
+
+    (function () {
+        const btnCek = document.getElementById('cek-jawaban-faktorisasi');
+        const btnUlang = document.getElementById('ulangi-faktorisasi');
+        const input = document.getElementById('jawaban-faktorisasi');
+        const penjelasan = document.getElementById('penjelasan-faktorisasi');
+        const langkahBox = document.getElementById('langkah-jawaban-faktorisasi');
+        const quizItem = document.getElementById('quiz-faktorisasi-item');
+
+        if (!btnCek || !btnUlang || !input || !penjelasan || !langkahBox || !quizItem) return;
+
+        function normalisasiJawaban(teks) {
+            return teks
+                .replace(/\s+/g, '')
+                .replace(/\*/g, '')
+                .toLowerCase();
+        }
+
+        btnCek.addEventListener('click', function () {
+            const jawaban = normalisasiJawaban(input.value);
+            const benar1 = normalisasiJawaban('(x+4)(x-4)');
+            const benar2 = normalisasiJawaban('(x-4)(x+4)');
+
+            quizItem.classList.remove('benar', 'salah');
+            penjelasan.style.display = 'block';
+            langkahBox.style.display = 'block';
+
+            if (jawaban === benar1 || jawaban === benar2) {
+                quizItem.classList.add('benar');
+                penjelasan.innerHTML = `
+                    ✔ <b>Benar!</b> Jawabanmu tepat.
+                    Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
+                    $16 = 4^2$, sehingga:
+                    $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
+                    Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
+                    atau <b>$(x-4)(x+4)$</b>.
+                `;
+            } else {
+                quizItem.classList.add('salah');
+                penjelasan.innerHTML = `
+                    ✘ <b>Jawabanmu belum tepat.</b>
+                    Bentuk $x^2 - 16$ harus dikenali sebagai:
+                    $$x^2 - 16 = x^2 - 4^2$$
+                    lalu gunakan identitas:
+                    $$a^2 - b^2 = (a+b)(a-b)$$
+                    sehingga hasil yang benar adalah:
+                    $$x^2 - 16 = (x+4)(x-4).$$
+                `;
+            }
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        });
+
+        btnUlang.addEventListener('click', function () {
+            input.value = '';
+            penjelasan.innerHTML = '';
+            penjelasan.style.display = 'none';
+            langkahBox.style.display = 'none';
+            quizItem.classList.remove('benar', 'salah');
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        });
+    })();
+
+    (function () {
+        const langkahFaktor = Array.from(document.querySelectorAll('#contoh-faktorisasi .langkah-faktor'));
+        const btnPrevFaktor = document.getElementById('btn-prev-faktor');
+        const btnNextFaktor = document.getElementById('btn-next-faktor');
+        const btnResetFaktor = document.getElementById('btn-reset-faktor');
+        const indikatorFaktor = document.getElementById('indikator-faktor');
+
+        if (!langkahFaktor.length) return;
+
+        let indexFaktor = 0;
+
+        function renderLangkahFaktor() {
+            langkahFaktor.forEach((item, i) => {
+                item.classList.toggle('active', i === indexFaktor);
+            });
+
+            indikatorFaktor.textContent = `Langkah ${indexFaktor + 1} dari ${langkahFaktor.length}`;
+
+            btnPrevFaktor.disabled = indexFaktor === 0;
+            btnPrevFaktor.style.opacity = indexFaktor === 0 ? '.5' : '1';
+
+            btnNextFaktor.disabled = indexFaktor === langkahFaktor.length - 1;
+            btnNextFaktor.style.opacity = indexFaktor === langkahFaktor.length - 1 ? '.5' : '1';
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('contoh-faktorisasi'), {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        btnNextFaktor?.addEventListener('click', function () {
+            if (indexFaktor < langkahFaktor.length - 1) {
+                indexFaktor++;
+                renderLangkahFaktor();
+            }
+        });
+
+        btnPrevFaktor?.addEventListener('click', function () {
+            if (indexFaktor > 0) {
+                indexFaktor--;
+                renderLangkahFaktor();
+            }
+        });
+
+        btnResetFaktor?.addEventListener('click', function () {
+            indexFaktor = 0;
+            renderLangkahFaktor();
+        });
+
+        renderLangkahFaktor();
+    })();
+
+    (function () {
+        const btnCek = document.getElementById('cek-jawaban');
+        const btnUlang = document.getElementById('ulangi');
+        const btnNext = document.getElementById('next-step');
+
+        const input = document.getElementById('jawaban');
+        const penjelasan = document.querySelector('.penjelasan');
+        const langkahBox = document.getElementById('langkah-jawaban');
+        const langkah = document.querySelectorAll('#langkah-jawaban .langkah-item');
+
+        let index = 0;
+
+        btnCek.addEventListener('click', function () {
+            const jawaban = input.value.replace(/\s/g, '');
+            const benar1 = "(x+4)(x-4)";
+            const benar2 = "(x-4)(x+4)";
+
+            if (jawaban === benar1 || jawaban === benar2) {
+                penjelasan.innerHTML = "✔ Benar! Ini adalah selisih dua kuadrat.";
+                penjelasan.style.color = "green";
+            } else {
+                penjelasan.innerHTML = "✘ Salah! Coba lagi. Gunakan konsep selisih dua kuadrat.";
+                penjelasan.style.color = "red";
+            }
+
+            langkahBox.style.display = "block";
+        });
+
+        btnNext.addEventListener('click', function () {
+            langkah.forEach((l, i) => {
+                l.classList.remove('active');
+                if (i === index) l.classList.add('active');
+            });
+
+            if (index < langkah.length - 1) {
+                index++;
+            }
+        });
+
+        btnUlang.addEventListener('click', function () {
+            input.value = "";
+            penjelasan.innerHTML = "";
+            langkahBox.style.display = "none";
+            index = 0;
+            langkah.forEach(l => l.classList.remove('active'));
+            langkah[0].classList.add('active');
+        });
+    })();
+
+    (function () {
+        function normalize(text) {
+            return text
+                .toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/\*/g, '')
+                .replace(/[()]/g, '');
+        }
+
+        function aktifkanStep(stepNumber) {
+            const panel = document.getElementById(`step${stepNumber}`);
+            const input = document.getElementById(`input-step${stepNumber}`);
+            const btn = document.getElementById(`btn-step${stepNumber}`);
+
+            if (panel) panel.classList.remove('locked');
+            if (input) input.disabled = false;
+            if (btn) btn.disabled = false;
+        }
+
+        function setFeedback(step, status, message) {
+            const feed = document.getElementById(`feed-step${step}`);
+            const explain = document.getElementById(`explain-step${step}`);
+
+            feed.className = 'step-feedback ' + status;
+            feed.innerHTML = message;
+
+            if (status === 'benar') {
+                explain.classList.add('show');
+            } else {
+                explain.classList.remove('show');
+            }
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('mari-mencoba-modern'), {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        // STEP 1
+        document.getElementById('btn-step1')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step1').value);
+
+            if (
+                val.includes('selisihduakubik') ||
+                val.includes('selisihkubik')
+            ) {
+                setFeedback(1, 'benar', '✔ Benar! Bentuk $x^3 - 27$ adalah selisih dua kubik.');
+                aktifkanStep(2);
+            } else {
+                setFeedback(1, 'salah', '✘ Belum tepat. Coba perhatikan bahwa $27 = 3^3$.');
+            }
+        });
+
+        // STEP 2
+        document.getElementById('btn-step2')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step2').value);
+
+            const benarA = val.includes('a=x') && val.includes('b=3');
+            const benarB = val.includes('b=3') && val.includes('a=x');
+
+            if (benarA || benarB) {
+                setFeedback(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
+                aktifkanStep(3);
+            } else {
+                setFeedback(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
+            }
+        });
+
+        // STEP 3
+        document.getElementById('btn-step3')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step3').value);
+            const opsi1 = normalize('(a-b)(a^2+ab+b^2)');
+            const opsi2 = normalize('a^3-b^3=(a-b)(a^2+ab+b^2)');
+
+            if (val === opsi1 || val === opsi2 || val.includes('a-b') && val.includes('a^2+ab+b^2')) {
+                setFeedback(3, 'benar', '✔ Benar! Itulah identitas selisih dua kubik.');
+                aktifkanStep(4);
+            } else {
+                setFeedback(3, 'salah', '✘ Belum tepat. Ingat rumus: $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
+            }
+        });
+
+        // STEP 4
+        document.getElementById('btn-step4')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step4').value);
+            const benar1 = normalize('(x-3)(x^2+3x+9)');
+            const benar2 = normalize('(x^2+3x+9)(x-3)');
+
+            if (val === benar1 || val === benar2) {
+                setFeedback(4, 'benar', '✔ Benar! Hasil faktorisasinya tepat.');
+                document.getElementById('latihan-final-note')?.classList.add('show');
+            } else {
+                setFeedback(4, 'salah', '✘ Jawaban belum tepat. Coba substitusi $a=x$ dan $b=3$ ke rumus.');
+            }
+        });
+    })();
+
+    (function () {
+        function normalize(text) {
+            return text
+                .toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/\*/g, '')
+                .replace(/[()]/g, '');
+        }
+
+        function tampilkan(step, status, pesan) {
+            const feed = document.getElementById(`feed-step${step}`);
+            const explain = document.getElementById(`explain-step${step}`);
+
+            feed.className = 'step-feedback ' + status;
+            feed.innerHTML = pesan;
+            explain.classList.add('show');
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('mari-mencoba-modern'), {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        document.getElementById('btn-step1')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step1').value);
+
+            if (val.includes('selisihduakubik') || val.includes('selisihkubik')) {
+                tampilkan(1, 'benar', '✔ Benar! $x^3 - 27$ adalah bentuk selisih dua kubik.');
+            } else {
+                tampilkan(1, 'salah', '✘ Belum tepat. Petunjuk: $27 = 3^3$, jadi bentuknya adalah selisih dua kubik.');
+            }
+        });
+
+        document.getElementById('btn-step2')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step2').value);
+            const benar = (val.includes('a=x') && val.includes('b=3')) || (val.includes('b=3') && val.includes('a=x'));
+
+            if (benar) {
+                tampilkan(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
+            } else {
+                tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
+            }
+        });
+
+        document.getElementById('btn-step3')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step3').value);
+
+            if (val.includes('a^3-b^3=') && val.includes('a-b') && val.includes('a^2+ab+b^2')) {
+                tampilkan(3, 'benar', '✔ Benar! Itu adalah identitas selisih dua kubik.');
+            } else if (val.includes('a-b') && val.includes('a^2+ab+b^2')) {
+                tampilkan(3, 'benar', '✔ Benar! Bentuk faktor yang kamu tulis sudah sesuai.');
+            } else {
+                tampilkan(3, 'salah', '✘ Belum tepat. Rumusnya adalah $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
+            }
+        });
+
+        document.getElementById('btn-step4')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step4').value);
+            const benar1 = normalize('(x-3)(x2+3x+9)');
+            const benar2 = normalize('(x2+3x+9)(x-3)');
+
+            if (val === benar1 || val === benar2) {
+                tampilkan(4, 'benar', '✔ Benar! Hasil faktorisasi sudah tepat.');
+            } else {
+                tampilkan(4, 'salah', '✘ Jawaban belum tepat. Gunakan $a=x$ dan $b=3$ pada rumus selisih dua kubik.');
+            }
+        });
+    })();
+</script>
+
+<script>
+    (function () {
+        const latihanRoot = document.getElementById('latihan-drag-identitas');
+        if (!latihanRoot) return;
+
+        const draggableItems = latihanRoot.querySelectorAll('.drag-item');
+        const dropzones = latihanRoot.querySelectorAll('.drag-dropzone');
+        const pairTargets = latihanRoot.querySelectorAll('.pair-target');
+
+        const bankSoal = document.getElementById('bank-soal-identitas');
+        const bankFaktor = document.getElementById('bank-faktorisasi');
+
+        const btnCek = document.getElementById('cek-latihan-drag');
+        const btnReset = document.getElementById('reset-latihan-drag');
+
+        const feedbackIdentitas = document.getElementById('feedback-identitas-drag');
+        const feedbackFaktorisasi = document.getElementById('feedback-faktorisasi-drag');
+        const summary = document.getElementById('summary-latihan-drag');
+
+        let activeDrag = null;
+
+        draggableItems.forEach((item) => {
+            item.addEventListener('dragstart', function () {
+                activeDrag = this;
+                this.classList.add('dragging');
+            });
+
+            item.addEventListener('dragend', function () {
+                this.classList.remove('dragging');
+            });
+        });
+
+        dropzones.forEach((zone) => {
+            zone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                this.classList.add('over');
+            });
+
+            zone.addEventListener('dragleave', function () {
+                this.classList.remove('over');
+            });
+
+            zone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('over');
+                if (!activeDrag) return;
+
+                const body = this.querySelector('.drag-dropzone-body');
+                if (body && activeDrag.dataset.answer) {
+                    body.appendChild(activeDrag);
                     rerenderMath();
-                })();
-            </script>
+                }
+            });
+        });
 
-            <script>
-                (function () {
-                    const root = document.getElementById('latihan-drag-identitas-lima');
-                    if (!root) return;
+        pairTargets.forEach((target) => {
+            target.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                this.classList.add('over');
+            });
 
-                    const bank = document.getElementById('bank-identitas-lima');
-                    const zoneIdentitas = document.getElementById('zone-identitas-lima');
-                    const zoneBukan = document.getElementById('zone-bukan-lima');
+            target.addEventListener('dragleave', function () {
+                this.classList.remove('over');
+            });
 
-                    const dropzones = root.querySelectorAll('.drag-dropzone');
-                    const btnCek = document.getElementById('cek-identitas-lima');
-                    const btnReset = document.getElementById('reset-identitas-lima');
-                    const summary = document.getElementById('summary-identitas-lima');
-                    const feedback = document.getElementById('feedback-identitas-lima');
+            target.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('over');
+                if (!activeDrag) return;
+                if (!activeDrag.classList.contains('factor-item')) return;
 
-                    let activeDrag = null;
+                const existing = this.querySelector('.factor-item');
+                if (existing) {
+                    bankFaktor.appendChild(existing);
+                }
 
-                    function initDragItems() {
-                        const items = root.querySelectorAll('.drag-item');
+                this.appendChild(activeDrag);
+                rerenderMath();
+            });
+        });
 
-                        items.forEach((item) => {
-                            item.addEventListener('dragstart', function () {
-                                activeDrag = this;
-                                this.classList.add('dragging');
-                            });
+        function rerenderMath() {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(latihanRoot, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
 
-                            item.addEventListener('dragend', function () {
-                                this.classList.remove('dragging');
-                            });
-                        });
+        function tampilkanBox(el, type, html) {
+            el.className = 'drag-feedback show ' + type;
+            el.innerHTML = html;
+        }
+
+        function tampilkanSummary(type, html) {
+            summary.className = 'drag-summary show ' + type;
+            summary.innerHTML = html;
+        }
+
+        btnCek?.addEventListener('click', function () {
+            let skor = 0;
+            const total = 4;
+
+            // ===== CEK BAGIAN A =====
+            let benarIdentitas = 0;
+
+            const cardsIdentitas = document.querySelectorAll('#zone-identitas .drag-item');
+            const cardsBukan = document.querySelectorAll('#zone-bukan-identitas .drag-item');
+
+            cardsIdentitas.forEach((card) => {
+                if (card.dataset.answer === 'identitas') benarIdentitas++;
+            });
+
+            cardsBukan.forEach((card) => {
+                if (card.dataset.answer === 'bukan') benarIdentitas++;
+            });
+
+            skor += benarIdentitas;
+
+            if (benarIdentitas === 2) {
+                tampilkanBox(
+                    feedbackIdentitas,
+                    'ok',
+                    `✔ Bagian A benar semua.<br>
+                    <b>Penjelasan:</b><br>
+                    1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
+                    2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
+                    $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
+                );
+            } else {
+                tampilkanBox(
+                    feedbackIdentitas,
+                    'no',
+                    `✘ Bagian A belum tepat semuanya.<br>
+                    <b>Petunjuk:</b><br>
+                    Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
+                );
+            }
+
+            // ===== CEK BAGIAN B =====
+            let benarFaktor = 0;
+
+            pairTargets.forEach((target) => {
+                const card = target.querySelector('.factor-item');
+                if (card && card.dataset.pairAnswer === target.dataset.pair) {
+                    benarFaktor++;
+                }
+            });
+
+            skor += benarFaktor;
+
+            if (benarFaktor === 2) {
+                tampilkanBox(
+                    feedbackFaktorisasi,
+                    'ok',
+                    `✔ Bagian B benar semua.<br>
+                    <b>Penjelasan:</b><br>
+                    3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
+                    4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
+                );
+            } else {
+                tampilkanBox(
+                    feedbackFaktorisasi,
+                    'no',
+                    `✘ Bagian B masih ada yang belum tepat.<br>
+                    <b>Petunjuk:</b><br>
+                    - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
+                    - $27p^3+125$ cocok dengan jumlah dua kubik.`
+                );
+            }
+
+            if (skor === total) {
+                tampilkanSummary(
+                    'ok',
+                    `🎉 Skor kamu <b>${skor}/${total}</b>. Semua jawaban benar. Bagus sekali!`
+                );
+            } else {
+                tampilkanSummary(
+                    'no',
+                    `Skor kamu <b>${skor}/${total}</b>. Coba susun lagi kartunya lalu tekan <b>Cek Jawaban</b>.`
+                );
+            }
+
+            rerenderMath();
+        });
+
+        btnReset?.addEventListener('click', function () {
+            feedbackIdentitas.className = 'drag-feedback';
+            feedbackIdentitas.innerHTML = '';
+
+            feedbackFaktorisasi.className = 'drag-feedback';
+            feedbackFaktorisasi.innerHTML = '';
+
+            summary.className = 'drag-summary';
+            summary.innerHTML = '';
+
+            document.querySelectorAll('#zone-identitas .drag-item, #zone-bukan-identitas .drag-item').forEach((card) => {
+                bankSoal.appendChild(card);
+            });
+
+            pairTargets.forEach((target) => {
+                const card = target.querySelector('.factor-item');
+                if (card) {
+                    bankFaktor.appendChild(card);
+                }
+            });
+
+            rerenderMath();
+        });
+
+        rerenderMath();
+    })();
+</script>
+
+<script>
+    (function () {
+        const root = document.getElementById('latihan-drag-identitas-lima');
+        if (!root) return;
+
+        const bank = document.getElementById('bank-identitas-lima');
+        const zoneIdentitas = document.getElementById('zone-identitas-lima');
+        const zoneBukan = document.getElementById('zone-bukan-lima');
+
+        const dropzones = root.querySelectorAll('.drag-dropzone');
+        const btnCek = document.getElementById('cek-identitas-lima');
+        const btnReset = document.getElementById('reset-identitas-lima');
+        const summary = document.getElementById('summary-identitas-lima');
+        const feedback = document.getElementById('feedback-identitas-lima');
+
+        let activeDrag = null;
+
+        function initDragItems() {
+            const items = root.querySelectorAll('.drag-item');
+
+            items.forEach((item) => {
+                item.addEventListener('dragstart', function () {
+                    activeDrag = this;
+                    this.classList.add('dragging');
+                });
+
+                item.addEventListener('dragend', function () {
+                    this.classList.remove('dragging');
+                });
+            });
+        }
+
+        function rerenderMath() {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(root, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        function setSummary(type, html) {
+            summary.className = 'drag-summary show ' + type;
+            summary.innerHTML = html;
+        }
+
+        function setFeedback(type, html) {
+            feedback.className = 'drag-feedback show ' + type;
+            feedback.innerHTML = html;
+        }
+
+        dropzones.forEach((zone) => {
+            zone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                this.classList.add('over');
+            });
+
+            zone.addEventListener('dragleave', function () {
+                this.classList.remove('over');
+            });
+
+            zone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('over');
+
+                if (!activeDrag) return;
+                const body = this.querySelector('.drag-dropzone-body');
+                if (!body) return;
+
+                body.appendChild(activeDrag);
+                rerenderMath();
+            });
+        });
+
+        btnCek?.addEventListener('click', function () {
+            const semuaKartu = root.querySelectorAll('.drag-item');
+            const diIdentitas = zoneIdentitas.querySelectorAll('.drag-item');
+            const diBukan = zoneBukan.querySelectorAll('.drag-item');
+
+            if (semuaKartu.length !== 5) return;
+
+            const totalTersusun = diIdentitas.length + diBukan.length;
+
+            if (totalTersusun < 5) {
+                setSummary('no', 'Semua kartu harus dipindahkan dulu ke kotak jawaban sebelum dicek.');
+                setFeedback('no', 'Masih ada kartu yang belum disusun. Seret semua kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.');
+                return;
+            }
+
+            let skor = 0;
+
+            diIdentitas.forEach((card) => {
+                if (card.dataset.answer === 'identitas') skor++;
+            });
+
+            diBukan.forEach((card) => {
+                if (card.dataset.answer === 'bukan') skor++;
+            });
+
+            if (skor === 5) {
+                setSummary('ok', '🎉 Skor kamu <b>5/5</b>. Semua jawaban benar.');
+            } else {
+                setSummary('no', `Skor kamu <b>${skor}/5</b>. Masih ada jawaban yang perlu diperbaiki.`);
+            }
+
+            setFeedback(
+                skor === 5 ? 'ok' : 'no',
+                `
+                <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
+
+                <div style="margin-bottom:12px;">
+                    <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
+                    Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
+                    hasilnya selalu:
+                    $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
+                    Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
+                    Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
+                    $$ (a+b)(a-b)=a^2-b^2 $$
+                    dengan $a=2y$ dan $b=5$, sehingga:
+                    $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
+                    Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
+                    Maka pernyataan ini <b>bukan identitas</b>.
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
+                    Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
+                    $$ (x+a)(x-a)=x^2-a^2 $$
+                    Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
+                    <b>identitas polinomial</b>.
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
+                    Gunakan rumus <b>kuadrat selisih dua suku</b>:
+                    $$ (a-b)^2 = a^2 - 2ab + b^2 $$
+                    dengan $a=x$ dan $b=4$, maka:
+                    $$ (x-4)^2 = x^2 - 8x + 16 $$
+                    Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
+                    maka ini <b>bukan identitas</b>.
+                </div>
+
+                <div style="margin-bottom:4px;">
+                    <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
+                    Ini adalah rumus baku <b>jumlah dua kubik</b>:
+                    $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
+                    Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
+                    <b>identitas polinomial</b>.
+                </div>
+                `
+            );
+
+            rerenderMath();
+        });
+
+        btnReset?.addEventListener('click', function () {
+            const cardsInZones = root.querySelectorAll('#zone-identitas-lima .drag-item, #zone-bukan-lima .drag-item');
+
+            cardsInZones.forEach((card) => {
+                bank.appendChild(card);
+            });
+
+            summary.className = 'drag-summary';
+            summary.innerHTML = '';
+
+            feedback.className = 'drag-feedback';
+            feedback.innerHTML = '';
+
+            rerenderMath();
+        });
+
+        initDragItems();
+        rerenderMath();
+    })();
+</script>
+
+<script>
+    (function () {
+        const root = document.getElementById('sifat-interaktif');
+        if (!root) return;
+
+        const tabs = root.querySelectorAll('.sifat-tab');
+        const cards = root.querySelectorAll('.sifat-card-item');
+        const btnRandom = document.getElementById('btn-rumus-acak');
+
+        const detailKategori = document.getElementById('detail-kategori');
+        const detailTitle = document.getElementById('detail-title');
+        const detailRumus = document.getElementById('detail-rumus');
+        const detailPenjelasan = document.getElementById('detail-penjelasan');
+        const detailContoh = document.getElementById('detail-contoh');
+
+        function renderMathArea() {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(root, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\(', right: '\\)', display: false },
+                        { left: '\\[', right: '\\]', display: true }
+                    ]
+                });
+            }
+        }
+
+        function setActiveCard(card) {
+            cards.forEach(item => item.classList.remove('active'));
+            card.classList.add('active');
+
+            const kategori = card.dataset.kategori || '';
+            const title = card.dataset.title || '';
+            const rumus = card.dataset.rumus || '';
+            const penjelasan = card.dataset.penjelasan || '';
+            const contoh = card.dataset.contoh || '';
+
+            detailKategori.textContent = kategori.toUpperCase();
+            detailTitle.textContent = title;
+            detailRumus.innerHTML = `\\(${rumus}\\)`;
+            detailPenjelasan.textContent = penjelasan;
+            detailContoh.innerHTML = `\\(${contoh}\\)`;
+
+            renderMathArea();
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', function () {
+                setActiveCard(this);
+            });
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                let firstVisible = null;
+
+                cards.forEach(card => {
+                    const kategori = card.dataset.kategori;
+
+                    if (filter === 'semua' || kategori === filter) {
+                        card.classList.remove('hidden');
+                        if (!firstVisible) firstVisible = card;
+                    } else {
+                        card.classList.add('hidden');
+                        card.classList.remove('active');
                     }
+                });
 
-                    function rerenderMath() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
+                if (firstVisible) {
+                    setActiveCard(firstVisible);
+                }
+            });
+        });
 
-                    function setSummary(type, html) {
-                        summary.className = 'drag-summary show ' + type;
-                        summary.innerHTML = html;
-                    }
+        btnRandom?.addEventListener('click', function () {
+            const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
+            if (!visibleCards.length) return;
 
-                    function setFeedback(type, html) {
-                        feedback.className = 'drag-feedback show ' + type;
-                        feedback.innerHTML = html;
-                    }
+            const randomIndex = Math.floor(Math.random() * visibleCards.length);
+            setActiveCard(visibleCards[randomIndex]);
+        });
 
-                    dropzones.forEach((zone) => {
-                        zone.addEventListener('dragover', function (e) {
-                            e.preventDefault();
-                            this.classList.add('over');
-                        });
+        const miniQuizBtns = root.querySelectorAll('.mini-quiz-btn');
+        const miniQuizFeedback = document.getElementById('mini-quiz-feedback');
 
-                        zone.addEventListener('dragleave', function () {
-                            this.classList.remove('over');
-                        });
+        miniQuizBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                miniQuizBtns.forEach(item => item.classList.remove('benar', 'salah'));
 
-                        zone.addEventListener('drop', function (e) {
-                            e.preventDefault();
-                            this.classList.remove('over');
+                if (this.dataset.answer === 'benar') {
+                    this.classList.add('benar');
+                    miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
+                    miniQuizFeedback.innerHTML = `
+                        ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
+                        \\(8 = 2^3\\), sehingga cocok dengan identitas:
+                        \\[
+                            a^3 - b^3 = (a-b)(a^2+ab+b^2)
+                        \\]
+                    `;
+                } else {
+                    this.classList.add('salah');
+                    miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
+                    miniQuizFeedback.innerHTML = `
+                        ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
+                        bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
+                    `;
+                }
 
-                            if (!activeDrag) return;
-                            const body = this.querySelector('.drag-dropzone-body');
-                            if (!body) return;
+                renderMathArea();
+            });
+        });
 
-                            body.appendChild(activeDrag);
-                            rerenderMath();
-                        });
+        renderMathArea();
+    })();
+</script>
+
+<script>
+    (function () {
+        const form = document.getElementById('quiz-form');
+        const btnCek = document.getElementById('cek-jawaban');
+        const btnUlang = document.getElementById('ulangi');
+        const hasilSkor = document.getElementById('hasil-skor');
+        const quizItems = Array.from(document.querySelectorAll('#quiz-form .quiz-item'));
+
+        if (!form || !btnCek || !btnUlang || !quizItems.length) return;
+
+        function renderMath(target) {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(target, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        btnCek.addEventListener('click', function () {
+            let skor = 0;
+            let semuaTerjawab = true;
+
+            quizItems.forEach((item, index) => {
+                const correct = item.dataset.correct;
+                const explain = item.dataset.explain;
+                const wrongMsg = item.dataset.wrong;
+                const checked = item.querySelector(`input[name="q${index + 1}"]:checked`);
+                const penjelasan = item.querySelector('.penjelasan');
+
+                item.classList.remove('benar', 'salah');
+                penjelasan.innerHTML = '';
+
+                if (!checked) {
+                    semuaTerjawab = false;
+                    return;
+                }
+
+                if (checked.value === correct) {
+                    skor++;
+                    item.classList.add('benar');
+                    penjelasan.innerHTML = `✔ <b>Benar.</b> ${explain}`;
+                } else {
+                    item.classList.add('salah');
+                    penjelasan.innerHTML = `✘ <b>Belum tepat.</b> ${wrongMsg}`;
+                }
+            });
+
+            if (!semuaTerjawab) {
+                hasilSkor.className = 'hasil-skor show perlu-lagi';
+                hasilSkor.innerHTML = 'Semua soal harus dijawab terlebih dahulu sebelum mengecek jawaban.';
+                renderMath(form);
+                return;
+            }
+
+            if (skor === quizItems.length) {
+                hasilSkor.className = 'hasil-skor show bagus';
+                hasilSkor.innerHTML = `🎉 Skor kamu <b>${skor}/${quizItems.length}</b>. Hebat, semua jawaban benar!`;
+            } else {
+                hasilSkor.className = 'hasil-skor show perlu-lagi';
+                hasilSkor.innerHTML = `Skor kamu <b>${skor}/${quizItems.length}</b>. Perhatikan bagian yang masih salah lalu coba lagi.`;
+            }
+
+            renderMath(form);
+        });
+
+        btnUlang.addEventListener('click', function () {
+            form.reset();
+
+            quizItems.forEach((item) => {
+                item.classList.remove('benar', 'salah');
+                const penjelasan = item.querySelector('.penjelasan');
+                penjelasan.innerHTML = '';
+            });
+
+            hasilSkor.className = 'hasil-skor';
+            hasilSkor.innerHTML = '';
+
+            renderMath(form);
+        });
+
+        renderMath(form);
+    })();
+</script>
+
+<script>
+    (function () {
+        const root = document.getElementById('mari-mencoba-modern');
+        if (!root) return;
+
+        let selectedStep1 = '';
+
+        function normalize(text) {
+            return (text || '')
+                .toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/\*/g, '')
+                .replace(/[()]/g, '');
+        }
+
+        function renderMathArea() {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(root, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ]
+                });
+            }
+        }
+
+        function aktifkanStep(stepNumber) {
+            const panel = document.getElementById(`step${stepNumber}`);
+            const input = document.getElementById(`input-step${stepNumber}`);
+            const btn = document.getElementById(`btn-step${stepNumber}`);
+
+            panel?.classList.remove('locked');
+
+            if (input) input.disabled = false;
+            if (btn) btn.disabled = false;
+        }
+
+        function resetFeedback(step) {
+            const feed = document.getElementById(`feed-step${step}`);
+            const explain = document.getElementById(`explain-step${step}`);
+
+            if (feed) {
+                feed.className = 'step-feedback';
+                feed.innerHTML = '';
+            }
+
+            if (explain) {
+                explain.classList.remove('show');
+            }
+        }
+
+        function resetStep(stepNumber) {
+            const panel = document.getElementById(`step${stepNumber}`);
+            const input = document.getElementById(`input-step${stepNumber}`);
+            const btn = document.getElementById(`btn-step${stepNumber}`);
+
+            panel?.classList.add('locked');
+
+            if (input) {
+                input.disabled = true;
+                input.value = '';
+            }
+
+            if (btn) btn.disabled = true;
+
+            resetFeedback(stepNumber);
+        }
+
+        function resetMulaiDari(stepNumber) {
+            for (let i = stepNumber; i <= 4; i++) {
+                resetStep(i);
+            }
+        }
+
+        function tampilkan(step, status, pesan, showExplain = false) {
+            const feed = document.getElementById(`feed-step${step}`);
+            const explain = document.getElementById(`explain-step${step}`);
+
+            if (!feed) return;
+
+            feed.className = 'step-feedback ' + status;
+            feed.innerHTML = pesan;
+
+            if (showExplain) {
+                explain?.classList.add('show');
+            } else {
+                explain?.classList.remove('show');
+            }
+
+            renderMathArea();
+        }
+
+        function resetStep1Styles() {
+            const opsi = root.querySelectorAll('#opsi-step1 .step-option-btn');
+            opsi.forEach((btn) => {
+                btn.classList.remove('selected', 'correct', 'wrong');
+            });
+        }
+
+        resetMulaiDari(2);
+
+        // STEP 1
+        const opsiStep1 = root.querySelectorAll('#opsi-step1 .step-option-btn');
+
+        opsiStep1.forEach((btn) => {
+            btn.addEventListener('click', function () {
+                resetStep1Styles();
+                resetFeedback(1);
+                this.classList.add('selected');
+                selectedStep1 = this.dataset.value;
+            });
+        });
+
+        document.getElementById('btn-step1')?.addEventListener('click', function () {
+            if (!selectedStep1) {
+                tampilkan(1, 'salah', '✘ Pilih salah satu jawaban terlebih dahulu.');
+                return;
+            }
+
+            const selectedBtn = root.querySelector('#opsi-step1 .step-option-btn.selected');
+
+            if (selectedStep1 === 'selisih-dua-kubik') {
+                selectedBtn?.classList.add('correct');
+                tampilkan(1, 'benar', '✔ Benar. Polanya sudah sesuai.', true);
+                aktifkanStep(2);
+            } else {
+                selectedBtn?.classList.add('wrong');
+                tampilkan(1, 'salah', '✘ Belum tepat. Coba perhatikan jenis pangkat dan tanda operasinya.');
+                resetMulaiDari(2);
+            }
+        });
+
+        // STEP 2
+        document.getElementById('btn-step2')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step2')?.value);
+            const benarA = val.includes('a=x') && val.includes('b=3');
+            const benarB = val.includes('b=3') && val.includes('a=x');
+
+            if (benarA || benarB) {
+                tampilkan(2, 'benar', '✔ Benar. Nilai yang dipilih sudah sesuai.', true);
+                aktifkanStep(3);
+            } else {
+                tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan kembali dengan bentuk umum $a^3-b^3$.');
+                resetMulaiDari(3);
+            }
+        });
+
+        // STEP 3
+        document.getElementById('btn-step3')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step3')?.value);
+
+            const cocok1 = val === normalize('a3-b3=(a-b)(a2+ab+b2)');
+            const cocok2 = val === normalize('(a-b)(a^2+ab+b^2)');
+            const cocok3 = val.includes('a-b') && val.includes('a^2+ab+b^2');
+
+            if (cocok1 || cocok2 || cocok3) {
+                tampilkan(3, 'benar', '✔ Benar. Rumus identitas yang digunakan sudah tepat.', true);
+                aktifkanStep(4);
+            } else {
+                tampilkan(3, 'salah', '✘ Belum tepat. Tulis kembali identitas selisih dua kubik.');
+                resetMulaiDari(4);
+            }
+        });
+
+        // STEP 4
+        document.getElementById('btn-step4')?.addEventListener('click', function () {
+            const val = normalize(document.getElementById('input-step4')?.value);
+            const benar1 = normalize('(x-3)(x^2+3x+9)');
+            const benar2 = normalize('(x^2+3x+9)(x-3)');
+
+            if (val === benar1 || val === benar2) {
+                tampilkan(4, 'benar', '🎉 Benar. Faktorisasi sudah tepat.', true);
+            } else {
+                tampilkan(4, 'salah', '✘ Belum tepat. Coba substitusikan nilai ke rumus dengan lebih teliti.');
+            }
+        });
+
+        renderMathArea();
+    })();
+
+    (function () {
+        const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
+        const materiLanjutan = document.getElementById('materi-lanjutan');
+
+        // fungsi cek semua soal sudah dijawab
+        function cekSemuaEksplorasiTerjawab() {
+            const semuaTerjawab = Array.from(quizItems).every((item) => {
+                return item.dataset.answered === 'true';
+            });
+
+            if (semuaTerjawab && materiLanjutan) {
+                materiLanjutan.classList.add('show');
+
+                if (typeof renderMathInElement === 'function') {
+                    renderMathInElement(materiLanjutan, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false }
+                        ]
+                    });
+                }
+            }
+        }
+
+        // sembunyikan dulu
+        if (materiLanjutan) {
+            materiLanjutan.classList.remove('show');
+        }
+
+        quizItems.forEach((item) => {
+            const correctAnswer = item.dataset.correct;
+            const options = item.querySelectorAll('.eksplorasi-opsi');
+            const feedback = item.querySelector('.eksplorasi-feedback');
+            const explanation = item.querySelector('.eksplorasi-penjelasan');
+
+            // tandai belum dijawab
+            item.dataset.answered = 'false';
+
+            options.forEach((option) => {
+                option.addEventListener('click', function () {
+                    const selected = this.dataset.value;
+
+                    // reset tampilan
+                    options.forEach((btn) => {
+                        btn.classList.remove('benar', 'salah');
                     });
 
-                    btnCek?.addEventListener('click', function () {
-                        const semuaKartu = root.querySelectorAll('.drag-item');
-                        const diIdentitas = zoneIdentitas.querySelectorAll('.drag-item');
-                        const diBukan = zoneBukan.querySelectorAll('.drag-item');
+                    explanation.classList.remove('show');
+                    feedback.className = 'eksplorasi-feedback show';
 
-                        if (semuaKartu.length !== 5) return;
-
-                        const totalTersusun = diIdentitas.length + diBukan.length;
-
-                        if (totalTersusun < 5) {
-                            setSummary('no', 'Semua kartu harus dipindahkan dulu ke kotak jawaban sebelum dicek.');
-                            setFeedback('no', 'Masih ada kartu yang belum disusun. Seret semua kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.');
-                            return;
-                        }
-
-                        let skor = 0;
-
-                        diIdentitas.forEach((card) => {
-                            if (card.dataset.answer === 'identitas') skor++;
-                        });
-
-                        diBukan.forEach((card) => {
-                            if (card.dataset.answer === 'bukan') skor++;
-                        });
-
-                        if (skor === 5) {
-                            setSummary('ok', '🎉 Skor kamu <b>5/5</b>. Semua jawaban benar.');
-                        } else {
-                            setSummary('no', `Skor kamu <b>${skor}/5</b>. Masih ada jawaban yang perlu diperbaiki.`);
-                        }
-
-                        setFeedback(
-                            skor === 5 ? 'ok' : 'no',
-                            `
-                                                                        <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
-
-                                                                        <div style="margin-bottom:12px;">
-                                                                            <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
-                                                                            Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
-                                                                            hasilnya selalu:
-                                                                            $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
-                                                                            Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
-                                                                        </div>
-
-                                                                        <div style="margin-bottom:12px;">
-                                                                            <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
-                                                                            Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
-                                                                            $$ (a+b)(a-b)=a^2-b^2 $$
-                                                                            dengan $a=2y$ dan $b=5$, sehingga:
-                                                                            $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
-                                                                            Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
-                                                                            Maka pernyataan ini <b>bukan identitas</b>.
-                                                                        </div>
-
-                                                                        <div style="margin-bottom:12px;">
-                                                                            <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
-                                                                            Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
-                                                                            $$ (x+a)(x-a)=x^2-a^2 $$
-                                                                            Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
-                                                                            <b>identitas polinomial</b>.
-                                                                        </div>
-
-                                                                        <div style="margin-bottom:12px;">
-                                                                            <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
-                                                                            Gunakan rumus <b>kuadrat selisih dua suku</b>:
-                                                                            $$ (a-b)^2 = a^2 - 2ab + b^2 $$
-                                                                            dengan $a=x$ dan $b=4$, maka:
-                                                                            $$ (x-4)^2 = x^2 - 8x + 16 $$
-                                                                            Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
-                                                                            maka ini <b>bukan identitas</b>.
-                                                                        </div>
-
-                                                                        <div style="margin-bottom:4px;">
-                                                                            <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
-                                                                            Ini adalah rumus baku <b>jumlah dua kubik</b>:
-                                                                            $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
-                                                                            Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
-                                                                            <b>identitas polinomial</b>.
-                                                                        </div>
-                                                                        `
-                        );
-
-                        rerenderMath();
-                    });
-
-                    btnReset?.addEventListener('click', function () {
-                        const cardsInZones = root.querySelectorAll('#zone-identitas-lima .drag-item, #zone-bukan-lima .drag-item');
-
-                        cardsInZones.forEach((card) => {
-                            bank.appendChild(card);
-                        });
-
-                        summary.className = 'drag-summary';
-                        summary.innerHTML = '';
-
-                        feedback.className = 'drag-feedback';
-                        feedback.innerHTML = '';
-
-                        rerenderMath();
-                    });
-
-                    initDragItems();
-                    rerenderMath();
-                })();
-            </script>
-
-            <script>
-                (function () {
-                    const root = document.getElementById('sifat-interaktif');
-                    if (!root) return;
-
-                    const tabs = root.querySelectorAll('.sifat-tab');
-                    const cards = root.querySelectorAll('.sifat-card-item');
-                    const btnRandom = document.getElementById('btn-rumus-acak');
-
-                    const detailKategori = document.getElementById('detail-kategori');
-                    const detailTitle = document.getElementById('detail-title');
-                    const detailRumus = document.getElementById('detail-rumus');
-                    const detailPenjelasan = document.getElementById('detail-penjelasan');
-                    const detailContoh = document.getElementById('detail-contoh');
-
-                    function renderMathArea() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false },
-                                    { left: '\\(', right: '\\)', display: false },
-                                    { left: '\\[', right: '\\]', display: true }
-                                ]
-                            });
-                        }
+                    // cek jawaban
+                    if (selected === correctAnswer) {
+                        this.classList.add('benar');
+                        feedback.classList.add('benar');
+                        feedback.innerHTML = '✔ Jawabanmu benar.';
+                        explanation.classList.add('show');
+                    } else {
+                        this.classList.add('salah');
+                        feedback.classList.add('salah');
+                        feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
                     }
 
-                    function setActiveCard(card) {
-                        cards.forEach(item => item.classList.remove('active'));
-                        card.classList.add('active');
+                    // tandai sudah dijawab
+                    item.dataset.answered = 'true';
 
-                        const kategori = card.dataset.kategori || '';
-                        const title = card.dataset.title || '';
-                        const rumus = card.dataset.rumus || '';
-                        const penjelasan = card.dataset.penjelasan || '';
-                        const contoh = card.dataset.contoh || '';
+                    // cek semua soal
+                    cekSemuaEksplorasiTerjawab();
 
-                        detailKategori.textContent = kategori.toUpperCase();
-                        detailTitle.textContent = title;
-                        detailRumus.innerHTML = `\\(${rumus}\\)`;
-                        detailPenjelasan.textContent = penjelasan;
-                        detailContoh.innerHTML = `\\(${contoh}\\)`;
-
-                        renderMathArea();
-                    }
-
-                    cards.forEach(card => {
-                        card.addEventListener('click', function () {
-                            setActiveCard(this);
-                        });
-                    });
-
-                    tabs.forEach(tab => {
-                        tab.addEventListener('click', function () {
-                            tabs.forEach(t => t.classList.remove('active'));
-                            this.classList.add('active');
-
-                            const filter = this.dataset.filter;
-
-                            let firstVisible = null;
-
-                            cards.forEach(card => {
-                                const kategori = card.dataset.kategori;
-
-                                if (filter === 'semua' || kategori === filter) {
-                                    card.classList.remove('hidden');
-                                    if (!firstVisible) firstVisible = card;
-                                } else {
-                                    card.classList.add('hidden');
-                                    card.classList.remove('active');
-                                }
-                            });
-
-                            if (firstVisible) {
-                                setActiveCard(firstVisible);
-                            }
-                        });
-                    });
-
-                    btnRandom?.addEventListener('click', function () {
-                        const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
-                        if (!visibleCards.length) return;
-
-                        const randomIndex = Math.floor(Math.random() * visibleCards.length);
-                        setActiveCard(visibleCards[randomIndex]);
-                    });
-
-                    const miniQuizBtns = root.querySelectorAll('.mini-quiz-btn');
-                    const miniQuizFeedback = document.getElementById('mini-quiz-feedback');
-
-                    miniQuizBtns.forEach(btn => {
-                        btn.addEventListener('click', function () {
-                            miniQuizBtns.forEach(item => item.classList.remove('benar', 'salah'));
-
-                            if (this.dataset.answer === 'benar') {
-                                this.classList.add('benar');
-                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
-                                miniQuizFeedback.innerHTML = `
-                                                                ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
-                                                                \\(8 = 2^3\\), sehingga cocok dengan identitas:
-                                                                \\[
-                                                                    a^3 - b^3 = (a-b)(a^2+ab+b^2)
-                                                                \\]
-                                                            `;
-                            } else {
-                                this.classList.add('salah');
-                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
-                                miniQuizFeedback.innerHTML = `
-                                                                ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
-                                                                bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
-                                                            `;
-                            }
-
-                            renderMathArea();
-                        });
-                    });
-
-                    renderMathArea();
-                })();
-            </script>
-            <script>
-                (function () {
-                    const form = document.getElementById('quiz-form');
-                    const btnCek = document.getElementById('cek-jawaban');
-                    const btnUlang = document.getElementById('ulangi');
-                    const hasilSkor = document.getElementById('hasil-skor');
-                    const quizItems = Array.from(document.querySelectorAll('#quiz-form .quiz-item'));
-
-                    if (!form || !btnCek || !btnUlang || !quizItems.length) return;
-
-                    function renderMath(target) {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(target, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    btnCek.addEventListener('click', function () {
-                        let skor = 0;
-                        let semuaTerjawab = true;
-
-                        quizItems.forEach((item, index) => {
-                            const correct = item.dataset.correct;
-                            const explain = item.dataset.explain;
-                            const wrongMsg = item.dataset.wrong;
-                            const checked = item.querySelector(`input[name="q${index + 1}"]:checked`);
-                            const penjelasan = item.querySelector('.penjelasan');
-
-                            item.classList.remove('benar', 'salah');
-                            penjelasan.innerHTML = '';
-
-                            if (!checked) {
-                                semuaTerjawab = false;
-                                return;
-                            }
-
-                            if (checked.value === correct) {
-                                skor++;
-                                item.classList.add('benar');
-                                penjelasan.innerHTML = `✔ <b>Benar.</b> ${explain}`;
-                            } else {
-                                item.classList.add('salah');
-                                penjelasan.innerHTML = `✘ <b>Belum tepat.</b> ${wrongMsg}`;
-                            }
-                        });
-
-                        if (!semuaTerjawab) {
-                            hasilSkor.className = 'hasil-skor show perlu-lagi';
-                            hasilSkor.innerHTML = 'Semua soal harus dijawab terlebih dahulu sebelum mengecek jawaban.';
-                            renderMath(form);
-                            return;
-                        }
-
-                        if (skor === quizItems.length) {
-                            hasilSkor.className = 'hasil-skor show bagus';
-                            hasilSkor.innerHTML = `🎉 Skor kamu <b>${skor}/${quizItems.length}</b>. Hebat, semua jawaban benar!`;
-                        } else {
-                            hasilSkor.className = 'hasil-skor show perlu-lagi';
-                            hasilSkor.innerHTML = `Skor kamu <b>${skor}/${quizItems.length}</b>. Perhatikan bagian yang masih salah lalu coba lagi.`;
-                        }
-
-                        renderMath(form);
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        form.reset();
-
-                        quizItems.forEach((item) => {
-                            item.classList.remove('benar', 'salah');
-                            const penjelasan = item.querySelector('.penjelasan');
-                            penjelasan.innerHTML = '';
-                        });
-
-                        hasilSkor.className = 'hasil-skor';
-                        hasilSkor.innerHTML = '';
-
-                        renderMath(form);
-                    });
-
-                    renderMath(form);
-                })();
-            </script>
-            <script>
-                (function () {
-                    const root = document.getElementById('mari-mencoba-modern');
-                    if (!root) return;
-
-                    let selectedStep1 = '';
-
-                    function normalize(text) {
-                        return (text || '')
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function renderMathArea() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    function aktifkanStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        panel?.classList.remove('locked');
-
-                        if (input) input.disabled = false;
-                        if (btn) btn.disabled = false;
-                    }
-
-                    function resetFeedback(step) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        if (feed) {
-                            feed.className = 'step-feedback';
-                            feed.innerHTML = '';
-                        }
-
-                        if (explain) {
-                            explain.classList.remove('show');
-                        }
-                    }
-
-                    function resetStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        panel?.classList.add('locked');
-
-                        if (input) {
-                            input.disabled = true;
-                            input.value = '';
-                        }
-
-                        if (btn) btn.disabled = true;
-
-                        resetFeedback(stepNumber);
-                    }
-
-                    function resetMulaiDari(stepNumber) {
-                        for (let i = stepNumber; i <= 4; i++) {
-                            resetStep(i);
-                        }
-                    }
-
-                    function tampilkan(step, status, pesan, showExplain = false) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        if (!feed) return;
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = pesan;
-
-                        if (showExplain) {
-                            explain?.classList.add('show');
-                        } else {
-                            explain?.classList.remove('show');
-                        }
-
-                        renderMathArea();
-                    }
-
-                    function resetStep1Styles() {
-                        const opsi = root.querySelectorAll('#opsi-step1 .step-option-btn');
-                        opsi.forEach((btn) => {
-                            btn.classList.remove('selected', 'correct', 'wrong');
+                    // render math
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(item, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
                         });
                     }
-
-                    resetMulaiDari(2);
-
-                    // STEP 1
-                    const opsiStep1 = root.querySelectorAll('#opsi-step1 .step-option-btn');
-
-                    opsiStep1.forEach((btn) => {
-                        btn.addEventListener('click', function () {
-                            resetStep1Styles();
-                            resetFeedback(1);
-                            this.classList.add('selected');
-                            selectedStep1 = this.dataset.value;
-                        });
-                    });
-
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        if (!selectedStep1) {
-                            tampilkan(1, 'salah', '✘ Pilih salah satu jawaban terlebih dahulu.');
-                            return;
-                        }
-
-                        const selectedBtn = root.querySelector('#opsi-step1 .step-option-btn.selected');
-
-                        if (selectedStep1 === 'selisih-dua-kubik') {
-                            selectedBtn?.classList.add('correct');
-                            tampilkan(1, 'benar', '✔ Benar. Polanya sudah sesuai.', true);
-                            aktifkanStep(2);
-                        } else {
-                            selectedBtn?.classList.add('wrong');
-                            tampilkan(1, 'salah', '✘ Belum tepat. Coba perhatikan jenis pangkat dan tanda operasinya.');
-                            resetMulaiDari(2);
-                        }
-                    });
-
-                    // STEP 2
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2')?.value);
-                        const benarA = val.includes('a=x') && val.includes('b=3');
-                        const benarB = val.includes('b=3') && val.includes('a=x');
-
-                        if (benarA || benarB) {
-                            tampilkan(2, 'benar', '✔ Benar. Nilai yang dipilih sudah sesuai.', true);
-                            aktifkanStep(3);
-                        } else {
-                            tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan kembali dengan bentuk umum $a^3-b^3$.');
-                            resetMulaiDari(3);
-                        }
-                    });
-
-                    // STEP 3
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3')?.value);
-
-                        const cocok1 = val === normalize('a^3-b^3=(a-b)(a^2+ab+b^2)');
-                        const cocok2 = val === normalize('(a-b)(a^2+ab+b^2)');
-                        const cocok3 = val.includes('a-b') && val.includes('a^2+ab+b^2');
-
-                        if (cocok1 || cocok2 || cocok3) {
-                            tampilkan(3, 'benar', '✔ Benar. Rumus identitas yang digunakan sudah tepat.', true);
-                            aktifkanStep(4);
-                        } else {
-                            tampilkan(3, 'salah', '✘ Belum tepat. Tulis kembali identitas selisih dua kubik.');
-                            resetMulaiDari(4);
-                        }
-                    });
-
-                    // STEP 4
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4')?.value);
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            tampilkan(4, 'benar', '🎉 Benar. Faktorisasi sudah tepat.', true);
-                        } else {
-                            tampilkan(4, 'salah', '✘ Belum tepat. Coba substitusikan nilai ke rumus dengan lebih teliti.');
-                        }
-                    });
-
-                    renderMathArea();
-                })();
-            </script>
-        </div>
-    </div>
+                });
+            });
+        });
+    })();
+</script>
+</div>
+</div>
 @endsection
 
 @section('nav')
-    <a href="{{ route('kuisd') }}" class="btn-nav prev-btn">
+    <a href="{{ route('quiz.show', 4) }}" class="btn-nav prev-btn">
         ← Previous
     </a>
 
-    <a href="{{ route('kuise') }}" class="btn-nav next-btn">
+    <a href="{{ route('quiz.show', 5) }}" class="btn-nav next-btn">
         Next →
     </a>
 @endsection

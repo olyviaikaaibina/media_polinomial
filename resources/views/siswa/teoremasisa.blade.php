@@ -2866,7 +2866,7 @@
         ← Previous
     </a>
 
-    <a href="{{ route('kuisc') }}" class="btn-nav next-btn">
+    <a href="{{ route('quiz.show', 3) }}" class="btn-nav next-btn">
         Next →
     </a>
 @endsection

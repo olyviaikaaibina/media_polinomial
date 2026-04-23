@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                    delimiters: [
-                                        {left: '$$', right: '$$', display: true},
-                                        {left: '$', right: '$', display: false}
-                                    ]
-                                });"></script>
+                                                                                            delimiters: [
+                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                {left: '$', right: '$', display: false}
+                                                                                            ]
+                                                                                        });"></script>
 
     <style>
         :root {
@@ -635,6 +635,863 @@
                 font-size: 16px;
             }
         }
+
+
+        .game-mission-card {
+            position: relative;
+            overflow: visible;
+            border-radius: 30px;
+            padding: 0;
+            border: 1px solid rgba(47, 143, 70, .14);
+            background:
+                radial-gradient(circle at top left, rgba(93, 157, 213, .16), transparent 30%),
+                radial-gradient(circle at top right, rgba(47, 143, 70, .12), transparent 28%),
+                linear-gradient(145deg, #f8fbff 0%, #f7fff6 52%, #fffdf8 100%);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, .08);
+        }
+
+        /* ================= HEADER ================= */
+        .game-header {
+            padding: 26px 24px 10px;
+            text-align: center;
+        }
+
+        .game-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #24458f, #3f68c5);
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: .4px;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 24px rgba(36, 69, 143, .22);
+            font-size: 15px;
+        }
+
+        .game-title {
+            margin: 0;
+            font-size: 34px;
+            font-weight: 900;
+            color: #1b7a2a;
+            line-height: 1.2;
+        }
+
+        .game-subtitle {
+            margin: 12px auto 0;
+            max-width: 760px;
+            font-size: 17px;
+            color: #52606d;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* ================= MAIN LAYOUT ================= */
+        .game-scene {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 20px;
+            padding: 20px 24px 28px;
+            align-items: start;
+        }
+
+        .game-scene-left {
+            position: relative;
+            min-height: auto;
+        }
+
+        /* ================= STORY ================= */
+        .game-story-box {
+            position: relative;
+            z-index: 2;
+            border-radius: 26px;
+            padding: 24px;
+            background: rgba(255, 255, 255, .84);
+            border: 1px solid rgba(0, 0, 0, .07);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .06);
+            overflow: visible;
+        }
+
+        .game-story-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #24458f;
+            margin-bottom: 12px;
+        }
+
+        .game-story-box p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #4b5563;
+            text-align: justify;
+            line-height: 1.85;
+        }
+
+        .game-story-note {
+            font-style: italic;
+            color: #667085;
+        }
+
+        .game-formula-main {
+            margin: 16px 0;
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #eef5ff, #ffffff);
+            border: 1px solid rgba(36, 69, 143, .14);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55);
+            overflow-x: auto;
+            overflow-y: visible;
+        }
+
+        /* ================= GAME PANEL ================= */
+        .game-panel {
+            border-radius: 26px;
+            padding: 22px;
+            background: linear-gradient(180deg, #dfeaff 0%, #f3f8ff 100%);
+            border: 1px solid rgba(91, 155, 213, .24);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, .7),
+                0 14px 28px rgba(61, 104, 171, .10);
+            overflow: visible;
+        }
+
+        .game-stage-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .stage-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: #c8d2df;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+            transition: .25s ease;
+            flex: 0 0 auto;
+        }
+
+        .stage-dot.active {
+            background: #2f8f46;
+            transform: scale(1.12);
+            box-shadow: 0 0 0 8px rgba(47, 143, 70, .10);
+        }
+
+        .stage-dot.done {
+            background: #24458f;
+        }
+
+        .stage-line {
+            width: 48px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(36, 69, 143, .15);
+            margin: 0 8px;
+            flex: 0 0 auto;
+        }
+
+        .game-stage-name {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1e3a8a;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .game-dialogue {
+            margin: 14px 0 18px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .76);
+            border: 1px solid rgba(0, 0, 0, .07);
+            color: #374151;
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .game-question-box {
+            border-radius: 18px;
+            padding: 18px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, .07);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .65);
+            margin-bottom: 16px;
+        }
+
+        .game-question-math {
+            font-size: 18px;
+            overflow-x: auto;
+            overflow-y: visible;
+            min-height: 40px;
+        }
+
+        .game-answer-box {
+            margin-bottom: 14px;
+        }
+
+        .game-input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 900;
+            color: #24458f;
+        }
+
+        .game-input {
+            width: 100%;
+            max-width: 100%;
+            padding: 16px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, .12);
+            background: #fff;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 17px;
+            outline: none;
+            transition: .18s ease;
+            box-sizing: border-box;
+        }
+
+        .game-input:focus {
+            border-color: #5b9bd5;
+            box-shadow: 0 0 0 5px rgba(91, 155, 213, .14);
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .game-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 16px;
+            padding: 14px 20px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 17px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .16s ease;
+        }
+
+        .game-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .game-btn.primary {
+            background: linear-gradient(135deg, #1b7a2a, #329847);
+            color: #fff;
+            box-shadow: 0 12px 22px rgba(27, 122, 42, .20);
+        }
+
+        .game-btn.secondary {
+            background: #fff;
+            color: #344054;
+            border: 1px solid rgba(0, 0, 0, .10);
+        }
+
+        .game-feedback {
+            display: none;
+            margin-bottom: 14px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            font-weight: 800;
+            line-height: 1.7;
+        }
+
+        .game-feedback.show {
+            display: block;
+        }
+
+        .game-feedback.ok {
+            background: rgba(27, 122, 42, .10);
+            color: #14532d;
+            border: 1px solid rgba(27, 122, 42, .22);
+        }
+
+        .game-feedback.no {
+            background: rgba(224, 112, 43, .10);
+            color: #9a3412;
+            border: 1px solid rgba(224, 112, 43, .20);
+        }
+
+        .game-hint-box {
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px dashed rgba(36, 69, 143, .24);
+        }
+
+        .game-hint-title {
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 6px;
+        }
+
+        .game-hint-text {
+            color: #4b5563;
+            line-height: 1.75;
+        }
+
+        .game-panel.shake {
+            animation: gameShake .35s ease;
+        }
+
+        @keyframes gameShake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
+        }
+
+        /* ================= VICTORY ================= */
+        .game-victory {
+            display: none;
+            margin: 20px 24px 24px;
+            padding: 26px 20px 30px;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at top center, rgba(255, 244, 170, .22), transparent 28%),
+                linear-gradient(180deg, #f4fff5 0%, #fbfffc 55%, #f6fbff 100%);
+            border: 1px solid rgba(47, 143, 70, .18);
+            overflow: hidden;
+            position: relative;
+            box-shadow:
+                0 18px 40px rgba(47, 143, 70, .08),
+                inset 0 1px 0 rgba(255, 255, 255, .7);
+        }
+
+        .game-victory.show {
+            display: block;
+            animation: victoryFadeIn .5s ease;
+        }
+
+        .victory-scene {
+            position: relative;
+            height: 320px;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #edf8ef 0%, #f7fcf8 100%);
+            border: 1px solid rgba(47, 143, 70, .08);
+        }
+
+        .victory-bg-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 239, 161, .55), transparent 38%);
+            opacity: .8;
+            animation: glowPulse 2s ease-in-out infinite alternate;
+        }
+
+        .spark {
+            position: absolute;
+            color: #f2c94c;
+            font-size: 24px;
+            opacity: .85;
+            animation: sparkleFloat 2.8s ease-in-out infinite;
+        }
+
+        .s1 {
+            top: 52px;
+            left: 22%;
+            animation-delay: 0s;
+        }
+
+        .s2 {
+            top: 90px;
+            right: 22%;
+            animation-delay: .4s;
+        }
+
+        .s3 {
+            top: 150px;
+            left: 30%;
+            animation-delay: .8s;
+        }
+
+        .s4 {
+            top: 132px;
+            right: 27%;
+            animation-delay: 1.2s;
+        }
+
+        .s5 {
+            top: 44px;
+            right: 38%;
+            animation-delay: 1.6s;
+        }
+
+        .gate-stage {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            height: 240px;
+            transform: translate(-50%, -48%);
+        }
+
+        .gate-pillar {
+            position: absolute;
+            bottom: 0;
+            width: 42px;
+            height: 200px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #b88452 0%, #946037 45%, #744624 100%);
+            box-shadow:
+                inset 0 0 0 2px rgba(255, 255, 255, .12),
+                0 6px 16px rgba(0, 0, 0, .12);
+        }
+
+        .pillar-left {
+            left: 82px;
+        }
+
+        .pillar-right {
+            right: 82px;
+        }
+
+        .gate-light-core {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            width: 118px;
+            height: 190px;
+            border-radius: 18px;
+            background: linear-gradient(180deg,
+                    rgba(255, 255, 255, .96) 0%,
+                    rgba(255, 245, 190, .95) 34%,
+                    rgba(255, 221, 122, .70) 100%);
+            filter: blur(2px);
+            box-shadow:
+                0 0 22px rgba(255, 226, 132, .95),
+                0 0 60px rgba(255, 226, 132, .42);
+            animation: lightShine 1.8s ease-in-out infinite alternate;
+        }
+
+        .gate-light-floor {
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 90px;
+            background: linear-gradient(180deg, rgba(255, 235, 160, .65) 0%, rgba(255, 235, 160, .08) 100%);
+            clip-path: polygon(38% 0%, 62% 0%, 100% 100%, 0% 100%);
+            filter: blur(1px);
+        }
+
+        .gate-door {
+            position: absolute;
+            bottom: 12px;
+            width: 116px;
+            height: 182px;
+            border-radius: 20px 20px 10px 10px;
+            background: linear-gradient(180deg, #875228 0%, #6f411d 55%, #572f13 100%);
+            border: 5px solid #4b250d;
+            box-shadow:
+                inset 0 0 0 2px rgba(255, 255, 255, .08),
+                0 8px 20px rgba(0, 0, 0, .16);
+            z-index: 3;
+        }
+
+        .gate-inner-panel {
+            position: absolute;
+            inset: 14px;
+            border: 2px solid rgba(255, 233, 181, .18);
+            border-radius: 12px;
+        }
+
+        .gate-left {
+            left: 110px;
+            transform-origin: left center;
+        }
+
+        .gate-right {
+            right: 110px;
+            transform-origin: right center;
+        }
+
+        .game-victory.show .gate-left {
+            animation: openGateLeft 1.1s ease forwards;
+        }
+
+        .game-victory.show .gate-right {
+            animation: openGateRight 1.1s ease forwards;
+        }
+
+        .victory-trophy {
+            position: absolute;
+            left: 50%;
+            top: 58%;
+            transform: translate(-50%, -50%) scale(.2);
+            font-size: 58px;
+            opacity: 0;
+            z-index: 5;
+        }
+
+        .game-victory.show .victory-trophy {
+            animation: trophyRise .8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .victory-content {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        .game-victory.show .victory-content {
+            animation: contentReveal .7s ease forwards;
+            animation-delay: 1.55s;
+        }
+
+        .victory-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1b7a2a;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .victory-text {
+            font-size: 17px;
+            color: #55606d;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .victory-answer-card {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 18px 18px 16px;
+            border-radius: 22px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, .08);
+            box-shadow:
+                0 10px 22px rgba(0, 0, 0, .05),
+                inset 0 1px 0 rgba(255, 255, 255, .7);
+        }
+
+        .victory-answer-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #1b7a2a, #329847);
+            color: #fff;
+            font-weight: 900;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .victory-formula {
+            overflow-x: auto;
+            font-size: 20px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes openGateLeft {
+            0% {
+                transform: perspective(900px) rotateY(0deg);
+            }
+
+            100% {
+                transform: perspective(900px) rotateY(-78deg) translateX(-8px);
+            }
+        }
+
+        @keyframes openGateRight {
+            0% {
+                transform: perspective(900px) rotateY(0deg);
+            }
+
+            100% {
+                transform: perspective(900px) rotateY(78deg) translateX(8px);
+            }
+        }
+
+        @keyframes trophyRise {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -10%) scale(.2);
+            }
+
+            55% {
+                opacity: 1;
+                transform: translate(-50%, -78%) scale(1.18);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -70%) scale(1);
+            }
+        }
+
+        @keyframes contentReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0% {
+                opacity: .6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes lightShine {
+            0% {
+                filter: blur(2px);
+                box-shadow:
+                    0 0 18px rgba(255, 226, 132, .75),
+                    0 0 46px rgba(255, 226, 132, .28);
+            }
+
+            100% {
+                filter: blur(3px);
+                box-shadow:
+                    0 0 28px rgba(255, 226, 132, .95),
+                    0 0 70px rgba(255, 226, 132, .46);
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: .45;
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.08);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: .45;
+            }
+        }
+
+        @keyframes victoryFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1200px) {
+            .game-scene {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .victory-scene {
+                height: 280px;
+            }
+
+            .gate-stage {
+                width: 360px;
+                height: 210px;
+            }
+
+            .gate-pillar {
+                width: 34px;
+                height: 176px;
+            }
+
+            .pillar-left {
+                left: 58px;
+            }
+
+            .pillar-right {
+                right: 58px;
+            }
+
+            .gate-door {
+                width: 92px;
+                height: 162px;
+            }
+
+            .gate-left {
+                left: 72px;
+            }
+
+            .gate-right {
+                right: 72px;
+            }
+
+            .gate-light-core {
+                width: 92px;
+                height: 168px;
+            }
+
+            .victory-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .game-header {
+                padding: 20px 16px 8px;
+            }
+
+            .game-scene {
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .game-title {
+                font-size: 26px;
+                line-height: 1.25;
+            }
+
+            .game-subtitle {
+                font-size: 15px;
+            }
+
+            .game-story-box,
+            .game-panel {
+                padding: 18px;
+                border-radius: 20px;
+            }
+
+            .game-stage-name {
+                font-size: 18px;
+            }
+
+            .game-input {
+                font-size: 16px;
+                padding: 14px 16px;
+            }
+
+            .game-btn {
+                width: 100%;
+            }
+
+            .game-actions {
+                flex-direction: column;
+            }
+
+            .game-victory {
+                margin: 16px;
+                padding: 22px 14px 24px;
+            }
+
+            .victory-scene {
+                height: 250px;
+            }
+
+            .gate-stage {
+                width: 290px;
+                height: 180px;
+            }
+
+            .gate-pillar {
+                width: 28px;
+                height: 150px;
+            }
+
+            .pillar-left {
+                left: 42px;
+            }
+
+            .pillar-right {
+                right: 42px;
+            }
+
+            .gate-door {
+                width: 72px;
+                height: 136px;
+                bottom: 10px;
+            }
+
+            .gate-left {
+                left: 54px;
+            }
+
+            .gate-right {
+                right: 54px;
+            }
+
+            .gate-light-core {
+                width: 72px;
+                height: 142px;
+            }
+
+            .gate-light-floor {
+                width: 190px;
+                height: 70px;
+            }
+
+            .victory-trophy {
+                font-size: 46px;
+            }
+
+            .victory-title {
+                font-size: 22px;
+            }
+
+            .victory-text {
+                font-size: 15px;
+            }
+
+            .victory-formula {
+                font-size: 17px;
+            }
+
+            .stage-line {
+                width: 32px;
+                margin: 0 6px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -722,7 +1579,7 @@
                     <span id="quiz-summary" class="quiz-summary"></span>
                 </div>
 
-               
+
             </div>
         </div>
 
@@ -813,9 +1670,6 @@
                         <b>minus di depan kurung</b>, semua tanda di dalam kurung kedua harus berubah saat kurung dibuka.
                     </p>
 
-                    <div class="step-question">
-                        Pertanyaan: setelah kurung kedua dibuka, bagaimana bentuk lengkap soalnya?
-                    </div>
                     <p class="step-help">
                         Petunjuk: tanda $+$ di dalam kurung menjadi $-$, dan tanda $-$ di dalam kurung menjadi $+$.
                     </p>
@@ -825,7 +1679,6 @@
                         <input type="text" class="interaktif-input" placeholder="Contoh penulisan: 5x^3-2x^2+..." />
                         <div class="interaktif-actions">
                             <button type="button" class="interaktif-check">Cek</button>
-                            <button type="button" class="interaktif-reset">Reset</button>
                             <span class="interaktif-feedback"></span>
                         </div>
                     </div>
@@ -839,9 +1692,7 @@
                         dengan $x$, dan bilangan tetap digabung dengan bilangan tetap.
                     </p>
 
-                    <div class="step-question">
-                        Pertanyaan: bagaimana bentuk soal jika semua suku sejenis sudah dikelompokkan?
-                    </div>
+
                     <p class="step-help">
                         Petunjuk: gunakan tanda kurung untuk menunjukkan kelompok suku sejenis.
                     </p>
@@ -851,7 +1702,7 @@
                         <input type="text" class="interaktif-input" placeholder="Contoh: ( ... ) + ( ... ) + ..." />
                         <div class="interaktif-actions">
                             <button type="button" class="interaktif-check">Cek</button>
-                            <button type="button" class="interaktif-reset">Reset</button>
+
                             <span class="interaktif-feedback"></span>
                         </div>
                     </div>
@@ -867,9 +1718,7 @@
                         <br>• kelompok konstanta
                     </p>
 
-                    <div class="step-question">
-                        Pertanyaan: setelah setiap kelompok dihitung, apa hasil akhir pengurangan polinomial tersebut?
-                    </div>
+
                     <p class="step-help">
                         Petunjuk: tulis hasil akhir dalam bentuk polinomial yang sudah sederhana dan terurut.
                     </p>
@@ -879,20 +1728,190 @@
                         <input type="text" class="interaktif-input" placeholder="Tulis hasil polinomial akhirnya" />
                         <div class="interaktif-actions">
                             <button type="button" class="interaktif-check">Cek</button>
-                            <button type="button" class="interaktif-reset">Reset</button>
+
                             <span class="interaktif-feedback"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="global-actions">
-                    <button type="button" id="interaktif-check-all" class="interaktif-checkall">Cek Semua</button>
+
                     <span id="interaktif-summary" class="interaktif-summary"></span>
                 </div>
 
-                <div id="interaktif-final-message" class="final-message">
-                    ✅ Bagus! Kamu sudah menyelesaikan contoh ini langkah demi langkah.
+
+            </div>
+
+            <div class="card game-mission-card" id="game-mode">
+
+                <!-- ================= HEADER ================= -->
+                <div class="game-header">
+                    <h2 class="game-title">Misi Membuka Gerbang Polinomial</h2>
+                    <p class="game-subtitle">
+                        Selesaikan setiap tahap untuk membuka gerbang.
+                    </p>
                 </div>
+
+                <!-- ================= MAIN ================= -->
+                <div class="game-scene">
+
+                    <!-- ===== KIRI (CERITA) ===== -->
+                    <div class="game-scene-left">
+                        <div class="game-story-box">
+
+                            <div class="game-story-title">Misi</div>
+
+                            <p>
+                                Di depanmu terdapat <b>Gerbang Polinomial</b>.
+                                Gerbang ini hanya akan terbuka jika kamu berhasil
+                                menyederhanakan bentuk berikut:
+                            </p>
+
+                            <div class="game-formula-main">
+                                $$
+                                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                $$
+                            </div>
+
+                            <p class="game-story-note">
+                                Gunakan strategi: buka kurung → kelompokkan → sederhanakan.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!-- ===== KANAN (GAME) ===== -->
+                    <div class="game-panel">
+
+                        <!-- progress -->
+                        <div class="game-stage-indicator">
+                            <span class="stage-dot active" id="dot-1"></span>
+                            <span class="stage-line"></span>
+                            <span class="stage-dot" id="dot-2"></span>
+                            <span class="stage-line"></span>
+                            <span class="stage-dot" id="dot-3"></span>
+                        </div>
+
+                        <div class="game-stage-name" id="game-stage-name">
+                            Gerbang 1 — Buka Kurung
+                        </div>
+
+                        <!-- dialog -->
+                        <div class="game-dialogue" id="game-dialogue">
+                            Ubah tanda pada semua suku di dalam kurung kedua.
+                        </div>
+
+                        <!-- soal -->
+                        <div class="game-question-box">
+                            <div class="game-question-math" id="game-question-math"></div>
+                        </div>
+
+                        <!-- input -->
+                        <div class="game-answer-box">
+                            <label class="game-input-label">Jawabanmu</label>
+                            <input type="text" id="game-answer" class="game-input">
+                        </div>
+
+                        <!-- tombol -->
+                        <div class="game-actions">
+                            <button id="game-submit" class="game-btn primary">
+                                Buka Gerbang
+                            </button>
+                            <button id="game-reset" class="game-btn secondary">
+                                Ulangi
+                            </button>
+                        </div>
+
+                        <!-- feedback -->
+                        <div id="game-feedback" class="game-feedback"></div>
+
+                        <!-- hint -->
+                        <div class="game-hint-box">
+                            <div class="game-hint-title">Petunjuk</div>
+                            <div id="game-hint-text" class="game-hint-text"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ================= VICTORY ================= -->
+                <div class="game-victory" id="game-victory">
+
+                    <!-- SCENE -->
+                    <div class="victory-scene">
+
+                        <!-- glow -->
+                        <div class="victory-bg-glow"></div>
+
+                        <!-- sparkle -->
+                        <div class="sparkles">
+                            <span class="spark s1">✦</span>
+                            <span class="spark s2">✧</span>
+                            <span class="spark s3">✦</span>
+                            <span class="spark s4">✧</span>
+                            <span class="spark s5">✦</span>
+                        </div>
+
+                        <!-- GERBANG -->
+                        <div class="gate-stage">
+
+                            <!-- tiang -->
+                            <div class="gate-pillar pillar-left"></div>
+                            <div class="gate-pillar pillar-right"></div>
+
+                            <!-- cahaya -->
+                            <div class="gate-light-core"></div>
+                            <div class="gate-light-floor"></div>
+
+                            <!-- pintu kiri -->
+                            <div class="gate-door gate-left">
+                                <div class="gate-inner-panel"></div>
+                            </div>
+
+                            <!-- pintu kanan -->
+                            <div class="gate-door gate-right">
+                                <div class="gate-inner-panel"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- TROPHY -->
+                        <div class="victory-trophy">
+                            🏆
+                        </div>
+
+                    </div>
+
+                    <!-- TEXT -->
+                    <div class="victory-content">
+
+                        <div class="victory-title">
+                            Gerbang Polinomial Berhasil Dibuka!
+                        </div>
+
+                        <div class="victory-text">
+                            Hebat! Kamu sudah menyelesaikan tantangan pengurangan polinomial dengan benar.
+                        </div>
+
+                        <div class="victory-answer-card">
+
+                            <div class="victory-answer-label">
+                                Hasil Akhir
+                            </div>
+
+                            <div class="victory-formula">
+                                $$
+                                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                = 2x^3 - 3x^2 + 6x + 11
+                                $$
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
             {{-- LATIHAN --}}
@@ -1295,15 +2314,269 @@
 
             updateLatihanScore();
         })();
+
+        const gameStages = [
+            {
+                name: "Gerbang 1 — Buka Kurung",
+                prompt: `
+                $$
+                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                $$
+            `,
+                dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
+                hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
+                answers: [
+                    "5x^3-2x^2+4x+6-3x^3-x^2+2x+5",
+                    "5x3-2x2+4x+6-3x3-x2+2x+5",
+                    "(5x^3-2x^2+4x+6)+(-3x^3-x^2+2x+5)",
+                    "(5x3-2x2+4x+6)+(-3x3-x2+2x+5)"
+                ],
+                success: "✨ Hebat! Tanda-tandanya sudah kamu ubah dengan benar. Gerbang pertama mulai terbuka..."
+            },
+            {
+                name: "Gerbang 2 — Kelompokkan Suku Sejenis",
+                prompt: `
+                $$
+                5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                $$
+            `,
+                dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
+                hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
+                answers: [
+                    "(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)",
+                    "(5x3-3x3)+(-2x2-x2)+(4x+2x)+(6+5)"
+                ],
+                success: "🔓 Bagus! Suku-suku sejenis sudah berhasil dikelompokkan. Tinggal satu gerbang lagi."
+            },
+            {
+                name: "Gerbang 3 — Sederhanakan",
+                prompt: `
+                $$
+                (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                $$
+            `,
+                dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
+                hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
+                answers: [
+                    "2x^3-3x^2+6x+11",
+                    "2x3-3x2+6x+11",
+                    "2x³-3x²+6x+11"
+                ],
+                success: "🎉 Luar biasa! Kamu berhasil menyederhanakan pengurangan polinomial dengan benar."
+            }
+        ];
+
+        (function () {
+            const gameMode = document.getElementById("game-mode");
+            if (!gameMode) return;
+
+            const gameScene = gameMode.querySelector(".game-scene");
+            const stageName = document.getElementById("game-stage-name");
+            const dialogue = document.getElementById("game-dialogue");
+            const questionMath = document.getElementById("game-question-math");
+            const hintText = document.getElementById("game-hint-text");
+            const answerInput = document.getElementById("game-answer");
+            const submitBtn = document.getElementById("game-submit");
+            const resetBtn = document.getElementById("game-reset");
+            const feedback = document.getElementById("game-feedback");
+            const victory = document.getElementById("game-victory");
+            const panel = gameMode.querySelector(".game-panel");
+
+            const dots = [
+                document.getElementById("dot-1"),
+                document.getElementById("dot-2"),
+                document.getElementById("dot-3")
+            ];
+
+            let currentStage = 0;
+
+            function normalizeGame(s) {
+                return (s || "")
+                    .toLowerCase()
+                    .trim()
+                    .replace(/\s+/g, "")
+                    .replace(/×/g, "x")
+                    .replace(/–|−/g, "-")
+                    .replace(/²/g, "^2")
+                    .replace(/³/g, "^3")
+                    .replace(/\*\*/g, "^")
+                    .replace(/([a-z])\((\-?\d+)\)/g, "$1^$2")
+                    .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
+                        const prev = full[offset - 1] || "";
+                        if (prev === "^") return match;
+                        return `${varName}^${power}`;
+                    })
+                    .replace(/\+\-/g, "-")
+                    .replace(/\-\+/g, "-")
+                    .replace(/\-\-/g, "+")
+                    .replace(/\+\+/g, "+")
+                    .replace(/\^1(?!\d)/g, "")
+                    .replace(/(^|[+\-(])1x/g, "$1x")
+                    .replace(/(^|[+\-(])-1x/g, "$1-x");
+            }
+
+            function setGameFeedback(type, text) {
+                if (!feedback) return;
+                feedback.className = "game-feedback show " + type;
+                feedback.textContent = text;
+            }
+
+            function clearGameFeedback() {
+                if (!feedback) return;
+                feedback.className = "game-feedback";
+                feedback.textContent = "";
+            }
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (!dot) return;
+                    dot.classList.remove("active", "done");
+                    if (index < currentStage) {
+                        dot.classList.add("done");
+                    } else if (index === currentStage) {
+                        dot.classList.add("active");
+                    }
+                });
+            }
+
+            function renderMathSafe() {
+                if (typeof renderMathInElement === "function") {
+                    renderMathInElement(gameMode, {
+                        delimiters: [
+                            { left: "$$", right: "$$", display: true },
+                            { left: "$", right: "$", display: false }
+                        ],
+                        throwOnError: false
+                    });
+                }
+            }
+
+            function wrongEffect() {
+                if (!panel) return;
+                panel.classList.remove("shake");
+                void panel.offsetWidth;
+                panel.classList.add("shake");
+            }
+
+            function loadStage() {
+                const stage = gameStages[currentStage];
+                if (!stage) return;
+
+                if (gameScene) gameScene.style.display = "grid";
+                if (victory) victory.classList.remove("show");
+
+                if (stageName) stageName.textContent = stage.name;
+                if (dialogue) dialogue.textContent = stage.dialogue;
+                if (questionMath) questionMath.innerHTML = stage.prompt;
+                if (hintText) hintText.textContent = stage.hint;
+
+                if (answerInput) {
+                    answerInput.value = "";
+                    answerInput.style.display = "block";
+                    answerInput.placeholder =
+                        currentStage === 0
+                            ? "Tulis bentuk setelah kurung dibuka"
+                            : currentStage === 1
+                                ? "Tulis bentuk yang sudah dikelompokkan"
+                                : "Tulis hasil akhir polinomial";
+                }
+
+                if (submitBtn) submitBtn.style.display = "inline-flex";
+
+                clearGameFeedback();
+                updateDots();
+                renderMathSafe();
+            }
+
+            function showVictory() {
+                if (gameScene) gameScene.style.display = "none";
+                if (victory) {
+                    victory.classList.remove("show");
+                    void victory.offsetWidth;
+                    victory.classList.add("show");
+                }
+                renderMathSafe();
+            }
+
+            function checkAnswer() {
+                const user = normalizeGame(answerInput ? answerInput.value : "");
+                const validAnswers = gameStages[currentStage].answers.map(a => normalizeGame(a));
+
+                if (!user) {
+                    setGameFeedback("no", "Isi jawabanmu terlebih dahulu agar gerbang bisa diproses.");
+                    wrongEffect();
+                    return;
+                }
+
+                if (validAnswers.includes(user)) {
+                    setGameFeedback("ok", gameStages[currentStage].success);
+
+                    if (dots[currentStage]) {
+                        dots[currentStage].classList.remove("active");
+                        dots[currentStage].classList.add("done");
+                    }
+
+                    setTimeout(() => {
+                        currentStage++;
+
+                        if (currentStage < gameStages.length) {
+                            loadStage();
+                        } else {
+                            clearGameFeedback();
+                            showVictory();
+                        }
+                    }, 900);
+                } else {
+                    setGameFeedback("no", "Gerbang belum terbuka. Periksa lagi tanda, pengelompokan, atau hasil perhitungannya.");
+                    wrongEffect();
+                }
+            }
+
+            function resetGame() {
+                currentStage = 0;
+
+                dots.forEach(dot => {
+                    if (!dot) return;
+                    dot.classList.remove("active", "done");
+                });
+
+                if (dots[0]) dots[0].classList.add("active");
+
+                if (victory) victory.classList.remove("show");
+                if (gameScene) gameScene.style.display = "grid";
+
+                if (answerInput) {
+                    answerInput.style.display = "block";
+                    answerInput.value = "";
+                }
+
+                if (submitBtn) submitBtn.style.display = "inline-flex";
+
+                clearGameFeedback();
+                loadStage();
+            }
+
+            submitBtn?.addEventListener("click", checkAnswer);
+            resetBtn?.addEventListener("click", resetGame);
+
+            answerInput?.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    checkAnswer();
+                }
+            });
+
+            loadStage();
+        })();
     </script>
 @endsection
 
 @section('nav')
-    <a href="{{ route('penjumlahanpolinomial') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+<a href="{{ route('penjumlahanpolinomial') }}" class="btn-nav prev-btn">
+    ← Previous
+</a>
 
-    <a href="{{ route('perkalianpolinomial') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+<a href="{{ route('perkalianpolinomial') }}" class="btn-nav next-btn">
+    Next →
+</a>
 @endsection

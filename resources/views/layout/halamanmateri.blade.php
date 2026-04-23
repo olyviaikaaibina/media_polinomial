@@ -571,7 +571,15 @@
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Evaluasi</span>
+          <span class="dropdown-arrow">&#9662;</span>
         </button>
+
+        <div class="dropdown-content">
+          <a href="{{ route('quiz.show', 6) }}"
+            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 6 ? 'active' : '' }}">
+            Evaluasi
+          </a>
+        </div>
       </div>
 
     </aside>

@@ -17,13 +17,13 @@ class QuizSiswaController extends Controller
 
         $studentId = Auth::guard('siswa')->id();
 
-        // cari attempt yang masih berjalan
+        // Cari attempt yang masih berjalan
         $attempt = QuizAttempt::where('quiz_id', $quiz->id)
             ->where('student_id', $studentId)
             ->where('status', 'in_progress')
             ->first();
 
-        // kalau belum ada → buat
+        // Kalau belum ada, buat baru
         if (!$attempt) {
             $attempt = QuizAttempt::create([
                 'quiz_id' => $quiz->id,
@@ -59,57 +59,60 @@ class QuizSiswaController extends Controller
         }
 
         $jawabanSiswa = $request->input('jawaban', []);
-        $totalSoal = $quiz->questions->count();
-        $benar = 0;
-        $terjawab = 0;
+        $totalQuestions = $quiz->questions->count();
+
+        $correctCount = 0;
+        $answeredCount = 0;
 
         foreach ($quiz->questions as $question) {
-            $opsiBenar = $question->options->firstWhere('is_correct', 1);
+            $selectedOptionId = $jawabanSiswa[$question->id] ?? null;
 
-            if (isset($jawabanSiswa[$question->id])) {
-                $terjawab++;
+            // Ganti 'is_correct' kalau nama field jawaban benar di tabel options berbeda
+            $correctOption = $question->options->firstWhere('is_correct', 1);
+
+            if ($selectedOptionId) {
+                $answeredCount++;
             }
 
-            if ($opsiBenar && isset($jawabanSiswa[$question->id])) {
-                if ((int) $jawabanSiswa[$question->id] === (int) $opsiBenar->id) {
-                    $benar++;
+            if ($correctOption && $selectedOptionId) {
+                if ((int) $selectedOptionId === (int) $correctOption->id) {
+                    $correctCount++;
                 }
             }
         }
 
-        $salah = $terjawab - $benar;
-        $kosong = $totalSoal - $terjawab;
-        $nilai = $totalSoal > 0 ? round(($benar / $totalSoal) * 100, 2) : 0;
-        $lulus = $nilai >= $quiz->kkm;
+        $wrongCount = $answeredCount - $correctCount;
+        $unansweredCount = $totalQuestions - $answeredCount;
+        $score = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) * 100, 2) : 0;
+        $isPassed = $score >= ($quiz->kkm ?? 70);
 
         $attempt->update([
             'end_at' => now(),
             'submitted_at' => now(),
             'status' => 'submitted',
-            'total_questions' => $totalSoal,
-            'correct_answers' => $benar,
-            'wrong_answers' => $salah,
-            'unanswered' => $kosong,
-            'score' => $nilai,
+            'total_questions' => $totalQuestions,
+            'correct_answers' => $correctCount,
+            'wrong_answers' => $wrongCount,
+            'unanswered' => $unansweredCount,
+            'score' => $score,
         ]);
 
         $attempt->refresh();
 
-        // hitung durasi
-        $durasiDetik = $attempt->started_at->diffInSeconds($attempt->end_at);
-        $durasiMenit = floor($durasiDetik / 60);
-        $durasiSisaDetik = $durasiDetik % 60;
+        // Hitung durasi berdasarkan waktu mulai dan selesai
+        $durationSecondsTotal = $attempt->started_at->diffInSeconds($attempt->end_at);
+        $durationMinutes = floor($durationSecondsTotal / 60);
+        $durationSeconds = $durationSecondsTotal % 60;
 
-        return view('siswa.quiz-hasil', compact(
+        return view('siswa.hasilkuis', compact(
             'quiz',
-            'nilai',
-            'benar',
-            'salah',
-            'kosong',
-            'lulus',
-            'durasiDetik',
-            'durasiMenit',
-            'durasiSisaDetik'
+            'score',
+            'correctCount',
+            'wrongCount',
+            'unansweredCount',
+            'isPassed',
+            'durationMinutes',
+            'durationSeconds'
         ));
     }
 }

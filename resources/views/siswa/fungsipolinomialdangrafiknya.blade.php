@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                                            ]
-                                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                            ]
+                                                                                                                                                                                                                                        });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -570,8 +570,8 @@
         }
 
         /* =========================
-                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
-                                                                                                                                   ========================= */
+                                                                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
+                                                                                                                                                                                   ========================= */
         .ci-card {
             border-radius: 18px;
             padding: 18px;
@@ -1043,8 +1043,8 @@
         }
 
         /* =========================================================
-                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
-                                                                                                                            ========================================================= */
+                                                                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
+                                                                                                                                                                            ========================================================= */
         .endbeh-table-wrap {
             overflow-x: auto;
             margin-top: 14px;
@@ -1214,8 +1214,8 @@
         }
 
         /* =========================================================
-                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
-                                                                                                                            ========================================================= */
+                                                                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
+                                                                                                                                                                            ========================================================= */
         .contoh-card {
             border-radius: 16px;
             padding: 20px 22px;
@@ -1637,6 +1637,304 @@
                 text-align: left;
             }
         }
+
+        /* ===== CONTOH POLINOMIAL INTERAKTIF: VERSI MENARIK ===== */
+        .poly-showcase {
+            margin-top: 16px;
+            border-radius: 22px;
+            background: linear-gradient(180deg, #fffaf3, #fff);
+            border: 2px solid #ecdcc8;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .05);
+            padding: 18px;
+        }
+
+        .poly-showcase-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .poly-showcase-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #1f2937;
+        }
+
+        .poly-showcase-sub {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .poly-pick-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 16px 0 18px;
+        }
+
+        .poly-btn {
+            border: none;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 16px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: #374151;
+            background: linear-gradient(180deg, #ffffff, #f7f7f7);
+            border: 1px solid rgba(0, 0, 0, .10);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .05);
+            transition: .18s ease;
+        }
+
+        .poly-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
+        }
+
+        .poly-btn.active {
+            color: #1f2937;
+            border: 1px solid rgba(217, 119, 6, .25);
+            background: linear-gradient(180deg, #ffd9b8, #ffbf8d);
+            box-shadow: 0 12px 24px rgba(217, 119, 6, .18);
+        }
+
+        .poly-main-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, .08);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, .04);
+        }
+
+        .poly-top-banner {
+            background: linear-gradient(135deg, #9ad97d, #74bf66);
+            padding: 18px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+        }
+
+        .poly-rumus {
+            font-size: 30px;
+            font-weight: 900;
+            color: #17301b;
+            margin: 0;
+        }
+
+        .poly-body {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 18px;
+            padding: 20px;
+            background:
+                radial-gradient(circle at top right, rgba(255, 206, 164, .18), transparent 26%),
+                linear-gradient(180deg, #fff, #fffdf9);
+        }
+
+        .poly-left,
+        .poly-right {
+            min-width: 0;
+        }
+
+        .poly-section-title {
+            font-weight: 900;
+            font-size: 17px;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .poly-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .poly-info-card {
+            border-radius: 16px;
+            padding: 14px 14px 12px;
+            border: 1px solid rgba(0, 0, 0, .08);
+            background: #fff;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poly-info-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 6px;
+            border-radius: 16px 0 0 16px;
+        }
+
+        .poly-info-card.deg::before {
+            background: #6cbf72;
+        }
+
+        .poly-info-card.term::before {
+            background: #5c9ded;
+        }
+
+        .poly-info-card.main::before {
+            background: #f0a15d;
+        }
+
+        .poly-info-card.coef::before {
+            background: #d47aa5;
+        }
+
+        .poly-info-label {
+            font-size: 13px;
+            font-weight: 900;
+            color: #6b7280;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .poly-info-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #111827;
+            line-height: 1.2;
+        }
+
+        .poly-info-value.small {
+            font-size: 21px;
+        }
+
+        .poly-explain-panel {
+            border-radius: 18px;
+            padding: 16px;
+            background: linear-gradient(180deg, #fff8ef, #fff);
+            border: 1px solid rgba(240, 161, 93, .28);
+            box-shadow: 0 10px 22px rgba(240, 161, 93, .08);
+        }
+
+        .poly-explain-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            color: #8a4b16;
+            margin-bottom: 10px;
+        }
+
+        .poly-explain-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffe2c6;
+            color: #8a4b16;
+            font-size: 18px;
+        }
+
+        .poly-explain-text {
+            color: #5b5563;
+            line-height: 1.8;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .poly-highlight-box {
+            margin-top: 14px;
+            border-radius: 16px;
+            padding: 14px;
+            background: linear-gradient(180deg, #f3f8ff, #fff);
+            border: 1px solid rgba(43, 108, 176, .16);
+        }
+
+        .poly-highlight-head {
+            font-weight: 900;
+            color: #1f4f86;
+            margin-bottom: 8px;
+        }
+
+        .poly-highlight-list {
+            margin: 0;
+            padding-left: 18px;
+            color: #4b5563;
+        }
+
+        .poly-highlight-list li {
+            margin: 6px 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .poly-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .poly-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .poly-rumus {
+                font-size: 24px;
+            }
+
+            .poly-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .latihan-locked {
+            opacity: .65;
+            pointer-events: none;
+        }
+
+        .latihan-locked .latihan-input,
+        .latihan-locked .latihan-btn {
+            cursor: not-allowed;
+        }
+
+        .latihan-section.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .latihan-input:disabled {
+            background: #ececec;
+            color: #777;
+        }
+
+        .latihan-input.is-correct {
+            border: 2px solid #1b7a2a !important;
+            background: rgba(27, 122, 42, .10) !important;
+            color: #0f5f22 !important;
+        }
+
+        .latihan-input.is-wrong {
+            border: 2px solid #d62828 !important;
+            background: rgba(214, 40, 40, .10) !important;
+            color: #8b1e1e !important;
+        }
+
+        .latihan-input.is-empty {
+            border: 2px solid #d97706 !important;
+            background: rgba(217, 119, 6, .10) !important;
+            color: #7a4a00 !important;
+        }
+
+        .latihan-input:disabled {
+            opacity: .8;
+            cursor: not-allowed;
+        }
+
+        .latihan-section.locked {
+            opacity: .7;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1867,43 +2165,71 @@
                     Anda memahami bagaimana struktur sebuah fungsi polinomial dibentuk.
                 </p>
 
-                <div class="table-wrap">
-                    <table class="poli" aria-label="Tabel contoh fungsi polinomial">
-                        <thead>
-                            <tr>
-                                <th>fungsi</th>
-                                <th>Derajat</th>
-                                <th>Jumlah Suku</th>
-                                <th>Suku Utama</th>
-                                <th>Koefisien Utama</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>$9x^2$</td>
-                                <td>2</td>
-                                <td>1 suku</td>
-                                <td>$9x^2$</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>$5x^4-3x^2+8$</td>
-                                <td>4</td>
-                                <td>3 suku</td>
-                                <td>$5x^4$</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>$7x^3+x^2-4x+2-6$</td>
-                                <td>3</td>
-                                <td>5 suku</td>
-                                <td>$7x^3$</td>
-                                <td>7</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="poly-showcase">
+                    <div class="poly-showcase-head">
+                        <div>
+                            <div class="poly-showcase-title">Contoh Struktur Fungsi Polinomial</div>
+                            <div class="poly-showcase-sub">
+                                Klik salah satu bentuk fungsi berikut untuk melihat derajat, jumlah suku,
+                                suku utama, koefisien utama, dan penjelasannya.
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="poly-pick-row">
+                        <button class="poly-btn active" data-i="0">9x²</button>
+                        <button class="poly-btn" data-i="1">5x⁴ − 3x² + 8</button>
+                        <button class="poly-btn" data-i="2">7x³ + x² − 4x + 2 − 6</button>
+                    </div>
+
+                    <div class="poly-main-card">
+                        <div class="poly-top-banner">
+                            <div class="poly-rumus" id="polyFormula">9x²</div>
+                        </div>
+
+                        <div class="poly-body">
+                            <div class="poly-left">
+                                <div class="poly-section-title">Hasil Analisis</div>
+
+                                <div class="poly-info-grid">
+                                    <div class="poly-info-card deg">
+                                        <div class="poly-info-label">Derajat</div>
+                                        <div class="poly-info-value" id="deg">2</div>
+                                    </div>
+
+                                    <div class="poly-info-card term">
+                                        <div class="poly-info-label">Jumlah Suku</div>
+                                        <div class="poly-info-value small" id="terms">1 suku</div>
+                                    </div>
+
+                                    <div class="poly-info-card main">
+                                        <div class="poly-info-label">Suku Utama</div>
+                                        <div class="poly-info-value small" id="lead">9x²</div>
+                                    </div>
+
+                                    <div class="poly-info-card coef">
+                                        <div class="poly-info-label">Koefisien Utama</div>
+                                        <div class="poly-info-value" id="coef">9</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="poly-right">
+                                <div class="poly-section-title">Penjelasan</div>
+
+                                <div class="poly-explain-panel">
+                                    <div class="poly-explain-head">
+                                        <span>Penjelasan Konsep</span>
+                                    </div>
+
+                                    <div class="poly-explain-text" id="explain">
+                                        Hanya ada satu suku, yaitu 9x². Pangkat tertinggi adalah 2, sehingga derajatnya 2.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p>
                     Untuk memahami bentuk suatu fungsi polinomial, salah satu cara yang paling
                     sederhana adalah dengan menggambar grafiknya. Grafik ini menunjukkan
@@ -2306,130 +2632,146 @@
                 </div>
             </div>
 
-            <div class="card card-example">
-                <div class="latihan-title-row">
-                    <div class="latihan-badge">LATIHAN</div>
+          <div class="card card-example">
+    <div class="latihan-title-row">
+        <div class="latihan-badge">LATIHAN</div>
+    </div>
+
+    {{-- 1. Analisis Fungsi Polinomial --}}
+    <section class="latihan-section" id="latihanSoal1">
+        <h3>1. Analisis Fungsi Polinomial</h3>
+        <div class="latihan-rumus">Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b></div>
+        <p class="latihan-sub">Tentukan:</p>
+
+        <div class="latihan-grid">
+            <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
+            <input type="text" id="a1" class="latihan-input" placeholder="Jawaban...">
+
+            <div class="soal-label">b. Jumlah sukunya</div>
+            <input type="text" id="a2" class="latihan-input" placeholder="Jawaban...">
+
+            <div class="soal-label">c. Suku utamanya</div>
+            <input type="text" id="a3" class="latihan-input" placeholder="Jawaban...">
+
+            <div class="soal-label">d. Koefisien utamanya</div>
+            <input type="text" id="a4" class="latihan-input" placeholder="Jawaban...">
+
+            <div class="soal-label">e. Perilaku ujung grafiknya</div>
+            <input type="text" id="a5" class="latihan-input" placeholder="Contoh: kiri turun kanan naik">
+        </div>
+
+        <div class="latihan-actions bawah">
+            <button type="button" class="latihan-btn" id="cekSoal1Btn">CEK JAWABAN NO. 1</button>
+        </div>
+
+        <div id="hasilSoal1" class="hasil-latihan">
+            Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.
+        </div>
+    </section>
+
+    {{-- 2. Grafik Fungsi Kuadrat --}}
+    <section class="latihan-section latihan-locked" id="latihanSoal2">
+        <h3>2. Grafik Fungsi Kuadrat</h3>
+        <div class="latihan-rumus">Diberikan fungsi <b>f(x) = x² − 2x − 8</b></div>
+        <p class="latihan-sub">Tentukan pula:</p>
+
+        <div class="latihan-grid">
+            <div class="soal-label">a. Titik potong dengan sumbu-x</div>
+            <input type="text" id="b1" class="latihan-input" placeholder="Jawaban..." disabled>
+
+            <div class="soal-label">b. Titik potong dengan sumbu-y</div>
+            <input type="text" id="b2" class="latihan-input" placeholder="Jawaban..." disabled>
+
+            <div class="soal-label">c. Vertex / titik puncak</div>
+            <input type="text" id="b3" class="latihan-input" placeholder="Jawaban..." disabled>
+        </div>
+
+        <div class="latihan-actions bawah">
+            <button type="button" class="latihan-btn" id="cekSoal2Btn" disabled>CEK JAWABAN NO. 2</button>
+        </div>
+
+        <div id="hasilSoal2" class="hasil-latihan">
+            Soal nomor 2 akan terbuka jika nomor 1 sudah benar.
+        </div>
+    </section>
+
+    {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
+    <section class="latihan-section latihan-locked" id="latihanSoal3">
+        <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
+        <p class="latihan-sub">
+            Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
+        </p>
+
+        <div class="grafik-box">
+            <div class="grafik-caption">Grafik A, B, C:</div>
+            <div class="grafik-row">
+                <div class="grafik-item">
+                    <img src="{{ asset('img/A.png') }}" alt="Grafik A">
+                    <div class="grafik-huruf">A</div>
                 </div>
-
-                {{-- 1. Analisis Fungsi Polinomial --}}
-                <section class="latihan-section">
-                    <h3>1. Analisis Fungsi Polinomial</h3>
-                    <div class="latihan-rumus">Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b></div>
-                    <p class="latihan-sub">Tentukan:</p>
-
-                    <div class="latihan-grid">
-                        <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
-                        <input type="text" id="a1" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">b. Jumlah sukunya</div>
-                        <input type="text" id="a2" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">c. Suku utamanya</div>
-                        <input type="text" id="a3" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">d. Koefisien utamanya</div>
-                        <input type="text" id="a4" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">e. Perilaku ujung grafiknya</div>
-                        <input type="text" id="a5" class="latihan-input" placeholder="Contoh: kiri turun kanan naik">
-                    </div>
-                </section>
-
-                {{-- 2. Grafik Fungsi Kuadrat --}}
-                <section class="latihan-section">
-                    <h3>2. Grafik Fungsi Kuadrat</h3>
-                    <div class="latihan-rumus">Diberikan fungsi <b>f(x) = x² − 2x − 8</b></div>
-                    <p class="latihan-sub">Tentukan pula:</p>
-
-                    <div class="latihan-grid">
-                        <div class="soal-label">a. Titik potong dengan sumbu-x</div>
-                        <input type="text" id="b1" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">b. Titik potong dengan sumbu-y</div>
-                        <input type="text" id="b2" class="latihan-input" placeholder="Jawaban...">
-
-                        <div class="soal-label">c. Vertex / titik puncak</div>
-                        <input type="text" id="b3" class="latihan-input" placeholder="Jawaban...">
-                    </div>
-                </section>
-
-                {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
-                <section class="latihan-section">
-                    <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
-                    <p class="latihan-sub">
-                        Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
-                    </p>
-
-                    <div class="grafik-box">
-                        <div class="grafik-caption">Grafik A, B, C:</div>
-                        <div class="grafik-row">
-                            <div class="grafik-item">
-                                <img src="{{ asset('img/A.png') }}" alt="Grafik A">
-                                <div class="grafik-huruf">A</div>
-                            </div>
-                            <div class="grafik-item">
-                                <img src="{{ asset('img/B.png') }}" alt="Grafik B">
-                                <div class="grafik-huruf">B</div>
-                            </div>
-                            <div class="grafik-item">
-                                <img src="{{ asset('img/C.png') }}" alt="Grafik C">
-                                <div class="grafik-huruf">C</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="match-table">
-                        <div class="match-header fungsi-col">Fungsinya</div>
-                        <div class="match-header jawaban-col">Jawaban</div>
-                        <div class="match-header perilaku-col">Perilaku Ujung</div>
-                        <div class="match-header cocok-col">Cocok</div>
-
-                        <div class="fungsi-col"><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
-                        <div class="jawaban-col">
-                            <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-                        <div class="perilaku-col">
-                            <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik">
-                        </div>
-                        <div class="cocok-col">
-                            <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-
-                        <div class="fungsi-col"><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
-                        <div class="jawaban-col">
-                            <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-                        <div class="perilaku-col">
-                            <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik">
-                        </div>
-                        <div class="cocok-col">
-                            <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-
-                        <div class="fungsi-col"><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
-                        <div class="jawaban-col">
-                            <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-                        <div class="perilaku-col">
-                            <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun">
-                        </div>
-                        <div class="cocok-col">
-                            <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C">
-                        </div>
-                    </div>
-
-                    <div class="latihan-actions bawah">
-                        <button type="button" class="latihan-btn" id="cekLatihanBtn">CEK JAWABAN</button>
-                        <button type="button" class="latihan-btn reset" id="resetLatihanBtn">RESET</button>
-                    </div>
-
-                    <div id="hasilLatihan" class="hasil-latihan">
-                        Isi jawaban terlebih dahulu, lalu klik <b>Cek Jawaban</b>.
-                    </div>
-                </section>
+                <div class="grafik-item">
+                    <img src="{{ asset('img/B.png') }}" alt="Grafik B">
+                    <div class="grafik-huruf">B</div>
+                </div>
+                <div class="grafik-item">
+                    <img src="{{ asset('img/C.png') }}" alt="Grafik C">
+                    <div class="grafik-huruf">C</div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="match-table">
+            <div class="match-header fungsi-col">Fungsinya</div>
+            <div class="match-header jawaban-col">Jawaban</div>
+            <div class="match-header perilaku-col">Perilaku Ujung</div>
+            <div class="match-header cocok-col">Cocok</div>
+
+            <div class="fungsi-col"><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
+            <div class="jawaban-col">
+                <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+            <div class="perilaku-col">
+                <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik" disabled>
+            </div>
+            <div class="cocok-col">
+                <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+
+            <div class="fungsi-col"><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
+            <div class="jawaban-col">
+                <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+            <div class="perilaku-col">
+                <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik" disabled>
+            </div>
+            <div class="cocok-col">
+                <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+
+            <div class="fungsi-col"><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
+            <div class="jawaban-col">
+                <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+            <div class="perilaku-col">
+                <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun" disabled>
+            </div>
+            <div class="cocok-col">
+                <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C" disabled>
+            </div>
+        </div>
+
+        <div class="latihan-actions bawah">
+            <button type="button" class="latihan-btn" id="cekSoal3Btn" disabled>CEK JAWABAN NO. 3</button>
+            <button type="button" class="latihan-btn reset" id="resetLatihanBtn">RESET SEMUA</button>
+        </div>
+
+        <div id="hasilSoal3" class="hasil-latihan">
+            Soal nomor 3 akan terbuka jika nomor 2 sudah benar.
+        </div>
+    </section>
+</div>
+        </div>
+        </div>
     {{-- =========================
     SCRIPT EKSPLORASI
     ========================= --}}
@@ -3035,12 +3377,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                            ${posisiGrafik}
-                                            Perilaku ujungnya adalah <b>naik-naik</b>:
-                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                        `;
+                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                            ${posisiGrafik}
+                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                        `;
                 }
             }
 
@@ -3374,7 +3716,7 @@
                 if (materiLanjutan) materiLanjutan.style.display = 'block';
                 if (materiLockedInfo) {
                     materiLockedInfo.className = 'info-feedback ok';
-                    materiLockedInfo.innerHTML = '✅ Semua jawaban eksplorasi sudah diisi..';
+                    materiLockedInfo.innerHTML = '';
                 }
 
                 if (btnShowExplain) btnShowExplain.disabled = false;
@@ -3630,7 +3972,7 @@
 
                     feedbackExplore.className = 'feedback ok';
                     feedbackExplore.innerHTML =
-                        `✅ Semua jawaban eksplorasi sudah diisi.`;
+                        ``;
                 } else {
                     lockMateri();
                     updateKPIVisibility(x, y, trendBenar);
@@ -3728,69 +4070,43 @@
 
     <script>
         (function () {
-            const jawabBenar = {
-                a1: "3",
-                a2: "3",
-                a3: "7x3",
-                a4: "7",
-                a5: "kiri turun kanan naik",
+            const hasil1 = document.getElementById("hasilSoal1");
+            const hasil2 = document.getElementById("hasilSoal2");
+            const hasil3 = document.getElementById("hasilSoal3");
 
-                b1: "(-2,0) dan (4,0)",
-                b2: "(0,-8)",
-                b3: "(1,-9)",
-
-                c1: "A",
-                c1u: "turun-naik",
-                c1c: "A",
-
-                c2: "B",
-                c2u: "naik-naik",
-                c2c: "B",
-
-                c3: "C",
-                c3u: "turun-turun",
-                c3c: "C"
-            };
-
-            const hasil = document.getElementById("hasilLatihan");
-            const cekBtn = document.getElementById("cekLatihanBtn");
+            const cekSoal1Btn = document.getElementById("cekSoal1Btn");
+            const cekSoal2Btn = document.getElementById("cekSoal2Btn");
+            const cekSoal3Btn = document.getElementById("cekSoal3Btn");
             const resetBtn = document.getElementById("resetLatihanBtn");
+
+            const section2 = document.getElementById("latihanSoal2");
+            const section3 = document.getElementById("latihanSoal3");
+
+            const soal1Ids = ["a1", "a2", "a3", "a4", "a5"];
+            const soal2Ids = ["b1", "b2", "b3"];
+            const soal3Ids = ["c1", "c1u", "c1c", "c2", "c2u", "c2c", "c3", "c3u", "c3c"];
 
             function normal(v) {
                 return (v || "")
                     .toString()
                     .toLowerCase()
                     .replace(/\s+/g, "")
-                    .replace(/[\(\)]/g, "")
-                    .replace(/,/g, ",")
+                    .replace(/[()]/g, "")
                     .replace(/−/g, "-")
                     .replace(/\^/g, "")
                     .replace(/³/g, "3")
+                    .replace(/⁴/g, "4")
                     .trim();
             }
 
             function cekKhusus(id, val) {
                 const v = normal(val);
 
-                if (id === "a1") {
-                    return v === "3";
-                }
-
-                if (id === "a2") {
-                    return v === "3" || v === "3suku";
-                }
-
-                if (id === "a3") {
-                    return v.includes("7x3");
-                }
-
-                if (id === "a4") {
-                    return v === "7";
-                }
-
-                if (id === "a5") {
-                    return v.includes("turun") && v.includes("naik");
-                }
+                if (id === "a1") return v === "3";
+                if (id === "a2") return v === "3" || v === "3suku";
+                if (id === "a3") return v.includes("7x3");
+                if (id === "a4") return v === "7";
+                if (id === "a5") return v.includes("kiri") && v.includes("turun") && v.includes("kanan") && v.includes("naik");
 
                 if (id === "b1") {
                     return (
@@ -3801,107 +4117,269 @@
                 }
 
                 if (id === "b2") {
-                    return (
-                        v === "0,-8" ||
-                        v === "0,-8" ||
-                        (v.includes("0") && v.includes("-8"))
-                    );
+                    return v === "0,-8" || (v.includes("0") && v.includes("-8"));
                 }
 
                 if (id === "b3") {
-                    return (
-                        v === "1,-9" ||
-                        (v.includes("1") && v.includes("-9"))
-                    );
+                    return v === "1,-9" || (v.includes("1") && v.includes("-9"));
                 }
 
-                if (id === "c1") {
-                    return v.toUpperCase() === "A";
-                }
+                if (id === "c1") return v === "a";
+                if (id === "c1u") return v.includes("turun") && v.includes("naik");
+                if (id === "c1c") return v === "a";
 
-                if (id === "c1u") {
-                    return v.includes("turun") && v.includes("naik");
-                }
+                if (id === "c2") return v === "b";
+                if (id === "c2u") return v.includes("naik") && !v.includes("turun");
+                if (id === "c2c") return v === "b";
 
-                if (id === "c1c") {
-                    return v.toUpperCase() === "A";
-                }
+                if (id === "c3") return v === "c";
+                if (id === "c3u") return v.includes("turun") && !v.includes("naik");
+                if (id === "c3c") return v === "c";
 
-                if (id === "c2") {
-                    return v.toUpperCase() === "B";
-                }
-
-                if (id === "c2u") {
-                    return v.includes("naik") && !v.includes("turun");
-                }
-
-                if (id === "c2c") {
-                    return v.toUpperCase() === "B";
-                }
-
-                if (id === "c3") {
-                    return v.toUpperCase() === "C";
-                }
-
-                if (id === "c3u") {
-                    return v.includes("turun") && !v.includes("naik");
-                }
-
-                if (id === "c3c") {
-                    return v.toUpperCase() === "C";
-                }
-
-                return normal(jawabBenar[id]) === v;
+                return false;
             }
 
-            cekBtn?.addEventListener("click", function () {
-                const ids = Object.keys(jawabBenar);
+            function setHasil(el, type, html) {
+                if (!el) return;
+                el.className = "hasil-latihan";
+                if (type) el.classList.add(type);
+                el.innerHTML = html;
+            }
+
+            function setInputState(el, state) {
+                if (!el) return;
+                el.classList.remove("is-correct", "is-wrong", "is-empty");
+
+                if (state === "correct") el.classList.add("is-correct");
+                if (state === "wrong") el.classList.add("is-wrong");
+                if (state === "empty") el.classList.add("is-empty");
+            }
+
+            function clearStates(ids) {
+                ids.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.remove("is-correct", "is-wrong", "is-empty");
+                });
+            }
+
+            function setDisabled(ids, state) {
+                ids.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.disabled = state;
+                });
+            }
+
+            function lockSection(section, ids, btn, hasilEl, text) {
+                if (section) {
+                    section.classList.add("latihan-locked");
+                    section.style.opacity = ".7";
+                    section.style.pointerEvents = "none";
+                }
+
+                setDisabled(ids, true);
+                if (btn) btn.disabled = true;
+                if (hasilEl) setHasil(hasilEl, "", text);
+                clearStates(ids);
+            }
+
+            function unlockSection(section, ids, btn, hasilEl, text) {
+                if (section) {
+                    section.classList.remove("latihan-locked");
+                    section.style.opacity = "1";
+                    section.style.pointerEvents = "auto";
+                }
+
+                setDisabled(ids, false);
+                if (btn) btn.disabled = false;
+                if (hasilEl) setHasil(hasilEl, "", text);
+            }
+
+            function cekGroup(ids) {
                 const kosong = [];
                 const salah = [];
+                const benar = [];
 
                 ids.forEach(id => {
                     const el = document.getElementById(id);
                     if (!el) return;
 
-                    const value = el.value.trim();
+                    const value = (el.value || "").trim();
+
                     if (!value) {
                         kosong.push(id);
+                        setInputState(el, "empty");
                         return;
                     }
 
-                    if (!cekKhusus(id, value)) {
+                    if (cekKhusus(id, value)) {
+                        benar.push(id);
+                        setInputState(el, "correct");
+                    } else {
                         salah.push(id);
+                        setInputState(el, "wrong");
                     }
                 });
 
-                hasil.className = "hasil-latihan";
+                return { kosong, salah, benar };
+            }
+
+            cekSoal1Btn?.addEventListener("click", function () {
+                const { kosong, salah } = cekGroup(soal1Ids);
 
                 if (kosong.length) {
-                    hasil.classList.add("bad");
-                    hasil.innerHTML = `⚠️ Masih ada jawaban yang kosong. Lengkapi dulu semua bagian ya.`;
+                    setHasil(hasil1, "bad", `⚠️ Nomor 1 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
+                    lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
+                    lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
                     return;
                 }
 
-                if (salah.length === 0) {
-                    hasil.classList.add("ok");
-                    hasil.innerHTML = `✅ Bagus, semua jawaban benar.`;
-                } else {
-                    hasil.classList.add("bad");
-                    hasil.innerHTML = `❌ Masih ada jawaban yang belum tepat pada: <b>${salah.join(", ")}</b>.`;
+                if (salah.length) {
+                    setHasil(hasil1, "bad", `❌ Nomor 1 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
+                    lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 masih terkunci karena nomor 1 belum benar.");
+                    lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
+                    return;
                 }
+
+                setHasil(hasil1, "ok", "✅ Jawaban nomor 1 benar semua. Soal nomor 2 sudah terbuka.");
+                unlockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Silakan kerjakan soal nomor 2 lalu klik <b>Cek Jawaban No. 2</b>.");
+            });
+
+            cekSoal2Btn?.addEventListener("click", function () {
+                const { kosong, salah } = cekGroup(soal2Ids);
+
+                if (kosong.length) {
+                    setHasil(hasil2, "bad", `⚠️ Nomor 2 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
+                    lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 masih terkunci karena nomor 2 belum benar.");
+                    return;
+                }
+
+                if (salah.length) {
+                    setHasil(hasil2, "bad", `❌ Nomor 2 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
+                    lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 masih terkunci karena nomor 2 belum benar.");
+                    return;
+                }
+
+                setHasil(hasil2, "ok", "✅ Jawaban nomor 2 benar semua. Soal nomor 3 sudah terbuka.");
+                unlockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Silakan kerjakan soal nomor 3 lalu klik <b>Cek Jawaban No. 3</b>.");
+            });
+
+            cekSoal3Btn?.addEventListener("click", function () {
+                const { kosong, salah } = cekGroup(soal3Ids);
+
+                if (kosong.length) {
+                    setHasil(hasil3, "bad", `⚠️ Nomor 3 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
+                    return;
+                }
+
+                if (salah.length) {
+                    setHasil(hasil3, "bad", `❌ Nomor 3 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
+                    return;
+                }
+
+                setHasil(hasil3, "ok", "✅ Semua jawaban nomor 3 benar. Latihan selesai.");
             });
 
             resetBtn?.addEventListener("click", function () {
-                Object.keys(jawabBenar).forEach(id => {
+                [...soal1Ids, ...soal2Ids, ...soal3Ids].forEach(id => {
                     const el = document.getElementById(id);
-                    if (el) el.value = "";
+                    if (el) {
+                        el.value = "";
+                        el.classList.remove("is-correct", "is-wrong", "is-empty");
+                    }
                 });
 
-                hasil.className = "hasil-latihan";
-                hasil.innerHTML = `Isi jawaban terlebih dahulu, lalu klik <b>Cek Jawaban</b>.`;
+                setHasil(hasil1, "", "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.");
+                lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
+                lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
             });
+
+            lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
+            lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
+            setHasil(hasil1, "", "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.");
         })();
     </script>
+
+    <script>
+        const data = [
+            {
+                f: "9x²",
+                deg: "2",
+                terms: "1 suku",
+                lead: "9x²",
+                coef: "9",
+                explain: "Hanya ada satu suku, yaitu 9x². Pangkat tertinggi pada variabel x adalah 2, sehingga derajat fungsi ini adalah 2. Karena hanya memiliki satu suku, maka suku utamanya juga langsung 9x², dan koefisien utamanya adalah 9.",
+                tips: [
+                    "Fungsi ini hanya terdiri dari satu suku.",
+                    "Pangkat tertinggi langsung menentukan derajat.",
+                    "Koefisien utama diambil dari suku berpangkat tertinggi."
+                ]
+            },
+            {
+                f: "5x⁴ − 3x² + 8",
+                deg: "4",
+                terms: "3 suku",
+                lead: "5x⁴",
+                coef: "5",
+                explain: "Fungsi ini memiliki tiga suku, yaitu 5x⁴, −3x², dan 8. Pangkat tertinggi adalah 4 pada suku 5x⁴, sehingga derajat fungsi adalah 4. Suku utama adalah 5x⁴, dan koefisien utamanya adalah 5.",
+                tips: [
+                    "Jumlah suku dihitung dari banyaknya bagian yang dipisahkan tanda + atau −.",
+                    "Suku utama selalu suku dengan pangkat terbesar.",
+                    "Konstanta 8 tidak memengaruhi derajat karena tidak mengandung variabel."
+                ]
+            },
+            {
+                f: "7x³ + x² − 4x + 2 − 6",
+                deg: "3",
+                terms: "5 suku",
+                lead: "7x³",
+                coef: "7",
+                explain: "Fungsi ini memiliki lima suku: 7x³, x², −4x, 2, dan −6. Pangkat tertinggi muncul pada suku 7x³, yaitu 3. Oleh karena itu, derajat fungsi adalah 3, suku utamanya 7x³, dan koefisien utamanya 7.",
+                tips: [
+                    "Meskipun ada banyak suku, derajat tetap ditentukan oleh pangkat terbesar.",
+                    "Suku konstanta seperti 2 dan −6 memiliki derajat 0.",
+                    "Koefisien utama selalu melekat pada suku utama."
+                ]
+            }
+        ];
+
+        const btns = document.querySelectorAll(".poly-btn");
+
+        const polyFormula = document.getElementById("polyFormula");
+        const deg = document.getElementById("deg");
+        const terms = document.getElementById("terms");
+        const lead = document.getElementById("lead");
+        const coef = document.getElementById("coef");
+        const explain = document.getElementById("explain");
+        const polyTips = document.getElementById("polyTips");
+
+        function show(i) {
+            const d = data[i];
+
+            polyFormula.textContent = d.f;
+            deg.textContent = d.deg;
+            terms.textContent = d.terms;
+            lead.textContent = d.lead;
+            coef.textContent = d.coef;
+            explain.textContent = d.explain;
+
+            if (polyTips) {
+                polyTips.innerHTML = d.tips.map(item => `<li>${item}</li>`).join("");
+            }
+
+            btns.forEach((btn, index) => {
+                btn.classList.toggle("active", index === Number(i));
+            });
+        }
+
+        btns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                show(btn.dataset.i);
+            });
+        });
+
+        show(0);
+    </script>
+
     <script defer src="{{ asset('js/interaktif1c.js') }}"></script>
 @endsection
 
@@ -3910,7 +4388,7 @@
         ← Previous
     </a>
 
-    <a href="{{ route('kuisa') }}" class="btn-nav next-btn">
+    <a href="{{ route('quiz.show', 1) }}" class="btn-nav next-btn">
         Next →
     </a>
 @endsection

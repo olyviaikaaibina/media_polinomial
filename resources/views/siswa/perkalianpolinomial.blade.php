@@ -3043,7 +3043,7 @@
         ← Previous
     </a>
 
-    <a href="{{ route('kuisb') }}" class="btn-nav next-btn">
+    <a href="{{ route('quiz.show', 2) }}" class="btn-nav next-btn">
         Next →
     </a>
 @endsection
