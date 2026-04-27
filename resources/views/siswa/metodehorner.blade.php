@@ -1611,8 +1611,7 @@
             <div class="eksplorasi-title">🧭 Eksplorasi</div>
 
             <div class="eksplorasi-text">
-                Di daerah Banjarmasin, pedagang di pasar terapung menghitung keuntungan harian mereka.
-                Misalkan keuntungan dinyatakan dengan:
+                Perhatikan fungsi polinomial berikut:
             </div>
 
             <div class="rumus">
@@ -1620,7 +1619,8 @@
             </div>
 
             <div class="eksplorasi-text">
-                dengan <em>x</em> menyatakan jumlah hari berdagang. Pedagang ingin mengetahui keuntungan saat hari ke-2.
+                Kita akan menentukan nilai polinomial tersebut saat <em>x = 2</em>.
+                Coba lengkapi langkah-langkah perhitungannya.
             </div>
 
             <div class="question-box">
@@ -1652,13 +1652,14 @@
             </div>
 
             <div id="feedbackJawaban" class="feedback-jawaban"></div>
+
             <div id="penjelasanBox" class="penjelasan-box" style="text-align:center;">
                 <div class="penjelasan-title">Hasil Akhir</div>
 
                 <div class="info-text" style="margin:0; line-height:2;">
-
                     Substitusi x = 2:
                     <br>
+
                     <strong>
                         P(2) = 2(2³) − 3(2²) + 2 + 5
                     </strong>
@@ -1676,8 +1677,8 @@
             </div>
 
             <div class="keterangan-bawah">
-                Dari perhitungan di atas, terlihat bahwa prosesnya cukup panjang.
-                Untuk mempermudah perhitungan tersebut, digunakan Metode Horner.
+                Dari perhitungan di atas, terlihat bahwa proses substitusi langsung dapat menjadi cukup panjang.
+                Untuk mempermudah perhitungan nilai polinomial, dapat digunakan <b>Metode Horner</b>.
             </div>
         </div>
 

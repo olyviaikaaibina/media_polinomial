@@ -1028,25 +1028,20 @@
             </div>
 
             <p>
-                Di daerah Banjarmasin, banyak lahan rawa dimanfaatkan untuk pertanian. Seorang petani ingin membagi
-                lahannya menjadi beberapa petak yang ukurannya sama agar lebih mudah dirawat.
+                Perhatikan bentuk aljabar berikut:
             </p>
-
-            <p>Luas lahan dinyatakan oleh:</p>
 
             <div class="rumus-box">
                 $$x^2 + 5x + 6$$
             </div>
 
             <p>
-                Setiap petak direncanakan berukuran
+                Bentuk tersebut akan dibagi dengan:
                 <span class="rumus-inline">\(x + 1\)</span>
-                hektar.
             </p>
 
             <p>
-                Untuk mengetahui banyak petak yang terbentuk dan apakah ada sisa, kita perlu menggunakan konsep
-                pembagian polinomial.
+                Amati hubungan antara bentuk yang dibagi, pembagi, hasil bagi, dan kemungkinan adanya sisa.
             </p>
 
             <div class="eks-soal-wrap">
@@ -1058,7 +1053,8 @@
                 <div class="eks-soal" data-answer="3" data-answered="false"
                     style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
-                        1. Operasi yang paling tepat untuk menentukan banyak petak dan sisa lahan adalah ....
+                        1. Operasi yang paling tepat untuk menentukan hasil dari pembagian dua bentuk aljabar tersebut
+                        adalah ....
                     </div>
 
                     <div class="opsi-grid">
@@ -1082,21 +1078,21 @@
                 <div class="eks-soal" data-answer="1" data-answered="false"
                     style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px; margin-bottom:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
-                        2. Jika luas lahan dibagi dengan ukuran setiap petak, maka yang diperoleh adalah ....
+                        2. Jika suatu bentuk aljabar dibagi dengan bentuk lainnya, maka hasil yang diperoleh disebut ....
                     </div>
 
                     <div class="opsi-grid">
                         <button type="button" class="opsi-btn" data-choice="1">
                             <span class="opsi-number">1</span>
-                            <span class="opsi-text">Banyak petak yang terbentuk</span>
+                            <span class="opsi-text">Hasil bagi</span>
                         </button>
                         <button type="button" class="opsi-btn" data-choice="2">
                             <span class="opsi-number">2</span>
-                            <span class="opsi-text">Luas seluruh lahan</span>
+                            <span class="opsi-text">Jumlah</span>
                         </button>
                         <button type="button" class="opsi-btn" data-choice="3">
                             <span class="opsi-number">3</span>
-                            <span class="opsi-text">Ukuran setiap petak</span>
+                            <span class="opsi-text">Hasil kali</span>
                         </button>
                     </div>
 
@@ -1106,22 +1102,21 @@
                 <div class="eks-soal" data-answer="1" data-answered="false"
                     style="background: rgba(255,255,255,.65); border:1px solid #e9ddd1; border-radius:14px; padding:16px;">
                     <div class="eks-pertanyaan" style="margin-bottom:12px;">
-                        3. Seorang petani memiliki luas lahan 7 hektar. Lahan tersebut akan dibagi menjadi petak-petak
-                        yang masing-masing seluas 3 hektar. Sisa lahan yang tidak terbagi adalah ....
+                        3. Hitung pembagian berikut: 7 ÷ 3. Berapa sisa yang diperoleh?
                     </div>
 
                     <div class="opsi-grid">
                         <button type="button" class="opsi-btn" data-choice="1">
                             <span class="opsi-number">1</span>
-                            <span class="opsi-text">1 hektar</span>
+                            <span class="opsi-text">1</span>
                         </button>
                         <button type="button" class="opsi-btn" data-choice="2">
                             <span class="opsi-number">2</span>
-                            <span class="opsi-text">2 hektar</span>
+                            <span class="opsi-text">2</span>
                         </button>
                         <button type="button" class="opsi-btn" data-choice="3">
                             <span class="opsi-number">3</span>
-                            <span class="opsi-text">3 hektar</span>
+                            <span class="opsi-text">3</span>
                         </button>
                     </div>
 
@@ -1948,169 +1943,169 @@
                 const feedbackText = {
                     1: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
-                            </p>
-                            <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                                </p>
+                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
-                            </p>
-                            <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
+                                </p>
+                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `
                     },
                     2: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
-                            </p>
-                            <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                            <p style="margin-bottom:0;">
-                                Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
+                                </p>
+                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                <p style="margin-bottom:0;">
+                                    Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
-                            </p>
-                            <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
+                                </p>
+                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `
                     },
                     3: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Sekarang kurangkan hasil perkalian dari pembilang semula.
-                            </p>
-                            <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                            <p style="margin-bottom:0;">
-                                Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Sekarang kurangkan hasil perkalian dari pembilang semula.
+                                </p>
+                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                <p style="margin-bottom:0;">
+                                    Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
-                            </p>
-                            <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
+                                </p>
+                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `
                     },
                     4: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Ulangi pola yang sama menggunakan sisa baru.
-                            </p>
-                            <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Ulangi pola yang sama menggunakan sisa baru.
+                                </p>
+                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
-                            </p>
-                            <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
+                                </p>
+                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                </p>
+                            </div>
+                        `
                     },
                     5: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
-                            </p>
-                            <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                            <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                            <p style="margin-bottom:0;">
-                                Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
+                                </p>
+                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                <p style="margin-bottom:0;">
+                                    Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
-                            </p>
-                            <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                            <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
+                                </p>
+                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
+                                </p>
+                            </div>
+                        `
                     },
                     6: {
                         benar: `
-                        <b>Benar ✅</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
-                            </p>
-                            <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                            <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                            <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                            <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                            <div class="rumus-box">$$s=4$$</div>
-                            <p style="margin-bottom:0;">
-                                Hasil akhir sudah tepat.
-                            </p>
-                        </div>
-                    `,
+                            <b>Benar ✅</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
+                                </p>
+                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                <div class="rumus-box">$$s=4$$</div>
+                                <p style="margin-bottom:0;">
+                                    Hasil akhir sudah tepat.
+                                </p>
+                            </div>
+                        `,
                         salah: `
-                        <b>Jawaban masih salah ❌</b>
-                        <div class="step-solution">
-                            <p style="margin-top:0;">
-                                Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
-                            </p>
-                            <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                            <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                            <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                            <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                            <div class="rumus-box">$$s=4$$</div>
-                            <p style="margin-bottom:0;">
-                                Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
-                            </p>
-                        </div>
-                    `
+                            <b>Jawaban masih salah ❌</b>
+                            <div class="step-solution">
+                                <p style="margin-top:0;">
+                                    Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
+                                </p>
+                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                <div class="rumus-box">$$s=4$$</div>
+                                <p style="margin-bottom:0;">
+                                    Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
+                                </p>
+                            </div>
+                        `
                     }
                 };
 

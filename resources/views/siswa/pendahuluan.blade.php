@@ -1243,7 +1243,7 @@
         <div class="intro-wrap">
             <div class="konsep-grid">
                 <div class="konsep-card eksponen">
-                    <div class="konsep-title">Eksponen?</div>
+                    <div class="konsep-title">Eksponen</div>
                     <div class="konsep-desc">
                         Eksponen adalah bentuk singkat dari <strong>perkalian berulang</strong> pada bilangan yang sama.
                         Jadi, <strong>x²</strong> berarti <strong>x × x</strong>.
@@ -1252,7 +1252,7 @@
                 </div>
 
                 <div class="konsep-card aljabar">
-                    <div class="konsep-title">Aljabar?</div>
+                    <div class="konsep-title">Aljabar</div>
                     <div class="konsep-desc">
                         Aljabar adalah bentuk matematika yang memuat <strong>angka</strong>,
                         <strong>huruf/variabel</strong>, dan <strong>operasi hitung</strong>.
@@ -1375,7 +1375,7 @@
             <div class="alur-grid">
                 <div class="alur-card">
                     <div class="alur-step">1</div>
-                    <div class="alur-card-title">Susunan Persegi</div>
+                    <div class="alur-card-title">Susunan Kardus</div>
                     <div class="alur-card-text">
                         Terdapat <strong>3 susunan kardus berbentuk persegi</strong>.
                         Setiap susunan terdiri atas <strong>x baris</strong> dan <strong>x kolom</strong>.

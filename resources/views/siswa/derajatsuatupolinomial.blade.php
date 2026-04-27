@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                        delimiters: [
-                                                            {left: '$$', right: '$$', display: true},
-                                                            {left: '$', right: '$', display: false}
-                                                        ]
-                                                    });"></script>
+                                                                            delimiters: [
+                                                                                {left: '$$', right: '$$', display: true},
+                                                                                {left: '$', right: '$', display: false}
+                                                                            ]
+                                                                        });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -810,30 +810,161 @@
             <div class="title-box">🧭 Eksplorasi</div>
 
             <p>
-                Masyarakat Kalimantan Selatan memiliki kearifan lokal dalam mengelola lahan basah, seperti
-                pertanian padi rawa, kebun di lahan pasang surut, serta kolam ikan tradisional (beje).
+                Perhatikan bentuk polinomial berikut:
             </p>
 
-            <p>Misalkan:</p>
-            <ul>
-                <li><span class="highlight">$x$</span> menyatakan luas lahan padi rawa.</li>
-                <li><span class="highlight">$y$</span> menyatakan luas kebun sayur.</li>
-                <li><span class="highlight">$z$</span> menyatakan jumlah kolam ikan.</li>
-            </ul>
-
-            <p>Pemanfaatan lahan basah tersebut dinyatakan dalam bentuk polinomial:</p>
-
             <div class="rumus">
-                $$P(x,y,z)=2x^2+3xy^3-4z+6$$
+                $$P(x,y,z)=3xy^3+2x^2-4z+6$$
             </div>
+
+            <p>
+                Polinomial tersebut terdiri dari beberapa suku. Amati pangkat variabel pada setiap suku
+                untuk mengetahui derajatnya.
+            </p>
+
+            <p style="margin-bottom:10px;">
+                Amati derajat dari setiap suku berikut.
+            </p>
+
+            <div style="
+            display:grid;
+            grid-template-columns:repeat(2, minmax(0, 1fr));
+            gap:10px;
+            margin:12px 0 14px;
+        ">
+
+                <div style="
+                border:1.5px dashed rgba(43,108,176,.35);
+                border-radius:14px;
+                padding:12px 14px;
+                background:rgba(243,247,255,.75);
+                min-height:105px;
+            ">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="
+                        width:58px;
+                        height:58px;
+                        border-radius:50%;
+                        background:rgba(43,108,176,.12);
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:20px;
+                        font-weight:900;
+                        color:#1e3a8a;
+                        flex-shrink:0;
+                    ">
+                            $3xy^3$
+                        </div>
+                        <div style="font-size:15px; line-height:1.55;">
+                            Pangkat $x=1$ dan $y=3$. Derajat diperoleh dari jumlah pangkat variabel.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="
+                border:1.5px dashed rgba(27,122,42,.35);
+                border-radius:14px;
+                padding:12px 14px;
+                background:rgba(242,251,244,.75);
+                min-height:105px;
+            ">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="
+                        width:58px;
+                        height:58px;
+                        border-radius:50%;
+                        background:rgba(27,122,42,.12);
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:20px;
+                        font-weight:900;
+                        color:#0f5f22;
+                        flex-shrink:0;
+                    ">
+                            $2x^2$
+                        </div>
+                        <div style="font-size:15px; line-height:1.55;">
+                            Suku ini hanya memiliki variabel $x$. Pangkat variabelnya adalah
+                            <b>$2$</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="
+                border:1.5px dashed rgba(245,124,0,.35);
+                border-radius:14px;
+                padding:12px 14px;
+                background:rgba(255,248,240,.9);
+                min-height:105px;
+            ">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="
+                        width:58px;
+                        height:58px;
+                        border-radius:50%;
+                        background:rgba(245,124,0,.12);
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:20px;
+                        font-weight:900;
+                        color:#c25a00;
+                        flex-shrink:0;
+                    ">
+                            $-4z$
+                        </div>
+                        <div style="font-size:15px; line-height:1.55;">
+                            Suku ini memiliki variabel $z$. Karena $z=z^1$, maka pangkatnya
+                            <b>$1$</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="
+                border:1.5px dashed rgba(128,80,180,.35);
+                border-radius:14px;
+                padding:12px 14px;
+                background:rgba(248,244,255,.9);
+                min-height:105px;
+            ">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="
+                        width:58px;
+                        height:58px;
+                        border-radius:50%;
+                        background:rgba(128,80,180,.12);
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:20px;
+                        font-weight:900;
+                        color:#7a3fb0;
+                        flex-shrink:0;
+                    ">
+                            $6$
+                        </div>
+                        <div style="font-size:15px; line-height:1.55;">
+                            Suku ini tidak memiliki variabel, sehingga merupakan konstanta.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p>
+                Dari pengamatan ini, coba tentukan sendiri suku dengan derajat tertentu
+                pada polinomial tersebut melalui pertanyaan berikut.
+            </p>
 
             <div class="quiz3" id="quiz3">
                 <div class="qitem" data-q="1" data-done="0">
                     <div class="qtitle">Soal 1</div>
                     <div class="qhint">Klik suku yang memiliki <b>derajat tertinggi</b>.</div>
                     <div class="rumus-eks">
-                        <span class="term" data-correct="0">2x²</span> +
-                        <span class="term" data-correct="1">3xy³</span> −
+                        <span class="term" data-correct="1">3xy³</span> +
+                        <span class="term" data-correct="0">2x²</span> −
                         <span class="term" data-correct="0">4z</span> +
                         <span class="term" data-correct="0">6</span>
                     </div>
@@ -844,8 +975,8 @@
                     <div class="qtitle">Soal 2</div>
                     <div class="qhint">Klik suku yang memiliki <b>derajat 1</b>.</div>
                     <div class="rumus-eks">
-                        <span class="term" data-correct="0">2x²</span> +
-                        <span class="term" data-correct="0">3xy³</span> −
+                        <span class="term" data-correct="0">3xy³</span> +
+                        <span class="term" data-correct="0">2x²</span> −
                         <span class="term" data-correct="1">4z</span> +
                         <span class="term" data-correct="0">6</span>
                     </div>
@@ -854,10 +985,10 @@
 
                 <div class="qitem" data-q="3" data-done="0">
                     <div class="qtitle">Soal 3</div>
-                    <div class="qhint">Klik suku yang merupakan <b>konstanta</b> (derajat 0).</div>
+                    <div class="qhint">Klik suku yang memiliki derajat 0.</div>
                     <div class="rumus-eks">
-                        <span class="term" data-correct="0">2x²</span> +
-                        <span class="term" data-correct="0">3xy³</span> −
+                        <span class="term" data-correct="0">3xy³</span> +
+                        <span class="term" data-correct="0">2x²</span> −
                         <span class="term" data-correct="0">4z</span> +
                         <span class="term" data-correct="1">6</span>
                     </div>
@@ -867,7 +998,6 @@
                 <div class="summary" id="quizSummary"></div>
             </div>
         </div>
-
         {{-- BAGIAN LANJUTAN: AWALNYA TERSEMBUNYI --}}
         <div id="bagianLanjutan" class="locked">
 
@@ -1145,7 +1275,7 @@
 
                     {{-- SOAL 4 --}}
                     <div class="lat-section green disabled" id="latihan4" data-step="4" data-unlocked="0" data-done="0">
-                        <div class="lat-title">4. Detektif Polinomial (Sebutkan Alasannya!)</div>
+                        <div class="lat-title">4. Detektif Polinomial</div>
 
                         <p style="margin:6px 0;">
                             <b>G(x,y) = 5x<sup>2</sup>y<sup>3</sup> − xy + 4</b>
@@ -1431,11 +1561,11 @@
             const detectHighest = document.getElementById("detectHighest");
             const detectPoly = document.getElementById("detectPoly");
 
-            const setFb = (el, ok, text) => {
+            const setFb = (el, ok, html) => {
                 if (!el) return;
                 el.classList.remove("ok", "no");
                 el.classList.add(ok ? "ok" : "no");
-                el.textContent = text;
+                el.innerHTML = html;
             };
 
             const setDoneText = (el, text) => {
@@ -1481,7 +1611,7 @@
                 if (winnerTerm) winnerTerm.value = "";
                 if (winnerDegree) winnerDegree.value = "";
                 if (fbWinner) {
-                    fbWinner.textContent = "";
+                    fbWinner.innerHTML = "";
                     fbWinner.classList.remove("ok", "no");
                 }
                 setDoneText(done2, "");
@@ -1491,7 +1621,7 @@
             const resetSoal3 = () => {
                 if (mysteryDegree) mysteryDegree.value = "";
                 if (fbMystery) {
-                    fbMystery.textContent = "";
+                    fbMystery.innerHTML = "";
                     fbMystery.classList.remove("ok", "no");
                 }
                 setDoneText(done3, "");
@@ -1502,7 +1632,7 @@
                 if (detectHighest) detectHighest.value = "";
                 if (detectPoly) detectPoly.value = "";
                 if (fbDetect) {
-                    fbDetect.textContent = "";
+                    fbDetect.innerHTML = "";
                     fbDetect.classList.remove("ok", "no");
                 }
                 setDoneText(done4, "");
@@ -1520,23 +1650,53 @@
             // ===== SOAL 1 =====
             if (btnCheck1) {
                 btnCheck1.addEventListener("click", () => {
+                    let allAnswered = true;
                     let tfCorrect = 0;
 
                     tfSelects.forEach(sel => {
+                        if (!sel.value) allAnswered = false;
                         if (sel.value && sel.value === sel.dataset.answer) {
                             tfCorrect++;
                         }
                     });
 
+                    if (!allAnswered) {
+                        setFb(
+                            fbTrueFalse,
+                            false,
+                            `⚠️ Pilih semua jawaban terlebih dahulu.`
+                        );
+                        return;
+                    }
+
                     if (tfCorrect === 2) {
                         latihan1.dataset.done = "1";
-                        setFb(fbTrueFalse, true, "Benar");
-                      
+                        setDoneText(done1, "Soal 1 selesai.");
+                        setFb(
+                            fbTrueFalse,
+                            true,
+                            `
+                                    <div>✅ Semua jawaban benar.</div>
+                                    <div><b>Penjelasan:</b></div>
+                                    <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
+                                    <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
+                                    `
+                        );
+
                         unlockSection(latihan2, lock2);
                     } else {
                         latihan1.dataset.done = "0";
-                        setFb(fbTrueFalse, false, "❌ Jawaban Soal 1 belum tepat.");
                         setDoneText(done1, "");
+                        setFb(
+                            fbTrueFalse,
+                            false,
+                            `
+                                    <div>❌ Jawaban Soal 1 belum tepat.</div>
+                                    <div><b>Penjelasan jawaban benar:</b></div>
+                                    <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
+                                    <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
+                                    `
+                        );
 
                         resetSoal2();
                         resetSoal3();
@@ -1553,6 +1713,15 @@
                 btnCheck2.addEventListener("click", () => {
                     if (!latihan2 || latihan2.dataset.unlocked !== "1") return;
 
+                    if (!winnerTerm.value || !winnerDegree.value) {
+                        setFb(
+                            fbWinner,
+                            false,
+                            `⚠️ Lengkapi semua jawaban terlebih dahulu.`
+                        );
+                        return;
+                    }
+
                     const winnerOk =
                         winnerTerm &&
                         winnerDegree &&
@@ -1561,13 +1730,28 @@
 
                     if (winnerOk) {
                         latihan2.dataset.done = "1";
-                        setFb(fbWinner, true, "Tepat! Suku paling kuat adalah 3x⁵ dan derajat polinomialnya 5.");
-                      
+                        setDoneText(done2, "Soal 2 selesai.");
+                        setFb(
+                            fbWinner,
+                            true,
+                            `
+                                    <div>✅ Jawaban benar.</div>
+                                    <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
+                                    `
+                        );
+
                         unlockSection(latihan3, lock3);
                     } else {
                         latihan2.dataset.done = "0";
-                        setFb(fbWinner, false, "Soal 2 belum tepat. Lihat suku dengan pangkat tertinggi.");
                         setDoneText(done2, "");
+                        setFb(
+                            fbWinner,
+                            false,
+                            `
+                                    <div>❌ Soal 2 belum tepat.</div>
+                                    <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
+                                    `
+                        );
 
                         resetSoal3();
                         resetSoal4();
@@ -1583,18 +1767,42 @@
                 btnCheck3.addEventListener("click", () => {
                     if (!latihan3 || latihan3.dataset.unlocked !== "1") return;
 
+                    if (!mysteryDegree.value) {
+                        setFb(
+                            fbMystery,
+                            false,
+                            `⚠️ Isi jawaban terlebih dahulu.`
+                        );
+                        return;
+                    }
+
                     const mysteryOk =
                         mysteryDegree &&
                         parseInt(mysteryDegree.value || "", 10) === 6;
 
                     if (mysteryOk) {
                         latihan3.dataset.done = "1";
-                        setFb(fbMystery, true, "Benar! Derajat 4a³b²c adalah 3 + 2 + 1 = 6.");
+                        setDoneText(done3, "Soal 3 selesai.");
+                        setFb(
+                            fbMystery,
+                            true,
+                            `
+                                    <div>✅ Jawaban benar.</div>
+                                    <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
+                                    `
+                        );
                         unlockSection(latihan4, lock4);
                     } else {
                         latihan3.dataset.done = "0";
-                        setFb(fbMystery, false, "Soal 3 belum tepat. Jumlahkan semua pangkat variabel.");
                         setDoneText(done3, "");
+                        setFb(
+                            fbMystery,
+                            false,
+                            `
+                                    <div>❌ Soal 3 belum tepat.</div>
+                                    <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
+                                    `
+                        );
 
                         resetSoal4();
                     }
@@ -1609,6 +1817,15 @@
                 btnCheck4.addEventListener("click", () => {
                     if (!latihan4 || latihan4.dataset.unlocked !== "1") return;
 
+                    if (!detectHighest.value || !detectPoly.value) {
+                        setFb(
+                            fbDetect,
+                            false,
+                            `⚠️ Lengkapi semua jawaban terlebih dahulu.`
+                        );
+                        return;
+                    }
+
                     const detectHighestOk =
                         detectHighest &&
                         parseInt(detectHighest.value || "", 10) === 5;
@@ -1619,12 +1836,34 @@
 
                     if (detectHighestOk && detectPolyOk) {
                         latihan4.dataset.done = "1";
-                        setFb(fbDetect, true, "Benar! Suku tertinggi berasal dari 5x²y³, jadi derajat tertinggi = 5 dan derajat polinomial = 5.");
                         setDoneText(done4, "Soal 4 selesai.");
+                        setFb(
+                            fbDetect,
+                            true,
+                            `
+                                    <div>✅ Jawaban benar.</div>
+                                    <div><b>Penjelasan:</b></div>
+                                    <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
+                                    <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
+                                    <div>• <b>4</b> memiliki derajat <b>0</b></div>
+                                    <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
+                                    `
+                        );
                     } else {
                         latihan4.dataset.done = "0";
-                        setFb(fbDetect, false, "Bagian detektif belum tepat. Periksa derajat tiap suku lalu ambil yang terbesar.");
                         setDoneText(done4, "");
+                        setFb(
+                            fbDetect,
+                            false,
+                            `
+                                    <div>❌ Soal 4 belum tepat.</div>
+                                    <div><b>Penjelasan jawaban benar:</b></div>
+                                    <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
+                                    <div>• Derajat <b>−xy</b> = <b>2</b></div>
+                                    <div>• Derajat <b>4</b> = <b>0</b></div>
+                                    <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
+                                    `
+                        );
                     }
 
                     updateFinalScore();
@@ -1634,16 +1873,15 @@
 
             updateFinalScore();
         })();
-            
     </script>
 @endsection
 
 @section('nav')
-<a href="{{ route('pengertianpolinomial') }}" class="btn-nav prev-btn">
-    ← Previous
-</a>
+    <a href="{{ route('pengertianpolinomial') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-<a href="{{ route('fungsipolinomialdangrafiknya') }}" class="btn-nav next-btn">
-    Next →
-</a>
+    <a href="{{ route('fungsipolinomialdangrafiknya') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection

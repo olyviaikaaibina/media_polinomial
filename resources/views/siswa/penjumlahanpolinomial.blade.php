@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                    delimiters: [
-                                                                        {left: '$$', right: '$$', display: true},
-                                                                        {left: '$', right: '$', display: false}
-                                                                    ]
-                                                                });">
-                                                                </script>
+                                                                                delimiters: [
+                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                    {left: '$', right: '$', display: false}
+                                                                                ]
+                                                                            });">
+                                                                            </script>
 
     <style>
         :root {
@@ -1053,28 +1053,28 @@
             <div class="title-box" style="color:#1e3a8a;">🧭 Eksplorasi</div>
 
             <p>
-                Banjarmasin dikenal sebagai <b>Kota Seribu Sungai</b>. Kehidupan masyarakatnya sangat dekat dengan lahan
-                basah,
-                seperti Sungai Martapura, Sungai Barito, Pasar Terapung, dan kawasan rawa serta mangrove.
+                Perhatikan dua fungsi berikut.
             </p>
 
-            <p>
-                Pada suatu program <b>pembersihan sungai</b>, terdapat <b>dua tim kerja</b>. Misalkan
-                <span class="highlight">$y$</span> menyatakan <b>jumlah hari kerja</b>.
-            </p>
-
-            <p style="margin-bottom:6px;"><b>Tim A</b> membersihkan sampah dengan model:</p>
+            <p style="margin-bottom:6px;"><b>Fungsi pertama:</b></p>
             <div class="rumus-box">$$T(y)=6y^2-3y+8$$</div>
 
-            <p style="margin-bottom:6px;"><b>Tim B</b> membersihkan sampah dengan model:</p>
+            <p style="margin-bottom:6px;"><b>Fungsi kedua:</b></p>
             <div class="rumus-box">$$U(y)=4y^2+5y-2$$</div>
 
+            <p>
+                Untuk memahami bagaimana fungsi bekerja, coba substitusikan nilai
+                <span class="highlight">$y=1$</span> ke dalam kedua fungsi, lalu amati hasilnya.
+            </p>
+
             <div class="question" id="eksplorasi-quiz">
-                <div class="qtitle">Pertanyaan</div>
+                <div class="qtitle">Amati dan Jawab</div>
 
                 <ol class="quiz-list">
                     <li class="quiz-item" data-type="oneof" data-answer="11">
-                        <div class="quiz-q">Jika $y=1$ (hari kerja ke-1), berapa nilai $T(1)$?</div>
+                        <div class="quiz-q">
+                            Jika $y=1$, berapa nilai $T(1)$?
+                        </div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
@@ -1082,7 +1082,9 @@
                     </li>
 
                     <li class="quiz-item" data-type="oneof" data-answer="7">
-                        <div class="quiz-q">Jika $y=1$ (hari kerja ke-1), berapa nilai $U(1)$?</div>
+                        <div class="quiz-q">
+                            Jika $y=1$, berapa nilai $U(1)$?
+                        </div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
@@ -1090,7 +1092,8 @@
                     </li>
 
                     <li class="quiz-item" data-type="oneof" data-answer="18">
-                        <div class="quiz-q">Pada hari kerja ke-1, berapa total yang dibersihkan dua tim, yaitu $T(1)+U(1)$?
+                        <div class="quiz-q">
+                            Berdasarkan hasil nomor 1 dan 2, berapa nilai $T(1)+U(1)$?
                         </div>
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">

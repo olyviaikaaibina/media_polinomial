@@ -1415,13 +1415,7 @@
             <h3 class="judul-eksplorasi">🧭 Eksplorasi</h3>
 
             <p class="eksplorasi-text">
-                Di Banjarmasin, klotok (perahu mesin) sering digunakan sebagai sarana transportasi di sungai.
-                Seorang pengemudi klotok mencoba memperkirakan biaya tambahan yang dikeluarkan setiap hari
-                berdasarkan banyaknya perjalanan yang ia lakukan.
-            </p>
-
-            <p class="eksplorasi-text">
-                Biaya tersebut dinyatakan dalam bentuk polinomial berikut:
+                Perhatikan bentuk polinomial berikut:
             </p>
 
             <div class="eksplorasi-rumus">
@@ -1429,14 +1423,16 @@
             </div>
 
             <p class="eksplorasi-text">
-                Untuk memahami hubungan nilai polinomial dengan sisa pembagian, kerjakan aktivitas berikut.
+                Untuk memahami hubungan antara nilai polinomial dan sisa pembagian,
+                lakukan aktivitas berikut.
             </p>
 
+            <!-- Aktivitas 1 -->
             <div class="eksplorasi-step-card" id="eksplorasiCard1">
                 <div class="eksplorasi-step-title">Aktivitas 1 — Menghitung Nilai</div>
 
                 <p class="eksplorasi-text">
-                    Hitung nilai berikut dengan teliti.
+                    Substitusikan nilai x ke dalam polinomial.
                 </p>
 
                 <div class="eksplorasi-input-block">
@@ -1453,6 +1449,7 @@
                 <div id="eksplorasiPenjelasan1" class="latihan-penjelasan"></div>
             </div>
 
+            <!-- Aktivitas 2 -->
             <div class="eksplorasi-step-card" id="eksplorasiCard2">
                 <div class="eksplorasi-step-title">Aktivitas 2 — Menghubungkan dengan Pembagian</div>
 
@@ -1466,8 +1463,7 @@
                 </ul>
 
                 <p class="eksplorasi-text">
-                    Tanpa melakukan pembagian panjang, isi dugaan sisa pada tabel berikut dengan memakai hasil dari
-                    Aktivitas 1.
+                    Gunakan hasil dari Aktivitas 1 untuk memperkirakan sisa pembagian.
                 </p>
 
                 <div class="eksplorasi-table-wrap">
@@ -1483,13 +1479,15 @@
                             <tr>
                                 <td>(x − 1)</td>
                                 <td>P(1)</td>
-                                <td><input type="text" id="dugaanSisa1" class="eksplorasi-mini-input" placeholder="Isi">
+                                <td>
+                                    <input type="text" id="dugaanSisa1" class="eksplorasi-mini-input" placeholder="Isi">
                                 </td>
                             </tr>
                             <tr>
                                 <td>(x − 3)</td>
                                 <td>P(3)</td>
-                                <td><input type="text" id="dugaanSisa2" class="eksplorasi-mini-input" placeholder="Isi">
+                                <td>
+                                    <input type="text" id="dugaanSisa2" class="eksplorasi-mini-input" placeholder="Isi">
                                 </td>
                             </tr>
                         </tbody>
@@ -1500,7 +1498,6 @@
                 <div id="eksplorasiPenjelasan2" class="latihan-penjelasan"></div>
             </div>
         </div>
-
         <div id="materiLanjutanWrapper" class="materi-lanjutan-wrapper">
             <p class="paragraf-materi">
                 Untuk menyederhanakan proses tersebut, kita menggunakan Teorema Sisa, yaitu teknik yang memungkinkan
@@ -2230,28 +2227,28 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Nilai yang kamu hitung sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                        <br><br>
-                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                        <br>
-                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                        <br><br>
-                                        Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                    `;
+                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                            <br><br>
+                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                            <br>
+                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                            <br><br>
+                                            Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                        <br><br>
-                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                        <br>
-                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                        <br><br>
-                                        Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                    `;
+                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                            <br><br>
+                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                            <br>
+                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                            <br><br>
+                                            Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -2283,35 +2280,35 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Dugaan sisamu sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                        Dari Aktivitas 1 diperoleh:
-                                        <br><br>
-                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        <br><br>
-                                        Maka:
-                                        <ul class="eksplorasi-list">
-                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
-                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
-                                        </ul>
-                                        Jadi jawaban yang benar adalah:
-                                        <br>
-                                        <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
-                                    `;
+                                            Dari Aktivitas 1 diperoleh:
+                                            <br><br>
+                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                            <br><br>
+                                            Maka:
+                                            <ul class="eksplorasi-list">
+                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
+                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
+                                            </ul>
+                                            Jadi jawaban yang benar adalah:
+                                            <br>
+                                            <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
+                                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                        Gunakan hasil Aktivitas 1:
-                                        <br><br>
-                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        <br><br>
-                                        Maka jawaban yang benar adalah:
-                                        <ul class="eksplorasi-list">
-                                            <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
-                                            <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
-                                        </ul>
-                                    `;
+                                            Gunakan hasil Aktivitas 1:
+                                            <br><br>
+                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                            <br><br>
+                                            Maka jawaban yang benar adalah:
+                                            <ul class="eksplorasi-list">
+                                                <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
+                                                <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
+                                            </ul>
+                                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -2407,31 +2404,31 @@
 
             if (id === 1) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                                        Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                                        <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                                        <div class="rumus-penjelasan">Sisa = P(2)</div>
-                                        Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                                        cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                                    `;
+                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                                            Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                                            <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                                            <div class="rumus-penjelasan">Sisa = P(2)</div>
+                                            Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                                            cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+                                        `;
             } else if (id === 2) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                                        Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                                        <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                                        <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                                        Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                                        disubstitusikan ke polinomial justru <strong>−3</strong>.
-                                    `;
+                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                                            Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                                            <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                                            <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                                            Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                                            disubstitusikan ke polinomial justru <strong>−3</strong>.
+                                        `;
             } else if (id === 3) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                                        Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                                        Maka sisanya diperoleh dari
-                                        <div class="rumus-penjelasan">Sisa = P(0)</div>
-                                        Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                                        sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                                    `;
+                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                                            Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                                            Maka sisanya diperoleh dari
+                                            <div class="rumus-penjelasan">Sisa = P(0)</div>
+                                            Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                                            sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+                                        `;
             }
         }
 

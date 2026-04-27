@@ -1227,20 +1227,20 @@
 
                 if (bank1) {
                     bank1.innerHTML = `
-                        <div class="drag-item" draggable="true" data-value="0">0</div>
-                        <div class="drag-item" draggable="true" data-value="-6">-6</div>
-                        <div class="drag-item" draggable="true" data-value="1">1</div>
-                        <div class="drag-item" draggable="true" data-value="4">4</div>
-                    `;
+                                        <div class="drag-item" draggable="true" data-value="0">0</div>
+                                        <div class="drag-item" draggable="true" data-value="-6">-6</div>
+                                        <div class="drag-item" draggable="true" data-value="1">1</div>
+                                        <div class="drag-item" draggable="true" data-value="4">4</div>
+                                    `;
                 }
 
                 if (bank2) {
                     bank2.innerHTML = `
-                        <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
-                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
-                        <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
-                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
-                    `;
+                                        <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
+                                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
+                                        <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
+                                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
+                                    `;
                 }
 
                 setupDragItems();
@@ -1403,8 +1403,8 @@
 
         /* CARD UTAMA - FULL FLAT */
         /* =========================
-                           CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
-                           ========================= */
+                                           CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
+                                           ========================= */
         .card-eksplorasi {
             position: relative;
             overflow: hidden;
@@ -1665,8 +1665,8 @@
         }
 
         /* =========================
-       FIX POSISI BADGE CONTOH
-       ========================= */
+                       FIX POSISI BADGE CONTOH
+                       ========================= */
 
         /* hapus efek naik */
         .contoh-wrap {
@@ -2046,11 +2046,11 @@
         }
 
         /* =========================
-                                                                                                                                                                                                       DRAG & DROP EKSPLORASI
-                                                                                                                                                                                                    ========================== */
+                                                                                                                                                                                                                       DRAG & DROP EKSPLORASI
+                                                                                                                                                                                                                    ========================== */
         /* =========================
-                                                                                                                                                                                           CARD EKSPLORASI (FINAL)
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           CARD EKSPLORASI (FINAL)
+                                                                                                                                                                                                        ========================== */
 
         /* card utama */
         .card-eksplorasi {
@@ -2066,8 +2066,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           JUDUL EKSPLORASI
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           JUDUL EKSPLORASI
+                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-bar {
             display: flex;
@@ -2100,8 +2100,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           MATIKAN HEADER LAMA
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           MATIKAN HEADER LAMA
+                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-header,
         .eksplorasi-icon,
@@ -2112,8 +2112,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           ISI TEKS
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           ISI TEKS
+                                                                                                                                                                                                        ========================== */
 
         .card-eksplorasi p,
         .card-eksplorasi li {
@@ -2123,8 +2123,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           AREA STORY (TANPA KOTAK)
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           AREA STORY (TANPA KOTAK)
+                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-story {
             position: relative;
@@ -2157,8 +2157,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           RUMUS BOX (SEPERTI GAMBAR)
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           RUMUS BOX (SEPERTI GAMBAR)
+                                                                                                                                                                                                        ========================== */
 
         .rumus-box {
             background: #f7f7f7;
@@ -2187,8 +2187,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                           RESPONSIVE (BIAR AMAN)
-                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                           RESPONSIVE (BIAR AMAN)
+                                                                                                                                                                                                        ========================== */
 
         @media (max-width: 768px) {
             .card-eksplorasi {
@@ -2582,8 +2582,8 @@
         }
 
         /* =========================
-                                                                                   SIFAT - VERSI FIX
-                                                                                   ========================= */
+                                                                                                   SIFAT - VERSI FIX
+                                                                                                   ========================= */
 
         /* BOX MODERN */
         .sifat-box.modern {
@@ -2747,8 +2747,8 @@
         }
 
         /* =========================
-                                                                                   SIFAT - VERSI SIMPLE
-                                                                                   ========================= */
+                                                                                                   SIFAT - VERSI SIMPLE
+                                                                                                   ========================= */
 
         .sifat-box {
             position: relative;
@@ -2787,8 +2787,8 @@
         }
 
         /* =========================
-                                                                                   RESPONSIVE
-                                                                                   ========================= */
+                                                                                                   RESPONSIVE
+                                                                                                   ========================= */
 
         @media (max-width: 768px) {
             .sifat-grid {
@@ -3124,11 +3124,10 @@
                 <h3>Eksplorasi</h3>
             </div>
 
+
             <div class="eksplorasi-story">
                 <p>
-                    Di Banjarmasin, kain <strong>sasirangan</strong> merupakan salah satu produk khas daerah yang banyak
-                    dibuat oleh para pengrajin.
-                    Setiap hari, seorang pengrajin mencatat jumlah kain yang masih tersisa setelah sebagian terjual.
+                    Perhatikan fungsi polinomial berikut:
                 </p>
 
                 <div class="rumus-box">
@@ -3139,17 +3138,11 @@
                     </div>
                 </div>
 
-                <p>dengan:</p>
-                <ul>
-                    <li>\(x\) menyatakan hari ke-\(x\),</li>
-                    <li>\(P(x)\) menyatakan banyak kain yang masih tersisa.</li>
-                </ul>
-
                 <p>
-                    Melalui model ini, kita dapat mengetahui banyak kain yang tersisa pada hari tertentu dengan cara
-                    mensubstitusikan nilai \(x\) ke dalam fungsi.
+                    Untuk memahami bagaimana nilai polinomial bekerja, substitusikan nilai \(x\) ke dalam fungsi.
                 </p>
             </div>
+
 
             <div class="explore-grid">
 
@@ -3230,18 +3223,22 @@
                     </div>
 
                     <div class="bank-label">Seret makna hasil</div>
+
                     <div class="drag-bank" id="answerBank2" style="flex-direction:column;">
-                        <div class="drag-item" draggable="true" data-value="kain habis terjual">
-                            Kain habis terjual
+                        <div class="drag-item" draggable="true" data-value="sisa pembagian adalah 0">
+                            Sisa pembagian adalah 0
                         </div>
-                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">
-                            Masih ada 1 kain tersisa
+
+                        <div class="drag-item" draggable="true" data-value="sisa pembagian adalah 1">
+                            Sisa pembagian adalah 1
                         </div>
-                        <div class="drag-item" draggable="true" data-value="produksi bertambah">
-                            Produksi bertambah
+
+                        <div class="drag-item" draggable="true" data-value="pembagi bernilai 0">
+                            Pembagi bernilai 0
                         </div>
-                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">
-                            Tidak ada perubahan
+
+                        <div class="drag-item" draggable="true" data-value="tidak berkaitan dengan pembagian">
+                            Tidak berkaitan dengan pembagian
                         </div>
                     </div>
 
@@ -3249,1318 +3246,1370 @@
                         <div class="drop-row">
                             <div class="drop-label">Makna</div>
                             <div class="drop-zone" data-placeholder="Drop jawaban makna di sini"
-                                data-answer="kain habis terjual" data-group="g2" id="drop-makna"></div>
+                                data-answer="sisa pembagian adalah 0" data-group="g2" id="drop-makna">
+                            </div>
                         </div>
                     </div>
 
                     <div id="statusEks2" class="status-box"></div>
 
-                    <div id="explainMakna" class="explanation-box">
+                    <div id="explainMakna" class="explanation-box" style="display:none;">
                         <h5>Penjelasan Makna</h5>
+
+                        <p>Dari hasil sebelumnya diperoleh:</p>
+
+                        \[
+                        P(1)=0
+                        \]
+
+                        <p>Dalam pembagian polinomial berlaku:</p>
+
+                        \[
+                        P(x)=(x-1)Q(x)+sisa
+                        \]
+
+                        <p>Jika \(x=1\), maka:</p>
+
+                        \[
+                        P(1)=(1-1)Q(1)+sisa
+                        \]
+
+                        \[
+                        P(1)=0+sisa
+                        \]
+
+                        \[
+                        P(1)=sisa
+                        \]
+
                         <p>
-                            Nilai \(P(1)=0\) berarti pada hari ke-1 tidak ada kain yang tersisa.
+                            Karena \(P(1)=0\), maka sisa pembagian oleh \((x-1)\)
+                            adalah <strong>0</strong>.
                         </p>
+
                         <p>
-                            Dalam matematika, ini berarti \(x=1\) adalah pembuat nol,
-                            sehingga \((x-1)\) merupakan faktor dari polinomial.
+                            Artinya, \((x-1)\) merupakan faktor dari polinomial tersebut.
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
+</div>
+</div>
 
-        <div id="materiSetelahEksplorasi">
+                <div id="materiSetelahEksplorasi">
 
-            <!-- PARAGRAF PENGANTAR -->
-            <p class="paragraf-pengantar">
-                Sebelumnya kamu telah mempelajari <span class="highlight">Teorema Sisa</span>,
-                yang menyatakan bahwa sisa pembagian polinomial <em>P(x)</em> oleh bentuk linear
-                <em>(x − c)</em> adalah <em>P(c)</em>. Teorema ini menjadi dasar bagi konsep yang
-                sangat penting dalam pemfaktoran polinomial, yaitu
-                <strong>Teorema Faktor</strong>. Melalui teorema ini, kita dapat menentukan
-                apakah suatu bentuk linear merupakan faktor dari polinomial tanpa melakukan pembagian panjang.
-            </p>
+                    <!-- PARAGRAF PENGANTAR -->
+                    <p class="paragraf-pengantar">
+                        Sebelumnya kamu telah mempelajari <span class="highlight">Teorema Sisa</span>,
+                        yang menyatakan bahwa sisa pembagian polinomial <em>P(x)</em> oleh bentuk linear
+                        <em>(x − c)</em> adalah <em>P(c)</em>. Teorema ini menjadi dasar bagi konsep yang
+                        sangat penting dalam pemfaktoran polinomial, yaitu
+                        <strong>Teorema Faktor</strong>. Melalui teorema ini, kita dapat menentukan
+                        apakah suatu bentuk linear merupakan faktor dari polinomial tanpa melakukan pembagian panjang.
+                    </p>
 
-            <!-- CARD DEFINISI -->
-            <div class="definisi-modern">
-                <div class="definisi-pill">DEFINISI</div>
-
-                <p>
-                    <strong>Teorema Faktor</strong> memberikan cara cepat untuk mengetahui apakah
-                    suatu bentuk linear merupakan faktor dari suatu polinomial.
-                </p>
-
-                <p>Jika suatu polinomial \( P(x) \) memenuhi:</p>
-
-                <div class="rumus-besar">
-                    \[
-                    P(c) = 0
-                    \]
-                </div>
-
-                <p>maka dapat disimpulkan bahwa:</p>
-
-                <div class="rumus-besar">
-                    \[
-                    (x - c)\ \text{adalah faktor dari}\ P(x)
-                    \]
-                </div>
-
-                <p>Artinya:</p>
-
-                <ul>
-                    <li>\( P(x) \) dapat dibagi oleh \( (x - c) \) tanpa sisa</li>
-                    <li>Nilai \( c \) disebut <strong>pembuat nol (akar)</strong></li>
-                    <li>\( (x - c) \) muncul dalam bentuk faktorisasi polinomial</li>
-                </ul>
-
-                <p><strong>Sebaliknya,</strong></p>
-
-                <p>jika \( (x - c) \) adalah faktor dari \( P(x) \), maka:</p>
-
-                <div class="rumus-besar">
-                    \[
-                    P(c) = 0
-                    \]
-                </div>
-            </div>
-
-            <div class="sifat-box">
-                <div class="sifat-label-wrap">
-                    <div class="sifat-label">SIFAT</div>
-                </div>
-
-                \[
-                P(c)=0 \iff (x-c)\ \text{merupakan faktor dari}\ P(x)
-                \]
-
-                <p>Dengan kata lain:</p>
-
-                \[
-                P(c)=0 \Rightarrow (x-c)\ \text{membagi}\ P(x)\ \text{tanpa sisa}
-                \]
-
-                \[
-                (x-c)\ \text{faktor dari}\ P(x) \Rightarrow P(c)=0
-                \]
-
-                \[
-                \text{Pembuat nol} \Longleftrightarrow \text{faktor linear}
-                \]
-            </div>
-
-            {{-- CONTOH PERTAMA --}}
-            <div class="contoh-wrap">
-                <div class="contoh-pill">CONTOH</div>
-
-                <div class="contoh-area">
-                    <div class="diket-plain">
-                        <div class="judul-kecil">Diketahui suatu polinomial</div>
-
-                        <div class="soal-rumus">
-                            \[
-                            P(x)=x^3-4x^2-x+4
-                            \]
-                        </div>
+                    <!-- CARD DEFINISI -->
+                    <div class="definisi-modern">
+                        <div class="definisi-pill">DEFINISI</div>
 
                         <p>
-                            Guru memperhatikan bahwa jumlah semua koefisien polinomial tersebut sama dengan 0.
-                            Oleh karena itu, ia menduga bahwa \(x-1\) merupakan salah satu faktor \(P(x)\).
-                            Buktikan dugaan tersebut dan gunakan hasilnya untuk memfaktorkan \(P(x)\) secara lengkap.
+                            <strong>Teorema Faktor</strong> memberikan cara cepat untuk mengetahui apakah
+                            suatu bentuk linear merupakan faktor dari suatu polinomial.
                         </p>
-                    </div>
 
-                    <input type="hidden" id="step1Status" value="false">
-                    <input type="hidden" id="step2Status" value="false">
-                    <input type="hidden" id="step3Status" value="false">
-                    <input type="hidden" id="step4Status" value="false">
-                    <input type="hidden" id="step5Status" value="false">
+                        <p>Jika suatu polinomial \( P(x) \) memenuhi:</p>
 
-                    <!-- LANGKAH 1 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 1</div>
-                        <div class="langkah-sub">Hitung nilai \(P(1)\).</div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah1', this)">Lihat Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintLangkah1">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Untuk mencari nilai \(P(1)\), gantikan setiap \(x\) pada polinomial dengan \(1\).
-                            </p>
-                            <p>
-                                Setelah itu, hitung nilai setiap suku, lalu jumlahkan semuanya.
-                            </p>
-                        </div>
-
-                        <label>Masukkan nilai \(P(1)\):</label>
-                        <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="Contoh: 0">
-                        <div id="feedback1" class="feedback"></div>
-
-                        <div id="stepExplain1" class="penjelasan-step">
-                            <p>Substitusikan \(x=1\) ke dalam polinomial:</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
-                                \]
-                            </p>
-                            <p>Jadi, benar bahwa \(P(1)=0\).</p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 2 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 2</div>
-                        <div class="langkah-sub">Gunakan Teorema Faktor.</div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah2', this)">Lihat Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintLangkah2">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Perhatikan hasil pada langkah sebelumnya.
-                                Jika nilai tersebut memenuhi syarat Teorema Faktor, maka tentukan bentuk faktor linearnya.
-                            </p>
-                        </div>
-
-                        <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
-                        <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="Contoh: x-1">
-                        <div id="feedback2" class="feedback"></div>
-
-                        <div id="stepExplain2" class="penjelasan-step">
-                            <p>Menurut Teorema Faktor, jika \(P(c)=0\), maka \((x-c)\) adalah faktor dari \(P(x)\).</p>
-                            <p style="margin-top:8px;">
-                                Karena \(P(1)=0\), maka:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                x-1 \text{ adalah faktor dari } P(x)
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 3 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 3</div>
-                        <div class="langkah-sub">
-                            Lengkapi baris kedua pada tabel Horner.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah3', this)">Lihat Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintLangkah3">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Gunakan metode Horner dengan angka \(1\).
-                                Turunkan angka pertama, lalu kalikan dengan \(1\),
-                                kemudian jumlahkan dengan koefisien berikutnya secara bertahap.
-                            </p>
-                        </div>
-
-                        <div class="horner-caption">
-                            Isi kotak kosong. Baris pertama saja yang sudah diberikan.
-                        </div>
-
-                        <div class="horner-wrap">
-                            <table class="horner-table">
-                                <tr>
-                                    <td class="left-number">1</td>
-                                    <td class="horner-top horner-left">1</td>
-                                    <td class="horner-top">-4</td>
-                                    <td class="horner-top">-1</td>
-                                    <td class="horner-top">4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-left"></td>
-                                    <td><input type="text" id="hornerTop1" class="horner-box"></td>
-                                    <td><input type="text" id="hornerTop2" class="horner-box"></td>
-                                    <td><input type="text" id="hornerTop3" class="horner-box"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-bottom"></td>
-                                    <td class="horner-bottom"> </td>
-                                    <td class="horner-bottom"> </td>
-                                    <td class="horner-bottom"> </td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div id="feedback3" class="feedback"></div>
-
-                        <div id="stepExplain3" class="penjelasan-step">
-                            <p>
-                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
-                            </p>
-                            <p style="margin-top:8px;">
-                                Jadi baris keduanya adalah:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                1,\ -3,\ -4
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 4 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 4</div>
-                        <div class="langkah-sub">
-                            Lengkapi baris hasil bawah Horner.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah4', this)">Lihat Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintLangkah4">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Jumlahkan angka pada setiap kolom secara vertikal.
-                                Hasil penjumlahan ditulis pada baris bawah.
-                            </p>
-                            <p>
-                                Perhatikan bahwa angka terakhir menunjukkan sisa pembagian.
-                            </p>
-                        </div>
-
-                        <div class="horner-caption">
-                            Isi hasil bawah dan sisa pembagian.
-                        </div>
-
-                        <div class="horner-wrap">
-                            <table class="horner-table">
-                                <tr>
-                                    <td class="left-number">1</td>
-                                    <td class="horner-top horner-left">1</td>
-                                    <td class="horner-top">-4</td>
-                                    <td class="horner-top">-1</td>
-                                    <td class="horner-top">4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-left"></td>
-                                    <td>1</td>
-                                    <td>-3</td>
-                                    <td>-4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-bottom"><input type="text" id="hornerBottom1" class="horner-box"></td>
-                                    <td class="horner-bottom"><input type="text" id="hornerBottom2" class="horner-box"></td>
-                                    <td class="horner-bottom"><input type="text" id="hornerBottom3" class="horner-box"></td>
-                                    <td class="horner-sisa"><input type="text" id="hornerBottom4" class="horner-box"></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div id="feedback4" class="feedback"></div>
-
-                        <div id="stepExplain4" class="penjelasan-step">
-                            <p>Baris bawah hasil Horner adalah:</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                1,\ -3,\ -4
-                                \]
-                            </p>
-                            <p>dan sisanya:</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                0
-                                \]
-                            </p>
-                            <p>
-                                Jadi hasil baginya adalah:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                x^2-3x-4
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 5 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 5</div>
-                        <div class="langkah-sub">
-                            Faktorkan hasil bagi \(x^2-3x-4\).
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah5', this)">Lihat Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintLangkah5">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Faktorkan bentuk kuadrat yang diperoleh.
-                                Carilah dua bilangan yang jika dikalikan menghasilkan konstanta,
-                                dan jika dijumlahkan menghasilkan koefisien tengah.
-                            </p>
-                        </div>
-
-                        <label>Tuliskan faktornya:</label>
-                        <input type="text" id="jawabLangkah5" class="input-jawaban" placeholder="Contoh: (x-4)(x+1)">
-                        <div id="feedback5" class="feedback"></div>
-
-                        <div id="stepExplain5" class="penjelasan-step">
-                            <p>
-                                Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan \(1\).
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                x^2-3x-4=(x-4)(x+1)
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- PENJELASAN AKHIR -->
-                    <div id="finalExplanation" class="final-explanation">
-                        <h4>Penjelasan Lengkap</h4>
-
-                        <p>Kita telah memperoleh:</p>
-
-                        <p style="margin-top:8px;">
+                        <div class="rumus-besar">
                             \[
-                            P(1)=0
-                            \]
-                        </p>
-
-                        <p>
-                            Karena \(P(1)=0\), maka berdasarkan Teorema Faktor, \(x-1\) adalah faktor dari \(P(x)\).
-                        </p>
-
-                        <p>
-                            Dengan metode Horner, diperoleh hasil bagi:
-                        </p>
-
-                        <p style="margin-top:8px;">
-                            \[
-                            x^2-3x-4
-                            \]
-                        </p>
-
-                        <p>
-                            Kemudian hasil bagi tersebut difaktorkan menjadi:
-                        </p>
-
-                        <p style="margin-top:8px;">
-                            \[
-                            x^2-3x-4=(x-4)(x+1)
-                            \]
-                        </p>
-
-                        <p>Jadi, faktorisasi lengkapnya adalah:</p>
-
-                        <div class="final-result">
-                            \[
-                            P(x)=(x-1)(x-4)(x+1)
-                            \]
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p>
-                Selain menggunakan petunjuk khusus seperti pada contoh pertama, soal yang sama juga dapat diselesaikan
-                dengan cara yang lebih sistematis, yaitu menggunakan
-                <span class="highlight">Pembuat Nol Rasional</span>.
-            </p>
-
-            <p>
-                Dengan cara ini, kita mencari dulu semua kandidat akar rasional yang mungkin, lalu menguji salah satunya.
-                Setelah itu, langkah selanjutnya tetap dapat dilanjutkan dengan Teorema Faktor dan metode Horner.
-            </p>
-
-            {{-- SIFAT 2 --}}
-            <div class="sifat-box">
-                <div class="sifat-label">SIFAT</div>
-
-                <p>Misalkan polinomial</p>
-
-                \[
-                P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
-                \]
-
-                <p>
-                    memiliki koefisien dan konstanta yang semuanya bilangan bulat dengan
-                </p>
-
-                \[
-                a_n \ne 0 \text{ dan } a_0 \ne 0
-                \]
-
-                <p>
-                    Jika polinomial \(P(x)\) tersebut memiliki pembuat nol rasional
-                </p>
-
-                \[
-                \frac{p}{q},
-                \]
-
-                <p>
-                    maka \(p\) merupakan faktor dari \(a_0\) dan \(q\) merupakan faktor dari \(a_n\).
-                </p>
-            </div>
-
-            {{-- CONTOH KEDUA --}}
-            <div class="contoh-rasional-wrap">
-                <div class="contoh-rasional-pill">CONTOH</div>
-
-                <div class="contoh-rasional-box">
-                    <div class="diket-plain">
-                        <div class="judul-kecil">Faktorkan polinomial secara lengkap</div>
-
-                        <div class="soal-rumus">
-                            \[
-                            P(x)=x^3-4x^2-x+4
+                            P(c) = 0
                             \]
                         </div>
 
-                        <p>
-                            Gunakan konsep <span class="highlight">Pembuat Nol Rasional</span>,
-                            lalu tentukan salah satu akar polinomial, gunakan metode Horner,
-                            dan faktorkan sampai bentuk paling sederhana.
-                        </p>
-                    </div>
+                        <p>maka dapat disimpulkan bahwa:</p>
 
-                    <input type="hidden" id="rasionalStep1Status" value="false">
-                    <input type="hidden" id="rasionalStep2Status" value="false">
-                    <input type="hidden" id="rasionalStep3Status" value="false">
-                    <input type="hidden" id="rasionalStep4Status" value="false">
-                    <input type="hidden" id="rasionalStep5Status" value="false">
-                    <input type="hidden" id="rasionalStep6Status" value="false">
-
-                    <!-- LANGKAH 1 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 1</div>
-                        <div class="langkah-sub">
-                            Tentukan kandidat pembuat nol rasional dari polinomial.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional1', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional1">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Perhatikan suku konstanta dan koefisien tertinggi dari polinomial,
-                                tentukan faktor-faktor dari keduanya, lalu bentuk semua kemungkinan
-                                akar rasional sesuai aturan pembuat nol rasional.
-                            </p>
-                        </div>
-
-                        <label>Tuliskan kandidat pembuat nol rasional:</label>
-                        <input type="text" id="jawabRasional1" class="input-jawaban" placeholder="Contoh: ±1, ±2, ±4">
-
-                        <div id="rasionalFeedback1" class="feedback"></div>
-
-                        <div id="rasionalExplain1" class="penjelasan-step">
-                            <p>
-                                Karena konstanta \(a_0=4\), faktor-faktornya adalah \(\pm1,\pm2,\pm4\).
-                            </p>
-                            <p>
-                                Karena koefisien utama \(a_3=1\), faktor-faktornya adalah \(\pm1\).
-                            </p>
-                            <p style="margin-top:8px;">
-                                Jadi kandidat pembuat nol rasionalnya:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                \pm1,\ \pm2,\ \pm4
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 2 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 2</div>
-                        <div class="langkah-sub">
-                            Coba salah satu kandidat akar. Nilai yang membuat \(P(x)=0\) adalah?
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional2', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional2">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Uji satu per satu kandidat yang sudah diperoleh dengan mensubstitusikannya ke dalam
-                                polinomial, lalu pilih nilai yang membuat hasil polinomial sama dengan nol.
-                            </p>
-                        </div>
-
-                        <label>Masukkan salah satu pembuat nol:</label>
-                        <input type="text" id="jawabRasional2" class="input-jawaban" placeholder="Contoh: 1">
-
-                        <div id="rasionalFeedback2" class="feedback"></div>
-
-                        <div id="rasionalExplain2" class="penjelasan-step">
-                            <p>Substitusikan \(x=1\):</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
-                                \]
-                            </p>
-                            <p>Jadi, \(1\) adalah salah satu pembuat nol polinomial.</p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 3 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 3</div>
-                        <div class="langkah-sub">
-                            Gunakan Teorema Faktor.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional3', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional3">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Gunakan pembuat nol yang sudah ditemukan pada langkah sebelumnya,
-                                lalu tentukan bentuk faktor linear yang bersesuaian berdasarkan Teorema Faktor.
-                            </p>
-                        </div>
-
-                        <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
-                        <input type="text" id="jawabRasional3" class="input-jawaban" placeholder="Contoh: x-1">
-
-                        <div id="rasionalFeedback3" class="feedback"></div>
-
-                        <div id="rasionalExplain3" class="penjelasan-step">
-                            <p>
-                                Karena \(P(1)=0\), maka menurut Teorema Faktor:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                (x-1) \text{ adalah faktor dari } P(x)
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 4 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 4</div>
-                        <div class="langkah-sub">
-                            Lengkapi baris kedua pada tabel Horner untuk pembagian dengan \(x-1\).
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional4', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional4">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Gunakan nilai pembagi Horner yang sesuai, turunkan koefisien pertama,
-                                lalu kalikan hasilnya dengan angka di kiri dan tuliskan secara bertahap
-                                pada baris kedua sampai semua kotak terisi.
-                            </p>
-                        </div>
-
-                        <div class="horner-caption">
-                            Isi dulu baris kedua Horner.
-                        </div>
-
-                        <div class="horner-wrap">
-                            <table class="horner-table">
-                                <tr>
-                                    <td class="left-number">1</td>
-                                    <td class="horner-top horner-left">1</td>
-                                    <td class="horner-top">-4</td>
-                                    <td class="horner-top">-1</td>
-                                    <td class="horner-top">4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-left"></td>
-                                    <td><input type="text" id="rasionalHornerTop1" class="horner-box"></td>
-                                    <td><input type="text" id="rasionalHornerTop2" class="horner-box"></td>
-                                    <td><input type="text" id="rasionalHornerTop3" class="horner-box"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-bottom"></td>
-                                    <td class="horner-bottom"> </td>
-                                    <td class="horner-bottom"> </td>
-                                    <td class="horner-bottom"> </td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div id="rasionalFeedback4" class="feedback"></div>
-
-                        <div id="rasionalExplain4" class="penjelasan-step">
-                            <p>
-                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
-                            </p>
-                            <p style="margin-top:8px;">
-                                Jadi baris keduanya adalah:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                1,\ -3,\ -4
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 5 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 5</div>
-                        <div class="langkah-sub">
-                            Lengkapi baris terakhir Horner.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional5', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional5">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Jumlahkan setiap kolom secara vertikal antara baris atas dan baris kedua,
-                                tuliskan hasilnya pada baris bawah, lalu perhatikan bahwa bilangan terakhir
-                                menunjukkan sisa pembagian.
-                            </p>
-                        </div>
-
-                        <div class="horner-caption">
-                            Isi baris hasil bawah dan sisa pembagian.
-                        </div>
-
-                        <div class="horner-wrap">
-                            <table class="horner-table">
-                                <tr>
-                                    <td class="left-number">1</td>
-                                    <td class="horner-top horner-left">1</td>
-                                    <td class="horner-top">-4</td>
-                                    <td class="horner-top">-1</td>
-                                    <td class="horner-top">4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-left"></td>
-                                    <td>1</td>
-                                    <td>-3</td>
-                                    <td>-4</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom1"
-                                            class="horner-box">
-                                    </td>
-                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom2"
-                                            class="horner-box">
-                                    </td>
-                                    <td class="horner-bottom"><input type="text" id="rasionalHornerBottom3"
-                                            class="horner-box">
-                                    </td>
-                                    <td class="horner-sisa"><input type="text" id="rasionalHornerBottom4"
-                                            class="horner-box">
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div id="rasionalFeedback5" class="feedback"></div>
-
-                        <div id="rasionalExplain5" class="penjelasan-step">
-                            <p>Baris bawah hasil Horner adalah:</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                1,\ -3,\ -4
-                                \]
-                            </p>
-                            <p>dan sisanya:</p>
-                            <p style="margin-top:8px;">
-                                \[
-                                0
-                                \]
-                            </p>
-                            <p>
-                                Jadi hasil baginya adalah:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                x^2-3x-4
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- LANGKAH 6 -->
-                    <div class="langkah-card">
-                        <div class="langkah-title">Langkah 6</div>
-                        <div class="langkah-sub">
-                            Faktorkan polinomial secara lengkap.
-                        </div>
-
-                        <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional6', this)">Lihat
-                            Petunjuk
-                            Menjawab</button>
-
-                        <div class="cara-menjawab-box" id="hintRasional6">
-                            <div class="cara-menjawab-title">Cara menjawab:</div>
-                            <p>
-                                Gabungkan faktor linear yang sudah diperoleh dengan hasil bagi dari metode Horner,
-                                lalu faktorkan lagi bentuk kuadratnya sampai diperoleh bentuk paling sederhana.
-                            </p>
-                        </div>
-
-                        <label>Tuliskan faktorisasi lengkap:</label>
-                        <input type="text" id="jawabRasional6" class="input-jawaban" placeholder="Contoh: (x-1)(x-4)(x+1)">
-
-                        <div id="rasionalFeedback6" class="feedback"></div>
-
-                        <div id="rasionalExplain6" class="penjelasan-step">
-                            <p>
-                                Karena
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                x^2-3x-4=(x-4)(x+1)
-                                \]
-                            </p>
-                            <p>
-                                maka faktorisasi lengkap polinomial adalah:
-                            </p>
-                            <p style="margin-top:8px;">
-                                \[
-                                P(x)=(x-1)(x-4)(x+1)
-                                \]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="rasionalFinalExplanation" class="final-explanation">
-                        <h4>Penjelasan Lengkap</h4>
-
-                        <p>
-                            Dari Teorema Pembuat Nol Rasional, kandidat akar rasional diperoleh dari faktor-faktor 4, yaitu:
-                        </p>
-
-                        <p style="margin-top:8px;">
+                        <div class="rumus-besar">
                             \[
-                            \pm1,\ \pm2,\ \pm4
+                            (x - c)\ \text{adalah faktor dari}\ P(x)
                             \]
-                        </p>
+                        </div>
 
-                        <p>
-                            Setelah dicoba, diperoleh:
-                        </p>
+                        <p>Artinya:</p>
 
-                        <p style="margin-top:8px;">
+                        <ul>
+                            <li>\( P(x) \) dapat dibagi oleh \( (x - c) \) tanpa sisa</li>
+                            <li>Nilai \( c \) disebut <strong>pembuat nol (akar)</strong></li>
+                            <li>\( (x - c) \) muncul dalam bentuk faktorisasi polinomial</li>
+                        </ul>
+
+                        <p><strong>Sebaliknya,</strong></p>
+
+                        <p>jika \( (x - c) \) adalah faktor dari \( P(x) \), maka:</p>
+
+                        <div class="rumus-besar">
                             \[
-                            P(1)=0
-                            \]
-                        </p>
-
-                        <p>
-                            Maka \((x-1)\) adalah faktor dari \(P(x)\). Dengan metode Horner, hasil baginya:
-                        </p>
-
-                        <p style="margin-top:8px;">
-                            \[
-                            x^2-3x-4
-                            \]
-                        </p>
-
-                        <p>
-                            Lalu kita faktorkan lagi:
-                        </p>
-
-                        <p style="margin-top:8px;">
-                            \[
-                            x^2-3x-4=(x-4)(x+1)
-                            \]
-                        </p>
-
-                        <p>Jadi, faktorisasi lengkapnya adalah:</p>
-
-                        <div class="final-result">
-                            \[
-                            P(x)=(x-1)(x-4)(x+1)
+                            P(c) = 0
                             \]
                         </div>
                     </div>
-                </div>
-            </div>
 
-            {{-- LATIHAN --}}
-            <div class="latihan-wrap">
-                <div class="latihan-header">LATIHAN</div>
+                    <div class="sifat-box">
+                        <div class="sifat-label-wrap">
+                            <div class="sifat-label">SIFAT</div>
+                        </div>
 
-                <div class="latihan-box">
-                    <ol>
-                        <li>
-                            <div class="latihan-soal-text">
-                                Faktorkan polinomial berikut secara lengkap:
+                        \[
+                        P(c)=0 \iff (x-c)\ \text{merupakan faktor dari}\ P(x)
+                        \]
+
+                        <p>Dengan kata lain:</p>
+
+                        \[
+                        P(c)=0 \Rightarrow (x-c)\ \text{membagi}\ P(x)\ \text{tanpa sisa}
+                        \]
+
+                        \[
+                        (x-c)\ \text{faktor dari}\ P(x) \Rightarrow P(c)=0
+                        \]
+
+                        \[
+                        \text{Pembuat nol} \Longleftrightarrow \text{faktor linear}
+                        \]
+                    </div>
+
+                    {{-- CONTOH PERTAMA --}}
+                    <div class="contoh-wrap">
+                        <div class="contoh-pill">CONTOH</div>
+
+                        <div class="contoh-area">
+                            <div class="diket-plain">
+                                <div class="judul-kecil">Diketahui suatu polinomial</div>
+
+                                <div class="soal-rumus">
+                                    \[
+                                    P(x)=x^3-4x^2-x+4
+                                    \]
+                                </div>
+
+                                <p>
+                                    Guru memperhatikan bahwa jumlah semua koefisien polinomial tersebut sama dengan 0.
+                                    Oleh karena itu, ia menduga bahwa \(x-1\) merupakan salah satu faktor \(P(x)\).
+                                    Buktikan dugaan tersebut dan gunakan hasilnya untuk memfaktorkan \(P(x)\) secara
+                                    lengkap.
+                                </p>
                             </div>
 
-                            <div class="latihan-soal-rumus">
-                                \[
-                                P(x)=x^3+2x^2-9x-18
-                                \]
-                            </div>
+                            <input type="hidden" id="step1Status" value="false">
+                            <input type="hidden" id="step2Status" value="false">
+                            <input type="hidden" id="step3Status" value="false">
+                            <input type="hidden" id="step4Status" value="false">
+                            <input type="hidden" id="step5Status" value="false">
 
-                            <input type="hidden" id="latihan1Step1Status" value="false">
-                            <input type="hidden" id="latihan1Step2Status" value="false">
-                            <input type="hidden" id="latihan1Step3Status" value="false">
-                            <input type="hidden" id="latihan1Step4Status" value="false">
-
-                            <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
+                            <!-- LANGKAH 1 -->
                             <div class="langkah-card">
                                 <div class="langkah-title">Langkah 1</div>
-                                <div class="langkah-sub">
-                                    Metode yang paling sesuai untuk memulai faktorisasi polinomial ini adalah:
-                                </div>
+                                <div class="langkah-sub">Hitung nilai \(P(1)\).</div>
 
-                                <div class="opsi-wrap">
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi1" value="teorema faktor">
-                                        <span>Teorema Faktor langsung</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi1" value="pengelompokan">
-                                        <span>Metode pengelompokan</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi1" value="rumus abc">
-                                        <span>Rumus kuadrat/ABC</span>
-                                    </label>
-                                </div>
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah1', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
 
-                                <div id="latihan1Feedback1" class="feedback"></div>
-
-                                <div id="latihan1Explain1" class="penjelasan-step">
+                                <div class="cara-menjawab-box" id="hintLangkah1">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
                                     <p>
-                                        Polinomial ini cocok dikelompokkan menjadi dua pasangan suku:
+                                        Untuk mencari nilai \(P(1)\), gantikan setiap \(x\) pada polinomial dengan \(1\).
                                     </p>
+                                    <p>
+                                        Setelah itu, hitung nilai setiap suku, lalu jumlahkan semuanya.
+                                    </p>
+                                </div>
+
+                                <label>Masukkan nilai \(P(1)\):</label>
+                                <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="Contoh: 0">
+                                <div id="feedback1" class="feedback"></div>
+
+                                <div id="stepExplain1" class="penjelasan-step">
+                                    <p>Substitusikan \(x=1\) ke dalam polinomial:</p>
                                     <p style="margin-top:8px;">
                                         \[
-                                        (x^3+2x^2)+(-9x-18)
+                                        P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
                                         \]
                                     </p>
+                                    <p>Jadi, benar bahwa \(P(1)=0\).</p>
                                 </div>
                             </div>
 
-                            <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
+                            <!-- LANGKAH 2 -->
                             <div class="langkah-card">
                                 <div class="langkah-title">Langkah 2</div>
-                                <div class="langkah-sub">
-                                    Tuliskan hasil pengelompokannya setelah masing-masing kelompok difaktorkan.
+                                <div class="langkah-sub">Gunakan Teorema Faktor.</div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah2', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintLangkah2">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Perhatikan hasil pada langkah sebelumnya.
+                                        Jika nilai tersebut memenuhi syarat Teorema Faktor, maka tentukan bentuk faktor
+                                        linearnya.
+                                    </p>
                                 </div>
 
-                                <label>Masukkan bentuk hasil pengelompokan:</label>
-                                <input type="text" id="jawabLatihan1Langkah2" class="input-jawaban"
-                                    placeholder="Contoh: x^2(x+2)-9(x+2)">
+                                <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
+                                <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="Contoh: x-1">
+                                <div id="feedback2" class="feedback"></div>
 
-                                <button class="btn-cek" onclick="cekLatihan1Langkah2()">Cek Jawaban</button>
-                                <div id="latihan1Feedback2" class="feedback"></div>
-
-                                <div id="latihan1Explain2" class="penjelasan-step">
-                                    <p>
-                                        Dari
+                                <div id="stepExplain2" class="penjelasan-step">
+                                    <p>Menurut Teorema Faktor, jika \(P(c)=0\), maka \((x-c)\) adalah faktor dari \(P(x)\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        Karena \(P(1)=0\), maka:
                                     </p>
                                     <p style="margin-top:8px;">
                                         \[
-                                        (x^3+2x^2)+(-9x-18)
-                                        \]
-                                    </p>
-                                    <p>diperoleh</p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        x^2(x+2)-9(x+2)
+                                        x-1 \text{ adalah faktor dari } P(x)
                                         \]
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
+                            <!-- LANGKAH 3 -->
                             <div class="langkah-card">
                                 <div class="langkah-title">Langkah 3</div>
                                 <div class="langkah-sub">
-                                    Faktor persekutuan dari dua kelompok tersebut adalah:
+                                    Lengkapi baris kedua pada tabel Horner.
                                 </div>
 
-                                <div class="opsi-wrap">
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi3" value="x-2">
-                                        <span>\(x-2\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi3" value="x+2">
-                                        <span>\(x+2\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan1opsi3" value="x^2-9">
-                                        <span>\(x^2-9\)</span>
-                                    </label>
-                                </div>
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah3', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
 
-                                <div id="latihan1Feedback3" class="feedback"></div>
-
-                                <div id="latihan1Explain3" class="penjelasan-step">
+                                <div class="cara-menjawab-box" id="hintLangkah3">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
                                     <p>
-                                        Karena kedua kelompok sama-sama memuat \((x+2)\), maka:
-                                    </p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        x^2(x+2)-9(x+2)=(x+2)(x^2-9)
-                                        \]
+                                        Gunakan metode Horner dengan angka \(1\).
+                                        Turunkan angka pertama, lalu kalikan dengan \(1\),
+                                        kemudian jumlahkan dengan koefisien berikutnya secara bertahap.
                                     </p>
                                 </div>
-                            </div>
 
-                            <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
-                            <div class="langkah-card">
-                                <div class="langkah-title">Langkah 4</div>
-                                <div class="langkah-sub">
-                                    Faktorkan polinomial hingga bentuk paling sederhana.
-                                </div>
-
-                                <label>Tuliskan faktorisasi lengkap:</label>
-                                <input type="text" id="jawabLatihan1Langkah4" class="input-jawaban"
-                                    placeholder="Contoh: (x+2)(x-3)(x+3)">
-
-                                <button class="btn-cek" onclick="cekLatihan1Langkah4()">Cek Jawaban</button>
-                                <div id="latihan1Feedback4" class="feedback"></div>
-
-                                <div id="latihan1Explain4" class="penjelasan-step">
-                                    <p>
-                                        Karena
-                                    </p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        x^2-9=(x-3)(x+3)
-                                        \]
-                                    </p>
-                                    <p>maka:</p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        P(x)=(x+2)(x-3)(x+3)
-                                        \]
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div id="latihan1FinalExplanation" class="final-explanation">
-                                <h4>Pembahasan Soal 1</h4>
-
-                                <p>Polinomial difaktorkan dengan metode pengelompokan:</p>
-
-                                <p style="margin-top:8px;">
-                                    \[
-                                    x^3+2x^2-9x-18=(x^3+2x^2)+(-9x-18)
-                                    \]
-                                </p>
-
-                                <p style="margin-top:8px;">
-                                    \[
-                                    =x^2(x+2)-9(x+2)
-                                    \]
-                                </p>
-
-                                <p style="margin-top:8px;">
-                                    \[
-                                    =(x+2)(x^2-9)
-                                    \]
-                                </p>
-
-                                <p style="margin-top:8px;">
-                                    \[
-                                    =(x+2)(x-3)(x+3)
-                                    \]
-                                </p>
-
-                                <div class="final-result">
-                                    \[
-                                    P(x)=(x+2)(x-3)(x+3)
-                                    \]
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="latihan-soal-text">
-                                Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial berikut,
-                                lalu faktorkan polinomial tersebut hingga bentuk paling sederhana:
-                            </div>
-
-                            <div class="latihan-soal-rumus">
-                                \[
-                                P(x)=2x^3-3x^2-11x+6
-                                \]
-                            </div>
-
-                            <input type="hidden" id="latihan2Step1Status" value="false">
-                            <input type="hidden" id="latihan2Step2Status" value="false">
-                            <input type="hidden" id="latihan2Step3Status" value="false">
-                            <input type="hidden" id="latihan2Step4Status" value="false">
-                            <input type="hidden" id="latihan2Step5Status" value="false">
-
-                            <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
-                            <div class="langkah-card">
-                                <div class="langkah-title">Langkah 1</div>
-                                <div class="langkah-sub">
-                                    Pilih himpunan kandidat pembuat nol rasional yang benar.
-                                </div>
-
-                                <div class="opsi-wrap">
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6">
-                                        <span>\(\pm1,\pm2,\pm3,\pm6\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6,±1/2,±3/2">
-                                        <span>\(\pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi1" value="±1/2,±3/2">
-                                        <span>\(\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
-                                    </label>
-                                </div>
-
-                                <div id="latihan2Feedback1" class="feedback"></div>
-
-                                <div id="latihan2Explain1" class="penjelasan-step">
-                                    <p>
-                                        Faktor konstanta \(6\) adalah \(\pm1,\pm2,\pm3,\pm6\), sedangkan faktor koefisien
-                                        utama \(2\) adalah \(\pm1,\pm2\).
-                                    </p>
-                                    <p style="margin-top:8px;">
-                                        Maka kandidat pembuat nol rasional:
-                                        \[
-                                        \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
-                                        \]
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
-                            <div class="langkah-card">
-                                <div class="langkah-title">Langkah 2</div>
-                                <div class="langkah-sub">
-                                    Salah satu pembuat nol polinomial adalah:
-                                </div>
-
-                                <label>Masukkan salah satu pembuat nol:</label>
-                                <input type="text" id="jawabLatihan2Langkah2" class="input-jawaban"
-                                    placeholder="Contoh: -2">
-
-                                <button class="btn-cek" onclick="cekLatihan2Langkah2()">Cek Jawaban</button>
-                                <div id="latihan2Feedback2" class="feedback"></div>
-
-                                <div id="latihan2Explain2" class="penjelasan-step">
-                                    <p>Jika dicoba \(x=-2\), maka:</p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        P(-2)=2(-2)^3-3(-2)^2-11(-2)+6=-16-12+22+6=0
-                                        \]
-                                    </p>
-                                    <p>Jadi, \(-2\) adalah salah satu pembuat nol.</p>
-                                </div>
-                            </div>
-
-                            <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
-                            <div class="langkah-card">
-                                <div class="langkah-title">Langkah 3</div>
-                                <div class="langkah-sub">
-                                    Jika pembuat nolnya \(-2\), maka faktor linearnya adalah:
-                                </div>
-
-                                <div class="opsi-wrap">
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi3" value="x-2">
-                                        <span>\(x-2\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi3" value="x+2">
-                                        <span>\(x+2\)</span>
-                                    </label>
-                                    <label class="opsi-item">
-                                        <input type="radio" name="latihan2opsi3" value="2x+2">
-                                        <span>\(2x+2\)</span>
-                                    </label>
-                                </div>
-
-                                <div id="latihan2Feedback3" class="feedback"></div>
-
-                                <div id="latihan2Explain3" class="penjelasan-step">
-                                    <p>
-                                        Jika \(c=-2\) adalah pembuat nol, maka faktor linearnya:
-                                    </p>
-                                    <p style="margin-top:8px;">
-                                        \[
-                                        x-c=x-(-2)=x+2
-                                        \]
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
-                            <div class="langkah-card">
-                                <div class="langkah-title">Langkah 4</div>
-                                <div class="langkah-sub">
-                                    Lengkapi baris hasil bawah Horner untuk pembagian dengan \(x+2\).
-                                </div>
-
-                                <div class="mini-note">
-                                    Isikan hasil bawah dan sisa pembagian.
+                                <div class="horner-caption">
+                                    Isi kotak kosong. Baris pertama saja yang sudah diberikan.
                                 </div>
 
                                 <div class="horner-wrap">
                                     <table class="horner-table">
                                         <tr>
-                                            <td class="left-number">-2</td>
-                                            <td class="horner-top horner-left">2</td>
-                                            <td class="horner-top">-3</td>
-                                            <td class="horner-top">-11</td>
-                                            <td class="horner-top">6</td>
+                                            <td class="left-number">1</td>
+                                            <td class="horner-top horner-left">1</td>
+                                            <td class="horner-top">-4</td>
+                                            <td class="horner-top">-1</td>
+                                            <td class="horner-top">4</td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td class="horner-left"></td>
-                                            <td class="horner-bottom"><input type="text" id="latihan2Horner1"
-                                                    class="horner-box"></td>
-                                            <td class="horner-bottom"><input type="text" id="latihan2Horner2"
-                                                    class="horner-box"></td>
-                                            <td class="horner-bottom"><input type="text" id="latihan2Horner3"
-                                                    class="horner-box"></td>
+                                            <td><input type="text" id="hornerTop1" class="horner-box"></td>
+                                            <td><input type="text" id="hornerTop2" class="horner-box"></td>
+                                            <td><input type="text" id="hornerTop3" class="horner-box"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="horner-bottom">2</td>
-                                            <td class="horner-bottom">-7</td>
-                                            <td class="horner-bottom">3</td>
-                                            <td class="horner-sisa"><input type="text" id="latihan2Horner4"
+                                            <td class="horner-bottom"></td>
+                                            <td class="horner-bottom"> </td>
+                                            <td class="horner-bottom"> </td>
+                                            <td class="horner-bottom"> </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="feedback3" class="feedback"></div>
+
+                                <div id="stepExplain3" class="penjelasan-step">
+                                    <p>
+                                        Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan
+                                        \(1\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        Jadi baris keduanya adalah:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        1,\ -3,\ -4
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 4 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 4</div>
+                                <div class="langkah-sub">
+                                    Lengkapi baris hasil bawah Horner.
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah4', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintLangkah4">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Jumlahkan angka pada setiap kolom secara vertikal.
+                                        Hasil penjumlahan ditulis pada baris bawah.
+                                    </p>
+                                    <p>
+                                        Perhatikan bahwa angka terakhir menunjukkan sisa pembagian.
+                                    </p>
+                                </div>
+
+                                <div class="horner-caption">
+                                    Isi hasil bawah dan sisa pembagian.
+                                </div>
+
+                                <div class="horner-wrap">
+                                    <table class="horner-table">
+                                        <tr>
+                                            <td class="left-number">1</td>
+                                            <td class="horner-top horner-left">1</td>
+                                            <td class="horner-top">-4</td>
+                                            <td class="horner-top">-1</td>
+                                            <td class="horner-top">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-left"></td>
+                                            <td>1</td>
+                                            <td>-3</td>
+                                            <td>-4</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-bottom"><input type="text" id="hornerBottom1"
+                                                    class="horner-box"></td>
+                                            <td class="horner-bottom"><input type="text" id="hornerBottom2"
+                                                    class="horner-box"></td>
+                                            <td class="horner-bottom"><input type="text" id="hornerBottom3"
+                                                    class="horner-box"></td>
+                                            <td class="horner-sisa"><input type="text" id="hornerBottom4"
+                                                    class="horner-box"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="feedback4" class="feedback"></div>
+
+                                <div id="stepExplain4" class="penjelasan-step">
+                                    <p>Baris bawah hasil Horner adalah:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        1,\ -3,\ -4
+                                        \]
+                                    </p>
+                                    <p>dan sisanya:</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        0
+                                        \]
+                                    </p>
+                                    <p>
+                                        Jadi hasil baginya adalah:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2-3x-4
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 5 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 5</div>
+                                <div class="langkah-sub">
+                                    Faktorkan hasil bagi \(x^2-3x-4\).
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintLangkah5', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintLangkah5">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Faktorkan bentuk kuadrat yang diperoleh.
+                                        Carilah dua bilangan yang jika dikalikan menghasilkan konstanta,
+                                        dan jika dijumlahkan menghasilkan koefisien tengah.
+                                    </p>
+                                </div>
+
+                                <label>Tuliskan faktornya:</label>
+                                <input type="text" id="jawabLangkah5" class="input-jawaban"
+                                    placeholder="Contoh: (x-4)(x+1)">
+                                <div id="feedback5" class="feedback"></div>
+
+                                <div id="stepExplain5" class="penjelasan-step">
+                                    <p>
+                                        Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan
+                                        \(1\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2-3x-4=(x-4)(x+1)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- PENJELASAN AKHIR -->
+                            <div id="finalExplanation" class="final-explanation">
+                                <h4>Penjelasan Lengkap</h4>
+
+                                <p>Kita telah memperoleh:</p>
+
+                                <p style="margin-top:8px;">
+                                    \[
+                                    P(1)=0
+                                    \]
+                                </p>
+
+                                <p>
+                                    Karena \(P(1)=0\), maka berdasarkan Teorema Faktor, \(x-1\) adalah faktor dari \(P(x)\).
+                                </p>
+
+                                <p>
+                                    Dengan metode Horner, diperoleh hasil bagi:
+                                </p>
+
+                                <p style="margin-top:8px;">
+                                    \[
+                                    x^2-3x-4
+                                    \]
+                                </p>
+
+                                <p>
+                                    Kemudian hasil bagi tersebut difaktorkan menjadi:
+                                </p>
+
+                                <p style="margin-top:8px;">
+                                    \[
+                                    x^2-3x-4=(x-4)(x+1)
+                                    \]
+                                </p>
+
+                                <p>Jadi, faktorisasi lengkapnya adalah:</p>
+
+                                <div class="final-result">
+                                    \[
+                                    P(x)=(x-1)(x-4)(x+1)
+                                    \]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        Selain menggunakan petunjuk khusus seperti pada contoh pertama, soal yang sama juga dapat
+                        diselesaikan
+                        dengan cara yang lebih sistematis, yaitu menggunakan
+                        <span class="highlight">Pembuat Nol Rasional</span>.
+                    </p>
+
+                    <p>
+                        Dengan cara ini, kita mencari dulu semua kandidat akar rasional yang mungkin, lalu menguji salah
+                        satunya.
+                        Setelah itu, langkah selanjutnya tetap dapat dilanjutkan dengan Teorema Faktor dan metode Horner.
+                    </p>
+
+                    {{-- SIFAT 2 --}}
+                    <div class="sifat-box">
+                        <div class="sifat-label">SIFAT</div>
+
+                        <p>Misalkan polinomial</p>
+
+                        \[
+                        P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
+                        \]
+
+                        <p>
+                            memiliki koefisien dan konstanta yang semuanya bilangan bulat dengan
+                        </p>
+
+                        \[
+                        a_n \ne 0 \text{ dan } a_0 \ne 0
+                        \]
+
+                        <p>
+                            Jika polinomial \(P(x)\) tersebut memiliki pembuat nol rasional
+                        </p>
+
+                        \[
+                        \frac{p}{q},
+                        \]
+
+                        <p>
+                            maka \(p\) merupakan faktor dari \(a_0\) dan \(q\) merupakan faktor dari \(a_n\).
+                        </p>
+                    </div>
+
+                    {{-- CONTOH KEDUA --}}
+                    <div class="contoh-rasional-wrap">
+                        <div class="contoh-rasional-pill">CONTOH</div>
+
+                        <div class="contoh-rasional-box">
+                            <div class="diket-plain">
+                                <div class="judul-kecil">Faktorkan polinomial secara lengkap</div>
+
+                                <div class="soal-rumus">
+                                    \[
+                                    P(x)=x^3-4x^2-x+4
+                                    \]
+                                </div>
+
+                                <p>
+                                    Gunakan konsep <span class="highlight">Pembuat Nol Rasional</span>,
+                                    lalu tentukan salah satu akar polinomial, gunakan metode Horner,
+                                    dan faktorkan sampai bentuk paling sederhana.
+                                </p>
+                            </div>
+
+                            <input type="hidden" id="rasionalStep1Status" value="false">
+                            <input type="hidden" id="rasionalStep2Status" value="false">
+                            <input type="hidden" id="rasionalStep3Status" value="false">
+                            <input type="hidden" id="rasionalStep4Status" value="false">
+                            <input type="hidden" id="rasionalStep5Status" value="false">
+                            <input type="hidden" id="rasionalStep6Status" value="false">
+
+                            <!-- LANGKAH 1 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 1</div>
+                                <div class="langkah-sub">
+                                    Tentukan kandidat pembuat nol rasional dari polinomial.
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional1', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional1">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Perhatikan suku konstanta dan koefisien tertinggi dari polinomial,
+                                        tentukan faktor-faktor dari keduanya, lalu bentuk semua kemungkinan
+                                        akar rasional sesuai aturan pembuat nol rasional.
+                                    </p>
+                                </div>
+
+                                <label>Tuliskan kandidat pembuat nol rasional:</label>
+                                <input type="text" id="jawabRasional1" class="input-jawaban"
+                                    placeholder="Contoh: ±1, ±2, ±4">
+
+                                <div id="rasionalFeedback1" class="feedback"></div>
+
+                                <div id="rasionalExplain1" class="penjelasan-step">
+                                    <p>
+                                        Karena konstanta \(a_0=4\), faktor-faktornya adalah \(\pm1,\pm2,\pm4\).
+                                    </p>
+                                    <p>
+                                        Karena koefisien utama \(a_3=1\), faktor-faktornya adalah \(\pm1\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        Jadi kandidat pembuat nol rasionalnya:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        \pm1,\ \pm2,\ \pm4
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 2 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 2</div>
+                                <div class="langkah-sub">
+                                    Coba salah satu kandidat akar. Nilai yang membuat \(P(x)=0\) adalah?
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional2', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional2">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Uji satu per satu kandidat yang sudah diperoleh dengan mensubstitusikannya ke dalam
+                                        polinomial, lalu pilih nilai yang membuat hasil polinomial sama dengan nol.
+                                    </p>
+                                </div>
+
+                                <label>Masukkan salah satu pembuat nol:</label>
+                                <input type="text" id="jawabRasional2" class="input-jawaban" placeholder="Contoh: 1">
+
+                                <div id="rasionalFeedback2" class="feedback"></div>
+
+                                <div id="rasionalExplain2" class="penjelasan-step">
+                                    <p>Substitusikan \(x=1\):</p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        P(1)=1^3-4(1)^2-1+4=1-4-1+4=0
+                                        \]
+                                    </p>
+                                    <p>Jadi, \(1\) adalah salah satu pembuat nol polinomial.</p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 3 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 3</div>
+                                <div class="langkah-sub">
+                                    Gunakan Teorema Faktor.
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional3', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional3">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Gunakan pembuat nol yang sudah ditemukan pada langkah sebelumnya,
+                                        lalu tentukan bentuk faktor linear yang bersesuaian berdasarkan Teorema Faktor.
+                                    </p>
+                                </div>
+
+                                <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
+                                <input type="text" id="jawabRasional3" class="input-jawaban" placeholder="Contoh: x-1">
+
+                                <div id="rasionalFeedback3" class="feedback"></div>
+
+                                <div id="rasionalExplain3" class="penjelasan-step">
+                                    <p>
+                                        Karena \(P(1)=0\), maka menurut Teorema Faktor:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        (x-1) \text{ adalah faktor dari } P(x)
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 4 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 4</div>
+                                <div class="langkah-sub">
+                                    Lengkapi baris kedua pada tabel Horner untuk pembagian dengan \(x-1\).
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional4', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional4">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Gunakan nilai pembagi Horner yang sesuai, turunkan koefisien pertama,
+                                        lalu kalikan hasilnya dengan angka di kiri dan tuliskan secara bertahap
+                                        pada baris kedua sampai semua kotak terisi.
+                                    </p>
+                                </div>
+
+                                <div class="horner-caption">
+                                    Isi dulu baris kedua Horner.
+                                </div>
+
+                                <div class="horner-wrap">
+                                    <table class="horner-table">
+                                        <tr>
+                                            <td class="left-number">1</td>
+                                            <td class="horner-top horner-left">1</td>
+                                            <td class="horner-top">-4</td>
+                                            <td class="horner-top">-1</td>
+                                            <td class="horner-top">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-left"></td>
+                                            <td><input type="text" id="rasionalHornerTop1" class="horner-box"></td>
+                                            <td><input type="text" id="rasionalHornerTop2" class="horner-box"></td>
+                                            <td><input type="text" id="rasionalHornerTop3" class="horner-box"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-bottom"></td>
+                                            <td class="horner-bottom"> </td>
+                                            <td class="horner-bottom"> </td>
+                                            <td class="horner-bottom"> </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="rasionalFeedback4" class="feedback"></div>
+
+                                <div id="rasionalExplain4" class="penjelasan-step">
+                                    <p>
+                                        Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan
+                                        \(1\).
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        Jadi baris keduanya adalah:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        1,\ -3,\ -4
+                                        \]
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- LANGKAH 5 -->
+                            <div class="langkah-card">
+                                <div class="langkah-title">Langkah 5</div>
+                                <div class="langkah-sub">
+                                    Lengkapi baris terakhir Horner.
+                                </div>
+
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional5', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional5">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Jumlahkan setiap kolom secara vertikal antara baris atas dan baris kedua,
+                                        tuliskan hasilnya pada baris bawah, lalu perhatikan bahwa bilangan terakhir
+                                        menunjukkan sisa pembagian.
+                                    </p>
+                                </div>
+
+                                <div class="horner-caption">
+                                    Isi baris hasil bawah dan sisa pembagian.
+                                </div>
+
+                                <div class="horner-wrap">
+                                    <table class="horner-table">
+                                        <tr>
+                                            <td class="left-number">1</td>
+                                            <td class="horner-top horner-left">1</td>
+                                            <td class="horner-top">-4</td>
+                                            <td class="horner-top">-1</td>
+                                            <td class="horner-top">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-left"></td>
+                                            <td>1</td>
+                                            <td>-3</td>
+                                            <td>-4</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="horner-bottom"><input type="text" id="rasionalHornerBottom1"
+                                                    class="horner-box">
+                                            </td>
+                                            <td class="horner-bottom"><input type="text" id="rasionalHornerBottom2"
+                                                    class="horner-box">
+                                            </td>
+                                            <td class="horner-bottom"><input type="text" id="rasionalHornerBottom3"
+                                                    class="horner-box">
+                                            </td>
+                                            <td class="horner-sisa"><input type="text" id="rasionalHornerBottom4"
                                                     class="horner-box">
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
 
-                                <button class="btn-cek" onclick="cekLatihan2Langkah4()">Cek Jawaban</button>
-                                <div id="latihan2Feedback4" class="feedback"></div>
+                                <div id="rasionalFeedback5" class="feedback"></div>
 
-                                <div id="latihan2Explain4" class="penjelasan-step">
-                                    <p>
-                                        Dengan Horner untuk pembagi \(x+2\), diperoleh hasil bagi:
-                                    </p>
+                                <div id="rasionalExplain5" class="penjelasan-step">
+                                    <p>Baris bawah hasil Horner adalah:</p>
                                     <p style="margin-top:8px;">
                                         \[
-                                        2x^2-7x+3
+                                        1,\ -3,\ -4
                                         \]
                                     </p>
-                                    <p>dan sisa:</p>
+                                    <p>dan sisanya:</p>
                                     <p style="margin-top:8px;">
                                         \[
                                         0
                                         \]
                                     </p>
+                                    <p>
+                                        Jadi hasil baginya adalah:
+                                    </p>
+                                    <p style="margin-top:8px;">
+                                        \[
+                                        x^2-3x-4
+                                        \]
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- LANGKAH 5 = ISIAN => TETAP ADA TOMBOL -->
+                            <!-- LANGKAH 6 -->
                             <div class="langkah-card">
-                                <div class="langkah-title">Langkah 5</div>
+                                <div class="langkah-title">Langkah 6</div>
                                 <div class="langkah-sub">
                                     Faktorkan polinomial secara lengkap.
                                 </div>
 
+                                <button type="button" class="btn-petunjuk" onclick="toggleHint('hintRasional6', this)">Lihat
+                                    Petunjuk
+                                    Menjawab</button>
+
+                                <div class="cara-menjawab-box" id="hintRasional6">
+                                    <div class="cara-menjawab-title">Cara menjawab:</div>
+                                    <p>
+                                        Gabungkan faktor linear yang sudah diperoleh dengan hasil bagi dari metode Horner,
+                                        lalu faktorkan lagi bentuk kuadratnya sampai diperoleh bentuk paling sederhana.
+                                    </p>
+                                </div>
+
                                 <label>Tuliskan faktorisasi lengkap:</label>
-                                <input type="text" id="jawabLatihan2Langkah5" class="input-jawaban"
-                                    placeholder="Contoh: (x+2)(2x-1)(x-3)">
+                                <input type="text" id="jawabRasional6" class="input-jawaban"
+                                    placeholder="Contoh: (x-1)(x-4)(x+1)">
 
-                                <button class="btn-cek" onclick="cekLatihan2Langkah5()">Cek Jawaban</button>
-                                <div id="latihan2Feedback5" class="feedback"></div>
+                                <div id="rasionalFeedback6" class="feedback"></div>
 
-                                <div id="latihan2Explain5" class="penjelasan-step">
+                                <div id="rasionalExplain6" class="penjelasan-step">
                                     <p>
                                         Karena
                                     </p>
                                     <p style="margin-top:8px;">
                                         \[
-                                        2x^2-7x+3=(2x-1)(x-3)
+                                        x^2-3x-4=(x-4)(x+1)
                                         \]
                                     </p>
-                                    <p>maka:</p>
+                                    <p>
+                                        maka faktorisasi lengkap polinomial adalah:
+                                    </p>
                                     <p style="margin-top:8px;">
                                         \[
-                                        P(x)=(x+2)(2x-1)(x-3)
+                                        P(x)=(x-1)(x-4)(x+1)
                                         \]
                                     </p>
                                 </div>
                             </div>
 
-                            <div id="latihan2FinalExplanation" class="final-explanation">
-                                <h4>Pembahasan Soal 2</h4>
+                            <div id="rasionalFinalExplanation" class="final-explanation">
+                                <h4>Penjelasan Lengkap</h4>
 
-                                <p>Dari Sifat Pembuat Nol Rasional, kandidat pembuat nol adalah:</p>
-
-                                <p style="margin-top:8px;">
-                                    \[
-                                    \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
-                                    \]
+                                <p>
+                                    Dari Teorema Pembuat Nol Rasional, kandidat akar rasional diperoleh dari faktor-faktor
+                                    4, yaitu:
                                 </p>
 
-                                <p>Setelah dicoba, diperoleh:</p>
-
                                 <p style="margin-top:8px;">
                                     \[
-                                    P(-2)=0
+                                    \pm1,\ \pm2,\ \pm4
                                     \]
                                 </p>
 
                                 <p>
-                                    Maka \((x+2)\) adalah faktor dari \(P(x)\). Dengan Horner diperoleh:
+                                    Setelah dicoba, diperoleh:
                                 </p>
 
                                 <p style="margin-top:8px;">
                                     \[
-                                    2x^2-7x+3
+                                    P(1)=0
                                     \]
                                 </p>
 
-                                <p>Lalu difaktorkan lagi menjadi:</p>
+                                <p>
+                                    Maka \((x-1)\) adalah faktor dari \(P(x)\). Dengan metode Horner, hasil baginya:
+                                </p>
 
                                 <p style="margin-top:8px;">
                                     \[
-                                    2x^2-7x+3=(2x-1)(x-3)
+                                    x^2-3x-4
                                     \]
                                 </p>
+
+                                <p>
+                                    Lalu kita faktorkan lagi:
+                                </p>
+
+                                <p style="margin-top:8px;">
+                                    \[
+                                    x^2-3x-4=(x-4)(x+1)
+                                    \]
+                                </p>
+
+                                <p>Jadi, faktorisasi lengkapnya adalah:</p>
 
                                 <div class="final-result">
                                     \[
-                                    P(x)=(x+2)(2x-1)(x-3)
+                                    P(x)=(x-1)(x-4)(x+1)
                                     \]
                                 </div>
                             </div>
-                        </li>
-                    </ol>
+                        </div>
+                    </div>
+
+                    {{-- LATIHAN --}}
+                    <div class="latihan-wrap">
+                        <div class="latihan-header">LATIHAN</div>
+
+                        <div class="latihan-box">
+                            <ol>
+                                <li>
+                                    <div class="latihan-soal-text">
+                                        Faktorkan polinomial berikut secara lengkap:
+                                    </div>
+
+                                    <div class="latihan-soal-rumus">
+                                        \[
+                                        P(x)=x^3+2x^2-9x-18
+                                        \]
+                                    </div>
+
+                                    <input type="hidden" id="latihan1Step1Status" value="false">
+                                    <input type="hidden" id="latihan1Step2Status" value="false">
+                                    <input type="hidden" id="latihan1Step3Status" value="false">
+                                    <input type="hidden" id="latihan1Step4Status" value="false">
+
+                                    <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 1</div>
+                                        <div class="langkah-sub">
+                                            Metode yang paling sesuai untuk memulai faktorisasi polinomial ini adalah:
+                                        </div>
+
+                                        <div class="opsi-wrap">
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi1" value="teorema faktor">
+                                                <span>Teorema Faktor langsung</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi1" value="pengelompokan">
+                                                <span>Metode pengelompokan</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi1" value="rumus abc">
+                                                <span>Rumus kuadrat/ABC</span>
+                                            </label>
+                                        </div>
+
+                                        <div id="latihan1Feedback1" class="feedback"></div>
+
+                                        <div id="latihan1Explain1" class="penjelasan-step">
+                                            <p>
+                                                Polinomial ini cocok dikelompokkan menjadi dua pasangan suku:
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                (x^3+2x^2)+(-9x-18)
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 2</div>
+                                        <div class="langkah-sub">
+                                            Tuliskan hasil pengelompokannya setelah masing-masing kelompok difaktorkan.
+                                        </div>
+
+                                        <label>Masukkan bentuk hasil pengelompokan:</label>
+                                        <input type="text" id="jawabLatihan1Langkah2" class="input-jawaban"
+                                            placeholder="Contoh: x^2(x+2)-9(x+2)">
+
+                                        <button class="btn-cek" onclick="cekLatihan1Langkah2()">Cek Jawaban</button>
+                                        <div id="latihan1Feedback2" class="feedback"></div>
+
+                                        <div id="latihan1Explain2" class="penjelasan-step">
+                                            <p>
+                                                Dari
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                (x^3+2x^2)+(-9x-18)
+                                                \]
+                                            </p>
+                                            <p>diperoleh</p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                x^2(x+2)-9(x+2)
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 3</div>
+                                        <div class="langkah-sub">
+                                            Faktor persekutuan dari dua kelompok tersebut adalah:
+                                        </div>
+
+                                        <div class="opsi-wrap">
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi3" value="x-2">
+                                                <span>\(x-2\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi3" value="x+2">
+                                                <span>\(x+2\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan1opsi3" value="x^2-9">
+                                                <span>\(x^2-9\)</span>
+                                            </label>
+                                        </div>
+
+                                        <div id="latihan1Feedback3" class="feedback"></div>
+
+                                        <div id="latihan1Explain3" class="penjelasan-step">
+                                            <p>
+                                                Karena kedua kelompok sama-sama memuat \((x+2)\), maka:
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                x^2(x+2)-9(x+2)=(x+2)(x^2-9)
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 4</div>
+                                        <div class="langkah-sub">
+                                            Faktorkan polinomial hingga bentuk paling sederhana.
+                                        </div>
+
+                                        <label>Tuliskan faktorisasi lengkap:</label>
+                                        <input type="text" id="jawabLatihan1Langkah4" class="input-jawaban"
+                                            placeholder="Contoh: (x+2)(x-3)(x+3)">
+
+                                        <button class="btn-cek" onclick="cekLatihan1Langkah4()">Cek Jawaban</button>
+                                        <div id="latihan1Feedback4" class="feedback"></div>
+
+                                        <div id="latihan1Explain4" class="penjelasan-step">
+                                            <p>
+                                                Karena
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                x^2-9=(x-3)(x+3)
+                                                \]
+                                            </p>
+                                            <p>maka:</p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                P(x)=(x+2)(x-3)(x+3)
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="latihan1FinalExplanation" class="final-explanation">
+                                        <h4>Pembahasan Soal 1</h4>
+
+                                        <p>Polinomial difaktorkan dengan metode pengelompokan:</p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            x^3+2x^2-9x-18=(x^3+2x^2)+(-9x-18)
+                                            \]
+                                        </p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            =x^2(x+2)-9(x+2)
+                                            \]
+                                        </p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            =(x+2)(x^2-9)
+                                            \]
+                                        </p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            =(x+2)(x-3)(x+3)
+                                            \]
+                                        </p>
+
+                                        <div class="final-result">
+                                            \[
+                                            P(x)=(x+2)(x-3)(x+3)
+                                            \]
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="latihan-soal-text">
+                                        Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial
+                                        berikut,
+                                        lalu faktorkan polinomial tersebut hingga bentuk paling sederhana:
+                                    </div>
+
+                                    <div class="latihan-soal-rumus">
+                                        \[
+                                        P(x)=2x^3-3x^2-11x+6
+                                        \]
+                                    </div>
+
+                                    <input type="hidden" id="latihan2Step1Status" value="false">
+                                    <input type="hidden" id="latihan2Step2Status" value="false">
+                                    <input type="hidden" id="latihan2Step3Status" value="false">
+                                    <input type="hidden" id="latihan2Step4Status" value="false">
+                                    <input type="hidden" id="latihan2Step5Status" value="false">
+
+                                    <!-- LANGKAH 1 = OPSI => TANPA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 1</div>
+                                        <div class="langkah-sub">
+                                            Pilih himpunan kandidat pembuat nol rasional yang benar.
+                                        </div>
+
+                                        <div class="opsi-wrap">
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6">
+                                                <span>\(\pm1,\pm2,\pm3,\pm6\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi1" value="±1,±2,±3,±6,±1/2,±3/2">
+                                                <span>\(\pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi1" value="±1/2,±3/2">
+                                                <span>\(\pm\frac{1}{2},\pm\frac{3}{2}\)</span>
+                                            </label>
+                                        </div>
+
+                                        <div id="latihan2Feedback1" class="feedback"></div>
+
+                                        <div id="latihan2Explain1" class="penjelasan-step">
+                                            <p>
+                                                Faktor konstanta \(6\) adalah \(\pm1,\pm2,\pm3,\pm6\), sedangkan faktor
+                                                koefisien
+                                                utama \(2\) adalah \(\pm1,\pm2\).
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                Maka kandidat pembuat nol rasional:
+                                                \[
+                                                \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 2 = ISIAN => TETAP ADA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 2</div>
+                                        <div class="langkah-sub">
+                                            Salah satu pembuat nol polinomial adalah:
+                                        </div>
+
+                                        <label>Masukkan salah satu pembuat nol:</label>
+                                        <input type="text" id="jawabLatihan2Langkah2" class="input-jawaban"
+                                            placeholder="Contoh: -2">
+
+                                        <button class="btn-cek" onclick="cekLatihan2Langkah2()">Cek Jawaban</button>
+                                        <div id="latihan2Feedback2" class="feedback"></div>
+
+                                        <div id="latihan2Explain2" class="penjelasan-step">
+                                            <p>Jika dicoba \(x=-2\), maka:</p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                P(-2)=2(-2)^3-3(-2)^2-11(-2)+6=-16-12+22+6=0
+                                                \]
+                                            </p>
+                                            <p>Jadi, \(-2\) adalah salah satu pembuat nol.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 3 = OPSI => TANPA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 3</div>
+                                        <div class="langkah-sub">
+                                            Jika pembuat nolnya \(-2\), maka faktor linearnya adalah:
+                                        </div>
+
+                                        <div class="opsi-wrap">
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi3" value="x-2">
+                                                <span>\(x-2\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi3" value="x+2">
+                                                <span>\(x+2\)</span>
+                                            </label>
+                                            <label class="opsi-item">
+                                                <input type="radio" name="latihan2opsi3" value="2x+2">
+                                                <span>\(2x+2\)</span>
+                                            </label>
+                                        </div>
+
+                                        <div id="latihan2Feedback3" class="feedback"></div>
+
+                                        <div id="latihan2Explain3" class="penjelasan-step">
+                                            <p>
+                                                Jika \(c=-2\) adalah pembuat nol, maka faktor linearnya:
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                x-c=x-(-2)=x+2
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 4 = ISIAN => TETAP ADA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 4</div>
+                                        <div class="langkah-sub">
+                                            Lengkapi baris hasil bawah Horner untuk pembagian dengan \(x+2\).
+                                        </div>
+
+                                        <div class="mini-note">
+                                            Isikan hasil bawah dan sisa pembagian.
+                                        </div>
+
+                                        <div class="horner-wrap">
+                                            <table class="horner-table">
+                                                <tr>
+                                                    <td class="left-number">-2</td>
+                                                    <td class="horner-top horner-left">2</td>
+                                                    <td class="horner-top">-3</td>
+                                                    <td class="horner-top">-11</td>
+                                                    <td class="horner-top">6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="horner-left"></td>
+                                                    <td class="horner-bottom"><input type="text" id="latihan2Horner1"
+                                                            class="horner-box"></td>
+                                                    <td class="horner-bottom"><input type="text" id="latihan2Horner2"
+                                                            class="horner-box"></td>
+                                                    <td class="horner-bottom"><input type="text" id="latihan2Horner3"
+                                                            class="horner-box"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="horner-bottom">2</td>
+                                                    <td class="horner-bottom">-7</td>
+                                                    <td class="horner-bottom">3</td>
+                                                    <td class="horner-sisa"><input type="text" id="latihan2Horner4"
+                                                            class="horner-box">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <button class="btn-cek" onclick="cekLatihan2Langkah4()">Cek Jawaban</button>
+                                        <div id="latihan2Feedback4" class="feedback"></div>
+
+                                        <div id="latihan2Explain4" class="penjelasan-step">
+                                            <p>
+                                                Dengan Horner untuk pembagi \(x+2\), diperoleh hasil bagi:
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                2x^2-7x+3
+                                                \]
+                                            </p>
+                                            <p>dan sisa:</p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                0
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LANGKAH 5 = ISIAN => TETAP ADA TOMBOL -->
+                                    <div class="langkah-card">
+                                        <div class="langkah-title">Langkah 5</div>
+                                        <div class="langkah-sub">
+                                            Faktorkan polinomial secara lengkap.
+                                        </div>
+
+                                        <label>Tuliskan faktorisasi lengkap:</label>
+                                        <input type="text" id="jawabLatihan2Langkah5" class="input-jawaban"
+                                            placeholder="Contoh: (x+2)(2x-1)(x-3)">
+
+                                        <button class="btn-cek" onclick="cekLatihan2Langkah5()">Cek Jawaban</button>
+                                        <div id="latihan2Feedback5" class="feedback"></div>
+
+                                        <div id="latihan2Explain5" class="penjelasan-step">
+                                            <p>
+                                                Karena
+                                            </p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                2x^2-7x+3=(2x-1)(x-3)
+                                                \]
+                                            </p>
+                                            <p>maka:</p>
+                                            <p style="margin-top:8px;">
+                                                \[
+                                                P(x)=(x+2)(2x-1)(x-3)
+                                                \]
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="latihan2FinalExplanation" class="final-explanation">
+                                        <h4>Pembahasan Soal 2</h4>
+
+                                        <p>Dari Sifat Pembuat Nol Rasional, kandidat pembuat nol adalah:</p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            \pm1,\pm2,\pm3,\pm6,\pm\frac{1}{2},\pm\frac{3}{2}
+                                            \]
+                                        </p>
+
+                                        <p>Setelah dicoba, diperoleh:</p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            P(-2)=0
+                                            \]
+                                        </p>
+
+                                        <p>
+                                            Maka \((x+2)\) adalah faktor dari \(P(x)\). Dengan Horner diperoleh:
+                                        </p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            2x^2-7x+3
+                                            \]
+                                        </p>
+
+                                        <p>Lalu difaktorkan lagi menjadi:</p>
+
+                                        <p style="margin-top:8px;">
+                                            \[
+                                            2x^2-7x+3=(2x-1)(x-3)
+                                            \]
+                                        </p>
+
+                                        <div class="final-result">
+                                            \[
+                                            P(x)=(x+2)(2x-1)(x-3)
+                                            \]
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-        </div>
-    </div>
-
 @endsection
 
-@section('nav')
-    <a href="{{ route('kuisc') }}" class="btn-nav prev-btn">← Previous</a>
-    <a href="{{ route('faktordanpembuatnol') }}" class="btn-nav next-btn">Next →</a>
-@endsection
+        @section('nav')
+            <a href="{{ route('kuisc') }}" class="btn-nav prev-btn">← Previous</a>
+            <a href="{{ route('faktordanpembuatnol') }}" class="btn-nav next-btn">Next →</a>
+        @endsection

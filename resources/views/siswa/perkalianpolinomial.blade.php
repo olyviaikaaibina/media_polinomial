@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                        delimiters: [
-                            {left: '$$', right: '$$', display: true},
-                            {left: '$', right: '$', display: false}
-                        ]
-                    });"></script>
+                            delimiters: [
+                                {left: '$$', right: '$$', display: true},
+                                {left: '$', right: '$', display: false}
+                            ]
+                        });"></script>
 
     <style>
         :root {
@@ -1313,39 +1313,26 @@
             <div class="title-box blue">🧭 Eksplorasi</div>
 
             <p>
-                Banjarmasin dikenal sebagai <b>Kota Seribu Sungai</b>. Kehidupan masyarakatnya sangat dekat dengan sungai
-                seperti Sungai Martapura, Sungai Barito, dan Pasar Terapung.
+                Perhatikan dua bentuk aljabar berikut.
             </p>
 
-            <p>
-                Untuk menjaga kebersihan sungai, pemerintah kota melaksanakan program <b>pengolahan sampah sungai</b> yang
-                melibatkan <b>beberapa kelompok kerja</b>.
-            </p>
-
-            <p><b>Misalkan:</b><br>
-                • <span class="highlight">$x$</span> menyatakan <span class="highlight">jumlah hari kerja</span>
-            </p>
-
-            <p style="margin-bottom:6px;"><b>Mesin pengolah sampah tipe A</b> bekerja dengan model:</p>
+            <p style="margin-bottom:6px;"><b>Bentuk pertama:</b></p>
             <div class="rumus-box">$$A(x)=3x$$</div>
 
-            <p style="margin-bottom:6px;"><b>Jumlah sampah yang harus diolah</b> dimodelkan dengan:</p>
+            <p style="margin-bottom:6px;"><b>Bentuk kedua:</b></p>
             <div class="rumus-box">$$B(x)=2x^2-5x+4$$</div>
 
             <p>
-                Untuk mengetahui jumlah total proses pengolahan sampah, kita perlu menghitung
-                <b>hasil perkalian</b> kedua bentuk aljabar tersebut.
+                Untuk memahami hubungan kedua bentuk tersebut, coba substitusikan nilai
+                <span class="highlight">$x=1$</span> dan amati hasilnya.
             </p>
 
-            <p>Hal ini dapat dimodelkan dengan perkalian polinomial:</p>
-            <div class="rumus-box" style="margin-top:8px;">$$A(x)\times B(x)=3x(2x^2-5x+4)$$</div>
-
             <div class="question" id="eksplorasi-quiz">
-                <div class="qtitle">Pertanyaan (Interaktif)</div>
+                <div class="qtitle">Amati dan Temukan Polanya</div>
 
                 <ol class="quiz-list">
                     <li class="quiz-item" data-answer="3">
-                        <div class="quiz-q">Jika $x=1$ (hari kerja ke-1), berapa nilai $A(1)$?</div>
+                        <div class="quiz-q">Jika $x=1$, berapa nilai $A(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
@@ -1353,17 +1340,16 @@
                     </li>
 
                     <li class="quiz-item" data-answer="1">
-                        <div class="quiz-q">Jika $x=1$ (hari kerja ke-1), berapa nilai $B(1)$?</div>
+                        <div class="quiz-q">Jika $x=1$, berapa nilai $B(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
 
-                    <li class="quiz-item" data-answer="6x^3-15x^2+12x">
+                    <li class="quiz-item" data-answer="3">
                         <div class="quiz-q">
-                            Tentukan hasil perkalian polinomial berikut:
-                            <div style="margin-top:8px;">$$3x(2x^2-5x+4)$$</div>
+                            Berdasarkan hasil di atas, berapa nilai $A(1) \times B(1)$?
                         </div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
@@ -1371,11 +1357,11 @@
                         </div>
                     </li>
                 </ol>
-            </div>
-        </div>
 
-        <div style="margin-top:10px;">
-            <span id="quiz-summary" class="quiz-summary"></span>
+                <div style="margin-top:10px;">
+                    <span id="quiz-summary" class="quiz-summary"></span>
+                </div>
+            </div>
         </div>
 
         <div id="after-eksplorasi" aria-hidden="true">

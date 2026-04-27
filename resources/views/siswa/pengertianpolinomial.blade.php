@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                        delimiters: [
-                                            {left: '$$', right: '$$', display: true},
-                                            {left: '$', right: '$', display: false}
-                                        ]
-                                    });"></script>
+                                                                delimiters: [
+                                                                    {left: '$$', right: '$$', display: true},
+                                                                    {left: '$', right: '$', display: false}
+                                                                ]
+                                                            });"></script>
 
     <style>
         :root {
@@ -821,45 +821,14 @@
             </ol>
         </div>
 
-        <div class="section-title">1. Pengertian Polinomial</div>
-
         <div class="card card-orange">
             <div class="title-box">🧭 Eksplorasi</div>
 
             <p>
-                Kalimantan Selatan dikenal sebagai daerah lahan basah yang banyak dimanfaatkan untuk
-                pertanian rawa, perikanan, dan perkebunan. Pemanfaatan lahan basah tersebut dapat
-                dinyatakan dalam bentuk matematika. Seorang petani di lahan basah Kalimantan Selatan
-                mengelola lahannya untuk beberapa keperluan. Ia menggunakan:
+                Sebelum mempelajari pengertian polinomial, amati terlebih dahulu bentuk aljabar berikut.
             </p>
 
-            <ul>
-                <li><span class="highlight">$x$</span> hektar untuk lahan padi rawa,</li>
-                <li><span class="highlight">$y$</span> hektar untuk kebun sayur,</li>
-                <li>dan sebuah kolam ikan seluas <span class="highlight">$5$</span> hektar.</li>
-            </ul>
-
-            <p>Untuk mencatat penggunaan lahannya, petani tersebut menuliskan:</p>
-
-            <ul>
-                <li>luas lahan padi rawa: <span class="highlight">$2x$</span>,</li>
-                <li>luas kebun sayur: <span class="highlight">$3y$</span>,</li>
-                <li>luas kolam ikan: <span class="highlight">$5$</span>.</li>
-            </ul>
-
-            <p>
-                Perhatikan bentuk-bentuk aljabar tersebut. Setiap bentuk hanya terdiri dari satu suku dan
-                tidak mengandung operasi penjumlahan atau pengurangan. Bentuk aljabar seperti ini disebut
-                monomial. Monomial yang tidak memiliki variabel seperti $5$,
-                disebut konstanta, sedangkan bilangan yang mengalikan variabel
-                disebut koefisien.
-            </p>
-
-            <p>
-                Untuk mengetahui total pemanfaatan lahannya, petani tersebut menjumlahkan semua bentuk aljabar
-                tersebut menjadi:
-            </p>
-
+            <!-- BAGIAN VISUAL TETAP -->
             <div class="formula-annot">
                 <div class="formula-expr">
                     <span class="grp">
@@ -882,12 +851,22 @@
             </div>
 
             <p>
-                Bentuk aljabar ini tersusun dari beberapa monomial yang dijumlahkan. Bentuk seperti inilah yang
-                disebut polinomial. Dari konteks pemanfaatan lahan basah,
-                dapat disimpulkan bahwa polinomial merupakan bentuk aljabar yang tersusun dari satu atau lebih monomial
-                dengan pangkat variabel berupa bilangan cacah.
+                Pada bentuk tersebut, terdapat beberapa bagian yang dipisahkan oleh tanda tambah,
+                yaitu <span class="highlight">$2x$</span>, <span class="highlight">$3y$</span>,
+                dan <span class="highlight">$5$</span>.
             </p>
 
+            <p>
+                Setiap bagian tersebut merupakan satu suku. Bentuk satu suku disebut
+                <b>monomial</b>. Jika beberapa monomial digabungkan, maka terbentuk
+                <span class="highlight">$2x + 3y + 5$</span>.
+            </p>
+
+            <p>
+                Amati kembali bentuk tersebut, lalu jawablah pertanyaan eksplorasi berikut.
+            </p>
+
+            <!-- PERTANYAAN TETAP -->
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Pertanyaan Eksplorasi</div>
 
@@ -900,7 +879,6 @@
 
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -912,7 +890,6 @@
 
                         <input class="quiz-input" type="text" placeholder="Jawaban kamu..." />
                         <div class="quiz-actions">
-            
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -925,7 +902,6 @@
 
                         <input class="quiz-input" type="text" placeholder="ya / tidak" />
                         <div class="quiz-actions">
-                           
                             <span class="quiz-feedback"></span>
                         </div>
                     </li>
@@ -934,7 +910,6 @@
                 <span id="quiz-summary" class="quiz-summary"></span>
             </div>
         </div>
-
         <div id="materi-lanjutan">
             <p>
                 Sebelum memahami pengertian polinomial secara menyeluruh, ada baiknya kita mempelajari terlebih dahulu
@@ -994,11 +969,6 @@
                             Bukan monomial ❌ karena ada tanda “+” yang memisahkan menjadi dua suku.
                         </div>
                     </div>
-                </div>
-
-                <div class="kartu-actions">
-                    <button type="button" class="btnx primary" id="btn-buka-semua">Buka Semua Penjelasan</button>
-                    <button type="button" class="btnx ghost" id="btn-tutup-semua">Tutup Semua</button>
                 </div>
 
                 <p style="margin:10px 0 0; text-align:justify; color: var(--muted);">
@@ -1086,16 +1056,20 @@
                     </div>
                 </div>
 
-                <div class="contoh-actions">
-                    <button type="button" class="btnx primary" id="btn-buka-contoh">Buka Semua</button>
-                    <button type="button" class="btnx ghost" id="btn-tutup-contoh">Tutup Semua</button>
-                </div>
+
             </div>
 
             <div class="card card-green">
                 <div class="title-box">📝 Latihan</div>
 
                 <div class="quiz-box-new">
+                    <div class="contoh-note2" style="margin-bottom: 14px;">
+                        <b>Petunjuk pengerjaan:</b> Perhatikan setiap bentuk aljabar dengan saksama, lalu tentukan
+                        apakah bentuk tersebut termasuk <b>polinomial</b> atau <b>bukan polinomial</b>.
+                        Pilih salah satu jawaban pada setiap soal, kemudian tekan tombol
+                        <b>Cek Jawaban</b>
+                    </div>
+
                     <div id="quiz-container"></div>
 
                     <div style="margin-top: 15px;">
@@ -1107,7 +1081,6 @@
                 </div>
             </div>
         </div>
-
         <script>
             (function () {
                 const normalize = (s) =>
@@ -1326,27 +1299,27 @@
                     {
                         expr: "$4x^3 - 2x + 5$",
                         correct: "polinomial",
-                        explanation: "Benar, karena semua pangkat variabel adalah bilangan bulat tidak negatif."
+                        explanation: "Karena semua pangkat variabel adalah bilangan bulat tidak negatif."
                     },
                     {
                         expr: "$\\frac{1}{y} + 2y$",
                         correct: "bukan",
-                        explanation: "Benar, karena ada variabel di penyebut. Bentuk ini setara dengan $y^{-1} + 2y$ sehingga bukan polinomial."
+                        explanation: "Karena ada variabel di penyebut. Bentuk ini setara dengan $y^{-1} + 2y$ sehingga bukan polinomial."
                     },
                     {
                         expr: "$\\sqrt{x} + 7$",
                         correct: "bukan",
-                        explanation: "Benar, karena $\\sqrt{x} = x^{1/2}$. Pangkat pecahan tidak memenuhi syarat polinomial."
+                        explanation: "Karena $\\sqrt{x} = x^{1/2}$. Pangkat pecahan tidak memenuhi syarat polinomial."
                     },
                     {
                         expr: "$6a^2b + 3a - 8$",
                         correct: "polinomial",
-                        explanation: "Benar, karena semua variabel memiliki pangkat bilangan cacah dan tidak ada variabel di penyebut atau akar."
+                        explanation: "Karena semua variabel memiliki pangkat bilangan cacah dan tidak ada variabel di penyebut atau akar."
                     },
                     {
                         expr: "$3x^{-2} + 4$",
                         correct: "bukan",
-                        explanation: "Benar, karena ada pangkat negatif pada variabel, sehingga bukan polinomial."
+                        explanation: "Karena ada pangkat negatif pada variabel, sehingga bukan polinomial."
                     }
                 ];
 
@@ -1364,20 +1337,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                                            <div class="quiz-soal-title">Soal ${i + 1}</div>
-                                            <div class="quiz-ekspresi">${q.expr}</div>
+                            <div class="quiz-soal-title">Soal ${i + 1}</div>
+                            <div class="quiz-ekspresi">${q.expr}</div>
 
-                                            <div class="quiz-options-new">
-                                                <label>
-                                                    <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                                                </label>
-                                            </div>
+                            <div class="quiz-options-new">
+                                <label>
+                                    <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                </label>
+                                <label>
+                                    <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                </label>
+                            </div>
 
-                                            <div class="feedback-box" id="fb${i}"></div>
-                                        `;
+                            <div class="feedback-box" id="fb${i}"></div>
+                        `;
                         container.appendChild(div);
                     });
 
@@ -1411,13 +1384,20 @@
                             fb.innerHTML = `Benar ✅<br>${q.explanation}`;
                         } else {
                             fb.classList.add("wrong");
-                            fb.innerHTML = "Salah ❌<br>Coba cek lagi syarat polinomial: pangkat variabel harus bilangan cacah, tidak boleh di penyebut, dan tidak boleh berupa akar.";
+                            fb.innerHTML = "Salah ❌";
                         }
                     });
 
                     resultBox.innerHTML = `Skor: ${score}/${questions.length}`;
 
                     if (typeof renderMathInElement === "function") {
+                        renderMathInElement(container, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ]
+                        });
+
                         renderMathInElement(resultBox, {
                             delimiters: [
                                 { left: '$$', right: '$$', display: true },
@@ -1677,11 +1657,11 @@
 @endsection
 
 @section('nav')
-<a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
-    ← Previous
-</a>
+    <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-<a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav next-btn">
-    Next →
-</a>
+    <a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection
