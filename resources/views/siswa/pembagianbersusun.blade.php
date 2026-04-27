@@ -1523,7 +1523,7 @@
                 </div>
 
                 <p>
-                    Bagian atas berisi <b>Langkah 1–10</b> yang sudah urut. Bagian bawah berisi
+                    Bagian atas berisi <b>Langkah 1–10</b>. Bagian bawah berisi
                     <b>isi perhitungan</b> yang diacak. Geser isi perhitungan ke langkah yang sesuai.
                 </p>
 

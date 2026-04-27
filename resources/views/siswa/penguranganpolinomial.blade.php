@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                delimiters: [
-                                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                                    {left: '$', right: '$', display: false}
-                                                                                                ]
-                                                                                            });"></script>
+                                                                                                    delimiters: [
+                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                    ]
+                                                                                                });"></script>
 
     <style>
         :root {
@@ -1508,9 +1508,7 @@
         <div class="card card-eksplorasi">
             <div class="title-box blue">🧭 Eksplorasi</div>
 
-            <p>
-                Perhatikan dua fungsi berikut.
-            </p>
+            <p>Perhatikan dua fungsi berikut.</p>
 
             <p style="margin-bottom:6px;"><b>Tim A</b></p>
             <div class="rumus-box">$$T(x)=5x^3-2x^2+4x+6$$</div>
@@ -1528,9 +1526,7 @@
 
                 <ol class="quiz-list">
                     <li class="quiz-item" data-answer="13">
-                        <div class="quiz-q">
-                            Jika $x=1$, berapa nilai $T(1)$?
-                        </div>
+                        <div class="quiz-q">Jika $x=1$, berapa nilai $T(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
@@ -1538,9 +1534,7 @@
                     </li>
 
                     <li class="quiz-item" data-answer="-3">
-                        <div class="quiz-q">
-                            Jika $x=1$, berapa nilai $U(1)$?
-                        </div>
+                        <div class="quiz-q">Jika $x=1$, berapa nilai $U(1)$?</div>
                         <input class="quiz-input" type="text" placeholder="Isi jawaban" />
                         <div class="quiz-actions">
                             <span class="quiz-feedback"></span>
@@ -1561,460 +1555,387 @@
                 <div style="margin-top:10px;">
                     <span id="quiz-summary" class="quiz-summary"></span>
                 </div>
-            </div>
-        </div>
 
-
-    </div>
-    </div>
-
-    <div id="materi-lanjutan" style="display:none;">
-        {{-- TRIK CEPAT --}}
-        <div class="tip-board" id="tipBoard">
-            <div class="tip-head">
-                <div class="tip-label">🧭 TRIK CEPAT</div>
-                <button type="button" class="tip-btn" id="tipFlashBtn">🧠 Ingat pola tanda</button>
-            </div>
-
-            <div class="tip-main-title">
-                Cara paling cepat saat ada “minus di depan kurung”
-            </div>
-
-            <div class="tip-main-quote-box">
-                <div class="tip-main-quote">
-                    “MINUS DI DEPAN KURUNG → BALIK SEMUA TANDA”
-                </div>
-                <div class="tip-main-sub">
-                    (+ jadi −, dan − jadi +)
-                </div>
-            </div>
-
-            <div class="tip-grid">
-                <div class="tip-example-card">
-                    <div class="tip-example-title">✅ Sebelum</div>
-                    <div class="tip-formula-box">
-                        $$A(x) - (B(x) - C(x))$$
-                    </div>
-                </div>
-
-                <div class="tip-example-card">
-                    <div class="tip-example-title">✅ Setelah kurung dibuka</div>
-                    <div class="tip-formula-box">
-                        $$A(x) - B(x) + C(x)$$
-                    </div>
-                </div>
-            </div>
-
-            <div class="tip-footer">
-                <button type="button" class="tip-remember-btn">🔔 Tekan untuk ingat</button>
-                <div class="tip-footer-text">
-                    <b>Tip:</b> balik semua tanda di dalam kurung, lalu gabungkan suku sejenis.
+                <div id="quiz-final-message" class="final-message">
+                    ✅ Eksplorasi sudah terisi. Materi berikutnya terbuka.
                 </div>
             </div>
         </div>
 
-        {{-- DEFINISI --}}
-        <div class="definisi-card">
-            <div class="definisi-label">DEFINISI</div>
-            <p>Pengurangan polinomial adalah operasi antara dua polinomial dengan cara:</p>
-            <ol>
-                <li>Mengubah tanda setiap suku pada polinomial kedua.</li>
-                <li>Menjumlahkan suku-suku sejenis dari kedua polinomial tersebut.</li>
-            </ol>
-        </div>
+        <div id="materi-lanjutan" style="display:none;">
+            {{-- TRIK CEPAT --}}
+            <div class="tip-board" id="tipBoard">
+                <div class="tip-head">
+                    <div class="tip-label">🧭 TRIK CEPAT</div>
+                    <button type="button" class="tip-btn" id="tipFlashBtn">🧠 Ingat pola tanda</button>
+                </div>
 
-        {{-- LANGKAH-LANGKAH --}}
-        <div class="langkah-card">
-            <div class="langkah-title">Langkah-Langkah Pengurangan Polinomial</div>
-            <ol class="langkah-list">
-                <li>Tuliskan polinomial dalam bentuk yang terurut.</li>
-                <li>Beri tanda kurung pada polinomial yang dikurangkan.</li>
-                <li>Hilangkan kurung dengan mengubah tanda setiap suku di dalam kurung tersebut.</li>
-                <li>Gabungkan suku-suku sejenis dengan menjumlahkan koefisiennya.</li>
-                <li>Tulis hasil dalam bentuk polinomial yang sudah disederhanakan.</li>
-            </ol>
-        </div>
+                <div class="tip-main-title">
+                    Cara paling cepat saat ada “minus di depan kurung”
+                </div>
 
-        {{-- CONTOH --}}
-        <div class="contoh-wrap">
-            <div class="contoh-pill">CONTOH</div>
+                <div class="tip-main-quote-box">
+                    <div class="tip-main-quote">
+                        “MINUS DI DEPAN KURUNG → BALIK SEMUA TANDA”
+                    </div>
+                    <div class="tip-main-sub">
+                        (+ jadi −, dan − jadi +)
+                    </div>
+                </div>
 
-            <p class="contoh-desc">
-                Kerjakan contoh ini tahap demi tahap. Jawab pertanyaannya satu per satu. Jawaban tidak ditampilkan agar
-                kamu bisa berpikir sendiri.
-            </p>
+                <div class="tip-grid">
+                    <div class="tip-example-card">
+                        <div class="tip-example-title">✅ Sebelum</div>
+                        <div class="tip-formula-box">
+                            $$A(x) - (B(x) - C(x))$$
+                        </div>
+                    </div>
 
-            <div class="rumus-box">
-                $$(5x^3-2x^2+4x+6)-(3x^3+x^2-2x-5)$$
+                    <div class="tip-example-card">
+                        <div class="tip-example-title">✅ Setelah kurung dibuka</div>
+                        <div class="tip-formula-box">
+                            $$A(x) - B(x) + C(x)$$
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="step-box">
-                <div class="step-title">Langkah 1: Perhatikan bentuk pengurangannya</div>
-                <p class="step-explain">
-                    Pada soal ini, polinomial kedua berada setelah tanda minus. Karena ada tanda
-                    <b>minus di depan kurung</b>, semua tanda di dalam kurung kedua harus berubah saat kurung dibuka.
+            {{-- DEFINISI --}}
+            <div class="definisi-card">
+                <div class="definisi-label">DEFINISI</div>
+                <p>Pengurangan polinomial adalah operasi antara dua polinomial dengan cara:</p>
+                <ol>
+                    <li>Mengubah tanda setiap suku pada polinomial kedua.</li>
+                    <li>Menjumlahkan suku-suku sejenis dari kedua polinomial tersebut.</li>
+                </ol>
+            </div>
+
+            {{-- LANGKAH-LANGKAH --}}
+            <div class="langkah-card">
+                <div class="langkah-title">Langkah-Langkah Pengurangan Polinomial</div>
+                <ol class="langkah-list">
+                    <li>Tuliskan polinomial dalam bentuk yang terurut.</li>
+                    <li>Beri tanda kurung pada polinomial yang dikurangkan.</li>
+                    <li>Hilangkan kurung dengan mengubah tanda setiap suku di dalam kurung tersebut.</li>
+                    <li>Gabungkan suku-suku sejenis dengan menjumlahkan koefisiennya.</li>
+                    <li>Tulis hasil dalam bentuk polinomial yang sudah disederhanakan.</li>
+                </ol>
+            </div>
+
+            {{-- CONTOH --}}
+            <div class="contoh-wrap">
+                <div class="contoh-pill">CONTOH</div>
+
+                <p class="contoh-desc">
+                    Kerjakan contoh ini tahap demi tahap. Jawab pertanyaannya satu per satu.
+                    Jawaban tidak ditampilkan agar kamu bisa berpikir sendiri.
                 </p>
 
-                <p class="step-help">
-                    Petunjuk: tanda $+$ di dalam kurung menjadi $-$, dan tanda $-$ di dalam kurung menjadi $+$.
+                <div class="rumus-box">
+                    $$(5x^3-2x^2+4x+6)-(3x^3+x^2-2x-5)$$
+                </div>
+
+                <div class="step-box">
+                    <div class="step-title">Langkah 1: Perhatikan bentuk pengurangannya</div>
+                    <p class="step-explain">
+                        Pada soal ini, polinomial kedua berada setelah tanda minus. Karena ada tanda
+                        <b>minus di depan kurung</b>, semua tanda di dalam kurung kedua harus berubah saat kurung dibuka.
+                    </p>
+
+                    <div class="interaktif-wrap" data-answer="5x^3-2x^2+4x+6-3x^3-x^2+2x+5">
+                        <div class="interaktif-title">Tulis bentuk setelah kurung dibuka</div>
+                        <input type="text" class="interaktif-input" placeholder="Contoh penulisan: 5x^3-2x^2+..." />
+                        <div class="interaktif-actions">
+                            <button type="button" class="interaktif-check">Cek</button>
+                            <span class="interaktif-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-title">Langkah 2: Cari suku-suku yang sejenis</div>
+                    <p class="step-explain">
+                        Setelah kurung dibuka, suku-suku yang memiliki variabel dan pangkat yang sama harus dikelompokkan.
+                    </p>
+
+                   
+
+                    <div class="interaktif-wrap" data-answer="(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)">
+                        <div class="interaktif-title">Tulis bentuk yang sudah dikelompokkan</div>
+                        <input type="text" class="interaktif-input" placeholder="Contoh: ( ... ) + ( ... ) + ..." />
+                        <div class="interaktif-actions">
+                            <button type="button" class="interaktif-check">Cek</button>
+                            <span class="interaktif-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-title">Langkah 3: Hitung setiap kelompok</div>
+                    <p class="step-explain">
+                        Sekarang hitung hasil setiap kelompok
+                    </p>
+
+                  
+
+                    <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
+                        <div class="interaktif-title">Tulis hasil akhir</div>
+                        <input type="text" class="interaktif-input" placeholder="Tulis hasil polinomial akhirnya" />
+                        <div class="interaktif-actions">
+                            <button type="button" class="interaktif-check">Cek</button>
+                            <span class="interaktif-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="global-actions">
+                    <span id="interaktif-summary" class="interaktif-summary"></span>
+                </div>
+            </div>
+
+            <div class="card game-mission-card" id="game-mode">
+                <div class="game-header">
+                    <h2 class="game-title">Misi Membuka Gerbang Polinomial</h2>
+                    <p class="game-subtitle">
+                        Selesaikan setiap tahap untuk membuka gerbang.
+                    </p>
+                </div>
+
+                <div class="game-scene">
+                    <div class="game-scene-left">
+                        <div class="game-story-box">
+                            <div class="game-story-title">Misi</div>
+
+                            <p>
+                                Di depanmu terdapat <b>Gerbang Polinomial</b>.
+                                Gerbang ini hanya akan terbuka jika kamu berhasil
+                                menyederhanakan bentuk berikut:
+                            </p>
+
+                            <div class="game-formula-main">
+                                $$
+                                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                $$
+                            </div>
+
+                            <p class="game-story-note">
+                                Gunakan strategi: buka kurung → kelompokkan → sederhanakan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="game-panel">
+                        <div class="game-stage-indicator">
+                            <span class="stage-dot active" id="dot-1"></span>
+                            <span class="stage-line"></span>
+                            <span class="stage-dot" id="dot-2"></span>
+                            <span class="stage-line"></span>
+                            <span class="stage-dot" id="dot-3"></span>
+                        </div>
+
+                        <div class="game-stage-name" id="game-stage-name">
+                            Gerbang 1 — Buka Kurung
+                        </div>
+
+                        <div class="game-dialogue" id="game-dialogue">
+                            Ubah tanda pada semua suku di dalam kurung kedua.
+                        </div>
+
+                        <div class="game-question-box">
+                            <div class="game-question-math" id="game-question-math"></div>
+                        </div>
+
+                        <div class="game-answer-box">
+                            <label class="game-input-label">Jawabanmu</label>
+                            <input type="text" id="game-answer" class="game-input">
+                        </div>
+
+                        <div class="game-actions">
+                            <button id="game-submit" class="game-btn primary">Buka Gerbang</button>
+                            <button id="game-reset" class="game-btn secondary">Ulangi</button>
+                        </div>
+
+                        <div id="game-feedback" class="game-feedback"></div>
+
+                        <div class="game-hint-box">
+                            <div class="game-hint-title">Petunjuk</div>
+                            <div id="game-hint-text" class="game-hint-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-victory" id="game-victory">
+                    <div class="victory-scene">
+                        <div class="victory-bg-glow"></div>
+
+                        <div class="sparkles">
+                            <span class="spark s1">✦</span>
+                            <span class="spark s2">✧</span>
+                            <span class="spark s3">✦</span>
+                            <span class="spark s4">✧</span>
+                            <span class="spark s5">✦</span>
+                        </div>
+
+                        <div class="gate-stage">
+                            <div class="gate-pillar pillar-left"></div>
+                            <div class="gate-pillar pillar-right"></div>
+
+                            <div class="gate-light-core"></div>
+                            <div class="gate-light-floor"></div>
+
+                            <div class="gate-door gate-left">
+                                <div class="gate-inner-panel"></div>
+                            </div>
+
+                            <div class="gate-door gate-right">
+                                <div class="gate-inner-panel"></div>
+                            </div>
+                        </div>
+
+                        <div class="victory-trophy">🏆</div>
+                    </div>
+
+                    <div class="victory-content">
+                        <div class="victory-title">
+                            Gerbang Polinomial Berhasil Dibuka!
+                        </div>
+
+                        <div class="victory-text">
+                            Hebat! Kamu sudah menyelesaikan tantangan pengurangan polinomial dengan benar.
+                        </div>
+
+                        <div class="victory-answer-card">
+                            <div class="victory-answer-label">
+                                Hasil Akhir
+                            </div>
+
+                            <div class="victory-formula">
+                                $$
+                                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                = 2x^3 - 3x^2 + 6x + 11
+                                $$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- LATIHAN --}}
+            <div class="contoh-wrap">
+                <div class="contoh-pill">LATIHAN</div>
+
+                <p class="contoh-desc">
+                    Kerjakan latihan berikut langkah demi langkah. Isi jawaban pada setiap tahap, lalu cek hasilnya.
                 </p>
 
-                <div class="interaktif-wrap" data-answer="5x^3-2x^2+4x+6-3x^3-x^2+2x+5">
-                    <div class="interaktif-title">Tulis bentuk setelah kurung dibuka</div>
-                    <input type="text" class="interaktif-input" placeholder="Contoh penulisan: 5x^3-2x^2+..." />
-                    <div class="interaktif-actions">
-                        <button type="button" class="interaktif-check">Cek</button>
-                        <span class="interaktif-feedback"></span>
-                    </div>
-                </div>
-            </div>
+                <div class="latihan-grid" id="latihan-grid">
+                    <div class="latihan-card">
+                        <div class="latihan-badge">A</div>
+                        <div class="latihan-title">Tentukan hasil dari:</div>
 
-            <div class="step-box">
-                <div class="step-title">Langkah 2: Cari suku-suku yang sejenis</div>
-                <p class="step-explain">
-                    Setelah kurung dibuka, suku-suku yang memiliki variabel dan pangkat yang sama harus dikelompokkan.
-                    Jadi, suku $x^3$ digabung dengan $x^3$, suku $x^2$ digabung dengan $x^2$, suku $x$ digabung
-                    dengan $x$, dan bilangan tetap digabung dengan bilangan tetap.
-                </p>
-
-
-                <p class="step-help">
-                    Petunjuk: gunakan tanda kurung untuk menunjukkan kelompok suku sejenis.
-                </p>
-
-                <div class="interaktif-wrap" data-answer="(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)">
-                    <div class="interaktif-title">Tulis bentuk yang sudah dikelompokkan</div>
-                    <input type="text" class="interaktif-input" placeholder="Contoh: ( ... ) + ( ... ) + ..." />
-                    <div class="interaktif-actions">
-                        <button type="button" class="interaktif-check">Cek</button>
-
-                        <span class="interaktif-feedback"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-box">
-                <div class="step-title">Langkah 3: Hitung setiap kelompok</div>
-                <p class="step-explain">
-                    Sekarang hitung hasil setiap kelompok:
-                    <br>• kelompok suku $x^3$
-                    <br>• kelompok suku $x^2$
-                    <br>• kelompok suku $x$
-                    <br>• kelompok konstanta
-                </p>
-
-
-                <p class="step-help">
-                    Petunjuk: tulis hasil akhir dalam bentuk polinomial yang sudah sederhana dan terurut.
-                </p>
-
-                <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
-                    <div class="interaktif-title">Tulis hasil akhir</div>
-                    <input type="text" class="interaktif-input" placeholder="Tulis hasil polinomial akhirnya" />
-                    <div class="interaktif-actions">
-                        <button type="button" class="interaktif-check">Cek</button>
-
-                        <span class="interaktif-feedback"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="global-actions">
-
-                <span id="interaktif-summary" class="interaktif-summary"></span>
-            </div>
-
-
-        </div>
-
-        <div class="card game-mission-card" id="game-mode">
-
-            <!-- ================= HEADER ================= -->
-            <div class="game-header">
-                <h2 class="game-title">Misi Membuka Gerbang Polinomial</h2>
-                <p class="game-subtitle">
-                    Selesaikan setiap tahap untuk membuka gerbang.
-                </p>
-            </div>
-
-            <!-- ================= MAIN ================= -->
-            <div class="game-scene">
-
-                <!-- ===== KIRI (CERITA) ===== -->
-                <div class="game-scene-left">
-                    <div class="game-story-box">
-
-                        <div class="game-story-title">Misi</div>
-
-                        <p>
-                            Di depanmu terdapat <b>Gerbang Polinomial</b>.
-                            Gerbang ini hanya akan terbuka jika kamu berhasil
-                            menyederhanakan bentuk berikut:
-                        </p>
-
-                        <div class="game-formula-main">
-                            $$
-                            (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                            $$
+                        <div class="rumus-box">
+                            $$(9x^2 - 4x + 7) - (2x^2 + 3x - 5)$$
                         </div>
 
-                        <p class="game-story-note">
-                            Gunakan strategi: buka kurung → kelompokkan → sederhanakan.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- ===== KANAN (GAME) ===== -->
-                <div class="game-panel">
-
-                    <!-- progress -->
-                    <div class="game-stage-indicator">
-                        <span class="stage-dot active" id="dot-1"></span>
-                        <span class="stage-line"></span>
-                        <span class="stage-dot" id="dot-2"></span>
-                        <span class="stage-line"></span>
-                        <span class="stage-dot" id="dot-3"></span>
-                    </div>
-
-                    <div class="game-stage-name" id="game-stage-name">
-                        Gerbang 1 — Buka Kurung
-                    </div>
-
-                    <!-- dialog -->
-                    <div class="game-dialogue" id="game-dialogue">
-                        Ubah tanda pada semua suku di dalam kurung kedua.
-                    </div>
-
-                    <!-- soal -->
-                    <div class="game-question-box">
-                        <div class="game-question-math" id="game-question-math"></div>
-                    </div>
-
-                    <!-- input -->
-                    <div class="game-answer-box">
-                        <label class="game-input-label">Jawabanmu</label>
-                        <input type="text" id="game-answer" class="game-input">
-                    </div>
-
-                    <!-- tombol -->
-                    <div class="game-actions">
-                        <button id="game-submit" class="game-btn primary">
-                            Buka Gerbang
-                        </button>
-                        <button id="game-reset" class="game-btn secondary">
-                            Ulangi
-                        </button>
-                    </div>
-
-                    <!-- feedback -->
-                    <div id="game-feedback" class="game-feedback"></div>
-
-                    <!-- hint -->
-                    <div class="game-hint-box">
-                        <div class="game-hint-title">Petunjuk</div>
-                        <div id="game-hint-text" class="game-hint-text"></div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- ================= VICTORY ================= -->
-            <div class="game-victory" id="game-victory">
-
-                <!-- SCENE -->
-                <div class="victory-scene">
-
-                    <!-- glow -->
-                    <div class="victory-bg-glow"></div>
-
-                    <!-- sparkle -->
-                    <div class="sparkles">
-                        <span class="spark s1">✦</span>
-                        <span class="spark s2">✧</span>
-                        <span class="spark s3">✦</span>
-                        <span class="spark s4">✧</span>
-                        <span class="spark s5">✦</span>
-                    </div>
-
-                    <!-- GERBANG -->
-                    <div class="gate-stage">
-
-                        <!-- tiang -->
-                        <div class="gate-pillar pillar-left"></div>
-                        <div class="gate-pillar pillar-right"></div>
-
-                        <!-- cahaya -->
-                        <div class="gate-light-core"></div>
-                        <div class="gate-light-floor"></div>
-
-                        <!-- pintu kiri -->
-                        <div class="gate-door gate-left">
-                            <div class="gate-inner-panel"></div>
+                        <div class="latihan-step-box latihan-step-item" data-answer="9x^2-4x+7-2x^2-3x+5">
+                            <div class="latihan-step-title">Langkah 1: Buka kurung</div>
+                            <div class="latihan-step-help">
+                                Ubah semua tanda pada polinomial kedua karena ada minus di depan kurung.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
                         </div>
 
-                        <!-- pintu kanan -->
-                        <div class="gate-door gate-right">
-                            <div class="gate-inner-panel"></div>
+                        <div class="latihan-step-box latihan-step-item" data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
+                            <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
+                            <div class="latihan-step-help">
+                                Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
                         </div>
 
-                    </div>
-
-                    <!-- TROPHY -->
-                    <div class="victory-trophy">
-                        🏆
-                    </div>
-
-                </div>
-
-                <!-- TEXT -->
-                <div class="victory-content">
-
-                    <div class="victory-title">
-                        Gerbang Polinomial Berhasil Dibuka!
-                    </div>
-
-                    <div class="victory-text">
-                        Hebat! Kamu sudah menyelesaikan tantangan pengurangan polinomial dengan benar.
-                    </div>
-
-                    <div class="victory-answer-card">
-
-                        <div class="victory-answer-label">
-                            Hasil Akhir
-                        </div>
-
-                        <div class="victory-formula">
-                            $$
-                            (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                            = 2x^3 - 3x^2 + 6x + 11
-                            $$
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        {{-- LATIHAN --}}
-        <div class="contoh-wrap">
-            <div class="contoh-pill">LATIHAN</div>
-
-            <p class="contoh-desc">
-                Kerjakan latihan berikut langkah demi langkah. Isi jawaban pada setiap tahap, lalu cek hasilnya.
-            </p>
-
-            <div class="latihan-grid" id="latihan-grid">
-                {{-- LATIHAN A --}}
-                <div class="latihan-card">
-                    <div class="latihan-badge">A</div>
-                    <div class="latihan-title">Tentukan hasil dari:</div>
-                    <div class="rumus-box">
-                        $$(9x^2 - 4x + 7) - (2x^2 + 3x - 5)$$
-                    </div>
-
-                    <div class="latihan-step-box latihan-step-item" data-answer="9x^2-4x+7-2x^2-3x+5">
-                        <div class="latihan-step-title">Langkah 1: Buka kurung</div>
-                        <div class="latihan-step-help">
-                            Ubah semua tanda pada polinomial kedua karena ada minus di depan kurung.
-                        </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
+                        <div class="latihan-step-box latihan-step-item" data-answer="7x^2-7x+12">
+                            <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
+                            <div class="latihan-step-help">
+                                Hitung tiap kelompok, lalu tulis hasil polinomial akhirnya.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="latihan-step-box latihan-step-item" data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
-                        <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
-                        <div class="latihan-step-help">
-                            Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta.
-                        </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
-                        </div>
-                    </div>
+                    <div class="latihan-card">
+                        <div class="latihan-badge">B</div>
+                        <div class="latihan-title">Tentukan hasil dari:</div>
 
-                    <div class="latihan-step-box latihan-step-item" data-answer="7x^2-7x+12">
-                        <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
-                        <div class="latihan-step-help">
-                            Hitung tiap kelompok, lalu tulis hasil polinomial akhirnya.
+                        <div class="rumus-box">
+                            $$(5y^3 + y - 8) - (2y^3 - 4y + 1)$$
                         </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
+
+                        <div class="latihan-step-box latihan-step-item" data-answer="5y^3+y-8-2y^3+4y-1">
+                            <div class="latihan-step-title">Langkah 1: Buka kurung</div>
+                            <div class="latihan-step-help">
+                                Balik semua tanda di dalam kurung kedua.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
+                        </div>
+
+                        <div class="latihan-step-box latihan-step-item" data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
+                            <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
+                            <div class="latihan-step-help">
+                                Kelompokkan suku $y^3$, suku $y$, dan konstanta.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
+                        </div>
+
+                        <div class="latihan-step-box latihan-step-item" data-answer="3y^3+5y-9">
+                            <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
+                            <div class="latihan-step-help">
+                                Hitung semua kelompok, lalu tulis hasil akhirnya.
+                            </div>
+                            <input type="text" class="latihan-input" placeholder="">
+                            <div class="latihan-actions">
+                                <button type="button" class="latihan-check">Cek</button>
+                                <button type="button" class="latihan-reset">Reset</button>
+                                <span class="latihan-feedback"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- LATIHAN B --}}
-                <div class="latihan-card">
-                    <div class="latihan-badge">B</div>
-                    <div class="latihan-title">Tentukan hasil dari:</div>
-                    <div class="rumus-box">
-                        $$(5y^3 + y - 8) - (2y^3 - 4y + 1)$$
-                    </div>
-
-                    <div class="latihan-step-box latihan-step-item" data-answer="5y^3+y-8-2y^3+4y-1">
-                        <div class="latihan-step-title">Langkah 1: Buka kurung</div>
-                        <div class="latihan-step-help">
-                            Balik semua tanda di dalam kurung kedua.
-                        </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
-                        </div>
-                    </div>
-
-                    <div class="latihan-step-box latihan-step-item" data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
-                        <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
-                        <div class="latihan-step-help">
-                            Kelompokkan suku $y^3$, suku $y$, dan konstanta.
-                        </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
-                        </div>
-                    </div>
-
-                    <div class="latihan-step-box latihan-step-item" data-answer="3y^3+5y-9">
-                        <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
-                        <div class="latihan-step-help">
-                            Hitung semua kelompok, lalu tulis hasil akhirnya.
-                        </div>
-                        <input type="text" class="latihan-input" placeholder="">
-                        <div class="latihan-actions">
-                            <button type="button" class="latihan-check">Cek</button>
-                            <button type="button" class="latihan-reset">Reset</button>
-                            <span class="latihan-feedback"></span>
-                        </div>
-                    </div>
+                <div class="latihan-global-actions">
+                    <button type="button" id="latihan-check-all" class="latihan-checkall">Cek Semua</button>
+                    <span id="latihan-summary" class="latihan-summary"></span>
                 </div>
-            </div>
 
-            <div class="latihan-global-actions">
-                <button type="button" id="latihan-check-all" class="latihan-checkall">Cek Semua</button>
-                <span id="latihan-summary" class="latihan-summary"></span>
-            </div>
-
-            <div id="latihan-final-message" class="final-message">
-                ✅ Bagus! Semua langkah pada latihan A dan B sudah benar.
+                <div id="latihan-final-message" class="final-message">
+                    ✅ Bagus! Semua langkah pada latihan A dan B sudah benar.
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <script>
@@ -2304,10 +2225,10 @@
             {
                 name: "Gerbang 1 — Buka Kurung",
                 prompt: `
-                    $$
-                    (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                    $$
-                `,
+                        $$
+                        (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                        $$
+                    `,
                 dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                 hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                 answers: [
@@ -2321,10 +2242,10 @@
             {
                 name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                 prompt: `
-                    $$
-                    5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                    $$
-                `,
+                        $$
+                        5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                        $$
+                    `,
                 dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                 hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                 answers: [
@@ -2336,10 +2257,10 @@
             {
                 name: "Gerbang 3 — Sederhanakan",
                 prompt: `
-                    $$
-                    (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                    $$
-                `,
+                        $$
+                        (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                        $$
+                    `,
                 dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                 hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                 answers: [

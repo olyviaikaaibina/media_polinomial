@@ -1372,7 +1372,6 @@
             <div class="tip-board" id="tipBoard">
                 <div class="tip-head">
                     <div class="tip-label">💡 Trik Cepat</div>
-                    <button type="button" class="tip-btn" id="tipFlashBtn">Ingatkan Saya</button>
                 </div>
 
                 <div class="tip-student-wrap">

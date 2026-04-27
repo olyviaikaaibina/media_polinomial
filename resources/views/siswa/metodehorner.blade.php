@@ -1594,6 +1594,41 @@
         .info-box.orange {
             margin-bottom: 8px !important;
         }
+
+        .soal-terkunci {
+            opacity: 0.4;
+            filter: grayscale(40%);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .soal-terkunci input {
+            background: #eee;
+        }
+
+        .latihan-feedback.success {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .latihan-feedback.error {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .pilihan-btn.selected {
+            outline: 3px solid #8aa376;
+        }
+
+        .input-benar {
+            border: 2px solid green;
+            background: #e8f5e9;
+        }
+
+        .input-salah {
+            border: 2px solid red;
+            background: #ffebee;
+        }
     </style>
 
     <div class="materi-wrapper">
@@ -2125,6 +2160,7 @@
             <div class="latihan-card">
                 <div class="latihan-badge">LATIHAN</div>
 
+                <!-- ================= SOAL 1 ================= -->
                 <div class="latihan-item" id="latihanSoal1">
                     <div class="latihan-soal-title">1. Tentukan hasil bagi dan sisa:</div>
                     <div class="latihan-rumus">(4x³ + 3x² − 5x + 2) ÷ (x − 2)</div>
@@ -2141,15 +2177,12 @@
                     <div class="latihan-box">
                         <div class="latihan-box-title">2. Koefisien polinomial</div>
                         <div class="pilihan-wrap" data-group="s1koef">
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,5,2')">
-                                4, 3, 5, 2
-                            </button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,-5,2')">
-                                4, 3, -5, 2
-                            </button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,-3,-5,2')">
-                                4, -3, -5, 2
-                            </button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,5,2')">4,
+                                3, 5, 2</button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,-5,2')">4,
+                                3, -5, 2</button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,-3,-5,2')">4,
+                                -3, -5, 2</button>
                         </div>
                     </div>
 
@@ -2168,15 +2201,12 @@
                     <div class="latihan-box">
                         <div class="latihan-box-title">4. Hasil proses Horner</div>
                         <div class="pilihan-wrap" data-group="s1proses">
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,10,15')">
-                                4 → 10 → 15
-                            </button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,11,17')">
-                                4 → 11 → 17
-                            </button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,8,16')">
-                                4 → 8 → 16
-                            </button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,10,15')">4
+                                → 10 → 15</button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,11,17')">4
+                                → 11 → 17</button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,8,16')">4 →
+                                8 → 16</button>
                         </div>
                     </div>
 
@@ -2198,6 +2228,11 @@
                         </div>
                     </div>
 
+                    <!-- tombol cek no 1 -->
+                    <div style="margin-top: 14px; text-align: center;">
+                        <button class="btn-langkah" onclick="cekLatihan1()">Cek Jawaban No. 1</button>
+                    </div>
+
                     <div id="latihanFeedback1" class="latihan-feedback"></div>
 
                     <div id="latihanPenjelasan1" class="latihan-penjelasan">
@@ -2210,7 +2245,8 @@
                     </div>
                 </div>
 
-                <div class="latihan-item" id="latihanSoal2">
+                <!-- ================= SOAL 2 ================= -->
+                <div class="latihan-item soal-terkunci" id="latihanSoal2">
                     <div class="latihan-soal-title">
                         2. Lengkapi tabel Horner berikut untuk menentukan hasil bagi dan sisa:
                     </div>
@@ -2218,7 +2254,7 @@
 
                     <div class="latihan-box">
                         <div class="latihan-box-title">
-                            Isi kotak-kotak pada tabel Horner berikut, lalu klik tombol cek jawaban.
+                            Isi kotak-kotak pada tabel Horner berikut.
                         </div>
 
                         <div class="latihan-horner-wrap">
@@ -2233,18 +2269,18 @@
                                 </div>
 
                                 <div class="latihan-horner-mid">
-                                    <span class="latihan-horner-empty"></span>
-                                    <input id="s2m1" class="latihan-horner-input">
-                                    <input id="s2m2" class="latihan-horner-input">
-                                    <input id="s2m3" class="latihan-horner-input">
-                                    <span class="latihan-horner-plus">+</span>
+                                    <span></span>
+                                    <input id="s2m1" disabled>
+                                    <input id="s2m2" disabled>
+                                    <input id="s2m3" disabled>
+                                    <span>+</span>
                                 </div>
 
                                 <div class="latihan-horner-bottom">
-                                    <span class="latihan-horner-bold">2</span>
-                                    <input id="s2b1" class="latihan-horner-input">
-                                    <input id="s2b2" class="latihan-horner-input">
-                                    <input id="s2b3" class="latihan-horner-input">
+                                    <span>2</span>
+                                    <input id="s2b1" disabled>
+                                    <input id="s2b2" disabled>
+                                    <input id="s2b3" disabled>
                                 </div>
                             </div>
                         </div>
@@ -2253,40 +2289,38 @@
                     <div class="latihan-box">
                         <div class="latihan-box-title">Hasil akhir</div>
 
-                        <div class="input-row">
-                            <span>Q(x) =</span>
-                            <input id="s2q1" class="kecil-input">
-                            <span>x² +</span>
-                            <input id="s2q2" class="kecil-input">
-                            <span>x +</span>
-                            <input id="s2q3" class="kecil-input">
+                        <div>
+                            Q(x) =
+                            <input id="s2q1" disabled> x² +
+                            <input id="s2q2" disabled> x +
+                            <input id="s2q3" disabled>
                         </div>
 
-                        <div class="input-row">
-                            <span>Sisa =</span>
-                            <input id="s2sisa" class="kecil-input">
+                        <div>
+                            Sisa =
+                            <input id="s2sisa" disabled>
                         </div>
                     </div>
 
-                    <div id="latihanFeedback2" class="latihan-feedback"></div>
+                    <!-- tombol cek no 2 -->
+                    <div style="margin-top: 14px; text-align: center;">
+                        <button class="btn-langkah" id="btnCekLatihan2" onclick="cekLatihan2()" disabled>
+                            Cek Jawaban No. 2
+                        </button>
+                    </div>
+
+                    <div id="latihanFeedback2" class="latihan-feedback">
+                        Jawab soal nomor 1 dengan benar terlebih dahulu.
+                    </div>
 
                     <div id="latihanPenjelasan2" class="latihan-penjelasan">
                         <strong>Penjelasan Soal 2:</strong><br>
-                        Nilai <strong>k = 2</strong> karena pembaginya <strong>(x − 2)</strong>.<br>
-                        Koefisien polinomial adalah <strong>2, -1, 4, -8</strong>.<br>
-                        Baris tengah tabel Horner diisi <strong>4, 6, 20</strong>.<br>
-                        Baris bawah menjadi <strong>2, 3, 10, 12</strong>.<br>
-                        Jadi hasil bagi <strong>Q(x) = 2x² + 3x + 10</strong> dan sisanya <strong>12</strong>.
+                        Q(x) = 2x² + 3x + 10, sisa = 12
                     </div>
                 </div>
 
-                <div style="margin-top: 14px; text-align: center;">
-                    <button class="btn-langkah" onclick="cekSemuaLatihan()">Cek Jawaban</button>
-                </div>
-
                 <div id="latihanFinalNote" class="latihan-final-note">
-                    Bagus! Kedua soal sudah benar. Sekarang soal nomor 1 dan nomor 2 tetap tampil beserta penjelasannya
-                    sehingga bisa dipelajari kembali.
+                    Bagus! Kedua soal sudah benar.
                 </div>
             </div>
         </div>
@@ -2295,6 +2329,7 @@
     <script>
         let jawabanBenar = false;
         let eksplorasiSelesai = false;
+        let soal1Benar = false;
 
         const latihanJawaban = {
             s1k: '',
@@ -2489,6 +2524,7 @@
 
         function cekStep1() {
             const v = document.getElementById('k')?.value.trim();
+
             if (v === '1') {
                 tampilBenar('fb1', 'penjelasan1', 'Benar, nilai k sudah tepat.');
                 kunciStepLama(1);
@@ -2515,6 +2551,7 @@
 
         function cekStep3() {
             const v = document.getElementById('t1')?.value.trim();
+
             if (v === '3') {
                 tampilBenar('fb3', 'penjelasan3', 'Benar, koefisien pertama langsung diturunkan.');
                 kunciStepLama(3);
@@ -2560,8 +2597,14 @@
             const t65 = document.getElementById('t65')?.value.trim();
             const t66 = document.getElementById('t66')?.value.trim();
 
-            if (t61 === '3' && t62 === '8' && t63 === '6' &&
-                t64 === '8' && t65 === '6' && t66 === '7') {
+            if (
+                t61 === '3' &&
+                t62 === '8' &&
+                t63 === '6' &&
+                t64 === '8' &&
+                t65 === '6' &&
+                t66 === '7'
+            ) {
                 tampilBenar('fb6', 'penjelasan6', 'Benar, tabel Horner sudah lengkap.');
                 kunciStepLama(6);
                 bukaStep(7);
@@ -2580,9 +2623,13 @@
             const qx3 = document.getElementById('qx3')?.value.trim();
 
             if (
-                h1 === '3' && h2 === '8' && h3 === '6' &&
+                h1 === '3' &&
+                h2 === '8' &&
+                h3 === '6' &&
                 sisa === '7' &&
-                qx1 === '3' && qx2 === '8' && qx3 === '6'
+                qx1 === '3' &&
+                qx2 === '8' &&
+                qx3 === '6'
             ) {
                 tampilBenar('fb7', 'penjelasan7', 'Hebat, hasil bagi dan sisa sudah benar.');
             } else {
@@ -2629,6 +2676,7 @@
 
             wrapper.querySelectorAll('.pilihan-btn').forEach(btn => {
                 btn.classList.remove('correct', 'wrong');
+
                 const onclickText = btn.getAttribute('onclick') || '';
                 const isCorrectButton = onclickText.includes(`'${jawabanBenarValue}'`);
 
@@ -2653,6 +2701,46 @@
                     btn.classList.add('wrong');
                 }
             });
+        }
+
+        function bukaSoal2() {
+            soal1Benar = true;
+
+            const soal2 = document.getElementById('latihanSoal2');
+            if (soal2) soal2.classList.remove('soal-terkunci');
+
+            document.querySelectorAll('#latihanSoal2 input').forEach(input => {
+                input.disabled = false;
+            });
+
+            const btn2 = document.getElementById('btnCekLatihan2');
+            if (btn2) btn2.disabled = false;
+
+            const feedback2 = document.getElementById('latihanFeedback2');
+            if (feedback2) {
+                feedback2.innerHTML = 'Soal nomor 2 sudah terbuka. Silakan kerjakan.';
+                feedback2.className = 'latihan-feedback success';
+            }
+        }
+
+        function kunciSoal2() {
+            soal1Benar = false;
+
+            const soal2 = document.getElementById('latihanSoal2');
+            if (soal2) soal2.classList.add('soal-terkunci');
+
+            document.querySelectorAll('#latihanSoal2 input').forEach(input => {
+                input.disabled = true;
+            });
+
+            const btn2 = document.getElementById('btnCekLatihan2');
+            if (btn2) btn2.disabled = true;
+
+            const feedback2 = document.getElementById('latihanFeedback2');
+            if (feedback2) {
+                feedback2.innerHTML = 'Jawab soal nomor 1 dengan benar terlebih dahulu.';
+                feedback2.className = 'latihan-feedback error';
+            }
         }
 
         function cekLatihan1() {
@@ -2681,25 +2769,31 @@
                 tandaiSemuaBenar('s1proses', '4,11,17');
                 tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
 
-                feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai.';
+                feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai. Soal nomor 2 sekarang terbuka.';
                 feedback.className = 'latihan-feedback success';
                 penjelasan.style.display = 'block';
-                return true;
-            } else {
-                tandaiYangDipilihSalah('s1k', '2');
-                tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
-                tandaiYangDipilihSalah('s1turun', '4');
-                tandaiYangDipilihSalah('s1proses', '4,11,17');
-                tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
 
-                feedback.innerHTML = 'Masih ada pilihan yang salah pada soal nomor 1.';
-                feedback.className = 'latihan-feedback error';
-                penjelasan.style.display = 'none';
-                return false;
+                bukaSoal2();
+                return true;
             }
+
+            tandaiYangDipilihSalah('s1k', '2');
+            tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
+            tandaiYangDipilihSalah('s1turun', '4');
+            tandaiYangDipilihSalah('s1proses', '4,11,17');
+            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
+
+            feedback.innerHTML = 'Masih ada pilihan yang salah pada soal nomor 1.';
+            feedback.className = 'latihan-feedback error';
+            penjelasan.style.display = 'none';
+
+            kunciSoal2();
+            return false;
         }
 
         function cekRealtimeLatihan2() {
+            if (!soal1Benar) return;
+
             const data = [
                 { id: 's2m1', benar: '4' },
                 { id: 's2m2', benar: '6' },
@@ -2727,75 +2821,90 @@
         }
 
         function cekLatihan2() {
-            const s2m1 = document.getElementById('s2m1');
-            const s2m2 = document.getElementById('s2m2');
-            const s2m3 = document.getElementById('s2m3');
-            const s2b1 = document.getElementById('s2b1');
-            const s2b2 = document.getElementById('s2b2');
-            const s2b3 = document.getElementById('s2b3');
-            const s2q1 = document.getElementById('s2q1');
-            const s2q2 = document.getElementById('s2q2');
-            const s2q3 = document.getElementById('s2q3');
-            const s2sisa = document.getElementById('s2sisa');
-
             const feedback = document.getElementById('latihanFeedback2');
             const penjelasan = document.getElementById('latihanPenjelasan2');
+            const finalNote = document.getElementById('latihanFinalNote');
 
-            if (!s2m1 || !s2m2 || !s2m3 || !s2b1 || !s2b2 || !s2b3 || !s2q1 || !s2q2 || !s2q3 || !s2sisa || !feedback || !penjelasan) {
+            if (!soal1Benar) {
+                if (feedback) {
+                    feedback.innerHTML = 'Jawab soal nomor 1 dengan benar terlebih dahulu.';
+                    feedback.className = 'latihan-feedback error';
+                }
+
+                if (penjelasan) penjelasan.style.display = 'none';
+                if (finalNote) finalNote.style.display = 'none';
+
+                kunciSoal2();
                 return false;
             }
 
-            const c1 = s2m1.value.trim() === '4';
-            const c2 = s2m2.value.trim() === '6';
-            const c3 = s2m3.value.trim() === '20';
-            const c4 = s2b1.value.trim() === '3';
-            const c5 = s2b2.value.trim() === '10';
-            const c6 = s2b3.value.trim() === '12';
-            const c7 = s2q1.value.trim() === '2';
-            const c8 = s2q2.value.trim() === '3';
-            const c9 = s2q3.value.trim() === '10';
-            const c10 = s2sisa.value.trim() === '12';
+            const data = [
+                { id: 's2m1', benar: '4' },
+                { id: 's2m2', benar: '6' },
+                { id: 's2m3', benar: '20' },
+                { id: 's2b1', benar: '3' },
+                { id: 's2b2', benar: '10' },
+                { id: 's2b3', benar: '12' },
+                { id: 's2q1', benar: '2' },
+                { id: 's2q2', benar: '3' },
+                { id: 's2q3', benar: '10' },
+                { id: 's2sisa', benar: '12' }
+            ];
 
-            setStatusInput(s2m1, c1);
-            setStatusInput(s2m2, c2);
-            setStatusInput(s2m3, c3);
-            setStatusInput(s2b1, c4);
-            setStatusInput(s2b2, c5);
-            setStatusInput(s2b3, c6);
-            setStatusInput(s2q1, c7);
-            setStatusInput(s2q2, c8);
-            setStatusInput(s2q3, c9);
-            setStatusInput(s2sisa, c10);
+            let semuaBenar = true;
 
-            if (c1 && c2 && c3 && c4 && c5 && c6 && c7 && c8 && c9 && c10) {
+            data.forEach(item => {
+                const input = document.getElementById(item.id);
+                if (!input) {
+                    semuaBenar = false;
+                    return;
+                }
+
+                const benar = input.value.trim() === item.benar;
+                setStatusInput(input, benar);
+
+                if (!benar) semuaBenar = false;
+            });
+
+            if (!feedback || !penjelasan) return false;
+
+            if (semuaBenar) {
                 feedback.innerHTML = 'Benar. Soal nomor 2 sudah selesai.';
                 feedback.className = 'latihan-feedback success';
                 penjelasan.style.display = 'block';
+
+                if (finalNote) finalNote.style.display = 'block';
+
                 return true;
-            } else {
-                feedback.innerHTML = 'Masih ada isian yang salah pada soal nomor 2.';
-                feedback.className = 'latihan-feedback error';
-                penjelasan.style.display = 'none';
-                return false;
             }
+
+            feedback.innerHTML = 'Masih ada isian yang salah pada soal nomor 2.';
+            feedback.className = 'latihan-feedback error';
+            penjelasan.style.display = 'none';
+
+            if (finalNote) finalNote.style.display = 'none';
+
+            return false;
         }
 
         function cekSemuaLatihan() {
             const benar1 = cekLatihan1();
-            const benar2 = cekLatihan2();
 
             const finalNote = document.getElementById('latihanFinalNote');
-            if (!finalNote) return;
+            if (finalNote) finalNote.style.display = 'none';
 
-            if (benar1 && benar2) {
-                finalNote.style.display = 'block';
-            } else {
-                finalNote.style.display = 'none';
+            if (!benar1) return;
+
+            const benar2 = cekLatihan2();
+
+            if (finalNote) {
+                finalNote.style.display = benar1 && benar2 ? 'block' : 'none';
             }
         }
 
         function cekInputKosong(el) {
             if (!el) return;
+
             el.value = '';
             el.classList.remove('input-benar', 'input-salah');
         }
@@ -2814,6 +2923,9 @@
             if (feedback) feedback.innerHTML = '';
             if (penjelasan) penjelasan.style.display = 'none';
             if (finalNote) finalNote.style.display = 'none';
+
+            ulangiLatihan2();
+            kunciSoal2();
         }
 
         function ulangiLatihan2() {
@@ -2827,9 +2939,11 @@
             const penjelasan = document.getElementById('latihanPenjelasan2');
             const finalNote = document.getElementById('latihanFinalNote');
 
-            if (feedback) feedback.innerHTML = '';
+            if (feedback) feedback.innerHTML = soal1Benar ? '' : 'Jawab soal nomor 1 dengan benar terlebih dahulu.';
             if (penjelasan) penjelasan.style.display = 'none';
             if (finalNote) finalNote.style.display = 'none';
+
+            if (!soal1Benar) kunciSoal2();
         }
 
         function showHornerInfo(el, text) {
@@ -2882,6 +2996,16 @@
             showHornerStep(0);
             pasangAutoCheckEksplorasi();
 
+            const penjelasan1 = document.getElementById('latihanPenjelasan1');
+            const penjelasan2 = document.getElementById('latihanPenjelasan2');
+            const finalNote = document.getElementById('latihanFinalNote');
+
+            if (penjelasan1) penjelasan1.style.display = 'none';
+            if (penjelasan2) penjelasan2.style.display = 'none';
+            if (finalNote) finalNote.style.display = 'none';
+
+            kunciSoal2();
+
             const latihan2Ids = ['s2m1', 's2m2', 's2m3', 's2b1', 's2b2', 's2b3', 's2q1', 's2q2', 's2q3', 's2sisa'];
 
             latihan2Ids.forEach(id => {
@@ -2896,11 +3020,11 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('pembagianbersusun') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+<a href="{{ route('pembagianbersusun') }}" class="btn-nav prev-btn">
+    ← Previous
+</a>
 
-    <a href="{{ route('teoremasisa') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+<a href="{{ route('teoremasisa') }}" class="btn-nav next-btn">
+    Next →
+</a>
 @endsection

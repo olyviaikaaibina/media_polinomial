@@ -1914,11 +1914,11 @@
                 <div class="latihan-header">
                     <h3 class="latihan-card-title">Latihan Soal</h3>
                     <p class="latihan-card-subtitle">
-                        Kerjakan dua soal berikut dalam satu card latihan interaktif.
+                        Kerjakan Soal 1 terlebih dahulu. Soal 2 akan terbuka setelah Soal 1 dijawab dengan benar.
                     </p>
                 </div>
 
-                <div class="latihan-item">
+                <div class="latihan-item" id="soal1Item">
                     <div class="latihan-item-title">Soal 1 — Teorema Sisa</div>
                     <p class="latihan-card-subtitle">
                         Tentukan sisa pembagian berikut menggunakan Teorema Sisa.
@@ -1946,7 +1946,7 @@
                         <div id="soal1Penjelasan1" class="latihan-penjelasan"></div>
                     </div>
 
-                    <div class="latihan-step-card-modern locked-step" id="soal1Step2">
+                    <div class="latihan-step-card-modern" id="soal1Step2">
                         <div class="latihan-step-modern-title">Langkah 2 — Hitung nilai P(3)</div>
                         <p class="contoh-text">
                             Karena <strong>c = 3</strong>, hitung nilai berikut:
@@ -1967,11 +1967,11 @@
                         <div id="soal1Penjelasan2" class="latihan-penjelasan"></div>
                     </div>
 
-                    <div class="latihan-step-card-modern locked-step" id="soal1Step3">
+                    <div class="latihan-step-card-modern" id="soal1Step3">
                         <div class="latihan-step-modern-title">Langkah 3 — Kesimpulan sisa pembagian</div>
                         <p class="contoh-text">
-                            Karena sisa pembagian oleh <em>(x − 3)</em> adalah <em>P(3)</em>, maka sisa pembagiannya adalah
-                            ...
+                            Karena sisa pembagian oleh <em>(x − 3)</em> adalah <em>P(3)</em>,
+                            maka sisa pembagiannya adalah ...
                         </p>
 
                         <div class="pilihan-jawaban-wrap">
@@ -1992,7 +1992,9 @@
                         </p>
 
                         <div class="hitung-box">
-                            <div class="hitung-line"><em>P(3) = 6(3<sup>3</sup>) − 5(3<sup>2</sup>) + 2(3) − 20</em></div>
+                            <div class="hitung-line">
+                                <em>P(3) = 6(3<sup>3</sup>) − 5(3<sup>2</sup>) + 2(3) − 20</em>
+                            </div>
                             <div class="hitung-line"><em>= 6(27) − 5(9) + 6 − 20</em></div>
                             <div class="hitung-line"><em>= 162 − 45 + 6 − 20</em></div>
                             <div class="hitung-line"><strong><em>= 103</em></strong></div>
@@ -2004,10 +2006,10 @@
                     </div>
                 </div>
 
-                <div class="latihan-item">
+                <div class="latihan-item locked-step" id="soal2Item">
                     <div class="latihan-item-title">Soal 2 — Metode Horner</div>
                     <p class="latihan-card-subtitle">
-                        Gunakan Metode Horner untuk menentukan sisa pembagian berikut.
+                        Soal ini terbuka setelah Soal 1 dijawab dengan benar.
                     </p>
 
                     <div class="rumus-soal">
@@ -2032,7 +2034,7 @@
                         <div id="soal2Penjelasan1" class="latihan-penjelasan"></div>
                     </div>
 
-                    <div class="latihan-step-card-modern locked-step" id="soal2Step2">
+                    <div class="latihan-step-card-modern" id="soal2Step2">
                         <div class="latihan-step-modern-title">Langkah 2 — Lengkapi koefisien polinomial</div>
                         <p class="contoh-text">
                             Karena ada suku yang hilang, koefisien lengkap dari
@@ -2055,7 +2057,7 @@
                         <div id="soal2Penjelasan2" class="latihan-penjelasan"></div>
                     </div>
 
-                    <div class="latihan-step-card-modern locked-step" id="soal2Step3">
+                    <div class="latihan-step-card-modern" id="soal2Step3">
                         <div class="latihan-step-modern-title">Langkah 3 — Lengkapi Tabel Horner</div>
                         <p class="contoh-text">
                             Lengkapi tabel Horner berikut untuk menentukan sisa pembagian oleh <em>(x − 1)</em>.
@@ -2137,8 +2139,7 @@
 
                         <p class="contoh-text">
                             Angka terakhir pada tabel Horner adalah <strong>1</strong>, sehingga sisa pembagian polinomial
-                            tersebut
-                            adalah
+                            tersebut adalah
                             <strong>1</strong>.
                         </p>
                     </div>
@@ -2151,6 +2152,10 @@
         let langkahTerbuka = 0;
         let materiEksplorasiSudahTerbuka = false;
 
+        let soal1Step1Benar = false;
+        let soal1Step2Benar = false;
+        let soal1Step3Benar = false;
+
         function normalisasiInput(text) {
             return (text || '')
                 .toString()
@@ -2161,12 +2166,7 @@
         }
 
         function normalizeAnswer(text) {
-            return (text || '')
-                .toString()
-                .trim()
-                .toLowerCase()
-                .replace(/\s+/g, '')
-                .replace(/−/g, '-');
+            return normalisasiInput(text);
         }
 
         function semuaEksplorasiTerisi() {
@@ -2183,20 +2183,30 @@
             const notice = document.getElementById('materiTerkunciNotice');
             const wrapper = document.getElementById('materiLanjutanWrapper');
 
-            if (!statusBox || !notice || !wrapper) return;
+            if (!wrapper) return;
 
             if (semuaEksplorasiTerisi()) {
-                statusBox.classList.add('complete');
-                statusBox.innerHTML = 'Semua soal eksplorasi sudah terisi. Materi lanjutan telah dibuka kembali.';
+                if (statusBox) {
+                    statusBox.classList.add('complete');
+                    statusBox.innerHTML = 'Semua soal eksplorasi sudah terisi. Materi lanjutan telah dibuka kembali.';
+                }
 
-                notice.style.display = 'none';
+                if (notice) {
+                    notice.style.display = 'none';
+                }
+
                 wrapper.classList.add('show');
                 materiEksplorasiSudahTerbuka = true;
             } else {
-                statusBox.classList.remove('complete');
-                statusBox.innerHTML = 'Isi semua jawaban pada Aktivitas 1 dan Aktivitas 2 terlebih dahulu. Setelah semua terisi, materi selanjutnya akan terbuka otomatis.';
+                if (statusBox) {
+                    statusBox.classList.remove('complete');
+                    statusBox.innerHTML = 'Isi semua jawaban pada Aktivitas 1 dan Aktivitas 2 terlebih dahulu. Setelah semua terisi, materi selanjutnya akan terbuka otomatis.';
+                }
 
-                notice.style.display = 'block';
+                if (notice) {
+                    notice.style.display = 'block';
+                }
+
                 wrapper.classList.remove('show');
                 materiEksplorasiSudahTerbuka = false;
             }
@@ -2227,28 +2237,28 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Nilai yang kamu hitung sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                            <br><br>
-                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                            <br>
-                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                            <br><br>
-                                            Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        `;
+                    Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                    <br><br>
+                    <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                    <br>
+                    <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                    <br><br>
+                    Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                            <br><br>
-                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                            <br>
-                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                            <br><br>
-                                            Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        `;
+                    Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                    <br><br>
+                    <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                    <br>
+                    <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                    <br><br>
+                    Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                `;
                 penjelasan.classList.add('show');
             }
 
@@ -2280,35 +2290,35 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Dugaan sisamu sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                            Dari Aktivitas 1 diperoleh:
-                                            <br><br>
-                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                            <br><br>
-                                            Maka:
-                                            <ul class="eksplorasi-list">
-                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
-                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
-                                            </ul>
-                                            Jadi jawaban yang benar adalah:
-                                            <br>
-                                            <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
-                                        `;
+                    Dari Aktivitas 1 diperoleh:
+                    <br><br>
+                    <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                    <br><br>
+                    Maka:
+                    <ul class="eksplorasi-list">
+                        <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
+                        <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
+                    </ul>
+                    Jadi jawaban yang benar adalah:
+                    <br>
+                    <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
+                `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                            Gunakan hasil Aktivitas 1:
-                                            <br><br>
-                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                            <br><br>
-                                            Maka jawaban yang benar adalah:
-                                            <ul class="eksplorasi-list">
-                                                <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
-                                                <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
-                                            </ul>
-                                        `;
+                    Gunakan hasil Aktivitas 1:
+                    <br><br>
+                    <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                    <br><br>
+                    Maka jawaban yang benar adalah:
+                    <ul class="eksplorasi-list">
+                        <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
+                        <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
+                    </ul>
+                `;
                 penjelasan.classList.add('show');
             }
 
@@ -2404,38 +2414,31 @@
 
             if (id === 1) {
                 box.innerHTML = `
-                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                                            Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                                            <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                                            <div class="rumus-penjelasan">Sisa = P(2)</div>
-                                            Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                                            cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                                        `;
+                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                    Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                    <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                    <div class="rumus-penjelasan">Sisa = P(2)</div>
+                    Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                    cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+                `;
             } else if (id === 2) {
                 box.innerHTML = `
-                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                                            Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                                            <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                                            <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                                            Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                                            disubstitusikan ke polinomial justru <strong>−3</strong>.
-                                        `;
+                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                    Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                    <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                    <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                    Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                    disubstitusikan ke polinomial justru <strong>−3</strong>.
+                `;
             } else if (id === 3) {
                 box.innerHTML = `
-                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                                            Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                                            Maka sisanya diperoleh dari
-                                            <div class="rumus-penjelasan">Sisa = P(0)</div>
-                                            Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                                            sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                                        `;
-            }
-        }
-
-        function bukaStep(stepNumber) {
-            const step = document.getElementById('stepCard' + stepNumber);
-            if (step) {
-                step.classList.remove('locked-step');
+                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                    Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                    Maka sisanya diperoleh dari
+                    <div class="rumus-penjelasan">Sisa = P(0)</div>
+                    Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                    sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+                `;
             }
         }
 
@@ -2478,7 +2481,6 @@
                     'Nilai c sudah tepat.',
                     'Pembagi <em>(x − 3)</em> dibandingkan dengan bentuk umum <em>(x − c)</em>. Dari sini terlihat bahwa <strong>c = 3</strong>. Jadi, langkah pertama adalah mengenali nilai yang ada setelah tanda minus pada pembagi.'
                 );
-                bukaStep(2);
             } else {
                 tampilkanSalah(
                     'feedbackStep1',
@@ -2502,7 +2504,6 @@
                     'Bentuk substitusi sudah benar.',
                     'Karena <strong>c = 3</strong>, maka menurut Teorema Sisa kita harus menghitung <strong>P(3)</strong>. Artinya, setiap <em>x</em> pada polinomial diganti dengan <em>3</em>.'
                 );
-                bukaStep(3);
             } else {
                 tampilkanSalah(
                     'feedbackStep2',
@@ -2526,7 +2527,6 @@
                     'Perhitunganmu benar.',
                     'Nilai <em>P(3)</em> dihitung sebagai <em>3<sup>3</sup> − 4(3) + 8 = 27 − 12 + 8 = 23</em>. Jadi hasil substitusi polinomial pada <em>x = 3</em> adalah <strong>23</strong>.'
                 );
-                bukaStep(4);
             } else {
                 tampilkanSalah(
                     'feedbackStep3',
@@ -2563,13 +2563,6 @@
             }
         }
 
-        function unlockCardStep(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove('locked-step');
-            }
-        }
-
         function setFeedback(feedbackId, penjelasanId, isBenar, feedbackText, penjelasanText = '') {
             const feedback = document.getElementById(feedbackId);
             const penjelasan = document.getElementById(penjelasanId);
@@ -2588,14 +2581,52 @@
             if (!parent) return;
 
             const allBtns = parent.querySelectorAll('.opsi-btn');
-            allBtns.forEach(btn => btn.classList.remove('active-benar', 'active-salah'));
+            allBtns.forEach(btn => {
+                btn.classList.remove('active-benar', 'active-salah', 'opsi-benar', 'opsi-salah');
+            });
 
             button.classList.add(benar ? 'active-benar' : 'active-salah');
         }
 
+        function bukaSoal2JikaSoal1Benar() {
+            const finalBox = document.getElementById('soal1FinalBox');
+            const soal2 = document.getElementById('soal2Item');
+
+            if (soal1Step1Benar && soal1Step2Benar && soal1Step3Benar) {
+                if (finalBox) {
+                    finalBox.style.display = 'block';
+                }
+
+                if (soal2) {
+                    soal2.classList.remove('locked-step');
+                    soal2.classList.add('unlocked-step');
+
+                    soal2.style.pointerEvents = 'auto';
+                    soal2.style.opacity = '1';
+                    soal2.style.filter = 'none';
+
+                    soal2.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else {
+                if (finalBox) {
+                    finalBox.style.display = 'none';
+                }
+
+                if (soal2) {
+                    soal2.classList.add('locked-step');
+                    soal2.classList.remove('unlocked-step');
+                }
+            }
+        }
+
         function cekPilihanSoal1Step1(button, value) {
             if (value === '3') {
+                soal1Step1Benar = true;
                 tandaiPilihan(button, true);
+
                 setFeedback(
                     'soal1Feedback1',
                     'soal1Penjelasan1',
@@ -2603,9 +2634,10 @@
                     'Jawaban benar. Nilai c tepat.',
                     'Pembagi <em>(x − 3)</em> sesuai dengan bentuk umum <em>(x − c)</em>, sehingga diperoleh <strong>c = 3</strong>.'
                 );
-                unlockCardStep('soal1Step2');
             } else {
+                soal1Step1Benar = false;
                 tandaiPilihan(button, false);
+
                 setFeedback(
                     'soal1Feedback1',
                     'soal1Penjelasan1',
@@ -2614,49 +2646,63 @@
                     'Gunakan bentuk umum <em>(x − c)</em>. Dari pembagi <em>(x − 3)</em>, terlihat bahwa nilai <strong>c = 3</strong>. Jadi jawaban yang benar adalah <strong>3</strong>.'
                 );
             }
+
+            bukaSoal2JikaSoal1Benar();
         }
 
         function cekSoal1Step2() {
             const input = document.getElementById('jawabSoal1Step2');
             if (!input) return;
 
-            const jawab = normalizeAnswer(input.value);
+            const jawab = normalisasiInput(input.value);
 
             if (jawab === '103') {
+                soal1Step2Benar = true;
+
+                input.classList.remove('input-salah');
+                input.classList.add('input-benar');
+
                 setFeedback(
                     'soal1Feedback2',
                     'soal1Penjelasan2',
                     true,
                     'Jawaban benar. Nilai P(3) tepat.',
-                    'Perhitungannya: <em>6(27) - 5(9) + 2(3) - 20 = 162 - 45 + 6 - 20 = 103</em>. Jadi <strong>P(3) = 103</strong>.'
+                    'Perhitungannya:<br><br><em>P(3) = 6(3<sup>3</sup>) − 5(3<sup>2</sup>) + 2(3) − 20</em><br><em>= 6(27) − 5(9) + 6 − 20</em><br><em>= 162 − 45 + 6 − 20</em><br><strong>= 103</strong><br><br>Jadi, <strong>P(3) = 103</strong>.'
                 );
-                unlockCardStep('soal1Step3');
             } else {
+                soal1Step2Benar = false;
+
+                input.classList.remove('input-benar');
+                input.classList.add('input-salah');
+
                 setFeedback(
                     'soal1Feedback2',
                     'soal1Penjelasan2',
                     false,
                     'Jawaban masih salah. Berikut jawaban yang benar.',
-                    'Hitung bertahap:<br><br><em>P(3) = 6(3<sup>3</sup>) − 5(3<sup>2</sup>) + 2(3) − 20</em><br><em>= 6(27) − 5(9) + 6 − 20</em><br><em>= 162 − 45 + 6 − 20 = 103</em><br><br>Jadi jawaban yang benar adalah <strong>103</strong>.'
+                    'Hitung bertahap:<br><br><em>P(3) = 6(3<sup>3</sup>) − 5(3<sup>2</sup>) + 2(3) − 20</em><br><em>= 6(27) − 5(9) + 6 − 20</em><br><em>= 162 − 45 + 6 − 20</em><br><strong>= 103</strong><br><br>Jadi jawaban yang benar adalah <strong>103</strong>.'
                 );
             }
+
+            bukaSoal2JikaSoal1Benar();
         }
 
         function cekPilihanSoal1Step3(button, value) {
             if (value === '103') {
+                soal1Step3Benar = true;
                 tandaiPilihan(button, true);
+
                 setFeedback(
                     'soal1Feedback3',
                     'soal1Penjelasan3',
                     true,
                     'Jawaban benar. Sisa pembagian tepat.',
-                    'Karena sisa pembagian oleh <em>(x − 3)</em> adalah <strong>P(3)</strong>, dan tadi didapat <strong>P(3) = 103</strong>, maka sisanya adalah <strong>103</strong>.'
+                    'Karena sisa pembagian oleh <em>(x − 3)</em> adalah <strong>P(3)</strong>, dan tadi didapat <strong>P(3) = 103</strong>, maka sisa pembagiannya adalah <strong>103</strong>.'
                 );
-
-                const finalBox = document.getElementById('soal1FinalBox');
-                if (finalBox) finalBox.style.display = 'block';
             } else {
+                soal1Step3Benar = false;
                 tandaiPilihan(button, false);
+
                 setFeedback(
                     'soal1Feedback3',
                     'soal1Penjelasan3',
@@ -2665,21 +2711,24 @@
                     'Menurut Teorema Sisa, pembagian oleh <em>(x − 3)</em> memiliki sisa sebesar <strong>P(3)</strong>. Karena <strong>P(3) = 103</strong>, maka jawaban yang benar adalah <strong>103</strong>.'
                 );
             }
+
+            bukaSoal2JikaSoal1Benar();
         }
 
         function cekPilihanSoal2Step1(button, value) {
             if (value === '1') {
                 tandaiPilihan(button, true);
+
                 setFeedback(
                     'soal2Feedback1',
                     'soal2Penjelasan1',
                     true,
                     'Jawaban benar. Nilai c tepat.',
-                    'Pembagi <em>(x − 1)</em> berarti sesuai bentuk <em>(x − c)</em>, sehingga <strong>c = 1</strong>.'
+                    'Pembagi <em>(x − 1)</em> berarti sesuai bentuk <em>(x − c)</em>, sehingga diperoleh <strong>c = 1</strong>.'
                 );
-                unlockCardStep('soal2Step2');
             } else {
                 tandaiPilihan(button, false);
+
                 setFeedback(
                     'soal2Feedback1',
                     'soal2Penjelasan1',
@@ -2693,6 +2742,7 @@
         function cekPilihanSoal2Step2(button, value) {
             if (value === 'benar') {
                 tandaiPilihan(button, true);
+
                 setFeedback(
                     'soal2Feedback2',
                     'soal2Penjelasan2',
@@ -2700,9 +2750,9 @@
                     'Jawaban benar. Koefisien lengkap sudah tepat.',
                     'Karena ada suku yang hilang yaitu <em>x<sup>5</sup></em>, <em>x<sup>3</sup></em>, dan <em>x<sup>2</sup></em>, maka koefisien lengkap harus ditulis <strong>2, 0, -3, 0, 0, 7, -5</strong>.'
                 );
-                unlockCardStep('soal2Step3');
             } else {
                 tandaiPilihan(button, false);
+
                 setFeedback(
                     'soal2Feedback2',
                     'soal2Penjelasan2',
@@ -2722,11 +2772,11 @@
                 h5: '-1',
                 h6: '6',
                 h7: '2',
-                h8: '-1',
+                h8: '2',
                 h9: '-1',
                 h10: '-1',
-                h11: '6',
-                h12: '1'
+                h11: '-1',
+                h12: '6'
             };
 
             let benarSemua = true;
@@ -2735,12 +2785,16 @@
                 const input = document.getElementById(id);
                 if (!input) continue;
 
-                const nilai = input.value.trim().replace(/−/g, '-');
+                const nilai = normalisasiInput(input.value);
 
                 if (nilai === jawaban[id]) {
+                    input.classList.remove('input-salah');
+                    input.classList.add('input-benar');
                     input.style.borderColor = '#53a653';
                     input.style.backgroundColor = '#eef8ea';
                 } else {
+                    input.classList.remove('input-benar');
+                    input.classList.add('input-salah');
                     input.style.borderColor = '#d96b5f';
                     input.style.backgroundColor = '#fff1ef';
                     benarSemua = false;
@@ -2754,65 +2808,29 @@
 
             if (benarSemua) {
                 feedback.className = 'latihan-feedback benar';
-                feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat.';
-                if (finalBox) finalBox.style.display = 'block';
+                feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat. Sisa pembagiannya adalah <strong>1</strong>.';
+
+                if (finalBox) {
+                    finalBox.style.display = 'block';
+                }
             } else {
                 feedback.className = 'latihan-feedback salah';
-                feedback.innerHTML = 'Masih ada isian yang salah. Berikut jawaban yang benar: baris tengah = 2, 2, -1, -1, -1, 6 dan baris bawah = 2, -1, -1, -1, 6, 1.';
-                if (finalBox) finalBox.style.display = 'none';
-            }
-        }
+                feedback.innerHTML = 'Masih ada isian yang salah. Periksa kembali tabel Horner.';
 
-        document.addEventListener('DOMContentLoaded', function () {
-            pasangAutoCheckEksplorasi();
-            cekEksplorasi1Otomatis();
-            cekEksplorasi2Otomatis();
-            bukaMateriLanjutanJikaSiap();
-        });
-    </script>
-
-    <script>
-        function bukaMateriLanjutanJikaSiap() {
-            const statusBox = document.getElementById('statusEksplorasi');
-            const notice = document.getElementById('materiTerkunciNotice');
-            const wrapper = document.getElementById('materiLanjutanWrapper');
-
-            if (!wrapper) return;
-
-            if (semuaEksplorasiTerisi()) {
-                if (statusBox) {
-                    statusBox.classList.add('complete');
-                    statusBox.innerHTML = 'Semua soal eksplorasi sudah terisi. Materi lanjutan telah dibuka kembali.';
+                if (finalBox) {
+                    finalBox.style.display = 'none';
                 }
-
-                if (notice) {
-                    notice.style.display = 'none';
-                }
-
-                wrapper.classList.add('show');
-                materiEksplorasiSudahTerbuka = true;
-            } else {
-                if (statusBox) {
-                    statusBox.classList.remove('complete');
-                    statusBox.innerHTML = 'Isi semua jawaban pada Aktivitas 1 dan Aktivitas 2 terlebih dahulu. Setelah semua terisi, materi selanjutnya akan terbuka otomatis.';
-                }
-
-                if (notice) {
-                    notice.style.display = 'block';
-                }
-
-                wrapper.classList.remove('show');
-                materiEksplorasiSudahTerbuka = false;
             }
         }
 
         function cekSemuaStep() {
-            const s1 = normalisasiInput(document.getElementById('jawabStep1').value);
-            const s2 = normalisasiInput(document.getElementById('jawabStep2').value);
-            const s3 = normalisasiInput(document.getElementById('jawabStep3').value);
-            const s4 = normalisasiInput(document.getElementById('jawabStep4').value);
+            const s1 = normalisasiInput(document.getElementById('jawabStep1')?.value);
+            const s2 = normalisasiInput(document.getElementById('jawabStep2')?.value);
+            const s3 = normalisasiInput(document.getElementById('jawabStep3')?.value);
+            const s4 = normalisasiInput(document.getElementById('jawabStep4')?.value);
 
             const feedback = document.getElementById('feedbackAkhir');
+            if (!feedback) return;
 
             const benar =
                 s1 === '3' &&
@@ -2823,10 +2841,7 @@
             if (benar) {
                 feedback.className = 'latihan-feedback benar';
                 feedback.innerHTML = 'Semua jawaban benar! 🎉';
-
-                // tampilkan penjelasan per langkah
                 showPenjelasan();
-
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Masih ada jawaban yang salah. Coba lagi ya 👀';
@@ -2834,18 +2849,25 @@
         }
 
         function showPenjelasan() {
+            setPenjelasan(
+                'penjelasanStep1',
+                'Pembagi (x − 3) dibandingkan dengan (x − c), sehingga diperoleh <strong>c = 3</strong>.'
+            );
 
-            setPenjelasan('penjelasanStep1',
-                'Pembagi (x − 3) dibandingkan dengan (x − c), sehingga diperoleh <strong>c = 3</strong>.');
+            setPenjelasan(
+                'penjelasanStep2',
+                'Menurut Teorema Sisa, sisa pembagian dihitung dengan <strong>P(c)</strong>. Karena c = 3, maka menjadi <strong>P(3)</strong>.'
+            );
 
-            setPenjelasan('penjelasanStep2',
-                'Menurut Teorema Sisa, sisa pembagian dihitung dengan <strong>P(c)</strong>. Karena c = 3, maka menjadi <strong>P(3)</strong>.');
+            setPenjelasan(
+                'penjelasanStep3',
+                'P(3) = 3³ − 4(3) + 8 = 27 − 12 + 8 = <strong>23</strong>.'
+            );
 
-            setPenjelasan('penjelasanStep3',
-                'P(3) = 3³ − 4(3) + 8 = 27 − 12 + 8 = <strong>23</strong>.');
-
-            setPenjelasan('penjelasanStep4',
-                'Sisa pembagian = P(3) = <strong>23</strong>.');
+            setPenjelasan(
+                'penjelasanStep4',
+                'Sisa pembagian = P(3) = <strong>23</strong>.'
+            );
         }
 
         function setPenjelasan(id, isi) {
@@ -2855,6 +2877,22 @@
                 el.classList.add('show');
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            pasangAutoCheckEksplorasi();
+            cekEksplorasi1Otomatis();
+            cekEksplorasi2Otomatis();
+            bukaMateriLanjutanJikaSiap();
+
+            const soal2 = document.getElementById('soal2Item');
+
+            if (soal2) {
+                soal2.classList.add('locked-step');
+                soal2.classList.remove('unlocked-step');
+            }
+
+            bukaSoal2JikaSoal1Benar();
+        });
     </script>
 @endsection
 

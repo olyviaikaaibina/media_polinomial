@@ -823,7 +823,7 @@
             </p>
 
             <p style="margin-bottom:10px;">
-                Amati derajat dari setiap suku berikut.
+                Amati setiap suku berikut.
             </p>
 
             <div style="
@@ -1004,7 +1004,7 @@
             {{-- CARD 2: Contoh --}}
             <div class="card card-example">
                 <div class="title-box">🧪 Contoh</div>
-                <div class="contoh-sub">Klik angka 1–4 untuk membuka penjelasan. (Bisa dibuka banyak sekaligus)</div>
+                <div class="contoh-sub">Klik angka 1–4 untuk membuka penjelasan.</div>
 
                 <div class="contoh-panel">
                     <div class="contoh-toolbar">

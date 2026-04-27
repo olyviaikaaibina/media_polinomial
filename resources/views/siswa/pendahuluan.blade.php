@@ -1234,6 +1234,168 @@
             color: #5f6b5c;
             line-height: 1.6;
         }
+
+        .klik-card {
+            height: 330px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .alur-preview {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5f675d;
+            margin-top: 12px;
+        }
+
+        .alur-detail {
+            max-height: 0;
+            opacity: 0;
+            overflow-y: auto;
+            transition: all 0.4s ease;
+            padding-right: 6px;
+        }
+
+        .klik-card.active .alur-detail {
+            max-height: 210px;
+            opacity: 1;
+            margin-top: 14px;
+        }
+
+        .klik-card.active .alur-preview {
+            display: none;
+        }
+
+        .klik-card .alur-rumus {
+            font-size: 24px;
+            margin-top: 12px;
+            margin-bottom: 10px;
+        }
+
+        .hasil-menarik {
+            position: relative;
+            overflow: hidden;
+            padding: 30px 24px;
+        }
+
+        .hasil-menarik::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(174, 191, 152, 0.16);
+            border-radius: 50%;
+            top: -70px;
+            left: -60px;
+        }
+
+        .hasil-menarik::after {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: rgba(240, 180, 41, 0.13);
+            border-radius: 50%;
+            bottom: -70px;
+            right: -50px;
+        }
+
+        .hasil-badge {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 999px;
+            background: #aebf98;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hasil-menarik .hasil-label,
+        .hasil-menarik .hasil-rumus,
+        .hasil-komponen,
+        .hasil-kalimat {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hasil-menarik .hasil-rumus {
+            font-size: 46px;
+            margin: 10px 0 22px;
+        }
+
+        .hasil-komponen {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            margin: 20px auto;
+            flex-wrap: wrap;
+        }
+
+        .komponen-card {
+            width: 180px;
+            background: #ffffff;
+            border: 1px solid #dfe7d7;
+            border-radius: 20px;
+            padding: 16px 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: 0.3s ease;
+        }
+
+        .komponen-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .komponen-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .komponen-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #5b6658;
+            margin-bottom: 6px;
+        }
+
+        .komponen-rumus {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2f3a30;
+        }
+
+        .komponen-plus {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #8ca178;
+        }
+
+        .hasil-kalimat {
+            margin-top: 18px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #4d554b;
+        }
+
+        @media (max-width: 768px) {
+            .hasil-menarik .hasil-rumus {
+                font-size: 32px;
+            }
+
+            .komponen-card {
+                width: 100%;
+            }
+
+            .komponen-plus {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 
     <div class="materi-container">
@@ -1355,8 +1517,8 @@
 
         <!-- CERITA -->
         <p class="materi-text">
-            Seorang pedagang buah menyimpan buahnya di dalam beberapa kardus. Banyak buah dalam satu kardus
-            dinyatakan dengan <strong>x</strong>.
+            Seorang pedagang buah menyimpan buahnya di dalam beberapa kardus.
+            Banyak buah dalam satu kardus dinyatakan dengan <strong>x</strong>.
         </p>
 
         <div class="gambar-box">
@@ -1368,162 +1530,237 @@
             <div class="alur-header">
                 <h3 class="alur-title">Menyusun bentuk aljabar dari cerita kardus buah</h3>
                 <p class="alur-desc">
-                    Perhatikan bagaimana setiap bagian pada cerita diubah menjadi bentuk aljabar.
+                    Klik setiap langkah untuk melihat penjelasannya.
                 </p>
             </div>
 
             <div class="alur-grid">
-                <div class="alur-card">
+
+                <!-- LANGKAH 1 -->
+                <div class="alur-card klik-card">
                     <div class="alur-step">1</div>
                     <div class="alur-card-title">Susunan Kardus</div>
-                    <div class="alur-card-text">
-                        Terdapat <strong>3 susunan kardus berbentuk persegi</strong>.
-                        Setiap susunan terdiri atas <strong>x baris</strong> dan <strong>x kolom</strong>.
+
+                    <div class="alur-preview">
+                        Klik untuk melihat mengapa susunan kardus menjadi <strong>3x<sup>2</sup></strong>.
                     </div>
-                    <div class="alur-rumus">
-                        x × x = x<sup>2</sup>
+
+                    <div class="alur-detail">
+                        <div class="alur-card-text">
+                            Perhatikan <strong>1 susunan kardus</strong>.
+                            Susunan ini berbentuk persegi.
+                            Terdapat <strong>x baris</strong> dan setiap baris berisi <strong>x buah</strong>.
+                        </div>
+
+                        <div class="alur-rumus">
+                            x × x = x<sup>2</sup>
+                        </div>
+
+                        <div class="alur-card-text">
+                            Artinya, <strong>1 susunan = x<sup>2</sup> buah</strong>.
+                            Karena ada <strong>3 susunan</strong>, maka:
+                        </div>
+
+                        <div class="alur-rumus">
+                            3 × x<sup>2</sup> = 3x<sup>2</sup>
+                        </div>
+
+                        <div class="alur-card-text">
+                            Jadi, buah dari semua susunan adalah <strong>3x<sup>2</sup></strong>.
+                        </div>
                     </div>
                 </div>
 
-                <div class="alur-card">
+                <!-- LANGKAH 2 -->
+                <div class="alur-card klik-card">
                     <div class="alur-step">2</div>
                     <div class="alur-card-title">Kardus Tambahan</div>
-                    <div class="alur-card-text">
-                        Selain itu, ada <strong>2 kardus tambahan</strong> yang masing-masing berisi
-                        <strong>x buah</strong>.
+
+                    <div class="alur-preview">
+                        Klik untuk melihat mengapa kardus tambahan menjadi <strong>2x</strong>.
                     </div>
-                    <div class="alur-rumus">
-                        2 × x = 2x
+
+                    <div class="alur-detail">
+                        <div class="alur-card-text">
+                            Selain itu, ada <strong>2 kardus tambahan</strong>.
+                            Setiap kardus berisi <strong>x buah</strong>.
+                        </div>
+
+                        <div class="alur-rumus">
+                            2 × x = 2x
+                        </div>
+
+                        <div class="alur-card-text">
+                            Jadi, tambahan buahnya adalah <strong>2x</strong>.
+                        </div>
                     </div>
                 </div>
 
-                <div class="alur-card">
+                <!-- LANGKAH 3 -->
+                <div class="alur-card klik-card">
                     <div class="alur-step">3</div>
                     <div class="alur-card-title">Buah Lepas</div>
-                    <div class="alur-card-text">
-                        Di luar kardus, terdapat <strong>5 buah lepas</strong> yang dinyatakan sebagai
-                        bilangan tetap.
+
+                    <div class="alur-preview">
+                        Klik untuk melihat mengapa buah lepas ditulis sebagai <strong>5</strong>.
                     </div>
-                    <div class="alur-rumus">
-                        5
+
+                    <div class="alur-detail">
+                        <div class="alur-card-text">
+                            Di luar kardus, terdapat <strong>5 buah lepas</strong>.
+                            Buah ini tidak menggunakan variabel, sehingga langsung ditulis sebagai:
+                        </div>
+
+                        <div class="alur-rumus">
+                            5
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="hasil-box">
-                <div class="hasil-label">Maka bentuk aljabarnya adalah</div>
+            <!-- HASIL -->
+            <div class="hasil-box hasil-menarik">
+                <div class="hasil-badge">Kesimpulan</div>
+
+                <div class="hasil-label">Sekarang kita jumlahkan semua bagian cerita</div>
+
                 <div class="hasil-rumus">
                     3x<sup>2</sup> + 2x + 5
                 </div>
-                <div class="hasil-text">
-                    Bentuk ini diperoleh dari penjumlahan:
-                    <strong>3 susunan persegi</strong>, <strong>2 kardus tambahan</strong>, dan
-                    <strong>5 buah lepas</strong>.
+
+                <div class="hasil-komponen">
+                    <div class="komponen-card">
+                        <div class="komponen-icon">📦</div>
+                        <div class="komponen-title">Susunan Kardus</div>
+                        <div class="komponen-rumus">3x<sup>2</sup></div>
+                    </div>
+
+                    <div class="komponen-plus">+</div>
+
+                    <div class="komponen-card">
+                        <div class="komponen-icon">➕</div>
+                        <div class="komponen-title">Kardus Tambahan</div>
+                        <div class="komponen-rumus">2x</div>
+                    </div>
+
+                    <div class="komponen-plus">+</div>
+
+                    <div class="komponen-card">
+                        <div class="komponen-icon">🍎</div>
+                        <div class="komponen-title">Buah Lepas</div>
+                        <div class="komponen-rumus">5</div>
+                    </div>
+                </div>
+
+                <div class="hasil-kalimat">
+                    Jadi, bentuk aljabarnya adalah
+                    <strong>3x<sup>2</sup> + 2x + 5</strong>.
                 </div>
             </div>
         </div>
     </div>
 
-   <!-- UNSUR-UNSUR ALJABAR -->
-<div class="rumus-section">
-    <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
+    <!-- UNSUR-UNSUR ALJABAR -->
+    <div class="rumus-section">
+        <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
 
-    <div id="rumusTrigger" class="rumus-trigger">
-        3x<sup>2</sup> + 2x + 5
-    </div>
+        <div id="rumusTrigger" class="rumus-trigger">
+            3x<sup>2</sup> + 2x + 5
+        </div>
 
-    <div id="penjelasanBox" class="penjelasan-box">
-        <div class="penjelasan-wrapper">
-            <div class="penjelasan-heading">
-                Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
-            </div>
+        <div id="penjelasanBox" class="penjelasan-box">
+            <div class="penjelasan-wrapper">
+                <div class="penjelasan-heading">
+                    Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
+                </div>
 
-            <div class="unsur-grid">
-                <div class="unsur-card suku-card">
-                    <div class="unsur-line suku-line"></div>
-                    <div class="unsur-bubble suku-bubble">3</div>
-                    <div class="unsur-name suku-name">Banyak Suku</div>
-                    <div class="unsur-desc">
-                        Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
-                        tanda tambah atau tanda kurang.
+                <div class="unsur-grid">
+                    <div class="unsur-card suku-card">
+                        <div class="unsur-line suku-line"></div>
+                        <div class="unsur-bubble suku-bubble">3</div>
+                        <div class="unsur-name suku-name">Banyak Suku</div>
+                        <div class="unsur-desc">
+                            Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
+                            tanda tambah atau tanda kurang.
+                        </div>
+                    </div>
+
+                    <div class="unsur-card var-card">
+                        <div class="unsur-line var-line"></div>
+                        <div class="unsur-bubble var-bubble">x</div>
+                        <div class="unsur-name var-name">Variabel</div>
+                        <div class="unsur-desc">
+                            Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
+                            diketahui nilainya dengan jelas.
+                        </div>
+                    </div>
+
+                    <div class="unsur-card koef-card">
+                        <div class="unsur-line koef-line"></div>
+                        <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
+                        <div class="unsur-name koef-name">Koefisien</div>
+                        <div class="unsur-desc">
+                            Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
+                            suku pada bentuk aljabar.
+                        </div>
+                    </div>
+
+                    <div class="unsur-card konst-card">
+                        <div class="unsur-line konst-line"></div>
+                        <div class="unsur-bubble konst-bubble">5</div>
+                        <div class="unsur-name konst-name">Konstanta</div>
+                        <div class="unsur-desc">
+                            Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
+                            memuat variabel.
+                        </div>
                     </div>
                 </div>
 
-                <div class="unsur-card var-card">
-                    <div class="unsur-line var-line"></div>
-                    <div class="unsur-bubble var-bubble">x</div>
-                    <div class="unsur-name var-name">Variabel</div>
-                    <div class="unsur-desc">
-                        Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
-                        diketahui nilainya dengan jelas.
+                <div class="detail-box">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-var"></div>
+                        <div class="detail-text">
+                            <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
+                            yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
+                            <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
+                            <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
+                            <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
+                        </div>
                     </div>
-                </div>
 
-                <div class="unsur-card koef-card">
-                    <div class="unsur-line koef-line"></div>
-                    <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
-                    <div class="unsur-name koef-name">Koefisien</div>
-                    <div class="unsur-desc">
-                        Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
-                        suku pada bentuk aljabar.
+                    <div class="detail-item">
+                        <div class="detail-icon icon-suku"></div>
+                        <div class="detail-text">
+                            <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
+                            variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
+                            operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
+                            <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
+                        </div>
                     </div>
-                </div>
 
-                <div class="unsur-card konst-card">
-                    <div class="unsur-line konst-line"></div>
-                    <div class="unsur-bubble konst-bubble">5</div>
-                    <div class="unsur-name konst-name">Konstanta</div>
-                    <div class="unsur-desc">
-                        Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
-                        memuat variabel.
+                    <div class="detail-item">
+                        <div class="detail-icon icon-koef"></div>
+                        <div class="detail-text">
+                            <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
+                            variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
+                            <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
+                            koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="detail-box">
-                <div class="detail-item">
-                    <div class="detail-icon icon-var"></div>
-                    <div class="detail-text">
-                        <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
-                        yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
-                        <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
-                        <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
-                        <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
-                    </div>
-                </div>
-
-                <div class="detail-item">
-                    <div class="detail-icon icon-suku"></div>
-                    <div class="detail-text">
-                        <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
-                        variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
-                        operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
-                        <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
-                    </div>
-                </div>
-
-                <div class="detail-item">
-                    <div class="detail-icon icon-koef"></div>
-                    <div class="detail-text">
-                        <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
-                        variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
-                        <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
-                        koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
-                    </div>
-                </div>
-
-                <div class="detail-item">
-                    <div class="detail-icon icon-konst"></div>
-                    <div class="detail-text">
-                        <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
-                        bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
-                        <strong>5</strong>.
+                    <div class="detail-item">
+                        <div class="detail-icon icon-konst"></div>
+                        <div class="detail-text">
+                            <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
+                            bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
+                            <strong>5</strong>.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- SOAL ALJABAR -->
     <div class="latihan-section">
@@ -2013,6 +2250,11 @@
                 initMateriInteraktif();
             }
         })();
+        document.querySelectorAll('.klik-card').forEach(card => {
+            card.addEventListener('click', function () {
+                this.classList.toggle('active');
+            });
+        });
     </script>
 @endsection
 

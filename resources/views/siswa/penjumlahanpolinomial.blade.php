@@ -6,13 +6,14 @@
     ========================== --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                delimiters: [
-                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                    {left: '$', right: '$', display: false}
-                                                                                ]
-                                                                            });">
-                                                                            </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+                                                                                                                            delimiters: [
+                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                            ]
+                                                                                                                        });">
+                                                                                                                        </script>
 
     <style>
         :root {
@@ -1025,6 +1026,172 @@
                 border-radius: 16px;
             }
         }
+
+        .latihan-polynomial-wrapper {
+            max-width: 920px;
+            margin: 32px auto;
+            padding: 32px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #f7fff8, #f4f8ff);
+            border: 1px solid #dcebdc;
+            box-shadow: 0 18px 45px rgba(82, 103, 78, 0.16);
+            font-family: Georgia, serif;
+        }
+
+        .latihan-title {
+            display: inline-block;
+            padding: 10px 16px;
+            margin-bottom: 10px;
+            border-radius: 999px;
+            background: #e9f8ee;
+            color: #1e7a3b;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .latihan-desc {
+            margin: 8px 0 26px;
+            color: #5c6d5e;
+            font-size: 15px;
+        }
+
+        .soal-card {
+            position: relative;
+            margin-bottom: 22px;
+            padding: 24px;
+            border-radius: 22px;
+        }
+
+        .soal-1 {
+            background: linear-gradient(135deg, #fff0a8, #fff9df);
+        }
+
+        .soal-2 {
+            background: linear-gradient(135deg, #dff1ff, #f6fbff);
+        }
+
+        .soal-3 {
+            background: linear-gradient(135deg, #f0e2ff, #fbf7ff);
+        }
+
+        .soal-card h4 {
+            margin: 0 0 18px;
+            font-size: 20px;
+            color: #25352b;
+        }
+
+        .soal-susun {
+            width: fit-content;
+            margin: 16px auto 20px;
+            padding: 16px 28px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 26px;
+            line-height: 1.7;
+            text-align: right;
+        }
+
+        .garis-susun {
+            border-bottom: 2px solid #222;
+            margin-top: 4px;
+        }
+
+        .jawaban-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .jawaban-area input {
+            width: 260px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #bcc8bd;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .jawaban-area button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 12px;
+            background: #4d7fcf;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .jawaban-area button:disabled,
+        .jawaban-area input:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #fb-1,
+        #fb-2,
+        #fb-3 {
+            font-weight: bold;
+        }
+
+        .penjelasan {
+            display: none;
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.75);
+            border-left: 5px solid #2f9b57;
+            color: #2e5237;
+        }
+
+        .penjelasan p {
+            margin: 6px 0;
+        }
+
+        .locked .isi-soal {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .lock-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+        }
+
+        .lock-box {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-weight: bold;
+            color: #52624f;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 700px) {
+            .latihan-polynomial-wrapper {
+                padding: 20px;
+            }
+
+            .soal-susun {
+                font-size: 20px;
+                padding: 14px 18px;
+            }
+
+            .jawaban-area {
+                flex-direction: column;
+            }
+
+            .jawaban-area input,
+            .jawaban-area button {
+                width: 100%;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1331,149 +1498,97 @@
                 </div>
             </div>
 
-            <div class="card card-latihan latihan-polinom-wrap">
-                <h3 class="latihan-main-title">LATIHAN</h3>
-                <p class="latihan-main-subtitle">
-                    Kerjakan berurutan: MUDAH → SEDANG → SUSAH. Isi jawaban lalu klik Cek.
+            <div class="latihan-polynomial-wrapper">
+
+                <div class="latihan-title">🎯 Latihan Penjumlahan Polinomial</div>
+                <p class="latihan-desc">
+                    Kerjakan berurutan. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar.
                 </p>
 
-                <div class="level-cards">
-                    <div class="level-card active" id="card-mudah" data-level="mudah">
-                        <div class="level-bar green"></div>
-                        <div class="level-info">
-                            <div class="level-title">MUDAH</div>
-                            <div class="level-sub">Linear (y)</div>
-                            <div class="level-status done" id="status-mudah" style="display:none;">✔ Selesai</div>
-                        </div>
-                    </div>
+                <div class="soal-card soal-1" id="soal-1">
+                    <div class="isi-soal">
+                        <h4>1. Penjumlahan 2 Suku</h4>
 
-                    <div class="level-card locked" id="card-sedang" data-level="sedang">
-                        <div class="level-bar blue"></div>
-                        <div class="level-info">
-                            <div class="level-title">SEDANG</div>
-                            <div class="level-sub">Kuadrat (x^2)</div>
-                            <div class="level-status locked-pill" id="status-lock-sedang">🔒 Terkunci</div>
-                            <div class="level-status done" id="status-sedang" style="display:none;">✔ Selesai</div>
+                        <div class="soal-susun">
+                            <div>6y - 4</div>
+                            <div>+ 3y + 10</div>
+                            <div class="garis-susun"></div>
                         </div>
-                    </div>
 
-                    <div class="level-card locked" id="card-susah" data-level="susah">
-                        <div class="level-bar orange"></div>
-                        <div class="level-info">
-                            <div class="level-title">SUSAH</div>
-                            <div class="level-sub">Kubik (x^3)</div>
-                            <div class="level-status locked-pill" id="status-lock-susah">🔒 Terkunci</div>
-                            <div class="level-status done" id="status-susah" style="display:none;">✔ Selesai</div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-1" placeholder="Contoh: 9y + 6">
+                            <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
+                            <span id="fb-1"></span>
+                        </div>
+
+                        <div class="penjelasan" id="step-1">
+                            <b>Pengerjaan:</b>
+                            <p>6y + 3y = 9y</p>
+                            <p>-4 + 10 = 6</p>
+                            <p>Jadi hasilnya adalah <b>9y + 6</b>.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="latihan-panel active" id="panel-mudah">
-                    <h4 class="panel-title">Soal MUDAH</h4>
-                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+                <div class="soal-card soal-2 locked" id="soal-2">
 
-                    <div class="soal-math-box">
-                        $$\begin{aligned}
-                        &\ \ \ 6y - 4\\
-                        &+\, 3y + 10\\
-                        \hline
-                        \end{aligned}$$
-                    </div>
+                    <div class="isi-soal">
+                        <h4>2. Penjumlahan 3 Suku</h4>
 
-                    <label class="jawaban-label">Jawaban:</label>
-                    <input type="text" id="jawaban-mudah" class="jawaban-input" placeholder="">
+                        <div class="soal-susun">
+                            <div>2x² + 3x - 5</div>
+                            <div>+ 4x² - x + 1</div>
+                            <div class="garis-susun"></div>
+                        </div>
 
-                    <div class="latihan-actions">
-                        <button type="button" class="latihan-btn" id="cek-mudah">Cek</button>
-                        <button type="button" class="latihan-btn" id="reset-mudah">Reset</button>
-                        <span class="latihan-feedback" id="fb-mudah"></span>
-                    </div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-2" placeholder="Contoh: 6x² + 2x - 4" disabled>
+                            <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
+                            <span id="fb-2"></span>
+                        </div>
 
-                    <div class="step-box" id="step-mudah" style="display:none;">
-                        <div class="step-title">Penjelasan:</div>
-                        <ol>
-                            <li>Kelompokkan suku sejenis: <b>6y</b> dengan <b>3y</b>, dan konstanta <b>-4</b> dengan
-                                <b>10</b>.
-                            </li>
-                            <li>Jumlahkan koefisien suku <b>y</b>: \(6y + 3y = 9y\).</li>
-                            <li>Jumlahkan konstanta: \(-4 + 10 = 6\).</li>
-                            <li>Jadi hasil akhirnya adalah <b>\(9y + 6\)</b>.</li>
-                        </ol>
-                        <div class="step-result">Hasil: $$9y+6$$</div>
+                        <div class="penjelasan" id="step-2">
+                            <b>Pengerjaan:</b>
+                            <p>2x² + 4x² = 6x²</p>
+                            <p>3x + (-x) = 2x</p>
+                            <p>-5 + 1 = -4</p>
+                            <p>Jadi hasilnya adalah <b>6x² + 2x - 4</b>.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="latihan-panel" id="panel-sedang" style="display:none;">
-                    <h4 class="panel-title">Soal SEDANG</h4>
-                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
+                <div class="soal-card soal-3 locked" id="soal-3">
+                  
 
-                    <div class="soal-math-box">
-                        $$\begin{aligned}
-                        &\ \ \ 2x^2 + 3x - 5\\
-                        &+\, 4x^2 - x + 1\\
-                        \hline
-                        \end{aligned}$$
-                    </div>
+                    <div class="isi-soal">
+                        <h4>3. Penjumlahan 4 Suku</h4>
 
-                    <label class="jawaban-label">Jawaban:</label>
-                    <input type="text" id="jawaban-sedang" class="jawaban-input" placeholder="" disabled>
+                        <div class="soal-susun">
+                            <div>3x³ + 2x² - 5x + 7</div>
+                            <div>+ 4x³ - x² + 6x - 2</div>
+                            <div class="garis-susun"></div>
+                        </div>
 
-                    <div class="latihan-actions">
-                        <button type="button" class="latihan-btn" id="cek-sedang" disabled>Cek</button>
-                        <button type="button" class="latihan-btn" id="reset-sedang" disabled>Reset</button>
-                        <span class="latihan-feedback" id="fb-sedang"></span>
-                    </div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-3" placeholder="Contoh: 7x³ + x² + x + 5" disabled>
+                            <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
+                            <span id="fb-3"></span>
+                        </div>
 
-                    <div class="step-box" id="step-sedang" style="display:none;">
-                        <div class="step-title">Penjelasan:</div>
-                        <ol>
-                            <li>Kelompokkan suku sejenis: <b>\(2x^2\)</b> dengan <b>\(4x^2\)</b>, <b>\(3x\)</b> dengan
-                                <b>\(-x\)</b>, dan <b>\(-5\)</b> dengan <b>\(1\)</b>.
-                            </li>
-                            <li>Jumlahkan suku kuadrat: \(2x^2 + 4x^2 = 6x^2\).</li>
-                            <li>Jumlahkan suku linear: \(3x + (-x) = 2x\).</li>
-                            <li>Jumlahkan konstanta: \(-5 + 1 = -4\).</li>
-                            <li>Jadi hasil akhirnya adalah <b>\(6x^2 + 2x - 4\)</b>.</li>
-                        </ol>
-                        <div class="step-result">Hasil: $$6x^2+2x-4$$</div>
+                        <div class="penjelasan" id="step-3">
+                            <b>Pengerjaan:</b>
+                            <p>3x³ + 4x³ = 7x³</p>
+                            <p>2x² + (-x²) = x²</p>
+                            <p>-5x + 6x = x</p>
+                            <p>7 + (-2) = 5</p>
+                            <p>Jadi hasilnya adalah <b>7x³ + x² + x + 5</b>.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="latihan-panel" id="panel-susah" style="display:none;">
-                    <h4 class="panel-title">Soal SUSAH</h4>
-                    <p class="panel-subtitle">Hitung hasil penjumlahan berikut:</p>
 
-                    <div class="soal-math-box">
-                        $$\begin{aligned}
-                        &\ \ \ 7x^3 - 2x + 9\\
-                        &+\, 5x^3 + 8x - 3\\
-                        \hline
-                        \end{aligned}$$
-                    </div>
 
-                    <label class="jawaban-label">Jawaban:</label>
-                    <input type="text" id="jawaban-susah" class="jawaban-input" placeholder="" disabled>
 
-                    <div class="latihan-actions">
-                        <button type="button" class="latihan-btn" id="cek-susah" disabled>Cek</button>
-                        <button type="button" class="latihan-btn" id="reset-susah" disabled>Reset</button>
-                        <span class="latihan-feedback" id="fb-susah"></span>
-                    </div>
-
-                    <div class="step-box" id="step-susah" style="display:none;">
-                        <div class="step-title">Penjelasan:</div>
-                        <ol>
-                            <li>Kelompokkan suku sejenis: <b>\(7x^3\)</b> dengan <b>\(5x^3\)</b>, <b>\(-2x\)</b> dengan
-                                <b>\(8x\)</b>, dan <b>\(9\)</b> dengan <b>\(-3\)</b>.
-                            </li>
-                            <li>Jumlahkan suku kubik: \(7x^3 + 5x^3 = 12x^3\).</li>
-                            <li>Jumlahkan suku linear: \(-2x + 8x = 6x\).</li>
-                            <li>Jumlahkan konstanta: \(9 + (-3) = 6\).</li>
-                            <li>Jadi hasil akhirnya adalah <b>\(12x^3 + 6x + 6\)</b>.</li>
-                        </ol>
-                        <div class="step-result">Hasil: $$12x^3+6x+6$$</div>
-                    </div>
-                </div>
             </div>
 
         </div> {{-- end #materi-lanjutan --}}
@@ -1559,8 +1674,8 @@
                 };
 
                 /* =========================
-    EKSPLORASI QUIZ
-    ========================== */
+        EKSPLORASI QUIZ
+        ========================== */
                 const materiLanjutan = document.getElementById("materi-lanjutan");
 
                 const clearFeedback = (item) => {
@@ -1651,8 +1766,8 @@
 
 
                 /* =========================
-      CONTOH INTERAKTIF (CEK SEMUA SAJA)
-    ========================== */
+        CONTOH INTERAKTIF (CEK SEMUA SAJA)
+        ========================== */
                 const contoh = document.getElementById("contoh-interaktif");
                 if (contoh) {
                     const rows = Array.from(contoh.querySelectorAll(".contoh-item"));
@@ -1979,6 +2094,51 @@
                 rerenderKatex();
             })();
         </script>
+
+        <script>function normalisasi(teks) {
+                return teks.toLowerCase().replace(/\s+/g, "");
+            }
+
+            function cekJawaban(nomor, jawabanBenar, buka = null) {
+                let input = document.getElementById("jawaban-" + nomor);
+                let fb = document.getElementById("fb-" + nomor);
+                let step = document.getElementById("step-" + nomor);
+
+                let user = normalisasi(input.value);
+
+                if (jawabanBenar.includes(user)) {
+                    fb.innerHTML = "✅ Benar";
+                    fb.style.color = "green";
+                    step.style.display = "block";
+
+                    if (buka) bukaSoal(buka);
+
+                    if (window.renderMathInElement) {
+                        renderMathInElement(document.body);
+                    }
+                } else {
+                    fb.innerHTML = "❌ Salah";
+                    fb.style.color = "red";
+                }
+            }
+
+            function bukaSoal(nomor) {
+                let soal = document.getElementById("soal-" + nomor);
+
+                soal.classList.remove("locked");
+                soal.querySelector(".lock-layer").remove();
+
+                soal.querySelectorAll("input,button").forEach(el => {
+                    el.disabled = false;
+                });
+
+                document.getElementById("badge-" + nomor).innerHTML = "Terbuka";
+            }
+
+            function resetSoal(nomor) {
+                document.getElementById("jawaban-" + nomor).value = "";
+                document.getElementById("fb-" + nomor).innerHTML = "";
+            }</script>
 
     </div>
 @endsection
