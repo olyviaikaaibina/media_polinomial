@@ -12,6 +12,9 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
 
+  <!-- Token kunci materi -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <style>
     :root {
       --green-soft: #AAB99A;
@@ -327,6 +330,17 @@
       transform: translateX(2px) scale(0.97);
     }
 
+    /* Style kunci materi */
+    .dropdown-item.locked {
+      opacity: .7;
+      cursor: not-allowed;
+      color: var(--text-main);
+    }
+
+    .dropdown-item.locked:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
     @media (max-width: 991.98px) {
       body {
         overflow: auto;
@@ -419,11 +433,37 @@
         <button class="btn-sidebar-toggle" type="button" id="toggleSidebar" aria-label="Toggle Sidebar">☰</button>
       </div>
 
+      {{-- PENGANTAR --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Pengantar</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
+
+        @php
+          $currentSlug = request()->route('slug');
+          $currentQuizId = request()->route('id');
+
+          /*
+            Kalau $unlockedSlugs belum dikirim dari controller,
+            default-nya hanya materi pertama yang terbuka.
+          */
+          $unlockedSlugs = $unlockedSlugs ?? ['pengertianpolinomial'];
+
+          $materiActive = function ($slug) {
+            return request()->routeIs('materi.show') && request()->route('slug') === $slug ? 'active' : '';
+          };
+
+          $quizActive = function ($id) {
+            return request()->routeIs('quiz.show') && (string) request()->route('id') === (string) $id ? 'active' : '';
+          };
+
+          $isMateriUnlocked = function ($slug) use ($unlockedSlugs) {
+            return in_array($slug, $unlockedSlugs);
+          };
+
+          $isQuizAUnlocked = $canAccessQuizByBab[1] ?? false;
+        @endphp
 
         <div class="dropdown-content">
           <a href="{{ route('petakonsep') }}"
@@ -438,6 +478,7 @@
         </div>
       </div>
 
+      {{-- BAB 1 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Polinomial & Fungsi Polinomial</span>
@@ -445,28 +486,55 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('pengertianpolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('pengertianpolinomial') ? 'active' : '' }}">
+
+          {{-- Pengertian Polinomial: selalu terbuka --}}
+          <a href="{{ route('materi.show', ['slug' => 'pengertianpolinomial']) }}"
+            class="dropdown-item {{ $materiActive('pengertianpolinomial') }}">
             Pengertian Polinomial
           </a>
 
-          <a href="{{ route('derajatsuatupolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('derajatsuatupolinomial') ? 'active' : '' }}">
-            Derajat Suatu Polinomial
-          </a>
+          {{-- Derajat Suatu Polinomial --}}
+          @if ($isMateriUnlocked('derajatsuatupolinomial'))
+            <a href="{{ route('materi.show', ['slug' => 'derajatsuatupolinomial']) }}"
+              class="dropdown-item {{ $materiActive('derajatsuatupolinomial') }}">
+              Derajat Suatu Polinomial
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Derajat Suatu Polinomial</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('fungsipolinomialdangrafiknya') }}"
-            class="dropdown-item {{ request()->routeIs('fungsipolinomialdangrafiknya') ? 'active' : '' }}">
-            Fungsi Polinomial dan Grafiknya
-          </a>
+          {{-- Fungsi Polinomial dan Grafiknya --}}
+          @if ($isMateriUnlocked('fungsipolinomialdangrafiknya'))
+            <a href="{{ route('materi.show', ['slug' => 'fungsipolinomialdangrafiknya']) }}"
+              class="dropdown-item {{ $materiActive('fungsipolinomialdangrafiknya') }}">
+              Fungsi Polinomial dan Grafiknya
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Fungsi Polinomial dan Grafiknya</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('quiz.show', 1) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 1 ? 'active' : '' }}">
-            Kuis A
-          </a>
+          {{-- Kuis A --}}
+          @if ($isQuizAUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 1]) }}" class="dropdown-item {{ $quizActive(1) }}">
+              Kuis A
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Kuis A</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
 
+      {{-- BAB 2 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Penjumlahan, Pengurangan dan Perkalian</span>
@@ -474,28 +542,28 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('penjumlahanpolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('penjumlahanpolinomial') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'penjumlahanpolinomial']) }}"
+            class="dropdown-item {{ $materiActive('penjumlahanpolinomial') }}">
             Penjumlahan Polinomial
           </a>
 
-          <a href="{{ route('penguranganpolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('penguranganpolinomial') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'penguranganpolinomial']) }}"
+            class="dropdown-item {{ $materiActive('penguranganpolinomial') }}">
             Pengurangan Polinomial
           </a>
 
-          <a href="{{ route('perkalianpolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('perkalianpolinomial') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'perkalianpolinomial']) }}"
+            class="dropdown-item {{ $materiActive('perkalianpolinomial') }}">
             Perkalian Polinomial
           </a>
 
-          <a href="{{ route('quiz.show', 2) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 2 ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', ['id' => 2]) }}" class="dropdown-item {{ $quizActive(2) }}">
             Kuis B
           </a>
         </div>
       </div>
 
+      {{-- BAB 3 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Pembagian Polinomial</span>
@@ -503,28 +571,28 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('pembagianbersusun') }}"
-            class="dropdown-item {{ request()->routeIs('pembagianbersusun') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'pembagianbersusun']) }}"
+            class="dropdown-item {{ $materiActive('pembagianbersusun') }}">
             Pembagian Bersusun
           </a>
 
-          <a href="{{ route('metodehorner') }}"
-            class="dropdown-item {{ request()->routeIs('metodehorner') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'metodehorner']) }}"
+            class="dropdown-item {{ $materiActive('metodehorner') }}">
             Metode Horner
           </a>
 
-          <a href="{{ route('teoremasisa') }}"
-            class="dropdown-item {{ request()->routeIs('teoremasisa') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'teoremasisa']) }}"
+            class="dropdown-item {{ $materiActive('teoremasisa') }}">
             Teorema Sisa
           </a>
 
-          <a href="{{ route('quiz.show', 3) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 3 ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', ['id' => 3]) }}" class="dropdown-item {{ $quizActive(3) }}">
             Kuis C
           </a>
         </div>
       </div>
 
+      {{-- BAB 4 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Faktor & Pembuat Nol</span>
@@ -532,23 +600,23 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('teoremafaktor') }}"
-            class="dropdown-item {{ request()->routeIs('teoremafaktor') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'teoremafaktor']) }}"
+            class="dropdown-item {{ $materiActive('teoremafaktor') }}">
             Teorema Faktor
           </a>
 
-          <a href="{{ route('faktordanpembuatnol') }}"
-            class="dropdown-item {{ request()->routeIs('faktordanpembuatnol') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'faktordanpembuatnol']) }}"
+            class="dropdown-item {{ $materiActive('faktordanpembuatnol') }}">
             Faktor dan Pembuat Nol
           </a>
 
-          <a href="{{ route('quiz.show', 4) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 4 ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', ['id' => 4]) }}" class="dropdown-item {{ $quizActive(4) }}">
             Kuis D
           </a>
         </div>
       </div>
 
+      {{-- BAB 5 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Identitas Polinomial</span>
@@ -556,18 +624,18 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('identitaspolinomial') }}"
-            class="dropdown-item {{ request()->routeIs('identitaspolinomial') ? 'active' : '' }}">
+          <a href="{{ route('materi.show', ['slug' => 'identitaspolinomial']) }}"
+            class="dropdown-item {{ $materiActive('identitaspolinomial') }}">
             Identitas Polinomial
           </a>
 
-          <a href="{{ route('quiz.show', 5) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 5 ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', ['id' => 5]) }}" class="dropdown-item {{ $quizActive(5) }}">
             Kuis E
           </a>
         </div>
       </div>
 
+      {{-- EVALUASI --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
           <span>Evaluasi</span>
@@ -575,13 +643,11 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('quiz.show', 6) }}"
-            class="dropdown-item {{ request()->routeIs('quiz.show') && request()->route('id') == 6 ? 'active' : '' }}">
+          <a href="{{ route('quiz.show', ['id' => 6]) }}" class="dropdown-item {{ $quizActive(6) }}">
             Evaluasi
           </a>
         </div>
       </div>
-
     </aside>
 
     <main class="main-content">

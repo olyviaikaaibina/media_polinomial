@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                delimiters: [
-                                                                    {left: '$$', right: '$$', display: true},
-                                                                    {left: '$', right: '$', display: false}
-                                                                ]
-                                                            });"></script>
+                                                                                delimiters: [
+                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                    {left: '$', right: '$', display: false}
+                                                                                ]
+                                                                            });"></script>
 
     <style>
         :root {
@@ -1081,6 +1081,59 @@
                 </div>
             </div>
         </div>
+
+        <!-- Save Progress -->
+        <script>
+            window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+        </script>
+
+        <script>
+            async function saveProgressMateri() {
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content");
+
+                if (!window.completeMateriUrl || !csrfToken) {
+                    console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                    return false;
+                }
+
+                try {
+                    const response = await fetch(window.completeMateriUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrfToken,
+                            "X-Requested-With": "XMLHttpRequest",
+                            Accept: "application/json",
+                        },
+                        body: JSON.stringify({}),
+                    });
+
+                    return response.ok;
+                } catch (error) {
+                    console.error(error);
+                    return false;
+                }
+            }
+
+            function bukaNextButton() {
+                const nextBtn = document.getElementById("nextMateriBtn");
+                if (!nextBtn) return;
+
+                const url = nextBtn.dataset.nextUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "nextMateriBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Next →";
+
+                nextBtn.replaceWith(link);
+            }
+        </script>
+
         <script>
             (function () {
                 const normalize = (s) =>
@@ -1268,32 +1321,71 @@
         </script>
 
         <script>
-            (function () {
-                const wrap = document.getElementById('contoh-kartu');
-                if (!wrap) return;
-
-                const cards = Array.from(wrap.querySelectorAll('.kartu'));
-                const btnOpenAll = document.getElementById('btn-buka-semua');
-                const btnCloseAll = document.getElementById('btn-tutup-semua');
-
-                const toggleCard = (card) => card.classList.toggle('open');
-
-                cards.forEach(card => {
-                    card.addEventListener('click', () => toggleCard(card));
-                    card.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            toggleCard(card);
-                        }
-                    });
-                });
-
-                btnOpenAll?.addEventListener('click', () => cards.forEach(c => c.classList.add('open')));
-                btnCloseAll?.addEventListener('click', () => cards.forEach(c => c.classList.remove('open')));
-            })();
+            window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
         </script>
 
         <script>
+            async function saveProgressMateri() {
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content");
+
+                if (!window.completeMateriUrl || !csrfToken) {
+                    console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                    return false;
+                }
+
+                try {
+                    const response = await fetch(window.completeMateriUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrfToken,
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Accept": "application/json",
+                        },
+                        body: JSON.stringify({}),
+                    });
+
+                    return response.ok;
+                } catch (error) {
+                    console.error(error);
+                    return false;
+                }
+            }
+
+            function bukaNextButton() {
+                const nextBtn = document.getElementById("nextMateriBtn");
+                if (!nextBtn) return;
+
+                const url = nextBtn.dataset.nextUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "nextMateriBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Next →";
+
+                nextBtn.replaceWith(link);
+            }
+
+            function bukaQuizButton() {
+                const quizBtn = document.getElementById("quizBabBtn");
+                if (!quizBtn) return;
+
+                const url = quizBtn.dataset.quizUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "quizBabBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Kuis →";
+
+                quizBtn.replaceWith(link);
+            }
+
             (function () {
                 const questions = [
                     {
@@ -1337,20 +1429,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                            <div class="quiz-soal-title">Soal ${i + 1}</div>
-                            <div class="quiz-ekspresi">${q.expr}</div>
+                        <div class="quiz-soal-title">Soal ${i + 1}</div>
+                        <div class="quiz-ekspresi">${q.expr}</div>
 
-                            <div class="quiz-options-new">
-                                <label>
-                                    <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                                </label>
-                                <label>
-                                    <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                                </label>
-                            </div>
+                        <div class="quiz-options-new">
+                            <label>
+                                <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                            </label>
+                            <label>
+                                <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                            </label>
+                        </div>
 
-                            <div class="feedback-box" id="fb${i}"></div>
-                        `;
+                        <div class="feedback-box" id="fb${i}"></div>
+                    `;
                         container.appendChild(div);
                     });
 
@@ -1364,7 +1456,7 @@
                     }
                 }
 
-                function checkAnswers() {
+                async function checkAnswers() {
                     let score = 0;
 
                     questions.forEach((q, i) => {
@@ -1388,7 +1480,31 @@
                         }
                     });
 
-                    resultBox.innerHTML = `Skor: ${score}/${questions.length}`;
+                    if (score === questions.length) {
+                        const saved = await saveProgressMateri();
+
+                        if (saved) {
+                            resultBox.innerHTML = `
+                            Skor: ${score}/${questions.length}<br>
+                            Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
+                        `;
+                            resultBox.style.color = "green";
+
+                            bukaNextButton();
+                        } else {
+                            resultBox.innerHTML = `
+                            Skor: ${score}/${questions.length}<br>
+                            Jawaban benar, tapi progres belum tersimpan.
+                        `;
+                            resultBox.style.color = "orange";
+                        }
+                    } else {
+                        resultBox.innerHTML = `
+                        Skor: ${score}/${questions.length}<br>
+                        Masih ada jawaban yang belum tepat. Coba lagi ya.
+                    `;
+                        resultBox.style.color = "red";
+                    }
 
                     if (typeof renderMathInElement === "function") {
                         renderMathInElement(container, {
@@ -1410,6 +1526,7 @@
                 function resetQuiz() {
                     renderQuiz();
                     resultBox.innerHTML = "";
+                    resultBox.style.color = "";
                 }
 
                 checkBtn.addEventListener("click", checkAnswers);
@@ -1657,11 +1774,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
+    @endif
 @endsection

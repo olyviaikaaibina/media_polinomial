@@ -4,14 +4,13 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false}
             ]
         });">
-    </script>
+        </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -480,10 +479,8 @@
                 </div>
             </div>
 
-            <form action="{{ route('quiz.submit', $quiz->id) }}"
-                  method="POST"
-                  id="quizForm"
-                  data-duration="{{ ($quiz->duration_minutes ?? 30) * 60 }}">
+            <form action="{{ route('quiz.submit', $quiz->id) }}" method="POST" id="quizForm"
+                data-duration="{{ ($quiz->duration_minutes ?? 30) * 60 }}">
                 @csrf
 
                 @if(isset($attempt))
@@ -508,16 +505,15 @@
 
                                     @if(!empty($question->question_image))
                                         <div class="question-image">
-                                            <img src="{{ asset('storage/' . $question->question_image) }}" alt="Gambar soal">
+                                            <img src="{{ asset('img/kuis/' . $question->question_image) }}" alt="Gambar soal" style="max-height: 300px; object-fit: contain;">
                                         </div>
                                     @endif
 
                                     <div class="options">
                                         @foreach ($question->options as $option)
                                             <label class="option-item">
-                                                <input type="radio"
-                                                       name="jawaban[{{ $question->id }}]"
-                                                       value="{{ $option->id }}">
+                                                <input type="radio" name="jawaban[{{ $question->id }}]"
+                                                    value="{{ $option->id }}">
                                                 <div class="option-content">
                                                     <span class="option-label">{{ $option->option_label ?? '?' }}</span>
                                                     <span class="option-text">{!! $option->option_text !!}</span>

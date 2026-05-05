@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                            ]
-                                                                                                                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                                                                                                    delimiters: [
+                                                                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                    ]
+                                                                                                                                                                                                                                                                                });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -570,8 +570,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
-                                                                                                                                                                                                                   ========================= */
+                                                                                                                                                                                                                           CONTOH INTERAKTIF MODEL BARU
+                                                                                                                                                                                                                           ========================= */
         .ci-card {
             border-radius: 18px;
             padding: 18px;
@@ -1043,8 +1043,8 @@
         }
 
         /* =========================================================
-                                                                                                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
-                                                                                                                                                                                                            ========================================================= */
+                                                                                                                                                                                                                    ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
+                                                                                                                                                                                                                    ========================================================= */
         .endbeh-table-wrap {
             overflow-x: auto;
             margin-top: 14px;
@@ -1214,8 +1214,8 @@
         }
 
         /* =========================================================
-                                                                                                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
-                                                                                                                                                                                                            ========================================================= */
+                                                                                                                                                                                                                    ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
+                                                                                                                                                                                                                    ========================================================= */
         .contoh-card {
             border-radius: 16px;
             padding: 20px 22px;
@@ -2976,6 +2976,13 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Save Progress -->
+    <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+    
     {{-- =========================
     SCRIPT EKSPLORASI
     ========================= --}}
@@ -3581,12 +3588,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                                                                                                            ${posisiGrafik}
-                                                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
-                                                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                                                                                                        `;
+                                                                                                                                    Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                                                                    Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                                                                    ${posisiGrafik}
+                                                                                                                                    Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                                                                    saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                                                                `;
                 }
             }
 
@@ -4739,11 +4746,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('derajatsuatupolinomial') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('quiz.show', 1) }}" class="btn-nav next-btn">
-        Next →
-    </a>
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
+    @endif
 @endsection

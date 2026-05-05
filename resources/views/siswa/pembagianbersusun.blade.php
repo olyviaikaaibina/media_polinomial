@@ -1149,11 +1149,11 @@
                         </ul>
             </div>
 
-            <div class="section-label">ILUSTRASI</div>
+            
             <div class="info-card ilustrasi-card-simple">
                 <div class="mini-title">
                     <span class="mini-icon">🧩</span>
-                    <span>Ilustrasi Langkah Demi Langkah</span>
+                    <span>Langkah Demi Langkah Pembagian Polinomial</span>
                 </div>
 
                 <div class="ilustrasi-top-simple">
@@ -1380,11 +1380,11 @@
                         <div class="step-label">Langkah 1</div>
                         <div class="step-question">
                             Bagi suku tertinggi pembilang dengan suku tertinggi penyebut.
-                            <div class="rumus-box">$$\frac{2x^3}{x}=2x^2$$</div>
+                            <div class="rumus-box">$$\frac{2x^3}{x}=$$</div>
                             Tuliskan suku pertama hasil bagi.
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer1" data-step="1" placeholder="Contoh: 2x^2">
+                        <input type="text" class="step-answer-input" id="answer1" data-step="1" placeholder=" ">
                         <div class="step-helper">Bagi koefisien, lalu kurangi pangkat variabel.</div>
 
                         <div class="step-btn-row">
@@ -1399,12 +1399,12 @@
                         <div class="step-label">Langkah 2</div>
                         <div class="step-question">
                             Kalikan suku hasil bagi pertama dengan penyebut.
-                            <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                            <div class="rumus-box">$$2x^2(x+1)=$$</div>
                             Tuliskan hasil perkaliannya.
                         </div>
 
                         <input type="text" class="step-answer-input" id="answer2" data-step="2"
-                            placeholder="Contoh: 2x^3+2x^2">
+                            placeholder="">
                         <div class="step-helper">Gunakan sifat distributif.</div>
 
                         <div class="step-btn-row">
@@ -1419,12 +1419,12 @@
                         <div class="step-label">Langkah 3</div>
                         <div class="step-question">
                             Kurangkan hasil perkalian dari pembilang semula.
-                            <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                            <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=$$</div>
                             Tuliskan sisa barunya.
                         </div>
 
                         <input type="text" class="step-answer-input" id="answer3" data-step="3"
-                            placeholder="Contoh: x^2-2x+1">
+                            placeholder="">
                         <div class="step-helper">Kurangkan suku-suku yang sejenis.</div>
 
                         <div class="step-btn-row">
@@ -1439,11 +1439,11 @@
                         <div class="step-label">Langkah 4</div>
                         <div class="step-question">
                             Bagi suku tertinggi yang baru dengan \(x\).
-                            <div class="rumus-box">$$\frac{x^2}{x}=x$$</div>
+                            <div class="rumus-box">$$\frac{x^2}{x}=$$</div>
                             Tuliskan suku kedua hasil bagi.
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer4" data-step="4" placeholder="Contoh: x">
+                        <input type="text" class="step-answer-input" id="answer4" data-step="4" placeholder="">
                         <div class="step-helper">Suku ini ditambahkan ke hasil bagi sebelumnya.</div>
 
                         <div class="step-btn-row">
@@ -1459,11 +1459,11 @@
                         <div class="step-question">
                             Kalikan \(x\) dengan \((x+1)\), lalu kurangkan.
                             <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                            <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                            <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=$$</div>
                             Tuliskan sisa baru yang diperoleh.
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer5" data-step="5" placeholder="Contoh: -3x+1">
+                        <input type="text" class="step-answer-input" id="answer5" data-step="5" placeholder="">
                         <div class="step-helper">Perhatikan tanda negatif pada saat pengurangan.</div>
 
                         <div class="step-btn-row">
@@ -1478,12 +1478,12 @@
                         <div class="step-label">Langkah 6</div>
                         <div class="step-question">
                             Selesaikan pembagian sampai akhir.
-                            <div class="rumus-box">$$\frac{-3x}{x}=-3$$</div>
+                            <div class="rumus-box">$$\frac{-3x}{x}=$$</div>
                             Tuliskan hasil bagi akhir \(h(x)\) dan sisa \(s\).
                         </div>
 
                         <input type="text" class="step-answer-input" id="answer6" data-step="6"
-                            placeholder="Contoh: h(x)=2x^2+x-3, s=4">
+                            placeholder="">
                         <div class="step-helper">Tulis dua informasi sekaligus: hasil bagi dan sisa.</div>
 
                         <div class="step-btn-row">

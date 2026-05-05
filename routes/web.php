@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\GuruAuthController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\ProgressBelajarController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizQuestionController;
 use App\Http\Controllers\QuizSiswaController;
 use App\Http\Controllers\SiswaAuthController;
 use App\Http\Controllers\SiswaController;
@@ -30,31 +33,41 @@ Route::middleware('auth:siswa')->group(function () {
     Route::view('/petakonsep', 'siswa.petakonsep')->name('petakonsep');
     Route::view('/pendahuluan', 'siswa.pendahuluan')->name('pendahuluan');
 
-    Route::view('/pengertianpolinomial', 'siswa.pengertianpolinomial')->name('pengertianpolinomial');
-    Route::view('/derajatsuatupolinomial', 'siswa.derajatsuatupolinomial')->name('derajatsuatupolinomial');
-    Route::view('/fungsipolinomialdangrafiknya', 'siswa.fungsipolinomialdangrafiknya')->name('fungsipolinomialdangrafiknya');
-    Route::view('/kuisa', 'siswa.kuisa')->name('kuisa');
+    // Progress Materi Siswa
+    Route::get('/progressbelajar', [ProgressBelajarController::class, 'index'])->name('progressbelajar');
 
-    Route::view('/penjumlahanpolinomial', 'siswa.penjumlahanpolinomial')->name('penjumlahanpolinomial');
-    Route::view('/penguranganpolinomial', 'siswa.penguranganpolinomial')->name('penguranganpolinomial');
-    Route::view('/perkalianpolinomial', 'siswa.perkalianpolinomial')->name('perkalianpolinomial');
-    Route::view('/kuisb', 'siswa.kuisb')->name('kuisb');
+    // Route::view('/pengertianpolinomial', 'siswa.pengertianpolinomial')->name('pengertianpolinomial');
+    // Route::view('/derajatsuatupolinomial', 'siswa.derajatsuatupolinomial')->name('derajatsuatupolinomial');
+    // Route::view('/fungsipolinomialdangrafiknya', 'siswa.fungsipolinomialdangrafiknya')->name('fungsipolinomialdangrafiknya');
+    // Route::view('/kuisa', 'siswa.kuisa')->name('kuisa');
 
-    Route::view('/pembagianbersusun', 'siswa.pembagianbersusun')->name('pembagianbersusun');
-    Route::view('/metodehorner', 'siswa.metodehorner')->name('metodehorner');
-    Route::view('/teoremasisa', 'siswa.teoremasisa')->name('teoremasisa');
-    Route::view('/kuisc', 'siswa.kuisc')->name('kuisc');
+    // Route::view('/penjumlahanpolinomial', 'siswa.penjumlahanpolinomial')->name('penjumlahanpolinomial');
+    // Route::view('/penguranganpolinomial', 'siswa.penguranganpolinomial')->name('penguranganpolinomial');
+    // Route::view('/perkalianpolinomial', 'siswa.perkalianpolinomial')->name('perkalianpolinomial');
+    // Route::view('/kuisb', 'siswa.kuisb')->name('kuisb');
 
-    Route::view('/teoremafaktor', 'siswa.teoremafaktor')->name('teoremafaktor');
-    Route::view('/faktordanpembuatnol', 'siswa.faktordanpembuatnol')->name('faktordanpembuatnol');
-    Route::view('/kuisd', 'siswa.kuisd')->name('kuisd');
+    // Route::view('/pembagianbersusun', 'siswa.pembagianbersusun')->name('pembagianbersusun');
+    // Route::view('/metodehorner', 'siswa.metodehorner')->name('metodehorner');
+    // Route::view('/teoremasisa', 'siswa.teoremasisa')->name('teoremasisa');
+    // Route::view('/kuisc', 'siswa.kuisc')->name('kuisc');
 
-    Route::view('/identitaspolinomial', 'siswa.identitaspolinomial')->name('identitaspolinomial');
-    Route::view('/kuise', 'siswa.kuise')->name('kuise');
+    // Route::view('/teoremafaktor', 'siswa.teoremafaktor')->name('teoremafaktor');
+    // Route::view('/faktordanpembuatnol', 'siswa.faktordanpembuatnol')->name('faktordanpembuatnol');
+    // Route::view('/kuisd', 'siswa.kuisd')->name('kuisd');
+
+    // Route::view('/identitaspolinomial', 'siswa.identitaspolinomial')->name('identitaspolinomial');
+    // Route::view('/kuise', 'siswa.kuise')->name('kuise');
+
+
+    Route::get('/materi/{slug}', [MateriController::class, 'show'])->name('materi.show');
+    Route::post('/materi/{id}/selesai', [MateriController::class, 'complete'])->name('materi.complete');
 
     Route::get('/quiz/{id}', [QuizSiswaController::class, 'show'])->name('quiz.show');
     Route::post('/quiz/{id}/submit', [QuizSiswaController::class, 'submit'])->name('quiz.submit');
 });
+
+// Progress Materi Siswa
+Route::post('/materi/{id}/selesai', [MateriController::class, 'complete'])->name('materi.complete');
 
 // ==================== GURU AUTH ====================
 Route::get('/guru/register', [GuruAuthController::class, 'showRegister'])->name('guru.register');
@@ -82,12 +95,9 @@ Route::middleware('auth:guru')->group(function () {
     // ==================== KUIS ====================
     Route::get('/daftarkuis', [QuizController::class, 'index'])->name('daftarkuis');
     Route::view('/kuis/{id}/edit', 'guru.kuisedit')->name('kuis.edit');
-    Route::view('/kuis/{id}/soal', 'guru.soal')->name('soal');
-
 
     Route::get('/daftarkuis', [QuizController::class, 'index'])->name('daftarkuis');
     Route::put('/updatekuis/{id}', [QuizController::class, 'update'])->name('updatekuis');
-    Route::get('/soal/{id}', [QuizController::class, 'soal'])->name('soal');
 
     // sementara untuk tombol update & hapus
     Route::put('/kuis/{id}', function ($id) {
@@ -98,6 +108,13 @@ Route::middleware('auth:guru')->group(function () {
         return redirect()->route('daftarkuis')->with('success', 'Kuis berhasil dihapus.');
     })->name('kuis.destroy');
 
+    // Soal Kuis
+    Route::get('/kuis/{quiz}/soal', [QuizQuestionController::class, 'index'])->name('kuis.soal');
+    Route::post('/kuis/{quiz}/soal', [QuizQuestionController::class, 'store'])->name('kuis.soal.store');
+
+    Route::get('/soal/{question}', [QuizQuestionController::class, 'show'])->name('kuis.soal.show');
+    Route::put('/soal/{question}', [QuizQuestionController::class, 'update'])->name('kuis.soal.update');
+    Route::delete('/soal/{question}', [QuizQuestionController::class, 'destroy'])->name('kuis.soal.destroy');
 
 
     Route::get('/daftarsiswa', [SiswaController::class, 'index'])->name('daftarsiswa');

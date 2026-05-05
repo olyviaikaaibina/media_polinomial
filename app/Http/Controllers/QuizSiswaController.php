@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bab;
+use App\Models\Materi;
 use App\Models\Quiz;
 use App\Models\QuizAttempt;
+use App\Models\MaterialProgress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,13 +20,12 @@ class QuizSiswaController extends Controller
 
         $studentId = Auth::guard('siswa')->id();
 
-        // Cari attempt yang masih berjalan
         $attempt = QuizAttempt::where('quiz_id', $quiz->id)
             ->where('student_id', $studentId)
             ->where('status', 'in_progress')
+            ->latest('id')
             ->first();
 
-        // Kalau belum ada, buat baru
         if (!$attempt) {
             $attempt = QuizAttempt::create([
                 'quiz_id' => $quiz->id,
@@ -32,20 +34,32 @@ class QuizSiswaController extends Controller
                 'status' => 'in_progress',
                 'total_questions' => $quiz->questions->count(),
             ]);
+        } else {
+            $durasiDetik = $attempt->started_at->diffInSeconds(now());
+
+            if ($durasiDetik >= ($quiz->duration_minutes * 60)) {
+                $attempt->update([
+                    'end_at' => now(),
+                    'submitted_at' => now(),
+                    'status' => 'expired',
+                ]);
+
+                $attempt = QuizAttempt::create([
+                    'quiz_id' => $quiz->id,
+                    'student_id' => $studentId,
+                    'started_at' => now(),
+                    'status' => 'in_progress',
+                    'total_questions' => $quiz->questions->count(),
+                ]);
+            }
         }
 
         return view('siswa.quiz', compact('quiz', 'attempt'));
     }
 
-    public function evaluasi()
-    {
-        $quiz = Quiz::with(['bab', 'questions.options'])->findOrFail(5);
-        return view('siswa.kuis.evaluasi', compact('quiz'));
-    }
-
     public function submit(Request $request, $id)
     {
-        $quiz = Quiz::with(['questions.options'])->findOrFail($id);
+        $quiz = Quiz::with(['bab', 'questions.options'])->findOrFail($id);
         $studentId = Auth::guard('siswa')->id();
 
         $attempt = QuizAttempt::where('id', $request->attempt_id)
@@ -55,64 +69,125 @@ class QuizSiswaController extends Controller
             ->first();
 
         if (!$attempt) {
-            return redirect()->back()->with('error', 'Attempt quiz tidak ditemukan.');
+            return redirect()
+                ->route('quiz.show', $quiz->id)
+                ->with('error', 'Attempt kuis tidak ditemukan atau sudah berakhir.');
+        }
+
+        $durasiDetikSekarang = $attempt->started_at->diffInSeconds(now());
+
+        if ($durasiDetikSekarang >= ($quiz->duration_minutes * 60)) {
+            $attempt->update([
+                'end_at' => now(),
+                'submitted_at' => now(),
+                'status' => 'expired',
+            ]);
+
+            return redirect()
+                ->route('quiz.show', $quiz->id)
+                ->with('error', 'Waktu kuis sudah habis. Silakan ulangi kuis.');
         }
 
         $jawabanSiswa = $request->input('jawaban', []);
-        $totalQuestions = $quiz->questions->count();
 
-        $correctCount = 0;
-        $answeredCount = 0;
+        $totalSoal = $quiz->questions->count();
+        $benar = 0;
+        $terjawab = 0;
 
         foreach ($quiz->questions as $question) {
-            $selectedOptionId = $jawabanSiswa[$question->id] ?? null;
+            $opsiBenar = $question->options->firstWhere('is_correct', 1);
 
-            // Ganti 'is_correct' kalau nama field jawaban benar di tabel options berbeda
-            $correctOption = $question->options->firstWhere('is_correct', 1);
-
-            if ($selectedOptionId) {
-                $answeredCount++;
+            if (isset($jawabanSiswa[$question->id])) {
+                $terjawab++;
             }
 
-            if ($correctOption && $selectedOptionId) {
-                if ((int) $selectedOptionId === (int) $correctOption->id) {
-                    $correctCount++;
+            if ($opsiBenar && isset($jawabanSiswa[$question->id])) {
+                if ((int) $jawabanSiswa[$question->id] === (int) $opsiBenar->id) {
+                    $benar++;
                 }
             }
         }
 
-        $wrongCount = $answeredCount - $correctCount;
-        $unansweredCount = $totalQuestions - $answeredCount;
-        $score = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) * 100, 2) : 0;
-        $isPassed = $score >= ($quiz->kkm ?? 70);
+        $salah = $terjawab - $benar;
+        $kosong = $totalSoal - $terjawab;
+        $nilai = $totalSoal > 0 ? round(($benar / $totalSoal) * 100, 2) : 0;
+
+        // KKM diambil dari tabel quizzes
+        $kkm = $quiz->kkm ?? 70;
+        $lulus = $nilai >= $kkm;
 
         $attempt->update([
             'end_at' => now(),
             'submitted_at' => now(),
             'status' => 'submitted',
-            'total_questions' => $totalQuestions,
-            'correct_answers' => $correctCount,
-            'wrong_answers' => $wrongCount,
-            'unanswered' => $unansweredCount,
-            'score' => $score,
+            'total_questions' => $totalSoal,
+            'correct_answers' => $benar,
+            'wrong_answers' => $salah,
+            'unanswered' => $kosong,
+            'score' => $nilai,
+            'is_passed' => $lulus ? 1 : 0,
+            'passed_at' => $lulus ? now() : null,
         ]);
 
         $attempt->refresh();
 
-        // Hitung durasi berdasarkan waktu mulai dan selesai
-        $durationSecondsTotal = $attempt->started_at->diffInSeconds($attempt->end_at);
-        $durationMinutes = floor($durationSecondsTotal / 60);
-        $durationSeconds = $durationSecondsTotal % 60;
+        $durasiDetik = $attempt->started_at->diffInSeconds($attempt->end_at);
+        $durasiMenit = floor($durasiDetik / 60);
+        $durasiSisaDetik = $durasiDetik % 60;
+
+        // Materi terakhir di bab kuis saat ini.
+        // Ini untuk tombol "Kembali ke Materi".
+        $previousMateri = Materi::where('bab_id', $quiz->bab_id)
+            ->orderBy('urutan', 'desc')
+            ->first();
+
+        // Cari bab berikutnya berdasarkan urutan bab.
+        $babBerikutnya = null;
+
+        if ($quiz->bab) {
+            $babBerikutnya = Bab::where('urutan', '>', $quiz->bab->urutan)
+                ->orderBy('urutan', 'asc')
+                ->first();
+        }
+
+        // Materi pertama di bab berikutnya.
+        // Ini untuk tombol "Lanjut ke Bab Berikutnya".
+        $nextMateri = null;
+
+        if ($babBerikutnya) {
+            $nextMateri = Materi::where('bab_id', $babBerikutnya->id)
+                ->orderBy('urutan', 'asc')
+                ->first();
+        }
+
+        // Kalau lulus, buka materi pertama bab berikutnya.
+        if ($lulus && $nextMateri) {
+            MaterialProgress::updateOrCreate(
+                [
+                    'student_id' => $studentId,
+                    'materi_id' => $nextMateri->id,
+                ],
+                [
+                    'is_opened' => 1,
+                    'opened_at' => now(),
+                ]
+            );
+        }
 
         return view('siswa.hasilkuis', compact(
             'quiz',
-            'score',
-            'correctCount',
-            'wrongCount',
-            'unansweredCount',
-            'isPassed',
-            'durationMinutes',
-            'durationSeconds'
+            'attempt',
+            'nilai',
+            'kkm',
+            'benar',
+            'salah',
+            'kosong',
+            'lulus',
+            'previousMateri',
+            'nextMateri',
+            'durasiDetik',
+            'durasiMenit',
+            'durasiSisaDetik'
         ));
     }
 }

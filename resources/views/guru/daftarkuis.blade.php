@@ -26,7 +26,6 @@
           <thead style="background-color:#EAD9C7;">
             <tr class="text-center">
               <th style="width:60px;">No</th>
-              <th>Gambar</th>
               <th class="text-start">Judul Kuis</th>
               <th class="text-start">Bab</th>
               <th class="text-start">Deskripsi</th>
@@ -42,14 +41,6 @@
               <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
 
-                <td class="text-center">
-                  @if($quiz->image)
-                    <img src="{{ asset('storage/' . $quiz->image) }}" alt="Gambar Kuis" width="80" height="80" style="object-fit: cover; border-radius: 8px;">
-                  @else
-                    <span class="text-muted">-</span>
-                  @endif
-                </td>
-
                 <td>{{ $quiz->title }}</td>
                 <td>{{ $quiz->bab->judul ?? 'Bab tidak ditemukan' }}</td>
                 <td>{{ $quiz->description }}</td>
@@ -57,9 +48,10 @@
                 <td class="text-center">{{ $quiz->duration_minutes }} menit</td>
                 <td class="text-center">{{ $quiz->kkm }}</td>
                 <td class="text-center">
-                  <a href="{{ route('soal', $quiz->id) }}" class="btn btn-sm btn-info">
+                  <a href="{{ route('kuis.soal', $quiz->id) }}" class="btn btn-sm btn-info">
                     Soal
                   </a>
+                  
 
                   <button 
                     type="button" 
@@ -83,7 +75,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form action="{{ route('updatekuis', $quiz->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('updatekuis', $quiz->id) }}" method="POST">
                       @csrf
                       @method('PUT')
 
@@ -126,23 +118,6 @@
                             <label class="form-label fw-semibold">KKM</label>
                             <input type="number" step="0.01" name="kkm" class="form-control" value="{{ $quiz->kkm }}" min="0" max="100" required>
                           </div>
-
-                          <div class="col-12">
-                            <label class="form-label fw-semibold">Gambar Kuis</label>
-                            <input type="file" name="image" class="form-control" accept="image/*">
-                          </div>
-
-                          <div class="col-12">
-                            <label class="form-label fw-semibold">Preview Gambar Saat Ini</label>
-                            <div>
-                              @if($quiz->image)
-                                <img src="{{ asset('storage/' . $quiz->image) }}" alt="Preview Gambar" width="120" style="border-radius: 10px; object-fit: cover;">
-                              @else
-                                <span class="text-muted">Belum ada gambar</span>
-                              @endif
-                            </div>
-                          </div>
-
                         </div>
                       </div>
 

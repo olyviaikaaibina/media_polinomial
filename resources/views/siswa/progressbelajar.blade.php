@@ -174,7 +174,6 @@
 
     .progress-bar-fill {
       height: 100%;
-      width: 0%;
       background: linear-gradient(90deg, #a7b893 0%, #7b8d67 100%);
       border-radius: 999px;
       transition: width 0.8s ease;
@@ -190,7 +189,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .stats-row {
@@ -227,7 +226,7 @@
     }
 
     .table-wrap {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--line);
       border-radius: 22px;
       overflow: hidden;
@@ -323,7 +322,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-polymathica px-4 fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex flex-column align-items-center text-center" href="#">
+      <a class="navbar-brand d-flex flex-column align-items-center text-center" href="{{ route('landingpage') }}">
         <img src="{{ asset('img/2.png') }}" class="logo-img" alt="Logo">
         <span class="logo-word">POLIMATHICA</span>
       </a>
@@ -334,17 +333,22 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navMenu">
         <ul class="navbar-nav gap-4">
-          <li class="nav-item"><a class="nav-link" href="{{ route('landingpage') }}">Beranda</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('petunjukpenggunaan') }}">Petunjuk Penggunaan</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Progres Belajar</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('landingpage') }}">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('petunjukpenggunaan') }}">Petunjuk Penggunaan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('progressbelajar') }}">Progres Belajar</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   @php
-    use Illuminate\Support\Facades\Auth;
-    $namaSiswa = Auth::guard('siswa')->user()->nama ?? 'Guest';
+    $namaSiswa = $siswa->nama ?? 'Guest';
     $inisial = strtoupper(substr($namaSiswa, 0, 1));
   @endphp
 
@@ -362,124 +366,97 @@
       </div>
 
       <h1 class="headline">Progres Belajar Kamu</h1>
-      <p class="subheadline" id="descText">
-        Pantau perkembangan belajar polinomialmu di sini. Mulailah dari materi pertama agar progresmu segera terisi.
+
+      <p class="subheadline">
+        @if ($done === 0)
+          Pantau perkembangan belajar polinomialmu di sini. Mulailah dari materi pertama agar progresmu segera terisi.
+        @elseif ($done === $total)
+          Semua materi dan kuis telah selesai. Hasil belajarmu sangat baik dan progresmu sudah lengkap.
+        @else
+          Pantau perkembangan belajar polinomialmu di sini. Selesaikan materi satu per satu agar progresmu terus meningkat dan belajarmu lebih terarah.
+        @endif
       </p>
     </div>
 
     <div class="progress-section">
       <div class="progress-header">
         <div>
-          <div class="progress-title" id="summaryText">0 dari 0 materi telah diselesaikan</div>
-          <p class="progress-caption">Terus lanjutkan materi dan latihan untuk meningkatkan progres belajarmu.</p>
+          <div class="progress-title">
+            {{ $done }} dari {{ $total }} materi/kuis telah diselesaikan
+          </div>
+          <p class="progress-caption">
+            Terus lanjutkan materi dan latihan untuk meningkatkan progres belajarmu.
+          </p>
         </div>
-        <div class="progress-percent" id="percentText">0%</div>
+
+        <div class="progress-percent">
+          {{ $percent }}%
+        </div>
       </div>
 
       <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" id="progressBar"></div>
+        <div class="progress-bar-fill" style="width: {{ $percent }}%;"></div>
       </div>
 
       <div class="stats-row">
         <div class="stat-card">
-          <div class="stat-label">Materi selesai</div>
-          <div class="stat-value" id="doneCount">0</div>
+          <div class="stat-label">Materi/Kuis selesai</div>
+          <div class="stat-value">{{ $done }}</div>
         </div>
+
         <div class="stat-card">
-          <div class="stat-label">Materi tersisa</div>
-          <div class="stat-value" id="leftCount">0</div>
+          <div class="stat-label">Materi/Kuis tersisa</div>
+          <div class="stat-value">{{ $left }}</div>
         </div>
+
         <div class="stat-card">
-          <div class="stat-label">Total materi</div>
-          <div class="stat-value" id="totalCount">0</div>
+          <div class="stat-label">Total materi/kuis</div>
+          <div class="stat-value">{{ $total }}</div>
         </div>
       </div>
     </div>
 
-    <div class="section-title">Daftar Materi</div>
+    <div class="section-title">Daftar Materi dan Kuis</div>
 
     <div class="table-wrap">
       <div class="table-responsive">
-        <table class="table align-middle" id="materiTable">
+        <table class="table align-middle">
           <thead>
             <tr>
-              <th style="width: 70%;">Materi</th>
+              <th style="width: 70%;">Materi / Kuis</th>
               <th>Status</th>
             </tr>
           </thead>
+
           <tbody>
-            <tr data-status="pending">
-              <td><span class="materi-name">Pengenalan Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Derajat Suatu Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Fungsi Polinomial dan Grafiknya</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Kuis - Polinomial &amp; Fungsi Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Penjumlahan Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Pengurangan Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Perkalian Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Kuis - Penjumlahan, Pengurangan dan Perkalian</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Pembagian Bersusun</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Metode Horner</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Teorema Sisa</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Kuis - Pembagian Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Teorema Faktor</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Faktor dan Pembuat Nol</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Kuis - Faktor &amp; Pembuat Nol</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Identitas Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Kuis - Identitas Polinomial</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
-            <tr data-status="pending">
-              <td><span class="materi-name">Evaluasi</span></td>
-              <td><span class="status-pill pending"><span class="dot"></span>Belum Tuntas</span></td>
-            </tr>
+            @forelse ($items as $item)
+              <tr>
+                <td>
+                  <span class="materi-name">
+                    {{ $item['title'] }}
+                  </span>
+                </td>
+                <td>
+                  @if ($item['is_completed'])
+                    <span class="status-pill done">
+                      <span class="dot"></span>
+                      Tuntas
+                    </span>
+                  @else
+                    <span class="status-pill pending">
+                      <span class="dot"></span>
+                      Belum Tuntas
+                    </span>
+                  @endif
+                </td>
+              </tr>
+            @empty
+              <tr>
+                <td colspan="2" class="text-center text-muted py-4">
+                  Belum ada data materi.
+                </td>
+              </tr>
+            @endforelse
           </tbody>
         </table>
       </div>
@@ -488,30 +465,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    (function () {
-      const rows = document.querySelectorAll("#materiTable tbody tr");
-      const total = rows.length;
-      const done = Array.from(rows).filter(row => row.dataset.status === "done").length;
-      const left = total - done;
-      const percent = total === 0 ? 0 : Math.round((done / total) * 100);
-
-      document.getElementById("summaryText").textContent = `${done} dari ${total} materi telah diselesaikan`;
-      document.getElementById("percentText").textContent = `${percent}%`;
-      document.getElementById("doneCount").textContent = done;
-      document.getElementById("leftCount").textContent = left;
-      document.getElementById("totalCount").textContent = total;
-      document.getElementById("progressBar").style.width = `${percent}%`;
-
-      document.getElementById("descText").textContent =
-        done === 0
-          ? "Pantau perkembangan belajar polinomialmu di sini. Mulailah dari materi pertama agar progresmu segera terisi."
-          : done === total
-            ? "Semua materi telah selesai. Hasil belajarmu sangat baik dan progresmu sudah lengkap."
-            : "Pantau perkembangan belajar polinomialmu di sini. Selesaikan materi satu per satu agar progresmu terus meningkat dan belajarmu lebih terarah.";
-    })();
-  </script>
 
 </body>
 

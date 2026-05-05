@@ -313,7 +313,6 @@
     <div class="container">
         <div class="card">
             <div class="content">
-
                 <div class="title">Hasil Quiz</div>
                 <div class="subtitle">Berikut hasil pengerjaan quiz kamu</div>
                 <div class="divider"></div>
@@ -321,19 +320,20 @@
                 <div class="score-wrap">
                     <div class="score-ring">
                         <div class="score-circle">
-                            <div class="score-number">{{ $score ?? 0 }}</div>
+                            <div class="score-number">{{ $nilai ?? 0 }}</div>
                             <div class="score-label">Skor</div>
                         </div>
                     </div>
                 </div>
 
-                @if($isPassed ?? false)
+                @if($lulus ?? false)
                     <div class="status success">
-                        Selamat, nilai kamu sudah memenuhi KKM. Kamu bisa melanjutkan ke materi berikutnya.
+                        Selamat, nilai kamu sudah memenuhi KKM {{ $kkm ?? '-' }}. Kamu bisa melanjutkan ke materi
+                        berikutnya.
                     </div>
                 @else
                     <div class="status warning">
-                        Skormu kurang dari KKM, silakan pelajari lagi materinya dan ulangi quiz.
+                        Skormu kurang dari KKM {{ $kkm ?? '-' }}, silakan pelajari lagi materinya dan ulangi quiz.
                     </div>
                 @endif
 
@@ -341,36 +341,76 @@
                     <div class="detail-box">
                         <div class="detail-icon">⏱</div>
                         <div class="detail-value">
-                            {{ $durationMinutes ?? 0 }}m {{ str_pad($durationSeconds ?? 0, 2, '0', STR_PAD_LEFT) }}s
+                            {{ $durasiMenit ?? 0 }}m {{ str_pad($durasiSisaDetik ?? 0, 2, '0', STR_PAD_LEFT) }}s
                         </div>
                         <div class="detail-label">Durasi Pengerjaan</div>
                     </div>
 
                     <div class="detail-box">
                         <div class="detail-icon">✓</div>
-                        <div class="detail-value">{{ $correctCount ?? 0 }}</div>
+                        <div class="detail-value">{{ $benar ?? 0 }}</div>
                         <div class="detail-label">Jawaban Benar</div>
                     </div>
 
                     <div class="detail-box">
                         <div class="detail-icon">✕</div>
-                        <div class="detail-value">{{ $wrongCount ?? 0 }}</div>
+                        <div class="detail-value">{{ $salah ?? 0 }}</div>
                         <div class="detail-label">Jawaban Salah</div>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <a href="{{ url()->previous() }}" class="btn btn-secondary">
-                        Kembali
-                    </a>
+                    @if ($lulus)
+                        {{-- Kuis E selesai, lanjut ke Evaluasi --}}
+                        @if ($quiz->id == 5)
+                            @if ($previousMateri)
+                                <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn btn-secondary">
+                                    Kembali ke Halaman Materi
+                                </a>
+                            @endif
 
-                    @if($isPassed ?? false)
-                        <a href="{{ route('materi.lanjut', $quiz->id) }}" class="btn btn-primary">
-                            Lanjut
-                        </a>
+                            <a href="{{ route('quiz.show', 6) }}" class="btn btn-primary">
+                                Kerjakan Evaluasi
+                            </a>
+
+                            {{-- Evaluasi selesai, kembali ke peta konsep --}}
+                        @elseif ($quiz->id == 6)
+                            <a href="{{ route('petakonsep') }}" class="btn btn-primary">
+                                Kembali ke Peta Konsep
+                            </a>
+
+                            {{-- Kuis bab biasa, lanjut ke bab berikutnya --}}
+                        @elseif ($nextMateri)
+                            @if ($previousMateri)
+                                <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn btn-secondary">
+                                    Kembali ke Halaman Materi
+                                </a>
+                            @endif
+
+                            <a href="{{ route('materi.show', $nextMateri->slug) }}" class="btn btn-primary">
+                                Lanjut ke Materi Berikutnya
+                            </a>
+
+                        @else
+                            <a href="{{ route('petakonsep') }}" class="btn btn-primary">
+                                Kembali ke Peta Konsep
+                            </a>
+                        @endif
+
                     @else
+                        {{-- Jika tidak lulus --}}
+                        @if ($quiz->id == 6)
+                            <a href="{{ route('petakonsep') }}" class="btn btn-secondary">
+                                Kembali ke Peta Konsep
+                            </a>
+                        @elseif ($previousMateri)
+                            <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn btn-secondary">
+                                Kembali ke Materi Sebelumnya
+                            </a>
+                        @endif
+
                         <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-primary">
-                            Ulangi Quiz
+                            Ulangi Kuis
                         </a>
                     @endif
                 </div>

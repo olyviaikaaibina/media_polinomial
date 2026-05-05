@@ -3278,7 +3278,7 @@
                         </div>
 
                         <label>Masukkan nilai \(P(1)\):</label>
-                        <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="Contoh: 0">
+                        <input type="text" id="jawabLangkah1" class="input-jawaban" placeholder="">
                         <div id="feedback1" class="feedback"></div>
 
                         <div id="stepExplain1" class="penjelasan-step">
@@ -3311,7 +3311,7 @@
                         </div>
 
                         <label>Jika \(P(1)=0\), maka faktor linearnya adalah:</label>
-                        <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="Contoh: x-1">
+                        <input type="text" id="jawabLangkah2" class="input-jawaban" placeholder="">
                         <div id="feedback2" class="feedback"></div>
 
                         <div id="stepExplain2" class="penjelasan-step">
@@ -3457,7 +3457,7 @@
                         </div>
 
                         <label>Tuliskan faktornya:</label>
-                        <input type="text" id="jawabLangkah4" class="input-jawaban" placeholder="Contoh: (x-4)(x+1)">
+                        <input type="text" id="jawabLangkah4" class="input-jawaban" placeholder="">
                         <div id="feedback4" class="feedback"></div>
 
                         <div id="stepExplain4" class="penjelasan-step">

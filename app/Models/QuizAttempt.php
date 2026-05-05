@@ -20,13 +20,17 @@ class QuizAttempt extends Model
         'wrong_answers',
         'unanswered',
         'score',
+        'is_passed',
+        'passed_at',
     ];
 
     protected $casts = [
         'started_at' => 'datetime',
         'end_at' => 'datetime',
         'submitted_at' => 'datetime',
+        'passed_at' => 'datetime',
         'score' => 'decimal:2',
+        'is_passed' => 'boolean',
     ];
 
     public function quiz()

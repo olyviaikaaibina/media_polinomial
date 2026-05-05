@@ -1639,7 +1639,9 @@
         <div class="paragraf">
             Pada pembagian polinomial, metode bersusun merupakan cara yang umum digunakan.
             Namun untuk pembagian polinomial oleh bentuk <em>(x − k)</em> terdapat cara lain
-            yang lebih cepat dan efisien, yaitu Metode Horner.
+            yang lebih cepat dan efisien, yaitu Metode Horner. Metode ini menyederhanakan proses pembagian hanya menjadi
+            operasi perkalian dan penjumlahan, sehingga sangat praktis digunakan untuk mencari hasil bagi dan sisa
+            pembagian.
         </div>
 
         <div class="eksplorasi-box">
@@ -3020,11 +3022,11 @@
 @endsection
 
 @section('nav')
-<a href="{{ route('pembagianbersusun') }}" class="btn-nav prev-btn">
-    ← Previous
-</a>
+    <a href="{{ route('pembagianbersusun') }}" class="btn-nav prev-btn">
+        ← Previous
+    </a>
 
-<a href="{{ route('teoremasisa') }}" class="btn-nav next-btn">
-    Next →
-</a>
+    <a href="{{ route('teoremasisa') }}" class="btn-nav next-btn">
+        Next →
+    </a>
 @endsection
