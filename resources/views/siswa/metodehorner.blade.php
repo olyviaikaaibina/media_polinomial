@@ -2329,9 +2329,14 @@
     </div>
 
     <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+    <script>
         let jawabanBenar = false;
         let eksplorasiSelesai = false;
         let soal1Benar = false;
+
+
 
         const latihanJawaban = {
             s1k: '',
@@ -2745,6 +2750,55 @@
             }
         }
 
+        // LATIHAN SOAL
+
+        async function saveProgressMateri() {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            if (!window.completeMateriUrl || !csrfToken) {
+                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                return false;
+            }
+
+            try {
+                const response = await fetch(window.completeMateriUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+
+        function bukaNextButton() {
+            const nextBtn = document.getElementById("nextMateriBtn");
+            if (!nextBtn) return;
+
+            const url = nextBtn.dataset.nextUrl;
+            if (!url) return;
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "nextMateriBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Next →";
+
+            nextBtn.replaceWith(link);
+        }
+
+        let progressSudahDisimpan = false;
+
         function cekLatihan1() {
             resetWarnaSaja('s1k');
             resetWarnaSaja('s1koef');
@@ -2822,7 +2876,7 @@
             });
         }
 
-        function cekLatihan2() {
+        async function cekLatihan2() {
             const feedback = document.getElementById('latihanFeedback2');
             const penjelasan = document.getElementById('latihanPenjelasan2');
             const finalNote = document.getElementById('latihanFinalNote');
@@ -2857,6 +2911,7 @@
 
             data.forEach(item => {
                 const input = document.getElementById(item.id);
+
                 if (!input) {
                     semuaBenar = false;
                     return;
@@ -2875,7 +2930,45 @@
                 feedback.className = 'latihan-feedback success';
                 penjelasan.style.display = 'block';
 
-                if (finalNote) finalNote.style.display = 'block';
+                if (finalNote) {
+                    finalNote.style.display = 'block';
+                    finalNote.innerHTML = 'Bagus! Kedua soal sudah benar. Progress sedang disimpan...';
+                    finalNote.className = 'latihan-feedback success';
+                }
+
+                if (progressSudahDisimpan) {
+                    bukaNextButton();
+
+                    if (finalNote) {
+                        finalNote.style.display = 'block';
+                        finalNote.innerHTML = '✅ Progress sudah tersimpan. Tombol Next sudah terbuka.';
+                        finalNote.className = 'latihan-feedback success';
+                    }
+
+                    return true;
+                }
+
+                progressSudahDisimpan = true;
+
+                const berhasilSimpan = await saveProgressMateri();
+
+                if (berhasilSimpan) {
+                    bukaNextButton();
+
+                    if (finalNote) {
+                        finalNote.style.display = 'block';
+                        finalNote.innerHTML = '✅ Bagus! Kedua soal sudah benar. Progress berhasil disimpan. Tombol Next sudah terbuka.';
+                        finalNote.className = 'latihan-feedback success';
+                    }
+                } else {
+                    progressSudahDisimpan = false;
+
+                    if (finalNote) {
+                        finalNote.style.display = 'block';
+                        finalNote.innerHTML = '✅ Jawaban benar, tetapi progress gagal disimpan. Silakan klik Cek Jawaban No. 2 lagi.';
+                        finalNote.className = 'latihan-feedback error';
+                    }
+                }
 
                 return true;
             }
@@ -2889,19 +2982,25 @@
             return false;
         }
 
-        function cekSemuaLatihan() {
+        async function cekSemuaLatihan() {
             const benar1 = cekLatihan1();
 
             const finalNote = document.getElementById('latihanFinalNote');
             if (finalNote) finalNote.style.display = 'none';
 
-            if (!benar1) return;
+            if (!benar1) return false;
 
-            const benar2 = cekLatihan2();
+            const benar2 = await cekLatihan2();
+
+            if (benar1 && benar2) {
+                return true;
+            }
 
             if (finalNote) {
-                finalNote.style.display = benar1 && benar2 ? 'block' : 'none';
+                finalNote.style.display = 'none';
             }
+
+            return false;
         }
 
         function cekInputKosong(el) {
@@ -2912,6 +3011,8 @@
         }
 
         function ulangiLatihan1() {
+            progressSudahDisimpan = false;
+
             resetPilihanState('s1k');
             resetPilihanState('s1koef');
             resetPilihanState('s1turun');
@@ -2931,7 +3032,20 @@
         }
 
         function ulangiLatihan2() {
-            const ids = ['s2m1', 's2m2', 's2m3', 's2b1', 's2b2', 's2b3', 's2q1', 's2q2', 's2q3', 's2sisa'];
+            progressSudahDisimpan = false;
+
+            const ids = [
+                's2m1',
+                's2m2',
+                's2m3',
+                's2b1',
+                's2b2',
+                's2b3',
+                's2q1',
+                's2q2',
+                's2q3',
+                's2sisa'
+            ];
 
             ids.forEach(id => {
                 cekInputKosong(document.getElementById(id));
@@ -2941,7 +3055,10 @@
             const penjelasan = document.getElementById('latihanPenjelasan2');
             const finalNote = document.getElementById('latihanFinalNote');
 
-            if (feedback) feedback.innerHTML = soal1Benar ? '' : 'Jawab soal nomor 1 dengan benar terlebih dahulu.';
+            if (feedback) {
+                feedback.innerHTML = soal1Benar ? '' : 'Jawab soal nomor 1 dengan benar terlebih dahulu.';
+            }
+
             if (penjelasan) penjelasan.style.display = 'none';
             if (finalNote) finalNote.style.display = 'none';
 
@@ -2957,6 +3074,7 @@
             }
 
             const infoText = document.getElementById('hornerInfoText');
+
             if (infoText) {
                 infoText.innerHTML = text;
             }
@@ -3008,7 +3126,18 @@
 
             kunciSoal2();
 
-            const latihan2Ids = ['s2m1', 's2m2', 's2m3', 's2b1', 's2b2', 's2b3', 's2q1', 's2q2', 's2q3', 's2sisa'];
+            const latihan2Ids = [
+                's2m1',
+                's2m2',
+                's2m3',
+                's2b1',
+                's2b2',
+                's2b3',
+                's2q1',
+                's2q2',
+                's2q3',
+                's2sisa'
+            ];
 
             latihan2Ids.forEach(id => {
                 const el = document.getElementById(id);
@@ -3022,11 +3151,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('pembagianbersusun') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('teoremasisa') }}" class="btn-nav next-btn">
-        Next →
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+    <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+        Kuis →
     </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+    <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+        style="opacity:.65; cursor:not-allowed;">
+        🔒 Kuis
+    </span>
+    @else
+    <span class="btn-nav next-btn disabled">
+        Next →
+    </span>
+    @endif
 @endsection

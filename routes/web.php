@@ -66,6 +66,8 @@ Route::middleware('auth:siswa')->group(function () {
     Route::post('/quiz/{id}/submit', [QuizSiswaController::class, 'submit'])->name('quiz.submit');
 });
 
+Route::post('/logout', [SiswaAuthController::class, 'logout'])->name('logout');
+
 // Progress Materi Siswa
 Route::post('/materi/{id}/selesai', [MateriController::class, 'complete'])->name('materi.complete');
 

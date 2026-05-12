@@ -2149,9 +2149,29 @@
     </div>
 
     <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+    <script>
         let langkahTerbuka = 0;
         let materiEksplorasiSudahTerbuka = false;
 
+
+
+        function bukaQuizButton() {
+            const quizBtn = document.getElementById("quizBabBtn");
+            if (!quizBtn) return;
+
+            const url = quizBtn.dataset.quizUrl;
+            if (!url) return;
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "quizBabBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Kuis →";
+
+            quizBtn.replaceWith(link);
+        }
         let soal1Step1Benar = false;
         let soal1Step2Benar = false;
         let soal1Step3Benar = false;
@@ -2237,28 +2257,28 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Nilai yang kamu hitung sudah tepat.';
 
                 penjelasan.innerHTML = `
-                    Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                    <br><br>
-                    <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                    <br>
-                    <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                    <br><br>
-                    Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                `;
+                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                            <br><br>
+                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                            <br>
+                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                            <br><br>
+                            Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                    Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                    <br><br>
-                    <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                    <br>
-                    <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                    <br><br>
-                    Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                `;
+                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                            <br><br>
+                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                            <br>
+                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                            <br><br>
+                            Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -2290,35 +2310,35 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Dugaan sisamu sudah tepat.';
 
                 penjelasan.innerHTML = `
-                    Dari Aktivitas 1 diperoleh:
-                    <br><br>
-                    <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                    <br><br>
-                    Maka:
-                    <ul class="eksplorasi-list">
-                        <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
-                        <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
-                    </ul>
-                    Jadi jawaban yang benar adalah:
-                    <br>
-                    <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
-                `;
+                            Dari Aktivitas 1 diperoleh:
+                            <br><br>
+                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                            <br><br>
+                            Maka:
+                            <ul class="eksplorasi-list">
+                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
+                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
+                            </ul>
+                            Jadi jawaban yang benar adalah:
+                            <br>
+                            <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
+                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                    Gunakan hasil Aktivitas 1:
-                    <br><br>
-                    <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                    <br><br>
-                    Maka jawaban yang benar adalah:
-                    <ul class="eksplorasi-list">
-                        <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
-                        <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
-                    </ul>
-                `;
+                            Gunakan hasil Aktivitas 1:
+                            <br><br>
+                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                            <br><br>
+                            Maka jawaban yang benar adalah:
+                            <ul class="eksplorasi-list">
+                                <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
+                                <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
+                            </ul>
+                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -2414,31 +2434,31 @@
 
             if (id === 1) {
                 box.innerHTML = `
-                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                    Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                    <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                    <div class="rumus-penjelasan">Sisa = P(2)</div>
-                    Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                    cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                `;
+                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                            Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                            <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                            <div class="rumus-penjelasan">Sisa = P(2)</div>
+                            Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                            cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+                        `;
             } else if (id === 2) {
                 box.innerHTML = `
-                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                    Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                    <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                    <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                    Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                    disubstitusikan ke polinomial justru <strong>−3</strong>.
-                `;
+                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                            Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                            <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                            <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                            Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                            disubstitusikan ke polinomial justru <strong>−3</strong>.
+                        `;
             } else if (id === 3) {
                 box.innerHTML = `
-                    <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                    Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                    Maka sisanya diperoleh dari
-                    <div class="rumus-penjelasan">Sisa = P(0)</div>
-                    Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                    sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                `;
+                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                            Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                            Maka sisanya diperoleh dari
+                            <div class="rumus-penjelasan">Sisa = P(0)</div>
+                            Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                            sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+                        `;
             }
         }
 
@@ -2467,6 +2487,55 @@
             penjelasan.innerHTML = isiPenjelasan;
             penjelasan.classList.add('show');
         }
+
+        // LATIHAN SOAL
+
+        async function saveProgressMateri() {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            if (!window.completeMateriUrl || !csrfToken) {
+                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                return false;
+            }
+
+            try {
+                const response = await fetch(window.completeMateriUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+
+        function bukaQuizButton() {
+            const quizBtn = document.getElementById("quizBabBtn");
+            if (!quizBtn) return;
+
+            const url = quizBtn.dataset.quizUrl;
+            if (!url) return;
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "quizBabBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Kuis →";
+
+            quizBtn.replaceWith(link);
+        }
+
+        let progressSudahDisimpan = false;
 
         function cekStep1() {
             const input = document.getElementById('jawabStep1');
@@ -2581,6 +2650,7 @@
             if (!parent) return;
 
             const allBtns = parent.querySelectorAll('.opsi-btn');
+
             allBtns.forEach(btn => {
                 btn.classList.remove('active-benar', 'active-salah', 'opsi-benar', 'opsi-salah');
             });
@@ -2763,7 +2833,7 @@
             }
         }
 
-        function cekHornerSoal2() {
+        async function cekHornerSoal2() {
             const jawaban = {
                 h1: '2',
                 h2: '2',
@@ -2772,11 +2842,11 @@
                 h5: '-1',
                 h6: '6',
                 h7: '2',
-                h8: '2',
+                h8: '-1',
                 h9: '-1',
                 h10: '-1',
-                h11: '-1',
-                h12: '6'
+                h11: '6',
+                h12: '1'
             };
 
             let benarSemua = true;
@@ -2808,10 +2878,33 @@
 
             if (benarSemua) {
                 feedback.className = 'latihan-feedback benar';
-                feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat. Sisa pembagiannya adalah <strong>1</strong>.';
+                feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat. Progress sedang disimpan...';
 
                 if (finalBox) {
                     finalBox.style.display = 'block';
+                }
+
+                if (progressSudahDisimpan) {
+                    bukaQuizButton();
+
+                    feedback.innerHTML = 'Jawaban benar. Progress sudah tersimpan. Kuis sudah terbuka.';
+                    return;
+                }
+
+                progressSudahDisimpan = true;
+
+                const berhasilSimpan = await saveProgressMateri();
+
+                if (berhasilSimpan) {
+                    bukaQuizButton();
+
+                    feedback.innerHTML = '✅ Jawaban benar. Tabel Horner sudah lengkap dan tepat. Sisa pembagiannya adalah <strong>1</strong>. Progress berhasil disimpan. Kuis sudah terbuka.';
+                    feedback.className = 'latihan-feedback benar';
+                } else {
+                    progressSudahDisimpan = false;
+
+                    feedback.innerHTML = '✅ Jawaban benar, tetapi progress gagal disimpan. Silakan klik cek lagi.';
+                    feedback.className = 'latihan-feedback salah';
                 }
             } else {
                 feedback.className = 'latihan-feedback salah';
@@ -2897,11 +2990,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('metodehorner') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('quiz.show', 3) }}" class="btn-nav next-btn">
-        Next →
-    </a>
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
+    @endif
 @endsection

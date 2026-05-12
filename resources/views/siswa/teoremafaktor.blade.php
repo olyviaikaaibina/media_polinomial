@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             renderMathInElement(document.body, {
@@ -542,9 +546,55 @@
                 el.addEventListener('change', item.fn);
             });
 
-            // =========================
-            // LATIHAN CEK PER SOAL
-            // =========================
+
+            // LATIHAN SOAL
+            async function saveProgressMateri() {
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content");
+
+                if (!window.completeMateriUrl || !csrfToken) {
+                    console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                    return false;
+                }
+
+                try {
+                    const response = await fetch(window.completeMateriUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrfToken,
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Accept": "application/json",
+                        },
+                        body: JSON.stringify({}),
+                    });
+
+                    return response.ok;
+                } catch (error) {
+                    console.error(error);
+                    return false;
+                }
+            }
+
+            function bukaNextButton() {
+                const nextBtn = document.getElementById("nextMateriBtn");
+                if (!nextBtn) return;
+
+                const url = nextBtn.dataset.nextUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "nextMateriBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Next →";
+
+                nextBtn.replaceWith(link);
+            }
+
+            let progressSudahDisimpan = false;
+
             function setLatihan1Status(value) {
                 const el = document.getElementById('latihan1Status');
                 if (el) el.value = value ? 'true' : 'false';
@@ -653,7 +703,7 @@
                 rerenderMath();
             }
 
-            function cekLatihan2() {
+            async function cekLatihan2() {
                 const latihan1Benar = document.getElementById('latihan1Status')?.value === 'true';
 
                 if (!latihan1Benar) {
@@ -744,9 +794,45 @@
                     showTextFeedback(
                         'latihan2FeedbackFinal',
                         true,
-                        'Semua jawaban Soal 2 benar.'
+                        'Semua jawaban Soal 2 benar. Progress sedang disimpan...'
                     );
+
                     showElement('latihan2FinalExplanation');
+
+                    if (progressSudahDisimpan) {
+                        bukaNextButton();
+
+                        showTextFeedback(
+                            'latihan2FeedbackFinal',
+                            true,
+                            'Semua jawaban Soal 2 benar. Progress sudah tersimpan. Tombol Next sudah terbuka.'
+                        );
+
+                        rerenderMath();
+                        return;
+                    }
+
+                    progressSudahDisimpan = true;
+
+                    const berhasilSimpan = await saveProgressMateri();
+
+                    if (berhasilSimpan) {
+                        bukaNextButton();
+
+                        showTextFeedback(
+                            'latihan2FeedbackFinal',
+                            true,
+                            'Semua jawaban Soal 2 benar. Progress berhasil disimpan. Tombol Next sudah terbuka.'
+                        );
+                    } else {
+                        progressSudahDisimpan = false;
+
+                        showTextFeedback(
+                            'latihan2FeedbackFinal',
+                            false,
+                            'Semua jawaban Soal 2 benar, tetapi progress gagal disimpan. Silakan klik cek lagi.'
+                        );
+                    }
                 } else {
                     showTextFeedback(
                         'latihan2FeedbackFinal',
@@ -1062,20 +1148,20 @@
 
                 if (bank1) {
                     bank1.innerHTML = `
-                        <div class="drag-item" draggable="true" data-value="0">0</div>
-                        <div class="drag-item" draggable="true" data-value="-6">-6</div>
-                        <div class="drag-item" draggable="true" data-value="1">1</div>
-                        <div class="drag-item" draggable="true" data-value="4">4</div>
-                    `;
+                                    <div class="drag-item" draggable="true" data-value="0">0</div>
+                                    <div class="drag-item" draggable="true" data-value="-6">-6</div>
+                                    <div class="drag-item" draggable="true" data-value="1">1</div>
+                                    <div class="drag-item" draggable="true" data-value="4">4</div>
+                                `;
                 }
 
                 if (bank2) {
                     bank2.innerHTML = `
-                        <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
-                        <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
-                        <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
-                        <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
-                    `;
+                                    <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
+                                    <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
+                                    <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
+                                    <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
+                                `;
                 }
 
                 setupDragItems();
@@ -1227,8 +1313,8 @@
 
         /* CARD UTAMA - FULL FLAT */
         /* =========================
-                                                               CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
-                                                               ========================= */
+                                                                           CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
+                                                                           ========================= */
         .card-eksplorasi {
             position: relative;
             overflow: hidden;
@@ -1489,8 +1575,8 @@
         }
 
         /* =========================
-                                           FIX POSISI BADGE CONTOH
-                                           ========================= */
+                                                       FIX POSISI BADGE CONTOH
+                                                       ========================= */
 
         /* hapus efek naik */
         .contoh-wrap {
@@ -1870,11 +1956,11 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                                           DRAG & DROP EKSPLORASI
-                                                                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                                                                       DRAG & DROP EKSPLORASI
+                                                                                                                                                                                                                                                    ========================== */
         /* =========================
-                                                                                                                                                                                                                               CARD EKSPLORASI (FINAL)
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           CARD EKSPLORASI (FINAL)
+                                                                                                                                                                                                                                        ========================== */
 
         /* card utama */
         .card-eksplorasi {
@@ -1890,8 +1976,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               JUDUL EKSPLORASI
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           JUDUL EKSPLORASI
+                                                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-bar {
             display: flex;
@@ -1924,8 +2010,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               MATIKAN HEADER LAMA
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           MATIKAN HEADER LAMA
+                                                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-header,
         .eksplorasi-icon,
@@ -1936,8 +2022,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               ISI TEKS
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           ISI TEKS
+                                                                                                                                                                                                                                        ========================== */
 
         .card-eksplorasi p,
         .card-eksplorasi li {
@@ -1947,8 +2033,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               AREA STORY (TANPA KOTAK)
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           AREA STORY (TANPA KOTAK)
+                                                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-story {
             position: relative;
@@ -1981,8 +2067,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               RUMUS BOX (SEPERTI GAMBAR)
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           RUMUS BOX (SEPERTI GAMBAR)
+                                                                                                                                                                                                                                        ========================== */
 
         .rumus-box {
             background: #f7f7f7;
@@ -2011,8 +2097,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                               RESPONSIVE (BIAR AMAN)
-                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                           RESPONSIVE (BIAR AMAN)
+                                                                                                                                                                                                                                        ========================== */
 
         @media (max-width: 768px) {
             .card-eksplorasi {
@@ -2406,8 +2492,8 @@
         }
 
         /* =========================
-                                                                                                                       SIFAT - VERSI FIX
-                                                                                                                       ========================= */
+                                                                                                                                   SIFAT - VERSI FIX
+                                                                                                                                   ========================= */
 
         /* BOX MODERN */
         .sifat-box.modern {
@@ -2571,8 +2657,8 @@
         }
 
         /* =========================
-                                                                                                                       SIFAT - VERSI SIMPLE
-                                                                                                                       ========================= */
+                                                                                                                                   SIFAT - VERSI SIMPLE
+                                                                                                                                   ========================= */
 
         .sifat-box {
             position: relative;
@@ -2611,8 +2697,8 @@
         }
 
         /* =========================
-                                                                                                                       RESPONSIVE
-                                                                                                                       ========================= */
+                                                                                                                                   RESPONSIVE
+                                                                                                                                   ========================= */
 
         @media (max-width: 768px) {
             .sifat-grid {
@@ -2915,8 +3001,8 @@
         }
 
         /* =========================
-       LOCK AREA (SOAL 2)
-    ========================= */
+                   LOCK AREA (SOAL 2)
+                ========================= */
         .latihan-terkunci {
             position: relative;
             pointer-events: none;
@@ -4376,6 +4462,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('kuisc') }}" class="btn-nav prev-btn">← Previous</a>
-    <a href="{{ route('faktordanpembuatnol') }}" class="btn-nav next-btn">Next →</a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
+
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
+    @endif
 @endsection

@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                    delimiters: [
-                                                                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                    ]
-                                                                                                                                                                                                                                                                                });"></script>
+                                                                                                                                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                            ]
+                                                                                                                                                                                                                                                                                        });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -570,8 +570,8 @@
         }
 
         /* =========================
-                                                                                                                                                                                                                           CONTOH INTERAKTIF MODEL BARU
-                                                                                                                                                                                                                           ========================= */
+                                                                                                                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
+                                                                                                                                                                                                                                   ========================= */
         .ci-card {
             border-radius: 18px;
             padding: 18px;
@@ -1043,8 +1043,8 @@
         }
 
         /* =========================================================
-                                                                                                                                                                                                                    ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
-                                                                                                                                                                                                                    ========================================================= */
+                                                                                                                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
+                                                                                                                                                                                                                            ========================================================= */
         .endbeh-table-wrap {
             overflow-x: auto;
             margin-top: 14px;
@@ -1214,8 +1214,8 @@
         }
 
         /* =========================================================
-                                                                                                                                                                                                                    ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
-                                                                                                                                                                                                                    ========================================================= */
+                                                                                                                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
+                                                                                                                                                                                                                            ========================================================= */
         .contoh-card {
             border-radius: 16px;
             padding: 20px 22px;
@@ -2982,7 +2982,7 @@
     <script>
         window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
     </script>
-    
+
     {{-- =========================
     SCRIPT EKSPLORASI
     ========================= --}}
@@ -3588,12 +3588,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                                                                                                                    Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                                                                                                                    Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                                                                                                                    ${posisiGrafik}
-                                                                                                                                    Perilaku ujungnya adalah <b>naik-naik</b>:
-                                                                                                                                    saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                                                                                                                `;
+                                                                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                                                                            ${posisiGrafik}
+                                                                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                                                                        `;
                 }
             }
 
@@ -4280,6 +4280,58 @@
     </script>
 
     <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+
+    <script>
+        async function saveProgressMateri() {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            if (!window.completeMateriUrl || !csrfToken) {
+                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                return false;
+            }
+
+            try {
+                const response = await fetch(window.completeMateriUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+        function bukaQuizButton() {
+            const quizBtn = document.getElementById("quizBabBtn");
+            if (!quizBtn) return;
+
+            const url = quizBtn.dataset.quizUrl;
+            if (!url) return;
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "quizBabBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Kuis →";
+
+            quizBtn.replaceWith(link);
+        }
+
+    </script>
+
+  
+    <script>
         (function () {
             const hasil1 = document.getElementById("hasilSoal1");
             const hasil2 = document.getElementById("hasilSoal2");
@@ -4474,20 +4526,50 @@
                 unlockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Silakan kerjakan soal nomor 3 lalu klik <b>Cek Jawaban No. 3</b>.");
             });
 
-            cekSoal3Btn?.addEventListener("click", function () {
+            cekSoal3Btn?.addEventListener("click", async function () {
                 const { kosong, salah } = cekGroup(soal3Ids);
 
                 if (kosong.length) {
-                    setHasil(hasil3, "bad", `⚠️ Nomor 3 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
+                    setHasil(
+                        hasil3,
+                        "bad",
+                        `⚠️ Nomor 3 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`
+                    );
                     return;
                 }
 
                 if (salah.length) {
-                    setHasil(hasil3, "bad", `❌ Nomor 3 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
+                    setHasil(
+                        hasil3,
+                        "bad",
+                        `❌ Nomor 3 masih salah pada bagian: <b>${salah.join(", ")}</b>.`
+                    );
                     return;
                 }
 
-                setHasil(hasil3, "ok", "✅ Semua jawaban nomor 3 benar. Latihan selesai.");
+                setHasil(
+                    hasil3,
+                    "ok",
+                    "✅ Semua jawaban nomor 3 benar. Latihan selesai. Menyimpan progress..."
+                );
+
+                const berhasilSimpan = await saveProgressMateri();
+
+                if (berhasilSimpan) {
+                    bukaQuizButton();
+
+                    setHasil(
+                        hasil3,
+                        "ok",
+                        "✅ Semua jawaban nomor 3 benar. Progress berhasil disimpan. Kuis sudah terbuka."
+                    );
+                } else {
+                    setHasil(
+                        hasil3,
+                        "bad",
+                        "✅ Jawaban benar, tetapi progress gagal disimpan. Silakan refresh halaman atau coba lagi."
+                    );
+                }
             });
 
             resetBtn?.addEventListener("click", function () {
@@ -4499,14 +4581,50 @@
                     }
                 });
 
-                setHasil(hasil1, "", "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.");
-                lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
-                lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
+                setHasil(
+                    hasil1,
+                    "",
+                    "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>."
+                );
+
+                lockSection(
+                    section2,
+                    soal2Ids,
+                    cekSoal2Btn,
+                    hasil2,
+                    "Soal nomor 2 akan terbuka jika nomor 1 sudah benar."
+                );
+
+                lockSection(
+                    section3,
+                    soal3Ids,
+                    cekSoal3Btn,
+                    hasil3,
+                    "Soal nomor 3 akan terbuka jika nomor 2 sudah benar."
+                );
             });
 
-            lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
-            lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
-            setHasil(hasil1, "", "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.");
+            lockSection(
+                section2,
+                soal2Ids,
+                cekSoal2Btn,
+                hasil2,
+                "Soal nomor 2 akan terbuka jika nomor 1 sudah benar."
+            );
+
+            lockSection(
+                section3,
+                soal3Ids,
+                cekSoal3Btn,
+                hasil3,
+                "Soal nomor 3 akan terbuka jika nomor 2 sudah benar."
+            );
+
+            setHasil(
+                hasil1,
+                "",
+                "Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>."
+            );
         })();
     </script>
 

@@ -376,6 +376,29 @@
         display: block;
       }
     }
+
+    .navbar-polymathica .logout-form {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+
+    .navbar-polymathica .btn-logout {
+      background-color: #dc3545;
+      color: #ffffff !important;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .navbar-polymathica .btn-logout:hover {
+      background-color: #bb2d3b;
+      color: #ffffff !important;
+    }
   </style>
 </head>
 
@@ -418,6 +441,15 @@
               href="{{ route('progressbelajar') }}">
               Progres Belajar
             </a>
+          </li>
+
+          <li class="nav-item d-flex align-items-center">
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+              @csrf
+              <button type="submit" class="btn-logout">
+                Logout
+              </button>
+            </form>
           </li>
         </ul>
       </div>
@@ -463,6 +495,11 @@
           };
 
           $isQuizAUnlocked = $canAccessQuizByBab[1] ?? false;
+          $isQuizBUnlocked = $canAccessQuizByBab[2] ?? false;
+          $isQuizCUnlocked = $canAccessQuizByBab[3] ?? false;
+          $isQuizDUnlocked = $canAccessQuizByBab[4] ?? false;
+          $isQuizEUnlocked = $canAccessQuizByBab[5] ?? false;
+          $isEvaluasiUnlocked = $canAccessQuizByBab[6] ?? false;
         @endphp
 
         <div class="dropdown-content">
@@ -542,24 +579,58 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('materi.show', ['slug' => 'penjumlahanpolinomial']) }}"
-            class="dropdown-item {{ $materiActive('penjumlahanpolinomial') }}">
-            Penjumlahan Polinomial
-          </a>
 
-          <a href="{{ route('materi.show', ['slug' => 'penguranganpolinomial']) }}"
-            class="dropdown-item {{ $materiActive('penguranganpolinomial') }}">
-            Pengurangan Polinomial
-          </a>
+          {{-- Penjumlahan Polinomial --}}
+          @if ($isMateriUnlocked('penjumlahanpolinomial'))
+            <a href="{{ route('materi.show', ['slug' => 'penjumlahanpolinomial']) }}"
+              class="dropdown-item {{ $materiActive('penjumlahanpolinomial') }}">
+              Penjumlahan Polinomial
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Penjumlahan Polinomial</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('materi.show', ['slug' => 'perkalianpolinomial']) }}"
-            class="dropdown-item {{ $materiActive('perkalianpolinomial') }}">
-            Perkalian Polinomial
-          </a>
+          {{-- Pengurangan Polinomial --}}
+          @if ($isMateriUnlocked('penguranganpolinomial'))
+            <a href="{{ route('materi.show', ['slug' => 'penguranganpolinomial']) }}"
+              class="dropdown-item {{ $materiActive('penguranganpolinomial') }}">
+              Pengurangan Polinomial
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Pengurangan Polinomial</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('quiz.show', ['id' => 2]) }}" class="dropdown-item {{ $quizActive(2) }}">
-            Kuis B
-          </a>
+          {{-- Perkalian Polinomial --}}
+          @if ($isMateriUnlocked('perkalianpolinomial'))
+            <a href="{{ route('materi.show', ['slug' => 'perkalianpolinomial']) }}"
+              class="dropdown-item {{ $materiActive('perkalianpolinomial') }}">
+              Perkalian Polinomial
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Perkalian Polinomial</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
+          {{-- Kuis B --}}
+          @if ($isQuizBUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 2]) }}" class="dropdown-item {{ $quizActive(2) }}">
+              Kuis B
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Kuis B</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
 
@@ -571,24 +642,58 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('materi.show', ['slug' => 'pembagianbersusun']) }}"
-            class="dropdown-item {{ $materiActive('pembagianbersusun') }}">
-            Pembagian Bersusun
-          </a>
 
-          <a href="{{ route('materi.show', ['slug' => 'metodehorner']) }}"
-            class="dropdown-item {{ $materiActive('metodehorner') }}">
-            Metode Horner
-          </a>
+          {{-- Pembagian Bersusun --}}
+          @if ($isMateriUnlocked('pembagianbersusun'))
+            <a href="{{ route('materi.show', ['slug' => 'pembagianbersusun']) }}"
+              class="dropdown-item {{ $materiActive('pembagianbersusun') }}">
+              Pembagian Bersusun
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Pembagian Bersusun</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('materi.show', ['slug' => 'teoremasisa']) }}"
-            class="dropdown-item {{ $materiActive('teoremasisa') }}">
-            Teorema Sisa
-          </a>
+          {{-- Metode Horner --}}
+          @if ($isMateriUnlocked('metodehorner'))
+            <a href="{{ route('materi.show', ['slug' => 'metodehorner']) }}"
+              class="dropdown-item {{ $materiActive('metodehorner') }}">
+              Metode Horner
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Metode Horner</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('quiz.show', ['id' => 3]) }}" class="dropdown-item {{ $quizActive(3) }}">
-            Kuis C
-          </a>
+          {{-- Teorema Sisa --}}
+          @if ($isMateriUnlocked('teoremasisa'))
+            <a href="{{ route('materi.show', ['slug' => 'teoremasisa']) }}"
+              class="dropdown-item {{ $materiActive('teoremasisa') }}">
+              Teorema Sisa
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Teorema Sisa</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
+          {{-- Kuis C --}}
+          @if ($isQuizCUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 3]) }}" class="dropdown-item {{ $quizActive(3) }}">
+              Kuis C
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Kuis C</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
 
@@ -600,19 +705,45 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('materi.show', ['slug' => 'teoremafaktor']) }}"
-            class="dropdown-item {{ $materiActive('teoremafaktor') }}">
-            Teorema Faktor
-          </a>
 
-          <a href="{{ route('materi.show', ['slug' => 'faktordanpembuatnol']) }}"
-            class="dropdown-item {{ $materiActive('faktordanpembuatnol') }}">
-            Faktor dan Pembuat Nol
-          </a>
+          {{-- Teorema Faktor --}}
+          @if ($isMateriUnlocked('teoremafaktor'))
+            <a href="{{ route('materi.show', ['slug' => 'teoremafaktor']) }}"
+              class="dropdown-item {{ $materiActive('teoremafaktor') }}">
+              Teorema Faktor
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Teorema Faktor</span>
+              <span>🔒</span>
+            </div>
+          @endif
 
-          <a href="{{ route('quiz.show', ['id' => 4]) }}" class="dropdown-item {{ $quizActive(4) }}">
-            Kuis D
-          </a>
+          {{-- Faktor dan Pembuat Nol --}}
+          @if ($isMateriUnlocked('faktordanpembuatnol'))
+            <a href="{{ route('materi.show', ['slug' => 'faktordanpembuatnol']) }}"
+              class="dropdown-item {{ $materiActive('faktordanpembuatnol') }}">
+              Faktor dan Pembuat Nol
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Faktor dan Pembuat Nol</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
+          {{-- Kuis D --}}
+          @if ($isQuizDUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 4]) }}" class="dropdown-item {{ $quizActive(4) }}">
+              Kuis D
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Kuis D</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
 
@@ -624,14 +755,32 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('materi.show', ['slug' => 'identitaspolinomial']) }}"
-            class="dropdown-item {{ $materiActive('identitaspolinomial') }}">
-            Identitas Polinomial
-          </a>
 
-          <a href="{{ route('quiz.show', ['id' => 5]) }}" class="dropdown-item {{ $quizActive(5) }}">
-            Kuis E
-          </a>
+          {{-- Identitas Polinomial --}}
+          @if ($isMateriUnlocked('identitaspolinomial'))
+            <a href="{{ route('materi.show', ['slug' => 'identitaspolinomial']) }}"
+              class="dropdown-item {{ $materiActive('identitaspolinomial') }}">
+              Identitas Polinomial
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Identitas Polinomial</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
+          {{-- Kuis E --}}
+          @if ($isQuizEUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 5]) }}" class="dropdown-item {{ $quizActive(5) }}">
+              Kuis E
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Kuis E</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
 
@@ -643,9 +792,18 @@
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ route('quiz.show', ['id' => 6]) }}" class="dropdown-item {{ $quizActive(6) }}">
-            Evaluasi
-          </a>
+
+          @if ($isEvaluasiUnlocked)
+            <a href="{{ route('quiz.show', ['id' => 6]) }}" class="dropdown-item {{ $quizActive(6) }}">
+              Evaluasi
+            </a>
+          @else
+            <div class="dropdown-item locked d-flex justify-content-between align-items-center">
+              <span>Evaluasi</span>
+              <span>🔒</span>
+            </div>
+          @endif
+
         </div>
       </div>
     </aside>

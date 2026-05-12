@@ -55,6 +55,7 @@ class SiswaAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->route('petakonsep')->with('success', 'Login berhasil!');
         }
 
@@ -70,6 +71,6 @@ class SiswaAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('siswa.login');
+        return redirect()->route('masuksiswa');
     }
 }

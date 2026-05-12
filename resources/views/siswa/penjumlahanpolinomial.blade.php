@@ -8,12 +8,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                            delimiters: [
-                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                            ]
-                                                                                                                        });">
-                                                                                                                        </script>
+                                                                                                                                                    delimiters: [
+                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                    ]
+                                                                                                                                                });">
+                                                                                                                                                </script>
 
     <style>
         :root {
@@ -1558,7 +1558,7 @@
                 </div>
 
                 <div class="soal-card soal-3 locked" id="soal-3">
-                  
+
 
                     <div class="isi-soal">
                         <h4>3. Penjumlahan 4 Suku</h4>
@@ -1593,11 +1593,14 @@
 
         </div> {{-- end #materi-lanjutan --}}
 
+        <script>
+            window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+        </script>
 
         <script>
             (function () {
                 /* =========================
-                   UTILITIES
+                UTILITIES
                 ========================== */
                 const normalize = (s) =>
                     (s || "")
@@ -1607,6 +1610,8 @@
                         .replace(/×/g, "x")
                         .replace(/–/g, "-")
                         .replace(/−/g, "-")
+                        .replace(/²/g, "^2")
+                        .replace(/³/g, "^3")
                         .replace(/\+\-/g, "-");
 
                 const normalizePoly = (raw) => {
@@ -1674,8 +1679,8 @@
                 };
 
                 /* =========================
-        EKSPLORASI QUIZ
-        ========================== */
+                EKSPLORASI QUIZ
+                ========================== */
                 const materiLanjutan = document.getElementById("materi-lanjutan");
 
                 const clearFeedback = (item) => {
@@ -1764,10 +1769,9 @@
                     });
                 }
 
-
                 /* =========================
-        CONTOH INTERAKTIF (CEK SEMUA SAJA)
-        ========================== */
+                CONTOH INTERAKTIF
+                ========================== */
                 const contoh = document.getElementById("contoh-interaktif");
                 if (contoh) {
                     const rows = Array.from(contoh.querySelectorAll(".contoh-item"));
@@ -1835,7 +1839,6 @@
 
                             if (summary) summary.textContent = `Skor: ${correct}/${total}`;
 
-                            // tampilkan sehingga kalau semua benar
                             if (correct === total) {
                                 if (sehinggaBox) sehinggaBox.style.display = "block";
                             } else {
@@ -1848,307 +1851,258 @@
 
                     if (sehinggaBox) sehinggaBox.style.display = "none";
                 }
+
                 /* =========================
-                   LATIHAN 3 LEVEL
+                LATIHAN SOAL
                 ========================== */
+
+                async function saveProgressMateri() {
+                    const csrfToken = document
+                        .querySelector('meta[name="csrf-token"]')
+                        ?.getAttribute("content");
+
+                    if (!window.completeMateriUrl || !csrfToken) {
+                        console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                        return false;
+                    }
+
+                    try {
+                        const response = await fetch(window.completeMateriUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": csrfToken,
+                                "X-Requested-With": "XMLHttpRequest",
+                                "Accept": "application/json",
+                            },
+                            body: JSON.stringify({}),
+                        });
+
+                        return response.ok;
+                    } catch (error) {
+                        console.error(error);
+                        return false;
+                    }
+                }
+
+                function bukaNextButton() {
+                    const nextBtn = document.getElementById("nextMateriBtn");
+                    if (!nextBtn) return;
+
+                    const url = nextBtn.dataset.nextUrl;
+                    if (!url) return;
+
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.id = "nextMateriBtn";
+                    link.className = "btn-nav next-btn";
+                    link.textContent = "Next →";
+
+                    nextBtn.replaceWith(link);
+                }
+
                 let latihanInited = false;
 
-                function initLatihanPolinom() {
-                    if (latihanInited) return;
+                function bukaSoal(nomor) {
+                    const soal = document.getElementById("soal-" + nomor);
+                    const input = document.getElementById("jawaban-" + nomor);
 
-                    const rootExists =
-                        document.getElementById("panel-mudah") ||
-                        document.getElementById("jawaban-mudah") ||
-                        document.getElementById("cek-mudah");
+                    if (!soal || !input) return;
 
-                    if (!rootExists) return;
+                    soal.classList.remove("locked");
+                    soal.classList.add("active");
 
-                    latihanInited = true;
+                    soal.style.display = "block";
+                    soal.style.opacity = "1";
+                    soal.style.pointerEvents = "auto";
+                    soal.style.filter = "none";
 
-                    const inputMudah = document.getElementById("jawaban-mudah");
-                    const inputSedang = document.getElementById("jawaban-sedang");
-                    const inputSusah = document.getElementById("jawaban-susah");
+                    input.disabled = false;
+                    input.removeAttribute("disabled");
+                    input.readOnly = false;
+                    input.removeAttribute("readonly");
+                    input.style.pointerEvents = "auto";
+                    input.style.opacity = "1";
 
-                    const fbMudah = document.getElementById("fb-mudah");
-                    const fbSedang = document.getElementById("fb-sedang");
-                    const fbSusah = document.getElementById("fb-susah");
+                    const tombol = input.parentElement.querySelector("button");
 
-                    const stepMudah = document.getElementById("step-mudah");
-                    const stepSedang = document.getElementById("step-sedang");
-                    const stepSusah = document.getElementById("step-susah");
-
-                    const btnCekMudah = document.getElementById("cek-mudah");
-                    const btnResetMudah = document.getElementById("reset-mudah");
-
-                    const btnCekSedang = document.getElementById("cek-sedang");
-                    const btnResetSedang = document.getElementById("reset-sedang");
-
-                    const btnCekSusah = document.getElementById("cek-susah");
-                    const btnResetSusah = document.getElementById("reset-susah");
-
-                    const panelSedang = document.getElementById("panel-sedang");
-                    const panelSusah = document.getElementById("panel-susah");
-
-                    const cardMudah = document.getElementById("card-mudah");
-                    const cardSedang = document.getElementById("card-sedang");
-                    const cardSusah = document.getElementById("card-susah");
-
-                    const statusMudah = document.getElementById("status-mudah");
-                    const statusSedang = document.getElementById("status-sedang");
-                    const statusSusah = document.getElementById("status-susah");
-
-                    const statusLockSedang = document.getElementById("status-lock-sedang");
-                    const statusLockSusah = document.getElementById("status-lock-susah");
-
-                    const latihanData = {
-                        mudah: { answer: "9y+6" },
-                        sedang: { answer: "6x^2+2x-4" },
-                        susah: { answer: "12x^3+6x+6" }
-                    };
-
-                    const state = {
-                        mudah: false,
-                        sedang: false,
-                        susah: false
-                    };
-
-                    const aktifkanSedang = () => {
-                        if (panelSedang) panelSedang.style.display = "block";
-                        if (inputSedang) inputSedang.disabled = false;
-                        if (btnCekSedang) btnCekSedang.disabled = false;
-                        if (btnResetSedang) btnResetSedang.disabled = false;
-                        if (cardSedang) cardSedang.classList.remove("locked");
-                        if (cardSedang) cardSedang.classList.add("active");
-                        if (statusLockSedang) statusLockSedang.style.display = "none";
-                        rerenderKatex();
-                    };
-
-                    const aktifkanSusah = () => {
-                        if (panelSusah) panelSusah.style.display = "block";
-                        if (inputSusah) inputSusah.disabled = false;
-                        if (btnCekSusah) btnCekSusah.disabled = false;
-                        if (btnResetSusah) btnResetSusah.disabled = false;
-                        if (cardSusah) cardSusah.classList.remove("locked");
-                        if (cardSusah) cardSusah.classList.add("active");
-                        if (statusLockSusah) statusLockSusah.style.display = "none";
-                        rerenderKatex();
-                    };
-
-                    const tandaiSelesai = (level) => {
-                        if (level === "mudah") {
-                            if (statusMudah) statusMudah.style.display = "inline-flex";
-                            if (cardMudah) cardMudah.classList.add("active");
-                        }
-                        if (level === "sedang") {
-                            if (statusSedang) statusSedang.style.display = "inline-flex";
-                            if (cardSedang) cardSedang.classList.add("active");
-                        }
-                        if (level === "susah") {
-                            if (statusSusah) statusSusah.style.display = "inline-flex";
-                            if (cardSusah) cardSusah.classList.add("active");
-                        }
-                    };
-
-                    const checkJawaban = (userValue, expected) => {
-                        return normalizePoly(userValue) === normalizePoly(expected);
-                    };
-
-                    const checkMudah = () => {
-                        if (!inputMudah) return;
-
-                        const ok = checkJawaban(inputMudah.value, latihanData.mudah.answer);
-
-                        if (ok) {
-                            state.mudah = true;
-                            setFb(fbMudah, true, "Benar ✅ Level MUDAH selesai");
-                            if (stepMudah) stepMudah.style.display = "block";
-                            inputMudah.disabled = true;
-                            if (btnCekMudah) btnCekMudah.disabled = true;
-                            tandaiSelesai("mudah");
-                            aktifkanSedang();
-                        } else {
-                            state.mudah = false;
-                            setFb(fbMudah, false, "", "Jawaban salah. Selesaikan soal MUDAH dulu sebelum lanjut.");
-                            if (stepMudah) stepMudah.style.display = "none";
-                        }
-
-                        rerenderKatex();
-                    };
-
-                    const checkSedang = () => {
-                        if (!state.mudah) {
-                            setFb(fbSedang, false, "", "Selesaikan level MUDAH dulu.");
-                            return;
-                        }
-
-                        if (!inputSedang) return;
-
-                        const ok = checkJawaban(inputSedang.value, latihanData.sedang.answer);
-
-                        if (ok) {
-                            state.sedang = true;
-                            setFb(fbSedang, true, "Benar ✅ Level SEDANG selesai");
-                            if (stepSedang) stepSedang.style.display = "block";
-                            inputSedang.disabled = true;
-                            if (btnCekSedang) btnCekSedang.disabled = true;
-                            tandaiSelesai("sedang");
-                            aktifkanSusah();
-                        } else {
-                            state.sedang = false;
-                            setFb(fbSedang, false, "", "Jawaban salah. Soal SUSAH masih terkunci sampai SEDANG benar.");
-                            if (stepSedang) stepSedang.style.display = "none";
-                        }
-
-                        rerenderKatex();
-                    };
-
-                    const checkSusah = () => {
-                        if (!state.sedang) {
-                            setFb(fbSusah, false, "", "Selesaikan level SEDANG dulu.");
-                            return;
-                        }
-
-                        if (!inputSusah) return;
-
-                        const ok = checkJawaban(inputSusah.value, latihanData.susah.answer);
-
-                        if (ok) {
-                            state.susah = true;
-                            setFb(fbSusah, true, "Benar ✅ Semua level selesai");
-                            if (stepSusah) stepSusah.style.display = "block";
-                            inputSusah.disabled = true;
-                            if (btnCekSusah) btnCekSusah.disabled = true;
-                            tandaiSelesai("susah");
-                        } else {
-                            state.susah = false;
-                            setFb(fbSusah, false, "", "Jawaban salah. Perbaiki dulu soal SUSAH ini.");
-                            if (stepSusah) stepSusah.style.display = "none";
-                        }
-
-                        rerenderKatex();
-                    };
-
-                    const resetMudah = () => {
-                        if (inputMudah && !state.mudah) inputMudah.value = "";
-                        clearFb(fbMudah);
-                        if (stepMudah) stepMudah.style.display = "none";
-                    };
-
-                    const resetSedang = () => {
-                        if (!state.mudah) return;
-                        if (inputSedang && !state.sedang) inputSedang.value = "";
-                        clearFb(fbSedang);
-                        if (stepSedang) stepSedang.style.display = "none";
-                    };
-
-                    const resetSusah = () => {
-                        if (!state.sedang) return;
-                        if (inputSusah && !state.susah) inputSusah.value = "";
-                        clearFb(fbSusah);
-                        if (stepSusah) stepSusah.style.display = "none";
-                    };
-
-                    if (btnCekMudah) btnCekMudah.addEventListener("click", checkMudah);
-                    if (btnResetMudah) btnResetMudah.addEventListener("click", resetMudah);
-
-                    if (btnCekSedang) btnCekSedang.addEventListener("click", checkSedang);
-                    if (btnResetSedang) btnResetSedang.addEventListener("click", resetSedang);
-
-                    if (btnCekSusah) btnCekSusah.addEventListener("click", checkSusah);
-                    if (btnResetSusah) btnResetSusah.addEventListener("click", resetSusah);
-
-                    if (inputMudah) {
-                        inputMudah.addEventListener("keydown", (e) => {
-                            if (e.key === "Enter") {
-                                e.preventDefault();
-                                checkMudah();
-                            }
-                        });
+                    if (tombol) {
+                        tombol.disabled = false;
+                        tombol.removeAttribute("disabled");
+                        tombol.style.pointerEvents = "auto";
+                        tombol.style.opacity = "1";
+                        tombol.style.cursor = "pointer";
                     }
 
-                    if (inputSedang) {
-                        inputSedang.addEventListener("keydown", (e) => {
-                            if (e.key === "Enter") {
-                                e.preventDefault();
-                                checkSedang();
-                            }
-                        });
-                    }
+                    input.focus();
+                }
 
-                    if (inputSusah) {
-                        inputSusah.addEventListener("keydown", (e) => {
-                            if (e.key === "Enter") {
-                                e.preventDefault();
-                                checkSusah();
+                async function cekJawaban(nomor, daftarJawabanBenar, nomorBerikutnya = null) {
+                    const input = document.getElementById("jawaban-" + nomor);
+                    const feedback = document.getElementById("fb-" + nomor);
+                    const step = document.getElementById("step-" + nomor);
+
+                    if (!input || !feedback) return;
+
+                    const jawabanUser = normalizePoly(input.value);
+
+                    const benar = daftarJawabanBenar.some(function (jawaban) {
+                        return normalizePoly(jawaban) === jawabanUser;
+                    });
+
+                    if (benar) {
+                        feedback.textContent = "Benar ✅";
+                        feedback.style.color = "green";
+                        feedback.style.fontWeight = "600";
+
+                        if (step) {
+                            step.style.display = "block";
+                        }
+
+                        input.disabled = true;
+
+                        const tombolSekarang = input.parentElement.querySelector("button");
+
+                        if (tombolSekarang) {
+                            tombolSekarang.disabled = true;
+                        }
+
+                        if (nomorBerikutnya !== null) {
+                            bukaSoal(nomorBerikutnya);
+                        } else {
+                            feedback.textContent = "Benar ✅ Progress sedang disimpan...";
+
+                            const berhasilSimpan = await saveProgressMateri();
+
+                            if (berhasilSimpan) {
+                                bukaNextButton();
+
+                                feedback.textContent = "Benar ✅ Latihan selesai. Progress berhasil disimpan.";
+                                feedback.style.color = "green";
+                            } else {
+                                feedback.textContent = "Benar ✅ Tetapi progress gagal disimpan. Silakan refresh atau coba lagi.";
+                                feedback.style.color = "red";
                             }
-                        });
+
+                            feedback.style.fontWeight = "600";
+                        }
+                    } else {
+                        feedback.textContent = "Salah, coba lagi.";
+                        feedback.style.color = "red";
+                        feedback.style.fontWeight = "600";
+
+                        if (step) {
+                            step.style.display = "none";
+                        }
                     }
 
                     rerenderKatex();
                 }
 
+                window.cekJawaban = cekJawaban;
+                window.bukaSoal = bukaSoal;
+
+                function initLatihanPolinom() {
+                    if (latihanInited) return;
+
+                    const rootExists =
+                        document.getElementById("soal-1") ||
+                        document.getElementById("jawaban-1") ||
+                        document.getElementById("soal-2");
+
+                    if (!rootExists) return;
+
+                    latihanInited = true;
+
+                    const semuaStep = document.querySelectorAll(".penjelasan");
+
+                    semuaStep.forEach(function (step) {
+                        step.style.display = "none";
+                    });
+
+                    const soal1 = document.getElementById("soal-1");
+                    const soal2 = document.getElementById("soal-2");
+                    const soal3 = document.getElementById("soal-3");
+
+                    const input1 = document.getElementById("jawaban-1");
+                    const input2 = document.getElementById("jawaban-2");
+                    const input3 = document.getElementById("jawaban-3");
+
+                    if (soal1) {
+                        soal1.classList.remove("locked");
+                        soal1.classList.add("active");
+                        soal1.style.display = "block";
+                        soal1.style.opacity = "1";
+                        soal1.style.pointerEvents = "auto";
+                        soal1.style.filter = "none";
+                    }
+
+                    if (soal2) {
+                        soal2.classList.add("locked");
+                        soal2.classList.remove("active");
+                    }
+
+                    if (soal3) {
+                        soal3.classList.add("locked");
+                        soal3.classList.remove("active");
+                    }
+
+                    if (input1) {
+                        input1.disabled = false;
+                        input1.removeAttribute("disabled");
+                        input1.removeAttribute("readonly");
+                    }
+
+                    if (input2) {
+                        input2.disabled = true;
+                        input2.setAttribute("disabled", "disabled");
+                    }
+
+                    if (input3) {
+                        input3.disabled = true;
+                        input3.setAttribute("disabled", "disabled");
+                    }
+
+                    const tombol1 = input1 ? input1.parentElement.querySelector("button") : null;
+                    const tombol2 = input2 ? input2.parentElement.querySelector("button") : null;
+                    const tombol3 = input3 ? input3.parentElement.querySelector("button") : null;
+
+                    if (tombol1) {
+                        tombol1.disabled = false;
+                        tombol1.removeAttribute("disabled");
+                    }
+
+                    if (tombol2) {
+                        tombol2.disabled = true;
+                        tombol2.setAttribute("disabled", "disabled");
+                    }
+
+                    if (tombol3) {
+                        tombol3.disabled = true;
+                        tombol3.setAttribute("disabled", "disabled");
+                    }
+                }
+
                 /* =========================
-                   INIT
+                INIT
                 ========================== */
+                initLatihanPolinom();
                 updateUnlock();
                 rerenderKatex();
             })();
         </script>
-
-        <script>function normalisasi(teks) {
-                return teks.toLowerCase().replace(/\s+/g, "");
-            }
-
-            function cekJawaban(nomor, jawabanBenar, buka = null) {
-                let input = document.getElementById("jawaban-" + nomor);
-                let fb = document.getElementById("fb-" + nomor);
-                let step = document.getElementById("step-" + nomor);
-
-                let user = normalisasi(input.value);
-
-                if (jawabanBenar.includes(user)) {
-                    fb.innerHTML = "✅ Benar";
-                    fb.style.color = "green";
-                    step.style.display = "block";
-
-                    if (buka) bukaSoal(buka);
-
-                    if (window.renderMathInElement) {
-                        renderMathInElement(document.body);
-                    }
-                } else {
-                    fb.innerHTML = "❌ Salah";
-                    fb.style.color = "red";
-                }
-            }
-
-            function bukaSoal(nomor) {
-                let soal = document.getElementById("soal-" + nomor);
-
-                soal.classList.remove("locked");
-                soal.querySelector(".lock-layer").remove();
-
-                soal.querySelectorAll("input,button").forEach(el => {
-                    el.disabled = false;
-                });
-
-                document.getElementById("badge-" + nomor).innerHTML = "Terbuka";
-            }
-
-            function resetSoal(nomor) {
-                document.getElementById("jawaban-" + nomor).value = "";
-                document.getElementById("fb-" + nomor).innerHTML = "";
-            }</script>
-
     </div>
+
+
 @endsection
 
 @section('nav')
     @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
         $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
     @endphp
 
-    {{-- PREV --}}
+    {{-- PREVIOUS --}}
     @if ($previousMateri)
         <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
             ← Previous
@@ -2160,14 +2114,24 @@
     @endif
 
     {{-- NEXT / KUIS --}}
-    @if ($nextMateri)
-        <a href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
             Next →
         </a>
-    @elseif ($quizBab)
-        <a href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
             Kuis →
         </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
     @else
         <span class="btn-nav next-btn disabled">
             Next →

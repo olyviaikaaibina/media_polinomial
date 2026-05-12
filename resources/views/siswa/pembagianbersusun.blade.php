@@ -1149,7 +1149,7 @@
                         </ul>
             </div>
 
-            
+
             <div class="info-card ilustrasi-card-simple">
                 <div class="mini-title">
                     <span class="mini-icon">🧩</span>
@@ -1403,8 +1403,7 @@
                             Tuliskan hasil perkaliannya.
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer2" data-step="2"
-                            placeholder="">
+                        <input type="text" class="step-answer-input" id="answer2" data-step="2" placeholder="">
                         <div class="step-helper">Gunakan sifat distributif.</div>
 
                         <div class="step-btn-row">
@@ -1423,8 +1422,7 @@
                             Tuliskan sisa barunya.
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer3" data-step="3"
-                            placeholder="">
+                        <input type="text" class="step-answer-input" id="answer3" data-step="3" placeholder="">
                         <div class="step-helper">Kurangkan suku-suku yang sejenis.</div>
 
                         <div class="step-btn-row">
@@ -1482,8 +1480,7 @@
                             Tuliskan hasil bagi akhir \(h(x)\) dan sisa \(s\).
                         </div>
 
-                        <input type="text" class="step-answer-input" id="answer6" data-step="6"
-                            placeholder="">
+                        <input type="text" class="step-answer-input" id="answer6" data-step="6" placeholder="">
                         <div class="step-helper">Tulis dua informasi sekaligus: hasil bagi dan sisa.</div>
 
                         <div class="step-btn-row">
@@ -1719,6 +1716,9 @@
         </div>
 
         <script>
+            window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+        </script>
+        <script>
             document.addEventListener('DOMContentLoaded', function () {
                 function renderMath(scope = document.body) {
                     if (window.renderMathInElement) {
@@ -1943,169 +1943,169 @@
                 const feedbackText = {
                     1: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
-                                </p>
-                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
-                                </p>
-                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `
                     },
                     2: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
-                                </p>
-                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                <p style="margin-bottom:0;">
-                                    Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
+                                                </p>
+                                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
-                                </p>
-                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
+                                                </p>
+                                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `
                     },
                     3: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Sekarang kurangkan hasil perkalian dari pembilang semula.
-                                </p>
-                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                <p style="margin-bottom:0;">
-                                    Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Sekarang kurangkan hasil perkalian dari pembilang semula.
+                                                </p>
+                                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
-                                </p>
-                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
+                                                </p>
+                                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `
                     },
                     4: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Ulangi pola yang sama menggunakan sisa baru.
-                                </p>
-                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Ulangi pola yang sama menggunakan sisa baru.
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
-                                </p>
-                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                </p>
+                                            </div>
+                                        `
                     },
                     5: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
-                                </p>
-                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                <p style="margin-bottom:0;">
-                                    Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
+                                                </p>
+                                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
-                                </p>
-                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
+                                                </p>
+                                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
+                                                </p>
+                                            </div>
+                                        `
                     },
                     6: {
                         benar: `
-                            <b>Benar ✅</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
-                                </p>
-                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                <div class="rumus-box">$$s=4$$</div>
-                                <p style="margin-bottom:0;">
-                                    Hasil akhir sudah tepat.
-                                </p>
-                            </div>
-                        `,
+                                            <b>Benar ✅</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                                <div class="rumus-box">$$s=4$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Hasil akhir sudah tepat.
+                                                </p>
+                                            </div>
+                                        `,
                         salah: `
-                            <b>Jawaban masih salah ❌</b>
-                            <div class="step-solution">
-                                <p style="margin-top:0;">
-                                    Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
-                                </p>
-                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                <div class="rumus-box">$$s=4$$</div>
-                                <p style="margin-bottom:0;">
-                                    Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
-                                </p>
-                            </div>
-                        `
+                                            <b>Jawaban masih salah ❌</b>
+                                            <div class="step-solution">
+                                                <p style="margin-top:0;">
+                                                    Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
+                                                </p>
+                                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                                <div class="rumus-box">$$s=4$$</div>
+                                                <p style="margin-bottom:0;">
+                                                    Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
+                                                </p>
+                                            </div>
+                                        `
                     }
                 };
 
@@ -2254,9 +2254,86 @@
                 resetLangkah();
                 resetContohInteraktif();
 
-                /* =========================
-                   Drag and Drop Latihan
-                ========================== */
+
+                // LATIHAN SOAL
+
+                // SAVE PROGRESS
+                async function saveProgressMateri() {
+                    const csrfToken = document
+                        .querySelector('meta[name="csrf-token"]')
+                        ?.getAttribute("content");
+
+                    if (!window.completeMateriUrl || !csrfToken) {
+                        console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                        return false;
+                    }
+
+                    try {
+                        const response = await fetch(window.completeMateriUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": csrfToken,
+                                "X-Requested-With": "XMLHttpRequest",
+                                "Accept": "application/json",
+                            },
+                            body: JSON.stringify({}),
+                        });
+
+                        return response.ok;
+                    } catch (error) {
+                        console.error(error);
+                        return false;
+                    }
+                }
+
+                function bukaNextButton() {
+                    const nextBtn = document.getElementById("nextMateriBtn");
+                    if (!nextBtn) return;
+
+                    const url = nextBtn.dataset.nextUrl;
+                    if (!url) return;
+
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.id = "nextMateriBtn";
+                    link.className = "btn-nav next-btn";
+                    link.textContent = "Next →";
+
+                    nextBtn.replaceWith(link);
+                }
+
+                let progressSudahDisimpan = false;
+
+                async function handleDndSelesai() {
+                    if (progressSudahDisimpan) return;
+
+                    progressSudahDisimpan = true;
+
+                    if (dndFinalResult) {
+                        dndFinalResult.classList.add("show");
+                        dndFinalResult.textContent = "✅ Semua langkah benar. Progress sedang disimpan...";
+                    }
+
+                    const berhasilSimpan = await saveProgressMateri();
+
+                    if (berhasilSimpan) {
+                        bukaNextButton();
+
+                        if (dndFinalResult) {
+                            dndFinalResult.classList.add("show");
+                            dndFinalResult.textContent = "✅ Semua langkah benar. Progress berhasil disimpan. Tombol Next sudah terbuka.";
+                        }
+                    } else {
+                        progressSudahDisimpan = false;
+
+                        if (dndFinalResult) {
+                            dndFinalResult.classList.add("show");
+                            dndFinalResult.textContent = "✅ Semua langkah benar, tetapi progress gagal disimpan. Silakan coba lagi.";
+                        }
+                    }
+                }
+
                 const isiItemsContainer = document.getElementById('isiItems');
                 const langkahTargetSlots = document.querySelectorAll('.langkah-target-slot');
                 const resetDndBtn = document.getElementById('resetDndBtn');
@@ -2276,28 +2353,35 @@
                     slot.classList.remove('correct', 'wrong', 'drag-over');
                 }
 
-                function updateDndProgress() {
+                async function updateDndProgress() {
                     let correctCount = 0;
+                    const total = langkahTargetSlots.length;
 
                     langkahTargetSlots.forEach((slot) => {
-                        const placedCard = slot.querySelector('.isi-card');
-                        const answer = slot.getAttribute('data-answer');
+                        const placedCard = slot.querySelector(".isi-card");
+                        const answer = slot.getAttribute("data-answer");
 
-                        if (placedCard && placedCard.getAttribute('data-step') === answer) {
+                        if (placedCard && placedCard.getAttribute("data-step") === answer) {
                             correctCount++;
                         }
                     });
 
                     if (dndProgressText) {
-                        dndProgressText.textContent = 'Kemajuan: ' + correctCount + ' dari 10 langkah sudah benar.';
+                        dndProgressText.textContent =
+                            "Kemajuan: " + correctCount + " dari " + total + " langkah sudah benar.";
                     }
 
                     if (dndFinalResult) {
-                        if (correctCount === 10) {
-                            dndFinalResult.classList.add('show');
+                        if (correctCount === total && total > 0) {
+                            dndFinalResult.classList.add("show");
                         } else {
-                            dndFinalResult.classList.remove('show');
+                            dndFinalResult.classList.remove("show");
                         }
+                    }
+
+                    // INI BAGIAN SAVE PROGRESS
+                    if (correctCount === total && total > 0) {
+                        await handleDndSelesai();
                     }
                 }
 
@@ -2439,11 +2523,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('kuisb') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('metodehorner') }}" class="btn-nav next-btn">
-        Next →
-    </a>
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
+    @endif
 @endsection

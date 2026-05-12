@@ -7,11 +7,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body,{
-                                                                                                                            delimiters:[
-                                                                                                                                {left:'$$',right:'$$',display:true},
-                                                                                                                                {left:'$',right:'$',display:false}
-                                                                                                                            ]
-                                                                                                                        });"></script>
+                                                                                                                                                    delimiters:[
+                                                                                                                                                        {left:'$$',right:'$$',display:true},
+                                                                                                                                                        {left:'$',right:'$',display:false}
+                                                                                                                                                    ]
+                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -1410,8 +1410,8 @@
         }
 
         /* =========================
-                                                                                               CARD TAMBAHAN MATERI
-                                                                                            ========================= */
+                                                                                                                       CARD TAMBAHAN MATERI
+                                                                                                                    ========================= */
         .info-card {
             position: relative;
             margin-top: 24px;
@@ -1541,8 +1541,8 @@
         }
 
         /* =========================
-                                                                                               LANGKAH CARI PEMBUAT NOL
-                                                                                            ========================= */
+                                                                                                                       LANGKAH CARI PEMBUAT NOL
+                                                                                                                    ========================= */
         .langkah-cari-wrap {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1613,8 +1613,8 @@
         }
 
         /* =========================
-                                                                                               CONTOH MINI + TIP
-                                                                                            ========================= */
+                                                                                                                       CONTOH MINI + TIP
+                                                                                                                    ========================= */
         .contoh-mini {
             margin-top: 18px;
             background: rgba(255, 255, 255, .84);
@@ -1646,8 +1646,8 @@
         }
 
         /* =========================
-                                                                                               RESPONSIVE
-                                                                                            ========================= */
+                                                                                                                       RESPONSIVE
+                                                                                                                    ========================= */
         @media (max-width: 900px) {
 
             .info-grid,
@@ -1699,8 +1699,8 @@
         }
 
         /* =========================
-                                                                                   STRATEGI INTERAKTIF
-                                                                                ========================= */
+                                                                                                           STRATEGI INTERAKTIF
+                                                                                                        ========================= */
         .clickable-card {
             cursor: pointer;
             user-select: none;
@@ -1805,8 +1805,8 @@
         }
 
         /* =========================
-                                                                       METODE INTERAKTIF
-                                                                    ========================= */
+                                                                                               METODE INTERAKTIF
+                                                                                            ========================= */
         .metode-wrap {
             margin-top: 12px;
         }
@@ -1844,8 +1844,8 @@
         }
 
         /* =========================
-                                                                       PANEL CONTOH BERSAMA
-                                                                    ========================= */
+                                                                                               PANEL CONTOH BERSAMA
+                                                                                            ========================= */
         .contoh-bersama-box {
             margin-top: 20px;
             background: rgba(255, 255, 255, .86);
@@ -2815,59 +2815,131 @@
                             $$f(x)=x^4-3x^3-8x^2+12x+16$$
                         </div>
 
-                        <div id="pesanKunciSoal2" class="pesan-kunci">
+                        <div id="soal2LockNote" class="pesan-kunci">
                             🔒 Selesaikan soal nomor 1 dengan benar terlebih dahulu.
                         </div>
 
-                        <div class="latihan-item">
+                        <!-- Soal 2a -->
+                        <div id="soal2Itema" class="latihan-item">
                             <div class="latihan-label">a. Pembuat nol</div>
                             <div class="input-row">
-                                <input type="text" id="soal3a" class="input-jawaban" disabled>
-                                <button class="btn-cek" onclick="cekSoal3('a')" disabled>Cek Jawaban</button>
+                                <input type="text" id="soal2a" class="input-jawaban" placeholder="Contoh: 4, 2, -2, -1"
+                                    disabled>
+                                <button type="button" class="btn-cek" onclick="cekSoal2('a')" disabled>
+                                    Cek Jawaban
+                                </button>
                             </div>
-                            <div id="feedbackSoal3a" class="feedback-box"></div>
+                            <div id="feedbackSoal2a" class="feedback-box"></div>
                         </div>
 
-                        <div class="latihan-item">
+                        <!-- Soal 2b -->
+                        <div id="soal2Itemb" class="latihan-item">
                             <div class="latihan-label">b. Pemfaktoran</div>
                             <div class="input-row">
-                                <input type="text" id="soal3b" class="input-jawaban" disabled>
-                                <button class="btn-cek" onclick="cekSoal3('b')" disabled>Cek Jawaban</button>
+                                <input type="text" id="soal2b" class="input-jawaban"
+                                    placeholder="Contoh: (x-4)(x-2)(x+2)(x+1)" disabled>
+                                <button type="button" class="btn-cek" onclick="cekSoal2('b')" disabled>
+                                    Cek Jawaban
+                                </button>
                             </div>
-                            <div id="feedbackSoal3b" class="feedback-box"></div>
+                            <div id="feedbackSoal2b" class="feedback-box"></div>
                         </div>
 
-                        <div class="latihan-item">
+                        <!-- Soal 2c -->
+                        <div id="soal2Itemc" class="latihan-item">
                             <div class="latihan-label">c. Titik potong sumbu-x</div>
                             <div class="input-row">
-                                <input type="text" id="soal3c" class="input-jawaban" disabled>
-                                <button class="btn-cek" onclick="cekSoal3('c')" disabled>Cek Jawaban</button>
+                                <input type="text" id="soal2c" class="input-jawaban"
+                                    placeholder="Contoh: (4,0), (2,0), (-2,0), (-1,0)" disabled>
+                                <button type="button" class="btn-cek" onclick="cekSoal2('c')" disabled>
+                                    Cek Jawaban
+                                </button>
                             </div>
-                            <div id="feedbackSoal3c" class="feedback-box"></div>
+                            <div id="feedbackSoal2c" class="feedback-box"></div>
                         </div>
 
-                        <div class="latihan-item">
+                        <!-- Soal 2d -->
+                        <div id="soal2Itemd" class="latihan-item">
                             <div class="latihan-label">d. Titik potong sumbu-y</div>
                             <div class="input-row">
-                                <input type="text" id="soal3d" class="input-jawaban" disabled>
-                                <button class="btn-cek" onclick="cekSoal3('d')" disabled>Cek Jawaban</button>
+                                <input type="text" id="soal2d" class="input-jawaban" placeholder="Contoh: (0,16)" disabled>
+                                <button type="button" class="btn-cek" onclick="cekSoal2('d')" disabled>
+                                    Cek Jawaban
+                                </button>
                             </div>
-                            <div id="feedbackSoal3d" class="feedback-box"></div>
+                            <div id="feedbackSoal2d" class="feedback-box"></div>
                         </div>
 
-                        <div id="penjelasanSoal3" class="penjelasan-wrap">
-                            ...
+                        <!-- Penjelasan akhir Soal 2 -->
+                        <div id="statusSoal2" class="feedback-box success">
+                            ✅ Semua jawaban Soal 2 benar.
+                        </div>
+
+                        <div id="penjelasanSoal2" class="penjelasan-wrap">
+                            <div class="penjelasan-title">Penjelasan Soal 2</div>
+
+                            <p>
+                                Fungsi yang diberikan adalah:
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$f(x)=x^4-3x^3-8x^2+12x+16$$
+                            </div>
+
+                            <p>
+                                Pembuat nol dari fungsi tersebut adalah:
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$x=4,\ x=2,\ x=-2,\ x=-1$$
+                            </div>
+
+                            <p>
+                                Maka bentuk pemfaktoran lengkapnya adalah:
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$f(x)=(x-4)(x-2)(x+2)(x+1)$$
+                            </div>
+
+                            <p>
+                                Titik potong dengan sumbu-x diperoleh dari pembuat nol, yaitu:
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$(4,0),\ (2,0),\ (-2,0),\ (-1,0)$$
+                            </div>
+
+                            <p>
+                                Titik potong dengan sumbu-y diperoleh dengan mensubstitusikan \(x=0\):
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$f(0)=16$$
+                            </div>
+
+                            <p>
+                                Jadi titik potong dengan sumbu-y adalah:
+                            </p>
+
+                            <div class="latihan-persamaan">
+                                $$(0,16)$$
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
     <script>
         let mariGrafikAktif = false;
         let grafikMc4Solved = false;
         let activeMetode = null;
+        let progressSudahDisimpan = false;
 
         const eksplorasiProgress = {
             1: false,
@@ -2877,7 +2949,7 @@
         const progress = {
             mari: { 1: false, 2: false, 3: false, 4: false },
             soal1: { a: false, b: false, c: false },
-            soal3: { a: false, b: false, c: false, d: false }
+            soal2: { a: false, b: false, c: false, d: false }
         };
 
         const grafikMc4Config = {
@@ -3000,19 +3072,6 @@
             }
         };
 
-        function toggleJawaban(id, btn) {
-            const box = document.getElementById(id);
-            box.classList.toggle('show');
-
-            if (box.classList.contains('show')) {
-                btn.textContent = 'Sembunyikan Jawaban';
-            } else {
-                btn.textContent = 'Lihat Jawaban';
-            }
-
-            renderMathSafe();
-        }
-
         function normalizeText(text) {
             return (text || '')
                 .toLowerCase()
@@ -3021,7 +3080,12 @@
                 .replace(/\\/g, '')
                 .replace(/\{/g, '')
                 .replace(/\}/g, '')
-                .replace(/;/g, ',');
+                .replace(/;/g, ',')
+                .replace(/−/g, '-')
+                .replace(/–/g, '-')
+                .replace(/²/g, '^2')
+                .replace(/³/g, '^3')
+                .replace(/⁴/g, '^4');
         }
 
         function splitAndClean(text) {
@@ -3033,16 +3097,20 @@
 
         function sameSet(arr1, arr2) {
             if (arr1.length !== arr2.length) return false;
+
             const a = [...arr1].sort();
             const b = [...arr2].sort();
+
             return JSON.stringify(a) === JSON.stringify(b);
         }
 
         function showFeedback(id, type, message) {
             const el = document.getElementById(id);
             if (!el) return;
+
             el.className = 'feedback-box show ' + type;
             el.innerHTML = message;
+
             renderMathSafe();
         }
 
@@ -3055,6 +3123,16 @@
                     ]
                 });
             }
+        }
+
+        function toggleJawaban(id, btn) {
+            const box = document.getElementById(id);
+            if (!box) return;
+
+            box.classList.toggle('show');
+            btn.textContent = box.classList.contains('show') ? 'Sembunyikan Jawaban' : 'Lihat Jawaban';
+
+            renderMathSafe();
         }
 
         function cekProgressEksplorasi() {
@@ -3085,14 +3163,26 @@
 
             if (isBenar) {
                 btn.classList.add('correct');
-                feedback.className = 'eksplorasi-feedback show success';
-                feedback.innerHTML = '✅ Jawaban benar.';
-                penjelasan.classList.add('show');
+
+                if (feedback) {
+                    feedback.className = 'eksplorasi-feedback show success';
+                    feedback.innerHTML = '✅ Jawaban benar.';
+                }
+
+                if (penjelasan) {
+                    penjelasan.classList.add('show');
+                }
             } else {
                 btn.classList.add('wrong');
-                feedback.className = 'eksplorasi-feedback show error';
-                feedback.innerHTML = '❌ Jawaban belum tepat.';
-                penjelasan.classList.remove('show');
+
+                if (feedback) {
+                    feedback.className = 'eksplorasi-feedback show error';
+                    feedback.innerHTML = '❌ Jawaban belum tepat.';
+                }
+
+                if (penjelasan) {
+                    penjelasan.classList.remove('show');
+                }
             }
 
             if (feedbackId === 'fbEks1') eksplorasiProgress[1] = true;
@@ -3105,6 +3195,7 @@
         function setLockedState(itemId, locked) {
             const el = document.getElementById(itemId);
             if (!el) return;
+
             el.classList.toggle('locked', locked);
         }
 
@@ -3128,39 +3219,45 @@
             setLockedState('soal1Itemc', false);
         }
 
-        function updateSoal3Locks() {
-            setLockedState('soal3Itema', false);
-            setLockedState('soal3Itemb', false);
-            setLockedState('soal3Itemc', false);
-            setLockedState('soal3Itemd', false);
+        function updateSoal2Locks() {
+            setLockedState('soal2Itema', false);
+            setLockedState('soal2Itemb', false);
+            setLockedState('soal2Itemc', false);
+            setLockedState('soal2Itemd', false);
         }
 
         function updateKunciSoal2() {
-            const selesaiSoal1 = progress.soal1.a && progress.soal1.b && progress.soal1.c;
+            const selesaiSoal1 =
+                progress.soal1.a &&
+                progress.soal1.b &&
+                progress.soal1.c;
 
-            const soal2Content = document.getElementById('soal2Content');
             const soal2Wrapper = document.getElementById('soal2Wrapper');
             const soal2LockNote = document.getElementById('soal2LockNote');
+            const pesanKunciSoal2 = document.getElementById('pesanKunciSoal2');
 
-            const target = soal2Content || soal2Wrapper;
-
-            if (target) {
-                target.classList.toggle('soal-terkunci', !selesaiSoal1);
-                target.classList.toggle('locked', !selesaiSoal1);
+            if (soal2Wrapper) {
+                soal2Wrapper.classList.toggle('soal-terkunci', !selesaiSoal1);
+                soal2Wrapper.classList.toggle('locked', !selesaiSoal1);
             }
 
             if (soal2LockNote) {
                 soal2LockNote.style.display = selesaiSoal1 ? 'none' : 'block';
             }
 
-            const inputSoal2 = ['soal3a', 'soal3b', 'soal3c', 'soal3d'];
+            if (pesanKunciSoal2) {
+                pesanKunciSoal2.style.display = selesaiSoal1 ? 'none' : 'block';
+            }
+
+            const inputSoal2 = ['soal2a', 'soal2b', 'soal2c', 'soal2d'];
+
             inputSoal2.forEach(id => {
                 const input = document.getElementById(id);
                 if (input) input.disabled = !selesaiSoal1;
             });
 
             const tombolSoal2 = document.querySelectorAll(
-                "#soal3Itema .btn-cek, #soal3Itemb .btn-cek, #soal3Itemc .btn-cek, #soal3Itemd .btn-cek"
+                '#soal2Itema .btn-cek, #soal2Itemb .btn-cek, #soal2Itemc .btn-cek, #soal2Itemd .btn-cek'
             );
 
             tombolSoal2.forEach(btn => {
@@ -3169,7 +3266,11 @@
         }
 
         function cekProgressSoal1() {
-            const selesai = progress.soal1.a && progress.soal1.b && progress.soal1.c;
+            const selesai =
+                progress.soal1.a &&
+                progress.soal1.b &&
+                progress.soal1.c;
+
             const status = document.getElementById('statusSoal1');
             const penjelasan = document.getElementById('penjelasanSoal1');
 
@@ -3181,15 +3282,20 @@
             renderMathSafe();
         }
 
-        function cekProgressSoal3() {
-            const selesai = progress.soal3.a && progress.soal3.b && progress.soal3.c && progress.soal3.d;
-            const status = document.getElementById('statusSoal3');
-            const penjelasan = document.getElementById('penjelasanSoal3');
+        function cekProgressSoal2() {
+            const selesai =
+                progress.soal2.a &&
+                progress.soal2.b &&
+                progress.soal2.c &&
+                progress.soal2.d;
+
+            const status = document.getElementById('statusSoal2');
+            const penjelasan = document.getElementById('penjelasanSoal2');
 
             if (status) status.classList.toggle('show', selesai);
             if (penjelasan) penjelasan.classList.toggle('show', selesai);
 
-            updateSoal3Locks();
+            updateSoal2Locks();
             renderMathSafe();
         }
 
@@ -3200,6 +3306,7 @@
         function extractCoordinatePairs(text) {
             const cleaned = normalizeText(text);
             const matches = cleaned.match(/\(-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?\)/g);
+
             return matches ? matches.map(item => item.replace(/\s/g, '')) : [];
         }
 
@@ -3219,38 +3326,47 @@
 
         function buildTicksX() {
             let html = '';
+
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `<div class="grafik-tick-x" style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"></div>`;
             }
+
             return html;
         }
 
         function buildTicksY() {
             let html = '';
+
             for (let y = grafikMc4Config.ymin + 1; y <= grafikMc4Config.ymax - 1; y++) {
                 html += `<div class="grafik-tick-y" style="left:${xToPercent(0)}%; top:${yToPercent(y)}%;"></div>`;
             }
+
             return html;
         }
 
         function buildLabelsX() {
             let html = '';
+
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `<div class="grafik-number x" style="left:${xToPercent(x)}%;">${x}</div>`;
             }
+
             return html;
         }
 
         function buildLabelsY() {
             let html = '';
+
             for (let y = grafikMc4Config.ymax - 1; y >= grafikMc4Config.ymin + 1; y--) {
                 html += `<div class="grafik-number y" style="top:${yToPercent(y)}%;">${y}</div>`;
             }
+
             return html;
         }
 
         function buildClickablePoints() {
             let html = '';
+
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
                         <button
@@ -3263,6 +3379,7 @@
                         </button>
                     `;
             }
+
             return html;
         }
 
@@ -3449,11 +3566,11 @@
             if (no === 3 && !progress.mari[2]) return;
             if (no === 4 && !progress.mari[3]) return;
 
-            let val = norm(document.getElementById('m' + no).value);
+            const val = norm(document.getElementById('m' + no)?.value);
             let benar = false;
 
             if (no == 1) {
-                const user = splitAndClean(document.getElementById('m1').value).map(item => item.replace(/^x=/, ''));
+                const user = splitAndClean(document.getElementById('m1')?.value).map(item => item.replace(/^x=/, ''));
                 const answer = ['-2', '-1', '1', '3'];
                 benar = sameSet(user, answer);
             }
@@ -3467,14 +3584,14 @@
             }
 
             if (no == 3) {
-                const user = extractCoordinatePairs(document.getElementById('m3').value);
+                const user = extractCoordinatePairs(document.getElementById('m3')?.value);
                 const answer = ['(-2,0)', '(-1,0)', '(1,0)', '(3,0)'];
                 benar = sameSet(user, answer);
             }
 
             if (no == 4) {
                 const validAnswers = ['(0,6)', '0,6'].map(item => normalizeText(item));
-                benar = validAnswers.includes(normalizeText(document.getElementById('m4').value));
+                benar = validAnswers.includes(normalizeText(document.getElementById('m4')?.value));
             }
 
             const fb = document.getElementById('fb' + no);
@@ -3482,18 +3599,26 @@
 
             if (benar) {
                 progress.mari[no] = true;
+
                 if (fb) {
                     fb.className = 'feedback-box show success';
                     fb.innerHTML = '✅ Benar!';
                 }
-                if (step) step.classList.add('show');
+
+                if (step) {
+                    step.classList.add('show');
+                }
             } else {
                 progress.mari[no] = false;
+
                 if (fb) {
                     fb.className = 'feedback-box show error';
                     fb.innerHTML = '❌ Salah, coba lagi sampai benar';
                 }
-                if (step) step.classList.remove('show');
+
+                if (step) {
+                    step.classList.remove('show');
+                }
 
                 for (let i = no + 1; i <= 4; i++) {
                     progress.mari[i] = false;
@@ -3502,6 +3627,7 @@
                     const nextFb = document.getElementById('fb' + i);
 
                     if (nextStep) nextStep.classList.remove('show');
+
                     if (nextFb) {
                         nextFb.className = 'feedback-box';
                         nextFb.innerHTML = '';
@@ -3513,145 +3639,251 @@
             renderMathSafe();
         }
 
+        async function saveProgressMateri() {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            if (!window.completeMateriUrl || !csrfToken) {
+                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                return false;
+            }
+
+            try {
+                const response = await fetch(window.completeMateriUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+
+                if (!response.ok) {
+                    console.warn("Gagal menyimpan progress. Status:", response.status);
+                    return false;
+                }
+
+                return true;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+
+        function bukaQuizButton() {
+            const quizBtn = document.getElementById("quizBabBtn");
+            if (!quizBtn) {
+                console.warn("quizBabBtn tidak ditemukan.");
+                return;
+            }
+
+            const url = quizBtn.dataset.quizUrl;
+            if (!url) {
+                console.warn("data-quiz-url tidak ditemukan pada quizBabBtn.");
+                return;
+            }
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "quizBabBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Kuis →";
+
+            quizBtn.replaceWith(link);
+        }
+
+        async function simpanProgressDanBukaKuis() {
+            if (progressSudahDisimpan) {
+                bukaQuizButton();
+                return;
+            }
+
+            progressSudahDisimpan = true;
+
+            const berhasilSimpan = await saveProgressMateri();
+
+            if (berhasilSimpan) {
+                bukaQuizButton();
+                return;
+            }
+
+            progressSudahDisimpan = false;
+
+            const status = document.getElementById("statusSoal2");
+            if (status) {
+                status.className = "feedback-box show error";
+                status.innerHTML = "Jawaban sudah benar, tetapi progress gagal disimpan. Periksa route completeMateriUrl.";
+            }
+
+            console.warn("Jawaban benar, tetapi progress gagal disimpan. Tombol kuis belum dibuka.");
+        }
+
         function cekSoal1(bagian) {
-            const input = document.getElementById('soal1' + bagian)?.value.trim();
+            const input = document.getElementById("soal1" + bagian)?.value.trim();
 
             if (!input) {
-                showFeedback('feedbackSoal1' + bagian, 'error', 'Jawaban belum diisi.');
+                showFeedback("feedbackSoal1" + bagian, "error", "Jawaban belum diisi.");
                 progress.soal1[bagian] = false;
                 cekProgressSoal1();
+                updateKunciSoal2();
                 return;
             }
 
             const normalized = normalizeText(input);
 
-            if (bagian === 'a') {
-                const valid = ['2', 'x=2', '5', 'x=5', '-3', 'x=-3'].map(item => normalizeText(item));
+            if (bagian === "a") {
+                const valid = ["2", "x=2", "5", "x=5", "-3", "x=-3"].map(item => normalizeText(item));
 
                 if (valid.includes(normalized)) {
-                    showFeedback('feedbackSoal1a', 'success', 'Benar. Salah satu pembuat nol sudah tepat.');
+                    showFeedback("feedbackSoal1a", "success", "Benar. Salah satu pembuat nol sudah tepat.");
                     progress.soal1.a = true;
                 } else {
-                    showFeedback('feedbackSoal1a', 'error', 'Belum tepat. Coba uji faktor-faktor dari 30.');
+                    showFeedback("feedbackSoal1a", "error", "Belum tepat. Coba uji faktor-faktor dari 30.");
                     progress.soal1.a = false;
                 }
             }
 
-            if (bagian === 'b') {
-                const user = splitAndClean(input).map(item => item.replace(/^x=/, ''));
-                const answer = ['2', '5', '-3'];
+            if (bagian === "b") {
+                const user = splitAndClean(input).map(item => item.replace(/^x=/, ""));
+                const answer = ["2", "5", "-3"];
 
                 if (sameSet(user, answer)) {
-                    showFeedback('feedbackSoal1b', 'success', 'Benar. Semua pembuat nol sudah tepat.');
+                    showFeedback("feedbackSoal1b", "success", "Benar. Semua pembuat nol sudah tepat.");
                     progress.soal1.b = true;
                 } else {
-                    showFeedback('feedbackSoal1b', 'error', 'Masih belum tepat. Pastikan semua pembuat nol sudah lengkap.');
+                    showFeedback("feedbackSoal1b", "error", "Masih belum tepat. Pastikan semua pembuat nol sudah lengkap.");
                     progress.soal1.b = false;
                 }
             }
 
-            if (bagian === 'c') {
+            if (bagian === "c") {
                 const validAnswers = [
-                    '(x-2)(x-5)(x+3)',
-                    '(x-2)(x+3)(x-5)',
-                    '(x-5)(x-2)(x+3)',
-                    '(x-5)(x+3)(x-2)',
-                    '(x+3)(x-2)(x-5)',
-                    '(x+3)(x-5)(x-2)'
+                    "(x-2)(x-5)(x+3)",
+                    "(x-2)(x+3)(x-5)",
+                    "(x-5)(x-2)(x+3)",
+                    "(x-5)(x+3)(x-2)",
+                    "(x+3)(x-2)(x-5)",
+                    "(x+3)(x-5)(x-2)"
                 ].map(item => normalizeText(item));
 
                 if (validAnswers.includes(normalized)) {
-                    showFeedback('feedbackSoal1c', 'success', 'Benar. Bentuk pemfaktoran lengkap sudah tepat.');
+                    showFeedback("feedbackSoal1c", "success", "Benar. Bentuk pemfaktoran lengkap sudah tepat.");
                     progress.soal1.c = true;
                 } else {
-                    showFeedback('feedbackSoal1c', 'error', 'Belum tepat. Gunakan faktor linear dari semua pembuat nol.');
+                    showFeedback("feedbackSoal1c", "error", "Belum tepat. Gunakan faktor linear dari semua pembuat nol.");
                     progress.soal1.c = false;
                 }
             }
 
             cekProgressSoal1();
+            updateKunciSoal2();
         }
 
-        function cekSoal3(bagian) {
-            const selesaiSoal1 = progress.soal1.a && progress.soal1.b && progress.soal1.c;
+        async function cekSoal2(bagian) {
+            const selesaiSoal1 =
+                progress.soal1.a &&
+                progress.soal1.b &&
+                progress.soal1.c;
 
             if (!selesaiSoal1) {
-                showFeedback('feedbackSoal3' + bagian, 'error', 'Selesaikan soal nomor 1 dengan benar terlebih dahulu.');
+                showFeedback(
+                    "feedbackSoal2" + bagian,
+                    "error",
+                    "Selesaikan soal nomor 1 dengan benar terlebih dahulu."
+                );
                 updateKunciSoal2();
                 return;
             }
 
-            const input = document.getElementById('soal3' + bagian)?.value.trim();
+            const input = document.getElementById("soal2" + bagian)?.value.trim();
 
             if (!input) {
-                showFeedback('feedbackSoal3' + bagian, 'error', 'Jawaban belum diisi.');
-                progress.soal3[bagian] = false;
-                cekProgressSoal3();
+                showFeedback(
+                    "feedbackSoal2" + bagian,
+                    "error",
+                    "Jawaban belum diisi."
+                );
+
+                progress.soal2[bagian] = false;
+                cekProgressSoal2();
                 return;
             }
 
             const normalized = normalizeText(input);
 
-            if (bagian === 'a') {
-                const user = splitAndClean(input).map(item => item.replace(/^x=/, ''));
-                const answer = ['4', '2', '-2', '-1'];
+            if (bagian === "a") {
+                const user = splitAndClean(input).map(item => item.replace(/^x=/, ""));
+                const answer = ["4", "2", "-2", "-1"];
 
                 if (sameSet(user, answer)) {
-                    showFeedback('feedbackSoal3a', 'success', 'Benar. Semua pembuat nol sudah tepat.');
-                    progress.soal3.a = true;
+                    showFeedback("feedbackSoal2a", "success", "Benar. Semua pembuat nol sudah tepat.");
+                    progress.soal2.a = true;
                 } else {
-                    showFeedback('feedbackSoal3a', 'error', 'Masih belum tepat. Periksa kembali akar-akar fungsinya.');
-                    progress.soal3.a = false;
+                    showFeedback("feedbackSoal2a", "error", "Masih belum tepat. Periksa kembali akar-akar fungsinya.");
+                    progress.soal2.a = false;
                 }
             }
 
-            if (bagian === 'b') {
+            if (bagian === "b") {
                 const validAnswers = [
-                    '(x-4)(x-2)(x+2)(x+1)',
-                    '(x-4)(x-2)(x+1)(x+2)',
-                    '(x-4)(x+2)(x-2)(x+1)',
-                    '(x-4)(x+1)(x-2)(x+2)',
-                    '(x-2)(x-4)(x+2)(x+1)',
-                    '(x-2)(x-4)(x+1)(x+2)',
-                    '(x+2)(x+1)(x-4)(x-2)',
-                    '(x+1)(x+2)(x-4)(x-2)'
+                    "(x-4)(x-2)(x+2)(x+1)",
+                    "(x-4)(x-2)(x+1)(x+2)",
+                    "(x-4)(x+2)(x-2)(x+1)",
+                    "(x-4)(x+1)(x-2)(x+2)",
+                    "(x-2)(x-4)(x+2)(x+1)",
+                    "(x-2)(x-4)(x+1)(x+2)",
+                    "(x+2)(x+1)(x-4)(x-2)",
+                    "(x+1)(x+2)(x-4)(x-2)"
                 ].map(item => normalizeText(item));
 
                 if (validAnswers.includes(normalized)) {
-                    showFeedback('feedbackSoal3b', 'success', 'Benar. Bentuk pemfaktoran lengkap sudah tepat.');
-                    progress.soal3.b = true;
+                    showFeedback("feedbackSoal2b", "success", "Benar. Bentuk pemfaktoran lengkap sudah tepat.");
+                    progress.soal2.b = true;
                 } else {
-                    showFeedback('feedbackSoal3b', 'error', 'Belum tepat. Gunakan faktor linear dari semua pembuat nol.');
-                    progress.soal3.b = false;
+                    showFeedback("feedbackSoal2b", "error", "Belum tepat. Gunakan faktor linear dari semua pembuat nol.");
+                    progress.soal2.b = false;
                 }
             }
 
-            if (bagian === 'c') {
+            if (bagian === "c") {
                 const user = extractCoordinatePairs(input);
-                const answer = ['(4,0)', '(2,0)', '(-2,0)', '(-1,0)'];
+                const answer = ["(4,0)", "(2,0)", "(-2,0)", "(-1,0)"];
 
                 if (sameSet(user, answer)) {
-                    showFeedback('feedbackSoal3c', 'success', 'Benar. Titik potong dengan sumbu-x sudah tepat.');
-                    progress.soal3.c = true;
+                    showFeedback("feedbackSoal2c", "success", "Benar. Titik potong dengan sumbu-x sudah tepat.");
+                    progress.soal2.c = true;
                 } else {
-                    showFeedback('feedbackSoal3c', 'error', 'Masih belum tepat. Titik potong sumbu-x berasal dari pembuat nol.');
-                    progress.soal3.c = false;
+                    showFeedback("feedbackSoal2c", "error", "Masih belum tepat. Titik potong sumbu-x berasal dari pembuat nol.");
+                    progress.soal2.c = false;
                 }
             }
 
-            if (bagian === 'd') {
-                const validAnswers = ['(0,16)', '0,16'].map(item => normalizeText(item));
+            if (bagian === "d") {
+                const validAnswers = ["(0,16)", "0,16"].map(item => normalizeText(item));
 
                 if (validAnswers.includes(normalized)) {
-                    showFeedback('feedbackSoal3d', 'success', 'Benar. Titik potong dengan sumbu-y sudah tepat.');
-                    progress.soal3.d = true;
+                    showFeedback("feedbackSoal2d", "success", "Benar. Titik potong dengan sumbu-y sudah tepat.");
+                    progress.soal2.d = true;
                 } else {
-                    showFeedback('feedbackSoal3d', 'error', 'Belum tepat. Coba substitusikan $x=0$ ke fungsi.');
-                    progress.soal3.d = false;
+                    showFeedback("feedbackSoal2d", "error", "Belum tepat. Coba substitusikan x = 0 ke fungsi.");
+                    progress.soal2.d = false;
                 }
             }
 
-            cekProgressSoal3();
+            const semuaSoal2Benar =
+                progress.soal2.a &&
+                progress.soal2.b &&
+                progress.soal2.c &&
+                progress.soal2.d;
+
+            cekProgressSoal2();
+
+            if (semuaSoal2Benar) {
+                await simpanProgressDanBukaKuis();
+            }
         }
 
         function showMetode(key, btn) {
@@ -3714,11 +3946,21 @@
             renderMathSafe();
         }
 
+        window.cekMari = cekMari;
+        window.cekTitikGrafikMc4 = cekTitikGrafikMc4;
+        window.cekOpsiEksplorasi = cekOpsiEksplorasi;
+        window.toggleJawaban = toggleJawaban;
+        window.showMetode = showMetode;
+        window.toggleKonsep = toggleKonsep;
+        window.toggleCaraFaktor = toggleCaraFaktor;
+        window.cekSoal1 = cekSoal1;
+        window.cekSoal2 = cekSoal2;
+
         window.addEventListener('load', function () {
             setTimeout(() => {
                 updateMariLocks();
                 updateSoal1Locks();
-                updateSoal3Locks();
+                updateSoal2Locks();
                 updateKunciSoal2();
                 cekProgressEksplorasi();
 
@@ -3740,11 +3982,44 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('teoremafaktor') }}" class="btn-nav prev-btn">
-        ← Previous
-    </a>
+    @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
+        $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
+    @endphp
 
-    <a href="{{ route('quiz.show', 4) }}" class="btn-nav next-btn">
+    {{-- PREVIOUS --}}
+    @if ($previousMateri)
+        <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @else
+        <a href="{{ route('pendahuluan') }}" class="btn-nav prev-btn">
+            ← Previous
+        </a>
+    @endif
+
+    {{-- NEXT / KUIS --}}
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+            Next →
+        </a>
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
+    @else
+    <span class="btn-nav next-btn disabled">
         Next →
-    </a>
+    </span>
+    @endif
 @endsection

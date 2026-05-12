@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                    delimiters: [
-                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                    ]
-                                                                                                });"></script>
+                                                                                                                delimiters: [
+                                                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                                                    {left: '$', right: '$', display: false}
+                                                                                                                ]
+                                                                                                            });"></script>
 
     <style>
         :root {
@@ -1658,7 +1658,7 @@
                         Setelah kurung dibuka, suku-suku yang memiliki variabel dan pangkat yang sama harus dikelompokkan.
                     </p>
 
-                   
+
 
                     <div class="interaktif-wrap" data-answer="(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)">
                         <div class="interaktif-title">Tulis bentuk yang sudah dikelompokkan</div>
@@ -1676,7 +1676,7 @@
                         Sekarang hitung hasil setiap kelompok
                     </p>
 
-                  
+
 
                     <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
                         <div class="interaktif-title">Tulis hasil akhir</div>
@@ -1939,6 +1939,9 @@
     </div>
 
     <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+    <script>
         (function () {
             const normalize = (s) =>
                 (s || "")
@@ -2150,22 +2153,103 @@
 
             updateInteraktifScore();
 
+            // LATIHAN SOAL
+
+            async function saveProgressMateri() {
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content");
+
+                if (!window.completeMateriUrl || !csrfToken) {
+                    console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                    return false;
+                }
+
+                try {
+                    const response = await fetch(window.completeMateriUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrfToken,
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Accept": "application/json",
+                        },
+                        body: JSON.stringify({}),
+                    });
+
+                    return response.ok;
+                } catch (error) {
+                    console.error(error);
+                    return false;
+                }
+            }
+
+            function bukaNextButton() {
+                const nextBtn = document.getElementById("nextMateriBtn");
+                if (!nextBtn) return;
+
+                const url = nextBtn.dataset.nextUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "nextMateriBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Next →";
+
+                nextBtn.replaceWith(link);
+            }
+
             const latihanItems = Array.from(document.querySelectorAll(".latihan-step-item"));
             const latihanSummary = document.getElementById("latihan-summary");
             const latihanFinal = document.getElementById("latihan-final-message");
             const latihanCheckAll = document.getElementById("latihan-check-all");
+
+            let progressSudahDisimpan = false;
 
             function checkLatihanItem(item) {
                 const input = item.querySelector(".latihan-input");
                 const fb = item.querySelector(".latihan-feedback");
                 const ans = normalizePoly(item.getAttribute("data-answer") || "");
                 const user = normalizePoly(input ? input.value : "");
+
                 const ok = !!user && user === ans;
+
                 setFb(fb, ok);
+
                 return ok;
             }
 
-            function updateLatihanScore() {
+            async function handleLatihanSelesai() {
+                if (progressSudahDisimpan) return;
+
+                progressSudahDisimpan = true;
+
+                if (latihanFinal) {
+                    latihanFinal.textContent = "✅ Semua jawaban benar. Progress sedang disimpan...";
+                    latihanFinal.classList.add("ok");
+                }
+
+                const berhasilSimpan = await saveProgressMateri();
+
+                if (berhasilSimpan) {
+                    bukaNextButton();
+
+                    if (latihanFinal) {
+                        latihanFinal.textContent = "✅ Semua jawaban benar. Progress berhasil disimpan. Silakan lanjut ke materi berikutnya.";
+                        latihanFinal.classList.add("ok");
+                    }
+                } else {
+                    progressSudahDisimpan = false;
+
+                    if (latihanFinal) {
+                        latihanFinal.textContent = "✅ Semua jawaban benar, tetapi progress gagal disimpan. Silakan coba lagi.";
+                        latihanFinal.classList.remove("ok");
+                    }
+                }
+            }
+
+            async function updateLatihanScore() {
                 const correct = latihanItems.filter(item =>
                     item.querySelector(".latihan-feedback")?.classList.contains("ok")
                 ).length;
@@ -2177,8 +2261,16 @@
                 }
 
                 if (latihanFinal) {
-                    if (correct === total) latihanFinal.classList.add("ok");
-                    else latihanFinal.classList.remove("ok");
+                    if (correct === total && total > 0) {
+                        latihanFinal.classList.add("ok");
+                    } else {
+                        latihanFinal.classList.remove("ok");
+                        progressSudahDisimpan = false;
+                    }
+                }
+
+                if (correct === total && total > 0) {
+                    await handleLatihanSelesai();
                 }
             }
 
@@ -2188,34 +2280,34 @@
                 const btnReset = item.querySelector(".latihan-reset");
                 const fb = item.querySelector(".latihan-feedback");
 
-                btnCheck?.addEventListener("click", () => {
+                btnCheck?.addEventListener("click", async () => {
                     checkLatihanItem(item);
-                    updateLatihanScore();
+                    await updateLatihanScore();
                 });
 
-                btnReset?.addEventListener("click", () => {
+                btnReset?.addEventListener("click", async () => {
                     if (input) input.value = "";
                     clearFb(fb);
-                    updateLatihanScore();
+                    await updateLatihanScore();
                 });
 
-                input?.addEventListener("keydown", (e) => {
+                input?.addEventListener("keydown", async (e) => {
                     if (e.key === "Enter") {
                         e.preventDefault();
                         checkLatihanItem(item);
-                        updateLatihanScore();
+                        await updateLatihanScore();
                     }
                 });
 
-                input?.addEventListener("input", () => {
+                input?.addEventListener("input", async () => {
                     clearFb(fb);
-                    updateLatihanScore();
+                    await updateLatihanScore();
                 });
             });
 
-            latihanCheckAll?.addEventListener("click", () => {
+            latihanCheckAll?.addEventListener("click", async () => {
                 latihanItems.forEach(checkLatihanItem);
-                updateLatihanScore();
+                await updateLatihanScore();
             });
 
             updateLatihanScore();
@@ -2225,10 +2317,10 @@
             {
                 name: "Gerbang 1 — Buka Kurung",
                 prompt: `
-                        $$
-                        (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                        $$
-                    `,
+                                    $$
+                                    (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                    $$
+                                `,
                 dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                 hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                 answers: [
@@ -2242,10 +2334,10 @@
             {
                 name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                 prompt: `
-                        $$
-                        5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                        $$
-                    `,
+                                    $$
+                                    5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                                    $$
+                                `,
                 dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                 hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                 answers: [
@@ -2257,10 +2349,10 @@
             {
                 name: "Gerbang 3 — Sederhanakan",
                 prompt: `
-                        $$
-                        (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                        $$
-                    `,
+                                    $$
+                                    (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                                    $$
+                                `,
                 dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                 hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                 answers: [
@@ -2479,10 +2571,11 @@
 
 @section('nav')
     @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
         $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
     @endphp
 
-    {{-- PREV --}}
+    {{-- PREVIOUS --}}
     @if ($previousMateri)
         <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
             ← Previous
@@ -2494,14 +2587,24 @@
     @endif
 
     {{-- NEXT / KUIS --}}
-    @if ($nextMateri)
-        <a href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
             Next →
         </a>
-    @elseif ($quizBab)
-        <a href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
             Kuis →
         </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
     @else
         <span class="btn-nav next-btn disabled">
             Next →

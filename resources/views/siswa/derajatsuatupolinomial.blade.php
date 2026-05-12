@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                delimiters: [
-                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                    {left: '$', right: '$', display: false}
-                                                                                ]
-                                                                            });"></script>
+                                                                                        delimiters: [
+                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                            {left: '$', right: '$', display: false}
+                                                                                        ]
+                                                                                    });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -827,33 +827,33 @@
             </p>
 
             <div style="
-                display:grid;
-                grid-template-columns:repeat(2, minmax(0, 1fr));
-                gap:10px;
-                margin:12px 0 14px;
-            ">
+                        display:grid;
+                        grid-template-columns:repeat(2, minmax(0, 1fr));
+                        gap:10px;
+                        margin:12px 0 14px;
+                    ">
 
                 <div style="
-                    border:1.5px dashed rgba(43,108,176,.35);
-                    border-radius:14px;
-                    padding:12px 14px;
-                    background:rgba(243,247,255,.75);
-                    min-height:105px;
-                ">
+                            border:1.5px dashed rgba(43,108,176,.35);
+                            border-radius:14px;
+                            padding:12px 14px;
+                            background:rgba(243,247,255,.75);
+                            min-height:105px;
+                        ">
                     <div style="display:flex; align-items:center; gap:12px;">
                         <div style="
-                            width:58px;
-                            height:58px;
-                            border-radius:50%;
-                            background:rgba(43,108,176,.12);
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:20px;
-                            font-weight:900;
-                            color:#1e3a8a;
-                            flex-shrink:0;
-                        ">
+                                    width:58px;
+                                    height:58px;
+                                    border-radius:50%;
+                                    background:rgba(43,108,176,.12);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-size:20px;
+                                    font-weight:900;
+                                    color:#1e3a8a;
+                                    flex-shrink:0;
+                                ">
                             $3xy^3$
                         </div>
                         <div style="font-size:15px; line-height:1.55;">
@@ -863,26 +863,26 @@
                 </div>
 
                 <div style="
-                    border:1.5px dashed rgba(27,122,42,.35);
-                    border-radius:14px;
-                    padding:12px 14px;
-                    background:rgba(242,251,244,.75);
-                    min-height:105px;
-                ">
+                            border:1.5px dashed rgba(27,122,42,.35);
+                            border-radius:14px;
+                            padding:12px 14px;
+                            background:rgba(242,251,244,.75);
+                            min-height:105px;
+                        ">
                     <div style="display:flex; align-items:center; gap:12px;">
                         <div style="
-                            width:58px;
-                            height:58px;
-                            border-radius:50%;
-                            background:rgba(27,122,42,.12);
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:20px;
-                            font-weight:900;
-                            color:#0f5f22;
-                            flex-shrink:0;
-                        ">
+                                    width:58px;
+                                    height:58px;
+                                    border-radius:50%;
+                                    background:rgba(27,122,42,.12);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-size:20px;
+                                    font-weight:900;
+                                    color:#0f5f22;
+                                    flex-shrink:0;
+                                ">
                             $2x^2$
                         </div>
                         <div style="font-size:15px; line-height:1.55;">
@@ -893,26 +893,26 @@
                 </div>
 
                 <div style="
-                    border:1.5px dashed rgba(245,124,0,.35);
-                    border-radius:14px;
-                    padding:12px 14px;
-                    background:rgba(255,248,240,.9);
-                    min-height:105px;
-                ">
+                            border:1.5px dashed rgba(245,124,0,.35);
+                            border-radius:14px;
+                            padding:12px 14px;
+                            background:rgba(255,248,240,.9);
+                            min-height:105px;
+                        ">
                     <div style="display:flex; align-items:center; gap:12px;">
                         <div style="
-                            width:58px;
-                            height:58px;
-                            border-radius:50%;
-                            background:rgba(245,124,0,.12);
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:20px;
-                            font-weight:900;
-                            color:#c25a00;
-                            flex-shrink:0;
-                        ">
+                                    width:58px;
+                                    height:58px;
+                                    border-radius:50%;
+                                    background:rgba(245,124,0,.12);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-size:20px;
+                                    font-weight:900;
+                                    color:#c25a00;
+                                    flex-shrink:0;
+                                ">
                             $-4z$
                         </div>
                         <div style="font-size:15px; line-height:1.55;">
@@ -923,26 +923,26 @@
                 </div>
 
                 <div style="
-                    border:1.5px dashed rgba(128,80,180,.35);
-                    border-radius:14px;
-                    padding:12px 14px;
-                    background:rgba(248,244,255,.9);
-                    min-height:105px;
-                ">
+                            border:1.5px dashed rgba(128,80,180,.35);
+                            border-radius:14px;
+                            padding:12px 14px;
+                            background:rgba(248,244,255,.9);
+                            min-height:105px;
+                        ">
                     <div style="display:flex; align-items:center; gap:12px;">
                         <div style="
-                            width:58px;
-                            height:58px;
-                            border-radius:50%;
-                            background:rgba(128,80,180,.12);
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:20px;
-                            font-weight:900;
-                            color:#7a3fb0;
-                            flex-shrink:0;
-                        ">
+                                    width:58px;
+                                    height:58px;
+                                    border-radius:50%;
+                                    background:rgba(128,80,180,.12);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-size:20px;
+                                    font-weight:900;
+                                    color:#7a3fb0;
+                                    flex-shrink:0;
+                                ">
                             $6$
                         </div>
                         <div style="font-size:15px; line-height:1.55;">
@@ -1531,8 +1531,60 @@
                 });
             }
         })();
+    </script>
 
-        // ===== LATIHAN HTML CSS JS =====
+
+    <script>
+        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+    </script>
+
+    <script>
+        async function saveProgressMateri() {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            if (!window.completeMateriUrl || !csrfToken) {
+                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                return false;
+            }
+
+            try {
+                const response = await fetch(window.completeMateriUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+
+        function bukaNextButton() {
+            const nextBtn = document.getElementById("nextMateriBtn");
+            if (!nextBtn) return;
+
+            const url = nextBtn.dataset.nextUrl;
+            if (!url) return;
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.id = "nextMateriBtn";
+            link.className = "btn-nav next-btn";
+            link.textContent = "Next →";
+
+            nextBtn.replaceWith(link);
+        }
+
+        // ===== LATIHAN SOAL =====
         (function () {
             const latihan1 = document.getElementById("latihan1");
             const latihan2 = document.getElementById("latihan2");
@@ -1681,11 +1733,11 @@
                             fbTrueFalse,
                             true,
                             `
-                                        <div>✅ Semua jawaban benar.</div>
-                                        <div><b>Penjelasan:</b></div>
-                                        <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
-                                        <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
-                                        `
+                                                <div>✅ Semua jawaban benar.</div>
+                                                <div><b>Penjelasan:</b></div>
+                                                <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
+                                                <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
+                                                `
                         );
 
                         unlockSection(latihan2, lock2);
@@ -1696,11 +1748,11 @@
                             fbTrueFalse,
                             false,
                             `
-                                        <div>❌ Jawaban Soal 1 belum tepat.</div>
-                                        <div><b>Penjelasan jawaban benar:</b></div>
-                                        <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
-                                        <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
-                                        `
+                                                <div>❌ Jawaban Soal 1 belum tepat.</div>
+                                                <div><b>Penjelasan jawaban benar:</b></div>
+                                                <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
+                                                <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
+                                                `
                         );
 
                         resetSoal2();
@@ -1740,9 +1792,9 @@
                             fbWinner,
                             true,
                             `
-                                        <div>✅ Jawaban benar.</div>
-                                        <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
-                                        `
+                                                <div>✅ Jawaban benar.</div>
+                                                <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
+                                                `
                         );
 
                         unlockSection(latihan3, lock3);
@@ -1753,9 +1805,9 @@
                             fbWinner,
                             false,
                             `
-                                        <div>❌ Soal 2 belum tepat.</div>
-                                        <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
-                                        `
+                                                <div>❌ Soal 2 belum tepat.</div>
+                                                <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
+                                                `
                         );
 
                         resetSoal3();
@@ -1792,9 +1844,9 @@
                             fbMystery,
                             true,
                             `
-                                        <div>✅ Jawaban benar.</div>
-                                        <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
-                                        `
+                                                <div>✅ Jawaban benar.</div>
+                                                <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
+                                                `
                         );
                         unlockSection(latihan4, lock4);
                     } else {
@@ -1804,9 +1856,9 @@
                             fbMystery,
                             false,
                             `
-                                        <div>❌ Soal 3 belum tepat.</div>
-                                        <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
-                                        `
+                                                <div>❌ Soal 3 belum tepat.</div>
+                                                <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
+                                                `
                         );
 
                         resetSoal4();
@@ -1818,8 +1870,9 @@
             }
 
             // ===== SOAL 4 =====
+            // ===== SOAL 4 =====
             if (btnCheck4) {
-                btnCheck4.addEventListener("click", () => {
+                btnCheck4.addEventListener("click", async () => {
                     if (!latihan4 || latihan4.dataset.unlocked !== "1") return;
 
                     if (!detectHighest.value || !detectPoly.value) {
@@ -1846,14 +1899,23 @@
                             fbDetect,
                             true,
                             `
-                                        <div>✅ Jawaban benar.</div>
-                                        <div><b>Penjelasan:</b></div>
-                                        <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
-                                        <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
-                                        <div>• <b>4</b> memiliki derajat <b>0</b></div>
-                                        <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
-                                        `
+                    <div>✅ Jawaban benar.</div>
+                    <div><b>Penjelasan:</b></div>
+                    <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
+                    <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
+                    <div>• <b>4</b> memiliki derajat <b>0</b></div>
+                    <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
+                    `
                         );
+
+                        // Simpan progress materi dan buka tombol Next
+                        const saved = await saveProgressMateri();
+
+                        if (saved) {
+                            bukaNextButton();
+                        } else {
+                            console.warn("Progress materi gagal disimpan.");
+                        }
                     } else {
                         latihan4.dataset.done = "0";
                         setDoneText(done4, "");
@@ -1861,13 +1923,13 @@
                             fbDetect,
                             false,
                             `
-                                        <div>❌ Soal 4 belum tepat.</div>
-                                        <div><b>Penjelasan jawaban benar:</b></div>
-                                        <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
-                                        <div>• Derajat <b>−xy</b> = <b>2</b></div>
-                                        <div>• Derajat <b>4</b> = <b>0</b></div>
-                                        <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
-                                        `
+                    <div>❌ Soal 4 belum tepat.</div>
+                    <div><b>Penjelasan jawaban benar:</b></div>
+                    <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
+                    <div>• Derajat <b>−xy</b> = <b>2</b></div>
+                    <div>• Derajat <b>4</b> = <b>0</b></div>
+                    <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
+                    `
                         );
                     }
 

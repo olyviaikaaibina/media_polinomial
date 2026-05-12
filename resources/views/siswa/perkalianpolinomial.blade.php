@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                            delimiters: [
-                                {left: '$$', right: '$$', display: true},
-                                {left: '$', right: '$', display: false}
-                            ]
-                        });"></script>
+                                            delimiters: [
+                                                {left: '$$', right: '$$', display: true},
+                                                {left: '$', right: '$', display: false}
+                                            ]
+                                        });"></script>
 
     <style>
         :root {
@@ -2858,6 +2858,9 @@
 
             })();
         </script>
+        <script>
+            window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+        </script>
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -2915,7 +2918,85 @@
             });
         </script>
 
+       
         <script>
+            async function saveProgressMateri() {
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content");
+
+                if (!window.completeMateriUrl || !csrfToken) {
+                    console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+                    return false;
+                }
+
+                try {
+                    const response = await fetch(window.completeMateriUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrfToken,
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Accept": "application/json",
+                        },
+                        body: JSON.stringify({}),
+                    });
+
+                    return response.ok;
+                } catch (error) {
+                    console.error(error);
+                    return false;
+                }
+            }
+
+            function bukaQuizButton() {
+                const quizBtn = document.getElementById("quizBabBtn");
+                if (!quizBtn) return;
+
+                const url = quizBtn.dataset.quizUrl;
+                if (!url) return;
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.id = "quizBabBtn";
+                link.className = "btn-nav next-btn";
+                link.textContent = "Kuis →";
+
+                quizBtn.replaceWith(link);
+            }
+
+            let progressSudahDisimpan = false;
+
+            async function handleLatihanSelesai() {
+                if (progressSudahDisimpan) return;
+
+                progressSudahDisimpan = true;
+
+                const berhasilSimpan = await saveProgressMateri();
+
+                if (berhasilSimpan) {
+                    bukaQuizButton();
+
+                    const finalNote = document.getElementById("game-final-note");
+                    if (finalNote) {
+                        finalNote.style.display = "block";
+                        finalNote.textContent = "✅ Semua jawaban benar. Progress berhasil disimpan. Kuis sudah terbuka.";
+                        finalNote.classList.add("ok");
+                        finalNote.classList.remove("no");
+                    }
+                } else {
+                    progressSudahDisimpan = false;
+
+                    const finalNote = document.getElementById("game-final-note");
+                    if (finalNote) {
+                        finalNote.style.display = "block";
+                        finalNote.textContent = "✅ Jawaban benar, tetapi progress gagal disimpan. Silakan coba lagi.";
+                        finalNote.classList.remove("ok");
+                        finalNote.classList.add("no");
+                    }
+                }
+            }
+
             document.addEventListener("DOMContentLoaded", function () {
                 const soalList = document.querySelectorAll(".game-soal");
                 const scoreEl = document.getElementById("game-score");
@@ -2948,7 +3029,7 @@
                 });
 
                 if (btnCheck) {
-                    btnCheck.addEventListener("click", function () {
+                    btnCheck.addEventListener("click", async function () {
                         let benar = 0;
                         let terjawab = 0;
 
@@ -2996,6 +3077,16 @@
 
                         if (finalNote) {
                             finalNote.style.display = (terjawab === soalList.length) ? "block" : "none";
+
+                            if (terjawab === soalList.length && benar !== soalList.length) {
+                                finalNote.textContent = "Hebat! Semua soal sudah dikerjakan. Periksa lagi kalau masih ada yang salah, lalu coba sampai benar semua.";
+                                finalNote.classList.remove("ok");
+                                finalNote.classList.add("no");
+                            }
+                        }
+
+                        if (benar === soalList.length && terjawab === soalList.length) {
+                            await handleLatihanSelesai();
                         }
                     });
                 }
@@ -3014,8 +3105,14 @@
                             status.classList.remove("ok", "no");
                         });
 
+                        progressSudahDisimpan = false;
+
                         if (scoreEl) scoreEl.textContent = "";
-                        if (finalNote) finalNote.style.display = "none";
+                        if (finalNote) {
+                            finalNote.style.display = "none";
+                            finalNote.textContent = "";
+                            finalNote.classList.remove("ok", "no");
+                        }
                     });
                 }
             });
@@ -3025,10 +3122,11 @@
 
 @section('nav')
     @php
+        $isNextUnlocked = $nextMateri ? in_array($nextMateri->slug, $unlockedSlugs ?? []) : false;
         $isCurrentMateriCompleted = $materialProgress?->is_completed ?? false;
     @endphp
 
-    {{-- PREV --}}
+    {{-- PREVIOUS --}}
     @if ($previousMateri)
         <a href="{{ route('materi.show', $previousMateri->slug) }}" class="btn-nav prev-btn">
             ← Previous
@@ -3040,17 +3138,27 @@
     @endif
 
     {{-- NEXT / KUIS --}}
-    @if ($nextMateri)
-        <a href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
+    @if ($nextMateri && $isNextUnlocked)
+        <a id="nextMateriBtn" href="{{ route('materi.show', $nextMateri->slug) }}" class="btn-nav next-btn">
             Next →
         </a>
-    @elseif ($quizBab)
-        <a href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+    @elseif ($nextMateri && !$isNextUnlocked)
+        <span id="nextMateriBtn" class="btn-nav next-btn disabled" data-next-url="{{ route('materi.show', $nextMateri->slug) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Next
+        </span>
+    @elseif ($quizBab && $isCurrentMateriCompleted)
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
             Kuis →
         </a>
+    @elseif ($quizBab && !$isCurrentMateriCompleted)
+    <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+        style="opacity:.65; cursor:not-allowed;">
+        🔒 Kuis
+    </span>
     @else
-        <span class="btn-nav next-btn disabled">
-            Next →
-        </span>
+    <span class="btn-nav next-btn disabled">
+        Next →
+    </span>
     @endif
 @endsection
