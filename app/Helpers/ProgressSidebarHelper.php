@@ -7,47 +7,64 @@ use App\Models\QuizAttempt;
 
 class ProgressSidebarHelper
 {
+    /**
+     * Ambil data progress sidebar berdasarkan student_id.
+     *
+     * Catatan:
+     * - Peta konsep dan apersepsi selalu terbuka.
+     * - Materi yang sudah opened/completed tetap terbuka walaupun siswa masuk dari halaman lain.
+     * - Unlock materi berikutnya tetap berdasarkan completed dan quiz passed.
+     */
     public static function getSidebarProgress($studentId): array
     {
-        $completedSlugs = MaterialProgress::with('materi')
+        $progressRows = MaterialProgress::with('materi:id,slug')
             ->where('student_id', $studentId)
+            ->get();
+
+        $completedSlugs = $progressRows
             ->where('is_completed', 1)
-            ->get()
             ->pluck('materi.slug')
             ->filter()
-            ->values()
-            ->toArray();
-
-        $openedSlugs = MaterialProgress::with('materi')
-            ->where('student_id', $studentId)
-            ->where('is_opened', 1)
-            ->get()
-            ->pluck('materi.slug')
-            ->filter()
-            ->values()
-            ->toArray();
-
-        $passedQuizIds = QuizAttempt::where('student_id', $studentId)
-            ->where('is_passed', 1)
-            ->pluck('quiz_id')
             ->unique()
             ->values()
             ->toArray();
 
-        $isCompleted = fn ($slug) => in_array($slug, $completedSlugs);
-        $isQuizPassed = fn ($quizId) => in_array($quizId, $passedQuizIds);
+        $openedSlugs = $progressRows
+            ->where('is_opened', 1)
+            ->pluck('materi.slug')
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $passedQuizIds = QuizAttempt::query()
+            ->where('student_id', $studentId)
+            ->where('is_passed', 1)
+            ->pluck('quiz_id')
+            ->map(fn ($quizId) => (int) $quizId)
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $isCompleted = fn (string $slug): bool => in_array($slug, $completedSlugs, true);
+        $isQuizPassed = fn (int $quizId): bool => in_array($quizId, $passedQuizIds, true);
 
         /*
         |--------------------------------------------------------------------------
-        | Default: hanya materi pertama yang terbuka
+        | Default unlocked
         |--------------------------------------------------------------------------
-        | Catatan:
-        | is_opened TIDAK dipakai untuk unlock materi berikutnya.
-        | Unlock hanya berdasarkan is_completed dan kuis lulus.
+        | Peta konsep, apersepsi, dan materi pertama selalu terbuka.
+        | Materi yang sudah opened/completed juga tetap terbuka.
         */
-        $unlockedSlugs = [
-            'pengertianpolinomial',
-        ];
+        $unlockedSlugs = array_merge(
+            [
+                'petakonsep',
+                'apersepsi',
+                'pengertianpolinomial',
+            ],
+            $openedSlugs,
+            $completedSlugs
+        );
 
         /*
         |--------------------------------------------------------------------------

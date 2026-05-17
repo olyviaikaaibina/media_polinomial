@@ -401,13 +401,13 @@
 
     input[type="text"] {
       font-family: "Times New Roman", "Cambria Math", "STIX Two Text", "Latin Modern Roman", serif;
-      font-style: italic;
+      font-style: normal;
       font-size: 18px;
     }
 
     .math-power-input {
       font-family: "Times New Roman", "Cambria Math", "STIX Two Text", "Latin Modern Roman", serif !important;
-      font-style: italic;
+      font-style: normal;
       font-size: 18px;
     }
 
@@ -852,7 +852,15 @@
           $isQuizCUnlocked = $canAccessQuizByBab[3] ?? false;
           $isQuizDUnlocked = $canAccessQuizByBab[4] ?? false;
           $isQuizEUnlocked = $canAccessQuizByBab[5] ?? false;
-          $isEvaluasiUnlocked = $canAccessQuizByBab[6] ?? false;
+
+          $studentId = auth('siswa')->id();
+
+          $sudahLulusKuisE = \App\Models\QuizAttempt::where('student_id', $studentId)
+            ->where('quiz_id', 5)
+            ->where('is_passed', 1)
+            ->exists();
+
+          $isEvaluasiUnlocked = $sudahLulusKuisE;
         @endphp
 
         <div class="dropdown-content">
