@@ -620,7 +620,7 @@
             </p>
 
             <a href="{{ route('masuksiswa') }}" class="btn btn-primary-custom">
-              Mulai Sekarang
+              Mulai Belajar
             </a>
           </div>
         </div>

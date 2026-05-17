@@ -57,7 +57,7 @@
         }
 
         .intro-wrap {
-            margin-bottom: 26px;
+            margin-bottom: 28px;
         }
 
         .konsep-grid {
@@ -68,100 +68,145 @@
         }
 
         .konsep-card {
-            border-radius: 24px;
-            padding: 22px 20px;
-            background: #fff;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e8edf4;
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            padding: 24px 22px 22px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e7ecf2;
+            transition: all 0.3s ease;
+        }
+
+        .konsep-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .konsep-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7px;
         }
 
         .konsep-card.eksponen {
-            background: linear-gradient(135deg, #fffdf6 0%, #fff8e9 100%);
-            border: 1px solid #f2dfb4;
+            background: linear-gradient(135deg, #fffdf5 0%, #fff7df 100%);
+        }
+
+        .konsep-card.eksponen::before {
+            background: linear-gradient(90deg, #f0b429, #ffd56a);
         }
 
         .konsep-card.aljabar {
-            background: linear-gradient(135deg, #f8fcff 0%, #eef6ff 100%);
-            border: 1px solid #d8e7fb;
+            background: linear-gradient(135deg, #f7fbff 0%, #edf5ff 100%);
         }
 
-        .konsep-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .badge-eksponen {
-            background: #e0a11d;
-        }
-
-        .badge-aljabar {
-            background: #4b86d1;
+        .konsep-card.aljabar::before {
+            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
         }
 
         .konsep-title {
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 800;
-            color: #2c2c2c;
+            color: #24313f;
             margin-bottom: 10px;
         }
 
         .konsep-desc {
             font-size: 14px;
-            line-height: 1.8;
-            color: #414141;
+            line-height: 1.85;
+            color: #424242;
         }
 
         .mini-rumus {
-            margin-top: 12px;
-            padding: 12px 14px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px dashed #d7d7d7;
+            margin-top: 14px;
+            padding: 13px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px dashed #d2d9e2;
             text-align: center;
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 800;
-            color: #2d3f54;
+            color: #2e4155;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
-        .ingat-box {
+        .ringkasan-box {
             margin-bottom: 16px;
-            border-radius: 24px;
-            padding: 18px 18px 16px;
+            border-radius: 26px;
+            padding: 20px 18px 18px;
             background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-            border: 1px solid #e6ecf3;
+            border: 1px solid #e5ebf3;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
         }
 
-        .ingat-title {
-            font-size: 17px;
-            font-weight: 800;
-            color: #334250;
-            margin-bottom: 14px;
+        .ringkasan-header {
             text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .ringkasan-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 4px;
+        }
+
+        .ringkasan-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.7;
         }
 
         .ingat-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 14px;
         }
 
         .ingat-card {
+            position: relative;
+            overflow: hidden;
             background: #fff;
-            border: 1px solid #e3e8ef;
-            border-radius: 18px;
-            padding: 14px 10px;
+            border: 1px solid #e4e9f0;
+            border-radius: 20px;
+            padding: 16px 12px 14px;
             text-align: center;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .ingat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .ingat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .eksponen-card::before {
+            background: linear-gradient(90deg, #f0b429, #ffd56a);
+        }
+
+        .aljabar-card::before {
+            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
+        }
+
+        .ingat-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
         }
 
         .ingat-rumus {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
             color: #29405a;
             margin-bottom: 6px;
@@ -169,9 +214,289 @@
         }
 
         .ingat-ket {
-            font-size: 12px;
-            line-height: 1.6;
+            font-size: 12.5px;
+            line-height: 1.65;
             color: #66717b;
+        }
+
+        .note-mini {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #5f6770;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .transisi-box {
+            margin: 26px 0 20px;
+            padding: 18px 20px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f7faf6 0%, #eef4ea 100%);
+            border: 1px solid #dce7d3;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .transisi-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .transisi-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 3px;
+        }
+
+        .alur-box {
+            margin-top: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #fcfcf8 100%);
+            border: 1px solid #e6e4d8;
+            border-radius: 28px;
+            padding: 28px 26px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .alur-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .alur-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 8px;
+        }
+
+        .alur-desc {
+            font-size: 15px;
+            color: #5f675d;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .alur-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 26px;
+        }
+
+        .alur-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid #e7e6dc;
+            border-radius: 22px;
+            padding: 22px 18px 18px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .alur-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .klik-card {
+            height: 330px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .alur-step {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #aebf98;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .alur-card-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin-bottom: 10px;
+        }
+
+        .alur-preview {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5f675d;
+            margin-top: 12px;
+        }
+
+        .alur-detail {
+            max-height: 0;
+            opacity: 0;
+            overflow-y: auto;
+            transition: all 0.4s ease;
+            padding-right: 6px;
+        }
+
+        .klik-card.active .alur-detail {
+            max-height: 210px;
+            opacity: 1;
+            margin-top: 14px;
+        }
+
+        .klik-card.active .alur-preview {
+            display: none;
+        }
+
+        .alur-card-text {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3b3b3b;
+            text-align: left;
+        }
+
+        .alur-rumus {
+            margin-top: 12px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: #2e4053;
+            background: #f8faf7;
+            border: 1px dashed #cfd8c4;
+            border-radius: 16px;
+            padding: 14px 10px;
+        }
+
+        .hasil-box {
+            background: linear-gradient(135deg, #f8fbf5 0%, #f2f7ee 100%);
+            border: 1px solid #dfe7d7;
+            border-radius: 24px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .hasil-menarik {
+            position: relative;
+            overflow: hidden;
+            padding: 30px 24px;
+        }
+
+        .hasil-menarik::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(174, 191, 152, 0.16);
+            border-radius: 50%;
+            top: -70px;
+            left: -60px;
+        }
+
+        .hasil-menarik::after {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: rgba(240, 180, 41, 0.13);
+            border-radius: 50%;
+            bottom: -70px;
+            right: -50px;
+        }
+
+        .hasil-badge {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 999px;
+            background: #aebf98;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hasil-label {
+            position: relative;
+            z-index: 1;
+            font-size: 16px;
+            font-weight: 700;
+            color: #60705f;
+            margin-bottom: 10px;
+        }
+
+        .hasil-rumus {
+            position: relative;
+            z-index: 1;
+            font-size: 46px;
+            font-weight: 800;
+            color: #2f3a30;
+            margin: 10px 0 22px;
+            line-height: 1.4;
+        }
+
+        .hasil-komponen {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            margin: 20px auto;
+            flex-wrap: wrap;
+        }
+
+        .komponen-card {
+            width: 180px;
+            background: #ffffff;
+            border: 1px solid #dfe7d7;
+            border-radius: 20px;
+            padding: 16px 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: 0.3s ease;
+        }
+
+        .komponen-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .komponen-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .komponen-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #5b6658;
+            margin-bottom: 6px;
+        }
+
+        .komponen-rumus {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2f3a30;
+        }
+
+        .komponen-plus {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #8ca178;
+        }
+
+        .hasil-kalimat {
+            position: relative;
+            z-index: 1;
+            margin-top: 18px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #4d554b;
         }
 
         .rumus-section {
@@ -548,9 +873,10 @@
             cursor: pointer;
         }
 
-        .drop-zone.hovered {
-            background: #eef6ff;
-            border-color: #6ca7ff;
+        .drop-zone.hovered,
+        .drop-zone.active-target {
+            background: #eef6ff !important;
+            border-color: #6ca7ff !important;
         }
 
         .drop-zone.correct {
@@ -569,36 +895,9 @@
             font-weight: 700;
         }
 
-        .drop-zone.active-target {
-            border-color: #6ca7ff !important;
-            background: #eef6ff !important;
-        }
-
         .placeholder {
             color: #7b8794;
             font-size: 14px;
-        }
-
-        .isian-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-top: 10px;
-        }
-
-        .isian-group {
-            background: #f8faf7;
-            border: 1px solid #e4eadf;
-            border-radius: 16px;
-            padding: 14px;
-        }
-
-        .isian-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #324034;
         }
 
         .isian-input {
@@ -616,13 +915,59 @@
         }
 
         .isian-input.correct {
-            border-color: #4caf50;
-            background: #eef9ef;
+            border-color: #4caf50 !important;
+            background: #eef9ef !important;
         }
 
         .isian-input.wrong {
-            border-color: #f44336;
-            background: #fff1f0;
+            border-color: #f44336 !important;
+            background: #fff1f0 !important;
+        }
+
+        #questionCard2 .soal2-wrap {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            margin-top: 18px !important;
+            width: 100% !important;
+        }
+
+        #questionCard2 .soal2-line {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            flex-wrap: wrap !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+        }
+
+        #questionCard2 .soal2-text {
+            display: inline !important;
+        }
+
+        #questionCard2 .suku-blank {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            white-space: nowrap !important;
+            flex: 0 0 auto !important;
+        }
+
+        #questionCard2 .suku-input {
+            width: 90px !important;
+            min-width: 90px !important;
+            max-width: 90px !important;
+            height: 38px !important;
+            padding: 6px 10px !important;
+            text-align: center !important;
+            flex: 0 0 90px !important;
+            display: inline-block !important;
+            background: #ffffff !important;
+        }
+
+        #questionCard2 .suku-text {
+            display: inline-block !important;
+            white-space: nowrap !important;
         }
 
         .opsi-grid {
@@ -654,13 +999,6 @@
         .opsi-card.selected {
             border-color: #6ca7ff;
             background: #eef6ff;
-        }
-
-        .opsi-rumus {
-            font-size: 30px;
-            font-weight: 800;
-            color: #27322b;
-            margin-bottom: 10px;
         }
 
         .opsi-desc {
@@ -716,137 +1054,27 @@
             font-weight: 500;
         }
 
-        .alur-box {
-            margin-top: 24px;
-            background: linear-gradient(180deg, #ffffff 0%, #fcfcf8 100%);
-            border: 1px solid #e6e4d8;
-            border-radius: 28px;
-            padding: 28px 26px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
-        }
-
-        .alur-header {
-            text-align: center;
-            margin-bottom: 26px;
-        }
-
-        .alur-title {
-            font-size: 26px;
-            font-weight: 800;
-            color: #2f3a30;
-            margin-bottom: 8px;
-        }
-
-        .alur-desc {
-            font-size: 15px;
-            color: #5f675d;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        .alur-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 26px;
-        }
-
-        .alur-card {
-            position: relative;
-            background: #fff;
-            border: 1px solid #e7e6dc;
-            border-radius: 22px;
-            padding: 22px 18px 18px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .alur-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
-        }
-
-        .alur-step {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #aebf98;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
-        }
-
-        .alur-card-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: #2f3a30;
-            margin-bottom: 10px;
-        }
-
-        .alur-card-text {
-            font-size: 15px;
-            line-height: 1.9;
-            color: #3b3b3b;
-            text-align: left;
-            min-height: 120px;
-        }
-
-        .alur-rumus {
-            margin-top: 14px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: #2e4053;
-            background: #f8faf7;
-            border: 1px dashed #cfd8c4;
-            border-radius: 16px;
-            padding: 14px 10px;
-        }
-
-        .hasil-box {
-            background: linear-gradient(135deg, #f8fbf5 0%, #f2f7ee 100%);
-            border: 1px solid #dfe7d7;
-            border-radius: 24px;
-            padding: 24px 20px;
-            text-align: center;
-        }
-
-        .hasil-label {
-            font-size: 16px;
-            font-weight: 700;
-            color: #60705f;
-            margin-bottom: 10px;
-        }
-
-        .hasil-rumus {
-            font-size: 38px;
-            font-weight: 800;
-            color: #2f3a30;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .hasil-text {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #4d554b;
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
         @media (max-width: 992px) {
 
             .konsep-grid,
-            .alur-grid,
-            .ingat-grid,
-            .unsur-grid,
-            .opsi-grid,
-            .isian-wrap {
+            .ingat-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .alur-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .unsur-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #questionCard1 .drop-row {
+                grid-template-columns: 150px 1fr !important;
+            }
+
+            #questionCard3 .opsi-grid {
+                grid-template-columns: 1fr !important;
             }
 
             .alur-card-text {
@@ -854,7 +1082,7 @@
             }
 
             .hasil-rumus {
-                font-size: 30px;
+                font-size: 34px;
             }
         }
 
@@ -867,330 +1095,10 @@
                 font-size: 14px;
             }
 
-            .rumus-trigger {
-                font-size: 30px;
-                padding: 15px 22px;
-                border-radius: 18px;
-            }
-
             .konsep-grid,
             .ingat-grid,
-            .unsur-grid,
-            .opsi-grid,
-            .isian-wrap,
-            .alur-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .drop-row {
-                grid-template-columns: 1fr;
-            }
-
-            .question-text {
-                font-size: 17px;
-            }
-
-            .question-card {
-                padding: 18px;
-            }
-
-            .drag-item {
-                width: 100%;
-                font-size: 15px;
-            }
-
-            .hasil-rumus {
-                font-size: 22px;
-            }
-        }
-
-        #questionCard1 {
-            padding: 16px;
-            border-radius: 22px;
-        }
-
-        #questionCard1 .question-head {
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        #questionCard1 .question-number {
-            width: 38px;
-            height: 38px;
-            min-width: 38px;
-            font-size: 17px;
-        }
-
-        #questionCard1 .question-text {
-            font-size: 16px;
-            line-height: 1.4;
-            margin-top: 2px;
-        }
-
-        #questionCard1 .question-sub {
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-
-        #questionCard1 .drag-words {
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-
-        #questionCard1 .drag-item {
-            padding: 8px 12px;
-            font-size: 13px;
-            border-radius: 14px;
-        }
-
-        #questionCard1 .drop-grid {
-            gap: 12px;
-        }
-
-        #questionCard1 .drop-row {
-            grid-template-columns: 150px 1fr;
-            gap: 12px;
-        }
-
-        #questionCard1 .drop-label {
-            font-size: 14px;
-            padding: 10px 12px;
-            border-radius: 12px;
-        }
-
-        #questionCard1 .drop-zone {
-            min-height: 48px;
-            padding: 8px 10px;
-            font-size: 13px;
-            border-radius: 12px;
-        }
-
-        #questionCard1 .placeholder {
-            font-size: 13px;
-        }
-
-        #questionCard1 .feedback {
-            font-size: 13px;
-            padding: 10px 12px;
-            border-radius: 10px;
-        }
-    </style>
-
-    <style>
-        .intro-wrap {
-            margin-bottom: 28px;
-        }
-
-        .konsep-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin-bottom: 18px;
-        }
-
-        .konsep-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 26px;
-            padding: 24px 22px 22px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e7ecf2;
-            transition: all 0.3s ease;
-        }
-
-        .konsep-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .konsep-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 7px;
-        }
-
-        .konsep-card.eksponen {
-            background: linear-gradient(135deg, #fffdf5 0%, #fff7df 100%);
-        }
-
-        .konsep-card.eksponen::before {
-            background: linear-gradient(90deg, #f0b429, #ffd56a);
-        }
-
-        .konsep-card.aljabar {
-            background: linear-gradient(135deg, #f7fbff 0%, #edf5ff 100%);
-        }
-
-        .konsep-card.aljabar::before {
-            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
-        }
-
-        .konsep-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px;
-            letter-spacing: 0.4px;
-        }
-
-        .badge-eksponen {
-            background: #d89b17;
-        }
-
-        .badge-aljabar {
-            background: #4e84cf;
-        }
-
-        .konsep-title {
-            font-size: 22px;
-            font-weight: 800;
-            color: #24313f;
-            margin-bottom: 10px;
-        }
-
-        .konsep-desc {
-            font-size: 14px;
-            line-height: 1.85;
-            color: #424242;
-        }
-
-        .mini-rumus {
-            margin-top: 14px;
-            padding: 13px 16px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px dashed #d2d9e2;
-            text-align: center;
-            font-size: 23px;
-            font-weight: 800;
-            color: #2e4155;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .ringkasan-box {
-            margin-bottom: 16px;
-            border-radius: 26px;
-            padding: 20px 18px 18px;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-            border: 1px solid #e5ebf3;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        .ringkasan-header {
-            text-align: center;
-            margin-bottom: 14px;
-        }
-
-        .ringkasan-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: #aebf98;
-            color: #fff;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.4px;
-            margin-bottom: 10px;
-        }
-
-        .ringkasan-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: #2f3a30;
-            margin-bottom: 4px;
-        }
-
-        .ringkasan-subtitle {
-            font-size: 13px;
-            color: #6b7280;
-            line-height: 1.7;
-        }
-
-        .ingat-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-        }
-
-        .ingat-card {
-            position: relative;
-            overflow: hidden;
-            background: #fff;
-            border: 1px solid #e4e9f0;
-            border-radius: 20px;
-            padding: 16px 12px 14px;
-            text-align: center;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        .ingat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
-        }
-
-        .ingat-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-        }
-
-        .eksponen-card::before {
-            background: linear-gradient(90deg, #f0b429, #ffd56a);
-        }
-
-        .aljabar-card::before {
-            background: linear-gradient(90deg, #5d8fd6, #8eb6f2);
-        }
-
-        .ingat-icon {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .ingat-rumus {
-            font-size: 20px;
-            font-weight: 800;
-            color: #29405a;
-            margin-bottom: 6px;
-            line-height: 1.5;
-        }
-
-        .ingat-ket {
-            font-size: 12.5px;
-            line-height: 1.65;
-            color: #66717b;
-        }
-
-        .note-mini {
-            margin-top: 12px;
-            font-size: 13px;
-            color: #5f6770;
-            text-align: center;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 992px) {
-
-            .konsep-grid,
-            .ingat-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .konsep-grid,
-            .ingat-grid {
+            .alur-grid,
+            .unsur-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1201,189 +1109,27 @@
             .mini-rumus {
                 font-size: 20px;
             }
-        }
 
-        .transisi-box {
-            margin: 26px 0 20px;
-            padding: 18px 20px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #f7faf6 0%, #eef4ea 100%);
-            border: 1px solid #dce7d3;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-        }
+            .alur-box {
+                padding: 22px 18px;
+                border-radius: 22px;
+            }
 
-        .transisi-content {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+            .alur-title {
+                font-size: 21px;
+            }
 
-        .transisi-icon {
-            font-size: 28px;
-        }
+            .klik-card {
+                height: auto;
+                min-height: 250px;
+            }
 
-        .transisi-title {
-            font-size: 16px;
-            font-weight: 800;
-            color: #2f3a30;
-            margin-bottom: 3px;
-        }
+            .klik-card.active .alur-detail {
+                max-height: 420px;
+            }
 
-        .transisi-desc {
-            font-size: 13px;
-            color: #5f6b5c;
-            line-height: 1.6;
-        }
-
-        .klik-card {
-            height: 330px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .alur-preview {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #5f675d;
-            margin-top: 12px;
-        }
-
-        .alur-detail {
-            max-height: 0;
-            opacity: 0;
-            overflow-y: auto;
-            transition: all 0.4s ease;
-            padding-right: 6px;
-        }
-
-        .klik-card.active .alur-detail {
-            max-height: 210px;
-            opacity: 1;
-            margin-top: 14px;
-        }
-
-        .klik-card.active .alur-preview {
-            display: none;
-        }
-
-        .klik-card .alur-rumus {
-            font-size: 24px;
-            margin-top: 12px;
-            margin-bottom: 10px;
-        }
-
-        .hasil-menarik {
-            position: relative;
-            overflow: hidden;
-            padding: 30px 24px;
-        }
-
-        .hasil-menarik::before {
-            content: "";
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            background: rgba(174, 191, 152, 0.16);
-            border-radius: 50%;
-            top: -70px;
-            left: -60px;
-        }
-
-        .hasil-menarik::after {
-            content: "";
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            background: rgba(240, 180, 41, 0.13);
-            border-radius: 50%;
-            bottom: -70px;
-            right: -50px;
-        }
-
-        .hasil-badge {
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-            padding: 7px 16px;
-            border-radius: 999px;
-            background: #aebf98;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .hasil-menarik .hasil-label,
-        .hasil-menarik .hasil-rumus,
-        .hasil-komponen,
-        .hasil-kalimat {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hasil-menarik .hasil-rumus {
-            font-size: 46px;
-            margin: 10px 0 22px;
-        }
-
-        .hasil-komponen {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 12px;
-            margin: 20px auto;
-            flex-wrap: wrap;
-        }
-
-        .komponen-card {
-            width: 180px;
-            background: #ffffff;
-            border: 1px solid #dfe7d7;
-            border-radius: 20px;
-            padding: 16px 12px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-            transition: 0.3s ease;
-        }
-
-        .komponen-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .komponen-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .komponen-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #5b6658;
-            margin-bottom: 6px;
-        }
-
-        .komponen-rumus {
-            font-size: 26px;
-            font-weight: 800;
-            color: #2f3a30;
-        }
-
-        .komponen-plus {
-            display: flex;
-            align-items: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: #8ca178;
-        }
-
-        .hasil-kalimat {
-            margin-top: 18px;
-            font-size: 17px;
-            line-height: 1.8;
-            color: #4d554b;
-        }
-
-        @media (max-width: 768px) {
-            .hasil-menarik .hasil-rumus {
+            .hasil-menarik .hasil-rumus,
+            .hasil-rumus {
                 font-size: 32px;
             }
 
@@ -1394,6 +1140,168 @@
             .komponen-plus {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .rumus-trigger {
+                font-size: 30px;
+                padding: 15px 22px;
+                border-radius: 18px;
+            }
+
+            .question-card {
+                padding: 18px !important;
+                border-radius: 22px !important;
+            }
+
+            .question-head {
+                gap: 12px !important;
+                margin-bottom: 14px;
+            }
+
+            .question-number {
+                width: 42px !important;
+                height: 42px !important;
+                min-width: 42px !important;
+                font-size: 18px !important;
+            }
+
+            .question-text {
+                font-size: 17px !important;
+                line-height: 1.45 !important;
+                margin-top: 3px;
+            }
+
+            .question-sub {
+                font-size: 14px;
+                margin-bottom: 14px;
+            }
+
+            #questionCard1 .drop-row {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+            }
+
+            #questionCard1 .drop-label {
+                text-align: left;
+                font-size: 14px;
+                padding: 11px 13px;
+            }
+
+            #questionCard1 .drop-zone {
+                min-height: 52px;
+                font-size: 13px;
+            }
+
+            #questionCard1 .drag-item {
+                width: 100% !important;
+                font-size: 14px;
+                padding: 10px 13px;
+                border-radius: 14px;
+            }
+
+            #questionCard2 .soal2-line {
+                font-size: 15px !important;
+                line-height: 1.65 !important;
+            }
+
+            #questionCard2 .suku-input {
+                width: 76px !important;
+                min-width: 76px !important;
+                max-width: 76px !important;
+                flex-basis: 76px !important;
+                height: 38px !important;
+            }
+
+            #questionCard3 .opsi-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            #questionCard3 .opsi-card {
+                min-height: auto !important;
+                text-align: left !important;
+                align-items: flex-start !important;
+                padding: 15px;
+            }
+
+            .opsi-desc {
+                font-size: 13.5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .materi-title {
+                font-size: 22px;
+            }
+
+            .question-card {
+                padding: 15px !important;
+                border-radius: 18px !important;
+            }
+
+            .question-head {
+                gap: 10px !important;
+            }
+
+            .question-number {
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                font-size: 16px !important;
+            }
+
+            .question-text {
+                font-size: 15px !important;
+            }
+
+            .question-sub {
+                font-size: 13px !important;
+            }
+
+            .drag-item {
+                font-size: 13px;
+                padding: 9px 12px;
+            }
+
+            .drop-label {
+                font-size: 13px;
+            }
+
+            .drop-zone {
+                min-height: 48px;
+                padding: 9px 10px;
+            }
+
+            .placeholder {
+                font-size: 12.5px;
+            }
+
+            #questionCard2 .soal2-line {
+                font-size: 14px !important;
+                gap: 6px !important;
+            }
+
+            #questionCard2 .suku-blank {
+                gap: 6px !important;
+            }
+
+            #questionCard2 .suku-input {
+                width: 64px !important;
+                min-width: 64px !important;
+                max-width: 64px !important;
+                flex-basis: 64px !important;
+                height: 34px !important;
+                padding: 5px 8px !important;
+                border-radius: 10px !important;
+            }
+
+            .opsi-desc {
+                font-size: 13px !important;
+            }
+
+            .feedback {
+                font-size: 13px;
+                padding: 10px 12px;
             }
         }
     </style>
@@ -1442,8 +1350,8 @@
 
                     <div class="ingat-card eksponen-card">
                         <div class="ingat-icon">✦</div>
-                        <div class="ingat-rumus">a<sup>m</sup> : a<sup>n</sup></div>
-                        <div class="ingat-ket">= a<sup>m-n</sup><br>dengan a ≠ 0</div>
+                        <div class="ingat-rumus">x<sup>m</sup> : x<sup>n</sup></div>
+                        <div class="ingat-ket">= x<sup>m-n</sup><br>dengan x ≠ 0</div>
                     </div>
 
                     <div class="ingat-card eksponen-card">
@@ -1500,8 +1408,8 @@
                 </div>
 
                 <div class="note-mini">
-                    Dalam bentuk <strong>3x² + 2x + 5</strong>, sukunya adalah <strong>3x²</strong>, <strong>2x</strong>,
-                    dan <strong>5</strong>.
+                    Dalam bentuk <strong>3x² + 2x + 5</strong>, sukunya adalah <strong>3x²</strong>,
+                    <strong>2x</strong>, dan <strong>5</strong>.
                 </div>
             </div>
         </div>
@@ -1535,8 +1443,6 @@
             </div>
 
             <div class="alur-grid">
-
-                <!-- LANGKAH 1 -->
                 <div class="alur-card klik-card">
                     <div class="alur-step">1</div>
                     <div class="alur-card-title">Susunan Kardus</div>
@@ -1571,7 +1477,6 @@
                     </div>
                 </div>
 
-                <!-- LANGKAH 2 -->
                 <div class="alur-card klik-card">
                     <div class="alur-step">2</div>
                     <div class="alur-card-title">Kardus Tambahan</div>
@@ -1596,7 +1501,6 @@
                     </div>
                 </div>
 
-                <!-- LANGKAH 3 -->
                 <div class="alur-card klik-card">
                     <div class="alur-step">3</div>
                     <div class="alur-card-title">Buah Lepas</div>
@@ -1616,7 +1520,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- HASIL -->
@@ -1659,220 +1562,229 @@
                 </div>
             </div>
         </div>
+
+        <!-- UNSUR-UNSUR ALJABAR -->
+        <div class="rumus-section">
+            <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
+
+            <div id="rumusTrigger" class="rumus-trigger">
+                3x<sup>2</sup> + 2x + 5
+            </div>
+
+            <div id="penjelasanBox" class="penjelasan-box">
+                <div class="penjelasan-wrapper">
+                    <div class="penjelasan-heading">
+                        Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
+                    </div>
+
+                    <div class="unsur-grid">
+                        <div class="unsur-card suku-card">
+                            <div class="unsur-line suku-line"></div>
+                            <div class="unsur-bubble suku-bubble">3</div>
+                            <div class="unsur-name suku-name">Banyak Suku</div>
+                            <div class="unsur-desc">
+                                Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
+                                tanda tambah atau tanda kurang.
+                            </div>
+                        </div>
+
+                        <div class="unsur-card var-card">
+                            <div class="unsur-line var-line"></div>
+                            <div class="unsur-bubble var-bubble">x</div>
+                            <div class="unsur-name var-name">Variabel</div>
+                            <div class="unsur-desc">
+                                Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
+                                diketahui nilainya dengan jelas.
+                            </div>
+                        </div>
+
+                        <div class="unsur-card koef-card">
+                            <div class="unsur-line koef-line"></div>
+                            <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
+                            <div class="unsur-name koef-name">Koefisien</div>
+                            <div class="unsur-desc">
+                                Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
+                                suku pada bentuk aljabar.
+                            </div>
+                        </div>
+
+                        <div class="unsur-card konst-card">
+                            <div class="unsur-line konst-line"></div>
+                            <div class="unsur-bubble konst-bubble">5</div>
+                            <div class="unsur-name konst-name">Konstanta</div>
+                            <div class="unsur-desc">
+                                Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
+                                memuat variabel.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-box">
+                        <div class="detail-item">
+                            <div class="detail-icon icon-var"></div>
+                            <div class="detail-text">
+                                <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
+                                yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
+                                <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
+                                <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
+                                <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon icon-suku"></div>
+                            <div class="detail-text">
+                                <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
+                                variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
+                                operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
+                                <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon icon-koef"></div>
+                            <div class="detail-text">
+                                <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
+                                variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
+                                <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
+                                koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon icon-konst"></div>
+                            <div class="detail-text">
+                                <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
+                                bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
+                                <strong>5</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOAL ALJABAR -->
+        <div class="latihan-section">
+            <div class="question-card" id="questionCard1" data-question="1">
+                <div class="question-head">
+                    <div class="question-number">1</div>
+                    <div class="question-text">Pasangkan istilah dengan pengertiannya yang tepat.</div>
+                </div>
+
+                <div class="question-sub">Seret jawaban yang tepat ke kotak yang sesuai.</div>
+
+                <div class="drag-words" id="dragWords">
+                    <div class="drag-item" draggable="true" data-answer="koefisien">
+                        Bilangan yang memuat atau mengalikan variabel dalam suatu suku
+                    </div>
+
+                    <div class="drag-item" draggable="true" data-answer="variabel">
+                        Lambang pengganti pada suatu bilangan yang belum diketahui nilainya
+                    </div>
+
+                    <div class="drag-item" draggable="true" data-answer="suku">
+                        Bagian dari bentuk aljabar yang dipisahkan oleh tanda tambah atau kurang
+                    </div>
+                </div>
+
+                <div class="drop-grid">
+                    <div class="drop-row">
+                        <div class="drop-label">1. Suku</div>
+                        <div class="drop-zone" data-match="suku">
+                            <span class="placeholder">Letakkan jawaban di sini</span>
+                        </div>
+                    </div>
+
+                    <div class="drop-row">
+                        <div class="drop-label">2. Variabel</div>
+                        <div class="drop-zone" data-match="variabel">
+                            <span class="placeholder">Letakkan jawaban di sini</span>
+                        </div>
+                    </div>
+
+                    <div class="drop-row">
+                        <div class="drop-label">3. Koefisien</div>
+                        <div class="drop-zone" data-match="koefisien">
+                            <span class="placeholder">Letakkan jawaban di sini</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="feedback1" class="feedback"></div>
+            </div>
+
+            <div class="question-card" id="questionCard2" data-question="2">
+                <div class="question-head">
+                    <div class="question-number">2</div>
+                    <div class="question-text">
+                        Tentukan banyak suku dari bentuk aljabar berikut!
+                    </div>
+                </div>
+
+                <div class="isian-wrap soal2-wrap">
+                    <div class="isian-line soal2-line">
+                        <span class="soal2-text">
+                            a. Bentuk aljabar <strong>2x + 5</strong> memiliki
+                        </span>
+
+                        <span class="suku-blank">
+                            <input type="text" id="jawab2a" class="isian-input suku-input">
+                            <span class="suku-text">suku.</span>
+                        </span>
+                    </div>
+
+                    <div class="isian-line soal2-line">
+                        <span class="soal2-text">
+                            b. Bentuk aljabar <strong>3x² + 2x + 5</strong> memiliki
+                        </span>
+
+                        <span class="suku-blank">
+                            <input type="text" id="jawab2b" class="isian-input suku-input">
+                            <span class="suku-text">suku.</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="feedback2" class="feedback"></div>
+            </div>
+
+            <div class="question-card" id="questionCard3" data-question="3">
+                <div class="question-head">
+                    <div class="question-number">3</div>
+                    <div class="question-text">
+                        Berdasarkan gambar kardus buah, apa makna dari <strong>x²</strong> pada bentuk aljabar
+                        <strong>3x² + 2x + 5</strong> cerita kardus buah?
+                    </div>
+                </div>
+
+                <div class="question-sub">Klik salah satu jawaban yang paling tepat.</div>
+
+                <div class="opsi-grid" id="opsiSoal3">
+                    <div class="opsi-card" data-benar="false" data-choice-question="3">
+                        <div class="opsi-desc">
+                            Banyak buah lepas yang tidak dimasukkan ke dalam kardus.
+                        </div>
+                    </div>
+
+                    <div class="opsi-card" data-benar="true" data-choice-question="3">
+                        <div class="opsi-desc">
+                            Banyak buah dalam satu susunan persegi, karena terdapat <em>x</em> baris dan
+                            <em>x</em> kolom sehingga menjadi <em>x × x</em>.
+                        </div>
+                    </div>
+
+                    <div class="opsi-card" data-benar="false" data-choice-question="3">
+                        <div class="opsi-desc">
+                            Banyak kardus tambahan di luar susunan utama.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="feedback3" class="feedback"></div>
+            </div>
+        </div>
     </div>
-
-    <!-- UNSUR-UNSUR ALJABAR -->
-    <div class="rumus-section">
-        <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
-
-        <div id="rumusTrigger" class="rumus-trigger">
-            3x<sup>2</sup> + 2x + 5
-        </div>
-
-        <div id="penjelasanBox" class="penjelasan-box">
-            <div class="penjelasan-wrapper">
-                <div class="penjelasan-heading">
-                    Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
-                </div>
-
-                <div class="unsur-grid">
-                    <div class="unsur-card suku-card">
-                        <div class="unsur-line suku-line"></div>
-                        <div class="unsur-bubble suku-bubble">3</div>
-                        <div class="unsur-name suku-name">Banyak Suku</div>
-                        <div class="unsur-desc">
-                            Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
-                            tanda tambah atau tanda kurang.
-                        </div>
-                    </div>
-
-                    <div class="unsur-card var-card">
-                        <div class="unsur-line var-line"></div>
-                        <div class="unsur-bubble var-bubble">x</div>
-                        <div class="unsur-name var-name">Variabel</div>
-                        <div class="unsur-desc">
-                            Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
-                            diketahui nilainya dengan jelas.
-                        </div>
-                    </div>
-
-                    <div class="unsur-card koef-card">
-                        <div class="unsur-line koef-line"></div>
-                        <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
-                        <div class="unsur-name koef-name">Koefisien</div>
-                        <div class="unsur-desc">
-                            Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
-                            suku pada bentuk aljabar.
-                        </div>
-                    </div>
-
-                    <div class="unsur-card konst-card">
-                        <div class="unsur-line konst-line"></div>
-                        <div class="unsur-bubble konst-bubble">5</div>
-                        <div class="unsur-name konst-name">Konstanta</div>
-                        <div class="unsur-desc">
-                            Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
-                            memuat variabel.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-box">
-                    <div class="detail-item">
-                        <div class="detail-icon icon-var"></div>
-                        <div class="detail-text">
-                            <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
-                            yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
-                            <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
-                            <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
-                            <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <div class="detail-icon icon-suku"></div>
-                        <div class="detail-text">
-                            <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
-                            variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
-                            operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
-                            <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <div class="detail-icon icon-koef"></div>
-                        <div class="detail-text">
-                            <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
-                            variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
-                            <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
-                            koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <div class="detail-icon icon-konst"></div>
-                        <div class="detail-text">
-                            <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
-                            bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
-                            <strong>5</strong>.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SOAL ALJABAR -->
-    <div class="latihan-section">
-        <div class="question-card" id="questionCard1" data-question="1">
-            <div class="question-head">
-                <div class="question-number">1</div>
-                <div class="question-text">Pasangkan istilah dengan pengertiannya yang tepat.</div>
-            </div>
-
-            <div class="question-sub">Seret jawaban yang tepat ke kotak yang sesuai.</div>
-
-            <div class="drag-words" id="dragWords">
-                <div class="drag-item" draggable="true" data-answer="koefisien">
-                    Bilangan yang memuat variabel dari sebuah suku pada bentuk aljabar
-                </div>
-                <div class="drag-item" draggable="true" data-answer="suku">
-                    Variabel sekaligus koefisiennya atau konstanta pada bentuk aljabar yang dipisahkan oleh operasi
-                    jumlah atau selisih
-                </div>
-                <div class="drag-item" draggable="true" data-answer="variabel">
-                    Lambang pengganti pada suatu bilangan yang belum diketahui nilainya dengan jelas
-                </div>
-            </div>
-
-            <div class="drop-grid">
-                <div class="drop-row">
-                    <div class="drop-label">Suku</div>
-                    <div class="drop-zone" data-match="suku">
-                        <span class="placeholder">Letakkan jawaban di sini</span>
-                    </div>
-                </div>
-
-                <div class="drop-row">
-                    <div class="drop-label">Variabel</div>
-                    <div class="drop-zone" data-match="variabel">
-                        <span class="placeholder">Letakkan jawaban di sini</span>
-                    </div>
-                </div>
-
-                <div class="drop-row">
-                    <div class="drop-label">Koefisien</div>
-                    <div class="drop-zone" data-match="koefisien">
-                        <span class="placeholder">Letakkan jawaban di sini</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="feedback1" class="feedback"></div>
-        </div>
-
-        <div class="question-card" id="questionCard2" data-question="2">
-            <div class="question-head">
-                <div class="question-number">2</div>
-                <div class="question-text">
-                    Berapa banyak suku yang terdapat pada bentuk <strong>2x + 5</strong> dan
-                    <strong>3x² + 2x + 5</strong>?
-                </div>
-            </div>
-
-            <div class="question-sub">Isi jumlah suku dengan benar.</div>
-
-            <div class="isian-wrap">
-                <div class="isian-group">
-                    <label class="isian-label">Jumlah suku pada <strong>2x + 5</strong></label>
-                    <input type="text" id="jawab2a" class="isian-input" placeholder="Masukkan jawaban">
-                </div>
-
-                <div class="isian-group">
-                    <label class="isian-label">Jumlah suku pada <strong>3x² + 2x + 5</strong></label>
-                    <input type="text" id="jawab2b" class="isian-input" placeholder="Masukkan jawaban">
-                </div>
-            </div>
-
-            <div id="feedback2" class="feedback"></div>
-        </div>
-
-        <div class="question-card" id="questionCard3" data-question="3">
-            <div class="question-head">
-                <div class="question-number">3</div>
-                <div class="question-text">Apa makna dari bentuk <strong>x²</strong> pada cerita kardus buah?</div>
-            </div>
-
-            <div class="question-sub">Klik salah satu kotak jawaban yang paling tepat.</div>
-
-            <div class="opsi-grid" id="opsiSoal3">
-                <div class="opsi-card" data-benar="false" data-choice-question="3">
-                    <div class="opsi-rumus">x²</div>
-                    <div class="opsi-desc">
-                        Banyak buah lepas yang tidak dimasukkan ke dalam kardus.
-                    </div>
-                </div>
-
-                <div class="opsi-card" data-benar="true" data-choice-question="3">
-                    <div class="opsi-rumus">x²</div>
-                    <div class="opsi-desc">
-                        Banyak buah dalam satu susunan persegi, karena terdapat x baris dan x kolom sehingga
-                        menjadi x × x.
-                    </div>
-                </div>
-
-                <div class="opsi-card" data-benar="false" data-choice-question="3">
-                    <div class="opsi-rumus">x²</div>
-                    <div class="opsi-desc">
-                        Banyak kardus tambahan di luar susunan utama.
-                    </div>
-                </div>
-            </div>
-
-            <div id="feedback3" class="feedback"></div>
-        </div>
-    </div>
-
     <script>
         (function () {
             let initialized = false;

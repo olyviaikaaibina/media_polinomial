@@ -2,12 +2,18 @@
 
 @section('content')
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         .materi-wrapper {
+            width: 100%;
             max-width: 920px;
             margin: 0 auto;
-            padding: 12px 0 28px;
+            padding: 12px 16px 28px;
             font-family: "Georgia", "Times New Roman", serif;
             color: #4a4038;
+            overflow-x: visible;
         }
 
         .judul-bagian {
@@ -104,6 +110,7 @@
         .hasil-box {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 6px;
             font-size: 15px;
             font-weight: 700;
@@ -185,10 +192,12 @@
 
         .input-benar {
             border-color: #2f7d32 !important;
+            background: #e8f5e9;
         }
 
         .input-salah {
             border-color: #c62828 !important;
+            background: #ffebee;
         }
 
         .info-box {
@@ -214,6 +223,7 @@
         .info-box.orange {
             background: #f2cfc2;
             border: 1.5px solid #e2a285;
+            margin-bottom: 8px;
         }
 
         .section-heading {
@@ -367,7 +377,7 @@
             text-align: center;
             font-size: 40px;
             font-style: italic;
-            margin: 18px 0 18px;
+            margin: 18px 0;
             color: #5a4339;
         }
 
@@ -382,49 +392,85 @@
             margin-bottom: 6px;
         }
 
+        .contoh-premium-card,
         .contoh-horner-card {
             position: relative;
             margin-top: 18px;
             margin-bottom: 20px;
-            padding: 22px 22px 18px;
-            background: linear-gradient(180deg, #f4faf1 0%, #eef7ea 100%);
-            border: 1.5px solid #b9ddb0;
-            border-left: 5px solid #63b95d;
             border-radius: 22px;
             box-shadow: 0 8px 24px rgba(73, 109, 64, 0.08);
         }
 
-        .contoh-badge {
+        .contoh-premium-card {
+            margin: 8px 0 30px;
+            padding: 28px 24px 24px;
+            background: linear-gradient(180deg, #f7fcf4 0%, #eef8ea 100%);
+            border: 1.5px solid #cfe7c7;
+            border-left: 6px solid #63b95d;
+            border-radius: 24px;
+            box-shadow: 0 10px 28px rgba(73, 109, 64, 0.08);
+        }
+
+        .contoh-horner-card {
+            padding: 22px 22px 18px;
+            background: linear-gradient(180deg, #f4faf1 0%, #eef7ea 100%);
+            border: 1.5px solid #b9ddb0;
+            border-left: 5px solid #63b95d;
+        }
+
+        .contoh-premium-badge,
+        .contoh-badge,
+        .latihan-badge {
             position: absolute;
             top: -16px;
-            left: 22px;
-            background: linear-gradient(180deg, #9ad17f 0%, #83c36a 100%);
-            color: #355b27;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.4px;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 16px;
-            border: 1px solid #75b85d;
             box-shadow: 0 4px 10px rgba(86, 140, 67, 0.18);
         }
 
-        .contoh-header {
+        .contoh-premium-badge {
+            left: 24px;
+            background: linear-gradient(180deg, #95cf7f 0%, #79bf63 100%);
+            color: #355b27;
+            border: 1px solid #6faf59;
+        }
+
+        .contoh-badge {
+            left: 22px;
+            background: linear-gradient(180deg, #9ad17f 0%, #83c36a 100%);
+            color: #355b27;
+            border: 1px solid #75b85d;
+        }
+
+        .contoh-header,
+        .contoh-premium-header {
             margin-bottom: 14px;
             padding-top: 6px;
         }
 
-        .contoh-subtitle {
+        .contoh-subtitle,
+        .contoh-premium-title {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 18px;
             font-weight: 700;
             color: #2f7d32;
             margin-bottom: 10px;
         }
 
-        .contoh-subtitle::before {
+        .contoh-subtitle {
+            font-size: 18px;
+        }
+
+        .contoh-premium-title {
+            font-size: 20px;
+        }
+
+        .contoh-subtitle::before,
+        .contoh-premium-title::before {
             content: "";
             width: 14px;
             height: 14px;
@@ -438,6 +484,64 @@
             line-height: 1.8;
             color: #4f4a43;
             margin-bottom: 4px;
+        }
+
+        .contoh-premium-rumus {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4f4a43;
+            font-weight: 700;
+        }
+
+        .langkah-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .langkah-mini-card {
+            background: #fff;
+            border: 1px solid #e6ede2;
+            border-radius: 16px;
+            padding: 16px 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+            cursor: pointer;
+        }
+
+        .langkah-mini-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(47, 125, 50, 0.12);
+            border-color: #9ed08d;
+            background: #f8fdf6;
+        }
+
+        .langkah-mini-card:active {
+            transform: translateY(-3px) scale(0.99);
+        }
+
+        .langkah-mini-judul {
+            font-size: 15px;
+            font-weight: 700;
+            color: #4a4038;
+            margin-bottom: 10px;
+            transition: color 0.28s ease;
+        }
+
+        .langkah-mini-card:hover .langkah-mini-judul {
+            color: #2f7d32;
+        }
+
+        .langkah-mini-isi {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #645d56;
+            transition: color 0.28s ease;
+        }
+
+        .langkah-mini-card:hover .langkah-mini-isi {
+            color: #4f4a43;
         }
 
         .langkah-card {
@@ -469,7 +573,8 @@
             margin-bottom: 12px;
         }
 
-        .input-row {
+        .input-row,
+        .input-group-inline {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -477,14 +582,7 @@
             margin-bottom: 10px;
             font-size: 15px;
             line-height: 1.8;
-        }
-
-        .input-group-inline {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
+            width: 100%;
         }
 
         .kecil-input {
@@ -573,721 +671,9 @@
             box-shadow: 0 0 0 3px rgba(99, 185, 93, 0.08);
         }
 
-        .horner-table-wrap {
-            margin: 14px 0 16px;
-            overflow-x: auto;
-        }
-
-        .horner-table {
-            position: relative;
-            width: max-content;
-            margin: 0 auto;
-            padding-left: 42px;
-        }
-
-        .horner-k {
-            position: absolute;
-            top: 14px;
-            left: 0;
-            width: 24px;
-            text-align: center;
-            font-size: 18px;
-            color: #5a5148;
-        }
-
-        .horner-top-row,
-        .horner-mid-row,
-        .horner-bottom-row {
-            display: grid;
-            grid-template-columns: repeat(4, 58px);
-            column-gap: 14px;
-            align-items: center;
-            justify-content: start;
-            margin-left: 28px;
-        }
-
-        .horner-top-row {
-            position: relative;
-            padding: 8px 0 12px;
-            border-bottom: 3px solid #6d6a66;
-        }
-
-        .horner-top-row::before {
-            content: "";
-            position: absolute;
-            left: -16px;
-            top: -6px;
-            width: 3px;
-            height: 52px;
-            background: #6d6a66;
-        }
-
-        .horner-top-row span,
-        .horner-bottom-row span {
-            width: 58px;
-            text-align: center;
-            font-size: 18px;
-            color: #5a5148;
-        }
-
-        .horner-mid-row {
-            position: relative;
-            margin-top: 10px;
-        }
-
-        .horner-bottom-row {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 3px solid #6d6a66;
-        }
-
-        .horner-cell-input,
-        .horner-empty {
-            width: 58px;
-            height: 42px;
-            box-sizing: border-box;
-        }
-
-        .horner-cell-input {
-            border: 2px solid #d9d9d9;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 16px;
-            background: #fff;
-            outline: none;
-        }
-
-        .horner-plus {
-            position: absolute;
-            right: -18px;
-            bottom: 2px;
-            font-size: 28px;
-            color: #7a746d;
-        }
-
-        .horner-bold {
-            font-weight: 700;
-        }
-
-        .latihan-item {
-            background: #fff;
-            border: 1px solid #e7e4df;
-            border-radius: 12px;
-            padding: 12px 12px;
-            margin-top: 12px;
-        }
-
-        .latihan-soal-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #4a4038;
-        }
-
-        .latihan-rumus {
-            text-align: center;
-            font-size: 22px;
-            margin: 8px 0 12px;
-            color: #5a5148;
-        }
-
-        .latihan-box {
-            background: #fafafa;
-            border: 1px solid #e7e4df;
-            border-radius: 10px;
-            padding: 10px 10px;
-            margin-bottom: 10px;
-        }
-
-        .latihan-box-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #506348;
-        }
-
-        .pilihan-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .pilihan-btn {
-            padding: 8px 12px;
-            border: 2px solid #e0a163;
-            border-radius: 8px;
-            background: #fff;
-            color: #5a5148;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .latihan-horner {
-            position: relative;
-            width: max-content;
-            margin: 0 auto;
-            padding-left: 52px;
-        }
-
-        .latihan-horner-k {
-            position: absolute;
-            top: 12px;
-            left: 6px;
-            width: 28px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 700;
-            color: #5a5148;
-        }
-
-        .latihan-horner-top,
-        .latihan-horner-mid,
-        .latihan-horner-bottom {
-            display: grid;
-            grid-template-columns: repeat(4, 58px);
-            column-gap: 14px;
-            align-items: center;
-            justify-content: start;
-            margin-left: 60px;
-        }
-
-        .latihan-horner-top {
-            position: relative;
-            padding: 12px 0 12px;
-            border-bottom: 3px solid #6d6a66;
-        }
-
-        .latihan-horner-top::before {
-            content: "";
-            position: absolute;
-            left: -16px;
-            top: -4px;
-            width: 3px;
-            height: 56px;
-            background: #6d6a66;
-        }
-
-        .latihan-horner-top span,
-        .latihan-horner-bottom span {
-            width: 58px;
-            text-align: center;
-            font-size: 20px;
-            color: #5a5148;
-        }
-
-        .latihan-horner-mid {
-            position: relative;
-            margin-top: 10px;
-        }
-
-        .latihan-horner-bottom {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 3px solid #6d6a66;
-        }
-
-        .latihan-horner-input,
-        .latihan-horner-empty {
-            width: 58px;
-            height: 42px;
-            box-sizing: border-box;
-        }
-
-        .latihan-horner-input {
-            border: 2px solid #d8d8d8;
-            border-radius: 10px;
-            background: #fff;
-            text-align: center;
-            font-size: 18px;
-            outline: none;
-            transition: 0.2s ease;
-        }
-
-        .latihan-horner-plus {
-            position: absolute;
-            right: -20px;
-            bottom: 2px;
-            font-size: 28px;
-            color: #7a746d;
-        }
-
-        @media (max-width: 768px) {
-            .latihan-rumus {
-                font-size: 18px;
-            }
-
-            .pilihan-btn {
-                font-size: 12px;
-                padding: 7px 10px;
-            }
-
-            .latihan-horner {
-                width: 620px;
-                transform: scale(0.8);
-                transform-origin: left top;
-                margin-bottom: -70px;
-            }
-        }
-
-        .latihan-card {
-            position: relative;
-            margin-top: 26px;
-            margin-bottom: 20px;
-            padding: 26px 22px 20px;
-            background: #f9faf8;
-            border: 2px solid #9bd084;
-            border-radius: 22px;
-            box-shadow: 0 8px 24px rgba(73, 109, 64, 0.06);
-        }
-
-        .latihan-badge {
-            position: absolute;
-            top: -16px;
-            left: 22px;
-            background: linear-gradient(180deg, #efb08b 0%, #e49a74 100%);
-            color: #5f3a24;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 10px 18px;
-            border-radius: 16px;
-            border: 1px solid #d68a64;
-            box-shadow: 0 4px 10px rgba(171, 108, 73, 0.18);
-            letter-spacing: 0.4px;
-        }
-
-        .latihan-item {
-            background: #fff;
-            border: 1px solid #e7e4df;
-            border-radius: 14px;
-            padding: 16px 14px;
-            margin-top: 16px;
-        }
-
-        .latihan-soal-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #4a4038;
-        }
-
-        .latihan-rumus {
-            text-align: center;
-            font-size: 28px;
-            margin: 10px 0 16px;
-            color: #5a5148;
-        }
-
-        .latihan-box {
-            background: #fafafa;
-            border: 1px solid #e7e4df;
-            border-radius: 12px;
-            padding: 14px 12px;
-            margin-bottom: 12px;
-        }
-
-        .latihan-box-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #506348;
-        }
-
-        .pilihan-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .pilihan-btn {
-            padding: 10px 16px;
-            border: 2px solid #e0a163;
-            border-radius: 10px;
-            background: #fff;
-            color: #5a5148;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .pilihan-btn:hover {
-            background: #fff6ef;
-        }
-
-        .pilihan-btn.selected {
-            background: #fff1e4;
-            border-color: #d97f28;
-        }
-
-        .latihan-feedback {
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .latihan-feedback.success {
-            color: #2f7d32;
-        }
-
-        .latihan-feedback.error {
-            color: #c62828;
-        }
-
-        .latihan-penjelasan {
-            display: none;
-            margin-top: 14px;
-            background: #f7fcf5;
-            border: 1px solid #d8ead2;
-            border-left: 4px solid #63b95d;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .latihan-hidden {
-            display: none;
-        }
-
-        .latihan-final-note {
-            display: none;
-            margin-top: 18px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            background: #eef8ec;
-            border: 1px solid #cfe7c7;
-            color: #2f7d32;
-            font-size: 14px;
-            line-height: 1.8;
-            font-weight: 700;
-        }
-
-        .pilihan-btn.correct {
-            background: #e8f7e7;
-            border-color: #4caf50;
-            color: #2f7d32;
-        }
-
-        .pilihan-btn.wrong {
-            background: #fdeaea;
-            border-color: #d9534f;
-            color: #b62f2a;
-        }
-
-        .latihan-horner-wrap {
-            margin: 18px 0 10px;
-            overflow-x: auto;
-        }
-
-        .latihan-horner {
-            position: relative;
-            width: max-content;
-            margin: 0 auto;
-            padding-left: 72px;
-        }
-
-        .latihan-horner-k {
-            position: absolute;
-            top: 18px;
-            left: 8px;
-            width: 34px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: 700;
-            color: #5a5148;
-        }
-
-        .latihan-horner-top,
-        .latihan-horner-mid,
-        .latihan-horner-bottom {
-            display: grid;
-            grid-template-columns: repeat(4, 74px);
-            column-gap: 18px;
-            align-items: center;
-            justify-content: start;
-            margin-left: 82px;
-        }
-
-        .latihan-horner-top {
-            position: relative;
-            padding: 18px 0 18px;
-            border-bottom: 4px solid #6d6a66;
-        }
-
-        .latihan-horner-top::before {
-            content: "";
-            position: absolute;
-            left: -22px;
-            top: -6px;
-            width: 4px;
-            height: 78px;
-            background: #6d6a66;
-        }
-
-        .latihan-horner-top span,
-        .latihan-horner-bottom span {
-            width: 74px;
-            text-align: center;
-            font-size: 26px;
-            color: #5a5148;
-        }
-
-        .latihan-horner-mid {
-            position: relative;
-            margin-top: 14px;
-        }
-
-        .latihan-horner-bottom {
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 4px solid #6d6a66;
-        }
-
-        .latihan-horner-input,
-        .latihan-horner-empty {
-            width: 74px;
-            height: 56px;
-            box-sizing: border-box;
-        }
-
-        .latihan-horner-input {
-            border: 3px solid #d8d8d8;
-            border-radius: 14px;
-            background: #fff;
-            text-align: center;
-            font-size: 22px;
-            outline: none;
-            transition: 0.2s ease;
-        }
-
-        .latihan-horner-plus {
-            position: absolute;
-            right: -30px;
-            bottom: 6px;
-            font-size: 40px;
-            color: #7a746d;
-        }
-
-        .latihan-horner-bold {
-            font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-            .materi-wrapper {
-                padding: 8px 4px 24px;
-            }
-
-            .definisi-rumus {
-                font-size: 30px;
-            }
-
-            .flow-arrow {
-                display: none;
-            }
-
-            .horner-flow {
-                gap: 10px;
-            }
-
-            .flow-step {
-                min-width: 95px;
-                padding: 10px 14px;
-            }
-
-            .horner-list-box {
-                padding: 16px;
-            }
-
-            .horner-table {
-                width: 440px;
-                transform: scale(0.94);
-                transform-origin: left top;
-            }
-
-            .contoh-horner-card {
-                padding: 20px 14px 16px;
-                border-radius: 18px;
-            }
-
-            .contoh-badge {
-                left: 14px;
-                top: -14px;
-                padding: 8px 16px;
-                font-size: 12px;
-            }
-
-            .contoh-subtitle {
-                font-size: 16px;
-            }
-
-            .langkah-card {
-                padding: 14px;
-            }
-
-            .kecil-input {
-                width: 64px;
-                height: 38px;
-            }
-
-            .btn-langkah {
-                min-width: 130px;
-                height: 40px;
-                font-size: 14px;
-            }
-
-            .latihan-card {
-                padding: 22px 14px 16px;
-            }
-
-            .latihan-rumus {
-                font-size: 22px;
-            }
-
-            .pilihan-btn {
-                font-size: 14px;
-                padding: 9px 12px;
-            }
-
-            .latihan-horner {
-                width: 760px;
-                transform: scale(0.78);
-                transform-origin: left top;
-                margin-bottom: -120px;
-            }
-        }
-
-        .horner-animate {
-            transition: all 0.5s ease;
-        }
-
-        .move-down {
-            transform: translateY(40px);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeInUp 0.5s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-
-    <style>
-        .contoh-premium-card {
-            position: relative;
-            margin: 26px 0 30px;
-            padding: 28px 24px 24px;
-            background: linear-gradient(180deg, #f7fcf4 0%, #eef8ea 100%);
-            border: 1.5px solid #cfe7c7;
-            border-left: 6px solid #63b95d;
-            border-radius: 24px;
-            box-shadow: 0 10px 28px rgba(73, 109, 64, 0.08);
-        }
-
-        .contoh-premium-badge {
-            position: absolute;
-            top: -16px;
-            left: 24px;
-            background: linear-gradient(180deg, #95cf7f 0%, #79bf63 100%);
-            color: #355b27;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            padding: 10px 18px;
-            border-radius: 16px;
-            border: 1px solid #6faf59;
-            box-shadow: 0 4px 10px rgba(86, 140, 67, 0.16);
-        }
-
-        .contoh-premium-header {
-            margin-bottom: 18px;
-            padding-top: 6px;
-        }
-
-        .contoh-premium-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #2f7d32;
-            margin-bottom: 10px;
-        }
-
-        .contoh-premium-title::before {
-            content: "";
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-            background: #7fcf6c;
-            flex-shrink: 0;
-        }
-
-        .contoh-premium-rumus {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #4f4a43;
-            font-weight: 700;
-        }
-
-        .mini-highlight-box {
-            background: #fff;
-            border: 1px solid #e6ede2;
-            border-radius: 16px;
-            padding: 16px 16px 14px;
-            margin-top: 14px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .mini-highlight-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #2f7d32;
-            margin-bottom: 10px;
-        }
-
-        .mini-highlight-text {
-            font-size: 15px;
-            line-height: 1.85;
-            color: #5f5750;
-            margin-bottom: 8px;
-        }
-
-        .langkah-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 16px;
-        }
-
-        .langkah-mini-card {
-            background: #fff;
-            border: 1px solid #e6ede2;
-            border-radius: 16px;
-            padding: 16px 14px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .langkah-mini-judul {
-            font-size: 15px;
-            font-weight: 700;
-            color: #4a4038;
-            margin-bottom: 10px;
-        }
-
-        .langkah-mini-isi {
-            font-size: 14px;
-            line-height: 1.8;
-            color: #645d56;
-        }
+        /* =========================
+                       HORNER INTERAKTIF
+                    ========================= */
 
         .horner-premium-wrap {
             margin-top: 18px;
@@ -1296,6 +682,8 @@
             border-radius: 18px;
             padding: 20px 18px 16px;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .horner-premium-title {
@@ -1313,7 +701,7 @@
         }
 
         .horner-board {
-            width: fit-content;
+            width: max-content;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 60px repeat(4, 76px);
@@ -1321,6 +709,7 @@
             align-items: center;
             justify-items: center;
             position: relative;
+            transform: none !important;
         }
 
         .horner-k-box {
@@ -1351,7 +740,6 @@
             font-size: 19px;
             font-weight: 700;
             color: #5a5148;
-            box-sizing: border-box;
         }
 
         .horner-cell.top {
@@ -1468,131 +856,252 @@
             line-height: 1.7;
         }
 
-        .mari-mencoba-space {
-            margin-top: 20px;
-            background: linear-gradient(180deg, #eef8ec 0%, #e6f4e2 100%);
-            border: 1px solid #cfe7c7;
-            border-radius: 18px;
-            padding: 18px 18px 16px;
+        /* =========================
+                       HORNER MARI MENCOBA
+                    ========================= */
+
+        .horner-table-wrap {
+            margin: 14px 0 16px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
         }
 
-        .mari-mencoba-title {
+        .horner-table {
+            position: relative;
+            width: max-content;
+            margin: 0 auto;
+            padding-left: 42px;
+            transform: none !important;
+        }
+
+        .horner-k {
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 24px;
+            text-align: center;
             font-size: 18px;
-            font-weight: 700;
-            color: #2f7d32;
-            margin-bottom: 10px;
-        }
-
-        .mari-mencoba-text {
-            font-size: 15px;
-            line-height: 1.85;
             color: #5a5148;
-            margin-bottom: 8px;
         }
 
-        .mari-mencoba-point {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .mari-mencoba-point li {
-            font-size: 14px;
-            line-height: 1.85;
-            margin-bottom: 4px;
-            color: #5f5750;
-        }
-
-        @media (max-width: 768px) {
-            .contoh-premium-card {
-                padding: 24px 14px 18px;
-                border-radius: 18px;
-            }
-
-            .contoh-premium-badge {
-                left: 14px;
-                top: -14px;
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-
-            .contoh-premium-title {
-                font-size: 17px;
-            }
-
-            .contoh-premium-rumus {
-                font-size: 16px;
-            }
-
-            .langkah-grid,
-            .hasil-ringkas-box {
-                grid-template-columns: 1fr;
-            }
-
-            .horner-board {
-                transform: scale(0.9);
-                transform-origin: left top;
-                margin-left: 4px;
-            }
-        }
-
-        .langkah-grid {
+        .horner-top-row,
+        .horner-mid-row,
+        .horner-bottom-row {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(4, 58px);
+            column-gap: 14px;
+            align-items: center;
+            justify-content: start;
+            margin-left: 28px;
+        }
+
+        .horner-top-row {
+            position: relative;
+            padding: 8px 0 12px;
+            border-bottom: 3px solid #6d6a66;
+        }
+
+        .horner-top-row::before {
+            content: "";
+            position: absolute;
+            left: -16px;
+            top: -6px;
+            width: 3px;
+            height: 52px;
+            background: #6d6a66;
+        }
+
+        .horner-top-row span,
+        .horner-bottom-row span {
+            width: 58px;
+            text-align: center;
+            font-size: 18px;
+            color: #5a5148;
+        }
+
+        .horner-mid-row {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .horner-bottom-row {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 3px solid #6d6a66;
+        }
+
+        .horner-cell-input,
+        .horner-empty {
+            width: 58px;
+            height: 42px;
+        }
+
+        .horner-cell-input {
+            border: 2px solid #d9d9d9;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            background: #fff;
+            outline: none;
+        }
+
+        .horner-plus {
+            position: absolute;
+            right: -18px;
+            bottom: 2px;
+            font-size: 28px;
+            color: #7a746d;
+        }
+
+        .horner-bold {
+            font-weight: 700;
+        }
+
+        /* =========================
+                       LATIHAN
+                    ========================= */
+
+        .latihan-card {
+            position: relative;
+            margin-top: 26px;
+            margin-bottom: 20px;
+            padding: 26px 22px 20px;
+            background: #f9faf8;
+            border: 2px solid #9bd084;
+            border-radius: 22px;
+            box-shadow: 0 8px 24px rgba(73, 109, 64, 0.06);
+        }
+
+        .latihan-badge {
+            left: 22px;
+            background: linear-gradient(180deg, #efb08b 0%, #e49a74 100%);
+            color: #5f3a24;
+            border: 1px solid #d68a64;
+            box-shadow: 0 4px 10px rgba(171, 108, 73, 0.18);
+        }
+
+        .latihan-item {
+            background: #fff;
+            border: 1px solid #e7e4df;
+            border-radius: 14px;
+            padding: 16px 14px;
             margin-top: 16px;
         }
 
-        .langkah-mini-card {
-            background: #fff;
-            border: 1px solid #e6ede2;
-            border-radius: 16px;
-            padding: 16px 14px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease,
-                background 0.28s ease;
-            cursor: pointer;
+        .latihan-soal-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #4a4038;
         }
 
-        .langkah-mini-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 24px rgba(47, 125, 50, 0.12);
-            border-color: #9ed08d;
-            background: #f8fdf6;
+        .latihan-rumus {
+            text-align: center;
+            font-size: 28px;
+            margin: 10px 0 16px;
+            color: #5a5148;
         }
 
-        .langkah-mini-card:active {
-            transform: translateY(-3px) scale(0.99);
+        .latihan-box {
+            background: #fafafa;
+            border: 1px solid #e7e4df;
+            border-radius: 12px;
+            padding: 14px 12px;
+            margin-bottom: 12px;
         }
 
-        .langkah-mini-judul {
+        .latihan-box-title {
             font-size: 15px;
             font-weight: 700;
-            color: #4a4038;
-            margin-bottom: 10px;
-            transition: color 0.28s ease;
+            margin-bottom: 12px;
+            color: #506348;
         }
 
-        .langkah-mini-card:hover .langkah-mini-judul {
+        .pilihan-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pilihan-btn {
+            padding: 10px 16px;
+            border: 2px solid #e0a163;
+            border-radius: 10px;
+            background: #fff;
+            color: #5a5148;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .pilihan-btn:hover {
+            background: #fff6ef;
+        }
+
+        .pilihan-btn.selected {
+            background: #fff1e4;
+            border-color: #d97f28;
+            outline: 3px solid #8aa376;
+        }
+
+        .pilihan-btn.correct {
+            background: #e8f7e7;
+            border-color: #4caf50;
             color: #2f7d32;
         }
 
-        .langkah-mini-isi {
+        .pilihan-btn.wrong {
+            background: #fdeaea;
+            border-color: #d9534f;
+            color: #b62f2a;
+        }
+
+        .latihan-feedback {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .latihan-feedback.success {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .latihan-feedback.error {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .latihan-penjelasan {
+            display: none;
+            margin-top: 14px;
+            background: #f7fcf5;
+            border: 1px solid #d8ead2;
+            border-left: 4px solid #63b95d;
+            border-radius: 12px;
+            padding: 14px;
             font-size: 14px;
             line-height: 1.8;
-            color: #645d56;
-            transition: color 0.28s ease;
         }
 
-        .langkah-mini-card:hover .langkah-mini-isi {
-            color: #4f4a43;
+        .latihan-hidden {
+            display: none;
         }
 
-        .contoh-premium-card {
-            margin-top: 8px !important;
-        }
-
-        .info-box.orange {
-            margin-bottom: 8px !important;
+        .latihan-final-note {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #eef8ec;
+            border: 1px solid #cfe7c7;
+            color: #2f7d32;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 700;
         }
 
         .soal-terkunci {
@@ -1606,28 +1115,770 @@
             background: #eee;
         }
 
-        .latihan-feedback.success {
-            color: #2e7d32;
-            font-weight: bold;
+        /* =========================
+                       HORNER LATIHAN
+                    ========================= */
+
+        .latihan-horner-wrap {
+            margin: 18px 0 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
         }
 
-        .latihan-feedback.error {
-            color: #c62828;
-            font-weight: bold;
+        .latihan-horner {
+            position: relative;
+            width: max-content;
+            margin: 0 auto;
+            padding-left: 52px;
+            transform: none !important;
         }
 
-        .pilihan-btn.selected {
-            outline: 3px solid #8aa376;
+        .latihan-horner-k {
+            position: absolute;
+            top: 18px;
+            left: 8px;
+            width: 34px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: #5a5148;
         }
 
-        .input-benar {
-            border: 2px solid green;
-            background: #e8f5e9;
+        .latihan-horner-top,
+        .latihan-horner-mid,
+        .latihan-horner-bottom {
+            display: grid;
+            grid-template-columns: repeat(4, 74px);
+            column-gap: 18px;
+            align-items: center;
+            justify-content: start;
+            margin-left: 82px;
         }
 
-        .input-salah {
-            border: 2px solid red;
-            background: #ffebee;
+        .latihan-horner-top {
+            position: relative;
+            padding: 18px 0;
+            border-bottom: 4px solid #6d6a66;
+        }
+
+        .latihan-horner-top::before {
+            content: "";
+            position: absolute;
+            left: -22px;
+            top: -6px;
+            width: 4px;
+            height: 78px;
+            background: #6d6a66;
+        }
+
+        .latihan-horner-top span,
+        .latihan-horner-bottom span {
+            width: 74px;
+            text-align: center;
+            font-size: 26px;
+            color: #5a5148;
+        }
+
+        .latihan-horner-mid {
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .latihan-horner-bottom {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 4px solid #6d6a66;
+        }
+
+        .latihan-horner-input,
+        .latihan-horner-empty {
+            width: 74px;
+            height: 56px;
+        }
+
+        .latihan-horner-input {
+            border: 3px solid #d8d8d8;
+            border-radius: 14px;
+            background: #fff;
+            text-align: center;
+            font-size: 22px;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .latihan-horner-plus {
+            position: absolute;
+            right: -30px;
+            bottom: 6px;
+            font-size: 40px;
+            color: #7a746d;
+        }
+
+        .latihan-horner-bold {
+            font-weight: 700;
+        }
+
+        .hasil-qx-responsive {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .latihan-hasil-input {
+            width: 58px;
+            height: 38px;
+            border: 2px solid #e49a45;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 15px;
+            text-align: center;
+            outline: none;
+        }
+
+        /* =========================
+                       ANIMASI
+                    ========================= */
+
+        .horner-animate {
+            transition: all 0.5s ease;
+        }
+
+        .move-down {
+            transform: translateY(40px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+                       RESPONSIVE TABLET
+                    ========================= */
+
+        @media (max-width: 900px) {
+            .materi-wrapper {
+                max-width: 100%;
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .horner-board,
+            .horner-table,
+            .latihan-horner {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        /* =========================
+                       RESPONSIVE HP
+                    ========================= */
+
+        @media (max-width: 768px) {
+            .materi-wrapper {
+                padding: 10px 10px 24px;
+            }
+
+            .judul-bagian {
+                font-size: 20px;
+                line-height: 1.4;
+            }
+
+            .paragraf,
+            .eksplorasi-text,
+            .info-text,
+            .teorema-list li,
+            .definisi-list li {
+                font-size: 14px;
+                line-height: 1.75;
+            }
+
+            .eksplorasi-box,
+            .info-box,
+            .contoh-premium-card,
+            .contoh-horner-card,
+            .latihan-card,
+            .latihan-item,
+            .latihan-box {
+                padding-left: 12px;
+                padding-right: 12px;
+                border-radius: 16px;
+            }
+
+            .rumus,
+            .question-value {
+                font-size: 21px;
+            }
+
+            .definisi-rumus {
+                font-size: 28px;
+            }
+
+            .latihan-rumus {
+                font-size: 20px;
+                line-height: 1.5;
+            }
+
+            .contoh-premium-title,
+            .contoh-subtitle {
+                font-size: 17px;
+            }
+
+            .contoh-premium-rumus,
+            .contoh-rumus {
+                font-size: 15px;
+            }
+
+            .input-line,
+            .hasil-box {
+                align-items: flex-start;
+                gap: 8px;
+                font-size: 14px;
+            }
+
+            .math-input {
+                width: 58px;
+                height: 34px;
+                font-size: 14px;
+            }
+
+            .math-input.long {
+                width: 72px;
+            }
+
+            .flow-arrow {
+                display: none;
+            }
+
+            .horner-flow {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .flow-step {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .horner-list-box {
+                padding: 14px;
+            }
+
+            .horner-steps-list {
+                padding-left: 20px;
+            }
+
+            .horner-steps-list li {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+
+            .langkah-grid,
+            .hasil-ringkas-box {
+                grid-template-columns: 1fr;
+            }
+
+            .langkah-mini-card {
+                padding: 14px 12px;
+            }
+
+            .langkah-mini-card:hover {
+                transform: none;
+            }
+
+            .kecil-input {
+                width: 62px;
+                height: 38px;
+                font-size: 14px;
+            }
+
+            .btn-langkah,
+            .btn-cek {
+                width: 100%;
+                min-width: unset;
+                height: 42px;
+                font-size: 14px;
+            }
+
+            .pilihan-wrap {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .pilihan-btn {
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .horner-premium-wrap::after,
+            .horner-table-wrap::after,
+            .latihan-horner-wrap::after {
+
+                display: block;
+                margin-top: 8px;
+                font-size: 12px;
+                color: #777;
+                text-align: center;
+            }
+
+            .horner-board {
+                grid-template-columns: 46px repeat(4, 58px);
+                grid-template-rows: repeat(3, 48px);
+                min-width: 300px;
+            }
+
+            .horner-k-box {
+                width: 38px;
+                height: 38px;
+                font-size: 15px;
+                border-radius: 10px;
+            }
+
+            .horner-cell,
+            .horner-empty-cell {
+                width: 50px;
+                height: 34px;
+                font-size: 14px;
+                border-radius: 9px;
+            }
+
+            .horner-line-horizontal-top {
+                left: 43px;
+                top: 45px;
+                height: 2px;
+            }
+
+            .horner-line-horizontal-bottom {
+                left: 43px;
+                top: 93px;
+                height: 2px;
+            }
+
+            .horner-line-vertical {
+                left: 43px;
+                top: 12px;
+                width: 2px;
+                height: 84px;
+            }
+
+            .horner-table {
+                min-width: 330px;
+                padding-left: 26px;
+            }
+
+            .horner-k {
+                top: 10px;
+                left: 0;
+                width: 20px;
+                font-size: 14px;
+            }
+
+            .horner-top-row,
+            .horner-mid-row,
+            .horner-bottom-row {
+                grid-template-columns: repeat(4, 44px);
+                column-gap: 8px;
+                margin-left: 20px;
+            }
+
+            .horner-top-row span,
+            .horner-bottom-row span,
+            .horner-cell-input,
+            .horner-empty {
+                width: 44px;
+            }
+
+            .horner-cell-input {
+                height: 34px;
+                font-size: 13px;
+                border-radius: 7px;
+            }
+
+            .horner-top-row {
+                padding: 6px 0 10px;
+                border-bottom-width: 2px;
+            }
+
+            .horner-bottom-row {
+                padding-top: 8px;
+                border-top-width: 2px;
+            }
+
+            .horner-top-row::before {
+                left: -12px;
+                width: 2px;
+                height: 44px;
+            }
+
+            .horner-plus {
+                right: -13px;
+                bottom: 2px;
+                font-size: 22px;
+            }
+
+            .latihan-horner {
+                min-width: 350px;
+                padding-left: 28px;
+            }
+
+            .latihan-horner-k {
+                top: 12px;
+                left: 0;
+                width: 24px;
+                font-size: 17px;
+            }
+
+            .latihan-horner-top,
+            .latihan-horner-mid,
+            .latihan-horner-bottom {
+                grid-template-columns: repeat(4, 46px);
+                column-gap: 8px;
+                margin-left: 34px;
+            }
+
+            .latihan-horner-top span,
+            .latihan-horner-bottom span,
+            .latihan-horner-mid input,
+            .latihan-horner-bottom input,
+            .latihan-horner-empty {
+                width: 46px;
+            }
+
+            .latihan-horner-input {
+                height: 36px;
+                font-size: 14px;
+                border-radius: 8px;
+                padding: 0;
+            }
+
+            .latihan-horner-top span,
+            .latihan-horner-bottom span {
+                font-size: 16px;
+            }
+
+            .latihan-horner-top {
+                padding: 10px 0;
+                border-bottom-width: 2px;
+            }
+
+            .latihan-horner-bottom {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top-width: 2px;
+            }
+
+            .latihan-horner-mid {
+                margin-top: 10px;
+            }
+
+            .latihan-horner-top::before {
+                left: -12px;
+                top: -2px;
+                width: 2px;
+                height: 48px;
+            }
+
+            .latihan-horner-plus {
+                right: -18px;
+                bottom: 4px;
+                font-size: 24px;
+            }
+        }
+
+        /* =========================
+                       RESPONSIVE HP KECIL
+                    ========================= */
+
+        @media (max-width: 480px) {
+            .materi-wrapper {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .judul-bagian {
+                font-size: 18px;
+            }
+
+            .rumus,
+            .question-value {
+                font-size: 19px;
+            }
+
+            .definisi-rumus {
+                font-size: 24px;
+            }
+
+            .latihan-rumus {
+                font-size: 18px;
+            }
+
+            .section-heading {
+                font-size: 14px;
+                align-items: flex-start;
+            }
+
+            .orange-label,
+            .contoh-badge,
+            .contoh-premium-badge,
+            .latihan-badge {
+                left: 12px;
+                font-size: 11px;
+                padding: 7px 12px;
+            }
+
+            .contoh-premium-card,
+            .contoh-horner-card,
+            .latihan-card {
+                padding-top: 24px;
+            }
+
+            .math-input {
+                width: 54px;
+            }
+
+            .kecil-input {
+                width: 58px;
+            }
+
+            .input-row span,
+            .input-group-inline span {
+                font-size: 14px;
+            }
+
+            .penjelasan-box,
+            .penjelasan-step,
+            .latihan-penjelasan {
+                font-size: 13px;
+            }
+
+            .horner-board {
+                grid-template-columns: 40px repeat(4, 50px);
+                grid-template-rows: repeat(3, 44px);
+                min-width: 260px;
+            }
+
+            .horner-k-box {
+                width: 34px;
+                height: 34px;
+                font-size: 13px;
+            }
+
+            .horner-cell,
+            .horner-empty-cell {
+                width: 42px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .horner-line-horizontal-top {
+                left: 38px;
+                top: 41px;
+            }
+
+            .horner-line-horizontal-bottom {
+                left: 38px;
+                top: 85px;
+            }
+
+            .horner-line-vertical {
+                left: 38px;
+                height: 76px;
+            }
+
+            .horner-table {
+                min-width: 300px;
+                padding-left: 22px;
+            }
+
+            .horner-top-row,
+            .horner-mid-row,
+            .horner-bottom-row {
+                grid-template-columns: repeat(4, 38px);
+                column-gap: 7px;
+                margin-left: 18px;
+            }
+
+            .horner-top-row span,
+            .horner-bottom-row span,
+            .horner-cell-input,
+            .horner-empty {
+                width: 38px;
+                font-size: 13px;
+            }
+
+            .horner-cell-input {
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .latihan-horner {
+                min-width: 310px;
+                padding-left: 24px;
+            }
+
+            .latihan-horner-top,
+            .latihan-horner-mid,
+            .latihan-horner-bottom {
+                grid-template-columns: repeat(4, 39px);
+                column-gap: 7px;
+                margin-left: 30px;
+            }
+
+            .latihan-horner-top span,
+            .latihan-horner-bottom span,
+            .latihan-horner-mid input,
+            .latihan-horner-bottom input {
+                width: 39px;
+            }
+
+            .latihan-horner-input {
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .latihan-horner-top span,
+            .latihan-horner-bottom span {
+                font-size: 13px;
+            }
+
+            .latihan-horner-k {
+                font-size: 14px;
+            }
+
+            .latihan-hasil-input {
+                width: 48px;
+                height: 34px;
+                font-size: 13px;
+            }
+
+            .hasil-qx-responsive {
+                font-size: 14px;
+                gap: 6px;
+            }
+        }
+
+        /* =========================
+           HASIL AKHIR LATIHAN RAPI
+        ========================= */
+
+        .hasil-akhir-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .hasil-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #5a5148;
+        }
+
+        .hasil-label {
+            min-width: 46px;
+            font-weight: 400;
+            color: #8a8279;
+        }
+
+        .latihan-hasil-input {
+            border: 2px solid #d9d9d9;
+            border-radius: 6px;
+            background: #fff;
+            text-align: center;
+            outline: none;
+            font-size: 14px;
+            color: #4a4038;
+            padding: 0 4px;
+            box-sizing: border-box;
+        }
+
+        .latihan-hasil-input.kecil {
+            width: 44px;
+            height: 30px;
+        }
+
+        .latihan-hasil-input.sedang {
+            width: 82px;
+            height: 30px;
+        }
+
+        .qx-row {
+            row-gap: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .hasil-row {
+                font-size: 14px;
+                gap: 5px;
+            }
+
+            .hasil-label {
+                min-width: 42px;
+            }
+
+            .latihan-hasil-input.kecil {
+                width: 40px;
+                height: 28px;
+                font-size: 13px;
+            }
+
+            .latihan-hasil-input.sedang {
+                width: 72px;
+                height: 28px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hasil-akhir-wrap {
+                gap: 8px;
+            }
+
+            .hasil-row {
+                font-size: 13px;
+                gap: 4px;
+            }
+
+            .hasil-label {
+                min-width: 38px;
+            }
+
+            .latihan-hasil-input.kecil {
+                width: 36px;
+                height: 26px;
+                font-size: 12px;
+                border-radius: 5px;
+            }
+
+            .latihan-hasil-input.sedang {
+                width: 64px;
+                height: 26px;
+                font-size: 12px;
+                border-radius: 5px;
+            }
         }
     </style>
 
@@ -2291,19 +2542,25 @@
                     <div class="latihan-box">
                         <div class="latihan-box-title">Hasil akhir</div>
 
-                        <div>
-                            Q(x) =
-                            <input id="s2q1" disabled> x² +
-                            <input id="s2q2" disabled> x +
-                            <input id="s2q3" disabled>
-                        </div>
+                        <div class="hasil-akhir-wrap">
+                            <div class="hasil-row qx-row">
+                                <span class="hasil-label">Q(x) =</span>
 
-                        <div>
-                            Sisa =
-                            <input id="s2sisa" disabled>
+                                <input id="s2q1" class="latihan-hasil-input kecil" disabled>
+                                <span>x² +</span>
+
+                                <input id="s2q2" class="latihan-hasil-input kecil" disabled>
+                                <span>x +</span>
+
+                                <input id="s2q3" class="latihan-hasil-input kecil" disabled>
+                            </div>
+
+                            <div class="hasil-row sisa-row">
+                                <span class="hasil-label">Sisa =</span>
+                                <input id="s2sisa" class="latihan-hasil-input sedang" disabled>
+                            </div>
                         </div>
                     </div>
-
                     <!-- tombol cek no 2 -->
                     <div style="margin-top: 14px; text-align: center;">
                         <button class="btn-langkah" id="btnCekLatihan2" onclick="cekLatihan2()" disabled>
@@ -2336,8 +2593,6 @@
         let eksplorasiSelesai = false;
         let soal1Benar = false;
 
-
-
         const latihanJawaban = {
             s1k: '',
             s1koef: '',
@@ -2345,6 +2600,29 @@
             s1proses: '',
             s1hasil: ''
         };
+
+        function normalisasiJawaban(value) {
+            return String(value || '')
+                .toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/−/g, '-')
+                .replace(/–/g, '-')
+                .replace(/—/g, '-')
+                .replace(/\^2/g, '²')
+                .replace(/x2/g, 'x²')
+                .replace(/x\*2/g, 'x²')
+                .replace(/kuadrat/g, '²')
+                .replace(/q\(x\)=/g, '')
+                .replace(/qx=/g, '')
+                .replace(/sisa=/g, 'sisa')
+                .replace(/,/g, '')
+                .replace(/\./g, '');
+        }
+
+        function cocokSalahSatu(value, daftarJawabanBenar) {
+            const v = normalisasiJawaban(value);
+            return daftarJawabanBenar.some(jawaban => normalisasiJawaban(jawaban) === v);
+        }
 
         function setStatusInput(input, isCorrect) {
             if (!input) return;
@@ -2634,8 +2912,8 @@
                 h2 === '8' &&
                 h3 === '6' &&
                 sisa === '7' &&
-                qx1 === '3' &&
-                qx2 === '8' &&
+                cocokSalahSatu(qx1, ['3', '3x²', '3x^2', '3x2']) &&
+                cocokSalahSatu(qx2, ['8', '8x']) &&
                 qx3 === '6'
             ) {
                 tampilBenar('fb7', 'penjelasan7', 'Hebat, hasil bagi dan sisa sudah benar.');
@@ -2750,8 +3028,6 @@
             }
         }
 
-        // LATIHAN SOAL
-
         async function saveProgressMateri() {
             const csrfToken = document
                 .querySelector('meta[name="csrf-token"]')
@@ -2811,7 +3087,15 @@
                 latihanJawaban.s1koef === '4,3,-5,2' &&
                 latihanJawaban.s1turun === '4' &&
                 latihanJawaban.s1proses === '4,11,17' &&
-                latihanJawaban.s1hasil === '4x2+11x+17,sisa36';
+                cocokSalahSatu(latihanJawaban.s1hasil, [
+                    '4x2+11x+17,sisa32',
+                    '4x²+11x+17,sisa32',
+                    '4x^2+11x+17,sisa32',
+                    'Q(x)=4x²+11x+17,sisa=32',
+                    'Q(x)=4x^2+11x+17,sisa=32',
+                    '4x²+11x+17sisa32',
+                    '4x^2+11x+17sisa32'
+                ]);
 
             const feedback = document.getElementById('latihanFeedback1');
             const penjelasan = document.getElementById('latihanPenjelasan1');
@@ -2823,7 +3107,7 @@
                 tandaiSemuaBenar('s1koef', '4,3,-5,2');
                 tandaiSemuaBenar('s1turun', '4');
                 tandaiSemuaBenar('s1proses', '4,11,17');
-                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
+                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa32');
 
                 feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai. Soal nomor 2 sekarang terbuka.';
                 feedback.className = 'latihan-feedback success';
@@ -2837,7 +3121,7 @@
             tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
             tandaiYangDipilihSalah('s1turun', '4');
             tandaiYangDipilihSalah('s1proses', '4,11,17');
-            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
+            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa32');
 
             feedback.innerHTML = 'Masih ada pilihan yang salah pada soal nomor 1.';
             feedback.className = 'latihan-feedback error';
@@ -2851,16 +3135,16 @@
             if (!soal1Benar) return;
 
             const data = [
-                { id: 's2m1', benar: '4' },
-                { id: 's2m2', benar: '6' },
-                { id: 's2m3', benar: '20' },
-                { id: 's2b1', benar: '3' },
-                { id: 's2b2', benar: '10' },
-                { id: 's2b3', benar: '12' },
-                { id: 's2q1', benar: '2' },
-                { id: 's2q2', benar: '3' },
-                { id: 's2q3', benar: '10' },
-                { id: 's2sisa', benar: '12' }
+                { id: 's2m1', benar: ['4'] },
+                { id: 's2m2', benar: ['6'] },
+                { id: 's2m3', benar: ['20'] },
+                { id: 's2b1', benar: ['3'] },
+                { id: 's2b2', benar: ['10'] },
+                { id: 's2b3', benar: ['12'] },
+                { id: 's2q1', benar: ['2', '2x²', '2x^2', '2x2'] },
+                { id: 's2q2', benar: ['3', '3x'] },
+                { id: 's2q3', benar: ['10'] },
+                { id: 's2sisa', benar: ['12', 'sisa12', 'sisa=12'] }
             ];
 
             data.forEach(item => {
@@ -2871,7 +3155,7 @@
                 input.classList.remove('input-benar', 'input-salah');
 
                 if (value !== '') {
-                    input.classList.add(value === item.benar ? 'input-benar' : 'input-salah');
+                    input.classList.add(cocokSalahSatu(value, item.benar) ? 'input-benar' : 'input-salah');
                 }
             });
         }
@@ -2895,16 +3179,16 @@
             }
 
             const data = [
-                { id: 's2m1', benar: '4' },
-                { id: 's2m2', benar: '6' },
-                { id: 's2m3', benar: '20' },
-                { id: 's2b1', benar: '3' },
-                { id: 's2b2', benar: '10' },
-                { id: 's2b3', benar: '12' },
-                { id: 's2q1', benar: '2' },
-                { id: 's2q2', benar: '3' },
-                { id: 's2q3', benar: '10' },
-                { id: 's2sisa', benar: '12' }
+                { id: 's2m1', benar: ['4'] },
+                { id: 's2m2', benar: ['6'] },
+                { id: 's2m3', benar: ['20'] },
+                { id: 's2b1', benar: ['3'] },
+                { id: 's2b2', benar: ['10'] },
+                { id: 's2b3', benar: ['12'] },
+                { id: 's2q1', benar: ['2', '2x²', '2x^2', '2x2'] },
+                { id: 's2q2', benar: ['3', '3x'] },
+                { id: 's2q3', benar: ['10'] },
+                { id: 's2sisa', benar: ['12', 'sisa12', 'sisa=12'] }
             ];
 
             let semuaBenar = true;
@@ -2917,7 +3201,7 @@
                     return;
                 }
 
-                const benar = input.value.trim() === item.benar;
+                const benar = cocokSalahSatu(input.value.trim(), item.benar);
                 setStatusInput(input, benar);
 
                 if (!benar) semuaBenar = false;
@@ -3178,17 +3462,17 @@
             🔒 Next
         </span>
     @elseif ($quizBab && $isCurrentMateriCompleted)
-    <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
-        Kuis →
-    </a>
+        <a id="quizBabBtn" href="{{ route('quiz.show', $quizBab->id) }}" class="btn-nav next-btn">
+            Kuis →
+        </a>
     @elseif ($quizBab && !$isCurrentMateriCompleted)
-    <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
-        style="opacity:.65; cursor:not-allowed;">
-        🔒 Kuis
-    </span>
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
     @else
-    <span class="btn-nav next-btn disabled">
-        Next →
-    </span>
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
     @endif
 @endsection

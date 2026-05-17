@@ -7,11 +7,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body,{
-                                                                                                                                                    delimiters:[
-                                                                                                                                                        {left:'$$',right:'$$',display:true},
-                                                                                                                                                        {left:'$',right:'$',display:false}
-                                                                                                                                                    ]
-                                                                                                                                                });"></script>
+                                                                                                                                                            delimiters:[
+                                                                                                                                                                {left:'$$',right:'$$',display:true},
+                                                                                                                                                                {left:'$',right:'$',display:false}
+                                                                                                                                                            ]
+                                                                                                                                                        });"></script>
 
     <style>
         :root {
@@ -1410,8 +1410,8 @@
         }
 
         /* =========================
-                                                                                                                       CARD TAMBAHAN MATERI
-                                                                                                                    ========================= */
+                                                                                                                               CARD TAMBAHAN MATERI
+                                                                                                                            ========================= */
         .info-card {
             position: relative;
             margin-top: 24px;
@@ -1541,8 +1541,8 @@
         }
 
         /* =========================
-                                                                                                                       LANGKAH CARI PEMBUAT NOL
-                                                                                                                    ========================= */
+                                                                                                                               LANGKAH CARI PEMBUAT NOL
+                                                                                                                            ========================= */
         .langkah-cari-wrap {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1613,8 +1613,8 @@
         }
 
         /* =========================
-                                                                                                                       CONTOH MINI + TIP
-                                                                                                                    ========================= */
+                                                                                                                               CONTOH MINI + TIP
+                                                                                                                            ========================= */
         .contoh-mini {
             margin-top: 18px;
             background: rgba(255, 255, 255, .84);
@@ -1646,8 +1646,8 @@
         }
 
         /* =========================
-                                                                                                                       RESPONSIVE
-                                                                                                                    ========================= */
+                                                                                                                               RESPONSIVE
+                                                                                                                            ========================= */
         @media (max-width: 900px) {
 
             .info-grid,
@@ -1699,8 +1699,8 @@
         }
 
         /* =========================
-                                                                                                           STRATEGI INTERAKTIF
-                                                                                                        ========================= */
+                                                                                                                   STRATEGI INTERAKTIF
+                                                                                                                ========================= */
         .clickable-card {
             cursor: pointer;
             user-select: none;
@@ -1805,8 +1805,8 @@
         }
 
         /* =========================
-                                                                                               METODE INTERAKTIF
-                                                                                            ========================= */
+                                                                                                       METODE INTERAKTIF
+                                                                                                    ========================= */
         .metode-wrap {
             margin-top: 12px;
         }
@@ -1844,8 +1844,8 @@
         }
 
         /* =========================
-                                                                                               PANEL CONTOH BERSAMA
-                                                                                            ========================= */
+                                                                                                       PANEL CONTOH BERSAMA
+                                                                                                    ========================= */
         .contoh-bersama-box {
             margin-top: 20px;
             background: rgba(255, 255, 255, .86);
@@ -2089,6 +2089,530 @@
         .soal-terkunci input,
         .soal-terkunci button {
             cursor: not-allowed;
+        }
+
+        /* =========================
+           RESPONSIVE GLOBAL FIX
+           HP, TABLET, LAPTOP
+        ========================= */
+
+        /* Supaya padding tidak membuat elemen melebar */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Gambar, SVG, dan elemen visual tidak keluar layar */
+        img,
+        svg,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Rumus MathJax / KaTeX agar bisa discroll di HP */
+        .rumus-box,
+        .latihan-persamaan,
+        .contoh-persamaan {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Wrapper utama */
+        .materi-wrap {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* Tombol dan input lebih fleksibel */
+        button,
+        input {
+            max-width: 100%;
+        }
+
+        /* =========================
+           LAPTOP / DESKTOP
+           >= 1025px
+        ========================= */
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                padding: 28px 24px 48px;
+            }
+
+            .card,
+            .contoh-card,
+            .latihan-card,
+            .info-card,
+            .definisi-modern {
+                width: 100%;
+            }
+
+            .konsep-grid,
+            .info-grid,
+            .definisi-rumus-wrap {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .langkah-cari-wrap {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* =========================
+           TABLET
+           769px - 1024px
+        ========================= */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 920px;
+                padding: 24px 20px 42px;
+            }
+
+            .top-title {
+                gap: 10px;
+            }
+
+            .top-title .label {
+                font-size: 25px;
+            }
+
+            .top-title .judul {
+                font-size: 27px;
+            }
+
+            .card,
+            .contoh-card,
+            .latihan-card,
+            .info-card,
+            .definisi-modern {
+                padding: 22px 20px;
+                border-radius: 22px;
+            }
+
+            .konsep-grid,
+            .info-grid,
+            .definisi-rumus-wrap {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .langkah-cari-wrap {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .faktor-flow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faktor-arrow-btn {
+                width: fit-content;
+                margin: 0 auto;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .input-row {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            .input-jawaban {
+                flex: 1;
+                min-width: 0;
+                font-size: 14px;
+            }
+
+            .btn-cek {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .grafik-board {
+                height: 390px;
+            }
+
+            .graph-placeholder {
+                min-height: 260px;
+            }
+        }
+
+        /* =========================
+           HP / MOBILE
+           <= 768px
+        ========================= */
+        @media (max-width: 768px) {
+            .materi-wrap {
+                padding: 16px 12px 32px;
+                overflow-x: hidden;
+            }
+
+            .top-title {
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            .top-title .label {
+                font-size: 20px;
+                line-height: 1.25;
+            }
+
+            .top-title .judul {
+                font-size: 21px;
+                line-height: 1.3;
+            }
+
+            p,
+            .eksplorasi-text,
+            .contoh-text,
+            .soal-list,
+            .info-desc,
+            .konsep-body p {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .card,
+            .contoh-card,
+            .latihan-card,
+            .info-card,
+            .definisi-modern,
+            .custom-definisi {
+                padding: 18px 14px;
+                border-radius: 18px;
+                margin-bottom: 16px;
+            }
+
+            .title-box,
+            .subjudul,
+            .contoh-title,
+            .latihan-card-title,
+            .info-title {
+                font-size: 18px;
+                line-height: 1.35;
+            }
+
+            .teorema-box {
+                font-size: 15px;
+                padding: 14px;
+                line-height: 1.7;
+            }
+
+            .rumus-box {
+                padding: 12px 10px;
+                font-size: 14px;
+                border-radius: 14px;
+            }
+
+            .contoh-persamaan,
+            .latihan-persamaan {
+                font-size: 19px;
+            }
+
+            /* Grid jadi 1 kolom */
+            .konsep-grid,
+            .info-grid,
+            .definisi-rumus-wrap,
+            .langkah-cari-wrap,
+            .faktor-flow-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .konsep-card,
+            .info-mini-card,
+            .definisi-rumus-card,
+            .langkah-cari-card,
+            .contoh-mini,
+            .contoh-bersama-box {
+                border-radius: 16px;
+                padding: 14px;
+            }
+
+            .konsep-head,
+            .info-header,
+            .langkah-header {
+                gap: 10px;
+            }
+
+            .konsep-title {
+                font-size: 17px;
+            }
+
+            .konsep-preview,
+            .konsep-body p,
+            .langkah-cari-text,
+            .contoh-panel-text,
+            .cara-faktor-text,
+            .cara-faktor-list {
+                font-size: 14px;
+            }
+
+            .definisi-header h3 {
+                font-size: 19px;
+            }
+
+            .definisi-header p,
+            .definisi-item,
+            .definisi-kesimpulan {
+                font-size: 14px;
+            }
+
+            .definisi-item {
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .definisi-item .ikon {
+                width: 26px;
+                height: 26px;
+                flex: 0 0 26px;
+                font-size: 12px;
+            }
+
+            /* Tombol pilihan jadi full width */
+            .opsi-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .opsi-btn {
+                width: 100%;
+                min-width: 0;
+                font-size: 14px;
+                padding: 12px 14px;
+            }
+
+            /* Jawaban */
+            .jawaban-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .jawaban-label {
+                font-size: 16px;
+            }
+
+            .btn-jawaban {
+                width: 100%;
+                padding: 11px 14px;
+            }
+
+            .jawaban-item {
+                padding: 14px;
+                border-radius: 16px;
+            }
+
+            /* Input latihan */
+            .input-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .input-jawaban {
+                width: 100%;
+                flex: none;
+                min-width: 0;
+                font-size: 14px;
+                padding: 11px 12px;
+            }
+
+            .btn-cek {
+                width: 100%;
+                font-size: 13px;
+                padding: 10px 14px;
+            }
+
+            .latihan-item {
+                padding: 14px;
+                border-radius: 16px;
+            }
+
+            .latihan-label {
+                font-size: 15px;
+            }
+
+            .cara-box,
+            .feedback-box,
+            .penjelasan-wrap,
+            .langkah-step,
+            .answer-box,
+            .explain-box,
+            .source-box,
+            .note-box,
+            .tip-box {
+                font-size: 14px;
+                border-radius: 14px;
+            }
+
+            /* Badge */
+            .contoh-badge,
+            .latihan-badge {
+                width: 100%;
+                min-width: 0;
+                font-size: 15px;
+                padding: 10px 14px;
+                text-align: center;
+            }
+
+            /* Grafik */
+            .grafik-board {
+                height: 320px;
+                border-radius: 16px;
+                background:
+                    repeating-linear-gradient(to right,
+                        #edf3f8 0,
+                        #edf3f8 1px,
+                        transparent 1px,
+                        transparent 42px),
+                    repeating-linear-gradient(to bottom,
+                        #edf3f8 0,
+                        #edf3f8 1px,
+                        transparent 1px,
+                        transparent 42px),
+                    #ffffff;
+            }
+
+            .graph-placeholder,
+            #grafik-mc4 {
+                min-height: 300px !important;
+                padding: 14px;
+                border-radius: 16px;
+            }
+
+            .grafik-header-note,
+            .grafik-label-top {
+                max-width: calc(100% - 32px);
+                font-size: 11px;
+            }
+
+            .grafik-number {
+                font-size: 10px;
+            }
+
+            .grafik-click-point {
+                width: 15px;
+                height: 15px;
+            }
+
+            .grafik-chip-row {
+                gap: 8px;
+            }
+
+            .grafik-chip {
+                font-size: 12px;
+                padding: 7px 10px;
+            }
+
+            /* Arrow faktor */
+            .faktor-arrow-btn {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                padding: 10px 14px;
+            }
+
+            .arrow-icon {
+                transform: rotate(90deg);
+            }
+
+            /* Supaya teks panjang tidak keluar layar */
+            .eksplorasi-question-title,
+            .latihan-card-title,
+            .contoh-title,
+            .info-title,
+            .konsep-title,
+            .langkah-cari-title {
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        /* =========================
+           HP KECIL
+           <= 480px
+        ========================= */
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 14px 10px 28px;
+            }
+
+            .top-title .label {
+                font-size: 18px;
+            }
+
+            .top-title .judul {
+                font-size: 19px;
+            }
+
+            p,
+            .eksplorasi-text,
+            .contoh-text,
+            .soal-list,
+            .info-desc {
+                font-size: 14px;
+            }
+
+            .card,
+            .contoh-card,
+            .latihan-card,
+            .info-card,
+            .definisi-modern,
+            .custom-definisi {
+                padding: 16px 12px;
+                border-radius: 16px;
+            }
+
+            .rumus-box {
+                font-size: 13px;
+                padding: 10px 8px;
+            }
+
+            .contoh-persamaan,
+            .latihan-persamaan {
+                font-size: 17px;
+            }
+
+            .opsi-btn,
+            .btn-jawaban,
+            .btn-cek,
+            .input-jawaban {
+                font-size: 13px;
+            }
+
+            .grafik-board {
+                height: 280px;
+            }
+
+            .graph-placeholder,
+            #grafik-mc4 {
+                min-height: 260px !important;
+            }
+
+            .info-icon {
+                display: none;
+            }
+
+            .definisi-badge,
+            .custom-label {
+                font-size: 11px;
+                padding: 7px 14px;
+            }
+
+            .jawaban-item,
+            .latihan-item,
+            .answer-box,
+            .explain-box,
+            .source-box {
+                padding: 12px;
+            }
         }
     </style>
 
@@ -2965,110 +3489,110 @@
                 badge: 'Metode 1',
                 title: 'Contoh Faktorisasi',
                 html: `
-                        <div class="contoh-panel">
-                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                            <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
+                                <div class="contoh-panel">
+                                    <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                    <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 1</div>
-                                <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
-                                <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 1</div>
+                                        <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
+                                        <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
+                                    </div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 2</div>
-                                <p>Faktorkan bentuk kuadratnya.</p>
-                                <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 2</div>
+                                        <p>Faktorkan bentuk kuadratnya.</p>
+                                        <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
+                                    </div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 3</div>
-                                <p>Gunakan sifat hasil kali nol.</p>
-                                <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
-                                <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 3</div>
+                                        <p>Gunakan sifat hasil kali nol.</p>
+                                        <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
+                                        <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
+                                    </div>
 
-                            <div class="contoh-hasil-box">
-                                <b>Jadi, pembuat nolnya adalah:</b>
-                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                            </div>
-                        </div>
-                    `
+                                    <div class="contoh-hasil-box">
+                                        <b>Jadi, pembuat nolnya adalah:</b>
+                                        <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                    </div>
+                                </div>
+                            `
             },
 
             substitusi: {
                 badge: 'Metode 2',
                 title: 'Contoh Substitusi',
                 html: `
-                        <div class="contoh-panel">
-                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                            <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
+                                <div class="contoh-panel">
+                                    <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                    <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Coba x = 1</div>
-                                <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
-                                <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Coba x = 1</div>
+                                        <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
+                                        <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
+                                    </div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Coba x = 2</div>
-                                <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
-                                <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Coba x = 2</div>
+                                        <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
+                                        <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
+                                    </div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Coba x = 3</div>
-                                <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
-                                <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Coba x = 3</div>
+                                        <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
+                                        <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
+                                    </div>
 
-                            <div class="contoh-hasil-box">
-                                <b>Jadi, pembuat nolnya adalah:</b>
-                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                            </div>
-                        </div>
-                    `
+                                    <div class="contoh-hasil-box">
+                                        <b>Jadi, pembuat nolnya adalah:</b>
+                                        <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                    </div>
+                                </div>
+                            `
             },
 
             sintetik: {
                 badge: 'Metode 3',
                 title: 'Contoh Pembagian Sintetik',
                 html: `
-                        <div class="contoh-panel">
-                            <p class="contoh-panel-text">Tentukan salah satu pembuat nol dari:</p>
-                            <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
+                                <div class="contoh-panel">
+                                    <p class="contoh-panel-text">Tentukan salah satu pembuat nol dari:</p>
+                                    <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 1</div>
-                                <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
-                            </div>
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 1</div>
+                                        <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
+                                    </div>
 
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 2</div>
-                                <p>Gunakan pembagian sintetik dengan koefisien:</p>
-                                <div class="rumus-box">$$1 \\quad -4 \\quad -11 \\quad 30$$</div>
-                                <div class="rumus-box">
-                                    $$\\begin{array}{r|rrrr}
-                                    2 & 1 & -4 & -11 & 30 \\\\
-                                      &   & 2 & -4 & -30 \\\\
-                                    \\hline
-                                      & 1 & -2 & -15 & 0
-                                    \\end{array}$$
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 2</div>
+                                        <p>Gunakan pembagian sintetik dengan koefisien:</p>
+                                        <div class="rumus-box">$$1 \\quad -4 \\quad -11 \\quad 30$$</div>
+                                        <div class="rumus-box">
+                                            $$\\begin{array}{r|rrrr}
+                                            2 & 1 & -4 & -11 & 30 \\\\
+                                              &   & 2 & -4 & -30 \\\\
+                                            \\hline
+                                              & 1 & -2 & -15 & 0
+                                            \\end{array}$$
+                                        </div>
+                                    </div>
+
+                                    <div class="contoh-step-box">
+                                        <div class="contoh-step-title">Langkah 3</div>
+                                        <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
+                                        <div class="rumus-box">$$(x-2) \\text{ adalah faktor dari } P(x)$$</div>
+                                    </div>
+
+                                    <div class="contoh-hasil-box">
+                                        <b>Kesimpulan:</b>
+                                        <div class="rumus-box">$$x=2$$</div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="contoh-step-box">
-                                <div class="contoh-step-title">Langkah 3</div>
-                                <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
-                                <div class="rumus-box">$$(x-2) \\text{ adalah faktor dari } P(x)$$</div>
-                            </div>
-
-                            <div class="contoh-hasil-box">
-                                <b>Kesimpulan:</b>
-                                <div class="rumus-box">$$x=2$$</div>
-                            </div>
-                        </div>
-                    `
+                            `
             }
         };
 
@@ -3083,9 +3607,34 @@
                 .replace(/;/g, ',')
                 .replace(/−/g, '-')
                 .replace(/–/g, '-')
+
+                // pangkat unicode: x², x³, x⁴
+                .replace(/⁰/g, '^0')
+                .replace(/¹/g, '^1')
                 .replace(/²/g, '^2')
                 .replace(/³/g, '^3')
-                .replace(/⁴/g, '^4');
+                .replace(/⁴/g, '^4')
+                .replace(/⁵/g, '^5')
+                .replace(/⁶/g, '^6')
+                .replace(/⁷/g, '^7')
+                .replace(/⁸/g, '^8')
+                .replace(/⁹/g, '^9')
+
+                // bentuk "pangkat"
+                .replace(/pangkat/g, '^')
+
+                // bentuk x**2
+                .replace(/\*\*/g, '^')
+
+                // bentuk ^(2), ^{2}
+                .replace(/\^\((\d+)\)/g, '^$1')
+                .replace(/\^\{(\d+)\}/g, '^$1')
+
+                // bentuk x2, x3, x4 menjadi x^2, x^3, x^4
+                .replace(/x([2-9])/g, 'x^$1')
+
+                // bentuk (x-2)2 menjadi (x-2)^2
+                .replace(/\)([2-9])/g, ')^$1');
         }
 
         function splitAndClean(text) {
@@ -3369,15 +3918,15 @@
 
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
-                        <button
-                            type="button"
-                            class="grafik-click-point"
-                            data-x="${x}"
-                            style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
-                            onclick="cekTitikGrafikMc4(this)"
-                            aria-label="Titik x ${x}">
-                        </button>
-                    `;
+                                <button
+                                    type="button"
+                                    class="grafik-click-point"
+                                    data-x="${x}"
+                                    style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
+                                    onclick="cekTitikGrafikMc4(this)"
+                                    aria-label="Titik x ${x}">
+                                </button>
+                            `;
             }
 
             return html;
@@ -3385,24 +3934,24 @@
 
         function buildGrafikInteraktifMc4() {
             return `
-                    <div class="grafik-board">
-                        <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
+                            <div class="grafik-board">
+                                <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
 
-                        <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
-                        <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
-                        <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
-                        <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
+                                <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
+                                <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
+                                <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
+                                <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
 
-                        ${buildTicksX()}
-                        ${buildTicksY()}
-                        ${buildLabelsX()}
-                        ${buildLabelsY()}
+                                ${buildTicksX()}
+                                ${buildTicksY()}
+                                ${buildLabelsX()}
+                                ${buildLabelsY()}
 
-                        <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+                                <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
 
-                        ${buildClickablePoints()}
-                    </div>
-                `;
+                                ${buildClickablePoints()}
+                            </div>
+                        `;
         }
 
         function aktifkanGrafikMari() {
@@ -3547,18 +4096,18 @@
             const yDot = `<circle cx="${xToPercent(0)}" cy="${yToPercent(6)}" r="1.15" fill="#f2994a"></circle>`;
 
             svg.innerHTML = `
-                    <path
-                        d="${d}"
-                        fill="none"
-                        stroke="#2d9cdb"
-                        stroke-width="0.7"
-                        vector-effect="non-scaling-stroke"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                    </path>
-                    ${rootDots}
-                    ${yDot}
-                `;
+                            <path
+                                d="${d}"
+                                fill="none"
+                                stroke="#2d9cdb"
+                                stroke-width="0.7"
+                                vector-effect="non-scaling-stroke"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+                            ${rootDots}
+                            ${yDot}
+                        `;
         }
 
         function cekMari(no) {
@@ -4018,8 +4567,8 @@
             🔒 Kuis
         </span>
     @else
-    <span class="btn-nav next-btn disabled">
-        Next →
-    </span>
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
     @endif
 @endsection

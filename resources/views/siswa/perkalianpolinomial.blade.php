@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                            delimiters: [
-                                                {left: '$$', right: '$$', display: true},
-                                                {left: '$', right: '$', display: false}
-                                            ]
-                                        });"></script>
+                                                    delimiters: [
+                                                        {left: '$$', right: '$$', display: true},
+                                                        {left: '$', right: '$', display: false}
+                                                    ]
+                                                });"></script>
 
     <style>
         :root {
@@ -1292,6 +1292,382 @@
                 font-size: 17px;
             }
         }
+
+        /* ================================
+           RESPONSIVE: LAPTOP, TABLET, HP
+           Tempel di paling bawah <style>
+        ================================ */
+
+        /* Laptop / desktop besar */
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                max-width: 980px;
+                padding: 24px 18px 48px;
+            }
+
+            .top-title .label {
+                font-size: 26px;
+            }
+
+            .top-title .judul {
+                font-size: 30px;
+            }
+
+            .practice-wrap.sideways {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .blank-grid,
+            .metode-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .tip-step-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 100%;
+                padding: 20px 16px 40px;
+            }
+
+            .top-title {
+                align-items: flex-start;
+            }
+
+            .top-title .label {
+                font-size: 24px;
+            }
+
+            .top-title .judul {
+                font-size: 28px;
+                line-height: 1.3;
+            }
+
+            p,
+            .definisi-card p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .card,
+            .tip-board,
+            .game-latihan-card {
+                padding: 18px;
+            }
+
+            .metode-grid,
+            .practice-wrap.sideways,
+            .blank-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-step-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .game-options {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .quiz-input,
+            .step-input,
+            .hasil-input,
+            .blank-input,
+            .susun-input {
+                max-width: 100%;
+            }
+
+            .table-wrap,
+            .rumus-box,
+            .metode-rumus-box,
+            .game-rumus,
+            .susun-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* HP besar */
+        @media (max-width: 768px) {
+            .materi-wrap {
+                padding: 16px 12px 32px;
+                line-height: 1.7;
+            }
+
+            .top-title {
+                gap: 8px;
+                margin-bottom: 10px;
+            }
+
+            .top-title .label {
+                font-size: 22px;
+            }
+
+            .top-title .judul {
+                font-size: 24px;
+            }
+
+            .lead-text {
+                font-size: 16px;
+                line-height: 1.75;
+            }
+
+            p {
+                font-size: 15.5px;
+                line-height: 1.75;
+                text-align: left;
+            }
+
+            .card,
+            .tip-board,
+            .definisi-card,
+            .game-latihan-card {
+                border-radius: 14px;
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .title-box,
+            .steps-title,
+            .submateri-title,
+            .metode-title {
+                font-size: 17px;
+            }
+
+            .contoh-badge {
+                width: 100%;
+                padding: 9px 14px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .rumus-box {
+                justify-content: flex-start;
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            .tip-main-quote {
+                font-size: 22px;
+                line-height: 1.45;
+            }
+
+            .tip-step-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-step-card {
+                text-align: left;
+                display: flex;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .tip-step-num {
+                margin: 0;
+                flex: 0 0 34px;
+            }
+
+            .quiz-actions,
+            .step-actions,
+            .mini-actions,
+            .blank-actions,
+            .susun-actions,
+            .game-bottom {
+                gap: 8px;
+            }
+
+            .quiz-check,
+            .quiz-reset,
+            .quiz-checkall,
+            .step-check,
+            .step-reset,
+            .step-checkall,
+            .mini-btn,
+            .blank-check,
+            .blank-reset,
+            .blank-checkall,
+            .tip-btn,
+            .game-btn {
+                width: 100%;
+                padding: 10px 14px;
+            }
+
+            .quiz-summary,
+            .step-summary,
+            .blank-summary,
+            .game-score {
+                margin-left: 0;
+                width: 100%;
+                display: block;
+            }
+
+            .game-options {
+                grid-template-columns: 1fr;
+            }
+
+            .game-option {
+                min-height: 48px;
+                padding: 10px;
+            }
+
+            .game-latihan-head {
+                width: 100%;
+                min-width: 0;
+                font-size: 19px;
+            }
+
+            table.materi-table {
+                min-width: 520px;
+            }
+
+            .susun-table {
+                min-width: 320px;
+                font-size: 18px;
+            }
+
+            .susun-input {
+                width: 100%;
+                min-width: 150px;
+            }
+
+            .blank-line {
+                align-items: flex-start;
+            }
+
+            .blank-line .math-part {
+                width: 100%;
+            }
+
+            .blank-input {
+                width: 100%;
+                max-width: 100% !important;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 12px 10px 28px;
+            }
+
+            .top-title {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .top-title .label {
+                font-size: 20px;
+            }
+
+            .top-title .judul {
+                font-size: 21px;
+                line-height: 1.25;
+            }
+
+            .lead-text,
+            p,
+            .game-intro,
+            .metode-subtitle,
+            .tip-main-desc,
+            .tip-example-desc {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .card,
+            .tip-board,
+            .definisi-card,
+            .question,
+            .contoh-box,
+            .practice-card,
+            .blank-card,
+            .metode-card,
+            .susun-card,
+            .game-latihan-box,
+            .game-soal {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .definisi-label {
+                left: 12px;
+                padding: 7px 18px;
+                font-size: 13px;
+            }
+
+            .rumus-box,
+            .metode-rumus-box,
+            .game-rumus {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .quiz-input,
+            .step-input,
+            .hasil-input,
+            .blank-input,
+            .susun-input {
+                font-size: 15px;
+                padding: 10px 12px;
+            }
+
+            .tip-label {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+
+            .tip-main-quote {
+                font-size: 19px;
+            }
+
+            .latihan-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .latihan-title .pill {
+                width: 100%;
+                text-align: center;
+            }
+
+            .game-soal-top {
+                align-items: flex-start;
+            }
+
+            .game-status {
+                width: 100%;
+                text-align: center;
+            }
+
+            table.materi-table {
+                min-width: 560px;
+                font-size: 14px;
+            }
+
+            .materi-table th,
+            .materi-table td {
+                padding: 9px 8px;
+            }
+
+            .susun-table {
+                min-width: 300px;
+                font-size: 16px;
+            }
+
+            .susun-result-cell {
+                min-width: 170px;
+            }
+
+            .btn-nav {
+                width: 100%;
+                min-width: 0;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2314,9 +2690,31 @@
                         .replace(/–/g, "-")
                         .replace(/−/g, "-");
 
+                const superscriptToNormal = (s) => {
+                    const map = {
+                        "⁰": "0",
+                        "¹": "1",
+                        "²": "2",
+                        "³": "3",
+                        "⁴": "4",
+                        "⁵": "5",
+                        "⁶": "6",
+                        "⁷": "7",
+                        "⁸": "8",
+                        "⁹": "9",
+                        "⁻": "-"
+                    };
+
+                    return (s || "").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (match) => {
+                        return "^" + match.split("").map(ch => map[ch] || "").join("");
+                    });
+                };
+
                 const normalizePoly = (raw) => {
                     let s = normalize(raw);
                     if (!s) return "";
+
+                    s = superscriptToNormal(s);
 
                     s = s
                         .replace(/\*\*/g, "^")
@@ -2918,7 +3316,7 @@
             });
         </script>
 
-       
+
         <script>
             async function saveProgressMateri() {
                 const csrfToken = document
@@ -3152,13 +3550,13 @@
             Kuis →
         </a>
     @elseif ($quizBab && !$isCurrentMateriCompleted)
-    <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
-        style="opacity:.65; cursor:not-allowed;">
-        🔒 Kuis
-    </span>
+        <span id="quizBabBtn" class="btn-nav next-btn disabled" data-quiz-url="{{ route('quiz.show', $quizBab->id) }}"
+            style="opacity:.65; cursor:not-allowed;">
+            🔒 Kuis
+        </span>
     @else
-    <span class="btn-nav next-btn disabled">
-        Next →
-    </span>
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
     @endif
 @endsection

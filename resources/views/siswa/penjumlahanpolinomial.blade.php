@@ -8,12 +8,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                    delimiters: [
-                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                    ]
-                                                                                                                                                });">
-                                                                                                                                                </script>
+                                                                                                                                                            delimiters: [
+                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                            ]
+                                                                                                                                                        });">
+                                                                                                                                                        </script>
 
     <style>
         :root {
@@ -37,13 +37,44 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        img,
+        svg,
+        video,
+        canvas,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            max-width: 100%;
+            font-family: inherit;
+        }
+
+        button {
+            touch-action: manipulation;
+        }
+
         .materi-wrap {
-            max-width: 980px;
+            width: min(100%, 1060px);
+            max-width: 1060px;
             margin: 0 auto;
             font-family: "Times New Roman", Times, serif;
             color: var(--text);
             line-height: 1.7;
-            padding: 20px 14px 40px;
+            padding: 20px clamp(10px, 2.5vw, 28px) 40px;
+            overflow-x: hidden;
         }
 
         .top-title {
@@ -51,27 +82,33 @@
             align-items: baseline;
             gap: 12px;
             margin-bottom: 18px;
+            min-width: 0;
         }
 
         .top-title .label {
             font-size: 26px;
             font-weight: 700;
             color: #000;
+            flex-shrink: 0;
         }
 
         .top-title .judul {
             font-size: 30px;
             font-weight: 800;
             color: var(--green);
+            overflow-wrap: anywhere;
+            line-height: 1.25;
         }
 
         .card {
+            max-width: 100%;
             border-radius: 16px;
             padding: 20px 22px;
             background: #fff;
             margin-bottom: 20px;
             box-shadow: 0 10px 28px rgba(0, 0, 0, .05);
             border: 1px solid rgba(0, 0, 0, .05);
+            min-width: 0;
         }
 
         .card-eksplorasi {
@@ -85,6 +122,7 @@
         }
 
         .tujuan-card {
+            max-width: 100%;
             background: linear-gradient(135deg, var(--orange-soft) 0%, #ffffff 100%);
             border-left: 8px solid var(--orange);
             padding: 22px 24px;
@@ -95,6 +133,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 10px;
+            min-width: 0;
         }
 
         .tujuan-header .title {
@@ -102,6 +141,7 @@
             font-weight: 900;
             color: var(--green);
             margin: 0;
+            line-height: 1.3;
         }
 
         .tujuan-card ol {
@@ -120,6 +160,8 @@
             font-weight: 800;
             color: var(--green);
             margin: 30px 0 12px;
+            overflow-wrap: anywhere;
+            line-height: 1.25;
         }
 
         .title-box {
@@ -130,6 +172,8 @@
             font-size: 18px;
             color: var(--green);
             margin-bottom: 12px;
+            overflow-wrap: anywhere;
+            line-height: 1.35;
         }
 
         p {
@@ -157,6 +201,7 @@
         }
 
         .rumus-box {
+            max-width: 100%;
             margin: 14px 0;
             padding: 14px 16px;
             border-radius: 14px;
@@ -168,6 +213,8 @@
             font-size: 18px;
             color: #111;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .penjelasan-plain {
@@ -187,6 +234,7 @@
         }
 
         .definisi-box {
+            max-width: 100%;
             position: relative;
             background: var(--def-bg);
             border-radius: 18px;
@@ -224,8 +272,8 @@
         }
 
         .definisi-rumus {
-            margin: 6px auto 18px;
             max-width: 720px;
+            margin: 6px auto 18px;
             background: rgba(255, 255, 255, .85);
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 16px;
@@ -234,6 +282,8 @@
             justify-content: center;
             align-items: center;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .definisi-sub {
@@ -257,11 +307,14 @@
 
         /* ===== TABLE ===== */
         .table-wrap {
+            width: 100%;
+            max-width: 100%;
             margin-top: 14px;
             overflow-x: auto;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, .10);
             box-shadow: 0 10px 28px rgba(0, 0, 0, .04);
+            -webkit-overflow-scrolling: touch;
         }
 
         table.materi-table {
@@ -290,6 +343,7 @@
 
         /* ===== QUIZ Eksplorasi ===== */
         .question {
+            max-width: 100%;
             background: #ffffff;
             border: 1px solid rgba(91, 155, 213, .25);
             border-radius: 14px;
@@ -334,15 +388,8 @@
             gap: 10px;
             margin-top: 8px;
             flex-wrap: wrap;
-        }
-
-        .quiz-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 8px;
-            flex-wrap: wrap;
             min-height: 36px;
+            min-width: 0;
         }
 
         .quiz-feedback {
@@ -386,6 +433,7 @@
         }
 
         .contoh-box {
+            max-width: 100%;
             border: 2px solid rgba(27, 122, 42, .35);
             border-radius: 14px;
             padding: 14px 14px 16px;
@@ -424,9 +472,11 @@
             justify-content: center;
             margin-top: 10px;
             flex-wrap: wrap;
+            min-width: 0;
         }
 
         .mini-btn {
+            min-height: 42px;
             padding: 8px 14px;
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, .14);
@@ -454,8 +504,8 @@
             border: 1px solid rgba(224, 112, 43, .18);
         }
 
-        /* ✅ hasil katex setelah benar */
         .katex-answer {
+            max-width: 100%;
             display: none;
             justify-content: center;
             align-items: center;
@@ -464,10 +514,12 @@
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, .18);
             background: rgba(255, 255, 255, .85);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Sehingga: hidden dulu */
         .sehingga-box {
+            max-width: 100%;
             margin-top: 14px;
             border: 2px solid rgba(27, 122, 42, .35);
             border-radius: 14px;
@@ -498,6 +550,7 @@
         }
 
         .p5-frame {
+            max-width: 100%;
             border: 1px solid rgba(0, 0, 0, .12);
             border-radius: 14px;
             background: #fff;
@@ -510,32 +563,6 @@
             max-width: 100%;
             height: auto;
             margin: 0 auto;
-        }
-
-        @media (max-width: 640px) {
-            .top-title .judul {
-                font-size: 24px;
-            }
-
-            .top-title .label {
-                font-size: 22px;
-            }
-
-            .card {
-                padding: 16px 16px;
-            }
-
-            .tujuan-card {
-                padding: 18px 18px;
-            }
-
-            p {
-                font-size: 15px;
-            }
-
-            .definisi-box {
-                padding: 38px 18px 18px;
-            }
         }
 
         /* ===== LATIHAN HTML CSS JS ===== */
@@ -553,6 +580,7 @@
         }
 
         .latihan-header-box {
+            max-width: 100%;
             background: #f8f6ef;
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 16px;
@@ -566,6 +594,8 @@
             font-weight: 900;
             color: #1e1e1e;
             letter-spacing: .5px;
+            overflow-wrap: anywhere;
+            line-height: 1.25;
         }
 
         .latihan-main-subtitle {
@@ -577,12 +607,13 @@
 
         .level-cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px;
             margin-bottom: 14px;
         }
 
         .level-card {
+            min-width: 0;
             border-radius: 18px;
             border: 2px solid #d9d9d9;
             min-height: 106px;
@@ -623,6 +654,7 @@
             width: 8px;
             border-radius: 999px;
             min-height: 100%;
+            flex-shrink: 0;
         }
 
         .level-bar.green {
@@ -642,6 +674,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-width: 0;
         }
 
         .level-title {
@@ -649,6 +682,7 @@
             font-weight: 900;
             color: #2b2b2b;
             margin-bottom: 4px;
+            overflow-wrap: anywhere;
         }
 
         .level-sub {
@@ -682,6 +716,7 @@
         }
 
         .latihan-panel {
+            max-width: 100%;
             border-radius: 20px;
             padding: 16px 16px 18px;
             background: #fff;
@@ -712,6 +747,7 @@
             font-size: 18px;
             font-weight: 900;
             color: #2d2d2d;
+            overflow-wrap: anywhere;
         }
 
         .panel-subtitle {
@@ -721,6 +757,7 @@
         }
 
         .soal-math-box {
+            max-width: 560px;
             background: #fff;
             border: 2px solid rgba(0, 0, 0, .10);
             border-radius: 16px;
@@ -729,8 +766,9 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            max-width: 560px;
             padding: 12px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .jawaban-label {
@@ -763,9 +801,11 @@
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
+            min-width: 0;
         }
 
         .latihan-btn {
+            min-height: 42px;
             padding: 9px 18px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, .16);
@@ -833,22 +873,9 @@
             color: #222;
         }
 
-        @media (max-width: 768px) {
-            .level-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .latihan-shell {
-                padding-left: 10px;
-            }
-
-            .latihan-main-title {
-                font-size: 24px;
-            }
-        }
-
         /* ===== CARD SUKU SEJENIS ===== */
         .jenis-card {
+            max-width: 100%;
             position: relative;
             overflow: hidden;
             padding: 24px 24px 22px;
@@ -864,6 +891,7 @@
             align-items: center;
             gap: 18px;
             margin-bottom: 18px;
+            min-width: 0;
         }
 
         .jenis-badge {
@@ -886,6 +914,7 @@
             font-weight: 900;
             color: #1f6a38;
             line-height: 1.25;
+            overflow-wrap: anywhere;
         }
 
         .jenis-subtitle {
@@ -916,12 +945,13 @@
 
         .jenis-info-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
             margin-bottom: 16px;
         }
 
         .jenis-info-card {
+            min-width: 0;
             border-radius: 16px;
             padding: 16px 16px 14px;
             border: 1px solid rgba(0, 0, 0, .08);
@@ -952,11 +982,14 @@
         }
 
         .jenis-table-wrap {
+            width: 100%;
+            max-width: 100%;
             margin-top: 8px;
             border-radius: 18px;
-            overflow: hidden;
+            overflow-x: auto;
             border: 1px solid rgba(46, 139, 87, .14);
             box-shadow: 0 12px 26px rgba(0, 0, 0, .05);
+            -webkit-overflow-scrolling: touch;
         }
 
         .jenis-table {
@@ -1005,28 +1038,6 @@
             margin-top: 2px;
         }
 
-        @media (max-width: 768px) {
-            .jenis-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .jenis-title {
-                font-size: 23px;
-            }
-
-            .jenis-info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .jenis-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 28px;
-                border-radius: 16px;
-            }
-        }
-
         .latihan-polynomial-wrapper {
             max-width: 920px;
             margin: 32px auto;
@@ -1056,6 +1067,7 @@
         }
 
         .soal-card {
+            max-width: 100%;
             position: relative;
             margin-bottom: 22px;
             padding: 24px;
@@ -1078,9 +1090,11 @@
             margin: 0 0 18px;
             font-size: 20px;
             color: #25352b;
+            overflow-wrap: anywhere;
         }
 
         .soal-susun {
+            max-width: 100%;
             width: fit-content;
             margin: 16px auto 20px;
             padding: 16px 28px;
@@ -1089,6 +1103,8 @@
             font-size: 26px;
             line-height: 1.7;
             text-align: right;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .garis-susun {
@@ -1101,10 +1117,12 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
 
         .jawaban-area input {
             width: 260px;
+            max-width: 100%;
             padding: 12px 14px;
             border-radius: 12px;
             border: 1px solid #bcc8bd;
@@ -1113,6 +1131,7 @@
         }
 
         .jawaban-area button {
+            min-height: 42px;
             padding: 12px 18px;
             border: none;
             border-radius: 12px;
@@ -1173,23 +1192,857 @@
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
         }
 
-        @media (max-width: 700px) {
+        /* ===================== SCROLLBAR RAPI ===================== */
+        .rumus-box::-webkit-scrollbar,
+        .definisi-rumus::-webkit-scrollbar,
+        .table-wrap::-webkit-scrollbar,
+        .jenis-table-wrap::-webkit-scrollbar,
+        .soal-susun::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .rumus-box::-webkit-scrollbar-thumb,
+        .definisi-rumus::-webkit-scrollbar-thumb,
+        .table-wrap::-webkit-scrollbar-thumb,
+        .jenis-table-wrap::-webkit-scrollbar-thumb,
+        .soal-susun::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, .22);
+            border-radius: 999px;
+        }
+
+        /* ===================== LAPTOP / DESKTOP ===================== */
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                padding-top: 24px;
+                padding-bottom: 48px;
+            }
+
+            .top-title .label {
+                font-size: 28px;
+            }
+
+            .top-title .judul {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 31px;
+            }
+
+            .card {
+                padding: 22px 24px;
+            }
+
             .latihan-polynomial-wrapper {
+                padding: 32px;
+            }
+
+            .jawaban-area {
+                flex-direction: row;
+            }
+        }
+
+        /* ===================== TABLET ===================== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 920px;
+                padding: 22px 22px 44px;
+            }
+
+            .top-title {
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+
+            .top-title .label {
+                font-size: 25px;
+            }
+
+            .top-title .judul {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 27px;
+                margin: 28px 0 12px;
+            }
+
+            .card,
+            .tujuan-card,
+            .jenis-card {
+                border-radius: 15px;
                 padding: 20px;
+                margin-bottom: 18px;
+            }
+
+            .tujuan-header .title {
+                font-size: 21px;
+            }
+
+            p,
+            .card ul,
+            .card ol,
+            .definisi-box ul,
+            .definisi-box li,
+            .jenis-info-text,
+            .jenis-note,
+            .latihan-main-subtitle,
+            .panel-subtitle,
+            .latihan-desc {
+                font-size: 15.5px;
+            }
+
+            .rumus-box {
+                padding: 13px 14px;
+                font-size: 17px;
+            }
+
+            .definisi-box {
+                padding: 38px 22px 20px;
+                margin-top: 46px;
+            }
+
+            .definisi-lead {
+                font-size: 21px;
+            }
+
+            .definisi-rumus {
+                padding: 18px 16px;
+            }
+
+            .jenis-title {
+                font-size: 25px;
+            }
+
+            .jenis-info-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .jenis-icon {
+                width: 66px;
+                height: 66px;
+                font-size: 30px;
+            }
+
+            .level-cards {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .level-card {
+                padding: 13px;
+                min-height: 112px;
+            }
+
+            .level-title {
+                font-size: 17px;
+            }
+
+            .level-status {
+                min-width: 0;
+                width: 100%;
+                font-size: 12.5px;
+                padding: 6px 8px;
+            }
+
+            .latihan-shell {
+                max-width: 100%;
+                padding-left: 14px;
+            }
+
+            .latihan-polynomial-wrapper {
+                margin: 28px auto;
+                padding: 26px;
+                border-radius: 24px;
+            }
+
+            .soal-card {
+                padding: 22px;
             }
 
             .soal-susun {
+                font-size: 24px;
+            }
+
+            .jawaban-area {
+                flex-wrap: wrap;
+            }
+
+            .jawaban-area input {
+                flex: 1 1 260px;
+            }
+
+            .jawaban-area button {
+                flex: 0 0 auto;
+            }
+        }
+
+        /* ===================== HP BESAR / TABLET KECIL ===================== */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .materi-wrap {
+                padding: 18px 16px 38px;
+            }
+
+            .top-title {
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .top-title .label {
+                font-size: 23px;
+                line-height: 1.2;
+            }
+
+            .top-title .judul {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin: 24px 0 10px;
+            }
+
+            .card,
+            .tujuan-card,
+            .jenis-card {
+                padding: 18px;
+                border-radius: 15px;
+            }
+
+            .title-box {
+                font-size: 17px;
+            }
+
+            .tujuan-header .title {
                 font-size: 20px;
-                padding: 14px 18px;
+            }
+
+            p,
+            .card ul,
+            .card ol,
+            .definisi-box ul,
+            .definisi-box li,
+            .jenis-info-text,
+            .jenis-note,
+            .latihan-main-subtitle,
+            .panel-subtitle,
+            .latihan-desc {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .rumus-box,
+            .definisi-rumus {
+                justify-content: flex-start;
+                padding: 12px 13px;
+                font-size: 16px;
+            }
+
+            .definisi-box {
+                padding: 38px 18px 18px;
+                margin: 44px 0 18px;
+                border-radius: 16px;
+            }
+
+            .definisi-pill {
+                left: 18px;
+                font-size: 13px;
+                padding: 6px 16px;
+            }
+
+            .definisi-lead {
+                font-size: 19px;
+            }
+
+            .definisi-sub {
+                font-size: 17px;
+            }
+
+            .jenis-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .jenis-title {
+                font-size: 22px;
+            }
+
+            .jenis-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .jenis-icon {
+                width: 58px;
+                height: 58px;
+                font-size: 27px;
+            }
+
+            table.materi-table,
+            .jenis-table {
+                min-width: 680px;
+            }
+
+            .materi-table th,
+            .materi-table td {
+                padding: 12px 10px;
+                font-size: 15px;
+            }
+
+            .question {
+                padding: 13px;
+            }
+
+            .quiz-list {
+                margin-left: 16px;
+            }
+
+            .quiz-input,
+            .hasil-input,
+            .jawaban-input {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .contoh-badge {
+                padding: 9px 22px;
+            }
+
+            .contoh-box {
+                padding: 13px;
+            }
+
+            .mini-actions {
+                justify-content: flex-start;
+            }
+
+            .latihan-polinom-wrap {
+                padding: 16px 14px 24px;
+            }
+
+            .latihan-shell {
+                padding-left: 10px;
+            }
+
+            .latihan-header-box {
+                padding: 16px;
+            }
+
+            .latihan-main-title {
+                font-size: 23px;
+            }
+
+            .level-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .level-card {
+                min-height: auto;
+                padding: 13px 14px;
+            }
+
+            .latihan-panel {
+                padding: 15px;
+                border-radius: 18px;
+            }
+
+            .soal-math-box {
+                min-height: 92px;
+            }
+
+            .latihan-polynomial-wrapper {
+                margin: 24px auto;
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .latihan-title {
+                font-size: 18px;
+                line-height: 1.35;
+            }
+
+            .soal-card {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .soal-card h4 {
+                font-size: 18px;
+            }
+
+            .soal-susun {
+                width: 100%;
+                font-size: 21px;
+                padding: 14px 16px;
             }
 
             .jawaban-area {
                 flex-direction: column;
+                align-items: stretch;
             }
 
             .jawaban-area input,
-            .jawaban-area button {
+            .jawaban-area button,
+            .jawaban-area span {
                 width: 100%;
+            }
+
+            .jawaban-area span {
+                text-align: center;
+            }
+        }
+
+        /* ===================== HP KECIL ===================== */
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 14px 10px 32px;
+                line-height: 1.65;
+            }
+
+            .top-title {
+                align-items: flex-start;
+                gap: 7px;
+                margin-bottom: 14px;
+            }
+
+            .top-title .label {
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+            .top-title .judul {
+                font-size: 20px;
+                line-height: 1.25;
+            }
+
+            .section-title {
+                font-size: 21px;
+                margin: 22px 0 10px;
+                line-height: 1.25;
+            }
+
+            .card,
+            .tujuan-card,
+            .jenis-card {
+                padding: 15px 13px;
+                border-radius: 14px;
+                margin-bottom: 16px;
+                box-shadow: 0 8px 22px rgba(0, 0, 0, .045);
+            }
+
+            .card-eksplorasi,
+            .card-green,
+            .card-latihan,
+            .latihan-polinom-wrap {
+                border-left-width: 5px;
+            }
+
+            .title-box {
+                font-size: 16px;
+                line-height: 1.35;
+                gap: 8px;
+            }
+
+            .tujuan-header .title {
+                font-size: 18px;
+                line-height: 1.3;
+            }
+
+            .tujuan-card ol,
+            .card ul,
+            .card ol {
+                padding-left: 18px;
+                margin-left: 0;
+            }
+
+            p,
+            .card ul,
+            .card ol,
+            .definisi-box ul,
+            .definisi-box li,
+            .jenis-info-text,
+            .jenis-note,
+            .latihan-main-subtitle,
+            .panel-subtitle,
+            .latihan-desc {
+                font-size: 14.5px;
+                line-height: 1.72;
+            }
+
+            p,
+            .tujuan-card li {
+                text-align: left;
+            }
+
+            .rumus-box,
+            .definisi-rumus {
+                justify-content: flex-start;
+                padding: 11px 12px;
+                border-radius: 12px;
+                font-size: 15px;
+            }
+
+            .penjelasan-plain {
+                margin: 14px 0 18px;
+            }
+
+            .penjelasan-plain p {
+                font-size: 14.5px;
+                line-height: 1.75;
+                text-align: left;
+            }
+
+            .definisi-box {
+                padding: 34px 14px 16px;
+                margin: 40px 0 18px;
+                border-radius: 15px;
+            }
+
+            .definisi-pill {
+                top: -19px;
+                left: 14px;
+                padding: 5px 14px;
+                border-width: 2px;
+                font-size: 12px;
+            }
+
+            .definisi-lead {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+
+            .definisi-sub {
+                font-size: 16px;
+            }
+
+            .definisi-box ul {
+                padding-left: 18px;
+            }
+
+            table.materi-table,
+            .jenis-table {
+                min-width: 620px;
+            }
+
+            .materi-table th,
+            .materi-table td {
+                padding: 10px 9px;
+                font-size: 14px;
+            }
+
+            .question {
+                padding: 12px;
+                border-radius: 13px;
+            }
+
+            .question .qtitle {
+                font-size: 15px;
+            }
+
+            .quiz-list {
+                margin-left: 16px;
+                padding-left: 0;
+            }
+
+            .quiz-item {
+                margin: 10px 0 14px;
+            }
+
+            .quiz-q {
+                line-height: 1.6;
+            }
+
+            .quiz-input,
+            .hasil-input,
+            .jawaban-input,
+            .jawaban-area input {
+                width: 100%;
+                max-width: 100%;
+                font-size: 15px;
+                padding: 10px 11px;
+            }
+
+            .quiz-actions,
+            .mini-actions,
+            .latihan-actions {
+                gap: 8px;
+            }
+
+            .quiz-feedback,
+            .mini-feedback,
+            .latihan-feedback {
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .quiz-summary {
+                display: block;
+                margin-left: 0;
+                margin-top: 8px;
+                font-size: 14px;
+            }
+
+            .contoh-badge {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+
+            .contoh-box {
+                padding: 12px;
+                border-radius: 13px;
+            }
+
+            .contoh-row-title {
+                line-height: 1.5;
+            }
+
+            .mini-actions {
+                justify-content: stretch;
+            }
+
+            .mini-btn {
+                width: 100%;
+                padding: 10px 14px;
+            }
+
+            #contoh-final {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .sehingga-box {
+                padding: 12px;
+                border-radius: 13px;
+            }
+
+            .latihan-polinom-wrap {
+                padding: 14px 11px 22px;
+            }
+
+            .latihan-shell {
+                padding-left: 8px;
+                border-left-width: 4px;
+            }
+
+            .latihan-header-box {
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            .latihan-main-title {
+                font-size: 20px;
+                line-height: 1.25;
+            }
+
+            .level-cards {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .level-card {
+                min-height: auto;
+                padding: 12px;
+                border-radius: 15px;
+            }
+
+            .level-bar {
+                width: 7px;
+            }
+
+            .level-title {
+                font-size: 16px;
+            }
+
+            .level-sub {
+                font-size: 13px;
+            }
+
+            .level-status {
+                min-width: 0;
+                width: 100%;
+                font-size: 12.5px;
+                padding: 6px 8px;
+            }
+
+            .latihan-panel {
+                padding: 13px;
+                border-radius: 16px;
+            }
+
+            .panel-title {
+                font-size: 17px;
+            }
+
+            .soal-math-box {
+                min-height: 84px;
+                padding: 10px;
+                border-radius: 14px;
+            }
+
+            .latihan-btn {
+                width: 100%;
+                padding: 10px 16px;
+            }
+
+            .step-box {
+                padding: 12px;
+            }
+
+            .jenis-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .jenis-title {
+                font-size: 20px;
+            }
+
+            .jenis-subtitle {
+                font-size: 14.5px;
+                line-height: 1.65;
+            }
+
+            .jenis-info-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .jenis-info-card {
+                padding: 13px;
+                border-radius: 14px;
+            }
+
+            .jenis-info-head {
+                font-size: 16px;
+            }
+
+            .jenis-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 24px;
+                border-radius: 14px;
+            }
+
+            .jenis-note {
+                padding: 12px;
+                border-radius: 14px;
+                gap: 9px;
+            }
+
+            .latihan-polynomial-wrapper {
+                margin: 20px auto;
+                padding: 14px;
+                border-radius: 18px;
+            }
+
+            .latihan-title {
+                font-size: 16px;
+                line-height: 1.35;
+                padding: 8px 12px;
+            }
+
+            .latihan-desc {
+                margin-bottom: 18px;
+            }
+
+            .soal-card {
+                padding: 15px;
+                border-radius: 18px;
+                margin-bottom: 16px;
+            }
+
+            .soal-card h4 {
+                font-size: 16.5px;
+                line-height: 1.35;
+                margin-bottom: 14px;
+            }
+
+            .soal-susun {
+                width: 100%;
+                font-size: 18px;
+                line-height: 1.55;
+                padding: 12px 13px;
+                border-radius: 14px;
+                margin: 12px auto 16px;
+            }
+
+            .jawaban-area {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .jawaban-area input,
+            .jawaban-area button,
+            .jawaban-area span {
+                width: 100%;
+            }
+
+            .jawaban-area button {
+                padding: 11px 14px;
+            }
+
+            .jawaban-area span {
+                text-align: center;
+                min-height: 22px;
+            }
+
+            .penjelasan {
+                padding: 13px;
+                border-radius: 13px;
+                font-size: 14px;
+            }
+
+            .lock-box {
+                margin: 0 12px;
+                text-align: center;
+                line-height: 1.45;
+            }
+        }
+
+        /* ===================== HP SANGAT KECIL ===================== */
+        @media (max-width: 360px) {
+            .materi-wrap {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .top-title .judul {
+                font-size: 18.5px;
+            }
+
+            .section-title {
+                font-size: 19.5px;
+            }
+
+            .card,
+            .tujuan-card,
+            .jenis-card {
+                padding: 13px 11px;
+            }
+
+            p,
+            .card ul,
+            .card ol,
+            .definisi-box ul,
+            .definisi-box li,
+            .jenis-info-text,
+            .jenis-note,
+            .latihan-main-subtitle,
+            .panel-subtitle,
+            .latihan-desc {
+                font-size: 14px;
+            }
+
+            .soal-susun {
+                font-size: 16.5px;
+                padding: 11px;
+            }
+
+            .latihan-polynomial-wrapper {
+                padding: 12px;
             }
         }
     </style>
@@ -1282,11 +2135,9 @@
             <div class="penjelasan-plain">
                 <p>
                     Sama seperti operasi penjumlahan pada bilangan real, penjumlahan pada polinomial dapat dilakukan dengan
-                    cara
-                    menggabungkan suku-suku yang sejenis, yaitu suku yang memiliki variabel yang sama, dan pangkat variabel
-                    yang
-                    sama.
-                    Suku yang tidak sejenis tidak dapat dijumlahkan, sehingga tetap dituliskan apa adanya.
+                    cara menggabungkan suku-suku yang sejenis, yaitu suku yang memiliki variabel yang sama, dan pangkat
+                    variabel
+                    yang sama. Suku yang tidak sejenis tidak dapat dijumlahkan, sehingga tetap dituliskan apa adanya.
                 </p>
             </div>
 
@@ -1313,9 +2164,7 @@
                 </ol>
             </div>
 
-            {{-- =========================
-            CARD 1: Tabel Suku Sejenis
-            ========================= --}}
+            {{-- CARD 1: Tabel Suku Sejenis --}}
             <div class="card card-green jenis-card">
                 <div class="jenis-header">
                     <div>
@@ -1372,10 +2221,7 @@
                 </div>
             </div>
 
-
-            {{-- =========================
-            CARD 2: Contoh Interaktif
-            ========================= --}}
+            {{-- CARD 2: Contoh Interaktif --}}
             <div class="card card-green">
 
                 <div class="contoh-badge">CONTOH</div>
@@ -1402,56 +2248,48 @@
                             </thead>
                             <tbody>
 
-                                <!-- Row 1 -->
                                 <tr class="contoh-item" data-answer="7x^3" data-canonical="7x^3" data-latex="7x^3">
                                     <td>$(3x^3 + 4x^3)$</td>
                                     <td>$(3 + 4)x^3$</td>
                                     <td>
                                         <input class="hasil-input" type="text" />
                                         <div class="katex-answer"></div>
-
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                <!-- Row 2 -->
                                 <tr class="contoh-item" data-answer="2x^2" data-canonical="2x^2" data-latex="2x^2">
                                     <td>$(5x^2 - 3x^2)$</td>
                                     <td>$(5 - 3)x^2$</td>
                                     <td>
                                         <input class="hasil-input" type="text" />
                                         <div class="katex-answer"></div>
-
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                <!-- Row 3 -->
                                 <tr class="contoh-item" data-answer="-x" data-canonical="-x" data-latex="-x">
                                     <td>$(-2x + x)$</td>
                                     <td>$(-2 + 1)x$</td>
                                     <td>
                                         <input class="hasil-input" type="text" />
                                         <div class="katex-answer"></div>
-
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
                                         </div>
                                     </td>
                                 </tr>
 
-                                <!-- Row 4 -->
                                 <tr class="contoh-item" data-answer="2" data-canonical="2" data-latex="2">
                                     <td>$(7 - 5)$</td>
                                     <td>$(7 - 5)$</td>
                                     <td>
                                         <input class="hasil-input" type="text" />
                                         <div class="katex-answer"></div>
-
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
                                         </div>
@@ -1462,7 +2300,6 @@
                         </table>
                     </div>
 
-                    <!-- INPUT HASIL AKHIR -->
                     <div style="margin-top:14px;">
                         <div class="contoh-row-title">Tuliskan hasil akhirnya:</div>
 
@@ -1472,7 +2309,6 @@
                             <span id="contoh-final-fb" class="mini-feedback"></span>
                         </div>
 
-                        <!-- CEK SEMUA -->
                         <div class="mini-actions" style="margin-top:10px;">
                             <button type="button" id="contoh-check-all" class="mini-btn">
                                 Cek Semua
@@ -1481,7 +2317,6 @@
                         </div>
                     </div>
 
-                    <!-- HASIL AKHIR -->
                     <div class="sehingga-box" id="sehingga-box">
                         <div class="contoh-row-title" style="margin-top:0;">Sehingga:</div>
 
@@ -1559,7 +2394,6 @@
 
                 <div class="soal-card soal-3 locked" id="soal-3">
 
-
                     <div class="isi-soal">
                         <h4>3. Penjumlahan 4 Suku</h4>
 
@@ -1586,9 +2420,6 @@
                     </div>
                 </div>
 
-
-
-
             </div>
 
         </div> {{-- end #materi-lanjutan --}}
@@ -1610,26 +2441,61 @@
                         .replace(/×/g, "x")
                         .replace(/–/g, "-")
                         .replace(/−/g, "-")
-                        .replace(/²/g, "^2")
-                        .replace(/³/g, "^3")
                         .replace(/\+\-/g, "-");
+
+                const superscriptToNormal = (s) => {
+                    const map = {
+                        "⁰": "0",
+                        "¹": "1",
+                        "²": "2",
+                        "³": "3",
+                        "⁴": "4",
+                        "⁵": "5",
+                        "⁶": "6",
+                        "⁷": "7",
+                        "⁸": "8",
+                        "⁹": "9",
+                        "⁻": "-"
+                    };
+
+                    return (s || "").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (match) => {
+                        return "^" + match.split("").map(ch => map[ch] || "").join("");
+                    });
+                };
 
                 const normalizePoly = (raw) => {
                     let s = normalize(raw);
                     if (!s) return "";
 
+                    s = superscriptToNormal(s);
+
                     s = s
-                        .replace(/x3/g, "x^3")
-                        .replace(/x2/g, "x^2")
-                        .replace(/y3/g, "y^3")
-                        .replace(/y2/g, "y^2")
-                        .replace(/x\^1/g, "x")
-                        .replace(/y\^1/g, "y")
-                        .replace(/(^|[+\-])1x/g, "$1x")
-                        .replace(/(^|[+\-])1y/g, "$1y")
-                        .replace(/(^|[+\-])\-1x/g, "$1-x")
-                        .replace(/(^|[+\-])\-1y/g, "$1-y")
-                        .replace(/^\+/, "");
+                        .replace(/\*\*/g, "^")
+
+                        /* ubah x(2), y(3), a(4) menjadi x^2, y^3, a^4 */
+                        .replace(/([a-z])\((-?\d+)\)/g, "$1^$2")
+
+                        /* ubah x2, x3, y5, a7 menjadi x^2, x^3, y^5, a^7 */
+                        .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
+                            const prev = full[offset - 1] || "";
+                            if (prev === "^") return match;
+                            return `${varName}^${power}`;
+                        })
+
+                        .replace(/\+\-/g, "-")
+                        .replace(/^\+/, "")
+
+                        /* 1x jadi x */
+                        .replace(/(^|[+\-])1([a-z])/g, "$1$2")
+
+                        /* -1x jadi -x */
+                        .replace(/(^|[+\-])-1([a-z])/g, "$1-$2")
+
+                        /* x^1 jadi x */
+                        .replace(/\^1(?!\d)/g, "")
+
+                        /* x^02 jadi x^2 */
+                        .replace(/\^0+(\d+)/g, "^$1");
 
                     return s;
                 };

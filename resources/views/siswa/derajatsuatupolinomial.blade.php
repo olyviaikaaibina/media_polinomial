@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                        delimiters: [
-                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                            {left: '$', right: '$', display: false}
-                                                                                        ]
-                                                                                    });"></script>
+                                                                                                    delimiters: [
+                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                    ]
+                                                                                                });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -129,6 +129,81 @@
             border: 1px solid rgba(0, 0, 0, .08);
             width: fit-content;
             max-width: 100%;
+        }
+
+        /* ===== EKSPLORASI RESPONSIVE ===== */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin: 12px 0 14px;
+        }
+
+        .explore-card {
+            border: 1.5px dashed rgba(43, 108, 176, .35);
+            border-radius: 14px;
+            padding: 12px 14px;
+            background: rgba(243, 247, 255, .75);
+            min-height: 105px;
+            box-sizing: border-box;
+        }
+
+        .explore-card.green-card {
+            border-color: rgba(27, 122, 42, .35);
+            background: rgba(242, 251, 244, .75);
+        }
+
+        .explore-card.orange-card {
+            border-color: rgba(245, 124, 0, .35);
+            background: rgba(255, 248, 240, .9);
+        }
+
+        .explore-card.purple-card {
+            border-color: rgba(128, 80, 180, .35);
+            background: rgba(248, 244, 255, .9);
+        }
+
+        .explore-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .explore-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: rgba(43, 108, 176, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1e3a8a;
+            flex: 0 0 58px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .green-card .explore-badge {
+            background: rgba(27, 122, 42, .12);
+            color: #0f5f22;
+        }
+
+        .orange-card .explore-badge {
+            background: rgba(245, 124, 0, .12);
+            color: #c25a00;
+        }
+
+        .purple-card .explore-badge {
+            background: rgba(128, 80, 180, .12);
+            color: #7a3fb0;
+        }
+
+        .explore-text {
+            font-size: 15px;
+            line-height: 1.55;
+            min-width: 0;
         }
 
         /* ===== QUIZ ===== */
@@ -365,59 +440,59 @@
             color: var(--muted);
         }
 
-        /* ===== p5 HOST ===== */
-        .p5-host {
-            position: relative;
+        /* ===== MARI MENCOBA: P5 RESPONSIVE ===== */
+        .p5-responsive-wrap {
             width: 100%;
-            height: 760px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .p5-host {
+            width: 100%;
+            max-width: 100%;
+            min-height: 420px;
             margin-top: 12px;
             border-radius: 18px;
             overflow: hidden;
             box-sizing: border-box;
             border: 2px solid var(--outer-line);
             background: #fff;
+            position: relative;
         }
 
         .p5-host canvas {
-            display: block !important;
+            display: block;
             width: 100% !important;
-            height: 100% !important;
+            height: auto !important;
         }
 
-        #p5-interaktif-1b .p5-ui {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-            z-index: 5;
-            padding: 10px 12px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, .92);
-            border: 1px solid rgba(0, 0, 0, .10);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, .06);
-        }
-
-        #p5-interaktif-1b .p5-ui select,
-        #p5-interaktif-1b .p5-ui input,
-        #p5-interaktif-1b .p5-ui button {
+        .p5-host button {
             font-family: "Times New Roman", Times, serif;
-            font-size: 16px;
-            padding: 8px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, .18);
-            outline: none;
-            margin: 0;
-            position: static;
+            font-weight: 900;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, .14);
+            background: #fff;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: .15s ease;
         }
 
-        #p5-interaktif-1b canvas {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
+        .p5-host button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .07);
+        }
+
+        @media (max-width: 900px) {
+            .p5-host {
+                min-height: 440px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .p5-host {
+                min-height: 560px;
+                border-radius: 16px;
+            }
         }
 
         /* ===== PARAGRAF DI BAWAH MARI MENCOBA ===== */
@@ -735,8 +810,91 @@
                 font-size: 16px;
             }
 
-            .p5-host {
-                height: 720px;
+            .materi-wrap {
+                padding: 14px 10px 32px;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .top-title {
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explore-card {
+                min-height: auto;
+                padding: 12px;
+            }
+
+            .explore-inner {
+                align-items: flex-start;
+            }
+
+            .explore-badge {
+                width: 52px;
+                height: 52px;
+                flex-basis: 52px;
+                font-size: 17px;
+            }
+
+            .explore-text {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .try-div-box {
+                padding: 12px;
+            }
+
+            .try-polynomial {
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .try-options {
+                grid-template-columns: 1fr;
+            }
+
+            .try-nav {
+                flex-direction: column;
+            }
+
+            .try-nav button {
+                width: 100%;
+            }
+
+            .sol-quiz-item {
+                padding: 12px;
+            }
+
+            .sol-quiz-head {
+                display: grid;
+                grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+
+            .sol-quiz-form {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-content: stretch;
+                width: 100%;
+            }
+
+            .sol-input,
+            .sol-btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .sol-quiz-math {
+                font-size: 17px;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 4px;
             }
 
             .sol-grid {
@@ -826,126 +984,41 @@
                 Amati setiap suku berikut.
             </p>
 
-            <div style="
-                        display:grid;
-                        grid-template-columns:repeat(2, minmax(0, 1fr));
-                        gap:10px;
-                        margin:12px 0 14px;
-                    ">
+            <div class="explore-grid">
 
-                <div style="
-                            border:1.5px dashed rgba(43,108,176,.35);
-                            border-radius:14px;
-                            padding:12px 14px;
-                            background:rgba(243,247,255,.75);
-                            min-height:105px;
-                        ">
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <div style="
-                                    width:58px;
-                                    height:58px;
-                                    border-radius:50%;
-                                    background:rgba(43,108,176,.12);
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    font-size:20px;
-                                    font-weight:900;
-                                    color:#1e3a8a;
-                                    flex-shrink:0;
-                                ">
-                            $3xy^3$
-                        </div>
-                        <div style="font-size:15px; line-height:1.55;">
+                <div class="explore-card">
+                    <div class="explore-inner">
+                        <div class="explore-badge">$3xy^3$</div>
+                        <div class="explore-text">
                             Pangkat $x=1$ dan $y=3$. Derajat diperoleh dari jumlah pangkat variabel.
                         </div>
                     </div>
                 </div>
 
-                <div style="
-                            border:1.5px dashed rgba(27,122,42,.35);
-                            border-radius:14px;
-                            padding:12px 14px;
-                            background:rgba(242,251,244,.75);
-                            min-height:105px;
-                        ">
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <div style="
-                                    width:58px;
-                                    height:58px;
-                                    border-radius:50%;
-                                    background:rgba(27,122,42,.12);
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    font-size:20px;
-                                    font-weight:900;
-                                    color:#0f5f22;
-                                    flex-shrink:0;
-                                ">
-                            $2x^2$
-                        </div>
-                        <div style="font-size:15px; line-height:1.55;">
+                <div class="explore-card green-card">
+                    <div class="explore-inner">
+                        <div class="explore-badge">$2x^2$</div>
+                        <div class="explore-text">
                             Suku ini hanya memiliki variabel $x$. Pangkat variabelnya adalah
-                            <b>$2$</b>
+                            <b>$2$</b>.
                         </div>
                     </div>
                 </div>
 
-                <div style="
-                            border:1.5px dashed rgba(245,124,0,.35);
-                            border-radius:14px;
-                            padding:12px 14px;
-                            background:rgba(255,248,240,.9);
-                            min-height:105px;
-                        ">
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <div style="
-                                    width:58px;
-                                    height:58px;
-                                    border-radius:50%;
-                                    background:rgba(245,124,0,.12);
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    font-size:20px;
-                                    font-weight:900;
-                                    color:#c25a00;
-                                    flex-shrink:0;
-                                ">
-                            $-4z$
-                        </div>
-                        <div style="font-size:15px; line-height:1.55;">
+                <div class="explore-card orange-card">
+                    <div class="explore-inner">
+                        <div class="explore-badge">$-4z$</div>
+                        <div class="explore-text">
                             Suku ini memiliki variabel $z$. Karena $z=z^1$, maka pangkatnya
-                            <b>$1$</b>
+                            <b>$1$</b>.
                         </div>
                     </div>
                 </div>
 
-                <div style="
-                            border:1.5px dashed rgba(128,80,180,.35);
-                            border-radius:14px;
-                            padding:12px 14px;
-                            background:rgba(248,244,255,.9);
-                            min-height:105px;
-                        ">
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <div style="
-                                    width:58px;
-                                    height:58px;
-                                    border-radius:50%;
-                                    background:rgba(128,80,180,.12);
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    font-size:20px;
-                                    font-weight:900;
-                                    color:#7a3fb0;
-                                    flex-shrink:0;
-                                ">
-                            $6$
-                        </div>
-                        <div style="font-size:15px; line-height:1.55;">
+                <div class="explore-card purple-card">
+                    <div class="explore-inner">
+                        <div class="explore-badge">$6$</div>
+                        <div class="explore-text">
                             Suku ini tidak memiliki variabel, sehingga merupakan konstanta.
                         </div>
                     </div>
@@ -1061,12 +1134,12 @@
                 </p>
             </div>
 
-            {{-- CARD 4: Mari Mencoba (p5) --}}
+            {{-- CARD 4: Mari Mencoba (P5 RESPONSIVE) --}}
             <div class="card card-try">
                 <div class="title-box">📝 Mari Mencoba</div>
 
-                <div id="p5-interaktif-1b" class="p5-host">
-                    <noscript>Aktifkan JavaScript untuk melihat latihan interaktif.</noscript>
+                <div class="p5-responsive-wrap">
+                    <div id="p5-interaktif-1b" class="p5-host"></div>
                 </div>
 
                 <div class="after-try">
@@ -1076,8 +1149,8 @@
                         Untuk mengetahui derajat suatu monomial, kita cukup memperhatikan pangkat variabel-variabel yang
                         menyusunnya.
                         <br><br>
-                        Di dalam sebuah polinomial, suku yang memiliki pangkat variabel paling besar disebut sebagai <b>suku
-                            utama</b>.
+                        Di dalam sebuah polinomial, suku yang memiliki pangkat variabel paling besar disebut sebagai
+                        <b>suku utama</b>.
                         Derajat suku inilah yang menentukan derajat polinomial secara keseluruhan.
                     </p>
                 </div>
@@ -1247,7 +1320,6 @@
 
                         <div class="lat-feedback" id="fb-winner"></div>
                         <div class="lat-status-done" id="done2"></div>
-                        <div class="lat-lock-msg" id="lock2">🔒 Selesaikan Soal 1 dengan benar terlebih dahulu.</div>
                     </div>
 
                     {{-- SOAL 3 --}}
@@ -1270,7 +1342,7 @@
 
                         <div class="lat-feedback" id="fb-mystery"></div>
                         <div class="lat-status-done" id="done3"></div>
-                        <div class="lat-lock-msg" id="lock3">🔒 Selesaikan Soal 2 dengan benar terlebih dahulu.</div>
+
                     </div>
 
                     {{-- SOAL 4 --}}
@@ -1297,7 +1369,7 @@
 
                         <div class="lat-feedback" id="fb-detect"></div>
                         <div class="lat-status-done" id="done4"></div>
-                        <div class="lat-lock-msg" id="lock4">🔒 Selesaikan Soal 3 dengan benar terlebih dahulu.</div>
+
                     </div>
 
                     <div class="lat-final" id="latihanFinalScore">Selesaikan latihan secara berurutan.</div>
@@ -1315,6 +1387,7 @@
     </script>
 
     {{-- interaktif lama --}}
+
     <script src="{{ asset('js/interaktif1b.js') }}"></script>
     <script>
         (function () {
@@ -1630,6 +1703,78 @@
                 el.textContent = text;
             };
 
+            /* =========================
+               NORMALISASI JAWABAN PANGKAT
+               Menerima:
+               3x5, 3x^5, 3x⁵
+            ========================== */
+            const normalize = (s) =>
+                (s || "")
+                    .toLowerCase()
+                    .trim()
+                    .replace(/\s+/g, "")
+                    .replace(/×/g, "x")
+                    .replace(/–/g, "-")
+                    .replace(/−/g, "-")
+                    .replace(/\+\-/g, "-");
+
+            const superscriptToNormal = (s) => {
+                const map = {
+                    "⁰": "0",
+                    "¹": "1",
+                    "²": "2",
+                    "³": "3",
+                    "⁴": "4",
+                    "⁵": "5",
+                    "⁶": "6",
+                    "⁷": "7",
+                    "⁸": "8",
+                    "⁹": "9",
+                    "⁻": "-"
+                };
+
+                return (s || "").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (match) => {
+                    return "^" + match.split("").map(ch => map[ch] || "").join("");
+                });
+            };
+
+            const normalizePoly = (raw) => {
+                let s = normalize(raw);
+                if (!s) return "";
+
+                s = superscriptToNormal(s);
+
+                s = s
+                    .replace(/\*\*/g, "^")
+
+                    /* x(5), y(2), a(3) menjadi x^5, y^2, a^3 */
+                    .replace(/([a-z])\((-?\d+)\)/g, "$1^$2")
+
+                    /* x5, y2, a3 menjadi x^5, y^2, a^3 */
+                    .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
+                        const prev = full[offset - 1] || "";
+                        if (prev === "^") return match;
+                        return `${varName}^${power}`;
+                    })
+
+                    .replace(/\+\-/g, "-")
+                    .replace(/^\+/, "")
+
+                    /* 1x menjadi x */
+                    .replace(/(^|[+\-])1([a-z])/g, "$1$2")
+
+                    /* -1x menjadi -x */
+                    .replace(/(^|[+\-])-1([a-z])/g, "$1-$2")
+
+                    /* x^1 menjadi x */
+                    .replace(/\^1(?!\d)/g, "")
+
+                    /* x^02 menjadi x^2 */
+                    .replace(/\^0+(\d+)/g, "^$1");
+
+                return s;
+            };
+
             const unlockSection = (section, lockEl) => {
                 if (!section) return;
                 section.classList.remove("disabled");
@@ -1700,6 +1845,7 @@
             if (latihan1) {
                 latihan1.dataset.unlocked = "1";
             }
+
             resetSoal2();
             resetSoal3();
             resetSoal4();
@@ -1733,11 +1879,11 @@
                             fbTrueFalse,
                             true,
                             `
-                                                <div>✅ Semua jawaban benar.</div>
-                                                <div><b>Penjelasan:</b></div>
-                                                <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
-                                                <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
-                                                `
+                            <div>✅ Semua jawaban benar.</div>
+                            <div><b>Penjelasan:</b></div>
+                            <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
+                            <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
+                            `
                         );
 
                         unlockSection(latihan2, lock2);
@@ -1748,11 +1894,11 @@
                             fbTrueFalse,
                             false,
                             `
-                                                <div>❌ Jawaban Soal 1 belum tepat.</div>
-                                                <div><b>Penjelasan jawaban benar:</b></div>
-                                                <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
-                                                <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
-                                                `
+                            <div>❌ Jawaban Soal 1 belum tepat.</div>
+                            <div><b>Penjelasan jawaban benar:</b></div>
+                            <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
+                            <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
+                            `
                         );
 
                         resetSoal2();
@@ -1782,7 +1928,7 @@
                     const winnerOk =
                         winnerTerm &&
                         winnerDegree &&
-                        winnerTerm.value === "3x5" &&
+                        normalizePoly(winnerTerm.value) === normalizePoly("3x^5") &&
                         parseInt(winnerDegree.value || "", 10) === 5;
 
                     if (winnerOk) {
@@ -1792,9 +1938,9 @@
                             fbWinner,
                             true,
                             `
-                                                <div>✅ Jawaban benar.</div>
-                                                <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
-                                                `
+                            <div>✅ Jawaban benar.</div>
+                            <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
+                            `
                         );
 
                         unlockSection(latihan3, lock3);
@@ -1805,9 +1951,9 @@
                             fbWinner,
                             false,
                             `
-                                                <div>❌ Soal 2 belum tepat.</div>
-                                                <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
-                                                `
+                            <div>❌ Soal 2 belum tepat.</div>
+                            <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
+                            `
                         );
 
                         resetSoal3();
@@ -1844,9 +1990,9 @@
                             fbMystery,
                             true,
                             `
-                                                <div>✅ Jawaban benar.</div>
-                                                <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
-                                                `
+                            <div>✅ Jawaban benar.</div>
+                            <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
+                            `
                         );
                         unlockSection(latihan4, lock4);
                     } else {
@@ -1856,9 +2002,9 @@
                             fbMystery,
                             false,
                             `
-                                                <div>❌ Soal 3 belum tepat.</div>
-                                                <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
-                                                `
+                            <div>❌ Soal 3 belum tepat.</div>
+                            <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
+                            `
                         );
 
                         resetSoal4();
@@ -1869,7 +2015,6 @@
                 });
             }
 
-            // ===== SOAL 4 =====
             // ===== SOAL 4 =====
             if (btnCheck4) {
                 btnCheck4.addEventListener("click", async () => {
@@ -1899,16 +2044,15 @@
                             fbDetect,
                             true,
                             `
-                    <div>✅ Jawaban benar.</div>
-                    <div><b>Penjelasan:</b></div>
-                    <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
-                    <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
-                    <div>• <b>4</b> memiliki derajat <b>0</b></div>
-                    <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
-                    `
+                            <div>✅ Jawaban benar.</div>
+                            <div><b>Penjelasan:</b></div>
+                            <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
+                            <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
+                            <div>• <b>4</b> memiliki derajat <b>0</b></div>
+                            <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
+                            `
                         );
 
-                        // Simpan progress materi dan buka tombol Next
                         const saved = await saveProgressMateri();
 
                         if (saved) {
@@ -1923,13 +2067,13 @@
                             fbDetect,
                             false,
                             `
-                    <div>❌ Soal 4 belum tepat.</div>
-                    <div><b>Penjelasan jawaban benar:</b></div>
-                    <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
-                    <div>• Derajat <b>−xy</b> = <b>2</b></div>
-                    <div>• Derajat <b>4</b> = <b>0</b></div>
-                    <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
-                    `
+                            <div>❌ Soal 4 belum tepat.</div>
+                            <div><b>Penjelasan jawaban benar:</b></div>
+                            <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
+                            <div>• Derajat <b>−xy</b> = <b>2</b></div>
+                            <div>• Derajat <b>4</b> = <b>0</b></div>
+                            <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
+                            `
                         );
                     }
 

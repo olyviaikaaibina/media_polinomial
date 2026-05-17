@@ -1000,6 +1000,322 @@
                 justify-content: center;
             }
         }
+
+        /* =========================
+               RESPONSIVE: LAPTOP, TABLET, HP
+               Tambahkan di paling bawah <style>
+            ========================= */
+
+        /* Laptop / desktop */
+        @media (min-width: 993px) {
+            .materi-wrap {
+                max-width: 1020px;
+            }
+
+            .langkah-target-grid,
+            .isi-grid {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+
+            .ilustrasi-top-simple {
+                grid-template-columns: 1.1fr .9fr;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .materi-wrap {
+                max-width: 100%;
+                padding: 14px 14px 30px;
+            }
+
+            .bab-title {
+                font-size: 26px;
+                line-height: 1.3;
+            }
+
+            .materi-paragraf,
+            .tujuan-card li,
+            .content-card p,
+            .content-card li,
+            .info-card p,
+            .info-card li,
+            .contoh-card p,
+            .contoh-card li,
+            .step-question,
+            .final-result p,
+            .bersusun-intro,
+            .langkah-putih-card li,
+            .latihan-card p,
+            .latihan-card li {
+                font-size: 15.5px;
+                line-height: 1.8;
+            }
+
+            .ilustrasi-top-simple {
+                grid-template-columns: 1fr;
+            }
+
+            .hasil-akhir-grid,
+            .ilustrasi-summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .langkah-target-grid,
+            .isi-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .latihan-match-board {
+                padding: 14px;
+                overflow-x: hidden;
+            }
+
+            .isi-card-content {
+                max-height: 90px;
+                font-size: 12.5px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            .materi-wrap {
+                width: 100%;
+                padding: 10px 8px 26px;
+            }
+
+            .bab-title {
+                font-size: 22px;
+                line-height: 1.35;
+                margin-bottom: 14px;
+            }
+
+            .tujuan-card,
+            .content-card,
+            .info-card,
+            .contoh-card,
+            .step-card,
+            .final-result,
+            .langkah-putih-card,
+            .latihan-card {
+                padding: 14px;
+                border-radius: 14px;
+                margin-bottom: 16px;
+            }
+
+            .materi-paragraf,
+            .tujuan-card li,
+            .content-card p,
+            .content-card li,
+            .info-card p,
+            .info-card li,
+            .contoh-card p,
+            .contoh-card li,
+            .step-question,
+            .step-feedback,
+            .final-result p,
+            .bersusun-intro,
+            .langkah-putih-card li,
+            .latihan-card p,
+            .latihan-card li,
+            .latihan-note {
+                font-size: 14.5px;
+                line-height: 1.75;
+            }
+
+            .mini-title {
+                font-size: 17px;
+                gap: 8px;
+            }
+
+            .section-label {
+                font-size: 13.5px;
+                padding: 7px 13px;
+            }
+
+            .rumus-box {
+                overflow-x: auto;
+                padding: 8px 4px;
+                max-width: 100%;
+            }
+
+            .rumus-box .katex-display {
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 4px;
+            }
+
+            .opsi-btn {
+                padding: 10px 12px;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .opsi-number {
+                min-width: 30px;
+                height: 30px;
+                font-size: 13px;
+            }
+
+            .ilustrasi-actions,
+            .contoh-actions,
+            .step-btn-row,
+            .latihan-actions {
+                flex-direction: column;
+            }
+
+            .btn-materi {
+                width: 100%;
+                text-align: center;
+                padding: 11px 14px;
+                font-size: 14px;
+            }
+
+            .ilustrasi-top-simple,
+            .hasil-akhir-grid,
+            .ilustrasi-summary-grid,
+            .langkah-target-grid,
+            .isi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .latihan-match-board {
+                padding: 12px;
+                border-radius: 14px;
+            }
+
+            .latihan-dnd-soal {
+                font-size: 14px;
+                overflow-x: auto;
+            }
+
+            .langkah-target-slot {
+                min-height: 88px;
+                padding: 10px;
+            }
+
+            .langkah-target-title {
+                font-size: 13.5px;
+            }
+
+            .drop-hint {
+                font-size: 11px;
+            }
+
+            .isi-card {
+                padding: 10px;
+            }
+
+            .isi-card-content {
+                font-size: 13px;
+                max-height: none;
+                overflow-x: auto;
+                overflow-y: visible;
+            }
+
+            .step-answer-input {
+                font-size: 14px;
+                padding: 11px 12px;
+            }
+
+            .definisi-tab {
+                position: relative;
+                width: fit-content;
+                min-width: 150px;
+                height: auto;
+                padding: 8px 14px;
+                border-radius: 12px 12px 0 0;
+            }
+
+            .definisi-wrap {
+                padding-top: 0;
+            }
+
+            .definisi-box {
+                margin-left: 0;
+                border-radius: 0 12px 12px 12px;
+                padding: 16px 14px 12px;
+            }
+
+            .progress-dnd {
+                font-size: 13.5px;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 420px) {
+            .bab-title {
+                font-size: 20px;
+            }
+
+            .tujuan-title,
+            .mini-title {
+                font-size: 16px;
+            }
+
+            .materi-paragraf,
+            .tujuan-card li,
+            .content-card p,
+            .content-card li,
+            .info-card p,
+            .info-card li,
+            .contoh-card p,
+            .contoh-card li,
+            .step-question,
+            .latihan-card p,
+            .latihan-card li {
+                font-size: 14px;
+            }
+
+            .rumus-box {
+                font-size: 13px;
+            }
+
+            .isi-card-content .katex {
+                font-size: 0.9em !important;
+            }
+        }
+
+        /* MODE KLIK UNTUK HP */
+        @media (max-width: 640px) {
+            .isi-card {
+                cursor: pointer;
+                border-width: 2px;
+            }
+
+            .isi-card.selected-click {
+                border-color: #1f7a34;
+                background: #eef8ef;
+                box-shadow: 0 0 0 3px rgba(31, 122, 52, .12);
+            }
+
+            .langkah-target-slot {
+                cursor: pointer;
+            }
+
+            .langkah-target-slot.ready-click {
+                border-color: #1f7a34;
+                background: #f3fbf4;
+            }
+
+            .click-mode-info {
+                display: block;
+                background: #fff8f1;
+                border: 1px dashed #e27a2f;
+                border-radius: 12px;
+                padding: 10px 12px;
+                margin: 10px 0 14px;
+                font-size: 13.5px;
+                line-height: 1.6;
+                color: #6b4a32;
+            }
+        }
+
+        @media (min-width: 641px) {
+            .click-mode-info {
+                display: none;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1823,6 +2139,7 @@
                 const hasilBox = document.getElementById('hasilBox');
                 const progressFillIlustrasi = document.getElementById('progressFillIlustrasi');
                 const progressTextIlustrasi = document.getElementById('progressTextIlustrasi');
+
                 let currentLangkah = 0;
 
                 function updateProgressIlustrasi() {
@@ -1887,6 +2204,7 @@
                             if (hasilBox) {
                                 hasilBox.classList.add('show');
                             }
+
                             btnNextLangkah.textContent = 'Semua Langkah Sudah Dibuka';
                             btnNextLangkah.disabled = true;
                             updateProgressIlustrasi();
@@ -1901,6 +2219,7 @@
                 if (btnResetLangkah) {
                     btnResetLangkah.addEventListener('click', function () {
                         resetLangkah();
+
                         if (ilustrasiContent) {
                             ilustrasiContent.classList.add('show');
                             renderMath(ilustrasiContent);
@@ -1925,187 +2244,190 @@
                 ].filter(Boolean);
 
                 const jawabanBenar = {
-                    1: ['2x^2', '2x2'],
-                    2: ['2x^3+2x^2', '2x3+2x2'],
-                    3: ['x^2-2x+1', 'x2-2x+1'],
+                    1: ['2x^2', '2x2', '2x²'],
+                    2: ['2x^3+2x^2', '2x3+2x2', '2x³+2x²'],
+                    3: ['x^2-2x+1', 'x2-2x+1', 'x²-2x+1'],
                     4: ['x'],
-                    5: ['-3x+1', '-3x1'],
+                    5: ['-3x+1'],
                     6: [
                         'h(x)=2x^2+x-3,s=4',
                         'hx=2x^2+x-3,s=4',
                         'h(x)=2x2+x-3,s=4',
                         'hx=2x2+x-3,s=4',
+                        'h(x)=2x²+x-3,s=4',
+                        'hx=2x²+x-3,s=4',
                         '2x^2+x-3,4',
-                        '2x2+x-3,4'
+                        '2x2+x-3,4',
+                        '2x²+x-3,4'
                     ]
                 };
 
                 const feedbackText = {
                     1: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                        </p>
+                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
+                        </p>
+                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `
                     },
                     2: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
-                                                </p>
-                                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
+                        </p>
+                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                        <p style="margin-bottom:0;">
+                            Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
-                                                </p>
-                                                <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
+                        </p>
+                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `
                     },
                     3: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Sekarang kurangkan hasil perkalian dari pembilang semula.
-                                                </p>
-                                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Sekarang kurangkan hasil perkalian dari pembilang semula.
+                        </p>
+                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                        <p style="margin-bottom:0;">
+                            Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
-                                                </p>
-                                                <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
+                        </p>
+                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `
                     },
                     4: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Ulangi pola yang sama menggunakan sisa baru.
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Ulangi pola yang sama menggunakan sisa baru.
+                        </p>
+                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
+                        </p>
+                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                        </p>
+                    </div>
+                `
                     },
                     5: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
-                                                </p>
-                                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
+                        </p>
+                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                        <p style="margin-bottom:0;">
+                            Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
-                                                </p>
-                                                <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                                <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
+                        </p>
+                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
+                        </p>
+                    </div>
+                `
                     },
                     6: {
                         benar: `
-                                            <b>Benar ✅</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                                <div class="rumus-box">$$s=4$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Hasil akhir sudah tepat.
-                                                </p>
-                                            </div>
-                                        `,
+                    <b>Benar ✅</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
+                        </p>
+                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                        <div class="rumus-box">$$s=4$$</div>
+                        <p style="margin-bottom:0;">
+                            Hasil akhir sudah tepat.
+                        </p>
+                    </div>
+                `,
                         salah: `
-                                            <b>Jawaban masih salah ❌</b>
-                                            <div class="step-solution">
-                                                <p style="margin-top:0;">
-                                                    Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
-                                                </p>
-                                                <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                                <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                                <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                                <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                                <div class="rumus-box">$$s=4$$</div>
-                                                <p style="margin-bottom:0;">
-                                                    Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
-                                                </p>
-                                            </div>
-                                        `
+                    <b>Jawaban masih salah ❌</b>
+                    <div class="step-solution">
+                        <p style="margin-top:0;">
+                            Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
+                        </p>
+                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                        <div class="rumus-box">$$s=4$$</div>
+                        <p style="margin-bottom:0;">
+                            Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
+                        </p>
+                    </div>
+                `
                     }
                 };
 
@@ -2121,6 +2443,24 @@
                         .replace(/\}/g, '')
                         .replace(/\\left/g, '')
                         .replace(/\\right/g, '')
+
+                        /* pangkat unicode */
+                        .replace(/⁰/g, '^0')
+                        .replace(/¹/g, '^1')
+                        .replace(/²/g, '^2')
+                        .replace(/³/g, '^3')
+                        .replace(/⁴/g, '^4')
+                        .replace(/⁵/g, '^5')
+                        .replace(/⁶/g, '^6')
+                        .replace(/⁷/g, '^7')
+                        .replace(/⁸/g, '^8')
+                        .replace(/⁹/g, '^9')
+
+                        /* bentuk latex */
+                        .replace(/\^\{(\d+)\}/g, '$1')
+                        .replace(/\^\((\d+)\)/g, '$1')
+                        .replace(/\^(\d+)/g, '$1')
+
                         .replace(/[()]/g, '');
                 }
 
@@ -2186,6 +2526,7 @@
                             if (finalBox) {
                                 finalBox.classList.add('show');
                             }
+
                             if (stepWrap) {
                                 renderMath(stepWrap);
                             }
@@ -2222,6 +2563,7 @@
                     if (stepWrap) {
                         renderMath(stepWrap);
                     }
+
                     goToNextStep(step);
                 }
 
@@ -2254,10 +2596,10 @@
                 resetLangkah();
                 resetContohInteraktif();
 
+                /* =========================
+                   LATIHAN SOAL
+                ========================== */
 
-                // LATIHAN SOAL
-
-                // SAVE PROGRESS
                 async function saveProgressMateri() {
                     const csrfToken = document
                         .querySelector('meta[name="csrf-token"]')
@@ -2305,6 +2647,31 @@
 
                 let progressSudahDisimpan = false;
 
+                const isiItemsContainer = document.getElementById('isiItems');
+                const langkahTargetSlots = document.querySelectorAll('.langkah-target-slot');
+                const resetDndBtn = document.getElementById('resetDndBtn');
+                const dndFinalResult = document.getElementById('dndFinalResult');
+                const dndProgressText = document.getElementById('dndProgressText');
+
+                let draggedCard = null;
+                let selectedClickCard = null;
+
+                function isMobileClickMode() {
+                    return window.innerWidth <= 640;
+                }
+
+                function clearClickSelection() {
+                    selectedClickCard = null;
+
+                    document.querySelectorAll('.isi-card').forEach((card) => {
+                        card.classList.remove('selected-click');
+                    });
+
+                    langkahTargetSlots.forEach((slot) => {
+                        slot.classList.remove('ready-click');
+                    });
+                }
+
                 async function handleDndSelesai() {
                     if (progressSudahDisimpan) return;
 
@@ -2334,17 +2701,20 @@
                     }
                 }
 
-                const isiItemsContainer = document.getElementById('isiItems');
-                const langkahTargetSlots = document.querySelectorAll('.langkah-target-slot');
-                const resetDndBtn = document.getElementById('resetDndBtn');
-                const dndFinalResult = document.getElementById('dndFinalResult');
-                const dndProgressText = document.getElementById('dndProgressText');
-
-                let draggedCard = null;
-
                 function updateSlotBadge(slot, type, text) {
-                    const badge = slot.querySelector('.status-kecil');
+                    let badge = slot.querySelector('.status-kecil');
+
+                    if (!badge) {
+                        const head = slot.querySelector('.langkah-target-head');
+
+                        if (head) {
+                            badge = document.createElement('span');
+                            head.appendChild(badge);
+                        }
+                    }
+
                     if (!badge) return;
+
                     badge.className = 'status-kecil ' + type;
                     badge.textContent = text;
                 }
@@ -2379,7 +2749,6 @@
                         }
                     }
 
-                    // INI BAGIAN SAVE PROGRESS
                     if (correctCount === total && total > 0) {
                         await handleDndSelesai();
                     }
@@ -2398,10 +2767,90 @@
                     cards.forEach(card => container.appendChild(card));
                 }
 
+                function moveCardToSlot(card, slot) {
+                    if (!card || !slot) return;
+
+                    const answer = slot.getAttribute('data-answer');
+                    const cardStep = card.getAttribute('data-step');
+                    const hint = slot.querySelector('.drop-hint');
+                    const body = slot.querySelector('.langkah-target-body');
+                    const existingCard = body ? body.querySelector('.isi-card') : null;
+
+                    if (!body) return;
+                    if (slot.classList.contains('correct')) return;
+                    if (card.classList.contains('locked-correct')) return;
+
+                    if (existingCard && existingCard !== card) {
+                        if (existingCard.classList.contains('locked-correct')) {
+                            return;
+                        }
+
+                        if (isiItemsContainer) {
+                            existingCard.classList.remove('selected-click');
+                            existingCard.setAttribute('draggable', 'true');
+                            isiItemsContainer.appendChild(existingCard);
+                        }
+                    }
+
+                    body.appendChild(card);
+                    card.classList.remove('selected-click');
+
+                    if (cardStep === answer) {
+                        clearSlotState(slot);
+                        slot.classList.add('correct');
+                        updateSlotBadge(slot, 'benar', 'Benar');
+
+                        if (hint) hint.style.display = 'none';
+
+                        card.classList.add('locked-correct');
+                        card.setAttribute('draggable', 'false');
+                    } else {
+                        clearSlotState(slot);
+                        slot.classList.add('wrong');
+                        updateSlotBadge(slot, 'salah', 'Salah');
+
+                        if (hint) hint.style.display = 'none';
+
+                        const wrongCard = card;
+
+                        setTimeout(() => {
+                            if (!wrongCard.classList.contains('locked-correct') && isiItemsContainer) {
+                                wrongCard.classList.remove('selected-click');
+                                wrongCard.setAttribute('draggable', 'true');
+                                isiItemsContainer.appendChild(wrongCard);
+                            }
+
+                            clearSlotState(slot);
+                            updateSlotBadge(slot, 'netral', 'Belum diisi');
+
+                            if (hint) hint.style.display = 'block';
+
+                            updateDndProgress();
+                            renderMath(document.body);
+                        }, 700);
+                    }
+
+                    clearClickSelection();
+                    updateDndProgress();
+                    renderMath(document.body);
+                }
+
                 function resetDndExercise() {
+                    clearClickSelection();
+                    progressSudahDisimpan = false;
+
                     if (dndFinalResult) {
                         dndFinalResult.classList.remove('show');
                     }
+
+                    document.querySelectorAll('.isi-card').forEach((card) => {
+                        card.classList.remove('locked-correct', 'selected-click', 'dragging');
+                        card.setAttribute('draggable', 'true');
+
+                        if (isiItemsContainer) {
+                            isiItemsContainer.appendChild(card);
+                        }
+                    });
 
                     langkahTargetSlots.forEach((slot) => {
                         clearSlotState(slot);
@@ -2409,14 +2858,6 @@
 
                         const hint = slot.querySelector('.drop-hint');
                         if (hint) hint.style.display = 'block';
-
-                        const body = slot.querySelector('.langkah-target-body');
-                        const placedCard = body ? body.querySelector('.isi-card') : null;
-
-                        if (placedCard && isiItemsContainer) {
-                            placedCard.classList.remove('locked-correct');
-                            isiItemsContainer.appendChild(placedCard);
-                        }
                     });
 
                     shuffleIsiCards(isiItemsContainer);
@@ -2426,7 +2867,9 @@
 
                 document.querySelectorAll('.isi-card').forEach((card) => {
                     card.addEventListener('dragstart', function () {
+                        if (isMobileClickMode()) return;
                         if (card.classList.contains('locked-correct')) return;
+
                         draggedCard = card;
                         card.classList.add('dragging');
                     });
@@ -2434,10 +2877,28 @@
                     card.addEventListener('dragend', function () {
                         card.classList.remove('dragging');
                     });
+
+                    card.addEventListener('click', function () {
+                        if (!isMobileClickMode()) return;
+                        if (card.classList.contains('locked-correct')) return;
+
+                        clearClickSelection();
+
+                        selectedClickCard = card;
+                        card.classList.add('selected-click');
+
+                        langkahTargetSlots.forEach((slot) => {
+                            if (!slot.classList.contains('correct')) {
+                                slot.classList.add('ready-click');
+                            }
+                        });
+                    });
                 });
 
                 langkahTargetSlots.forEach((slot) => {
                     slot.addEventListener('dragover', function (e) {
+                        if (isMobileClickMode()) return;
+
                         e.preventDefault();
                         slot.classList.add('drag-over');
                     });
@@ -2447,64 +2908,22 @@
                     });
 
                     slot.addEventListener('drop', function (e) {
+                        if (isMobileClickMode()) return;
+
                         e.preventDefault();
                         slot.classList.remove('drag-over');
 
                         if (!draggedCard) return;
 
-                        const answer = slot.getAttribute('data-answer');
-                        const draggedStep = draggedCard.getAttribute('data-step');
-                        const hint = slot.querySelector('.drop-hint');
-                        const body = slot.querySelector('.langkah-target-body');
-                        const existingCard = body ? body.querySelector('.isi-card') : null;
-
-                        if (!body) return;
-
-                        if (existingCard && existingCard !== draggedCard) {
-                            if (existingCard.classList.contains('locked-correct')) {
-                                draggedCard = null;
-                                return;
-                            }
-                            if (isiItemsContainer) {
-                                isiItemsContainer.appendChild(existingCard);
-                            }
-                        }
-
-                        body.appendChild(draggedCard);
-
-                        if (draggedStep === answer) {
-                            clearSlotState(slot);
-                            slot.classList.add('correct');
-                            updateSlotBadge(slot, 'benar', 'Benar');
-
-                            if (hint) hint.style.display = 'none';
-                            draggedCard.classList.add('locked-correct');
-                        } else {
-                            clearSlotState(slot);
-                            slot.classList.add('wrong');
-                            updateSlotBadge(slot, 'salah', 'Salah');
-
-                            if (hint) hint.style.display = 'none';
-
-                            const wrongCard = draggedCard;
-
-                            setTimeout(() => {
-                                if (!wrongCard.classList.contains('locked-correct') && isiItemsContainer) {
-                                    isiItemsContainer.appendChild(wrongCard);
-                                }
-
-                                clearSlotState(slot);
-                                updateSlotBadge(slot, 'netral', 'Belum diisi');
-
-                                if (hint) hint.style.display = 'block';
-
-                                updateDndProgress();
-                            }, 700);
-                        }
-
+                        moveCardToSlot(draggedCard, slot);
                         draggedCard = null;
-                        updateDndProgress();
-                        renderMath(document.body);
+                    });
+
+                    slot.addEventListener('click', function () {
+                        if (!isMobileClickMode()) return;
+                        if (!selectedClickCard) return;
+
+                        moveCardToSlot(selectedClickCard, slot);
                     });
                 });
 

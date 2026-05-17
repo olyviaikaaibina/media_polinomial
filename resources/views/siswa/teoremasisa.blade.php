@@ -1398,6 +1398,709 @@
                 min-width: 56px;
             }
         }
+
+        /* =========================
+               RESPONSIVE GLOBAL
+               HP - TABLET - LAPTOP
+            ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .materi-content {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Supaya gambar/tabel/input tidak keluar layar */
+        table,
+        input,
+        button {
+            max-width: 100%;
+        }
+
+        .eksplorasi-table-wrap,
+        .tabel-interaktif-wrapper,
+        .horner-card,
+        .horner-card-latihan {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* =========================
+               LAPTOP / DESKTOP
+               min-width: 1025px
+            ========================= */
+
+        @media (min-width: 1025px) {
+            .materi-content {
+                padding: 16px 24px;
+            }
+
+            .judul-materi {
+                font-size: 24px;
+            }
+
+            .paragraf-materi,
+            .teks-biasa,
+            .contoh-text,
+            .sifat-text,
+            .keterangan-luar {
+                font-size: 16px;
+            }
+
+            .latihan-card-modern,
+            .contoh-wrapper,
+            .pembuktian-card,
+            .sifat-wrapper,
+            .definisi-wrapper {
+                padding-left: 28px;
+                padding-right: 28px;
+            }
+        }
+
+        /* =========================
+               TABLET
+               769px - 1024px
+            ========================= */
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materi-content {
+                padding: 14px 18px;
+            }
+
+            .judul-materi {
+                font-size: 22px;
+            }
+
+            .paragraf-materi,
+            .eksplorasi-text,
+            .teks-biasa,
+            .contoh-text,
+            .sifat-text,
+            .keterangan-luar,
+            .daftar-langkah li {
+                font-size: 15.5px;
+                line-height: 1.85;
+            }
+
+            .konsep-menu {
+                flex-wrap: wrap;
+            }
+
+            .konsep-btn {
+                flex: 1 1 48%;
+            }
+
+            .latihan-header {
+                padding-right: 0;
+            }
+
+            .pilihan-jawaban-wrap,
+            .pilihan-jawaban-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .opsi-btn {
+                width: 100%;
+            }
+
+            .latihan-input-fancy-wrap {
+                display: grid;
+                grid-template-columns: 120px 1fr auto;
+                align-items: center;
+            }
+
+            .tabel-interaktif {
+                min-width: 680px;
+            }
+
+            .horner-figure {
+                min-width: 720px;
+            }
+        }
+
+        /* =========================
+               HP / MOBILE
+               max-width: 768px
+            ========================= */
+
+        @media (max-width: 768px) {
+            .materi-content {
+                padding: 10px 10px 0 10px;
+            }
+
+            .judul-materi {
+                font-size: 20px;
+                line-height: 1.4;
+            }
+
+            .paragraf-materi,
+            .eksplorasi-text,
+            .teks-biasa,
+            .contoh-text,
+            .sifat-text,
+            .keterangan-luar,
+            .daftar-langkah li,
+            .latihan-card-subtitle {
+                font-size: 14.5px;
+                line-height: 1.75;
+                text-align: left;
+            }
+
+            .eksplorasi-box,
+            .eksplorasi-step-card,
+            .latihan-step-card,
+            .latihan-step-card-modern,
+            .sifat-wrapper,
+            .pembuktian-card,
+            .contoh-wrapper,
+            .latihan-card-modern,
+            .penjelasan-akhir-box,
+            .definisi-wrapper {
+                border-radius: 16px;
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .eksplorasi-box {
+                padding: 14px;
+            }
+
+            .label-definisi,
+            .label-sifat,
+            .label-pembuktian,
+            .label-contoh {
+                left: 14px;
+                font-size: 13px;
+                padding: 8px 18px;
+            }
+
+            .latihan-badge {
+                position: static;
+                display: inline-block;
+                margin-bottom: 12px;
+                font-size: 13px;
+                padding: 9px 18px;
+            }
+
+            .latihan-header {
+                padding-right: 0;
+            }
+
+            .latihan-card-title {
+                font-size: 19px;
+            }
+
+            .rumus-tengah,
+            .langkah-rumus,
+            .rumus-soal,
+            .eksplorasi-rumus,
+            .rumus-penjelasan,
+            .mini-rumus-box {
+                font-size: 15px;
+                line-height: 1.8;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 4px;
+            }
+
+            .hitung-box {
+                padding: 12px;
+                overflow-x: auto;
+            }
+
+            .hitung-line {
+                font-size: 14px;
+                line-height: 1.8;
+                white-space: nowrap;
+            }
+
+            .konsep-menu {
+                display: block;
+            }
+
+            .konsep-btn {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .eksplorasi-input-block,
+            .latihan-input-wrap,
+            .latihan-input-fancy-wrap {
+                display: block;
+            }
+
+            .eksplorasi-label,
+            .input-label-mini {
+                display: block;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .latihan-input,
+            .latihan-input-fancy,
+            .eksplorasi-mini-input,
+            .cek-btn-fancy {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .latihan-input-fancy {
+                margin: 8px 0 10px 0;
+            }
+
+            .pilihan-jawaban-wrap,
+            .pilihan-jawaban-grid {
+                display: block;
+            }
+
+            .opsi-btn,
+            .langkah-click-btn {
+                width: 100%;
+                display: block;
+                text-align: left;
+                margin: 8px 0;
+            }
+
+            .eksplorasi-table {
+                min-width: 520px;
+            }
+
+            .tabel-interaktif {
+                min-width: 620px;
+            }
+
+            .tabel-interaktif th,
+            .tabel-interaktif td,
+            .eksplorasi-table th,
+            .eksplorasi-table td {
+                font-size: 13.5px;
+                padding: 10px 8px;
+            }
+
+            .btn-pembagi {
+                font-size: 14px;
+            }
+
+            .horner-card {
+                align-items: flex-start;
+            }
+
+            .horner-table {
+                min-width: 520px;
+            }
+
+            .horner-cell-btn {
+                min-width: 46px;
+                height: 40px;
+                font-size: 13.5px;
+                padding: 0 6px;
+            }
+
+            .horner-c {
+                min-width: 36px;
+                width: 36px;
+            }
+
+            .horner-figure {
+                min-width: 640px;
+            }
+
+            .horner-box,
+            .horner-input {
+                width: 58px;
+                min-width: 58px;
+                height: 48px;
+                font-size: 15px;
+            }
+
+            .horner-row {
+                gap: 10px;
+            }
+
+            .horner-plus-mark {
+                width: 34px;
+                min-width: 34px;
+                font-size: 30px;
+            }
+
+            .horner-left-side {
+                width: 50px;
+                min-width: 50px;
+            }
+
+            .horner-left-c {
+                font-size: 17px;
+            }
+
+            .penjelasan-pembagi-box,
+            .horner-info,
+            .latihan-penjelasan,
+            .eksplorasi-status-box {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+        }
+
+        /* =========================
+               HP KECIL
+               max-width: 480px
+            ========================= */
+
+        @media (max-width: 480px) {
+            .materi-content {
+                padding: 8px 6px 0 6px;
+            }
+
+            .judul-materi {
+                font-size: 18px;
+            }
+
+            .paragraf-materi,
+            .eksplorasi-text,
+            .teks-biasa,
+            .contoh-text,
+            .sifat-text,
+            .keterangan-luar,
+            .latihan-card-subtitle {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .eksplorasi-box,
+            .eksplorasi-step-card,
+            .latihan-step-card,
+            .latihan-step-card-modern,
+            .sifat-wrapper,
+            .pembuktian-card,
+            .contoh-wrapper,
+            .latihan-card-modern,
+            .penjelasan-akhir-box,
+            .definisi-wrapper {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .latihan-card-title {
+                font-size: 18px;
+            }
+
+            .judul-eksplorasi,
+            .eksplorasi-step-title,
+            .latihan-step-title,
+            .latihan-step-modern-title,
+            .latihan-item-title {
+                font-size: 15px;
+            }
+
+            .rumus-tengah,
+            .langkah-rumus,
+            .rumus-soal,
+            .eksplorasi-rumus,
+            .mini-rumus-box {
+                font-size: 14px;
+            }
+
+            .hitung-line {
+                font-size: 13.5px;
+            }
+
+            .opsi-btn,
+            .cek-btn-fancy,
+            .latihan-input,
+            .latihan-input-fancy,
+            .eksplorasi-mini-input {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .tabel-interaktif {
+                min-width: 560px;
+            }
+
+            .eksplorasi-table {
+                min-width: 480px;
+            }
+
+            .horner-table {
+                min-width: 480px;
+            }
+
+            .horner-figure {
+                min-width: 590px;
+            }
+
+            .horner-box,
+            .horner-input {
+                width: 52px;
+                min-width: 52px;
+                height: 44px;
+                font-size: 14px;
+            }
+
+            .horner-row {
+                gap: 8px;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE KHUSUS TABEL HORNER
+        ========================= */
+
+        .horner-card,
+        .horner-card-latihan {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Tabel Horner contoh */
+        .horner-table {
+            width: max-content;
+            min-width: 560px;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        /* Supaya isi tabel tidak gepeng */
+        .horner-table td {
+            white-space: nowrap;
+        }
+
+        /* Tombol angka Horner */
+        .horner-cell-btn {
+            min-width: 54px;
+            height: 42px;
+            font-size: 14.5px;
+        }
+
+        /* Tabel Horner latihan yang pakai div */
+        .horner-figure {
+            width: max-content;
+            min-width: 760px;
+        }
+
+        /* Laptop */
+        @media (min-width: 1025px) {
+
+            .horner-card,
+            .horner-card-latihan {
+                justify-content: center;
+            }
+
+            .horner-table {
+                min-width: 560px;
+            }
+
+            .horner-figure {
+                min-width: 760px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+
+            .horner-card,
+            .horner-card-latihan {
+                align-items: flex-start;
+            }
+
+            .horner-table {
+                min-width: 540px;
+            }
+
+            .horner-figure {
+                min-width: 700px;
+            }
+
+            .horner-cell-btn {
+                min-width: 48px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .horner-box,
+            .horner-input {
+                width: 64px;
+                min-width: 64px;
+                height: 48px;
+                font-size: 15px;
+            }
+
+            .horner-row {
+                gap: 10px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+
+            .horner-card,
+            .horner-card-latihan {
+                padding: 14px 12px;
+                border-radius: 14px;
+            }
+
+            .horner-title {
+                font-size: 14px;
+                position: sticky;
+                left: 0;
+                background: #fbfbfb;
+                z-index: 2;
+                padding-bottom: 6px;
+            }
+
+            .horner-table {
+                min-width: 500px;
+                margin: 0;
+            }
+
+            .horner-table td {
+                padding: 6px;
+            }
+
+            .horner-cell-btn {
+                min-width: 44px;
+                height: 38px;
+                font-size: 13px;
+                border-radius: 10px;
+            }
+
+            .horner-c {
+                width: 34px;
+                min-width: 34px;
+                font-size: 14px;
+                padding-right: 6px;
+            }
+
+            .horner-plus-cell {
+                width: 28px;
+                min-width: 28px;
+                font-size: 22px;
+            }
+
+            .horner-empty {
+                min-width: 44px;
+                height: 38px;
+            }
+
+            .horner-info {
+                position: sticky;
+                left: 0;
+                width: calc(100vw - 56px);
+                min-width: 260px;
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .horner-figure {
+                min-width: 620px;
+            }
+
+            .horner-left-side {
+                width: 46px;
+                min-width: 46px;
+            }
+
+            .horner-left-c {
+                font-size: 16px;
+            }
+
+            .horner-box,
+            .horner-input {
+                width: 52px;
+                min-width: 52px;
+                height: 42px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+
+            .horner-row {
+                gap: 8px;
+            }
+
+            .horner-plus-mark {
+                width: 30px;
+                min-width: 30px;
+                font-size: 28px;
+                margin-left: 2px;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 480px) {
+
+            .horner-card,
+            .horner-card-latihan {
+                padding: 12px 10px;
+            }
+
+            .horner-table {
+                min-width: 460px;
+            }
+
+            .horner-cell-btn {
+                min-width: 40px;
+                height: 36px;
+                font-size: 12.5px;
+                padding: 0 5px;
+            }
+
+            .horner-c {
+                width: 30px;
+                min-width: 30px;
+            }
+
+            .horner-plus-cell {
+                width: 24px;
+                min-width: 24px;
+                font-size: 20px;
+            }
+
+            .horner-empty {
+                min-width: 40px;
+                height: 36px;
+            }
+
+            .horner-info {
+                width: calc(100vw - 48px);
+                font-size: 13.5px;
+            }
+
+            .horner-figure {
+                min-width: 560px;
+            }
+
+            .horner-left-side {
+                width: 42px;
+                min-width: 42px;
+            }
+
+            .horner-box,
+            .horner-input {
+                width: 48px;
+                min-width: 48px;
+                height: 40px;
+                font-size: 13.5px;
+            }
+
+            .horner-row {
+                gap: 6px;
+            }
+
+            .horner-plus-mark {
+                width: 26px;
+                min-width: 26px;
+                font-size: 24px;
+            }
+        }
     </style>
 
     <div class="materi-content">
@@ -2189,6 +2892,51 @@
             return normalisasiInput(text);
         }
 
+        function normalisasiPangkat(text) {
+            return normalisasiInput(text)
+                .replace(/³/g, '^3')
+                .replace(/²/g, '^2')
+                .replace(/¹/g, '^1')
+                .replace(/<sup>3<\/sup>/g, '^3')
+                .replace(/<sup>2<\/sup>/g, '^2')
+                .replace(/<sup>1<\/sup>/g, '^1');
+        }
+
+        function jawabanMengandungHasil(text, hasil) {
+            const j = normalisasiPangkat(text);
+            const h = normalisasiInput(hasil);
+
+            return (
+                j === h ||
+                j.endsWith('=' + h) ||
+                j.includes('=' + h)
+            );
+        }
+
+        function jawabanStep3Benar(text) {
+            const j = normalisasiPangkat(text);
+
+            return (
+                jawabanMengandungHasil(text, '23') ||
+                j === '3^3-4(3)+8' ||
+                j === 'p(3)=3^3-4(3)+8' ||
+                j === '3^3-12+8' ||
+                j === '27-12+8'
+            );
+        }
+
+        function jawabanSoal1Step2Benar(text) {
+            const j = normalisasiPangkat(text);
+
+            return (
+                jawabanMengandungHasil(text, '103') ||
+                j === '6(3^3)-5(3^2)+2(3)-20' ||
+                j === 'p(3)=6(3^3)-5(3^2)+2(3)-20' ||
+                j === '6(27)-5(9)+6-20' ||
+                j === '162-45+6-20'
+            );
+        }
+
         function semuaEksplorasiTerisi() {
             const p1 = normalisasiInput(document.getElementById('eksplorasiP1')?.value);
             const p3 = normalisasiInput(document.getElementById('eksplorasiP3')?.value);
@@ -2257,28 +3005,28 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Nilai yang kamu hitung sudah tepat.';
 
                 penjelasan.innerHTML = `
-                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                            <br><br>
-                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                            <br>
-                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                            <br><br>
-                            Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                        `;
+                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                        <br><br>
+                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                        <br>
+                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                        <br><br>
+                                        Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                    `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                            <br><br>
-                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                            <br>
-                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                            <br><br>
-                            Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                        `;
+                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                        <br><br>
+                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                        <br>
+                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                        <br><br>
+                                        Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                    `;
                 penjelasan.classList.add('show');
             }
 
@@ -2310,35 +3058,35 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Dugaan sisamu sudah tepat.';
 
                 penjelasan.innerHTML = `
-                            Dari Aktivitas 1 diperoleh:
-                            <br><br>
-                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                            <br><br>
-                            Maka:
-                            <ul class="eksplorasi-list">
-                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
-                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
-                            </ul>
-                            Jadi jawaban yang benar adalah:
-                            <br>
-                            <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
-                        `;
+                                        Dari Aktivitas 1 diperoleh:
+                                        <br><br>
+                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                        <br><br>
+                                        Maka:
+                                        <ul class="eksplorasi-list">
+                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
+                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
+                                        </ul>
+                                        Jadi jawaban yang benar adalah:
+                                        <br>
+                                        <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
+                                    `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                            Gunakan hasil Aktivitas 1:
-                            <br><br>
-                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                            <br><br>
-                            Maka jawaban yang benar adalah:
-                            <ul class="eksplorasi-list">
-                                <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
-                                <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
-                            </ul>
-                        `;
+                                        Gunakan hasil Aktivitas 1:
+                                        <br><br>
+                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                        <br><br>
+                                        Maka jawaban yang benar adalah:
+                                        <ul class="eksplorasi-list">
+                                            <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
+                                            <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
+                                        </ul>
+                                    `;
                 penjelasan.classList.add('show');
             }
 
@@ -2434,31 +3182,31 @@
 
             if (id === 1) {
                 box.innerHTML = `
-                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                            Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                            <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                            <div class="rumus-penjelasan">Sisa = P(2)</div>
-                            Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                            cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                        `;
+                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                                        Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                                        <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                                        <div class="rumus-penjelasan">Sisa = P(2)</div>
+                                        Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                                        cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+                                    `;
             } else if (id === 2) {
                 box.innerHTML = `
-                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                            Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                            <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                            <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                            Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                            disubstitusikan ke polinomial justru <strong>−3</strong>.
-                        `;
+                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                                        Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                                        <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                                        <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                                        Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                                        disubstitusikan ke polinomial justru <strong>−3</strong>.
+                                    `;
             } else if (id === 3) {
                 box.innerHTML = `
-                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                            Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                            Maka sisanya diperoleh dari
-                            <div class="rumus-penjelasan">Sisa = P(0)</div>
-                            Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                            sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                        `;
+                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                                        Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                                        Maka sisanya diperoleh dari
+                                        <div class="rumus-penjelasan">Sisa = P(0)</div>
+                                        Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                                        sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+                                    `;
             }
         }
 
@@ -2589,7 +3337,7 @@
 
             const jawaban = normalisasiInput(input.value);
 
-            if (jawaban === '23') {
+            if (jawabanStep3Benar(input.value)) {
                 tampilkanBenar(
                     'feedbackStep3',
                     'penjelasanStep3',
@@ -2612,7 +3360,7 @@
 
             const jawaban = normalisasiInput(input.value);
 
-            if (jawaban === '23') {
+            if (jawabanMengandungHasil(input.value, '23')) {
                 tampilkanBenar(
                     'feedbackStep4',
                     'penjelasanStep4',
@@ -2726,7 +3474,7 @@
 
             const jawab = normalisasiInput(input.value);
 
-            if (jawab === '103') {
+            if (jawabanSoal1Step2Benar(input.value)) {
                 soal1Step2Benar = true;
 
                 input.classList.remove('input-salah');
@@ -2928,8 +3676,8 @@
             const benar =
                 s1 === '3' &&
                 (s2 === 'p(3)' || s2 === 'p3') &&
-                s3 === '23' &&
-                s4 === '23';
+                jawabanStep3Benar(document.getElementById('jawabStep3')?.value) &&
+                jawabanMengandungHasil(document.getElementById('jawabStep4')?.value, '23');
 
             if (benar) {
                 feedback.className = 'latihan-feedback benar';

@@ -3,12 +3,13 @@
 @section('content')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                                delimiters: [
-                                                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                                                    {left: '$', right: '$', display: false}
-                                                                                                                ]
-                                                                                                            });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+                                                                                                                                        delimiters: [
+                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                        ]
+                                                                                                                                    });"></script>
 
     <style>
         :root {
@@ -29,13 +30,44 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        img,
+        svg,
+        video,
+        canvas,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            max-width: 100%;
+            font-family: inherit;
+        }
+
+        button {
+            touch-action: manipulation;
+        }
+
         .materi-wrap {
+            width: min(100%, 980px);
             max-width: 980px;
             margin: 0 auto;
             font-family: "Times New Roman", Times, serif;
             color: var(--text);
             line-height: 1.85;
-            padding: 20px 14px 40px;
+            padding: 20px clamp(10px, 2.5vw, 24px) 40px;
+            overflow-x: hidden;
         }
 
         .top-title {
@@ -43,18 +75,22 @@
             align-items: baseline;
             gap: 12px;
             margin-bottom: 12px;
+            min-width: 0;
         }
 
         .top-title .label {
             font-size: 26px;
             font-weight: 900;
             color: #000;
+            flex-shrink: 0;
         }
 
         .top-title .judul {
             font-size: 30px;
             font-weight: 900;
             color: var(--green);
+            line-height: 1.25;
+            overflow-wrap: anywhere;
         }
 
         p {
@@ -72,6 +108,8 @@
         }
 
         .card {
+            max-width: 100%;
+            min-width: 0;
             border-radius: 16px;
             padding: 20px 22px;
             background: #fff;
@@ -94,6 +132,8 @@
             font-size: 18px;
             color: var(--green);
             margin-bottom: 12px;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .title-box.blue {
@@ -106,6 +146,7 @@
         }
 
         .rumus-box {
+            max-width: 100%;
             margin: 14px 0;
             padding: 14px 16px;
             border-radius: 14px;
@@ -117,9 +158,12 @@
             font-size: 18px;
             color: #111;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .question {
+            max-width: 100%;
             background: #ffffff;
             border: 1px solid rgba(91, 155, 213, .25);
             border-radius: 14px;
@@ -171,6 +215,7 @@
             gap: 10px;
             margin-top: 10px;
             flex-wrap: wrap;
+            min-width: 0;
         }
 
         .quiz-check,
@@ -184,6 +229,7 @@
         .latihan-check,
         .latihan-reset,
         .latihan-checkall {
+            min-height: 42px;
             padding: 10px 18px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, .14);
@@ -258,6 +304,7 @@
         }
 
         .tip-board {
+            max-width: 100%;
             margin: 20px 0 24px;
             border-radius: 22px;
             padding: 20px 22px 18px;
@@ -273,6 +320,7 @@
             gap: 12px;
             flex-wrap: wrap;
             margin-bottom: 12px;
+            min-width: 0;
         }
 
         .tip-label {
@@ -300,6 +348,7 @@
             font-weight: 900;
             color: #184b26;
             margin-bottom: 14px;
+            overflow-wrap: anywhere;
         }
 
         .tip-main-quote-box {
@@ -332,6 +381,7 @@
         }
 
         .tip-example-card {
+            min-width: 0;
             background: rgba(255, 255, 255, .9);
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 16px;
@@ -346,6 +396,7 @@
         }
 
         .tip-formula-box {
+            max-width: 100%;
             min-height: 84px;
             display: flex;
             align-items: center;
@@ -355,6 +406,8 @@
             border-radius: 14px;
             padding: 12px;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tip-footer {
@@ -362,6 +415,7 @@
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
+            min-width: 0;
         }
 
         .tip-footer-text {
@@ -390,6 +444,7 @@
         }
 
         .definisi-card {
+            max-width: 100%;
             position: relative;
             margin: 26px 0 18px;
             padding: 26px 20px 18px;
@@ -433,6 +488,7 @@
         }
 
         .langkah-card {
+            max-width: 100%;
             border-radius: 18px;
             padding: 24px 22px 18px;
             background: #ffffff;
@@ -446,6 +502,7 @@
             font-weight: 900;
             color: #2f8f46;
             margin-bottom: 12px;
+            overflow-wrap: anywhere;
         }
 
         .langkah-list {
@@ -460,6 +517,7 @@
         }
 
         .contoh-wrap {
+            max-width: 100%;
             border-radius: 18px;
             padding: 24px 22px 18px;
             background: linear-gradient(180deg, #fbfcf8, #ffffff);
@@ -490,6 +548,7 @@
         }
 
         .step-box {
+            max-width: 100%;
             background: #fff;
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 16px;
@@ -502,6 +561,7 @@
             color: #111;
             margin-bottom: 8px;
             font-size: 17px;
+            overflow-wrap: anywhere;
         }
 
         .step-question {
@@ -526,6 +586,7 @@
         }
 
         .interaktif-wrap {
+            max-width: 100%;
             margin-top: 8px;
             background: rgba(91, 155, 213, .06);
             border: 1px solid rgba(91, 155, 213, .18);
@@ -537,6 +598,7 @@
             font-weight: 900;
             color: #1e3a8a;
             margin-bottom: 8px;
+            overflow-wrap: anywhere;
         }
 
         .latihan-grid {
@@ -547,6 +609,7 @@
         }
 
         .latihan-card {
+            min-width: 0;
             background: #fff;
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 18px;
@@ -575,9 +638,11 @@
             color: #111;
             font-size: 18px;
             margin-bottom: 8px;
+            overflow-wrap: anywhere;
         }
 
         .latihan-step-box {
+            max-width: 100%;
             background: #f9fbf7;
             border: 1px solid rgba(0, 0, 0, .06);
             border-radius: 14px;
@@ -589,6 +654,7 @@
             font-weight: 900;
             color: #1f4f29;
             margin-bottom: 6px;
+            overflow-wrap: anywhere;
         }
 
         .latihan-step-help {
@@ -598,44 +664,6 @@
             font-style: italic;
             line-height: 1.7;
         }
-
-        @media (max-width: 768px) {
-
-            .tip-grid,
-            .latihan-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tip-main-quote {
-                font-size: 17px;
-            }
-
-            .tip-main-title,
-            .langkah-title {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .top-title .judul {
-                font-size: 24px;
-            }
-
-            .top-title .label {
-                font-size: 22px;
-            }
-
-            .card,
-            .langkah-card,
-            .contoh-wrap {
-                padding: 16px;
-            }
-
-            .lead-text {
-                font-size: 16px;
-            }
-        }
-
 
         .game-mission-card {
             position: relative;
@@ -650,7 +678,6 @@
             box-shadow: 0 18px 42px rgba(0, 0, 0, .08);
         }
 
-        /* ================= HEADER ================= */
         .game-header {
             padding: 26px 24px 10px;
             text-align: center;
@@ -677,6 +704,7 @@
             font-weight: 900;
             color: #1b7a2a;
             line-height: 1.2;
+            overflow-wrap: anywhere;
         }
 
         .game-subtitle {
@@ -688,7 +716,6 @@
             line-height: 1.8;
         }
 
-        /* ================= MAIN LAYOUT ================= */
         .game-scene {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -700,10 +727,11 @@
         .game-scene-left {
             position: relative;
             min-height: auto;
+            min-width: 0;
         }
 
-        /* ================= STORY ================= */
         .game-story-box {
+            max-width: 100%;
             position: relative;
             z-index: 2;
             border-radius: 26px;
@@ -736,6 +764,7 @@
         }
 
         .game-formula-main {
+            max-width: 100%;
             margin: 16px 0;
             padding: 18px;
             border-radius: 18px;
@@ -743,11 +772,13 @@
             border: 1px solid rgba(36, 69, 143, .14);
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55);
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* ================= GAME PANEL ================= */
         .game-panel {
+            max-width: 100%;
+            min-width: 0;
             border-radius: 26px;
             padding: 22px;
             background: linear-gradient(180deg, #dfeaff 0%, #f3f8ff 100%);
@@ -764,6 +795,7 @@
             justify-content: center;
             margin-bottom: 14px;
             flex-wrap: wrap;
+            min-width: 0;
         }
 
         .stage-dot {
@@ -803,6 +835,7 @@
             color: #1e3a8a;
             line-height: 1.5;
             margin-bottom: 14px;
+            overflow-wrap: anywhere;
         }
 
         .game-dialogue {
@@ -826,10 +859,12 @@
         }
 
         .game-question-math {
+            max-width: 100%;
             font-size: 18px;
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: hidden;
             min-height: 40px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .game-answer-box {
@@ -867,9 +902,11 @@
             gap: 12px;
             flex-wrap: wrap;
             margin-bottom: 16px;
+            min-width: 0;
         }
 
         .game-btn {
+            min-height: 42px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -970,9 +1007,9 @@
             }
         }
 
-        /* ================= VICTORY ================= */
         .game-victory {
             display: none;
+            max-width: 100%;
             margin: 20px 24px 24px;
             padding: 26px 20px 30px;
             border-radius: 30px;
@@ -1181,6 +1218,7 @@
             color: #1b7a2a;
             line-height: 1.3;
             margin-bottom: 10px;
+            overflow-wrap: anywhere;
         }
 
         .victory-text {
@@ -1216,11 +1254,13 @@
         }
 
         .victory-formula {
+            max-width: 100%;
             overflow-x: auto;
+            overflow-y: hidden;
             font-size: 20px;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* ================= ANIMATIONS ================= */
         @keyframes openGateLeft {
             0% {
                 transform: perspective(900px) rotateY(0deg);
@@ -1325,14 +1365,148 @@
             }
         }
 
-        /* ================= RESPONSIVE ================= */
-        @media (max-width: 1200px) {
+        /* ===================== LAPTOP / DESKTOP ===================== */
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                padding-top: 24px;
+                padding-bottom: 48px;
+            }
+
+            .top-title .label {
+                font-size: 28px;
+            }
+
+            .top-title .judul {
+                font-size: 32px;
+            }
+
+            .lead-text {
+                font-size: 18px;
+            }
+
+            .card,
+            .langkah-card,
+            .contoh-wrap {
+                padding: 22px 24px;
+            }
+
+            .tip-grid,
+            .latihan-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .game-scene {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            }
+
+            .game-title {
+                font-size: 34px;
+            }
+
+            .game-btn {
+                width: auto;
             }
         }
 
-        @media (max-width: 900px) {
+        /* ===================== TABLET ===================== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 920px;
+                padding: 22px 22px 44px;
+            }
+
+            .top-title {
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+
+            .top-title .label {
+                font-size: 25px;
+            }
+
+            .top-title .judul {
+                font-size: 28px;
+                line-height: 1.25;
+            }
+
+            .lead-text {
+                font-size: 17px;
+                line-height: 1.8;
+            }
+
+            p,
+            .definisi-card p,
+            .definisi-card ol,
+            .langkah-list,
+            .contoh-desc,
+            .tip-footer-text,
+            .game-story-box p,
+            .game-subtitle,
+            .victory-text {
+                font-size: 15.5px;
+                line-height: 1.8;
+            }
+
+            .card,
+            .langkah-card,
+            .contoh-wrap,
+            .tip-board {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .rumus-box {
+                font-size: 17px;
+                padding: 13px 14px;
+            }
+
+            .tip-grid,
+            .latihan-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .tip-main-quote {
+                font-size: 19px;
+            }
+
+            .tip-main-title,
+            .langkah-title {
+                font-size: 19px;
+            }
+
+            .game-scene {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            .game-header {
+                padding: 24px 20px 10px;
+            }
+
+            .game-title {
+                font-size: 30px;
+            }
+
+            .game-story-box,
+            .game-panel {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .game-stage-name {
+                font-size: 19px;
+            }
+
+            .game-actions {
+                flex-direction: row;
+            }
+
+            .game-btn {
+                flex: 1 1 180px;
+            }
+
             .victory-scene {
                 height: 280px;
             }
@@ -1378,14 +1552,151 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .game-header {
-                padding: 20px 16px 8px;
+        /* ===================== HP BESAR / TABLET KECIL ===================== */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .materi-wrap {
+                padding: 18px 16px 38px;
             }
 
-            .game-scene {
-                padding: 16px;
-                gap: 16px;
+            .top-title {
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .top-title .label {
+                font-size: 23px;
+                line-height: 1.2;
+            }
+
+            .top-title .judul {
+                font-size: 24px;
+                line-height: 1.25;
+            }
+
+            .lead-text {
+                font-size: 16px;
+                line-height: 1.75;
+            }
+
+            .card,
+            .card-eksplorasi,
+            .langkah-card,
+            .contoh-wrap,
+            .tip-board,
+            .definisi-card,
+            .latihan-card {
+                padding: 18px;
+                border-radius: 16px;
+            }
+
+            p,
+            .definisi-card p,
+            .definisi-card ol,
+            .langkah-list,
+            .contoh-desc,
+            .step-explain,
+            .step-help,
+            .latihan-step-help,
+            .game-story-box p,
+            .game-subtitle,
+            .victory-text {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .title-box,
+            .step-title,
+            .interaktif-title,
+            .latihan-title,
+            .game-story-title {
+                font-size: 17px;
+            }
+
+            .rumus-box,
+            .tip-formula-box,
+            .game-formula-main {
+                justify-content: flex-start;
+                font-size: 16px;
+                padding: 12px 13px;
+            }
+
+            .quiz-list {
+                margin-left: 16px;
+            }
+
+            .quiz-input,
+            .interaktif-input,
+            .latihan-input,
+            .game-input {
+                font-size: 15.5px;
+                padding: 11px 13px;
+            }
+
+            .quiz-actions,
+            .interaktif-actions,
+            .global-actions,
+            .latihan-actions,
+            .latihan-global-actions,
+            .game-actions {
+                align-items: stretch;
+            }
+
+            .quiz-check,
+            .quiz-reset,
+            .quiz-checkall,
+            .tip-btn,
+            .tip-remember-btn,
+            .interaktif-check,
+            .interaktif-reset,
+            .interaktif-checkall,
+            .latihan-check,
+            .latihan-reset,
+            .latihan-checkall,
+            .game-btn {
+                width: 100%;
+            }
+
+            .quiz-feedback,
+            .interaktif-feedback,
+            .latihan-feedback,
+            .quiz-summary,
+            .interaktif-summary,
+            .latihan-summary {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+            }
+
+            .tip-head {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .tip-label {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .tip-grid,
+            .latihan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-main-title,
+            .langkah-title {
+                font-size: 18px;
+            }
+
+            .tip-main-quote {
+                font-size: 18px;
+            }
+
+            .tip-main-sub {
+                font-size: 15px;
+            }
+
+            .game-header {
+                padding: 20px 16px 8px;
             }
 
             .game-title {
@@ -1393,8 +1704,10 @@
                 line-height: 1.25;
             }
 
-            .game-subtitle {
-                font-size: 15px;
+            .game-scene {
+                grid-template-columns: 1fr;
+                padding: 16px;
+                gap: 16px;
             }
 
             .game-story-box,
@@ -1407,17 +1720,22 @@
                 font-size: 18px;
             }
 
+            .game-dialogue,
+            .game-question-box,
+            .game-hint-box,
+            .game-feedback {
+                padding: 13px 14px;
+                border-radius: 15px;
+            }
+
             .game-input {
-                font-size: 16px;
                 padding: 14px 16px;
+                border-radius: 15px;
             }
 
-            .game-btn {
-                width: 100%;
-            }
-
-            .game-actions {
-                flex-direction: column;
+            .stage-line {
+                width: 32px;
+                margin: 0 6px;
             }
 
             .game-victory {
@@ -1479,17 +1797,558 @@
                 font-size: 22px;
             }
 
-            .victory-text {
-                font-size: 15px;
-            }
-
             .victory-formula {
                 font-size: 17px;
             }
+        }
+
+        /* ===================== HP KECIL ===================== */
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 14px 10px 32px;
+                line-height: 1.65;
+            }
+
+            .top-title {
+                align-items: flex-start;
+                gap: 7px;
+                margin-bottom: 12px;
+            }
+
+            .top-title .label {
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+            .top-title .judul {
+                font-size: 20px;
+                line-height: 1.25;
+            }
+
+            .lead-text {
+                font-size: 15px;
+                line-height: 1.72;
+                text-align: left;
+            }
+
+            .card,
+            .card-eksplorasi,
+            .langkah-card,
+            .contoh-wrap,
+            .tip-board,
+            .definisi-card,
+            .latihan-card,
+            .step-box,
+            .interaktif-wrap,
+            .latihan-step-box {
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            .card-eksplorasi {
+                border-left-width: 5px;
+            }
+
+            p,
+            .definisi-card p,
+            .definisi-card ol,
+            .langkah-list,
+            .contoh-desc,
+            .step-explain,
+            .step-help,
+            .latihan-step-help,
+            .game-story-box p,
+            .game-subtitle,
+            .victory-text {
+                font-size: 14.5px;
+                line-height: 1.72;
+                text-align: left;
+            }
+
+            .title-box,
+            .step-title,
+            .interaktif-title,
+            .latihan-title,
+            .game-story-title {
+                font-size: 16px;
+                line-height: 1.35;
+            }
+
+            .definisi-label {
+                left: 14px;
+                top: -17px;
+                padding: 6px 18px;
+                font-size: 13px;
+            }
+
+            .definisi-card {
+                margin-top: 30px;
+                padding-top: 28px;
+            }
+
+            .rumus-box,
+            .tip-formula-box,
+            .game-formula-main,
+            .game-question-math,
+            .victory-formula {
+                justify-content: flex-start;
+                font-size: 15px;
+                padding: 11px 12px;
+                border-radius: 12px;
+            }
+
+            .question {
+                padding: 12px;
+                border-radius: 13px;
+            }
+
+            .question .qtitle {
+                font-size: 15px;
+            }
+
+            .quiz-list {
+                margin-left: 16px;
+                padding-left: 0;
+            }
+
+            .quiz-item {
+                margin: 10px 0 14px;
+            }
+
+            .quiz-q {
+                line-height: 1.6;
+            }
+
+            .quiz-input,
+            .interaktif-input,
+            .latihan-input,
+            .game-input {
+                width: 100%;
+                max-width: 100%;
+                font-size: 15px;
+                padding: 10px 11px;
+                border-radius: 11px;
+            }
+
+            .quiz-actions,
+            .interaktif-actions,
+            .global-actions,
+            .latihan-actions,
+            .latihan-global-actions,
+            .game-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .quiz-check,
+            .quiz-reset,
+            .quiz-checkall,
+            .tip-btn,
+            .tip-remember-btn,
+            .interaktif-check,
+            .interaktif-reset,
+            .interaktif-checkall,
+            .latihan-check,
+            .latihan-reset,
+            .latihan-checkall,
+            .game-btn {
+                width: 100%;
+                padding: 10px 14px;
+                font-size: 15px;
+            }
+
+            .quiz-feedback,
+            .interaktif-feedback,
+            .latihan-feedback,
+            .quiz-summary,
+            .interaktif-summary,
+            .latihan-summary {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                font-size: 14px;
+            }
+
+            .final-message {
+                font-size: 14px;
+                padding: 11px 12px;
+            }
+
+            .tip-head {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .tip-label {
+                width: 100%;
+                justify-content: center;
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+
+            .tip-grid,
+            .latihan-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .tip-main-title,
+            .langkah-title {
+                font-size: 17px;
+            }
+
+            .tip-main-quote-box {
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            .tip-main-quote {
+                font-size: 16px;
+            }
+
+            .tip-main-sub {
+                font-size: 14px;
+            }
+
+            .tip-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .tip-footer-text {
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .langkah-list {
+                padding-left: 18px;
+                margin-left: 0;
+            }
+
+            .latihan-badge {
+                min-width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .game-mission-card {
+                border-radius: 20px;
+            }
+
+            .game-header {
+                padding: 18px 12px 8px;
+            }
+
+            .game-badge {
+                font-size: 13px;
+                padding: 8px 14px;
+            }
+
+            .game-title {
+                font-size: 22px;
+                line-height: 1.25;
+            }
+
+            .game-subtitle {
+                font-size: 14.5px;
+            }
+
+            .game-scene {
+                grid-template-columns: 1fr;
+                padding: 12px;
+                gap: 12px;
+            }
+
+            .game-story-box,
+            .game-panel {
+                padding: 14px;
+                border-radius: 18px;
+            }
+
+            .game-stage-name {
+                font-size: 16px;
+            }
+
+            .stage-dot {
+                width: 15px;
+                height: 15px;
+            }
 
             .stage-line {
-                width: 32px;
-                margin: 0 6px;
+                width: 24px;
+                height: 3px;
+                margin: 0 4px;
+            }
+
+            .game-dialogue,
+            .game-question-box,
+            .game-hint-box,
+            .game-feedback {
+                padding: 12px;
+                border-radius: 14px;
+                font-size: 14.5px;
+            }
+
+            .game-input-label {
+                font-size: 14.5px;
+            }
+
+            .game-victory {
+                margin: 12px;
+                padding: 18px 10px 20px;
+                border-radius: 20px;
+            }
+
+            .victory-scene {
+                height: 210px;
+                border-radius: 18px;
+            }
+
+            .gate-stage {
+                width: 230px;
+                height: 150px;
+            }
+
+            .gate-pillar {
+                width: 22px;
+                height: 120px;
+            }
+
+            .pillar-left {
+                left: 34px;
+            }
+
+            .pillar-right {
+                right: 34px;
+            }
+
+            .gate-door {
+                width: 56px;
+                height: 110px;
+                bottom: 8px;
+                border-width: 4px;
+            }
+
+            .gate-left {
+                left: 44px;
+            }
+
+            .gate-right {
+                right: 44px;
+            }
+
+            .gate-light-core {
+                width: 56px;
+                height: 116px;
+            }
+
+            .gate-light-floor {
+                width: 150px;
+                height: 58px;
+            }
+
+            .victory-trophy {
+                font-size: 38px;
+            }
+
+            .spark {
+                font-size: 18px;
+            }
+
+            .victory-title {
+                font-size: 19px;
+            }
+
+            .victory-answer-card {
+                padding: 14px 12px;
+                border-radius: 16px;
+            }
+
+            .victory-answer-label {
+                font-size: 13px;
+                padding: 7px 13px;
+            }
+        }
+
+        /* ===================== HP SANGAT KECIL ===================== */
+        @media (max-width: 360px) {
+            .materi-wrap {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .top-title .judul {
+                font-size: 18.5px;
+            }
+
+            .top-title .label {
+                font-size: 19px;
+            }
+
+            .card,
+            .card-eksplorasi,
+            .langkah-card,
+            .contoh-wrap,
+            .tip-board,
+            .definisi-card,
+            .latihan-card,
+            .step-box,
+            .interaktif-wrap,
+            .latihan-step-box {
+                padding: 12px;
+            }
+
+            p,
+            .definisi-card p,
+            .definisi-card ol,
+            .langkah-list,
+            .contoh-desc,
+            .step-explain,
+            .step-help,
+            .latihan-step-help,
+            .game-story-box p,
+            .game-subtitle,
+            .victory-text {
+                font-size: 14px;
+            }
+
+            .game-title {
+                font-size: 20px;
+            }
+
+            .game-stage-name {
+                font-size: 15px;
+            }
+
+            .gate-stage {
+                transform: translate(-50%, -48%) scale(.9);
+            }
+
+            .victory-scene {
+                height: 190px;
+            }
+        }
+
+        /* ===================== LOCK LATIHAN B ===================== */
+
+        .latihan-card.locked {
+            opacity: .58;
+            filter: grayscale(.25);
+            position: relative;
+            pointer-events: none;
+        }
+
+        .latihan-card.locked::after {
+            content: "🔒 Selesaikan Latihan A terlebih dahulu";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, .78);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px;
+            font-weight: 900;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #1e3a8a;
+            z-index: 10;
+            box-shadow: inset 0 0 0 2px rgba(91, 155, 213, .18);
+        }
+
+        .latihan-card.locked::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 16px;
+            border: 2px dashed rgba(30, 58, 138, .28);
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        .latihan-card.locked .latihan-input,
+        .latihan-card.locked .latihan-check,
+        .latihan-card.locked .latihan-reset {
+            cursor: not-allowed;
+        }
+
+        .latihan-card.locked input,
+        .latihan-card.locked button {
+            pointer-events: none;
+        }
+
+        .latihan-card.locked .latihan-feedback {
+            display: none;
+        }
+
+
+        /* ===================== LATIHAN B TERBUKA ===================== */
+
+        .latihan-card:not(.locked) {
+            opacity: 1;
+            filter: none;
+        }
+
+        .latihan-card:not(.locked)::after,
+        .latihan-card:not(.locked)::before {
+            display: none;
+        }
+
+
+        /* ===================== RESPONSIVE LOCK OVERLAY ===================== */
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .latihan-card.locked::after {
+                font-size: 16px;
+                padding: 16px;
+                border-radius: 16px;
+            }
+
+            .latihan-card.locked::before {
+                inset: 10px;
+                border-radius: 14px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .latihan-card.locked::after {
+                font-size: 15.5px;
+                padding: 15px;
+                border-radius: 16px;
+            }
+
+            .latihan-card.locked::before {
+                inset: 10px;
+                border-radius: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .latihan-card.locked::after {
+                content: "🔒 Selesaikan Latihan A dulu";
+                font-size: 14.5px;
+                padding: 14px;
+                border-radius: 14px;
+                line-height: 1.5;
+            }
+
+            .latihan-card.locked::before {
+                inset: 8px;
+                border-radius: 12px;
+                border-width: 2px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .latihan-card.locked::after {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .latihan-card.locked::before {
+                inset: 7px;
             }
         }
     </style>
@@ -1658,8 +2517,6 @@
                         Setelah kurung dibuka, suku-suku yang memiliki variabel dan pangkat yang sama harus dikelompokkan.
                     </p>
 
-
-
                     <div class="interaktif-wrap" data-answer="(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)">
                         <div class="interaktif-title">Tulis bentuk yang sudah dikelompokkan</div>
                         <input type="text" class="interaktif-input" placeholder="Contoh: ( ... ) + ( ... ) + ..." />
@@ -1675,8 +2532,6 @@
                     <p class="step-explain">
                         Sekarang hitung hasil setiap kelompok
                     </p>
-
-
 
                     <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
                         <div class="interaktif-title">Tulis hasil akhir</div>
@@ -1829,7 +2684,8 @@
                 </p>
 
                 <div class="latihan-grid" id="latihan-grid">
-                    <div class="latihan-card">
+                    {{-- LATIHAN A --}}
+                    <div class="latihan-card" id="latihan-a-card" data-latihan="A">
                         <div class="latihan-badge">A</div>
                         <div class="latihan-title">Tentukan hasil dari:</div>
 
@@ -1837,7 +2693,7 @@
                             $$(9x^2 - 4x + 7) - (2x^2 + 3x - 5)$$
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="9x^2-4x+7-2x^2-3x+5">
+                        <div class="latihan-step-box latihan-step-item" data-group="A" data-answer="9x^2-4x+7-2x^2-3x+5">
                             <div class="latihan-step-title">Langkah 1: Buka kurung</div>
                             <div class="latihan-step-help">
                                 Ubah semua tanda pada polinomial kedua karena ada minus di depan kurung.
@@ -1850,7 +2706,8 @@
                             </div>
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
+                        <div class="latihan-step-box latihan-step-item" data-group="A"
+                            data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
                                 Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta.
@@ -1863,7 +2720,7 @@
                             </div>
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="7x^2-7x+12">
+                        <div class="latihan-step-box latihan-step-item" data-group="A" data-answer="7x^2-7x+12">
                             <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
                             <div class="latihan-step-help">
                                 Hitung tiap kelompok, lalu tulis hasil polinomial akhirnya.
@@ -1877,7 +2734,8 @@
                         </div>
                     </div>
 
-                    <div class="latihan-card">
+                    {{-- LATIHAN B --}}
+                    <div class="latihan-card locked" id="latihan-b-card" data-latihan="B">
                         <div class="latihan-badge">B</div>
                         <div class="latihan-title">Tentukan hasil dari:</div>
 
@@ -1885,7 +2743,7 @@
                             $$(5y^3 + y - 8) - (2y^3 - 4y + 1)$$
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="5y^3+y-8-2y^3+4y-1">
+                        <div class="latihan-step-box latihan-step-item" data-group="B" data-answer="5y^3+y-8-2y^3+4y-1">
                             <div class="latihan-step-title">Langkah 1: Buka kurung</div>
                             <div class="latihan-step-help">
                                 Balik semua tanda di dalam kurung kedua.
@@ -1898,7 +2756,8 @@
                             </div>
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
+                        <div class="latihan-step-box latihan-step-item" data-group="B"
+                            data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
                                 Kelompokkan suku $y^3$, suku $y$, dan konstanta.
@@ -1911,7 +2770,7 @@
                             </div>
                         </div>
 
-                        <div class="latihan-step-box latihan-step-item" data-answer="3y^3+5y-9">
+                        <div class="latihan-step-box latihan-step-item" data-group="B" data-answer="3y^3+5y-9">
                             <div class="latihan-step-title">Langkah 3: Tulis hasil akhir</div>
                             <div class="latihan-step-help">
                                 Hitung semua kelompok, lalu tulis hasil akhirnya.
@@ -1950,7 +2809,9 @@
                     .replace(/\s+/g, "")
                     .replace(/×/g, "x")
                     .replace(/–/g, "-")
-                    .replace(/−/g, "-");
+                    .replace(/−/g, "-")
+                    .replace(/²/g, "^2")
+                    .replace(/³/g, "^3");
 
             const normalizePoly = (raw) => {
                 let s = normalize(raw);
@@ -1968,8 +2829,11 @@
 
                 s = s
                     .replace(/\+\-/g, "-")
-                    .replace(/(^|[+\-])1x/g, "$1x")
-                    .replace(/(^|[+\-])-1x/g, "$1-x")
+                    .replace(/\-\+/g, "-")
+                    .replace(/\-\-/g, "+")
+                    .replace(/\+\+/g, "+")
+                    .replace(/(^|[+\-(])1x/g, "$1x")
+                    .replace(/(^|[+\-(])-1x/g, "$1-x")
                     .replace(/\^1(?!\d)/g, "");
 
                 return s;
@@ -1988,7 +2852,10 @@
                 el.textContent = "";
             };
 
+            /* ===================== EKSPLORASI ===================== */
+
             const quiz = document.getElementById("eksplorasi-quiz");
+
             if (quiz) {
                 const items = Array.from(quiz.querySelectorAll(".quiz-item"));
                 const summary = document.getElementById("quiz-summary");
@@ -2069,6 +2936,8 @@
                 updateEksplorasiState();
             }
 
+            /* ===================== TRIK CEPAT ===================== */
+
             const tipBoard = document.getElementById("tipBoard");
             const tipFlashBtn = document.getElementById("tipFlashBtn");
             const tipRememberBtn = document.querySelector(".tip-remember-btn");
@@ -2083,6 +2952,8 @@
             tipFlashBtn?.addEventListener("click", flashTip);
             tipRememberBtn?.addEventListener("click", flashTip);
 
+            /* ===================== CONTOH INTERAKTIF ===================== */
+
             const interaktifItems = Array.from(document.querySelectorAll(".interaktif-wrap"));
             const interaktifSummary = document.getElementById("interaktif-summary");
             const interaktifFinal = document.getElementById("interaktif-final-message");
@@ -2094,6 +2965,7 @@
                 const ans = normalizePoly(item.getAttribute("data-answer") || "");
                 const user = normalizePoly(input ? input.value : "");
                 const ok = !!user && user === ans;
+
                 setFb(fb, ok);
                 return ok;
             }
@@ -2153,7 +3025,7 @@
 
             updateInteraktifScore();
 
-            // LATIHAN SOAL
+            /* ===================== LATIHAN SOAL ===================== */
 
             async function saveProgressMateri() {
                 const csrfToken = document
@@ -2201,11 +3073,17 @@
             }
 
             const latihanItems = Array.from(document.querySelectorAll(".latihan-step-item"));
+            const latihanAItems = latihanItems.filter(item => item.dataset.group === "A");
+            const latihanBItems = latihanItems.filter(item => item.dataset.group === "B");
+
+            const latihanBCard = document.getElementById("latihan-b-card");
+
             const latihanSummary = document.getElementById("latihan-summary");
             const latihanFinal = document.getElementById("latihan-final-message");
             const latihanCheckAll = document.getElementById("latihan-check-all");
 
             let progressSudahDisimpan = false;
+            let latihanBTerbuka = false;
 
             function checkLatihanItem(item) {
                 const input = item.querySelector(".latihan-input");
@@ -2216,8 +3094,43 @@
                 const ok = !!user && user === ans;
 
                 setFb(fb, ok);
-
                 return ok;
+            }
+
+            function setLatihanBLocked(locked) {
+                latihanBTerbuka = !locked;
+
+                if (!latihanBCard) return;
+
+                latihanBCard.classList.toggle("locked", locked);
+
+                latihanBItems.forEach(item => {
+                    const input = item.querySelector(".latihan-input");
+                    const btnCheck = item.querySelector(".latihan-check");
+                    const btnReset = item.querySelector(".latihan-reset");
+                    const fb = item.querySelector(".latihan-feedback");
+
+                    if (input) input.disabled = locked;
+                    if (btnCheck) btnCheck.disabled = locked;
+                    if (btnReset) btnReset.disabled = locked;
+
+                    if (locked) {
+                        if (input) input.value = "";
+                        clearFb(fb);
+                    }
+                });
+            }
+
+            function semuaLatihanABenar() {
+                return latihanAItems.length > 0 && latihanAItems.every(item =>
+                    item.querySelector(".latihan-feedback")?.classList.contains("ok")
+                );
+            }
+
+            function semuaLatihanBenar() {
+                return latihanItems.length > 0 && latihanItems.every(item =>
+                    item.querySelector(".latihan-feedback")?.classList.contains("ok")
+                );
             }
 
             async function handleLatihanSelesai() {
@@ -2250,18 +3163,34 @@
             }
 
             async function updateLatihanScore() {
-                const correct = latihanItems.filter(item =>
+                const correctA = latihanAItems.filter(item =>
                     item.querySelector(".latihan-feedback")?.classList.contains("ok")
                 ).length;
 
-                const total = latihanItems.length;
+                const correctB = latihanBItems.filter(item =>
+                    item.querySelector(".latihan-feedback")?.classList.contains("ok")
+                ).length;
 
-                if (latihanSummary) {
-                    latihanSummary.textContent = `Skor ${correct}/${total}`;
+                const totalA = latihanAItems.length;
+                const totalB = latihanBItems.length;
+
+                const aBenarSemua = correctA === totalA && totalA > 0;
+
+                if (aBenarSemua) {
+                    setLatihanBLocked(false);
+                } else {
+                    setLatihanBLocked(true);
+                    progressSudahDisimpan = false;
                 }
 
+                if (latihanSummary) {
+                    latihanSummary.textContent = `Latihan A ${correctA}/${totalA} • Latihan B ${correctB}/${totalB}`;
+                }
+
+                const semuaBenar = semuaLatihanBenar();
+
                 if (latihanFinal) {
-                    if (correct === total && total > 0) {
+                    if (semuaBenar) {
                         latihanFinal.classList.add("ok");
                     } else {
                         latihanFinal.classList.remove("ok");
@@ -2269,7 +3198,7 @@
                     }
                 }
 
-                if (correct === total && total > 0) {
+                if (semuaBenar) {
                     await handleLatihanSelesai();
                 }
             }
@@ -2281,11 +3210,15 @@
                 const fb = item.querySelector(".latihan-feedback");
 
                 btnCheck?.addEventListener("click", async () => {
+                    if (item.dataset.group === "B" && !latihanBTerbuka) return;
+
                     checkLatihanItem(item);
                     await updateLatihanScore();
                 });
 
                 btnReset?.addEventListener("click", async () => {
+                    if (item.dataset.group === "B" && !latihanBTerbuka) return;
+
                     if (input) input.value = "";
                     clearFb(fb);
                     await updateLatihanScore();
@@ -2294,277 +3227,276 @@
                 input?.addEventListener("keydown", async (e) => {
                     if (e.key === "Enter") {
                         e.preventDefault();
+
+                        if (item.dataset.group === "B" && !latihanBTerbuka) return;
+
                         checkLatihanItem(item);
                         await updateLatihanScore();
                     }
                 });
 
                 input?.addEventListener("input", async () => {
+                    if (item.dataset.group === "B" && !latihanBTerbuka) return;
+
                     clearFb(fb);
                     await updateLatihanScore();
                 });
             });
 
             latihanCheckAll?.addEventListener("click", async () => {
-                latihanItems.forEach(checkLatihanItem);
+                latihanAItems.forEach(checkLatihanItem);
+
+                if (semuaLatihanABenar()) {
+                    setLatihanBLocked(false);
+                    latihanBItems.forEach(checkLatihanItem);
+                }
+
                 await updateLatihanScore();
             });
 
+            setLatihanBLocked(true);
             updateLatihanScore();
-        })();
 
-        const gameStages = [
-            {
-                name: "Gerbang 1 — Buka Kurung",
-                prompt: `
-                                    $$
-                                    (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                                    $$
-                                `,
-                dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
-                hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
-                answers: [
-                    "5x^3-2x^2+4x+6-3x^3-x^2+2x+5",
-                    "5x3-2x2+4x+6-3x3-x2+2x+5",
-                    "(5x^3-2x^2+4x+6)+(-3x^3-x^2+2x+5)",
-                    "(5x3-2x2+4x+6)+(-3x3-x2+2x+5)"
-                ],
-                success: "✨ Hebat! Tanda-tandanya sudah kamu ubah dengan benar. Gerbang pertama mulai terbuka..."
-            },
-            {
-                name: "Gerbang 2 — Kelompokkan Suku Sejenis",
-                prompt: `
-                                    $$
-                                    5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                                    $$
-                                `,
-                dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
-                hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
-                answers: [
-                    "(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)",
-                    "(5x3-3x3)+(-2x2-x2)+(4x+2x)+(6+5)"
-                ],
-                success: "🔓 Bagus! Suku-suku sejenis sudah berhasil dikelompokkan. Tinggal satu gerbang lagi."
-            },
-            {
-                name: "Gerbang 3 — Sederhanakan",
-                prompt: `
-                                    $$
-                                    (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                                    $$
-                                `,
-                dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
-                hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
-                answers: [
-                    "2x^3-3x^2+6x+11",
-                    "2x3-3x2+6x+11",
-                    "2x³-3x²+6x+11"
-                ],
-                success: "🎉 Luar biasa! Kamu berhasil menyederhanakan pengurangan polinomial dengan benar."
-            }
-        ];
+            /* ===================== GAME GERBANG ===================== */
 
-        (function () {
-            const gameMode = document.getElementById("game-mode");
-            if (!gameMode) return;
-
-            const gameScene = gameMode.querySelector(".game-scene");
-            const stageName = document.getElementById("game-stage-name");
-            const dialogue = document.getElementById("game-dialogue");
-            const questionMath = document.getElementById("game-question-math");
-            const hintText = document.getElementById("game-hint-text");
-            const answerInput = document.getElementById("game-answer");
-            const submitBtn = document.getElementById("game-submit");
-            const resetBtn = document.getElementById("game-reset");
-            const feedback = document.getElementById("game-feedback");
-            const victory = document.getElementById("game-victory");
-            const panel = gameMode.querySelector(".game-panel");
-
-            const dots = [
-                document.getElementById("dot-1"),
-                document.getElementById("dot-2"),
-                document.getElementById("dot-3")
+            const gameStages = [
+                {
+                    name: "Gerbang 1 — Buka Kurung",
+                    prompt: `
+                $$
+                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                $$
+                `,
+                    dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
+                    hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
+                    answers: [
+                        "5x^3-2x^2+4x+6-3x^3-x^2+2x+5",
+                        "5x3-2x2+4x+6-3x3-x2+2x+5",
+                        "5x³-2x²+4x+6-3x³-x²+2x+5",
+                        "(5x^3-2x^2+4x+6)+(-3x^3-x^2+2x+5)",
+                        "(5x3-2x2+4x+6)+(-3x3-x2+2x+5)",
+                        "(5x³-2x²+4x+6)+(-3x³-x²+2x+5)"
+                    ],
+                    success: "✨ Hebat! Tanda-tandanya sudah kamu ubah dengan benar. Gerbang pertama mulai terbuka..."
+                },
+                {
+                    name: "Gerbang 2 — Kelompokkan Suku Sejenis",
+                    prompt: `
+                $$
+                5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                $$
+                `,
+                    dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
+                    hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
+                    answers: [
+                        "(5x^3-3x^3)+(-2x^2-x^2)+(4x+2x)+(6+5)",
+                        "(5x3-3x3)+(-2x2-x2)+(4x+2x)+(6+5)",
+                        "(5x³-3x³)+(-2x²-x²)+(4x+2x)+(6+5)"
+                    ],
+                    success: "🔓 Bagus! Suku-suku sejenis sudah berhasil dikelompokkan. Tinggal satu gerbang lagi."
+                },
+                {
+                    name: "Gerbang 3 — Sederhanakan",
+                    prompt: `
+                $$
+                (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                $$
+                `,
+                    dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
+                    hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
+                    answers: [
+                        "2x^3-3x^2+6x+11",
+                        "2x3-3x2+6x+11",
+                        "2x³-3x²+6x+11"
+                    ],
+                    success: "🎉 Luar biasa! Kamu berhasil menyederhanakan pengurangan polinomial dengan benar."
+                }
             ];
 
-            let currentStage = 0;
+            const gameMode = document.getElementById("game-mode");
 
-            function normalizeGame(s) {
-                return (s || "")
-                    .toLowerCase()
-                    .trim()
-                    .replace(/\s+/g, "")
-                    .replace(/×/g, "x")
-                    .replace(/–|−/g, "-")
-                    .replace(/²/g, "^2")
-                    .replace(/³/g, "^3")
-                    .replace(/\*\*/g, "^")
-                    .replace(/([a-z])\((\-?\d+)\)/g, "$1^$2")
-                    .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
-                        const prev = full[offset - 1] || "";
-                        if (prev === "^") return match;
-                        return `${varName}^${power}`;
-                    })
-                    .replace(/\+\-/g, "-")
-                    .replace(/\-\+/g, "-")
-                    .replace(/\-\-/g, "+")
-                    .replace(/\+\+/g, "+")
-                    .replace(/\^1(?!\d)/g, "")
-                    .replace(/(^|[+\-(])1x/g, "$1x")
-                    .replace(/(^|[+\-(])-1x/g, "$1-x");
-            }
+            if (gameMode) {
+                const gameScene = gameMode.querySelector(".game-scene");
+                const stageName = document.getElementById("game-stage-name");
+                const dialogue = document.getElementById("game-dialogue");
+                const questionMath = document.getElementById("game-question-math");
+                const hintText = document.getElementById("game-hint-text");
+                const answerInput = document.getElementById("game-answer");
+                const submitBtn = document.getElementById("game-submit");
+                const resetBtn = document.getElementById("game-reset");
+                const feedback = document.getElementById("game-feedback");
+                const victory = document.getElementById("game-victory");
+                const panel = gameMode.querySelector(".game-panel");
 
-            function setGameFeedback(type, text) {
-                if (!feedback) return;
-                feedback.className = "game-feedback show " + type;
-                feedback.textContent = text;
-            }
+                const dots = [
+                    document.getElementById("dot-1"),
+                    document.getElementById("dot-2"),
+                    document.getElementById("dot-3")
+                ];
 
-            function clearGameFeedback() {
-                if (!feedback) return;
-                feedback.className = "game-feedback";
-                feedback.textContent = "";
-            }
+                let currentStage = 0;
 
-            function updateDots() {
-                dots.forEach((dot, index) => {
-                    if (!dot) return;
-                    dot.classList.remove("active", "done");
-                    if (index < currentStage) {
-                        dot.classList.add("done");
-                    } else if (index === currentStage) {
-                        dot.classList.add("active");
-                    }
-                });
-            }
+                function normalizeGame(s) {
+                    return normalizePoly(s);
+                }
 
-            function renderMathSafe() {
-                if (typeof renderMathInElement === "function") {
-                    renderMathInElement(gameMode, {
-                        delimiters: [
-                            { left: "$$", right: "$$", display: true },
-                            { left: "$", right: "$", display: false }
-                        ],
-                        throwOnError: false
+                function setGameFeedback(type, text) {
+                    if (!feedback) return;
+                    feedback.className = "game-feedback show " + type;
+                    feedback.textContent = text;
+                }
+
+                function clearGameFeedback() {
+                    if (!feedback) return;
+                    feedback.className = "game-feedback";
+                    feedback.textContent = "";
+                }
+
+                function updateDots() {
+                    dots.forEach((dot, index) => {
+                        if (!dot) return;
+
+                        dot.classList.remove("active", "done");
+
+                        if (index < currentStage) {
+                            dot.classList.add("done");
+                        } else if (index === currentStage) {
+                            dot.classList.add("active");
+                        }
                     });
                 }
-            }
 
-            function wrongEffect() {
-                if (!panel) return;
-                panel.classList.remove("shake");
-                void panel.offsetWidth;
-                panel.classList.add("shake");
-            }
-
-            function loadStage() {
-                const stage = gameStages[currentStage];
-                if (!stage) return;
-
-                if (gameScene) gameScene.style.display = "grid";
-                if (victory) victory.classList.remove("show");
-
-                if (stageName) stageName.textContent = stage.name;
-                if (dialogue) dialogue.textContent = stage.dialogue;
-                if (questionMath) questionMath.innerHTML = stage.prompt;
-                if (hintText) hintText.textContent = stage.hint;
-
-                if (answerInput) {
-                    answerInput.value = "";
-                    answerInput.style.display = "block";
-                    answerInput.placeholder =
-                        currentStage === 0
-                            ? "Tulis bentuk setelah kurung dibuka"
-                            : currentStage === 1
-                                ? "Tulis bentuk yang sudah dikelompokkan"
-                                : "Tulis hasil akhir polinomial";
+                function renderMathSafe() {
+                    if (typeof renderMathInElement === "function") {
+                        renderMathInElement(gameMode, {
+                            delimiters: [
+                                { left: "$$", right: "$$", display: true },
+                                { left: "$", right: "$", display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
                 }
 
-                if (submitBtn) submitBtn.style.display = "inline-flex";
-
-                clearGameFeedback();
-                updateDots();
-                renderMathSafe();
-            }
-
-            function showVictory() {
-                if (gameScene) gameScene.style.display = "none";
-                if (victory) {
-                    victory.classList.remove("show");
-                    void victory.offsetWidth;
-                    victory.classList.add("show");
-                }
-                renderMathSafe();
-            }
-
-            function checkAnswer() {
-                const user = normalizeGame(answerInput ? answerInput.value : "");
-                const validAnswers = gameStages[currentStage].answers.map(a => normalizeGame(a));
-
-                if (!user) {
-                    setGameFeedback("no", "Isi jawabanmu terlebih dahulu agar gerbang bisa diproses.");
-                    wrongEffect();
-                    return;
+                function wrongEffect() {
+                    if (!panel) return;
+                    panel.classList.remove("shake");
+                    void panel.offsetWidth;
+                    panel.classList.add("shake");
                 }
 
-                if (validAnswers.includes(user)) {
-                    setGameFeedback("ok", gameStages[currentStage].success);
+                function loadStage() {
+                    const stage = gameStages[currentStage];
+                    if (!stage) return;
 
-                    if (dots[currentStage]) {
-                        dots[currentStage].classList.remove("active");
-                        dots[currentStage].classList.add("done");
+                    if (gameScene) gameScene.style.display = "grid";
+                    if (victory) victory.classList.remove("show");
+
+                    if (stageName) stageName.textContent = stage.name;
+                    if (dialogue) dialogue.textContent = stage.dialogue;
+                    if (questionMath) questionMath.innerHTML = stage.prompt;
+                    if (hintText) hintText.textContent = stage.hint;
+
+                    if (answerInput) {
+                        answerInput.value = "";
+                        answerInput.style.display = "block";
+                        answerInput.placeholder =
+                            currentStage === 0
+                                ? "Tulis bentuk setelah kurung dibuka"
+                                : currentStage === 1
+                                    ? "Tulis bentuk yang sudah dikelompokkan"
+                                    : "Tulis hasil akhir polinomial";
                     }
 
-                    setTimeout(() => {
-                        currentStage++;
+                    if (submitBtn) submitBtn.style.display = "inline-flex";
 
-                        if (currentStage < gameStages.length) {
-                            loadStage();
-                        } else {
-                            clearGameFeedback();
-                            showVictory();
-                        }
-                    }, 900);
-                } else {
-                    setGameFeedback("no", "Gerbang belum terbuka. Periksa lagi tanda, pengelompokan, atau hasil perhitungannya.");
-                    wrongEffect();
+                    clearGameFeedback();
+                    updateDots();
+                    renderMathSafe();
                 }
-            }
 
-            function resetGame() {
-                currentStage = 0;
+                function showVictory() {
+                    if (gameScene) gameScene.style.display = "none";
 
-                dots.forEach(dot => {
-                    if (!dot) return;
-                    dot.classList.remove("active", "done");
+                    if (victory) {
+                        victory.classList.remove("show");
+                        void victory.offsetWidth;
+                        victory.classList.add("show");
+                    }
+
+                    renderMathSafe();
+                }
+
+                function checkAnswer() {
+                    const user = normalizeGame(answerInput ? answerInput.value : "");
+                    const validAnswers = gameStages[currentStage].answers.map(a => normalizeGame(a));
+
+                    if (!user) {
+                        setGameFeedback("no", "Isi jawabanmu terlebih dahulu agar gerbang bisa diproses.");
+                        wrongEffect();
+                        return;
+                    }
+
+                    if (validAnswers.includes(user)) {
+                        setGameFeedback("ok", gameStages[currentStage].success);
+
+                        if (dots[currentStage]) {
+                            dots[currentStage].classList.remove("active");
+                            dots[currentStage].classList.add("done");
+                        }
+
+                        setTimeout(() => {
+                            currentStage++;
+
+                            if (currentStage < gameStages.length) {
+                                loadStage();
+                            } else {
+                                clearGameFeedback();
+                                showVictory();
+                            }
+                        }, 900);
+                    } else {
+                        setGameFeedback("no", "Gerbang belum terbuka. Periksa lagi tanda, pengelompokan, atau hasil perhitungannya.");
+                        wrongEffect();
+                    }
+                }
+
+                function resetGame() {
+                    currentStage = 0;
+
+                    dots.forEach(dot => {
+                        if (!dot) return;
+                        dot.classList.remove("active", "done");
+                    });
+
+                    if (dots[0]) dots[0].classList.add("active");
+
+                    if (victory) victory.classList.remove("show");
+                    if (gameScene) gameScene.style.display = "grid";
+
+                    if (answerInput) {
+                        answerInput.style.display = "block";
+                        answerInput.value = "";
+                    }
+
+                    if (submitBtn) submitBtn.style.display = "inline-flex";
+
+                    clearGameFeedback();
+                    loadStage();
+                }
+
+                submitBtn?.addEventListener("click", checkAnswer);
+                resetBtn?.addEventListener("click", resetGame);
+
+                answerInput?.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        checkAnswer();
+                    }
                 });
 
-                if (dots[0]) dots[0].classList.add("active");
-
-                if (victory) victory.classList.remove("show");
-                if (gameScene) gameScene.style.display = "grid";
-
-                if (answerInput) {
-                    answerInput.style.display = "block";
-                    answerInput.value = "";
-                }
-
-                if (submitBtn) submitBtn.style.display = "inline-flex";
-
-                clearGameFeedback();
                 loadStage();
             }
-
-            submitBtn?.addEventListener("click", checkAnswer);
-            resetBtn?.addEventListener("click", resetGame);
-
-            answerInput?.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    checkAnswer();
-                }
-            });
-
-            loadStage();
         })();
     </script>
 @endsection
@@ -2606,8 +3538,8 @@
             🔒 Kuis
         </span>
     @else
-        <span class="btn-nav next-btn disabled">
-            Next →
-        </span>
+    <span class="btn-nav next-btn disabled">
+        Next →
+    </span>
     @endif
 @endsection

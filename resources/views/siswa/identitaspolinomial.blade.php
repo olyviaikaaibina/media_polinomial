@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                    delimiters: [
-                                                                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                    ]
-                                                                                                                                                                                                                                                                                });"></script>
+                                                                                                                                                                                                                                                                                                delimiters: [
+                                                                                                                                                                                                                                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                    {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                ]
+                                                                                                                                                                                                                                                                                            });"></script>
 
     <style>
         :root {
@@ -958,8 +958,8 @@
         }
 
         /* =========================
-                                                                                                                           LATIHAN DRAG & DROP
-                                                                                                                        ========================= */
+                                                                                                                                       LATIHAN DRAG & DROP
+                                                                                                                                    ========================= */
         .latihan-drag-wrap {
             margin-top: 38px;
         }
@@ -1400,8 +1400,8 @@
         }
 
         /* =========================
-                                                                                                SIFAT INTERAKTIF MODERN
-                                                                                                ========================= */
+                                                                                                            SIFAT INTERAKTIF MODERN
+                                                                                                            ========================= */
         .sifat-interaktif {
             margin: 30px 0;
             padding: 26px 22px 24px;
@@ -1765,8 +1765,8 @@
         }
 
         /* =========================
-                                           SIFAT INTERAKTIF - FINAL
-                                           ========================= */
+                                                       SIFAT INTERAKTIF - FINAL
+                                                       ========================= */
 
         .sifat-wrapper {
             position: relative;
@@ -2528,6 +2528,535 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* =====================================================
+               RESPONSIVE FINAL: HP, TABLET, LAPTOP
+               Letakkan PALING BAWAH setelah semua CSS lama
+            ===================================================== */
+
+        /* Supaya padding dan lebar elemen tidak bikin overflow */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Gambar, tabel, iframe, rumus panjang agar tidak keluar layar */
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .formula-center,
+        .langkah-rumus,
+        .contoh-rumus,
+        .identitas-rumus,
+        .sifat-detail-rumus,
+        .drag-math,
+        .pair-soal {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        /* Wrapper utama */
+        .materi-wrap {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+               LAPTOP / DESKTOP
+               1025px ke atas
+            ===================================================== */
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                padding: 24px 24px 48px;
+            }
+
+            .top-title {
+                flex-direction: row;
+                align-items: baseline;
+            }
+
+            .top-title .label {
+                font-size: 28px;
+            }
+
+            .top-title .judul {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .sifat-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .sifat-detail-info-wrap {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .drag-area-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .pair-grid {
+                grid-template-columns: 1.15fr .85fr;
+            }
+
+            .drag-item {
+                width: calc(50% - 6px);
+            }
+        }
+
+        /* =====================================================
+               TABLET
+               641px - 1024px
+            ===================================================== */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 92%;
+                padding: 22px 18px 44px;
+            }
+
+            .top-title {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .top-title .label {
+                font-size: 25px;
+            }
+
+            .top-title .judul {
+                font-size: 28px;
+            }
+
+            .tujuan-card,
+            .eksplorasi-card,
+            .contoh-card,
+            .mari-card,
+            .latihan-modern-card,
+            .latihan-drag-card,
+            .sifat-interaktif {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .section-title {
+                font-size: 25px;
+            }
+
+            .materi-paragraf p,
+            .tujuan-card li,
+            .sifat-text,
+            .contoh-card p,
+            .lanjutan-paragraf p,
+            .mari-instruksi,
+            .latihan-drag-intro {
+                font-size: 16px;
+            }
+
+            .sifat-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .sifat-detail-info-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-title-modern {
+                font-size: 25px;
+            }
+
+            .sifat-detail-title {
+                font-size: 22px;
+            }
+
+            .sifat-detail-rumus {
+                font-size: 24px;
+            }
+
+            .drag-area-row,
+            .pair-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .drag-bank {
+                gap: 10px;
+            }
+
+            .drag-item {
+                width: calc(50% - 5px);
+            }
+
+            .quiz-options {
+                margin-left: 48px;
+            }
+
+            .step-input {
+                min-width: 260px;
+            }
+
+            .eksplorasi-opsi {
+                min-width: calc(50% - 8px);
+            }
+        }
+
+        /* =====================================================
+               HP / MOBILE
+               640px ke bawah
+            ===================================================== */
+        @media (max-width: 640px) {
+            .materi-wrap {
+                max-width: 100%;
+                padding: 16px 12px 36px;
+                line-height: 1.6;
+            }
+
+            .top-title {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            .top-title .label {
+                font-size: 21px;
+                line-height: 1.2;
+            }
+
+            .top-title .judul {
+                font-size: 23px;
+                line-height: 1.25;
+            }
+
+            .tujuan-card {
+                padding: 14px 14px;
+                margin-bottom: 22px;
+            }
+
+            .tujuan-header .title {
+                font-size: 18px;
+            }
+
+            .tujuan-card ol {
+                padding-left: 18px;
+            }
+
+            .tujuan-card li {
+                font-size: 15px;
+                text-align: left;
+            }
+
+            .section-title {
+                font-size: 21px;
+                line-height: 1.3;
+            }
+
+            .eksplorasi-card {
+                border-radius: 20px;
+                padding: 20px 14px 18px;
+            }
+
+            .eksplorasi-title {
+                font-size: 18px;
+            }
+
+            .materi-paragraf p,
+            .lanjutan-paragraf p,
+            .definisi-text,
+            .sifat-text,
+            .contoh-card p,
+            .langkah-kecil,
+            .langkah-note,
+            .asal-langkah,
+            .mari-instruksi,
+            .latihan-modern-intro,
+            .latihan-drag-intro {
+                font-size: 14px;
+                text-align: left;
+            }
+
+            .formula-center,
+            .identitas-rumus,
+            .contoh-rumus,
+            .langkah-rumus {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            .definisi-block {
+                padding: 32px 12px 16px;
+                margin-top: 22px;
+            }
+
+            .definisi-pill,
+            .contoh-badge,
+            .sifat-badge,
+            .latihan-modern-badge,
+            .sifat-badge-modern {
+                left: 12px;
+                min-width: auto;
+                font-size: 13px;
+                padding: 7px 14px;
+            }
+
+            .sifat-card,
+            .contoh-card,
+            .latihan-modern-card,
+            .latihan-drag-card,
+            .mari-card {
+                border-radius: 18px;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .sifat-wrapper {
+                margin-top: 38px;
+            }
+
+            .sifat-interaktif {
+                border-radius: 22px;
+                padding: 36px 12px 18px;
+            }
+
+            .sifat-title-modern {
+                font-size: 21px;
+            }
+
+            .sifat-subtitle-modern {
+                font-size: 14px;
+            }
+
+            .sifat-top-controls,
+            .sifat-tabs,
+            .sifat-mini-quiz-options,
+            .quiz-actions,
+            .contoh-actions,
+            .drag-action-row,
+            .step-input-row,
+            .step-option-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sifat-tab,
+            .mini-quiz-btn,
+            .quiz-btn,
+            .btn-contoh,
+            .drag-btn,
+            .step-btn,
+            .step-option-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .sifat-grid,
+            .sifat-detail-info-wrap,
+            .drag-area-row,
+            .pair-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-card-item {
+                border-radius: 16px;
+                padding: 14px;
+            }
+
+            .sifat-no {
+                width: 30px;
+                height: 30px;
+                font-size: 13px;
+            }
+
+            .sifat-mini {
+                font-size: 14px;
+            }
+
+            .sifat-formula,
+            .drag-math,
+            .pair-soal {
+                font-size: 15px;
+            }
+
+            .sifat-detail-panel {
+                border-radius: 18px;
+                padding: 16px 12px;
+            }
+
+            .sifat-detail-title {
+                font-size: 19px;
+            }
+
+            .sifat-detail-rumus {
+                font-size: 20px;
+                padding: 12px 8px;
+            }
+
+            .sifat-detail-box,
+            .sifat-mini-quiz,
+            .step-panel,
+            .latihan-drag-section,
+            .eksplorasi-quiz-item {
+                padding: 14px 12px;
+                border-radius: 14px;
+            }
+
+            .mari-header,
+            .latihan-drag-header {
+                font-size: 16px;
+                padding: 9px 20px;
+            }
+
+            .quiz-head {
+                align-items: flex-start;
+            }
+
+            .quiz-number {
+                width: 30px;
+                height: 30px;
+                min-width: 30px;
+                font-size: 13px;
+            }
+
+            .soal {
+                font-size: 14px;
+                line-height: 1.55;
+            }
+
+            .quiz-options,
+            .penjelasan {
+                margin-left: 0;
+            }
+
+            .quiz-options {
+                gap: 10px;
+            }
+
+            .quiz-option-label {
+                flex: 1;
+            }
+
+            .quiz-option-chip {
+                width: 100%;
+                min-width: auto;
+                font-size: 14px;
+                padding: 9px 12px;
+            }
+
+            .eksplorasi-opsi-row {
+                flex-direction: column;
+            }
+
+            .eksplorasi-opsi {
+                width: 100%;
+                min-width: 100%;
+                font-size: 14px;
+            }
+
+            .step-input {
+                width: 100%;
+                min-width: 100%;
+                font-size: 14px;
+            }
+
+            .drag-bank {
+                flex-direction: column;
+                padding: 12px;
+            }
+
+            .drag-item {
+                width: 100%;
+                padding: 11px 12px;
+            }
+
+            .drag-dropzone {
+                min-height: 120px;
+                padding: 12px;
+            }
+
+            .latihan-drag-title {
+                font-size: 16px;
+            }
+
+            .hasil-skor,
+            .drag-feedback,
+            .drag-summary,
+            .step-feedback,
+            .step-answer-box,
+            .sifat-detail-box-text,
+            .sifat-mini-quiz-question,
+            .sifat-mini-quiz-feedback,
+            .eksplorasi-feedback,
+            .eksplorasi-penjelasan {
+                font-size: 13.5px;
+            }
+        }
+
+        /* =====================================================
+               HP KECIL
+               420px ke bawah
+            ===================================================== */
+        @media (max-width: 420px) {
+            .materi-wrap {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .top-title .judul {
+                font-size: 21px;
+            }
+
+            .top-title .label {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .formula-center,
+            .identitas-rumus,
+            .contoh-rumus,
+            .langkah-rumus,
+            .sifat-detail-rumus {
+                font-size: 17px;
+            }
+
+            .mari-header,
+            .latihan-drag-header {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .definisi-pill,
+            .contoh-badge,
+            .sifat-badge-modern,
+            .latihan-modern-badge {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .quiz-option-chip {
+                padding: 9px 10px;
             }
         }
     </style>
@@ -3479,24 +4008,24 @@
                         if (jawaban === benar1 || jawaban === benar2) {
                             quizItem.classList.add('benar');
                             penjelasan.innerHTML = `
-                                                ✔ <b>Benar!</b> Jawabanmu tepat.
-                                                Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
-                                                $16 = 4^2$, sehingga:
-                                                $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
-                                                Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
-                                                atau <b>$(x-4)(x+4)$</b>.
-                                            `;
+                                                            ✔ <b>Benar!</b> Jawabanmu tepat.
+                                                            Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
+                                                            $16 = 4^2$, sehingga:
+                                                            $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
+                                                            Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
+                                                            atau <b>$(x-4)(x+4)$</b>.
+                                                        `;
                         } else {
                             quizItem.classList.add('salah');
                             penjelasan.innerHTML = `
-                                                ✘ <b>Jawabanmu belum tepat.</b>
-                                                Bentuk $x^2 - 16$ harus dikenali sebagai:
-                                                $$x^2 - 16 = x^2 - 4^2$$
-                                                lalu gunakan identitas:
-                                                $$a^2 - b^2 = (a+b)(a-b)$$
-                                                sehingga hasil yang benar adalah:
-                                                $$x^2 - 16 = (x+4)(x-4).$$
-                                            `;
+                                                            ✘ <b>Jawabanmu belum tepat.</b>
+                                                            Bentuk $x^2 - 16$ harus dikenali sebagai:
+                                                            $$x^2 - 16 = x^2 - 4^2$$
+                                                            lalu gunakan identitas:
+                                                            $$a^2 - b^2 = (a+b)(a-b)$$
+                                                            sehingga hasil yang benar adalah:
+                                                            $$x^2 - 16 = (x+4)(x-4).$$
+                                                        `;
                         }
 
                         if (typeof renderMathInElement === 'function') {
@@ -3634,9 +4163,12 @@
 
                 (function () {
                     function normalize(text) {
-                        return text
+                        return (text || '')
                             .toLowerCase()
                             .replace(/\s+/g, '')
+                            .replace(/\*\*/g, '^')
+                            .replace(/²/g, '^2')
+                            .replace(/³/g, '^3')
                             .replace(/\*/g, '')
                             .replace(/[()]/g, '');
                     }
@@ -3794,14 +4326,15 @@
                     });
 
                     document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4').value);
-                        const benar1 = normalize('(x-3)(x2+3x+9)');
-                        const benar2 = normalize('(x2+3x+9)(x-3)');
+                        const val = normalize(document.getElementById('input-step4')?.value);
+
+                        const benar1 = normalize('(x-3)(x^2+3x+9)');
+                        const benar2 = normalize('(x^2+3x+9)(x-3)');
 
                         if (val === benar1 || val === benar2) {
-                            tampilkan(4, 'benar', '✔ Benar! Hasil faktorisasi sudah tepat.');
+                            tampilkan(4, 'benar', '🎉 Benar. Faktorisasi sudah tepat.', true);
                         } else {
-                            tampilkan(4, 'salah', '✘ Jawaban belum tepat. Gunakan $a=x$ dan $b=3$ pada rumus selisih dua kubik.');
+                            tampilkan(4, 'salah', '✘ Belum tepat. Coba substitusikan nilai ke rumus dengan lebih teliti.');
                         }
                     });
                 })();
@@ -3954,18 +4487,18 @@
                                 feedbackIdentitas,
                                 'ok',
                                 `✔ Bagian A benar semua.<br>
-                                                <b>Penjelasan:</b><br>
-                                                1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
-                                                2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
-                                                $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
+                                                            <b>Penjelasan:</b><br>
+                                                            1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
+                                                            2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
+                                                            $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
                             );
                         } else {
                             tampilkanBox(
                                 feedbackIdentitas,
                                 'no',
                                 `✘ Bagian A belum tepat semuanya.<br>
-                                                <b>Petunjuk:</b><br>
-                                                Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
+                                                            <b>Petunjuk:</b><br>
+                                                            Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
                             );
                         }
 
@@ -3986,18 +4519,18 @@
                                 feedbackFaktorisasi,
                                 'ok',
                                 `✔ Bagian B benar semua.<br>
-                                                <b>Penjelasan:</b><br>
-                                                3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
-                                                4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
+                                                            <b>Penjelasan:</b><br>
+                                                            3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
+                                                            4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
                             );
                         } else {
                             tampilkanBox(
                                 feedbackFaktorisasi,
                                 'no',
                                 `✘ Bagian B masih ada yang belum tepat.<br>
-                                                <b>Petunjuk:</b><br>
-                                                - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
-                                                - $27p^3+125$ cocok dengan jumlah dua kubik.`
+                                                            <b>Petunjuk:</b><br>
+                                                            - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
+                                                            - $27p^3+125$ cocok dengan jumlah dua kubik.`
                             );
                         }
 
@@ -4256,52 +4789,52 @@
                         setFeedback(
                             skor === 5 ? 'ok' : 'no',
                             `
-                    <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
+                                <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
 
-                    <div style="margin-bottom:12px;">
-                        <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
-                        Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
-                        hasilnya selalu:
-                        $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
-                        Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
-                    </div>
+                                <div style="margin-bottom:12px;">
+                                    <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
+                                    Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
+                                    hasilnya selalu:
+                                    $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
+                                    Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
+                                </div>
 
-                    <div style="margin-bottom:12px;">
-                        <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
-                        Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
-                        $$ (a+b)(a-b)=a^2-b^2 $$
-                        dengan $a=2y$ dan $b=5$, sehingga:
-                        $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
-                        Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
-                        Maka pernyataan ini <b>bukan identitas</b>.
-                    </div>
+                                <div style="margin-bottom:12px;">
+                                    <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
+                                    Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
+                                    $$ (a+b)(a-b)=a^2-b^2 $$
+                                    dengan $a=2y$ dan $b=5$, sehingga:
+                                    $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
+                                    Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
+                                    Maka pernyataan ini <b>bukan identitas</b>.
+                                </div>
 
-                    <div style="margin-bottom:12px;">
-                        <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
-                        Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
-                        $$ (x+a)(x-a)=x^2-a^2 $$
-                        Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
-                        <b>identitas polinomial</b>.
-                    </div>
+                                <div style="margin-bottom:12px;">
+                                    <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
+                                    Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
+                                    $$ (x+a)(x-a)=x^2-a^2 $$
+                                    Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
+                                    <b>identitas polinomial</b>.
+                                </div>
 
-                    <div style="margin-bottom:12px;">
-                        <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
-                        Gunakan rumus <b>kuadrat selisih dua suku</b>:
-                        $$ (a-b)^2 = a^2 - 2ab + b^2 $$
-                        dengan $a=x$ dan $b=4$, maka:
-                        $$ (x-4)^2 = x^2 - 8x + 16 $$
-                        Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
-                        maka ini <b>bukan identitas</b>.
-                    </div>
+                                <div style="margin-bottom:12px;">
+                                    <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
+                                    Gunakan rumus <b>kuadrat selisih dua suku</b>:
+                                    $$ (a-b)^2 = a^2 - 2ab + b^2 $$
+                                    dengan $a=x$ dan $b=4$, maka:
+                                    $$ (x-4)^2 = x^2 - 8x + 16 $$
+                                    Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
+                                    maka ini <b>bukan identitas</b>.
+                                </div>
 
-                    <div style="margin-bottom:4px;">
-                        <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
-                        Ini adalah rumus baku <b>jumlah dua kubik</b>:
-                        $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
-                        Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
-                        <b>identitas polinomial</b>.
-                    </div>
-                    `
+                                <div style="margin-bottom:4px;">
+                                    <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
+                                    Ini adalah rumus baku <b>jumlah dua kubik</b>:
+                                    $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
+                                    Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
+                                    <b>identitas polinomial</b>.
+                                </div>
+                                `
                         );
 
                         rerenderMath();
@@ -4435,19 +4968,19 @@
                                 this.classList.add('benar');
                                 miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
                                 miniQuizFeedback.innerHTML = `
-                                                    ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
-                                                    \\(8 = 2^3\\), sehingga cocok dengan identitas:
-                                                    \\[
-                                                        a^3 - b^3 = (a-b)(a^2+ab+b^2)
-                                                    \\]
-                                                `;
+                                                                ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
+                                                                \\(8 = 2^3\\), sehingga cocok dengan identitas:
+                                                                \\[
+                                                                    a^3 - b^3 = (a-b)(a^2+ab+b^2)
+                                                                \\]
+                                                            `;
                             } else {
                                 this.classList.add('salah');
                                 miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
                                 miniQuizFeedback.innerHTML = `
-                                                    ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
-                                                    bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
-                                                `;
+                                                                ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
+                                                                bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
+                                                            `;
                             }
 
                             renderMathArea();

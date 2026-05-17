@@ -25,6 +25,18 @@
             function normalize(str) {
                 return (str || "")
                     .toLowerCase()
+                    .replace(/²/g, '2')
+                    .replace(/³/g, '3')
+                    .replace(/⁰/g, '0')
+                    .replace(/¹/g, '1')
+                    .replace(/⁴/g, '4')
+                    .replace(/⁵/g, '5')
+                    .replace(/⁶/g, '6')
+                    .replace(/⁷/g, '7')
+                    .replace(/⁸/g, '8')
+                    .replace(/⁹/g, '9')
+                    .replace(/pangkat/g, '')
+                    .replace(/\^/g, '')
                     .replace(/\s+/g, '')
                     .replace(/\*/g, '')
                     .replace(/−/g, '-')
@@ -646,7 +658,11 @@
                     'x^2(x+2)-9(x+2)',
                     '(x^2)(x+2)-9(x+2)',
                     'x2(x+2)-9(x+2)',
-                    '(x²)(x+2)-9(x+2)'
+                    '(x2)(x+2)-9(x+2)',
+                    'x²(x+2)-9(x+2)',
+                    '(x²)(x+2)-9(x+2)',
+                    'x pangkat 2(x+2)-9(x+2)',
+                    '(x pangkat 2)(x+2)-9(x+2)'
                 ].map(normalize).includes(jawab2);
 
                 markInputState(input2El, jawab2 ? benar2 : null);
@@ -1148,20 +1164,20 @@
 
                 if (bank1) {
                     bank1.innerHTML = `
-                                    <div class="drag-item" draggable="true" data-value="0">0</div>
-                                    <div class="drag-item" draggable="true" data-value="-6">-6</div>
-                                    <div class="drag-item" draggable="true" data-value="1">1</div>
-                                    <div class="drag-item" draggable="true" data-value="4">4</div>
-                                `;
+                                                    <div class="drag-item" draggable="true" data-value="0">0</div>
+                                                    <div class="drag-item" draggable="true" data-value="-6">-6</div>
+                                                    <div class="drag-item" draggable="true" data-value="1">1</div>
+                                                    <div class="drag-item" draggable="true" data-value="4">4</div>
+                                                `;
                 }
 
                 if (bank2) {
                     bank2.innerHTML = `
-                                    <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
-                                    <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
-                                    <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
-                                    <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
-                                `;
+                                                    <div class="drag-item" draggable="true" data-value="kain habis terjual">Kain habis terjual</div>
+                                                    <div class="drag-item" draggable="true" data-value="masih ada 1 kain tersisa">Masih ada 1 kain tersisa</div>
+                                                    <div class="drag-item" draggable="true" data-value="produksi bertambah">Produksi bertambah</div>
+                                                    <div class="drag-item" draggable="true" data-value="tidak ada perubahan">Tidak ada perubahan</div>
+                                                `;
                 }
 
                 setupDragItems();
@@ -1197,19 +1213,68 @@
             --latihan-head: #8b8b8b;
             --success: #1f8a4c;
             --danger: #d64545;
-            --card-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+            --card-shadow: 0 10px 24px rgba(0, 0, 0, .06);
             --radius-lg: 22px;
             --radius-md: 16px;
             --radius-sm: 12px;
         }
 
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         .materi-wrap {
+            width: 100%;
             max-width: 1000px;
             margin: 0 auto;
             font-family: "Times New Roman", Times, serif;
-            line-height: 1.8;
+            line-height: 1.75;
             padding: 20px 14px 40px;
+            color: var(--text);
+            overflow-x: hidden;
         }
+
+        img,
+        video,
+        iframe,
+        table {
+            max-width: 100%;
+        }
+
+        p,
+        li {
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+            padding-bottom: 4px;
+        }
+
+        .katex {
+            max-width: 100%;
+        }
+
+        /* =========================
+                       JUDUL
+                    ========================= */
 
         .top-title {
             display: flex;
@@ -1217,6 +1282,7 @@
             align-items: baseline;
             gap: 14px;
             margin-bottom: 18px;
+            max-width: 100%;
         }
 
         .top-title .label {
@@ -1231,17 +1297,26 @@
         .top-title .judul {
             font-size: 34px;
             font-weight: 800;
-            line-height: 1.1;
-            color: #1b7a2a;
+            line-height: 1.15;
+            color: var(--green);
             margin: 0;
+            min-width: 0;
+            word-break: normal;
+            overflow-wrap: anywhere;
         }
 
+        /* =========================
+                       CARD UMUM
+                    ========================= */
+
         .card {
+            width: 100%;
             border-radius: 16px;
             padding: 20px 22px;
             background: #fff;
             margin-bottom: 20px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .05);
+            box-shadow: var(--card-shadow);
+            overflow-wrap: break-word;
         }
 
         .tujuan-card {
@@ -1281,7 +1356,7 @@
             font-size: 24px;
             font-weight: 800;
             color: #1f7a34;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
         }
 
         .tujuan-card ol {
@@ -1300,6 +1375,7 @@
             font-size: 28px;
             font-weight: 800;
             margin: 30px 0 12px;
+            line-height: 1.25;
         }
 
         .section-title .nomor {
@@ -1311,679 +1387,44 @@
             color: var(--green);
         }
 
-        /* CARD UTAMA - FULL FLAT */
         /* =========================
-                                                                           CARD EKSPLORASI (VERSI DIPERBAIKI & LEBIH KECIL)
-                                                                           ========================= */
+                       EKSPLORASI
+                    ========================= */
+
         .card-eksplorasi {
             position: relative;
+            width: 100%;
             overflow: hidden;
             background: #eaf3ff !important;
             background-image: none !important;
             border: 1px solid #cfe3ff;
-            border-left: 3px solid #5b9bd5;
-            border-radius: 10px;
-            padding: 10px;
+            border-left: 6px solid var(--blue);
+            border-radius: 16px;
+            padding: 20px;
             box-shadow: none !important;
         }
 
-        /* MATIKAN EFEK TAMBAHAN */
         .card-eksplorasi::before,
         .card-eksplorasi::after {
             display: none !important;
             content: none !important;
         }
 
-        /* HAPUS GRADASI DALAM */
         .card-eksplorasi * {
             background-image: none !important;
         }
 
-        /* ISI DALAM */
         .eksplorasi-story,
         .explore-grid,
         .mini-card {
             background: transparent !important;
         }
 
-        /* teks umum dalam eksplorasi */
-        .card-eksplorasi p,
-        .card-eksplorasi li {
-            font-size: 12px;
-            line-height: 1.4;
-            margin-bottom: 6px;
-        }
-
-        /* judul eksplorasi */
-        .eksplorasi-bar {
-            margin-bottom: 10px;
-            gap: 6px;
-        }
-
-        .eksplorasi-bar h3 {
-            font-size: 14px;
-        }
-
-        /* grid pertanyaan 1 & 2 */
-        .explore-grid {
-            gap: 8px;
-            margin-top: 10px;
-            grid-template-columns: 1fr 1fr;
-            align-items: start;
-        }
-
-        /* MINI CARD */
-        .mini-card {
-            padding: 4px !important;
-        }
-
-        .mini-card h4 {
-            font-size: 9px;
-            margin-bottom: 4px;
-        }
-
-        .mini-card p {
-            font-size: 11px;
-            margin-bottom: 6px;
-            line-height: 1.35;
-        }
-
-        /* box rumus */
-        .rumus-box {
-            padding: 6px;
-            margin: 6px 0;
-            border-radius: 8px;
-        }
-
-        .rumus-box .rumus-label {
-            font-size: 9px;
-            padding: 2px 6px;
-            margin-bottom: 3px;
-        }
-
-        .rumus-box .rumus-besar {
-            font-size: 12px;
-        }
-
-        /* Label bank */
-        .bank-label {
-            font-size: 10px;
-            padding: 3px 8px;
-            margin-bottom: 6px;
-        }
-
-        /* Drag item */
-        .drag-item {
-            padding: 2px 5px;
-            font-size: 11px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        /* Bank lebih rapat */
-        .drag-bank {
-            gap: 4px;
-        }
-
-        /* catatan kecil */
-        .small-note {
-            font-size: 10px;
-            margin-top: 4px;
-        }
-
-        /* Drop area */
-        .drop-list {
-            gap: 8px;
-        }
-
-        .drop-row {
-            grid-template-columns: 52px 1fr;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .drop-label {
-            font-size: 11px;
-            padding: 4px;
-            border-radius: 6px;
-        }
-
-        .drop-zone {
-            min-height: 23px;
-            padding: 2px 4px;
-            border-radius: 8px;
-        }
-
-        /* Placeholder */
-        .drop-zone::after {
-            font-size: 9px;
-        }
-
-        /* Penjelasan */
-        .explanation-box {
-            margin-top: 6px;
-            padding: 8px 10px;
-            border-radius: 8px;
-        }
-
-        .explanation-box h5 {
-            font-size: 11px;
-            margin-bottom: 4px;
-        }
-
-        .explanation-box p {
-            font-size: 10px;
-            line-height: 1.35;
-            margin-bottom: 4px;
-        }
-
-        /* Status box */
-        .status-box {
-            font-size: 10px;
-            padding: 6px 8px;
-            margin-top: 6px;
-            border-radius: 8px;
-        }
-
-        p,
-        li {
-            color: var(--muted);
-            font-size: 18px;
-        }
-
-        .highlight {
-            font-weight: 700;
-            color: #000;
-        }
-
-        .definisi-modern {
-            position: relative;
-            background: var(--def-bg);
-            border: 1.5px solid var(--def-border);
-            border-radius: 16px;
-            padding: 20px 18px 14px;
-            margin-top: 10px;
-        }
-
-        .definisi-pill {
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            background: var(--def-pill);
-            color: #3b6a31;
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: .2px;
-            padding: 6px 18px;
-            border-radius: 14px;
-            border: 1.5px solid var(--def-pill-border);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
-        }
-
-        .definisi-modern p,
-        .definisi-modern li {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .definisi-modern .rumus-besar {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-
-        .definisi-modern ul {
-            margin: 10px 0 0 22px;
-            padding: 0;
-        }
-
-        .definisi-modern li {
-            margin-bottom: 4px;
-        }
-
-        .sifat-box {
-            position: relative;
-            background: #ffffff;
-            border: 2px solid #5aa05a;
-            border-radius: 18px;
-            padding: 20px 20px 16px;
-            margin-top: 20px;
-        }
-
-        .sifat-label {
-            position: absolute;
-            top: -14px;
-            left: 20px;
-            background: #e3a07b;
-            color: #4a2c1f;
-            font-weight: 700;
-            font-size: 13px;
-            padding: 6px 18px;
-            border-radius: 12px 20px 20px 12px;
-            border: 1.5px solid #cf7444;
-        }
-
-        .sifat-box p,
-        .sifat-box li {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #5a4a42;
-        }
-
-        .sifat-box .katex-display {
-            margin: 8px 0;
-            font-size: 1em;
-        }
-
-        /* =========================
-                                                       FIX POSISI BADGE CONTOH
-                                                       ========================= */
-
-        /* hapus efek naik */
-        .contoh-wrap {
-            margin-top: 38px !important;
-            position: relative;
-        }
-
-        /* badge CONTOH diturunkan dan dibuat stabil */
-        .contoh-pill {
-            display: inline-block;
-            background: #e7ab97;
-            color: #5a2d18;
-            font-weight: 800;
-            font-size: 16px;
-            padding: 10px 34px;
-            border-radius: 999px;
-            border: 1.5px solid #d98a63;
-            margin: 0 0 22px 0 !important;
-            position: relative;
-            top: 0 !important;
-            left: 0 !important;
-            transform: none !important;
-            z-index: 3;
-        }
-
-        /* box contoh diberi jarak dari badge */
-        .contoh-area {
-            margin-top: 8px;
-            border: 2px solid #79bf6a;
-            border-radius: 22px;
-            background: #f6f8f3;
-            padding: 30px 24px 28px;
-        }
-
-        /* kalau ada contoh rasional, samakan juga */
-        .contoh-rasional-wrap {
-            margin-top: 38px !important;
-            position: relative;
-        }
-
-        .contoh-rasional-pill {
-            display: inline-block;
-            min-width: 110px;
-            text-align: center;
-            background: #eda98d;
-            color: #472819;
-            font-size: 18px;
-            font-weight: 800;
-            padding: 10px 30px;
-            border-radius: 999px;
-            border: 1.5px solid #dd7d54;
-            margin: 0 0 22px 0 !important;
-            position: relative;
-            top: 0 !important;
-            left: 0 !important;
-            transform: none !important;
-            z-index: 3;
-        }
-
-        .contoh-rasional-box {
-            margin-top: 8px;
-            border: 2px solid #79bf6a;
-            border-radius: 22px;
-            background: #f6f8f3;
-            padding: 30px 24px 28px;
-        }
-
-
-        .contoh-rasional-wrap,
-        .latihan-wrap {
-            margin-top: 28px;
-        }
-
-        .contoh-pill,
-        .contoh-rasional-pill {
-            display: inline-block;
-            background: #e7ab97;
-            color: #5a2d18;
-            font-weight: 800;
-            font-size: 16px;
-            padding: 8px 28px;
-            border-radius: 999px;
-            border: 1.5px solid #d98a63;
-            margin-bottom: 18px;
-        }
-
-        .contoh-rasional-pill {
-            min-width: 110px;
-            text-align: center;
-            background: #eda98d;
-            color: #472819;
-            font-size: 18px;
-            border: 1.5px solid #dd7d54;
-            margin-left: 2px;
-        }
-
-        .contoh-area,
-        .contoh-rasional-box {
-            border: 2px solid #79bf6a;
-            border-radius: 22px;
-            background: #f6f8f3;
-            padding: 24px 24px 28px;
-        }
-
-        .contoh-rasional-box p,
-        .contoh-rasional-box li {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #222;
-        }
-
-        .diket-plain {
-            margin-bottom: 24px;
-        }
-
-        .diket-plain .judul-kecil {
-            font-size: 18px;
-            font-weight: 700;
-            color: #4d4d4d;
-            margin-bottom: 16px;
-        }
-
-        .soal-rumus {
-            text-align: center;
-            font-size: 20px;
-            margin: 8px 0 18px;
-            color: #555;
-        }
-
-        .langkah-card {
-            background: #fff;
-            border: 1.5px solid #d8e7d2;
-            border-radius: 16px;
-            padding: 18px 18px 16px;
-            margin-top: 18px;
-        }
-
-        .langkah-title {
-            font-size: 17px;
-            font-weight: 800;
-            color: #1b7a2a;
-            margin-bottom: 8px;
-        }
-
-        .langkah-sub {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        .input-jawaban {
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #cfcfcf;
-            border-radius: 10px;
-            padding: 10px 12px;
-            font-size: 15px;
-            font-family: inherit;
-            margin-top: 8px;
-        }
-
-        .btn-cek {
-            margin-top: 12px;
-            background: #1b7a2a;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 18px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .btn-cek:hover {
-            opacity: .95;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .feedback.ok {
-            color: #1b7a2a;
-        }
-
-        .feedback.no {
-            color: #c0392b;
-        }
-
-        .penjelasan-step {
-            display: none;
-            margin-top: 14px;
-            background: #f3fbf1;
-            border-left: 5px solid #79bf6a;
-            border-radius: 10px;
-            padding: 12px 14px;
-        }
-
-        .penjelasan-step p,
-        .penjelasan-step li {
-            font-size: 16px;
-            margin: 0;
-            color: #4d5a4c;
-        }
-
-        .final-explanation {
-            display: none;
-            margin-top: 22px;
-            background: #fff8f4;
-            border: 2px solid #ebb48d;
-            border-radius: 16px;
-            padding: 18px;
-        }
-
-        .final-explanation h4 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #9b4d16;
-            font-size: 22px;
-        }
-
-        .final-result {
-            text-align: center;
-            font-size: 24px;
-            margin-top: 10px;
-        }
-
-        .horner-caption {
-            text-align: center;
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 8px;
-        }
-
-        .horner-wrap {
-            overflow-x: auto;
-            margin-top: 12px;
-            margin-bottom: 10px;
-        }
-
-        .horner-table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            font-size: 22px;
-            color: #222;
-            font-family: "Times New Roman", Times, serif;
-        }
-
-        .horner-table td {
-            width: 72px;
-            height: 56px;
-            text-align: center;
-            vertical-align: middle;
-            box-sizing: border-box;
-        }
-
-        .horner-table .left-number {
-            width: 52px;
-            font-weight: 700;
-        }
-
-        .horner-top {
-            border-top: 3px solid #333;
-        }
-
-        .horner-left {
-            border-left: 3px solid #333;
-        }
-
-        .horner-bottom {
-            border-bottom: 3px solid #333;
-        }
-
-        .horner-sisa {
-            border-left: 3px solid #333;
-            border-top: 3px solid #333;
-            border-bottom: 3px solid #333;
-        }
-
-        .horner-box {
-            width: 42px;
-            height: 34px;
-            border: 1.8px solid #b0b0b0;
-            border-radius: 7px;
-            text-align: center;
-            font-size: 18px;
-            font-family: inherit;
-            outline: none;
-            background: #fff;
-            color: #222;
-        }
-
-        .horner-box:focus {
-            border-color: #1b7a2a;
-            box-shadow: 0 0 0 2px rgba(27, 122, 42, 0.12);
-        }
-
-        .latihan-header {
-            display: inline-block;
-            min-width: 220px;
-            text-align: center;
-            background: var(--latihan-head);
-            color: #fff;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: .5px;
-            padding: 10px 32px;
-            border-radius: 10px;
-            margin-bottom: 14px;
-        }
-
-        .latihan-box {
-            border: 3px solid var(--latihan-border);
-            background: #fff;
-            padding: 18px 18px 20px;
-        }
-
-        .latihan-box>ol {
-            margin: 0;
-            padding-left: 26px;
-        }
-
-        .latihan-box>ol>li {
-            color: #222;
-            margin-bottom: 28px;
-        }
-
-        .latihan-soal-text {
-            font-size: 17px;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        .latihan-soal-rumus {
-            text-align: center;
-            font-size: 25px;
-            color: #333;
-            margin: 10px 0 16px;
-        }
-
-        .opsi-wrap {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .opsi-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            border: 1.5px solid #d7d7d7;
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 12px 14px;
-            cursor: pointer;
-        }
-
-        .opsi-item input {
-            margin-top: 5px;
-            transform: scale(1.1);
-        }
-
-        .opsi-item span {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .mini-note {
-            font-size: 15px;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        /* =========================
-                                                                                                                                                                                                                                                       DRAG & DROP EKSPLORASI
-                                                                                                                                                                                                                                                    ========================== */
-        /* =========================
-                                                                                                                                                                                                                                           CARD EKSPLORASI (FINAL)
-                                                                                                                                                                                                                                        ========================== */
-
-        /* card utama */
-        .card-eksplorasi {
-            background: linear-gradient(180deg, var(--blue-soft), #7e9fff);
-            border-left: 6px solid var(--blue);
-        }
-
-        /* hilangkan ornamen lama */
-        .card-eksplorasi::before,
-        .card-eksplorasi::after {
-            content: none !important;
-            display: none !important;
-        }
-
-        /* =========================
-                                                                                                                                                                                                                                           JUDUL EKSPLORASI
-                                                                                                                                                                                                                                        ========================== */
-
         .eksplorasi-bar {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 26px;
+            margin-bottom: 22px;
         }
 
         .eksplorasi-bar h3 {
@@ -1995,7 +1436,6 @@
             line-height: 1.2;
         }
 
-        /* icon kecil */
         .eksplorasi-icon-mini {
             width: 22px;
             height: 22px;
@@ -2009,10 +1449,6 @@
             flex-shrink: 0;
         }
 
-        /* =========================
-                                                                                                                                                                                                                                           MATIKAN HEADER LAMA
-                                                                                                                                                                                                                                        ========================== */
-
         .eksplorasi-header,
         .eksplorasi-icon,
         .eksplorasi-title-wrap,
@@ -2021,20 +1457,14 @@
             display: none !important;
         }
 
-        /* =========================
-                                                                                                                                                                                                                                           ISI TEKS
-                                                                                                                                                                                                                                        ========================== */
-
         .card-eksplorasi p,
-        .card-eksplorasi li {
+        .card-eksplorasi li,
+        .eksplorasi-story p,
+        .eksplorasi-story li {
             font-size: 18px;
-            line-height: 1.9;
-            color: #5a5a5a;
+            line-height: 1.75;
+            color: #444;
         }
-
-        /* =========================
-                                                                                                                                                                                                                                           AREA STORY (TANPA KOTAK)
-                                                                                                                                                                                                                                        ========================== */
 
         .eksplorasi-story {
             position: relative;
@@ -2045,13 +1475,11 @@
             padding: 0;
             margin: 0;
             box-shadow: none;
+            max-width: 100%;
         }
 
         .eksplorasi-story p {
-            margin: 0 0 18px;
-            font-size: 18px;
-            line-height: 1.9;
-            color: #444;
+            margin: 0 0 16px;
         }
 
         .eksplorasi-story ul {
@@ -2061,104 +1489,69 @@
 
         .eksplorasi-story li {
             margin-bottom: 6px;
-            font-size: 17px;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        /* =========================
-                                                                                                                                                                                                                                           RUMUS BOX (SEPERTI GAMBAR)
-                                                                                                                                                                                                                                        ========================== */
-
-        .rumus-box {
-            background: #f7f7f7;
-            border: 1px dashed #bfc9d8;
-            border-radius: 18px;
-            padding: 22px 18px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        /* label kecil di atas rumus */
-        .rumus-box .rumus-label {
-            display: inline-block;
-            background: #dce6f5;
-            color: #2f5597;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 999px;
-            margin-bottom: 10px;
-        }
-
-        /* ukuran rumus */
-        .rumus-box .rumus-besar {
-            font-size: 20px;
-        }
-
-        /* =========================
-                                                                                                                                                                                                                                           RESPONSIVE (BIAR AMAN)
-                                                                                                                                                                                                                                        ========================== */
-
-        @media (max-width: 768px) {
-            .card-eksplorasi {
-                padding: 24px 20px;
-            }
-
-            .eksplorasi-bar h3 {
-                font-size: 20px;
-            }
-
-            .card-eksplorasi p {
-                font-size: 16px;
-            }
-        }
-
-        .rumus-box {
-            background: linear-gradient(180deg, #f7fbff, #ffffff);
-            border: 1px dashed #aac9ee;
-            border-radius: 18px;
-            padding: 16px;
-            text-align: center;
-            margin: 14px 0;
-        }
-
-        .rumus-box .rumus-label {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 999px;
-            background: #e9f3ff;
-            color: #2e6cab;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: .2px;
-            margin-bottom: 8px;
         }
 
         .explore-grid {
             display: grid;
-            grid-template-columns: 1.15fr .85fr;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
             gap: 20px;
             margin-top: 18px;
+            align-items: start;
+            width: 100%;
         }
 
         .mini-card {
-            background: transparent;
+            min-width: 0;
             border: none;
             box-shadow: none;
-            padding: 0;
+            padding: 0 !important;
+            overflow-wrap: break-word;
         }
 
         .mini-card h4 {
             margin: 0 0 8px;
             font-size: 22px;
             color: #1e5f96;
+            line-height: 1.25;
         }
 
         .mini-card p {
             margin: 0 0 14px;
             color: var(--muted);
             font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .rumus-box {
+            width: 100%;
+            max-width: 100%;
+            background: #f7f7f7;
+            border: 1px dashed #bfc9d8;
+            border-radius: 18px;
+            padding: 16px;
+            text-align: center;
+            margin: 14px 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .rumus-box .rumus-label {
+            display: inline-block;
+            background: #dce6f5;
+            color: #2f5597;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+            letter-spacing: .2px;
+        }
+
+        .rumus-box .rumus-besar {
+            font-size: 20px;
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         .bank-label {
@@ -2177,14 +1570,16 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            max-width: 100%;
         }
 
         .drag-item {
             user-select: none;
             -webkit-user-drag: element;
+            max-width: 100%;
             padding: 12px 18px;
             border-radius: 14px;
-            background: linear-gradient(180deg, #ffffff, #f5f9ff);
+            background: #fff;
             border: 2px solid #cfe2fb;
             color: #244e78;
             font-size: 18px;
@@ -2192,6 +1587,8 @@
             cursor: grab;
             transition: .2s ease;
             box-shadow: 0 6px 14px rgba(75, 143, 216, .10);
+            overflow-wrap: anywhere;
+            text-align: center;
         }
 
         .drag-item:hover {
@@ -2208,20 +1605,29 @@
             cursor: default;
             opacity: .92;
             border-color: #9fd3ad;
-            background: linear-gradient(180deg, #f7fff9, #eefaf1);
+            background: #eefaf1;
             color: #1f7a34;
+        }
+
+        .small-note {
+            margin-top: 8px;
+            color: #7b8797;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .drop-list {
             display: grid;
             gap: 14px;
+            width: 100%;
         }
 
         .drop-row {
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: 120px minmax(0, 1fr);
             gap: 12px;
             align-items: center;
+            width: 100%;
         }
 
         .drop-label {
@@ -2233,10 +1639,13 @@
             border-radius: 12px;
             padding: 10px 8px;
             border: 1px solid #e7edf6;
+            min-width: 0;
+            overflow-x: auto;
         }
 
         .drop-zone {
             min-height: 62px;
+            min-width: 0;
             border: 2px dashed #b9cce3;
             border-radius: 16px;
             background: #fbfdff;
@@ -2246,6 +1655,7 @@
             padding: 8px;
             transition: .2s ease;
             position: relative;
+            overflow-wrap: anywhere;
         }
 
         .drop-zone::after {
@@ -2253,6 +1663,7 @@
             color: #91a0b5;
             font-size: 15px;
             font-style: italic;
+            text-align: center;
         }
 
         .drop-zone.filled::after {
@@ -2299,24 +1710,16 @@
             color: #ad3030;
         }
 
-        .paragraf-pengantar {
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .definisi-modern {
-            margin-top: 20px;
-        }
-
         .explanation-box {
             display: none;
+            width: 100%;
+            max-width: 100%;
             margin-top: 14px;
-            background: linear-gradient(180deg, #f6fff8, #ffffff);
+            background: #f6fff8;
             border-left: 6px solid #67b87d;
             border-radius: 14px;
             padding: 14px 16px;
+            overflow-x: hidden;
         }
 
         .explanation-box.show {
@@ -2334,142 +1737,493 @@
             margin: 0 0 6px;
             font-size: 16px;
             color: #334;
+            line-height: 1.6;
         }
 
-        .progress-wrap {
-            margin-top: 18px;
-            background: #f5f9ff;
-            border: 1px solid #deebfb;
+        /* =========================
+                       MATERI DEFINISI
+                    ========================= */
+
+        .paragraf-pengantar {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .definisi-modern {
+            position: relative;
+            width: 100%;
+            background: var(--def-bg);
+            border: 1.5px solid var(--def-border);
             border-radius: 16px;
-            padding: 14px;
+            padding: 22px 18px 16px;
+            margin-top: 24px;
+            overflow-wrap: break-word;
         }
 
-        .progress-top {
+        .definisi-pill {
+            display: inline-block;
+            position: static;
+            background: var(--def-pill);
+            color: #3b6a31;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: .2px;
+            padding: 6px 18px;
+            border-radius: 14px;
+            border: 1.5px solid var(--def-pill-border);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+            margin-bottom: 12px;
+        }
+
+        .definisi-modern p,
+        .definisi-modern li {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .definisi-modern .rumus-besar {
+            font-size: 20px;
+            margin: 10px 0;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .definisi-modern ul {
+            margin: 10px 0 0 22px;
+            padding: 0;
+        }
+
+        .definisi-modern li {
+            margin-bottom: 4px;
+        }
+
+        /* =========================
+                       SIFAT - TIDAK DIGESER
+                       Label dibuat normal/static agar tidak kepotong.
+                    ========================= */
+
+        .sifat-box,
+        .sifat-box.modern {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            background: #f8faf7;
+            border: 2px solid #5aa05a;
+            border-radius: 20px;
+            padding: 20px 22px 18px;
+            margin-top: 26px;
+            overflow: visible !important;
+            box-shadow: none;
+        }
+
+        .sifat-box::before,
+        .sifat-box.modern::before {
+            display: none !important;
+            content: none !important;
+        }
+
+        .sifat-label,
+        .sifat-badge {
+            position: static !important;
+            display: inline-block;
+            transform: none !important;
+            margin: 0 0 14px 0 !important;
+            background: #d98a5e;
+            color: #fff;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1.5px solid #c96f42;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+            line-height: 1;
+            z-index: auto;
+        }
+
+        .sifat-label-wrap {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sifat-box p,
+        .sifat-box li,
+        .sifat-box.modern p,
+        .sifat-box.modern li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a4a42;
+        }
+
+        .sifat-box .katex-display,
+        .sifat-box.modern .katex-display {
+            margin: 10px 0;
+            font-size: 1em;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sifat-header {
             display: flex;
-            justify-content: space-between;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+        }
+
+        .sifat-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #4f9b53;
+            color: #fff;
+            display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(79, 155, 83, 0.20);
+            flex-shrink: 0;
+        }
+
+        .sifat-header h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #256b2d;
+            font-weight: 800;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        .sifat-header p {
+            margin: 4px 0 0;
+            font-size: 15px;
+            color: #5f6d5f;
+            line-height: 1.6;
+        }
+
+        .sifat-rumus {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 100%;
+            background: #fff;
+            border-radius: 18px;
+            padding: 16px 14px;
+            text-align: center;
+            border: 1.5px solid #d7e9d4;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sifat-rumus.utama {
+            margin-bottom: 18px;
+            font-size: 1.08em;
+        }
+
+        .sifat-subtitle {
+            position: relative;
+            z-index: 1;
+            font-size: 17px;
+            font-weight: 700;
+            color: #476047;
+            margin-bottom: 12px;
+        }
+
+        .sifat-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+            width: 100%;
+        }
+
+        .sifat-item {
+            min-width: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #dbe9d8;
+            border-radius: 18px;
+            padding: 16px;
+            overflow-wrap: break-word;
+        }
+
+        .sifat-item-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #5a4a42;
             margin-bottom: 10px;
         }
 
-        .progress-top span {
-            font-size: 15px;
-            color: #476483;
-            font-weight: 700;
+        .sifat-rumus.kecil {
+            background: #f8fbf7;
+            border: 1px dashed #bdd4ba;
+            padding: 12px 10px;
+            border-radius: 14px;
         }
 
-        .progress-bar {
-            height: 12px;
-            border-radius: 999px;
-            background: #dfeaf8;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            border-radius: 999px;
-            background: linear-gradient(90deg, #4b8fd8, #79b0ed);
-            transition: width .3s ease;
-        }
-
-        .eksplorasi-final {
-            display: none;
-            margin-top: 20px;
-            background: linear-gradient(180deg, #fffaf5, #ffffff);
-            border: 2px solid #f0c7a6;
+        .sifat-highlight {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: #fff5ee;
+            border: 1.5px solid #efc2a6;
             border-radius: 18px;
-            padding: 18px;
+            padding: 14px 12px;
+            color: #8f4c22;
+            font-weight: 700;
+            overflow-wrap: break-word;
         }
 
-        .eksplorasi-final.show {
-            display: block;
-            animation: fadeIn .35s ease;
+        /* =========================
+                       CONTOH
+                    ========================= */
+
+        .contoh-wrap,
+        .contoh-rasional-wrap {
+            width: 100%;
+            margin-top: 38px !important;
+            position: relative;
         }
 
-        .eksplorasi-final h4 {
-            margin: 0 0 10px;
-            color: #a85a1d;
-            font-size: 22px;
+        .contoh-pill,
+        .contoh-rasional-pill {
+            display: inline-block;
+            position: static !important;
+            transform: none !important;
+            background: #e7ab97;
+            color: #5a2d18;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 8px 28px;
+            border-radius: 999px;
+            border: 1.5px solid #d98a63;
+            margin: 0 0 18px 0 !important;
+            z-index: 3;
         }
 
-        .eksplorasi-final p {
-            margin: 0 0 8px;
+        .contoh-rasional-pill {
+            min-width: 110px;
+            text-align: center;
+            background: #eda98d;
+            color: #472819;
+            font-size: 18px;
+            border: 1.5px solid #dd7d54;
+        }
+
+        .contoh-area,
+        .contoh-rasional-box {
+            width: 100%;
+            max-width: 100%;
+            margin-top: 8px;
+            border: 2px solid #79bf6a;
+            border-radius: 22px;
+            background: #f6f8f3;
+            padding: 24px 24px 28px;
+            overflow-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        .contoh-rasional-box p,
+        .contoh-rasional-box li {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #222;
+        }
+
+        .diket-plain {
+            margin-bottom: 24px;
+        }
+
+        .diket-plain .judul-kecil {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4d4d4d;
+            margin-bottom: 16px;
+            line-height: 1.35;
+        }
+
+        .soal-rumus {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            margin: 8px 0 18px;
+            color: #555;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* =========================
+                       LANGKAH / INPUT
+                    ========================= */
+
+        .langkah-card {
+            width: 100%;
+            max-width: 100%;
+            background: #fff;
+            border: 1.5px solid #d8e7d2;
+            border-radius: 16px;
+            padding: 18px 18px 16px;
+            margin-top: 18px;
+            overflow-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        .langkah-title {
             font-size: 17px;
-            color: #444;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 8px;
         }
 
-        .btn-reset {
-            margin-top: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #1f7a34, #2fa44c);
+        .langkah-sub {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .input-jawaban {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 15px;
+            font-family: inherit;
+            margin-top: 8px;
+        }
+
+        .input-jawaban.input-correct,
+        .horner-box.input-correct {
+            border: 2px solid #2e9b50 !important;
+            background: #f1fff5;
+            color: #1f6e38;
+        }
+
+        .input-jawaban.input-wrong,
+        .horner-box.input-wrong {
+            border: 2px solid #d64545 !important;
+            background: #fff5f5;
+            color: #9f1f1f;
+        }
+
+        .btn-cek {
+            display: inline-block;
+            margin-top: 12px;
+            background: var(--green);
             color: #fff;
-            padding: 11px 18px;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 18px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 8px 18px rgba(31, 122, 52, .18);
+            font-family: inherit;
         }
 
-        .btn-reset:hover {
+        .btn-cek:hover {
             opacity: .95;
         }
 
-        .small-note {
+        .btn-petunjuk {
+            display: inline-block;
             margin-top: 8px;
-            color: #7b8797;
+            margin-bottom: 12px;
+            background: #fff7ef;
+            color: #9b4d16;
+            border: 1.5px solid #e0a67f;
+            border-radius: 10px;
+            padding: 9px 16px;
             font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: .2s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .btn-petunjuk:hover {
+            background: #fff1e7;
         }
 
-        @media (max-width: 860px) {
-            .explore-grid {
-                grid-template-columns: 1fr;
-            }
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            overflow-wrap: break-word;
+        }
 
-            .drop-row {
-                grid-template-columns: 1fr;
-            }
+        .feedback.show {
+            display: block;
+        }
 
-            .drop-label {
-                text-align: left;
-            }
+        .feedback.ok {
+            background: #eefaf1;
+            border: 1px solid #bfe4c8;
+            color: #216d3d;
+        }
 
-            .top-title {
-                flex-direction: column;
-                gap: 6px;
-            }
+        .feedback.no {
+            background: #fff3f3;
+            border: 1px solid #efc2c2;
+            color: #ad3030;
+        }
 
-            .top-title .label,
-            .top-title .judul {
-                font-size: 28px;
-            }
+        .penjelasan-step {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 14px;
+            background: #f3fbf1;
+            border-left: 5px solid #79bf6a;
+            border-radius: 10px;
+            padding: 12px 14px;
+            overflow-x: hidden;
+        }
+
+        .penjelasan-step p,
+        .penjelasan-step li {
+            font-size: 16px;
+            margin: 0;
+            color: #4d5a4c;
+            line-height: 1.65;
         }
 
         .cara-menjawab-box {
+            display: none;
+            width: 100%;
+            max-width: 100%;
             margin: 10px 0 14px 0;
             background: #f8fdf6;
             border-left: 5px solid #79bf6a;
             border-radius: 12px;
             padding: 12px 14px;
+            overflow-wrap: break-word;
+        }
+
+        .cara-menjawab-box.show {
+            display: block;
+            animation: fadeIn .25s ease;
         }
 
         .cara-menjawab-title {
             font-size: 15px;
             font-weight: 700;
-            color: #1b7a2a;
+            color: var(--green);
             margin-bottom: 6px;
         }
 
@@ -2489,372 +2243,226 @@
             text-align: center;
             margin: 8px 0;
             font-size: 18px;
+            overflow-x: auto;
         }
 
         /* =========================
-                                                                                                                                   SIFAT - VERSI FIX
-                                                                                                                                   ========================= */
+                       HORNER
+                    ========================= */
 
-        /* BOX MODERN */
-        .sifat-box.modern {
-            position: relative;
-            margin-top: 32px;
-            padding: 36px 24px 22px;
-            /* ruang atas untuk badge */
-            border-radius: 24px;
-            background: linear-gradient(180deg, #f9fcf8, #f2f8f1);
-            border: 2px solid #69a96b;
-            box-shadow: 0 10px 24px rgba(55, 104, 58, 0.08);
-            overflow: visible;
-            /* FIX: jangan hidden */
+        .horner-caption {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
-        /* ORNAMEN BACKGROUND */
-        .sifat-box.modern::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at top right, rgba(106, 168, 110, 0.12), transparent 28%),
-                radial-gradient(circle at bottom left, rgba(224, 112, 43, 0.10), transparent 24%);
-            pointer-events: none;
-            z-index: 0;
+        .horner-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 12px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
         }
 
-        /* BADGE SIFAT */
-        .sifat-badge {
-            position: absolute;
-            top: 10px;
-            /* FIX: jangan negatif */
-            left: 20px;
-            background: linear-gradient(135deg, #e7a07d, #d97d4f);
-            color: #fff;
-            font-weight: 800;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            padding: 8px 18px;
-            border-radius: 999px;
-            border: 2px solid #c96d40;
-            box-shadow: 0 6px 14px rgba(201, 109, 64, 0.22);
-            z-index: 10;
-            line-height: 1;
-            display: inline-block;
+        .horner-table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-size: 22px;
+            color: #222;
+            font-family: "Times New Roman", Times, serif;
+            min-width: 420px;
+            width: max-content;
         }
 
-        /* HEADER */
-        .sifat-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
+        .horner-table td {
+            width: 72px;
+            height: 56px;
+            text-align: center;
+            vertical-align: middle;
         }
 
-        .sifat-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #79bf6a, #4f9b53);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(79, 155, 83, 0.20);
-            flex-shrink: 0;
+        .horner-table .left-number {
+            width: 52px;
+            font-weight: 700;
         }
 
-        .sifat-header h3 {
-            margin: 0;
+        .horner-top {
+            border-top: 3px solid #333;
+        }
+
+        .horner-left {
+            border-left: 3px solid #333;
+        }
+
+        .horner-bottom {
+            border-bottom: 3px solid #333;
+        }
+
+        .horner-sisa {
+            border-left: 3px solid #333;
+            border-top: 3px solid #333;
+            border-bottom: 3px solid #333;
+        }
+
+        .horner-box {
+            width: 42px;
+            height: 34px;
+            border: 1.8px solid #b0b0b0;
+            border-radius: 7px;
+            text-align: center;
+            font-size: 18px;
+            font-family: inherit;
+            outline: none;
+            background: #fff;
+            color: #222;
+        }
+
+        .horner-box:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 2px rgba(27, 122, 42, 0.12);
+        }
+
+        /* =========================
+                       FINAL EXPLANATION
+                    ========================= */
+
+        .final-explanation {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 22px;
+            background: #fff8f4;
+            border: 2px solid #ebb48d;
+            border-radius: 16px;
+            padding: 18px;
+            overflow-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        .final-explanation h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #9b4d16;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        .final-result {
+            width: 100%;
+            text-align: center;
             font-size: 24px;
-            color: #256b2d;
-            font-weight: 800;
-            line-height: 1.2;
+            margin-top: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .sifat-header p {
-            margin: 4px 0 0;
-            font-size: 15px;
-            color: #5f6d5f;
+        /* =========================
+                       LATIHAN
+                    ========================= */
+
+        .latihan-wrap {
+            width: 100%;
+            margin-top: 28px;
+        }
+
+        .latihan-header {
+            display: inline-block;
+            min-width: 220px;
+            text-align: center;
+            background: var(--latihan-head);
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: .5px;
+            padding: 10px 32px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+        }
+
+        .latihan-box {
+            width: 100%;
+            max-width: 100%;
+            border: 3px solid var(--latihan-border);
+            background: #fff;
+            padding: 18px 18px 20px;
+            overflow-x: hidden;
+            overflow-wrap: break-word;
+        }
+
+        .latihan-box>ol {
+            margin: 0;
+            padding-left: 26px;
+        }
+
+        .latihan-box>ol>li {
+            color: #222;
+            margin-bottom: 28px;
+        }
+
+        .latihan-soal-text {
+            font-size: 17px;
+            color: #222;
             line-height: 1.6;
         }
 
-        /* RUMUS */
-        .sifat-rumus {
-            position: relative;
-            z-index: 1;
-            background: #fff;
-            border-radius: 18px;
-            padding: 16px 14px;
+        .latihan-soal-rumus {
+            width: 100%;
             text-align: center;
-            border: 1.5px solid #d7e9d4;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            font-size: 25px;
+            color: #333;
+            margin: 10px 0 16px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .sifat-rumus.utama {
-            margin-bottom: 18px;
-            font-size: 1.08em;
-        }
-
-        /* SUBTITLE */
-        .sifat-subtitle {
-            position: relative;
-            z-index: 1;
-            font-size: 17px;
-            font-weight: 700;
-            color: #476047;
-            margin-bottom: 12px;
-        }
-
-        /* GRID */
-        .sifat-grid {
-            position: relative;
-            z-index: 1;
+        .opsi-wrap {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-
-        .sifat-item {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1.5px solid #dbe9d8;
-            border-radius: 18px;
-            padding: 16px;
-        }
-
-        .sifat-item-label {
-            font-size: 15px;
-            font-weight: 700;
-            color: #5a4a42;
-            margin-bottom: 10px;
-        }
-
-        .sifat-rumus.kecil {
-            background: #f8fbf7;
-            border: 1px dashed #bdd4ba;
-            padding: 12px 10px;
-            border-radius: 14px;
-        }
-
-        /* HIGHLIGHT */
-        .sifat-highlight {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            background: linear-gradient(135deg, #fff5ee, #fffaf7);
-            border: 1.5px solid #efc2a6;
-            border-radius: 18px;
-            padding: 14px 12px;
-            color: #8f4c22;
-            font-weight: 700;
-        }
-
-        /* KATEX */
-        .sifat-box.modern .katex-display {
-            margin: 0;
-        }
-
-        /* =========================
-                                                                                                                                   SIFAT - VERSI SIMPLE
-                                                                                                                                   ========================= */
-
-        .sifat-box {
-            position: relative;
-            background: #f8faf7;
-            border: 2px solid #5aa05a;
-            border-radius: 20px;
-            padding: 20px 22px 18px;
-            margin-top: 30px;
-            overflow: visible !important;
-        }
-
-        .sifat-label {
-            display: inline-block;
-            margin-bottom: 12px;
-            background: linear-gradient(180deg, #e8a47f, #d98a5e);
-            color: #fff;
-            font-weight: 800;
-            font-size: 15px;
-            padding: 8px 20px;
-            border-radius: 999px;
-            border: 1.5px solid #c96f42;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
-            line-height: 1;
-        }
-
-        .sifat-box p,
-        .sifat-box li {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #5a4a42;
-        }
-
-        .sifat-box .katex-display {
-            margin: 10px 0;
-            font-size: 1em;
-        }
-
-        /* =========================
-                                                                                                                                   RESPONSIVE
-                                                                                                                                   ========================= */
-
-        @media (max-width: 768px) {
-            .sifat-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .sifat-header {
-                align-items: flex-start;
-            }
-
-            .sifat-header h3 {
-                font-size: 21px;
-            }
-
-            .sifat-box.modern {
-                padding: 42px 18px 18px;
-            }
-
-            .sifat-badge {
-                top: 10px;
-                left: 16px;
-                font-size: 12px;
-                padding: 7px 16px;
-            }
-
-            .sifat-box {
-                padding: 18px 16px 16px;
-            }
-
-            .sifat-label {
-                font-size: 14px;
-                padding: 7px 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sifat-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .sifat-header {
-                align-items: flex-start;
-            }
-
-            .sifat-header h3 {
-                font-size: 21px;
-            }
-        }
-
-        .btn-petunjuk {
+            grid-template-columns: 1fr;
+            gap: 10px;
             margin-top: 10px;
-            margin-bottom: 12px;
-            background: #fff7ef;
-            color: #9b4d16;
-            border: 1.5px solid #e6b086;
-            border-radius: 10px;
-            padding: 9px 16px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-            transition: .2s ease;
+            width: 100%;
         }
 
-        .btn-petunjuk:hover {
-            background: #fff1e4;
-        }
-
-        .cara-menjawab-box {
-            display: none;
-            margin: 10px 0 14px 0;
-            background: #f8fdf6;
-            border-left: 5px solid #79bf6a;
+        .opsi-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            border: 1.5px solid #d7d7d7;
+            background: #fafafa;
             border-radius: 12px;
             padding: 12px 14px;
-        }
-
-        .cara-menjawab-box.show {
-            display: block;
-            animation: fadeIn .25s ease;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            display: none;
-        }
-
-        .feedback.show {
-            display: block;
-        }
-
-        .feedback.ok {
-            color: #1b7a2a;
-        }
-
-        .feedback.no {
-            color: #c0392b;
-        }
-
-        .input-jawaban.input-correct,
-        .horner-box.input-correct {
-            border: 2px solid #2e9b50 !important;
-            background: #f1fff5;
-            color: #1f6e38;
-        }
-
-        .input-jawaban.input-wrong,
-        .horner-box.input-wrong {
-            border: 2px solid #d64545 !important;
-            background: #fff5f5;
-            color: #9f1f1f;
-        }
-
-        .btn-petunjuk {
-            margin-top: 8px;
-            margin-bottom: 12px;
-            background: #fff7ef;
-            color: #9b4d16;
-            border: 1.5px solid #e0a67f;
-            border-radius: 10px;
-            padding: 9px 16px;
-            font-size: 14px;
-            font-weight: 700;
             cursor: pointer;
-            font-family: inherit;
+            overflow-wrap: anywhere;
         }
 
-        .btn-petunjuk:hover {
-            background: #fff1e7;
+        .opsi-item input {
+            margin-top: 5px;
+            transform: scale(1.1);
+            flex-shrink: 0;
         }
 
-        .feedback {
-            display: none;
-            margin-top: 10px;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 700;
+        .opsi-item span {
+            min-width: 0;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
         }
 
-        .feedback.show {
-            display: block;
-        }
-
-        .feedback.ok {
-            background: #eefaf1;
-            border: 1px solid #bfe4c8;
-            color: #216d3d;
-        }
-
-        .feedback.no {
-            background: #fff3f3;
-            border: 1px solid #efc2c2;
-            color: #ad3030;
+        .mini-note {
+            font-size: 15px;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.5;
         }
 
         .latihan-wrap.modern {
@@ -2867,7 +2475,7 @@
 
         .latihan-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #7f8c8d, #9aa3a4);
+            background: #8b8b8b;
             color: #fff;
             font-weight: 800;
             font-size: 16px;
@@ -2884,11 +2492,14 @@
         }
 
         .latihan-panel {
+            width: 100%;
+            max-width: 100%;
             background: #ffffff;
             border: 2px solid #2498d3;
             border-radius: 24px;
             padding: 24px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, .05);
+            box-shadow: var(--card-shadow);
+            overflow-x: hidden;
         }
 
         .latihan-list {
@@ -2906,11 +2517,13 @@
         }
 
         .latihan-question-card {
+            width: 100%;
             background: #f8fbff;
             border: 1px solid #d7ebf8;
             border-radius: 18px;
             padding: 18px 18px 14px;
             margin-bottom: 18px;
+            overflow-wrap: break-word;
         }
 
         .step-group {
@@ -2920,6 +2533,7 @@
         }
 
         .step-item {
+            width: 100%;
             background: #fff;
             border: 1px solid #e9eef3;
             border-radius: 18px;
@@ -2932,13 +2546,14 @@
             gap: 12px;
             align-items: flex-start;
             margin-bottom: 12px;
+            min-width: 0;
         }
 
         .step-number {
             width: 34px;
             height: 34px;
             border-radius: 50%;
-            background: #1b7a2a;
+            background: var(--green);
             color: #fff;
             display: flex;
             align-items: center;
@@ -2950,12 +2565,13 @@
 
         .step-heading {
             flex: 1;
+            min-width: 0;
         }
 
         .step-title {
             font-size: 17px;
             font-weight: 800;
-            color: #1b7a2a;
+            color: var(--green);
             margin-bottom: 4px;
         }
 
@@ -2986,23 +2602,10 @@
             line-height: 1.7;
         }
 
-        @media (max-width: 768px) {
-            .latihan-panel {
-                padding: 16px;
-            }
-
-            .step-body {
-                padding-left: 0;
-            }
-
-            .step-header {
-                flex-direction: row;
-            }
-        }
-
         /* =========================
-                   LOCK AREA (SOAL 2)
-                ========================= */
+                       LOCK AREA SOAL 2
+                    ========================= */
+
         .latihan-terkunci {
             position: relative;
             pointer-events: none;
@@ -3012,24 +2615,706 @@
             transition: 0.3s ease;
         }
 
-        /* overlay tulisan */
         .latihan-terkunci::after {
             content: "Selesaikan Soal 1 terlebih dahulu";
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
-            background: rgba(255, 255, 255, 0.9);
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.94);
             padding: 10px 18px;
             border-radius: 10px;
-
             font-weight: 600;
             color: #b91c1c;
             font-size: 14px;
-
             pointer-events: none;
+            text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* =========================
+                       ANIMASI
+                    ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================================================
+                       LAPTOP / DESKTOP
+                    ===================================================== */
+
+        @media (min-width: 1025px) {
+            .materi-wrap {
+                max-width: 1000px;
+                padding: 24px 20px 50px;
+            }
+
+            .top-title {
+                flex-direction: row;
+                align-items: baseline;
+            }
+
+            .top-title .label,
+            .top-title .judul {
+                font-size: 34px;
+            }
+
+            .explore-grid {
+                grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+                gap: 20px;
+            }
+
+            .sifat-grid {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            }
+        }
+
+        /* =====================================================
+                       TABLET
+                    ===================================================== */
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materi-wrap {
+                max-width: 94%;
+                padding: 22px 16px 44px;
+            }
+
+            .top-title {
+                gap: 10px;
+            }
+
+            .top-title .label,
+            .top-title .judul {
+                font-size: 30px;
+            }
+
+            .section-title {
+                font-size: 25px;
+            }
+
+            .card,
+            .tujuan-card,
+            .card-eksplorasi,
+            .contoh-area,
+            .contoh-rasional-box,
+            .latihan-box,
+            .latihan-panel,
+            .langkah-card {
+                padding: 20px;
+            }
+
+            p,
+            li,
+            .card-eksplorasi p,
+            .card-eksplorasi li,
+            .eksplorasi-story p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .drop-row {
+                grid-template-columns: 110px minmax(0, 1fr);
+            }
+
+            .drop-label {
+                font-size: 17px;
+            }
+
+            .drag-item {
+                font-size: 15px;
+                padding: 10px 14px;
+            }
+
+            .sifat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-box,
+            .sifat-box.modern {
+                padding: 20px;
+            }
+
+            .latihan-header,
+            .latihan-badge {
+                font-size: 16px;
+            }
+
+            .horner-table {
+                font-size: 20px;
+            }
+
+            .horner-table td {
+                width: 64px;
+                height: 52px;
+            }
+        }
+
+        /* =====================================================
+                       HP
+                    ===================================================== */
+
+        @media (max-width: 768px) {
+            .materi-wrap {
+                max-width: 100%;
+                padding: 14px 10px 34px;
+                line-height: 1.6;
+            }
+
+            .top-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                margin-bottom: 14px;
+            }
+
+            .top-title .label,
+            .top-title .judul {
+                font-size: 25px;
+                line-height: 1.2;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin: 24px 0 10px;
+            }
+
+            .card,
+            .tujuan-card,
+            .card-eksplorasi,
+            .definisi-modern,
+            .sifat-box,
+            .sifat-box.modern,
+            .contoh-area,
+            .contoh-rasional-box,
+            .latihan-box,
+            .latihan-panel,
+            .latihan-question-card,
+            .langkah-card,
+            .step-item {
+                padding: 16px;
+                border-radius: 16px;
+            }
+
+            .tujuan-card {
+                padding-left: 24px;
+            }
+
+            .tujuan-card::before {
+                width: 10px;
+            }
+
+            .tujuan-card::after {
+                left: 6px;
+                width: 6px;
+            }
+
+            .tujuan-header .title {
+                font-size: 20px;
+            }
+
+            .tujuan-card ol {
+                font-size: 15px;
+                padding-left: 18px;
+            }
+
+            p,
+            li,
+            .paragraf-pengantar,
+            .card-eksplorasi p,
+            .card-eksplorasi li,
+            .eksplorasi-story p,
+            .eksplorasi-story li,
+            .definisi-modern p,
+            .definisi-modern li,
+            .sifat-box p,
+            .sifat-box li,
+            .contoh-rasional-box p,
+            .contoh-rasional-box li {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .eksplorasi-bar {
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+
+            .eksplorasi-bar h3 {
+                font-size: 19px;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .mini-card h4 {
+                font-size: 19px;
+            }
+
+            .mini-card p {
+                font-size: 15px;
+            }
+
+            .drag-bank {
+                gap: 8px;
+            }
+
+            .drag-item {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px 12px;
+                text-align: center;
+            }
+
+            #answerBank1 {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                width: 100%;
+            }
+
+            #answerBank2 {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                width: 100%;
+            }
+
+            .drop-list {
+                gap: 10px;
+            }
+
+            .drop-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .drop-label {
+                text-align: left;
+                font-size: 15px;
+                padding: 8px 10px;
+            }
+
+            .drop-zone {
+                min-height: 48px;
+                padding: 8px;
+            }
+
+            .drop-zone::after {
+                font-size: 13px;
+            }
+
+            .rumus-box {
+                padding: 12px 10px;
+                border-radius: 14px;
+            }
+
+            .rumus-box .rumus-besar,
+            .definisi-modern .rumus-besar,
+            .soal-rumus,
+            .latihan-soal-rumus,
+            .final-result {
+                font-size: 17px;
+            }
+
+            .definisi-pill {
+                font-size: 12px;
+                padding: 5px 14px;
+                margin-bottom: 12px;
+            }
+
+            .sifat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sifat-header {
+                align-items: flex-start;
+            }
+
+            .sifat-header h3 {
+                font-size: 21px;
+            }
+
+            .sifat-label,
+            .sifat-badge,
+            .contoh-pill,
+            .contoh-rasional-pill,
+            .latihan-header,
+            .latihan-badge {
+                font-size: 14px;
+                padding: 8px 18px;
+            }
+
+            .contoh-wrap,
+            .contoh-rasional-wrap,
+            .latihan-wrap {
+                margin-top: 28px !important;
+            }
+
+            .diket-plain .judul-kecil,
+            .judul-kecil {
+                font-size: 16px !important;
+            }
+
+            .langkah-title {
+                font-size: 16px;
+            }
+
+            .langkah-sub,
+            .step-sub {
+                font-size: 14px;
+            }
+
+            .input-jawaban,
+            .btn-cek,
+            .btn-petunjuk {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .opsi-item {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+
+            .opsi-item span {
+                font-size: 14px;
+            }
+
+            .latihan-box>ol {
+                padding-left: 18px;
+            }
+
+            .latihan-box>ol>li,
+            .latihan-item {
+                margin-bottom: 24px;
+            }
+
+            .step-body {
+                padding-left: 0;
+            }
+
+            .step-header {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .step-number {
+                width: 30px;
+                height: 30px;
+                font-size: 13px;
+            }
+
+            .horner-table {
+                font-size: 18px;
+                min-width: 390px;
+            }
+
+            .horner-table td {
+                width: 58px;
+                height: 48px;
+            }
+
+            .horner-box {
+                width: 38px;
+                height: 32px;
+                font-size: 16px;
+            }
+
+            .final-explanation h4 {
+                font-size: 19px;
+            }
+
+            .latihan-terkunci::after {
+                width: 85%;
+                text-align: center;
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+        }
+
+        /* =====================================================
+                       HP KECIL
+                    ===================================================== */
+
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 10px 8px 30px;
+            }
+
+            .top-title .label,
+            .top-title .judul {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .card,
+            .tujuan-card,
+            .card-eksplorasi,
+            .definisi-modern,
+            .sifat-box,
+            .sifat-box.modern,
+            .contoh-area,
+            .contoh-rasional-box,
+            .latihan-box,
+            .latihan-panel,
+            .latihan-question-card,
+            .langkah-card {
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            p,
+            li,
+            .paragraf-pengantar,
+            .card-eksplorasi p,
+            .card-eksplorasi li,
+            .eksplorasi-story p,
+            .eksplorasi-story li {
+                font-size: 14px;
+                line-height: 1.55;
+            }
+
+            #answerBank1 {
+                grid-template-columns: 1fr;
+            }
+
+            .rumus-box .rumus-besar,
+            .definisi-modern .rumus-besar,
+            .soal-rumus,
+            .latihan-soal-rumus,
+            .final-result {
+                font-size: 15px;
+            }
+
+            .horner-table {
+                min-width: 360px;
+                font-size: 16px;
+            }
+
+            .horner-table td {
+                width: 52px;
+                height: 44px;
+            }
+
+            .horner-box {
+                width: 34px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            .drag-item {
+                font-size: 13px;
+                padding: 9px 10px;
+            }
+
+            .btn-cek,
+            .btn-petunjuk,
+            .input-jawaban {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .latihan-header {
+                min-width: 0;
+                width: 100%;
+            }
+        }
+
+        /* =====================================================
+               FIX SIFAT: SCROLL SATU BOX, BUKAN PER BARIS
+            ===================================================== */
+
+        .sifat-box,
+        .sifat-box.modern {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            background: #f8faf7;
+            border: 2px solid #5aa05a;
+            border-radius: 20px;
+            padding: 20px 22px 18px;
+            margin-top: 26px;
+
+            /* ini yang bikin semua isi SIFAT digeser bareng */
+            overflow-x: auto !important;
+            overflow-y: visible !important;
+            -webkit-overflow-scrolling: touch;
+
+            box-shadow: none;
+        }
+
+        /* hilangkan ornamen yang bisa bikin layout aneh */
+        .sifat-box::before,
+        .sifat-box::after,
+        .sifat-box.modern::before,
+        .sifat-box.modern::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* label SIFAT tetap normal, tidak absolut */
+        .sifat-label,
+        .sifat-badge {
+            position: static !important;
+            display: inline-block !important;
+            transform: none !important;
+            margin: 0 0 14px 0 !important;
+            background: #d98a5e;
+            color: #fff;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1.5px solid #c96f42;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+            line-height: 1;
+        }
+
+        /* semua isi sifat dibuat satu area lebar */
+        .sifat-box>*,
+        .sifat-box.modern>* {
+            max-width: none;
+        }
+
+        /* PENTING: matikan scroll per rumus */
+        .sifat-box .katex-display,
+        .sifat-box.modern .katex-display {
+            overflow: visible !important;
+            overflow-x: visible !important;
+            overflow-y: visible !important;
+            max-width: none !important;
+            width: max-content !important;
+            min-width: max-content !important;
+            margin: 10px 0 !important;
+            padding-bottom: 0 !important;
+            text-align: left !important;
+        }
+
+        /* rumus jangan turun per baris */
+        .sifat-box .katex-display>.katex,
+        .sifat-box.modern .katex-display>.katex {
+            white-space: nowrap !important;
+            max-width: none !important;
+        }
+
+        /* teks biasa tetap rapi */
+        .sifat-box p,
+        .sifat-box li,
+        .sifat-box.modern p,
+        .sifat-box.modern li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a4a42;
+            white-space: normal;
+        }
+
+        /* supaya teks pendek seperti "Dengan kata lain:" tidak ikut melebar aneh */
+        .sifat-box p {
+            width: max-content;
+            min-width: 100%;
+        }
+
+        /* kalau ada grid sifat versi modern */
+        .sifat-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+            width: 100%;
+        }
+
+        .sifat-item {
+            min-width: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #dbe9d8;
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+
+            .sifat-box,
+            .sifat-box.modern {
+                padding: 14px !important;
+                border-radius: 14px !important;
+
+                /* scrollbar ada di box sifat */
+                overflow-x: auto !important;
+                overflow-y: visible !important;
+            }
+
+            .sifat-label,
+            .sifat-badge {
+                font-size: 13px !important;
+                padding: 7px 16px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .sifat-box p,
+            .sifat-box li,
+            .sifat-box.modern p,
+            .sifat-box.modern li {
+                font-size: 14px !important;
+                line-height: 1.55 !important;
+            }
+
+            .sifat-box .katex-display,
+            .sifat-box.modern .katex-display {
+                font-size: 0.9em !important;
+                width: max-content !important;
+                min-width: max-content !important;
+                overflow: visible !important;
+                text-align: left !important;
+            }
+
+            .sifat-box .katex-display>.katex,
+            .sifat-box.modern .katex-display>.katex {
+                white-space: nowrap !important;
+            }
+
+            .sifat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 480px) {
+
+            .sifat-box,
+            .sifat-box.modern {
+                padding: 12px !important;
+            }
+
+            .sifat-box .katex-display,
+            .sifat-box.modern .katex-display {
+                font-size: 0.82em !important;
+            }
+
+            .sifat-box p,
+            .sifat-box li,
+            .sifat-box.modern p,
+            .sifat-box.modern li {
+                font-size: 13px !important;
+            }
         }
     </style>
 

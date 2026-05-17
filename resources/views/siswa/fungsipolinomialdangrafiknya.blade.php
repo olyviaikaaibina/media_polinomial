@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                            ]
-                                                                                                                                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                                                                                                    });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -18,31 +18,33 @@
     <style>
         :root {
             --green: #1b7a2a;
-            --green-soft: #f2fbf4;
-
             --accent: #2b6cb0;
             --accent-soft: #f3f7ff;
-
             --text: #222;
             --muted: #555;
-
-            --shadow: 0 10px 28px rgba(0, 0, 0, .05);
+            --line: rgba(0, 0, 0, .10);
             --outer-line: #EEDFCC;
-
+            --shadow: 0 10px 28px rgba(0, 0, 0, .05);
             --ok: #0f5f22;
             --ok-soft: rgba(27, 122, 42, .08);
-
             --warn: #7a4a00;
             --warn-soft: rgba(217, 119, 6, .10);
+            --danger: #8b1e1e;
+            --danger-soft: rgba(214, 40, 40, .10);
+        }
+
+        .materi-wrap,
+        .materi-wrap * {
+            box-sizing: border-box;
         }
 
         .materi-wrap {
-            max-width: 980px;
+            width: min(100%, 980px);
             margin: 0 auto;
+            padding: 20px 14px 40px;
             font-family: "Times New Roman", Times, serif;
             color: var(--text);
             line-height: 1.8;
-            padding: 20px 14px 40px;
         }
 
         .top-title {
@@ -53,44 +55,58 @@
         }
 
         .top-title .label {
-            font-size: 26px;
+            font-size: clamp(22px, 4vw, 26px);
             font-weight: 800;
             color: #000;
         }
 
         .top-title .judul {
-            font-size: 30px;
+            font-size: clamp(24px, 5vw, 30px);
             font-weight: 900;
             color: var(--green);
+            line-height: 1.25;
         }
 
-        .lead-text {
-            font-size: 18px;
+        .lead-text,
+        .materi-inline .inline-lead {
+            font-size: clamp(16px, 2vw, 18px);
             text-align: justify;
-            margin-bottom: 22px;
             color: var(--muted);
+            margin: 10px 0 22px;
         }
 
-        .lead-text strong {
+        .lead-text strong,
+        .highlight,
+        .card b,
+        .materi-inline b {
             color: #000;
         }
 
-        .card {
-            border-radius: 16px;
-            padding: 20px 22px;
-            background: #fff;
+        .highlight {
+            font-weight: 800;
+        }
+
+        .card,
+        .contoh-card,
+        .ci-card {
             margin-bottom: 18px;
-            box-shadow: var(--shadow);
             border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .card {
+            padding: 20px 22px;
         }
 
         .card-explore {
-            background: linear-gradient(180deg, var(--accent-soft), #fff);
             border-left: 6px solid var(--outer-line);
+            background: linear-gradient(180deg, var(--accent-soft), #fff);
         }
 
-        .card-example {
-            background: #fff;
+        .card-example,
+        .contoh-card {
             border-left: 6px solid var(--outer-line);
         }
 
@@ -98,10 +114,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 900;
-            font-size: 18px;
-            color: var(--green);
             margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--green);
         }
 
         .card p {
@@ -120,32 +136,52 @@
             margin: 6px 0;
         }
 
-        .highlight {
-            font-weight: 800;
-            color: #000;
-        }
-
         .rumus {
-            margin: 14px auto;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 800;
-            padding: 14px 16px;
-            border-radius: 14px;
-            background: #f7f9fc;
-            border: 1px solid rgba(0, 0, 0, .08);
             width: fit-content;
             max-width: 100%;
+            margin: 14px auto;
+            padding: 14px 16px;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #f7f9fc;
+            text-align: center;
+            font-size: clamp(16px, 2vw, 18px);
+            font-weight: 800;
         }
 
-        /* ===== DEFINISI (card peach) ===== */
+        .note,
+        .feedback,
+        .hasil-latihan,
+        .endbeh-note,
+        .ci-calc-box,
+        .poly-highlight-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #fff;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .small-note,
+        .ci-footnote,
+        .poly-showcase-sub,
+        .latihan-sub,
+        .grafik-caption {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
         .definisi-card {
             position: relative;
             margin: 0 0 18px;
             padding: 22px 20px 18px;
+            border: 2px solid var(--outer-line);
             border-radius: 14px;
             background: #F4C7B5;
-            border: 2px solid var(--outer-line);
             box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
         }
 
@@ -153,189 +189,227 @@
             position: absolute;
             top: -18px;
             left: 18px;
+            padding: 8px 26px;
+            border: 2px solid #4FA24B;
+            border-radius: 999px;
             background: #8FC17E;
             color: #000;
-            font-weight: 900;
-            padding: 8px 26px;
-            border-radius: 999px;
-            border: 2px solid #4FA24B;
             font-size: 15px;
+            font-weight: 900;
             letter-spacing: .5px;
         }
 
         .definisi-card p {
             margin: 6px 0 0;
-            text-align: justify;
             font-size: 16px;
             line-height: 1.7;
-            color: var(--muted);
         }
 
-        /* ===== TABEL (yang sudah ada) ===== */
-        .table-wrap {
-            overflow-x: auto;
-            margin-top: 10px;
-            border-radius: 14px;
-            border: 2px solid var(--outer-line);
-            background: #fff;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
-        }
-
-        table.poli {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 640px;
-            font-size: 16px;
-        }
-
-        table.poli thead th {
-            background: #8AD06E;
-            color: #0d2d0f;
-            font-weight: 900;
-            padding: 12px 10px;
-            border-bottom: 2px solid rgba(0, 0, 0, .08);
-            text-align: center;
-        }
-
-        table.poli td {
-            padding: 12px 10px;
-            border-top: 1px solid rgba(0, 0, 0, .08);
-            text-align: center;
-            color: var(--muted);
-        }
-
-        table.poli td:first-child,
-        table.poli th:first-child {
-            text-align: center;
-            font-weight: 900;
-            color: #1f1f1f;
-        }
-
-        .note {
-            margin-top: 12px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            border: 1px solid rgba(0, 0, 0, .08);
-            background: #fff;
-            color: var(--muted);
-        }
-
-        /* ===== EKSPLORASI ===== */
-        .mission {
-            margin-top: 10px;
+        .mission,
+        .endbeh-cell,
+        .contoh-grid {
             display: grid;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .mission-row,
+        .ci-layout,
+        .poly-body,
+        .latihan-grid {
+            display: grid;
+            gap: 16px;
+            align-items: start;
         }
 
         .mission-row {
-            display: grid;
-            grid-template-columns: 1.25fr .75fr;
-            gap: 12px;
-            align-items: stretch;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
         }
 
-        .panel {
-            border: 1px solid rgba(0, 0, 0, .08);
+        .panel,
+        .ci-panel,
+        .ci-graph-card,
+        .grafik-box,
+        .match-area,
+        .contoh-box,
+        .poly-info-card,
+        .poly-explain-panel,
+        .ci-mini-box,
+        .grafik-card {
+            border: 1px solid var(--line);
             border-radius: 16px;
             background: #fff;
+        }
+
+        .panel,
+        .ci-panel,
+        .ci-graph-card,
+        .match-area,
+        .grafik-box {
             padding: 14px;
         }
 
-        .panel-title {
+        .panel-title,
+        .ci-graph-head,
+        .poly-showcase-head,
+        .ci-head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-            font-weight: 900;
-            color: #1f1f1f;
-            margin-bottom: 10px;
+            gap: 12px;
         }
 
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .panel-title,
+        .ci-graph-head {
+            margin-bottom: 10px;
+            color: #1f2937;
             font-weight: 900;
-            font-size: 13px;
+        }
+
+        .chip,
+        .mini-badge,
+        .endbeh-tagrow,
+        .endbeh-pill,
+        .poly-pick-row,
+        .ci-point-row,
+        .btn-row,
+        .latihan-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chip,
+        .mini-badge,
+        .endbeh-pill {
+            width: fit-content;
             padding: 6px 10px;
-            border-radius: 999px;
             border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 999px;
             background: #fff;
             color: var(--muted);
+            font-size: 12px;
+            font-weight: 900;
+            line-height: 1;
             user-select: none;
         }
 
-        .chip.ok {
+        .chip.ok,
+        .feedback.ok,
+        .hasil-latihan.ok,
+        .endbeh-pill.green {
             border-color: rgba(27, 122, 42, .22);
             background: var(--ok-soft);
             color: var(--ok);
+            font-weight: 900;
         }
 
-        .chip.warn {
+        .chip.warn,
+        .feedback.bad,
+        .hasil-latihan.bad {
             border-color: rgba(217, 119, 6, .22);
             background: var(--warn-soft);
-            color: #7a4a00;
+            color: var(--warn);
+            font-weight: 900;
         }
 
-        .range {
+        .endbeh-pill.blue {
+            border-color: rgba(43, 108, 176, .18);
+            background: rgba(43, 108, 176, .08);
+            color: #1f4f86;
+        }
+
+        .range,
+        .ci-range,
+        .latihan-input,
+        .pick {
             width: 100%;
+            font-family: inherit;
+        }
+
+        .range,
+        .ci-range {
             accent-color: var(--accent);
         }
 
-        .kpi {
+        .kpi,
+        .ci-mini-grid,
+        .poly-info-grid,
+        .grafik-row,
+        .match-row,
+        .match-table {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 10px;
+        }
+
+        .kpi {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             margin-top: 8px;
         }
 
-        .kpi .box {
-            border: 1px solid rgba(0, 0, 0, .08);
+        .kpi .box,
+        .ci-mini-box,
+        .ci-calc-box {
+            border: 1px solid var(--line);
             border-radius: 14px;
-            padding: 10px 12px;
             background: rgba(243, 247, 255, .55);
+            padding: 10px 12px;
         }
 
-        .kpi .lbl {
-            font-weight: 900;
+        .kpi .lbl,
+        .mini-lbl,
+        .poly-info-label {
+            color: #6b7280;
             font-size: 13px;
-            color: var(--muted);
+            font-weight: 900;
             line-height: 1.2;
         }
 
-        .kpi .val {
-            font-weight: 900;
-            font-size: 18px;
-            color: #1f1f1f;
+        .kpi .val,
+        .mini-val,
+        .poly-info-value {
             margin-top: 3px;
+            color: #111827;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 900;
+            line-height: 1.2;
         }
 
-        .canvas-wrap {
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, .10);
+        .canvas-wrap,
+        .ci-canvas-wrap {
             overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 16px;
             background: #fff;
         }
 
-        canvas#expGraph {
-            width: 100%;
-            height: 260px;
+        canvas#expGraph,
+        #ciGraphCanvas {
             display: block;
+            width: 100%;
+        }
+
+        canvas#expGraph {
+            height: 260px;
+        }
+
+        #ciGraphCanvas {
+            height: 100%;
         }
 
         .exp-explainbox {
             margin-top: 12px;
-            border-radius: 14px;
+            padding: 12px;
             border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 14px;
             background: rgba(255, 255, 255, .86);
-            padding: 12px 12px;
             color: var(--muted);
         }
 
         .exp-explainbox .head {
-            font-weight: 900;
-            color: #111;
             margin-bottom: 6px;
+            color: #111;
+            font-weight: 900;
         }
 
         .exp-explainbox .line {
@@ -347,830 +421,338 @@
         }
 
         .exp-explainbox .line:first-of-type {
-            border-top: none;
+            border-top: 0;
             padding-top: 2px;
         }
 
         .exp-explainbox .tag {
             flex: 0 0 auto;
-            font-weight: 900;
-            font-size: 12px;
+            margin-top: 2px;
             padding: 4px 8px;
+            border: 1px solid var(--line);
             border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, .10);
             background: #fff;
             color: var(--muted);
+            font-size: 12px;
+            font-weight: 900;
             line-height: 1;
-            margin-top: 2px;
         }
 
         .exp-explainbox .txt {
             flex: 1 1 auto;
+            min-width: 0;
             line-height: 1.6;
         }
 
-        .exp-explainbox b {
-            color: #111;
-        }
-
-        .small-note {
-            font-size: 14px;
-            color: var(--muted);
-            margin-top: 8px;
-        }
-
-        @media (max-width:860px) {
-            .mission-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width:760px) {
-            .kpi {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width:640px) {
-            .top-title .judul {
-                font-size: 24px;
-            }
-
-            .top-title .label {
-                font-size: 22px;
-            }
-
-            .card {
-                padding: 16px;
-            }
-
-            .lead-text {
-                font-size: 16px;
-            }
-
-            .rumus {
-                font-size: 16px;
-            }
-        }
-
-        /* ===== TAMBAHAN ISI CARD AGAR LEBIH HIDUP ===== */
-        .subinfo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-            margin: 14px 0;
-        }
-
-        .subinfo-box {
-            border: 1px solid rgba(0, 0, 0, .10);
-            border-radius: 14px;
-            padding: 12px 14px;
-            background: rgba(243, 247, 255, .45);
-        }
-
-        .subinfo-box .head {
-            font-weight: 900;
-            color: #111;
-            margin-bottom: 6px;
-        }
-
-        .subinfo-box p,
-        .subinfo-box li {
-            color: var(--muted);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .subinfo-box ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-
-        .challenge-box {
-            margin-top: 14px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            border-radius: 14px;
-            padding: 14px;
+        .pick,
+        .latihan-input {
+            padding: 10px 12px;
+            border: 1px solid rgba(0, 0, 0, .18);
+            border-radius: 12px;
             background: #fff;
-        }
-
-        .challenge-title {
-            font-weight: 900;
             color: #111;
-            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
         }
 
-        .challenge-row {
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 10px;
+        .pick:focus,
+        .latihan-input:focus {
+            border-color: rgba(43, 108, 176, .5);
+            box-shadow: 0 0 0 3px rgba(43, 108, 176, .12);
+        }
+
+        .btn-cek,
+        .btn-reset,
+        .latihan-btn,
+        .poly-btn,
+        .ci-point-btn {
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 900;
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+
+        .btn-cek,
+        .btn-reset,
+        .latihan-btn {
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, .10);
+        }
+
+        .btn-cek {
+            border-color: rgba(43, 108, 176, .25);
+            background: rgba(43, 108, 176, .12);
+            color: #1f4f86;
+        }
+
+        .btn-reset,
+        .latihan-btn {
+            background: rgba(0, 0, 0, .04);
+            color: #222;
+        }
+
+        .btn-cek:hover,
+        .btn-reset:hover,
+        .latihan-btn:hover,
+        .poly-btn:hover,
+        .ci-point-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        button:disabled,
+        .latihan-input:disabled {
+            cursor: not-allowed;
+            opacity: .7;
+        }
+
+        #penyelesaianContoh {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .materi-inline {
+            margin: 10px 0 22px;
+        }
+
+        .materi-figure {
+            display: flex;
+            justify-content: center;
+            margin: 14px 0 18px;
+        }
+
+        .materi-figure img,
+        .grafik-card img,
+        .grafik-item img,
+        .img-toggle img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .ci-mini-grid,
+        .poly-info-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .match-row {
+            grid-template-columns: minmax(0, 1.2fr) minmax(180px, .8fr);
             align-items: center;
             padding: 10px 0;
             border-top: 1px dashed rgba(0, 0, 0, .08);
         }
 
-        .challenge-row:first-of-type {
-            border-top: none;
+        .match-row:first-child {
+            border-top: 0;
             padding-top: 4px;
         }
 
-        .challenge-label {
-            color: #222;
-            font-weight: 800;
-            line-height: 1.6;
-        }
-
-        .mini-badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 10px 0 0;
-        }
-
-        .mini-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 10px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 900;
-            border: 1px solid rgba(0, 0, 0, .10);
-            background: #fff;
-            color: #333;
-        }
-
-        .mini-badge.good {
-            background: rgba(27, 122, 42, .08);
-            color: #0f5f22;
-            border-color: rgba(27, 122, 42, .18);
-        }
-
-        .mini-badge.info {
-            background: rgba(43, 108, 176, .08);
-            color: #1f4f86;
-            border-color: rgba(43, 108, 176, .18);
-        }
-
-        .mini-answer {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .18);
-            background: #fff;
-            font-weight: 700;
+        .soal-label,
+        .fx {
             color: #111;
-            outline: none;
-        }
-
-        .mini-answer:focus {
-            border-color: rgba(43, 108, 176, .45);
-            box-shadow: 0 0 0 3px rgba(43, 108, 176, .10);
-        }
-
-        .action-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .info-feedback {
-            margin-top: 12px;
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            background: #fff;
-            color: var(--muted);
             line-height: 1.6;
         }
 
-        .info-feedback.ok {
-            border-color: rgba(27, 122, 42, .22);
-            background: rgba(27, 122, 42, .08);
-            color: #0f5f22;
-            font-weight: 900;
-        }
-
-        .info-feedback.bad {
-            border-color: rgba(217, 119, 6, .22);
-            background: rgba(217, 119, 6, .10);
-            color: #7a4a00;
-            font-weight: 900;
-        }
-
-        .reveal-box {
-            display: none;
-            margin-top: 12px;
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            background: rgba(243, 247, 255, .45);
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        /* =========================
-                                                                                                                                                                                                                                   CONTOH INTERAKTIF MODEL BARU
-                                                                                                                                                                                                                                   ========================= */
         .ci-card {
-            border-radius: 18px;
-            padding: 18px;
-            background: #f8f6f3;
-            border-left: 6px solid #e7d9c7;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .05);
-            margin-bottom: 18px;
+            width: 100%;
+            padding: 24px;
+            background: #fffbe8;
         }
 
         .ci-shell {
-            border: 2px solid #6eb77a;
+            padding: 28px;
             border-radius: 18px;
-            background: #fcfcfc;
-            padding: 18px 18px 16px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
         }
 
-        .ci-pill {
+        .ci-pill,
+        .contoh-pill {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-weight: 900;
-            font-size: 15px;
-            color: #111;
-            border: 2px solid #d98659;
-            background: linear-gradient(180deg, #ffb38f, #f6a982);
+            width: fit-content;
             margin-bottom: 12px;
+            border-radius: 999px;
+            color: #111;
+            font-weight: 900;
+        }
+
+        .ci-pill {
+            padding: 8px 16px;
+            background: #f3dfbd;
+            font-size: 13px;
+            letter-spacing: .5px;
         }
 
         .ci-head {
-            display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .ci-head .title {
-            font-size: 20px;
-            font-weight: 900;
+            font-size: clamp(20px, 3vw, 24px);
             color: #1f2937;
+            font-weight: 900;
         }
 
         .ci-head .fx {
-            font-size: 18px;
-            font-weight: 700;
-            color: #374151;
+            font-size: clamp(17px, 2.5vw, 20px);
+            color: #6f8d5c;
+            font-weight: 900;
         }
 
         .ci-sub {
-            margin: 0 0 14px;
-            color: #6b7280;
-            font-size: 15px;
+            margin: 0 0 24px;
+            color: #5f6368;
+            font-size: 16px;
             line-height: 1.6;
         }
 
-        .ci-layout {
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            gap: 16px;
-            align-items: start;
-        }
-
-        .ci-panel {
-            background: #f3f4f6;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 16px;
-            padding: 14px;
-        }
-
-        .ci-panel-title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            font-weight: 900;
-            color: #1f2937;
-            margin-bottom: 10px;
-        }
-
-        .ci-label {
-            font-weight: 900;
-            color: #1f2937;
-            margin-bottom: 8px;
-        }
-
-        .ci-chip-row,
-        .ci-point-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .ci-chip,
-        .ci-point-btn {
-            border: 1px solid rgba(0, 0, 0, .12);
-            background: #fff;
-            color: #1f2937;
-            border-radius: 999px;
-            padding: 8px 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: .2s ease;
-            font-family: inherit;
-        }
-
-        .ci-chip:hover,
-        .ci-point-btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .ci-chip.active,
-        .ci-point-btn.active {
-            background: #fde7d7;
-            border-color: #d98659;
-            color: #111;
-        }
-
-        .ci-range-wrap {
-            margin: 14px 0 12px;
-        }
-
-        .ci-range-label {
-            font-weight: 900;
-            color: #1f2937;
-            margin-bottom: 8px;
-        }
-
-        .ci-range {
-            width: 100%;
-            accent-color: #3b82f6;
-        }
-
-        .ci-mini-grid {
-            display: grid;
+        .ci-layout,
+        .poly-body {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin: 12px 0 14px;
+            gap: 24px;
         }
 
+        .ci-panel,
+        .ci-graph-card {
+            padding: 22px;
+            background: #f7f8fb;
+        }
+
+        .ci-calc-box,
         .ci-mini-box {
             background: #fff;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 14px;
-            padding: 10px 12px;
         }
 
-        .ci-mini-box .mini-lbl {
-            font-size: 13px;
-            font-weight: 900;
-            color: #6b7280;
-            margin-bottom: 4px;
-        }
-
-        .ci-mini-box .mini-val {
-            font-size: 18px;
-            font-weight: 900;
-            color: #111827;
-        }
-
+        .ci-range-label,
         .ci-calc-title {
-            font-weight: 900;
-            color: #1f2937;
-            margin: 10px 0 8px;
-        }
-
-        .ci-calc-box {
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 14px;
-            padding: 12px 14px;
-            color: #374151;
-            line-height: 1.8;
             margin-bottom: 10px;
-        }
-
-        .ci-graph-card {
-            background: #f9fafb;
-            border: 1px solid rgba(0, 0, 0, .10);
-            border-radius: 16px;
-            padding: 12px;
-        }
-
-        .ci-graph-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-weight: 900;
             color: #1f2937;
-        }
-
-        .ci-graph-head .left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ci-dot-icon {
-            width: 12px;
-            height: 12px;
-            border-radius: 999px;
-            background: #f59ac2;
-            display: inline-block;
-        }
-
-        .ci-active-text {
-            font-size: 14px;
-            color: #4b5563;
+            font-size: 16px;
             font-weight: 900;
         }
 
         .ci-canvas-wrap {
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 14px;
-            background: #fff;
-            overflow: hidden;
-            padding: 8px;
+            height: 360px;
         }
 
-        #ciGraphCanvas {
-            width: 100%;
-            height: 300px;
-            display: block;
-            border-radius: 12px;
-        }
-
-        .ci-footnote {
-            margin-top: 8px;
-            color: #6b7280;
+        .ci-point-btn {
+            padding: 9px 13px;
+            border: 0;
+            border-radius: 999px;
+            background: #e4eadc;
+            color: #374151;
             font-size: 14px;
-            line-height: 1.5;
         }
 
-        @media (max-width: 900px) {
-            .ci-layout {
-                grid-template-columns: 1fr;
-            }
-
-            #ciGraphCanvas {
-                height: 260px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .ci-mini-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ci-head .title {
-                font-size: 18px;
-            }
-
-            .ci-head .fx {
-                font-size: 16px;
-            }
-        }
-
-
-        @media (max-width: 860px) {
-
-            .subinfo-grid,
-            .challenge-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== MARI MENCOBA DENGAN DIAGRAM ===== */
-        .mencoba-layout {
-            display: grid;
-            grid-template-columns: 360px 1fr;
-            gap: 18px;
-            align-items: start;
-        }
-
-        .mencoba-panel {
-            background: #f7f7f7;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 18px;
-            padding: 14px;
-        }
-
-        .mencoba-title {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 8px;
-        }
-
-        .mencoba-title span {
-            display: inline-block;
-            min-width: 220px;
-            text-align: center;
-            background: #232323;
+        .ci-point-btn.active {
+            background: #8da06f;
             color: #fff;
-            padding: 14px 24px;
-            border-radius: 18px;
-            font-weight: 900;
-            font-size: 16px;
-            letter-spacing: .4px;
         }
 
-        .mencoba-subtitle {
-            text-align: center;
-            font-size: 13px;
-            color: #7a7a7a;
-            margin-bottom: 14px;
+        .ci-dot-icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: #f28abb;
+            vertical-align: middle;
         }
 
-        .mencoba-soal {
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 18px;
-            padding: 14px 14px 12px;
-            margin-bottom: 12px;
+        #ciActivePointText {
+            color: #4b5563;
+            font-size: 14px;
+            font-weight: 700;
         }
 
-        .mencoba-soal .head {
-            font-weight: 900;
-            color: #111;
-            margin-bottom: 8px;
-        }
-
-        .mencoba-soal p {
-            margin: 8px 0;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .mencoba-soal ul {
-            margin: 8px 0 0 18px;
-            color: var(--muted);
-        }
-
-        .mencoba-soal li {
-            margin: 6px 0;
-        }
-
-        .mencoba-fx {
-            color: #1367d1 !important;
-            font-size: 22px;
-            font-weight: 900;
-            margin: 8px 0 10px;
-        }
-
-        .mencoba-note {
-            font-size: 13px;
-            color: #777;
-            margin-top: 10px;
-        }
-
-        .mencoba-input-card {
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 18px;
-            padding: 14px;
-        }
-
-        .mini-tip {
-            font-size: 12px;
-            color: #777;
-            margin: 0 0 10px;
-        }
-
-        .mencoba-form-block {
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 14px;
-            padding: 12px;
-            background: #fafafa;
-            margin-bottom: 12px;
-        }
-
-        .mencoba-form-title {
-            font-weight: 900;
-            color: #222;
-            margin-bottom: 10px;
-        }
-
-        .mencoba-grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .mencoba-grid-2 label {
-            display: block;
-            font-size: 13px;
-            font-weight: 800;
-            color: #555;
-            margin-bottom: 6px;
-        }
-
-        .mencoba-diagram-wrap {
-            background: #f7f7f7;
-            border: 1px solid rgba(0, 0, 0, .08);
-            border-radius: 18px;
-            padding: 14px;
-        }
-
-        .mencoba-diagram-head {
-            margin-bottom: 10px;
-        }
-
-        .mencoba-diagram-head .head {
-            font-weight: 900;
-            color: #111;
-            margin-bottom: 2px;
-        }
-
-        .mencoba-diagram-head .sub {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .mencoba-diagram-box {
-            padding: 10px;
-            min-height: 520px;
-        }
-
-        #p5MariMencoba1 {
-            width: 100%;
-            min-height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #p5MariMencoba1 canvas {
-            max-width: 100%;
-            height: auto !important;
-            display: block;
-            border-radius: 12px;
-        }
-
-        @media (max-width: 980px) {
-            .mencoba-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .mencoba-diagram-box,
-            #p5MariMencoba1 {
-                min-height: 360px;
-            }
-        }
-
-        /* ===== Materi tambahan (tanpa card) ===== */
-        .materi-inline {
-            margin: 10px 0 22px;
-        }
-
-        .materi-inline .inline-lead {
-            font-size: 18px;
-            text-align: justify;
-            color: var(--muted);
-            margin: 10px 0;
-        }
-
-        .materi-figure {
-            margin: 14px 0 18px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .materi-figure img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* =========================================================
-                                                                                                                                                                                                                            ✅ TABEL PERILAKU UJUNG (RAPI + GRID GARIS)
-                                                                                                                                                                                                                            ========================================================= */
-        .endbeh-table-wrap {
+        .endbeh-table-wrap,
+        .solve-table-wrap {
             overflow-x: auto;
             margin-top: 14px;
-            border-radius: 16px;
             border: 2px solid var(--outer-line);
+            border-radius: 16px;
             background: #fff;
             box-shadow: 0 10px 22px rgba(0, 0, 0, .05);
         }
 
-        table.endbeh {
+        table.endbeh,
+        table.solve {
             width: 100%;
-            border-collapse: collapse;
-            min-width: 760px;
-            font-size: 16px;
+            min-width: 720px;
             border: 2px solid rgba(0, 0, 0, .14);
+            border-collapse: collapse;
+            font-size: 16px;
         }
 
-        table.endbeh thead th {
+        table.endbeh th,
+        table.endbeh td,
+        table.solve th,
+        table.solve td {
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, .14);
+            vertical-align: top;
+        }
+
+        table.endbeh th,
+        table.solve th {
             background: #8AD06E;
             color: #0d2d0f;
-            font-weight: 900;
-            padding: 14px 12px;
             text-align: center;
-            vertical-align: middle;
-            border: 1px solid rgba(0, 0, 0, .18);
-            border-bottom: 2px solid rgba(0, 0, 0, .22);
+            font-weight: 900;
         }
 
-        table.endbeh tbody td {
-            padding: 14px 12px;
-            vertical-align: top;
+        table.endbeh td,
+        table.solve td {
             color: var(--muted);
-            border: 1px solid rgba(0, 0, 0, .14);
         }
 
         table.endbeh tbody tr:nth-child(odd) td {
             background: rgba(243, 247, 255, .28);
         }
 
-        table.endbeh td.col-n {
-            width: 130px;
+        table.endbeh td.col-n,
+        table.solve td:first-child {
             text-align: center;
-            font-weight: 900;
-            color: #1f1f1f;
             vertical-align: middle;
+            color: #1f1f1f;
+            font-weight: 900;
             white-space: nowrap;
         }
 
-        table.endbeh thead th:nth-child(1),
-        table.endbeh tbody td:nth-child(1) {
-            border-right: 2px solid rgba(0, 0, 0, .22);
-        }
-
-        table.endbeh thead th:nth-child(2),
-        table.endbeh tbody td:nth-child(2) {
-            border-right: 2px solid rgba(0, 0, 0, .22);
-        }
-
-        .endbeh-cell {
-            display: grid;
-            gap: 10px;
-        }
-
-        .endbeh-bullets {
+        .endbeh-bullets,
+        .poly-highlight-list {
             margin: 0;
             padding-left: 18px;
         }
 
-        .endbeh-bullets li {
+        .endbeh-bullets li,
+        .poly-highlight-list li {
             margin: 6px 0;
-            line-height: 1.6;
-        }
-
-        .endbeh-tagrow {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .endbeh-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 900;
-            font-size: 12px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            background: #fff;
-            color: #222;
-            user-select: none;
-            white-space: nowrap;
-        }
-
-        .endbeh-pill.green {
-            border-color: rgba(27, 122, 42, .22);
-            background: rgba(27, 122, 42, .08);
-            color: #0f5f22;
-        }
-
-        .endbeh-pill.blue {
-            border-color: rgba(43, 108, 176, .18);
-            background: rgba(43, 108, 176, .08);
-            color: #1f4f86;
         }
 
         .img-toggle {
+            overflow: hidden;
             border: 1px solid rgba(0, 0, 0, .14);
             border-radius: 14px;
-            overflow: hidden;
             background: #fff;
         }
 
         .img-toggle summary {
-            cursor: pointer;
-            list-style: none;
-            padding: 10px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            cursor: pointer;
+            list-style: none;
             font-weight: 900;
             color: #1f1f1f;
-            background: rgba(255, 255, 255, .95);
-            border-bottom: 1px solid rgba(0, 0, 0, .10);
         }
 
         .img-toggle summary::-webkit-details-marker {
@@ -1178,74 +760,39 @@
         }
 
         .img-toggle .hint {
-            font-weight: 900;
-            font-size: 12px;
             padding: 4px 10px;
-            border-radius: 999px;
             border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 999px;
             background: rgba(243, 247, 255, .6);
             color: #1f4f86;
+            font-size: 12px;
+            font-weight: 900;
             white-space: nowrap;
         }
 
         .img-toggle .imgbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px;
             background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .img-toggle img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-        }
-
-        .endbeh-note {
-            margin-top: 10px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(0, 0, 0, .08);
-            background: #fff;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        /* =========================================================
-                                                                                                                                                                                                                            ✅ CARD CONTOH INTERAKTIF (A/B/C) + PENYELESAIAN
-                                                                                                                                                                                                                            ========================================================= */
         .contoh-card {
-            border-radius: 16px;
             padding: 20px 22px;
-            background: #fff;
-            margin-bottom: 18px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0, 0, 0, .06);
-            border-left: 6px solid var(--outer-line);
         }
 
         .contoh-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             padding: 10px 26px;
-            border-radius: 999px;
-            font-weight: 900;
-            letter-spacing: .5px;
             border: 2px solid #e07b57;
             background: linear-gradient(180deg, #ffb59d, #ffa78a);
-            color: #111;
-            width: fit-content;
-            margin-bottom: 12px;
+            letter-spacing: .5px;
         }
 
         .contoh-box {
+            padding: 16px;
             border: 2px solid #78d26b;
             border-radius: 12px;
-            padding: 16px 16px 14px;
-            background: #fff;
         }
 
         .contoh-instruksi {
@@ -1256,188 +803,21 @@
             text-align: justify;
         }
 
-        .contoh-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 10px;
-        }
-
         .grafik-row {
-            display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
-            align-items: start;
         }
 
         .grafik-card {
-            border: 1px solid rgba(0, 0, 0, .12);
-            border-radius: 14px;
             padding: 10px;
-            background: #fff;
             text-align: center;
         }
 
-        .grafik-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .grafik-label {
+        .grafik-label,
+        .grafik-huruf {
             margin-top: 8px;
-            font-weight: 900;
             color: #111;
+            font-weight: 900;
             letter-spacing: .6px;
-        }
-
-        .match-area {
-            border: 1px dashed rgba(0, 0, 0, .18);
-            border-radius: 14px;
-            padding: 12px;
-            background: rgba(243, 247, 255, .45);
-        }
-
-        .match-row {
-            display: grid;
-            grid-template-columns: 1.3fr .7fr;
-            gap: 10px;
-            align-items: center;
-            padding: 10px 0;
-            border-top: 1px solid rgba(0, 0, 0, .08);
-        }
-
-        .match-row:first-child {
-            border-top: none;
-            padding-top: 4px;
-        }
-
-        .fx {
-            font-size: 18px;
-            color: #111;
-            font-weight: 800;
-        }
-
-        .pick {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .18);
-            background: #fff;
-            font-weight: 800;
-            color: #111;
-            outline: none;
-        }
-
-        .pick:focus {
-            border-color: rgba(43, 108, 176, .5);
-            box-shadow: 0 0 0 3px rgba(43, 108, 176, .12);
-        }
-
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .btn-cek,
-        .btn-reset {
-            border: none;
-            cursor: pointer;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-weight: 900;
-        }
-
-        .btn-cek {
-            background: rgba(43, 108, 176, .12);
-            color: #1f4f86;
-            border: 1px solid rgba(43, 108, 176, .25);
-        }
-
-        .btn-reset {
-            background: rgba(0, 0, 0, .06);
-            color: #222;
-            border: 1px solid rgba(0, 0, 0, .10);
-        }
-
-        .feedback {
-            margin-top: 10px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, .10);
-            background: #fff;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .feedback.ok {
-            border-color: rgba(27, 122, 42, .22);
-            background: rgba(27, 122, 42, .08);
-            color: #0f5f22;
-            font-weight: 900;
-        }
-
-        .feedback.bad {
-            border-color: rgba(217, 119, 6, .22);
-            background: rgba(217, 119, 6, .10);
-            color: #7a4a00;
-            font-weight: 900;
-        }
-
-        #penyelesaianContoh {
-            display: none;
-            margin-top: 14px;
-        }
-
-        .solve-table-wrap {
-            overflow-x: auto;
-            margin-top: 10px;
-            border-radius: 14px;
-            border: 2px solid var(--outer-line);
-            background: #fff;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
-        }
-
-        table.solve {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 720px;
-            font-size: 16px;
-            border: 2px solid rgba(0, 0, 0, .14);
-        }
-
-        table.solve th {
-            background: #8AD06E;
-            color: #0d2d0f;
-            font-weight: 900;
-            padding: 12px 10px;
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, .18);
-        }
-
-        table.solve td {
-            padding: 12px 10px;
-            border: 1px solid rgba(0, 0, 0, .14);
-            text-align: center;
-            color: var(--muted);
-        }
-
-        table.solve td:first-child {
-            font-weight: 900;
-            color: #111;
-        }
-
-        @media (max-width: 900px) {
-            .grafik-row {
-                grid-template-columns: 1fr;
-            }
-
-            .match-row {
-                grid-template-columns: 1fr;
-            }
         }
 
         .latihan-title-row {
@@ -1447,12 +827,12 @@
         }
 
         .latihan-badge {
-            background: #6d6e73;
-            color: #fff;
-            font-weight: 900;
             padding: 10px 30px;
             border-radius: 8px;
+            background: #6d6e73;
+            color: #fff;
             font-size: 15px;
+            font-weight: 900;
             letter-spacing: .3px;
         }
 
@@ -1461,51 +841,29 @@
             padding-top: 4px;
         }
 
-        .latihan-section h3 {
-            font-size: 18px;
-            font-weight: 900;
-            margin: 0 0 8px;
-            color: #111;
+        .latihan-section+.latihan-section {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 2px solid #d85a5a;
         }
 
-        .latihan-section+.latihan-section {
-            border-top: 2px solid #d85a5a;
-            padding-top: 14px;
-            margin-top: 16px;
+        .latihan-section h3 {
+            margin: 0 0 8px;
+            color: #111;
+            font-size: 18px;
+            font-weight: 900;
         }
 
         .latihan-rumus {
             margin: 6px 0 8px;
-            font-size: 17px;
             color: #111;
-        }
-
-        .latihan-sub {
-            margin: 4px 0 10px;
-            color: #333;
-            font-size: 15px;
+            font-size: 17px;
         }
 
         .latihan-grid {
-            display: grid;
-            grid-template-columns: 1.35fr 0.9fr;
+            grid-template-columns: minmax(0, 1.35fr) minmax(220px, .9fr);
             gap: 8px 14px;
             align-items: center;
-        }
-
-        .soal-label {
-            font-size: 15px;
-            color: #111;
-        }
-
-        .latihan-input {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background: #f8f8f8;
-            font-family: inherit;
-            font-size: 14px;
         }
 
         .latihan-input.kecil {
@@ -1513,226 +871,140 @@
             text-align: center;
         }
 
-        .grafik-box {
-            border: 1px solid #cfcfcf;
-            border-radius: 8px;
-            background: #f6f6f6;
-            padding: 10px;
-            margin: 10px 0 14px;
-        }
-
-        .grafik-caption {
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: #222;
-        }
-
-        .grafik-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            align-items: start;
-        }
-
-        .grafik-item {
-            text-align: center;
-        }
-
-        .grafik-item img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            display: block;
-            margin: 0 auto 6px;
-        }
-
-        .grafik-huruf {
-            font-weight: 900;
-            color: #111;
-        }
-
         .match-table {
-            display: grid;
-            grid-template-columns: 1.3fr .7fr 1fr .6fr;
-            gap: 8px 10px;
-            align-items: center;
+            grid-template-columns: minmax(170px, 1.3fr) minmax(90px, .7fr) minmax(160px, 1fr) minmax(80px, .6fr);
+            align-items: stretch;
         }
 
         .match-header {
-            font-weight: 900;
-            font-size: 14px;
-            color: #111;
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
-
-        .latihan-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .latihan-actions.bawah {
-            margin-top: 16px;
-        }
-
-        .latihan-btn {
-            border: 1px solid #333;
-            background: #fff;
-            color: #111;
-            border-radius: 6px;
-            padding: 9px 14px;
-            font-family: inherit;
-            font-size: 12px;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .latihan-btn:hover {
-            background: #f2f2f2;
-        }
-
-        .latihan-btn.reset {
-            background: #fafafa;
-        }
-
-        .hasil-latihan {
-            margin-top: 12px;
             padding: 10px 12px;
-            border-radius: 8px;
-            background: #fff;
-            border: 1px solid #cfcfcf;
-            color: #333;
+            border-radius: 10px;
+            background: #f1f3f6;
+            color: #111;
             font-size: 14px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .latihan-match-mobile .match-item {
+            min-width: 0;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, .10);
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .latihan-match-mobile .fungsi-col {
+            font-weight: 800;
+            color: #111;
             line-height: 1.6;
         }
 
-        .hasil-latihan.ok {
-            background: rgba(27, 122, 42, .08);
-            border-color: rgba(27, 122, 42, .22);
-            color: #0f5f22;
-            font-weight: 700;
+        .latihan-match-mobile .mobile-label {
+            display: none;
         }
 
-        .hasil-latihan.bad {
-            background: rgba(217, 119, 6, .10);
-            border-color: rgba(217, 119, 6, .22);
-            color: #7a4a00;
-            font-weight: 700;
+        .latihan-locked,
+        .latihan-section.locked {
+            opacity: .65;
         }
 
-        @media (max-width: 860px) {
-
-            .latihan-grid,
-            .match-table {
-                grid-template-columns: 1fr;
-            }
-
-            .grafik-row {
-                grid-template-columns: 1fr;
-            }
-
-            .latihan-input.kecil {
-                max-width: 100%;
-                text-align: left;
-            }
+        .latihan-locked {
+            pointer-events: none;
         }
 
-        /* ===== CONTOH POLINOMIAL INTERAKTIF: VERSI MENARIK ===== */
+        .latihan-section.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .latihan-input.is-correct {
+            border: 2px solid var(--ok) !important;
+            background: var(--ok-soft) !important;
+            color: var(--ok) !important;
+        }
+
+        .latihan-input.is-wrong {
+            border: 2px solid #d62828 !important;
+            background: var(--danger-soft) !important;
+            color: var(--danger) !important;
+        }
+
+        .latihan-input.is-empty {
+            border: 2px solid #d97706 !important;
+            background: var(--warn-soft) !important;
+            color: var(--warn) !important;
+        }
+
         .poly-showcase {
             margin-top: 16px;
+            padding: 18px;
+            border: 2px solid #ecdcc8;
             border-radius: 22px;
             background: linear-gradient(180deg, #fffaf3, #fff);
-            border: 2px solid #ecdcc8;
             box-shadow: 0 14px 30px rgba(0, 0, 0, .05);
-            padding: 18px;
         }
 
         .poly-showcase-head {
-            display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
             margin-bottom: 14px;
         }
 
         .poly-showcase-title {
+            color: #1f2937;
             font-size: 20px;
             font-weight: 900;
-            color: #1f2937;
-        }
-
-        .poly-showcase-sub {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.6;
         }
 
         .poly-pick-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
             margin: 16px 0 18px;
+            gap: 12px;
         }
 
         .poly-btn {
-            border: none;
-            cursor: pointer;
             padding: 12px 18px;
-            border-radius: 16px;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 18px;
-            font-weight: 900;
-            color: #374151;
-            background: linear-gradient(180deg, #ffffff, #f7f7f7);
             border: 1px solid rgba(0, 0, 0, .10);
+            border-radius: 16px;
+            background: linear-gradient(180deg, #fff, #f7f7f7);
             box-shadow: 0 8px 18px rgba(0, 0, 0, .05);
-            transition: .18s ease;
-        }
-
-        .poly-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
+            color: #374151;
+            font-size: 18px;
         }
 
         .poly-btn.active {
-            color: #1f2937;
-            border: 1px solid rgba(217, 119, 6, .25);
+            border-color: rgba(217, 119, 6, .25);
             background: linear-gradient(180deg, #ffd9b8, #ffbf8d);
             box-shadow: 0 12px 24px rgba(217, 119, 6, .18);
+            color: #1f2937;
         }
 
         .poly-main-card {
-            border-radius: 20px;
             overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 20px;
             background: #fff;
-            border: 1px solid rgba(0, 0, 0, .08);
             box-shadow: 0 14px 28px rgba(0, 0, 0, .04);
         }
 
         .poly-top-banner {
-            background: linear-gradient(135deg, #9ad97d, #74bf66);
             padding: 18px 20px;
-            text-align: center;
             border-bottom: 1px solid rgba(0, 0, 0, .06);
+            background: linear-gradient(135deg, #9ad97d, #74bf66);
+            text-align: center;
         }
 
         .poly-rumus {
-            font-size: 30px;
-            font-weight: 900;
-            color: #17301b;
             margin: 0;
+            color: #17301b;
+            font-size: clamp(24px, 5vw, 30px);
+            font-weight: 900;
         }
 
         .poly-body {
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            gap: 18px;
             padding: 20px;
-            background:
-                radial-gradient(circle at top right, rgba(255, 206, 164, .18), transparent 26%),
-                linear-gradient(180deg, #fff, #fffdf9);
+            background: radial-gradient(circle at top right, rgba(255, 206, 164, .18), transparent 26%), linear-gradient(180deg, #fff, #fffdf9);
         }
 
         .poly-left,
@@ -1741,26 +1013,17 @@
         }
 
         .poly-section-title {
-            font-weight: 900;
-            font-size: 17px;
-            color: #1f2937;
             margin-bottom: 12px;
-        }
-
-        .poly-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            color: #1f2937;
+            font-size: 17px;
+            font-weight: 900;
         }
 
         .poly-info-card {
-            border-radius: 16px;
-            padding: 14px 14px 12px;
-            border: 1px solid rgba(0, 0, 0, .08);
-            background: #fff;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
             position: relative;
             overflow: hidden;
+            padding: 14px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .04);
         }
 
         .poly-info-card::before {
@@ -1768,7 +1031,6 @@
             position: absolute;
             inset: 0 auto 0 0;
             width: 6px;
-            border-radius: 16px 0 0 16px;
         }
 
         .poly-info-card.deg::before {
@@ -1788,19 +1050,9 @@
         }
 
         .poly-info-label {
-            font-size: 13px;
-            font-weight: 900;
-            color: #6b7280;
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: .4px;
-        }
-
-        .poly-info-value {
-            font-size: 24px;
-            font-weight: 900;
-            color: #111827;
-            line-height: 1.2;
         }
 
         .poly-info-value.small {
@@ -1808,10 +1060,9 @@
         }
 
         .poly-explain-panel {
-            border-radius: 18px;
             padding: 16px;
+            border-color: rgba(240, 161, 93, .28);
             background: linear-gradient(180deg, #fff8ef, #fff);
-            border: 1px solid rgba(240, 161, 93, .28);
             box-shadow: 0 10px 22px rgba(240, 161, 93, .08);
         }
 
@@ -1819,68 +1070,140 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 900;
-            color: #8a4b16;
             margin-bottom: 10px;
-        }
-
-        .poly-explain-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #ffe2c6;
             color: #8a4b16;
-            font-size: 18px;
+            font-weight: 900;
         }
 
         .poly-explain-text {
             color: #5b5563;
-            line-height: 1.8;
             font-size: 16px;
+            line-height: 1.8;
             text-align: justify;
         }
 
         .poly-highlight-box {
             margin-top: 14px;
-            border-radius: 16px;
             padding: 14px;
+            border-color: rgba(43, 108, 176, .16);
             background: linear-gradient(180deg, #f3f8ff, #fff);
-            border: 1px solid rgba(43, 108, 176, .16);
         }
 
         .poly-highlight-head {
-            font-weight: 900;
-            color: #1f4f86;
             margin-bottom: 8px;
+            color: #1f4f86;
+            font-weight: 900;
         }
 
-        .poly-highlight-list {
-            margin: 0;
-            padding-left: 18px;
-            color: #4b5563;
-        }
+        @media (max-width: 980px) {
 
-        .poly-highlight-list li {
-            margin: 6px 0;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 900px) {
+            .mission-row,
+            .ci-layout,
             .poly-body {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 640px) {
-            .poly-info-grid {
+        @media (max-width: 860px) {
+
+            .latihan-grid,
+            .match-row {
                 grid-template-columns: 1fr;
             }
 
-            .poly-rumus {
-                font-size: 24px;
+            .latihan-match-mobile {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .latihan-match-mobile .match-header {
+                display: none;
+            }
+
+            .latihan-match-mobile .match-item {
+                display: block;
+                padding: 12px;
+            }
+
+            .latihan-match-mobile .fungsi-col {
+                margin-top: 12px;
+                border-left: 5px solid #8AD06E;
+                background: #f8fff6;
+            }
+
+            .latihan-match-mobile .fungsi-col:first-of-type {
+                margin-top: 0;
+            }
+
+            .latihan-match-mobile .mobile-label {
+                display: block;
+                margin-bottom: 6px;
+                color: #555;
+                font-size: 13px;
+                font-weight: 900;
+            }
+
+            .latihan-match-mobile .jawaban-col,
+            .latihan-match-mobile .perilaku-col,
+            .latihan-match-mobile .cocok-col {
+                margin-left: 12px;
+            }
+
+            .latihan-input.kecil {
+                max-width: 100%;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .kpi,
+            .ci-mini-grid,
+            .poly-info-grid,
+            .grafik-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .materi-wrap {
+                padding: 16px 10px 32px;
+            }
+
+            .top-title {
+                align-items: flex-start;
+            }
+
+            .card,
+            .contoh-card,
+            .ci-card,
+            .ci-shell,
+            .poly-showcase,
+            .poly-body {
+                padding: 16px;
+            }
+
+            .panel,
+            .ci-panel,
+            .ci-graph-card {
+                padding: 14px;
+            }
+
+            .panel-title,
+            .ci-graph-head,
+            .ci-head {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .chip,
+            .mini-badge,
+            .endbeh-pill {
+                white-space: normal;
+            }
+
+            .ci-canvas-wrap {
+                height: 300px;
             }
 
             .poly-btn {
@@ -1889,260 +1212,53 @@
             }
         }
 
-        .latihan-locked {
-            opacity: .65;
-            pointer-events: none;
-        }
-
-        .latihan-locked .latihan-input,
-        .latihan-locked .latihan-btn {
-            cursor: not-allowed;
-        }
-
-        .latihan-section.unlocked {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .latihan-input:disabled {
-            background: #ececec;
-            color: #777;
-        }
-
-        .latihan-input.is-correct {
-            border: 2px solid #1b7a2a !important;
-            background: rgba(27, 122, 42, .10) !important;
-            color: #0f5f22 !important;
-        }
-
-        .latihan-input.is-wrong {
-            border: 2px solid #d62828 !important;
-            background: rgba(214, 40, 40, .10) !important;
-            color: #8b1e1e !important;
-        }
-
-        .latihan-input.is-empty {
-            border: 2px solid #d97706 !important;
-            background: rgba(217, 119, 6, .10) !important;
-            color: #7a4a00 !important;
-        }
-
-        .latihan-input:disabled {
-            opacity: .8;
-            cursor: not-allowed;
-        }
-
-        .latihan-section.locked {
-            opacity: .7;
-        }
-
-        .ci-card {
-            width: 100%;
-            padding: 24px;
-            background: #fffbe8;
-        }
-
-        .ci-shell {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .ci-pill {
-            display: inline-block;
-            padding: 8px 16px;
-            margin-bottom: 18px;
-            border-radius: 999px;
-            background: #f3dfbd;
-            color: #2f2f2f;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .ci-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 10px;
-        }
-
-        .ci-head .title {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1f2937;
-        }
-
-        .ci-head .fx {
-            font-size: 20px;
-            font-weight: 800;
-            color: #6f8d5c;
-        }
-
-        .ci-sub {
-            margin: 0 0 24px;
-            color: #5f6368;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .ci-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .ci-panel,
-        .ci-graph-card {
-            background: #f7f8fb;
-            border-radius: 18px;
-            padding: 22px;
-            border: 1px solid #ececec;
-        }
-
-        .ci-range-wrap {
-            margin-bottom: 20px;
-        }
-
-        .ci-range-label,
-        .ci-calc-title {
-            margin-bottom: 10px;
-            color: #1f2937;
-            font-size: 16px;
-            font-weight: 800;
-        }
-
-        .ci-range {
-            width: 100%;
-            accent-color: #3b82f6;
-        }
-
-        .ci-mini-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 22px;
-        }
-
-        .ci-mini-box,
-        .ci-calc-box {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 18px;
-            border: 1px solid #eeeeee;
-        }
-
-        .mini-lbl {
-            color: #8b93a3;
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .mini-val {
-            color: #111827;
-            font-size: 26px;
-            font-weight: 900;
-        }
-
-        .ci-calc-box {
-            margin-bottom: 20px;
-            color: #1f2937;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .ci-point-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .ci-point-btn {
-            border: none;
-            border-radius: 999px;
-            padding: 9px 13px;
-            background: #e4eadc;
-            color: #374151;
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .ci-point-btn:hover {
-            transform: translateY(-1px);
-            background: #d6dfcb;
-        }
-
-        .ci-point-btn.active {
-            background: #8da06f;
-            color: #ffffff;
-        }
-
-        .ci-graph-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: #1f2937;
-            font-size: 16px;
-            font-weight: 800;
-        }
-
-        .ci-dot-icon {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            margin-right: 8px;
-            border-radius: 50%;
-            background: #f28abb;
-            vertical-align: middle;
-        }
-
-        #ciActivePointText {
-            color: #4b5563;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .ci-canvas-wrap {
-            width: 100%;
-            height: 360px;
-            background: #ffffff;
-            border: 1px solid #eeeeee;
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        #ciGraphCanvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        .ci-footnote {
-            margin-top: 14px;
-            color: #555f6d;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 900px) {
-            .ci-layout {
-                grid-template-columns: 1fr;
+        @media (max-width: 520px) {
+            .latihan-match-mobile {
+                gap: 10px;
             }
 
-            .ci-head {
-                align-items: flex-start;
-                flex-direction: column;
+            .latihan-match-mobile .match-item {
+                padding: 10px;
+                border-radius: 10px;
             }
 
-            .ci-canvas-wrap {
-                height: 320px;
+            .latihan-match-mobile .fungsi-col {
+                margin-top: 14px;
+                font-size: 15px;
+            }
+
+            .latihan-match-mobile .jawaban-col,
+            .latihan-match-mobile .perilaku-col,
+            .latihan-match-mobile .cocok-col {
+                margin-left: 0;
+            }
+
+            .latihan-match-mobile .mobile-label {
+                font-size: 12px;
+            }
+
+            .latihan-match-mobile .latihan-input {
+                font-size: 14px;
+                padding: 9px 10px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .top-title {
+                gap: 8px;
+            }
+
+            .card,
+            .contoh-card,
+            .ci-card,
+            .ci-shell,
+            .poly-showcase,
+            .contoh-box {
+                padding: 14px;
+            }
+
+            .rumus {
+                width: 100%;
             }
         }
     </style>
@@ -2332,16 +1448,14 @@
         ========================= --}}
         <div id="materiLanjutan" style="display:none;">
             {{-- =========================
-            Materi lain (tetap)
+            Materi lain
             ========================= --}}
             <div class="card card-example">
                 <p>
                     Polinomial bukan hanya sekadar bentuk aljabar yang terdiri atas beberapa suku.
                     Polinomial juga dapat digunakan untuk membentuk suatu fungsi yang disebut fungsi polinomial.
                     Ketika sebuah polinomial diberi variabel bebas, misalnya variabel x, maka setiap nilai x yang dimasukkan
-                    ke
-                    dalam polinomial
-                    tersebut akan menghasilkan suatu nilai fungsi.
+                    ke dalam polinomial tersebut akan menghasilkan suatu nilai fungsi.
                     Dengan demikian, fungsi polinomial dapat dipahami sebagai polinomial yang dijalankan atau dioperasikan
                     sebagai fungsi.
                 </p>
@@ -2367,7 +1481,7 @@
             </div>
 
             {{-- =========================
-            ✅ MATERI TAMBAHAN (DITAMBAHKAN DI BAWAH DEFINISI)
+            MATERI TAMBAHAN
             ========================= --}}
             <div class="card card-example">
                 <p>
@@ -2442,6 +1556,7 @@
                         </div>
                     </div>
                 </div>
+
                 <p>
                     Untuk memahami bentuk suatu fungsi polinomial, salah satu cara yang paling
                     sederhana adalah dengan menggambar grafiknya. Grafik ini menunjukkan
@@ -2451,9 +1566,8 @@
             </div>
 
             {{-- =========================
-            CONTOH INTERAKTIF MODEL BARU
+            CONTOH INTERAKTIF
             ========================= --}}
-
             <div class="ci-card">
                 <div class="ci-shell">
                     <div class="ci-pill">CONTOH INTERAKTIF</div>
@@ -2468,8 +1582,6 @@
                     </p>
 
                     <div class="ci-layout">
-
-                        <!-- KIRI -->
                         <div class="ci-panel">
                             <div class="ci-range-wrap">
                                 <div class="ci-range-label">Geser untuk memilih x</div>
@@ -2512,7 +1624,6 @@
                             </div>
                         </div>
 
-                        <!-- KANAN -->
                         <div class="ci-graph-card">
                             <div class="ci-graph-head">
                                 <div>
@@ -2532,22 +1643,18 @@
                                 Grafik berbentuk parabola membuka ke atas.
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
 
-
             {{-- =========================
-            MATERI TAMBAHAN (tanpa card)
+            MATERI TAMBAHAN
             ========================= --}}
             <div class="materi-inline">
                 <p class="inline-lead">
                     Yuk lihat bagaimana bentuk grafik berubah dari fungsi derajat 0 hingga derajat 5!
                     Mulai dari garis datar, garis miring, lengkungan parabola, hingga gelombang-gelombang unik yang muncul
-                    pada
-                    derajat lebih tinggi.
+                    pada derajat lebih tinggi.
                     Semua grafik ditampilkan berdampingan agar kamu bisa dengan mudah membandingkan bentuknya.
                 </p>
 
@@ -2557,12 +1664,9 @@
 
                 <p class="inline-lead">
                     Salah satu ciri penting dari grafik fungsi polinomial adalah perilaku ujungnya, yaitu kecenderungan
-                    grafik
-                    ketika nilai <b>x</b> bergerak menuju tak hingga atau menuju negatif tak hingga. Perilaku ujung ini
-                    sepenuhnya
-                    ditentukan oleh suku utama dari polinom, karena suku tersebut memiliki pengaruh paling besar
-                    dibandingkan
-                    suku-suku lainnya saat bernilai sangat besar.
+                    grafik ketika nilai <b>x</b> bergerak menuju tak hingga atau menuju negatif tak hingga.
+                    Perilaku ujung ini sepenuhnya ditentukan oleh suku utama dari polinom, karena suku tersebut memiliki
+                    pengaruh paling besar dibandingkan suku-suku lainnya saat bernilai sangat besar.
                 </p>
 
                 <div class="endbeh-table-wrap">
@@ -2690,21 +1794,21 @@
                 </div>
 
                 <div class="endbeh-note">
-                    <b>Ingat:</b> Perilaku ujung ditentukan oleh <b>suku utama</b> (pangkat tertinggi) dan <b>koefisien
-                        utamanya</b>.
-                    Jadi, cukup lihat <b>n</b> (ganjil/genap) dan tanda <b>a<sub>n</sub></b> (positif/negatif) untuk menebak
-                    arah ujung grafik.
+                    <b>Ingat:</b> Perilaku ujung ditentukan oleh <b>suku utama</b> (pangkat tertinggi) dan
+                    <b>koefisien utamanya</b>.
+                    Jadi, cukup lihat <b>n</b> (ganjil/genap) dan tanda <b>a<sub>n</sub></b> (positif/negatif)
+                    untuk menebak arah ujung grafik.
                 </div>
 
                 <p class="inline-lead">
                     Dengan kata lain, meskipun sebuah polinom memiliki banyak suku, bentuk grafik pada bagian ujung kiri dan
-                    kanan sebenarnya mengikuti pola yang berasal dari pangkat tertinggi dan koefisien utamanya. Sifat inilah
-                    yang
-                    memungkinkan kita memperkirakan arah grafik tanpa harus menggambar seluruh kurva secara detail.
+                    kanan sebenarnya mengikuti pola yang berasal dari pangkat tertinggi dan koefisien utamanya.
+                    Sifat inilah yang memungkinkan kita memperkirakan arah grafik tanpa harus menggambar seluruh kurva
+                    secara detail.
                 </p>
 
                 {{-- =========================
-                ✅ PINDAH: CARD CONTOH DI BAWAH KALIMAT "Dengan kata lain..."
+                CONTOH
                 ========================= --}}
                 <div class="contoh-card" id="contohInteraktifCard">
                     <div class="contoh-pill">CONTOH</div>
@@ -2780,8 +1884,8 @@
                                 <div id="penyelesaianContoh">
                                     <p style="margin: 14px 0 8px; font-weight:900; color:#111;">Penyelesaian:</p>
                                     <p style="margin:0 0 10px; color:var(--muted); text-align:justify;">
-                                        Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi <b>suku
-                                            utama</b>,
+                                        Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi
+                                        <b>suku utama</b>,
                                         <b>derajat</b>,
                                         <b>tanda koefisien utama</b>, lalu tentukan <b>perilaku ujung</b>.
                                     </p>
@@ -2828,9 +1932,8 @@
                                     </div>
 
                                     <div class="note" style="margin-top:12px;">
-                                        <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah. Derajat ganjil → ujung
-                                        kiri
-                                        dan kanan berlawanan arah.
+                                        <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah.
+                                        Derajat ganjil → ujung kiri dan kanan berlawanan arah.
                                         Tanda koefisien utama menentukan apakah ujung kanan naik atau turun.
                                     </div>
                                 </div>
@@ -2840,6 +1943,9 @@
                 </div>
             </div>
 
+            {{-- =========================
+            LATIHAN
+            ========================= --}}
             <div class="card card-example">
                 <div class="latihan-title-row">
                     <div class="latihan-badge">LATIHAN</div>
@@ -2928,42 +2034,60 @@
                         </div>
                     </div>
 
-                    <div class="match-table">
+                    <div class="match-table latihan-match-mobile">
                         <div class="match-header fungsi-col">Fungsinya</div>
                         <div class="match-header jawaban-col">Jawaban</div>
                         <div class="match-header perilaku-col">Perilaku Ujung</div>
                         <div class="match-header cocok-col">Cocok</div>
 
-                        <div class="fungsi-col"><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
-                        <div class="jawaban-col">
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
+                        </div>
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c1">Jawaban</label>
                             <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
-                        <div class="perilaku-col">
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c1u">Perilaku Ujung</label>
                             <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik" disabled>
                         </div>
-                        <div class="cocok-col">
+                        <div class="match-item cocok-col">
+                            <label class="mobile-label" for="c1c">Cocok</label>
                             <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
 
-                        <div class="fungsi-col"><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
-                        <div class="jawaban-col">
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
+                        </div>
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c2">Jawaban</label>
                             <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
-                        <div class="perilaku-col">
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c2u">Perilaku Ujung</label>
                             <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik" disabled>
                         </div>
-                        <div class="cocok-col">
+                        <div class="match-item cocok-col">
+                            <label class="mobile-label" for="c2c">Cocok</label>
                             <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
 
-                        <div class="fungsi-col"><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
-                        <div class="jawaban-col">
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
+                        </div>
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c3">Jawaban</label>
                             <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
-                        <div class="perilaku-col">
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c3u">Perilaku Ujung</label>
                             <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun" disabled>
                         </div>
-                        <div class="cocok-col">
+                        <div class="match-item cocok-col">
+                            <label class="mobile-label" for="c3c">Cocok</label>
                             <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C" disabled>
                         </div>
                     </div>
@@ -2976,7 +2100,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Save Progress -->
     <script>
@@ -3588,12 +2711,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                                                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                                                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                                                                                                                            ${posisiGrafik}
-                                                                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
-                                                                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                                                                                                                        `;
+                                                                                                                                                        Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                                                                                        Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                                                                                        ${posisiGrafik}
+                                                                                                                                                        Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                                                                                        saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                                                                                    `;
                 }
             }
 
@@ -4330,7 +3453,7 @@
 
     </script>
 
-  
+
     <script>
         (function () {
             const hasil1 = document.getElementById("hasilSoal1");
@@ -4350,18 +3473,33 @@
             const soal3Ids = ["c1", "c1u", "c1c", "c2", "c2u", "c2c", "c3", "c3u", "c3c"];
 
             function normal(v) {
+                const superscriptMap = {
+                    "⁰": "0",
+                    "¹": "1",
+                    "²": "2",
+                    "³": "3",
+                    "⁴": "4",
+                    "⁵": "5",
+                    "⁶": "6",
+                    "⁷": "7",
+                    "⁸": "8",
+                    "⁹": "9"
+                };
+
                 return (v || "")
                     .toString()
                     .toLowerCase()
+                    .trim()
                     .replace(/\s+/g, "")
                     .replace(/[()]/g, "")
+                    .replace(/×/g, "x")
+                    .replace(/–/g, "-")
                     .replace(/−/g, "-")
                     .replace(/\^/g, "")
-                    .replace(/³/g, "3")
-                    .replace(/⁴/g, "4")
-                    .trim();
+                    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, function (match) {
+                        return superscriptMap[match] || match;
+                    });
             }
-
             function cekKhusus(id, val) {
                 const v = normal(val);
 

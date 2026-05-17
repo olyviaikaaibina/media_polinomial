@@ -1,19 +1,17 @@
 /* =========================================================
-   Mari Mencoba: Derajat Suatu Polinomial — p5.js (FIXED + LOCK POSITION)
-   ✅ Canvas & tombol nempel ke div host (#p5-interaktif-1b)
-   ✅ Responsive: ukuran ikut card, tidak keluar/berantakan
-   ✅ Drag & drop: snap ke kotak, swap jika kotak sudah terisi
-   ✅ NEW: Jika token sudah pernah masuk kotak, saat dilepas di luar TIDAK balik ke posisi awal,
-          tapi kembali ke kotak terakhirnya (lastZone)
-   ✅ UPDATE: Hilangkan tombol Acak Token
-   ✅ UPDATE: Panel angka jawaban pindah ke samping kanan
-   ✅ UPDATE: Hilangkan jarak kosong bawah (canvas fit content)
+   Mari Mencoba: Derajat Suatu Polinomial — p5.js RESPONSIVE
+   FIX:
+   - Desktop/tablet besar: soal kiri, angka jawaban kanan
+   - HP/tablet kecil: soal di atas, angka jawaban di bawah
+   - Canvas ikut lebar parent
+   - Tinggi canvas dihitung otomatis sesuai isi
+   - Tombol tidak keluar dari host
+   - Drag & drop tetap jalan
 ========================================================= */
 
 (function () {
   const HOST_ID = "p5-interaktif-1b";
 
-  // ---------- Data Soal ----------
   const questions = [
     { text: "Derajat dari ( 4x⁵ )", answer: 5 },
     { text: "Derajat dari ( x²y⁷ )", answer: 9 },
@@ -22,8 +20,7 @@
     { text: "Derajat dari 6a²b⁴", answer: 6 },
   ];
 
-  // ---------- Theme ----------
-  const BG = [232, 245, 233];      // #E8F5E9
+  const BG = [232, 245, 233];
   const PANEL = [250, 255, 250];
   const TEXT = [34, 51, 34];
   const MUTED = [110, 129, 110];
@@ -31,40 +28,52 @@
   const OK = [40, 167, 69];
   const ERR = [229, 62, 62];
 
-  // ---------- p5 Instance Mode ----------
   const sketch = (p) => {
-    let tokens = [], zones = [];
-    let checkBtn, resetBtn; // ✅ tanpa Acak Token
-    let checked = false, score = 0;
+    let tokens = [];
+    let zones = [];
+    let checkBtn;
+    let resetBtn;
+    let checked = false;
+    let score = 0;
+    let hostEl = null;
 
-    // Layout vars (dinamis)
-    let paddingX = 24;
-    let startY = 90;
-    let gap = 70;
+    let isMobile = false;
+
+    let paddingX = 20;
+    let startY = 92;
+    let gap = 68;
     let zoneH = 56;
     let zoneW = 0;
     let zoneX = 0;
 
-    let tokenPanelX = 0, tokenPanelY = 0, tokenPanelW = 0, tokenPanelH = 0; // panel samping
-    let hostEl = null;
+    let tokenPanelX = 0;
+    let tokenPanelY = 0;
+    let tokenPanelW = 0;
+    let tokenPanelH = 0;
 
-    // ---------- Helper: ukur host ----------
-    const getHostSize = () => {
+    let btnY = 0;
+
+    const getHostWidth = () => {
       hostEl = hostEl || document.getElementById(HOST_ID);
-      const w = hostEl ? hostEl.clientWidth : 980;
-      // ✅ jangan pakai host height supaya tidak ada ruang kosong bawah
-      const h = 760; // placeholder, height final dihitung di buildLayout
-      return { w, h };
+
+      if (!hostEl) return 360;
+
+      const rectW = hostEl.getBoundingClientRect().width;
+      const clientW = hostEl.clientWidth;
+
+      return Math.max(280, Math.floor(rectW || clientW || 360));
     };
 
-    // ---------- Kelas ----------
     class Token {
       constructor(value, x, y) {
         this.value = value;
-        this.x = x; this.y = y;
-        this.w = 72; this.h = 44;
+        this.x = x;
+        this.y = y;
+        this.w = 72;
+        this.h = 44;
         this.dragging = false;
-        this.offsetX = 0; this.offsetY = 0;
+        this.offsetX = 0;
+        this.offsetY = 0;
 
         this.zone = null;
         this.lastZone = null;
@@ -72,20 +81,29 @@
       }
 
       draw() {
-        p.noStroke(); p.fill(0, 0, 0, 35);
+        p.noStroke();
+        p.fill(0, 0, 0, 35);
         p.rect(this.x + 2, this.y + 3, this.w, this.h, 10);
 
-        p.stroke(160); p.strokeWeight(1.5);
+        p.stroke(160);
+        p.strokeWeight(1.5);
         p.fill(255);
         p.rect(this.x, this.y, this.w, this.h, 10);
 
-        p.noStroke(); p.fill(TEXT);
-        p.textAlign(p.CENTER, p.CENTER); p.textSize(18);
+        p.noStroke();
+        p.fill(TEXT);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(isMobile ? 16 : 18);
         p.text(this.value, this.x + this.w / 2, this.y + this.h / 2);
       }
 
       contains(mx, my) {
-        return mx > this.x && mx < this.x + this.w && my > this.y && my < this.y + this.h;
+        return (
+          mx > this.x &&
+          mx < this.x + this.w &&
+          my > this.y &&
+          my < this.y + this.h
+        );
       }
 
       startDrag(mx, my) {
@@ -101,17 +119,35 @@
 
       drag(mx, my) {
         if (!this.dragging) return;
+
         this.x = mx - this.offsetX;
         this.y = my - this.offsetY;
       }
 
       endDrag() {
+        if (!this.dragging) return;
+
         this.dragging = false;
 
-        let bestZ = null, bestArea = 0;
+        let bestZ = null;
+        let bestArea = 0;
+
         for (let z of zones) {
-          const overlap = overlapArea(this.x, this.y, this.w, this.h, z.x, z.y, z.w, z.h);
-          if (overlap > bestArea) { bestArea = overlap; bestZ = z; }
+          const overlap = overlapArea(
+            this.x,
+            this.y,
+            this.w,
+            this.h,
+            z.x,
+            z.y,
+            z.w,
+            z.h
+          );
+
+          if (overlap > bestArea) {
+            bestArea = overlap;
+            bestZ = z;
+          }
         }
 
         if (bestZ && bestArea > 10) {
@@ -119,6 +155,7 @@
             snapToZone(this, bestZ);
           } else {
             const other = bestZ.token;
+
             snapToZone(this, bestZ);
 
             other.zone = null;
@@ -141,158 +178,218 @@
       constructor(label, answer, x, y, w, h) {
         this.label = label;
         this.answer = answer;
-        this.x = x; this.y = y; this.w = w; this.h = h;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
         this.token = null;
       }
 
       draw() {
-        p.noStroke(); p.fill(0, 0, 0, 30);
+        p.noStroke();
+        p.fill(0, 0, 0, 30);
         p.rect(this.x + 3, this.y + 4, this.w, this.h, 14);
 
-        let bcol = BORDER, bweight = 2;
+        let bcol = BORDER;
+        let bweight = 2;
+
         if (checked) {
-          if (this.token && parseInt(this.token.value) === parseInt(this.answer)) {
-            bcol = OK; bweight = 3;
+          if (this.token && parseInt(this.token.value, 10) === parseInt(this.answer, 10)) {
+            bcol = OK;
+            bweight = 3;
           } else {
-            bcol = ERR; bweight = 3;
+            bcol = ERR;
+            bweight = 3;
           }
         }
 
-        p.stroke(bcol); p.strokeWeight(bweight);
+        p.stroke(bcol);
+        p.strokeWeight(bweight);
         p.fill(PANEL);
         p.rect(this.x, this.y, this.w, this.h, 14);
 
-        p.noStroke(); p.fill(TEXT);
+        p.noStroke();
+        p.fill(TEXT);
         p.textAlign(p.LEFT, p.CENTER);
-        p.textSize(16);
-        p.text(this.label, this.x + 14, this.y + this.h / 2);
+        p.textSize(isMobile ? 13 : 16);
+
+        const answerText = this.token ? String(this.token.value) : "Seret angka";
+        const answerSpace = isMobile ? 86 : 120;
+        const labelMaxW = this.w - answerSpace - 24;
+
+        drawSingleLineText(this.label, this.x + 12, this.y + this.h / 2, labelMaxW);
 
         p.textAlign(p.RIGHT, p.CENTER);
         p.fill(this.token ? TEXT : MUTED);
-        p.text(this.token ? this.token.value : "Seret angka →", this.x + this.w - 12, this.y + this.h / 2);
+        p.textSize(isMobile ? 13 : 15);
+        p.text(answerText, this.x + this.w - 12, this.y + this.h / 2);
       }
     }
 
-    // ---------- Build / rebuild layout ----------
     const buildLayout = () => {
-      const { w } = getHostSize();
+      hostEl = document.getElementById(HOST_ID);
+      const w = getHostWidth();
 
-      // canvas init
+      isMobile = w < 650;
+      paddingX = isMobile ? 12 : 24;
+      startY = isMobile ? 86 : 96;
+      zoneH = isMobile ? 58 : 56;
+      gap = isMobile ? 66 : 70;
+
       if (!p._renderer) {
-        const c = p.createCanvas(w, 760);
+        const c = p.createCanvas(w, 600);
         c.parent(HOST_ID);
       } else {
         p.resizeCanvas(w, p.height);
       }
 
-      const sideGap = 18;
-      tokenPanelW = Math.min(240, Math.max(200, w * 0.22));
-      zoneX = paddingX;
-      zoneW = (w - paddingX * 2) - tokenPanelW - sideGap;
-
-      startY = 96;
-      gap = Math.max(62, Math.min(74, p.height * 0.09));
-      zoneH = 56;
-
-      zones = [];
-      for (let i = 0; i < questions.length; i++) {
-        zones.push(new Zone(
-          `${i + 1}. ${questions[i].text}   →  Derajat =`,
-          questions[i].answer,
-          zoneX,
-          startY + i * gap,
-          zoneW,
-          zoneH
-        ));
+      if (hostEl) {
+        hostEl.style.position = "relative";
+        hostEl.style.width = "100%";
+        hostEl.style.maxWidth = "100%";
+        hostEl.style.overflow = "hidden";
+        hostEl.style.boxSizing = "border-box";
       }
 
-      tokenPanelX = zoneX + zoneW + sideGap;
-      tokenPanelY = startY;
-      tokenPanelH = (startY + (questions.length - 1) * gap + zoneH) - startY;
+      zones = [];
 
-      // ✅ FIT HEIGHT: hilangkan ruang kosong bawah
+      if (isMobile) {
+        zoneX = paddingX;
+        zoneW = w - paddingX * 2;
+
+        for (let i = 0; i < questions.length; i++) {
+          zones.push(
+            new Zone(
+              `${i + 1}. ${questions[i].text} → Derajat =`,
+              questions[i].answer,
+              zoneX,
+              startY + i * gap,
+              zoneW,
+              zoneH
+            )
+          );
+        }
+
+        const zonesBottom = zones[zones.length - 1].y + zoneH;
+
+        tokenPanelX = paddingX;
+        tokenPanelY = zonesBottom + 22;
+        tokenPanelW = w - paddingX * 2;
+        tokenPanelH = 130;
+      } else {
+        const sideGap = 18;
+
+        tokenPanelW = Math.min(240, Math.max(190, w * 0.24));
+        zoneX = paddingX;
+        zoneW = w - paddingX * 2 - tokenPanelW - sideGap;
+
+        zoneW = Math.max(360, zoneW);
+
+        for (let i = 0; i < questions.length; i++) {
+          zones.push(
+            new Zone(
+              `${i + 1}. ${questions[i].text}   →  Derajat =`,
+              questions[i].answer,
+              zoneX,
+              startY + i * gap,
+              zoneW,
+              zoneH
+            )
+          );
+        }
+
+        tokenPanelX = zoneX + zoneW + sideGap;
+        tokenPanelY = startY;
+        tokenPanelH = zones[zones.length - 1].y + zoneH - startY;
+      }
+
       const contentBottom = Math.max(
         zones[zones.length - 1].y + zoneH,
         tokenPanelY + tokenPanelH
       );
-      const neededH = Math.ceil(contentBottom + 140); // ruang skor + tombol
-      if (hostEl) hostEl.style.height = neededH + "px";
+
+      const scoreSpace = checked ? 42 : 12;
+      const buttonSpace = 74;
+      const neededH = Math.ceil(contentBottom + scoreSpace + buttonSpace);
+
       p.resizeCanvas(w, neededH);
 
-      // init / relayout tokens
-      const tokenValues = [5, 9, 1, 7, 6];
-      if (tokens.length === 0) {
-        shuffleArray(tokenValues);
-        tokens = [];
-
-        const tokenW = 72, tokenH = 44;
-        const gapT = 16;
-
-        const availH = Math.max(1, tokenPanelH - 54);
-        let rows = Math.max(1, Math.floor((availH + gapT) / (tokenH + gapT)));
-        let cols = Math.ceil(tokenValues.length / rows);
-        cols = Math.min(2, Math.max(1, cols));
-
-        rows = Math.ceil(tokenValues.length / cols);
-
-        const gridW = cols * tokenW + (cols - 1) * gapT;
-        const gridH = rows * tokenH + (rows - 1) * gapT;
-
-        const baseX = tokenPanelX + (tokenPanelW - gridW) / 2;
-        const baseY = tokenPanelY + 48 + (availH - gridH) / 2;
-
-        for (let i = 0; i < tokenValues.length; i++) {
-          const c = i % cols;
-          const r = Math.floor(i / cols);
-          const x = baseX + c * (tokenW + gapT);
-          const y = baseY + r * (tokenH + gapT);
-          tokens.push(new Token(tokenValues[i], x, y));
-        }
-      } else {
-        const tokenW = 72, tokenH = 44;
-        const gapT = 16;
-
-        const availH = Math.max(1, tokenPanelH - 54);
-        let rows = Math.max(1, Math.floor((availH + gapT) / (tokenH + gapT)));
-        let cols = Math.ceil(tokens.length / rows);
-        cols = Math.min(2, Math.max(1, cols));
-
-        rows = Math.ceil(tokens.length / cols);
-
-        const gridW = cols * tokenW + (cols - 1) * gapT;
-        const gridH = rows * tokenH + (rows - 1) * gapT;
-
-        const baseX = tokenPanelX + (tokenPanelW - gridW) / 2;
-        const baseY = tokenPanelY + 48 + (availH - gridH) / 2;
-
-        tokens.forEach((t, i) => {
-          const c = i % cols;
-          const r = Math.floor(i / cols);
-          const x = baseX + c * (tokenW + gapT);
-          const y = baseY + r * (tokenH + gapT);
-
-          if (!t.dragging && !t.zone) {
-            t.x = x;
-            t.y = y;
-          }
-          t.home.set(x, y);
-        });
-
-        zones.forEach(z => {
-          if (z.token) snapToZone(z.token, z);
-        });
+      if (hostEl) {
+        hostEl.style.height = neededH + "px";
       }
 
-      // buttons (DOM)
+      relayoutTokens();
+      setupButtons();
+    };
+
+    const relayoutTokens = () => {
+      const tokenValues = [5, 9, 1, 7, 6];
+
+      if (tokens.length === 0) {
+        shuffleArray(tokenValues);
+        tokens = tokenValues.map((v) => new Token(v, 0, 0));
+      }
+
+      const tokenW = isMobile ? 60 : 72;
+      const tokenH = isMobile ? 40 : 44;
+      const gapT = isMobile ? 10 : 16;
+
+      tokens.forEach((t) => {
+        t.w = tokenW;
+        t.h = tokenH;
+      });
+
+      let cols;
+
+      if (isMobile) {
+        cols = Math.min(tokens.length, Math.max(2, Math.floor((tokenPanelW - 24 + gapT) / (tokenW + gapT))));
+      } else {
+        const availableH = Math.max(1, tokenPanelH - 54);
+        const rowsByHeight = Math.max(1, Math.floor((availableH + gapT) / (tokenH + gapT)));
+        cols = Math.ceil(tokens.length / rowsByHeight);
+        cols = Math.min(2, Math.max(1, cols));
+      }
+
+      const rows = Math.ceil(tokens.length / cols);
+      const gridW = cols * tokenW + (cols - 1) * gapT;
+      const gridH = rows * tokenH + (rows - 1) * gapT;
+
+      const baseX = tokenPanelX + (tokenPanelW - gridW) / 2;
+      const baseY = isMobile
+        ? tokenPanelY + 48 + (tokenPanelH - 58 - gridH) / 2
+        : tokenPanelY + 48 + (tokenPanelH - 54 - gridH) / 2;
+
+      tokens.forEach((t, i) => {
+        const c = i % cols;
+        const r = Math.floor(i / cols);
+        const x = baseX + c * (tokenW + gapT);
+        const y = baseY + r * (tokenH + gapT);
+
+        t.home.set(x, y);
+
+        if (!t.dragging && !t.zone) {
+          t.x = x;
+          t.y = y;
+        }
+      });
+
+      zones.forEach((z) => {
+        if (z.token) {
+          snapToZone(z.token, z);
+        }
+      });
+    };
+
+    const setupButtons = () => {
       if (!checkBtn) {
         checkBtn = p.createButton("Periksa Jawaban");
         resetBtn = p.createButton("Reset");
 
-        [checkBtn, resetBtn].forEach(btn => {
+        [checkBtn, resetBtn].forEach((btn) => {
           btn.parent(HOST_ID);
           btn.style("position", "absolute");
-          btn.style("bottom", "14px");
           btn.style("z-index", "5");
+          btn.style("box-sizing", "border-box");
         });
 
         styleBtn(checkBtn, "#2e7d32", "#ffffff");
@@ -300,27 +397,43 @@
 
         checkBtn.mousePressed(checkAnswers);
         resetBtn.mousePressed(resetAll);
-
-        if (hostEl) hostEl.style.position = "relative";
       }
 
-      const btnW = 160;
-      const gapBtn = 12;
-      const totalBtn = btnW * 2 + gapBtn;
-      const left0 = (w - totalBtn) / 2;
+      const w = p.width;
 
-      setBtnSize(checkBtn, btnW);
-      setBtnSize(resetBtn, btnW);
+      if (isMobile) {
+        const btnW = Math.max(120, (w - paddingX * 2 - 10) / 2);
+        const gapBtn = 10;
+        const left0 = paddingX;
+        btnY = p.height - 58;
 
-      // ✅ pakai p.height (height terbaru) biar tombol selalu pas
-      checkBtn.position(left0, p.height - 54);
-      resetBtn.position(left0 + btnW + gapBtn, p.height - 54);
+        setBtnSize(checkBtn, btnW, 14);
+        setBtnSize(resetBtn, btnW, 14);
+
+        checkBtn.position(left0, btnY);
+        resetBtn.position(left0 + btnW + gapBtn, btnY);
+      } else {
+        const btnW = 160;
+        const gapBtn = 12;
+        const totalBtn = btnW * 2 + gapBtn;
+        const left0 = (w - totalBtn) / 2;
+        btnY = p.height - 54;
+
+        setBtnSize(checkBtn, btnW, 15);
+        setBtnSize(resetBtn, btnW, 15);
+
+        checkBtn.position(left0, btnY);
+        resetBtn.position(left0 + btnW + gapBtn, btnY);
+      }
     };
 
-    // ---------- p5 lifecycle ----------
     p.setup = () => {
       hostEl = document.getElementById(HOST_ID);
       buildLayout();
+
+      setTimeout(() => {
+        buildLayout();
+      }, 100);
     };
 
     p.windowResized = () => {
@@ -330,36 +443,50 @@
     p.draw = () => {
       p.background(BG);
 
-      p.noStroke(); p.fill(TEXT);
+      p.noStroke();
+      p.fill(TEXT);
       p.textAlign(p.CENTER, p.TOP);
-      p.textSize(26);
-      p.text("🌿 Mari Mencoba: Derajat Suatu Polinomial", p.width / 2, 18);
+      p.textSize(isMobile ? 18 : 26);
+
+      const title = isMobile
+        ? "Mari Mencoba"
+        : "🌿 Mari Mencoba: Derajat Suatu Polinomial";
+
+      p.text(title, p.width / 2, isMobile ? 14 : 18);
 
       p.fill(MUTED);
-      p.textSize(15);
-      p.text("Seret angka derajat ke kotak jawaban tiap soal, lalu klik Periksa.", p.width / 2, 52);
+      p.textSize(isMobile ? 12 : 15);
+
+      const subtitle = isMobile
+        ? "Seret angka ke kotak jawaban."
+        : "Seret angka derajat ke kotak jawaban tiap soal, lalu klik Periksa.";
+
+      p.text(subtitle, p.width / 2, isMobile ? 43 : 52);
 
       drawTokenPanel();
 
-      zones.forEach(z => z.draw());
+      zones.forEach((z) => z.draw());
 
-      const dragging = tokens.filter(t => t.dragging);
-      const idle = tokens.filter(t => !t.dragging);
-      idle.forEach(t => t.draw());
-      dragging.forEach(t => t.draw());
+      const idle = tokens.filter((t) => !t.dragging);
+      const dragging = tokens.filter((t) => t.dragging);
+
+      idle.forEach((t) => t.draw());
+      dragging.forEach((t) => t.draw());
 
       if (checked) {
         p.fill(TEXT);
         p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(18);
+        p.textSize(isMobile ? 15 : 18);
         p.text(`Skor: ${score} / ${zones.length}`, p.width / 2, p.height - 86);
-        if (score === zones.length) confetti();
+
+        if (score === zones.length) {
+          confetti();
+        }
       }
     };
 
-    // ---------- Mouse interaction ----------
     p.mousePressed = () => {
-      if (p.mouseY > p.height - 80) return;
+      if (p.mouseY > p.height - 75) return;
 
       for (let i = tokens.length - 1; i >= 0; i--) {
         if (tokens[i].contains(p.mouseX, p.mouseY)) {
@@ -372,36 +499,64 @@
     };
 
     p.mouseDragged = () => {
-      tokens.forEach(t => t.drag(p.mouseX, p.mouseY));
+      tokens.forEach((t) => t.drag(p.mouseX, p.mouseY));
     };
 
     p.mouseReleased = () => {
-      tokens.forEach(t => t.endDrag());
+      tokens.forEach((t) => t.endDrag());
     };
 
-    // ---------- Actions ----------
+    p.touchStarted = () => {
+      p.mousePressed();
+      return false;
+    };
+
+    p.touchMoved = () => {
+      p.mouseDragged();
+      return false;
+    };
+
+    p.touchEnded = () => {
+      p.mouseReleased();
+      return false;
+    };
+
     const checkAnswers = () => {
-      checked = true; score = 0;
-      zones.forEach(z => {
-        if (z.token && parseInt(z.token.value) === parseInt(z.answer)) score++;
+      checked = true;
+      score = 0;
+
+      zones.forEach((z) => {
+        if (z.token && parseInt(z.token.value, 10) === parseInt(z.answer, 10)) {
+          score++;
+        }
       });
+
+      buildLayout();
     };
 
     const resetAll = () => {
-      checked = false; score = 0;
-      zones.forEach(z => z.token = null);
-      tokens.forEach(t => {
+      checked = false;
+      score = 0;
+
+      zones.forEach((z) => {
+        z.token = null;
+      });
+
+      tokens.forEach((t) => {
         t.zone = null;
         t.lastZone = null;
         t.x = t.home.x;
         t.y = t.home.y;
       });
+
+      buildLayout();
     };
 
-    // ---------- Utils ----------
-    const setBtnSize = (btn, w) => {
+    const setBtnSize = (btn, w, fontSize) => {
       btn.style("width", w + "px");
       btn.style("text-align", "center");
+      btn.style("font-size", fontSize + "px");
+      btn.style("white-space", "nowrap");
     };
 
     const styleBtn = (btn, bg, fg) => {
@@ -409,11 +564,11 @@
       btn.style("color", fg);
       btn.style("border", "none");
       btn.style("border-radius", "12px");
-      btn.style("padding", "10px 14px");
+      btn.style("padding", "10px 12px");
       btn.style("font-weight", "700");
       btn.style("cursor", "pointer");
       btn.style("box-shadow", "0 4px 10px rgba(0,0,0,0.12)");
-      btn.style("font-family", "Times New Roman");
+      btn.style("font-family", "Times New Roman, Times, serif");
     };
 
     const overlapArea = (x1, y1, w1, h1, x2, y2, w2, h2) => {
@@ -444,29 +599,67 @@
       const w = tokenPanelW;
       const h = tokenPanelH;
 
-      p.noStroke(); p.fill(0, 0, 0, 20);
+      p.noStroke();
+      p.fill(0, 0, 0, 20);
       p.rect(x + 3, y + 4, w, h, 16);
 
-      p.stroke(BORDER); p.strokeWeight(2);
+      p.stroke(BORDER);
+      p.strokeWeight(2);
       p.fill(PANEL);
       p.rect(x, y, w, h, 16);
 
-      p.noStroke(); p.fill(MUTED);
+      p.noStroke();
+      p.fill(MUTED);
       p.textAlign(p.CENTER, p.CENTER);
-      p.textSize(15);
-      p.text("Angka jawaban:", x + w / 2, y + 22);
+      p.textSize(isMobile ? 13 : 15);
+      p.text("Angka jawaban:", x + w / 2, y + 24);
+    };
+
+    const drawSingleLineText = (txt, x, y, maxW) => {
+      let out = txt;
+
+      while (p.textWidth(out) > maxW && out.length > 4) {
+        out = out.slice(0, -2);
+      }
+
+      if (out !== txt) {
+        out = out.slice(0, -3) + "...";
+      }
+
+      p.text(out, x, y);
     };
 
     const confetti = () => {
       for (let i = 0; i < 24; i++) {
         const x = p.random(p.width * 0.15, p.width * 0.85);
         const y = p.random(12, 90);
+
         p.noStroke();
-        p.fill(40 + p.random(0, 100), 160 + p.random(0, 60), 80 + p.random(0, 70), 200);
+        p.fill(
+          40 + p.random(0, 100),
+          160 + p.random(0, 60),
+          80 + p.random(0, 70),
+          200
+        );
         p.circle(x, y, p.random(3, 6));
       }
     };
   };
 
-  new p5(sketch, HOST_ID);
+  const init = () => {
+    const host = document.getElementById(HOST_ID);
+
+    if (!host) return;
+
+    if (host.dataset.p5Loaded === "1") return;
+
+    host.dataset.p5Loaded = "1";
+    new p5(sketch, HOST_ID);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
