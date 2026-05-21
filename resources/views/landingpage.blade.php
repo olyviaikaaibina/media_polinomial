@@ -590,7 +590,7 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('daftarmateri') }}">Daftar Materi</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('petunjukpenggunaan') }}">Petunjuk Penggunaan</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('tentang') }}">Tentang</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Halaman Guru</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('guru.login') }}">Halaman Guru</a></li>
         </ul>
 
         <div class="d-flex gap-2 ms-3">

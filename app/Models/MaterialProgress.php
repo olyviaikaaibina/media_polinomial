@@ -21,4 +21,8 @@ class MaterialProgress extends Model
     {
         return $this->belongsTo(Materi::class, 'materi_id');
     }
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'student_id');
+    }
 }

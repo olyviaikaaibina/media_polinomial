@@ -27,7 +27,7 @@ class SiswaAuthController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
-        $user = Siswa::create([
+        Siswa::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'nis' => $request->nis,
@@ -36,9 +36,9 @@ class SiswaAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
-
-        return redirect()->route('masuksiswa')->with('success', 'Registrasi berhasil, silahkan login!');
+        return redirect()
+            ->route('masuksiswa')
+            ->with('success', 'Registrasi berhasil, silahkan login!');
     }
 
     public function showLogin()
@@ -53,20 +53,24 @@ class SiswaAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('petakonsep')->with('success', 'Login berhasil!');
+            return redirect()
+                ->intended(route('petakonsep'))
+                ->with('success', 'Login berhasil!');
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->withInput();
+        return back()
+            ->withErrors([
+                'email' => 'Email atau password salah.',
+            ])
+            ->withInput();
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('siswa')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

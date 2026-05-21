@@ -879,7 +879,7 @@
       {{-- BAB 1 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
-          <span>Polinomial & Fungsi Polinomial</span>
+          <span>Polinomial dan Fungsi Polinomial</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
 
@@ -1043,7 +1043,7 @@
       {{-- BAB 4 --}}
       <div class="dropdown-group">
         <button class="sidebar-menu-item dropdown-toggle-btn" type="button">
-          <span>Faktor & Pembuat Nol</span>
+          <span>Faktor dan Pembuat Nol</span>
           <span class="dropdown-arrow">&#9662;</span>
         </button>
 

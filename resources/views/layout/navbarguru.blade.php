@@ -98,6 +98,49 @@
       border-radius: 2px;
     }
 
+    .logout-form {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-logout {
+      background-color: #df3447;
+      color: #ffffff !important;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 20px;
+      min-width: 90px;
+      min-height: 40px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: none;
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-logout:hover {
+      background-color: #c92d3f;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(223, 52, 71, 0.20);
+    }
+
+    .btn-logout:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .btn-logout:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(223, 52, 71, 0.16);
+    }
+
     .sidebar {
       width: var(--sidebar-width);
       height: 100vh;
@@ -309,6 +352,8 @@
       }
     }
   </style>
+
+  @yield('styles')
 </head>
 
 <body>
@@ -335,7 +380,8 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
 
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('landingpage') ? 'active' : '' }}" href="{{ route('landingpage') }}">
+            <a class="nav-link {{ request()->routeIs('landingpage') ? 'active' : '' }}"
+              href="{{ route('landingpage') }}">
               Beranda
             </a>
           </li>
@@ -348,9 +394,9 @@
           </li>
 
           <li class="nav-item d-flex">
-            <form action="{{ route('guru.logout') }}" method="POST" class="m-0">
+            <form action="{{ route('guru.logout') }}" method="POST" class="logout-form">
               @csrf
-              <button type="submit" class="nav-link btn btn-link p-0" style="cursor:pointer;">
+              <button type="submit" class="btn-logout">
                 Logout
               </button>
             </form>
@@ -380,8 +426,8 @@
       <div class="sidebar-group">
         @php
           $siswaActive = request()->routeIs('daftarsiswa') ||
-                         request()->routeIs('rekapitulasinilai') ||
-                         request()->routeIs('aktivitassiswa');
+            request()->routeIs('rekapitulasinilai') ||
+            request()->routeIs('aktivitassiswa');
         @endphp
 
         <button class="sidebar-group-header {{ $siswaActive ? 'active' : '' }}" data-bs-toggle="collapse"
@@ -397,28 +443,23 @@
               class="sidebar-subcard {{ request()->routeIs('daftarsiswa') ? 'active' : '' }}">
               Daftar Siswa
             </a>
+
             <a href="{{ route('rekapitulasinilai') }}"
               class="sidebar-subcard {{ request()->routeIs('rekapitulasinilai') ? 'active' : '' }}">
               Rekapitulasi Nilai
             </a>
+
             <a href="{{ route('aktivitassiswa') }}"
               class="sidebar-subcard {{ request()->routeIs('aktivitassiswa') ? 'active' : '' }}">
-              Aktivitas Siswa
+              Progress Siswa
             </a>
           </div>
         </div>
       </div>
 
-      <a href="{{ route('daftarkuis') }}"
-        class="sidebar-single {{ request()->routeIs('daftarkuis') ? 'active' : '' }}">
+      <a href="{{ route('daftarkuis') }}" class="sidebar-single {{ request()->routeIs('daftarkuis') ? 'active' : '' }}">
         <span style="font-size:20px; margin-right:10px;">📝</span>
         Manajemen Kuis
-      </a>
-
-      <a href="{{ route('daftarmateriguru') }}"
-        class="sidebar-single {{ request()->routeIs('daftarmateriguru') ? 'active' : '' }}">
-        <span style="font-size:20px; margin-right:10px;">📘</span>
-        Daftar Materi
       </a>
 
     </div>
@@ -454,14 +495,14 @@
     toggleBtn.addEventListener('click', toggleSidebar);
 
     if (handleBtn) {
-      handleBtn.addEventListener('click', () => {
+      handleBtn.addEventListener('click', function () {
         document.body.classList.remove('sidebar-collapsed');
       });
     }
 
     overlay.addEventListener('click', closeSidebarMobile);
 
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function () {
       if (!isMobile()) {
         closeSidebarMobile();
       }

@@ -41,31 +41,32 @@ class MateriController extends Controller
         |--------------------------------------------------------------------------
         | Buka materi pertama otomatis
         |--------------------------------------------------------------------------
+        | Hanya dijalankan kalau siswa sedang login.
         */
-        $firstMateri = Materi::orderBy('bab_id')
-            ->orderBy('urutan')
-            ->first();
+        if ($studentId) {
+            $firstMateri = Materi::orderBy('bab_id')
+                ->orderBy('urutan')
+                ->first();
 
-        if ($firstMateri) {
-            MaterialProgress::firstOrCreate(
-                [
-                    'student_id' => $studentId,
-                    'materi_id' => $firstMateri->id,
-                ],
-                [
-                    'is_opened' => 1,
-                    'is_completed' => 0,
-                    'opened_at' => now(),
-                ]
-            );
+            if ($firstMateri) {
+                MaterialProgress::firstOrCreate(
+                    [
+                        'student_id' => $studentId,
+                        'materi_id' => $firstMateri->id,
+                    ],
+                    [
+                        'is_opened' => 1,
+                        'is_completed' => 0,
+                        'opened_at' => now(),
+                    ]
+                );
+            }
         }
 
         /*
         |--------------------------------------------------------------------------
         | Blok akses langsung kalau materi terkunci
         |--------------------------------------------------------------------------
-        | Sementara ini aktif untuk semua materi yang belum masuk unlockedSlugs.
-        | Kalau mau kunci Bab 1 saja, tambahkan: $materi->bab_id == 1 &&
         */
         if (!in_array($materi->slug, $unlockedSlugs)) {
             return redirect()
@@ -75,23 +76,27 @@ class MateriController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Tandai materi sedang dibuka
+        | Catat siswa yang membuka materi
         |--------------------------------------------------------------------------
+        | Bagian ini yang membuat "Siswa yang Mengunjungi Hari Ini"
+        | di dashboard guru bertambah.
         */
-        MaterialProgress::updateOrCreate(
-            [
-                'student_id' => $studentId,
-                'materi_id' => $materi->id,
-            ],
-            [
-                'is_opened' => 1,
-                'opened_at' => now(),
-            ]
-        );
+        if ($studentId) {
+            MaterialProgress::updateOrCreate(
+                [
+                    'student_id' => $studentId,
+                    'materi_id' => $materi->id,
+                ],
+                [
+                    'is_opened' => 1,
+                    'opened_at' => now(),
+                ]
+            );
+        }
 
         /*
         |--------------------------------------------------------------------------
-        | Materi sebelumnya dan selanjutnya dalam bab yang sama
+        | Materi sebelumnya dalam bab yang sama
         |--------------------------------------------------------------------------
         */
         $previousMateri = Materi::where('bab_id', $materi->bab_id)
@@ -99,6 +104,11 @@ class MateriController extends Controller
             ->orderBy('urutan', 'desc')
             ->first();
 
+        /*
+        |--------------------------------------------------------------------------
+        | Materi selanjutnya dalam bab yang sama
+        |--------------------------------------------------------------------------
+        */
         $nextMateri = Materi::where('bab_id', $materi->bab_id)
             ->where('urutan', '>', $materi->urutan)
             ->orderBy('urutan', 'asc')
@@ -116,9 +126,13 @@ class MateriController extends Controller
         | Progress materi yang sedang dibuka
         |--------------------------------------------------------------------------
         */
-        $materialProgress = MaterialProgress::where('student_id', $studentId)
-            ->where('materi_id', $materi->id)
-            ->first();
+        $materialProgress = null;
+
+        if ($studentId) {
+            $materialProgress = MaterialProgress::where('student_id', $studentId)
+                ->where('materi_id', $materi->id)
+                ->first();
+        }
 
         return view($materi->view_path, compact(
             'materi',
@@ -145,6 +159,19 @@ class MateriController extends Controller
     public function complete($id)
     {
         $studentId = Auth::guard('siswa')->id();
+
+        if (!$studentId) {
+            if (request()->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Siswa belum login.',
+                ], 401);
+            }
+
+            return redirect()
+                ->route('masuksiswa')
+                ->with('error', 'Silakan login sebagai siswa terlebih dahulu.');
+        }
 
         $materi = Materi::findOrFail($id);
 

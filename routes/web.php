@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\GuruAuthController;
+use App\Http\Controllers\GuruDashboardController;
+use App\Http\Controllers\ProgressSiswaController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProgressBelajarController;
 use App\Http\Controllers\QuizController;
@@ -20,8 +22,14 @@ Route::view('/tentang', 'tentang')->name('tentang');
 Route::get('/registersiswa', [SiswaAuthController::class, 'showRegister'])->name('registersiswa');
 Route::post('/registersiswa', [SiswaAuthController::class, 'register'])->name('registersiswa.store');
 
+// ==================== SISWA AUTH ====================
 Route::get('/loginsiswa', [SiswaAuthController::class, 'showLogin'])->name('masuksiswa');
 Route::post('/loginsiswa', [SiswaAuthController::class, 'login'])->name('masuksiswa.store');
+
+// route login default untuk siswa
+Route::get('/login', function () {
+    return redirect()->route('masuksiswa');
+})->name('login');
 
 Route::post('/logoutsiswa', [SiswaAuthController::class, 'logout'])->name('logoutsiswa');
 
@@ -75,25 +83,33 @@ Route::post('/materi/{id}/selesai', [MateriController::class, 'complete'])->name
 Route::get('/guru/register', [GuruAuthController::class, 'showRegister'])->name('guru.register');
 Route::post('/guru/register', [GuruAuthController::class, 'register'])->name('guru.register.store');
 
+Route::get('/halamanguru', function () {
+    return redirect()->route('guru.login');
+})->name('halamanguru');
+
 Route::get('/guru/login', [GuruAuthController::class, 'showLogin'])->name('guru.login');
 Route::post('/guru/login', [GuruAuthController::class, 'login'])->name('guru.login.store');
 
-Route::get('/login', function () {
-    return redirect()->route('guru.login');
-})->name('login');
 
 Route::post('/guru/logout', [GuruAuthController::class, 'logout'])->name('guru.logout');
 
 // ==================== HALAMAN GURU (LOGIN WAJIB) ====================
 Route::middleware('auth:guru')->group(function () {
 
-    Route::view('/halamanguru', 'guru.halamanguru')->name('halamanguru');
-    Route::view('/dashboardguru', 'guru.dashboardguru')->name('dashboardguru');
+    Route::get('/dashboardguru', [GuruDashboardController::class, 'index'])->name('dashboardguru');
 
-    Route::view('/rekapitulasinilai', 'guru.rekapitulasinilai')->name('rekapitulasinilai');
-    Route::view('/aktivitassiswa', 'guru.aktivitassiswa')->name('aktivitassiswa');
-    Route::view('/daftarmateriguru', 'guru.daftarmateriguru')->name('daftarmateriguru');
+    Route::get('/rekapitulasinilai', [QuizController::class, 'rekapitulasiNilai'])
+        ->name('rekapitulasinilai');
 
+
+    Route::get('/rekapnilai/export/pdf', [QuizController::class, 'exportRekapPdf'])
+        ->name('rekapnilai.export.pdf');
+
+    Route::get('/rekapnilai/export/excel', [QuizController::class, 'exportRekapExcel'])
+        ->name('rekapnilai.export.excel');
+
+    Route::get('/aktivitassiswa', [ProgressSiswaController::class, 'index'])
+        ->name('aktivitassiswa');
     // ==================== KUIS ====================
     Route::get('/daftarkuis', [QuizController::class, 'index'])->name('daftarkuis');
     Route::view('/kuis/{id}/edit', 'guru.kuisedit')->name('kuis.edit');
