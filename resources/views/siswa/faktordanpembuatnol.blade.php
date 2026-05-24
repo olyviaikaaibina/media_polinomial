@@ -7,11 +7,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body,{
-                                                                                                                                                            delimiters:[
-                                                                                                                                                                {left:'$$',right:'$$',display:true},
-                                                                                                                                                                {left:'$',right:'$',display:false}
-                                                                                                                                                            ]
-                                                                                                                                                        });"></script>
+                                                                                                                                                                    delimiters:[
+                                                                                                                                                                        {left:'$$',right:'$$',display:true},
+                                                                                                                                                                        {left:'$',right:'$',display:false}
+                                                                                                                                                                    ]
+                                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -1410,8 +1410,8 @@
         }
 
         /* =========================
-                                                                                                                               CARD TAMBAHAN MATERI
-                                                                                                                            ========================= */
+                                                                                                                                       CARD TAMBAHAN MATERI
+                                                                                                                                    ========================= */
         .info-card {
             position: relative;
             margin-top: 24px;
@@ -1541,8 +1541,8 @@
         }
 
         /* =========================
-                                                                                                                               LANGKAH CARI PEMBUAT NOL
-                                                                                                                            ========================= */
+                                                                                                                                       LANGKAH CARI PEMBUAT NOL
+                                                                                                                                    ========================= */
         .langkah-cari-wrap {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1613,8 +1613,8 @@
         }
 
         /* =========================
-                                                                                                                               CONTOH MINI + TIP
-                                                                                                                            ========================= */
+                                                                                                                                       CONTOH MINI + TIP
+                                                                                                                                    ========================= */
         .contoh-mini {
             margin-top: 18px;
             background: rgba(255, 255, 255, .84);
@@ -1646,8 +1646,8 @@
         }
 
         /* =========================
-                                                                                                                               RESPONSIVE
-                                                                                                                            ========================= */
+                                                                                                                                       RESPONSIVE
+                                                                                                                                    ========================= */
         @media (max-width: 900px) {
 
             .info-grid,
@@ -1699,8 +1699,8 @@
         }
 
         /* =========================
-                                                                                                                   STRATEGI INTERAKTIF
-                                                                                                                ========================= */
+                                                                                                                           STRATEGI INTERAKTIF
+                                                                                                                        ========================= */
         .clickable-card {
             cursor: pointer;
             user-select: none;
@@ -1805,8 +1805,8 @@
         }
 
         /* =========================
-                                                                                                       METODE INTERAKTIF
-                                                                                                    ========================= */
+                                                                                                               METODE INTERAKTIF
+                                                                                                            ========================= */
         .metode-wrap {
             margin-top: 12px;
         }
@@ -1844,8 +1844,8 @@
         }
 
         /* =========================
-                                                                                                       PANEL CONTOH BERSAMA
-                                                                                                    ========================= */
+                                                                                                               PANEL CONTOH BERSAMA
+                                                                                                            ========================= */
         .contoh-bersama-box {
             margin-top: 20px;
             background: rgba(255, 255, 255, .86);
@@ -2092,9 +2092,9 @@
         }
 
         /* =========================
-           RESPONSIVE GLOBAL FIX
-           HP, TABLET, LAPTOP
-        ========================= */
+                   RESPONSIVE GLOBAL FIX
+                   HP, TABLET, LAPTOP
+                ========================= */
 
         /* Supaya padding tidak membuat elemen melebar */
         *,
@@ -2135,9 +2135,9 @@
         }
 
         /* =========================
-           LAPTOP / DESKTOP
-           >= 1025px
-        ========================= */
+                   LAPTOP / DESKTOP
+                   >= 1025px
+                ========================= */
         @media (min-width: 1025px) {
             .materi-wrap {
                 padding: 28px 24px 48px;
@@ -2163,9 +2163,9 @@
         }
 
         /* =========================
-           TABLET
-           769px - 1024px
-        ========================= */
+                   TABLET
+                   769px - 1024px
+                ========================= */
         @media (min-width: 769px) and (max-width: 1024px) {
             .materi-wrap {
                 max-width: 920px;
@@ -2243,9 +2243,9 @@
         }
 
         /* =========================
-           HP / MOBILE
-           <= 768px
-        ========================= */
+                   HP / MOBILE
+                   <= 768px
+                ========================= */
         @media (max-width: 768px) {
             .materi-wrap {
                 padding: 16px 12px 32px;
@@ -2536,9 +2536,9 @@
         }
 
         /* =========================
-           HP KECIL
-           <= 480px
-        ========================= */
+                   HP KECIL
+                   <= 480px
+                ========================= */
         @media (max-width: 480px) {
             .materi-wrap {
                 padding: 14px 10px 28px;
@@ -2612,6 +2612,86 @@
             .explain-box,
             .source-box {
                 padding: 12px;
+            }
+        }
+
+        /* =========================
+       FIX POSISI CARD FAKTOR
+       BIAR TENGAH & TIDAK BOROS TEMPAT
+    ========================= */
+
+        .info-card.definisi-card {
+            max-width: 900px;
+            margin: 18px auto 18px;
+            padding: 24px 24px 20px;
+        }
+
+        .info-card.definisi-card .info-header {
+            margin-bottom: 8px;
+        }
+
+        .info-card.definisi-card .info-title {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .info-card.definisi-card .info-desc {
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+
+        .faktor-flow-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 18px;
+            margin-top: 8px;
+        }
+
+        .faktor-flow-grid .info-mini-card {
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .faktor-flow-grid .rumus-box {
+            margin: 8px 0 0 !important;
+            padding: 14px !important;
+        }
+
+        .faktor-arrow-btn {
+            min-width: 180px;
+            height: 74px;
+            justify-content: center;
+        }
+
+        .cara-faktor-box {
+            margin-top: 14px;
+        }
+
+        /* Tablet dan HP */
+        @media (max-width: 768px) {
+            .info-card.definisi-card {
+                max-width: 100%;
+                margin: 14px auto 16px;
+                padding: 18px 14px;
+            }
+
+            .faktor-flow-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .faktor-flow-grid .info-mini-card {
+                min-height: auto;
+            }
+
+            .faktor-arrow-btn {
+                width: 100%;
+                min-width: 0;
+                height: auto;
+                padding: 10px 14px;
             }
         }
     </style>
@@ -2727,8 +2807,6 @@
                     Artinya, saat nilai $x$ diganti dengan 2 atau 3, hasil fungsi menjadi 0.
                 </div>
             </div>
-
-
         </div>
 
         <div id="materiLanjutan" class="materi-lanjutan hidden">
@@ -3153,7 +3231,7 @@
                         </div>
 
                         <div class="input-row">
-                            <input id="m1" class="input-jawaban" placeholder="Masukkan semua pembuat nol">
+                            <input id="m1" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button class="btn-cek" onclick="cekMari(1)">Cek Jawaban</button>
                         </div>
                         <div id="fb1" class="feedback-box"></div>
@@ -3179,7 +3257,7 @@
                         </div>
 
                         <div class="input-row">
-                            <input id="m2" class="input-jawaban" placeholder="Masukkan bentuk pemfaktoran">
+                            <input id="m2" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button class="btn-cek" onclick="cekMari(2)">Cek Jawaban</button>
                         </div>
                         <div id="fb2" class="feedback-box"></div>
@@ -3205,7 +3283,7 @@
                         </div>
 
                         <div class="input-row">
-                            <input id="m3" class="input-jawaban" placeholder="Masukkan titik potong sumbu-x">
+                            <input id="m3" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button class="btn-cek" onclick="cekMari(3)">Cek Jawaban</button>
                         </div>
                         <div id="fb3" class="feedback-box"></div>
@@ -3232,7 +3310,7 @@
                         </div>
 
                         <div class="input-row">
-                            <input id="m4" class="input-jawaban" placeholder="Masukkan titik potong sumbu-y">
+                            <input id="m4" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button class="btn-cek" onclick="cekMari(4)">Cek Jawaban</button>
                         </div>
                         <div id="fb4" class="feedback-box"></div>
@@ -3300,7 +3378,7 @@
                     <div class="latihan-item">
                         <div class="latihan-label">a. Tentukan salah satu pembuat nol</div>
                         <div class="input-row">
-                            <input type="text" id="soal1a" class="input-jawaban" placeholder="Contoh: 2 atau x=2">
+                            <input type="text" id="soal1a" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button type="button" class="btn-cek" onclick="cekSoal1('a')">Cek Jawaban</button>
                         </div>
                         <div id="feedbackSoal1a" class="feedback-box"></div>
@@ -3309,7 +3387,7 @@
                     <div class="latihan-item">
                         <div class="latihan-label">b. Tentukan semua pembuat nol</div>
                         <div class="input-row">
-                            <input type="text" id="soal1b" class="input-jawaban" placeholder="Contoh: 2, 5, -3">
+                            <input type="text" id="soal1b" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button type="button" class="btn-cek" onclick="cekSoal1('b')">Cek Jawaban</button>
                         </div>
                         <div id="feedbackSoal1b" class="feedback-box"></div>
@@ -3318,14 +3396,55 @@
                     <div class="latihan-item">
                         <div class="latihan-label">c. Tentukan bentuk pemfaktoran lengkap</div>
                         <div class="input-row">
-                            <input type="text" id="soal1c" class="input-jawaban" placeholder="Contoh: (x-2)(x-5)(x+3)">
+                            <input type="text" id="soal1c" class="input-jawaban" placeholder="Tulis jawabanmu di sini">
                             <button type="button" class="btn-cek" onclick="cekSoal1('c')">Cek Jawaban</button>
                         </div>
                         <div id="feedbackSoal1c" class="feedback-box"></div>
                     </div>
 
                     <div id="penjelasanSoal1" class="penjelasan-wrap">
-                        ...
+                        <div class="penjelasan-title">Penjelasan Soal 1</div>
+
+                        <p>
+                            Fungsi yang diberikan adalah:
+                        </p>
+
+                        <div class="latihan-persamaan">
+                            $$P(x)=x^3-4x^2-11x+30$$
+                        </div>
+
+                        <p>
+                            Coba salah satu nilai yang mungkin menjadi pembuat nol, misalnya $x=2$.
+                        </p>
+
+                        <div class="latihan-persamaan">
+                            $$P(2)=2^3-4(2)^2-11(2)+30$$
+                        </div>
+
+                        <div class="latihan-persamaan">
+                            $$P(2)=8-16-22+30=0$$
+                        </div>
+
+                        <p>
+                            Karena $P(2)=0$, maka $x=2$ adalah salah satu pembuat nol.
+                            Dengan demikian, $(x-2)$ merupakan salah satu faktor.
+                        </p>
+
+                        <p>
+                            Pembuat nol lengkapnya adalah:
+                        </p>
+
+                        <div class="latihan-persamaan">
+                            $$x=2,\ x=5,\ x=-3$$
+                        </div>
+
+                        <p>
+                            Maka bentuk pemfaktoran lengkapnya:
+                        </p>
+
+                        <div class="latihan-persamaan">
+                            $$P(x)=(x-2)(x-5)(x+3)$$
+                        </div>
                     </div>
 
                     <hr style="margin:40px 0;">
@@ -3347,7 +3466,7 @@
                         <div id="soal2Itema" class="latihan-item">
                             <div class="latihan-label">a. Pembuat nol</div>
                             <div class="input-row">
-                                <input type="text" id="soal2a" class="input-jawaban" placeholder="Contoh: 4, 2, -2, -1"
+                                <input type="text" id="soal2a" class="input-jawaban" placeholder="Tulis jawabanmu di sini"
                                     disabled>
                                 <button type="button" class="btn-cek" onclick="cekSoal2('a')" disabled>
                                     Cek Jawaban
@@ -3360,8 +3479,8 @@
                         <div id="soal2Itemb" class="latihan-item">
                             <div class="latihan-label">b. Pemfaktoran</div>
                             <div class="input-row">
-                                <input type="text" id="soal2b" class="input-jawaban"
-                                    placeholder="Contoh: (x-4)(x-2)(x+2)(x+1)" disabled>
+                                <input type="text" id="soal2b" class="input-jawaban" placeholder="Tulis jawabanmu di sini"
+                                    disabled>
                                 <button type="button" class="btn-cek" onclick="cekSoal2('b')" disabled>
                                     Cek Jawaban
                                 </button>
@@ -3373,8 +3492,8 @@
                         <div id="soal2Itemc" class="latihan-item">
                             <div class="latihan-label">c. Titik potong sumbu-x</div>
                             <div class="input-row">
-                                <input type="text" id="soal2c" class="input-jawaban"
-                                    placeholder="Contoh: (4,0), (2,0), (-2,0), (-1,0)" disabled>
+                                <input type="text" id="soal2c" class="input-jawaban" placeholder="Tulis jawabanmu di sini"
+                                    disabled>
                                 <button type="button" class="btn-cek" onclick="cekSoal2('c')" disabled>
                                     Cek Jawaban
                                 </button>
@@ -3386,7 +3505,8 @@
                         <div id="soal2Itemd" class="latihan-item">
                             <div class="latihan-label">d. Titik potong sumbu-y</div>
                             <div class="input-row">
-                                <input type="text" id="soal2d" class="input-jawaban" placeholder="Contoh: (0,16)" disabled>
+                                <input type="text" id="soal2d" class="input-jawaban" placeholder="Tulis jawabanmu di sini"
+                                    disabled>
                                 <button type="button" class="btn-cek" onclick="cekSoal2('d')" disabled>
                                     Cek Jawaban
                                 </button>
@@ -3489,110 +3609,110 @@
                 badge: 'Metode 1',
                 title: 'Contoh Faktorisasi',
                 html: `
-                                <div class="contoh-panel">
-                                    <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                                    <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
+                                        <div class="contoh-panel">
+                                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                            <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 1</div>
-                                        <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
-                                        <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 1</div>
+                                                <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
+                                                <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
+                                            </div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 2</div>
-                                        <p>Faktorkan bentuk kuadratnya.</p>
-                                        <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 2</div>
+                                                <p>Faktorkan bentuk kuadratnya.</p>
+                                                <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
+                                            </div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 3</div>
-                                        <p>Gunakan sifat hasil kali nol.</p>
-                                        <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
-                                        <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 3</div>
+                                                <p>Gunakan sifat hasil kali nol.</p>
+                                                <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
+                                                <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
+                                            </div>
 
-                                    <div class="contoh-hasil-box">
-                                        <b>Jadi, pembuat nolnya adalah:</b>
-                                        <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                                    </div>
-                                </div>
-                            `
+                                            <div class="contoh-hasil-box">
+                                                <b>Jadi, pembuat nolnya adalah:</b>
+                                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                            </div>
+                                        </div>
+                                    `
             },
 
             substitusi: {
                 badge: 'Metode 2',
                 title: 'Contoh Substitusi',
                 html: `
-                                <div class="contoh-panel">
-                                    <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                                    <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
+                                        <div class="contoh-panel">
+                                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                            <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Coba x = 1</div>
-                                        <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
-                                        <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Coba x = 1</div>
+                                                <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
+                                                <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
+                                            </div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Coba x = 2</div>
-                                        <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
-                                        <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Coba x = 2</div>
+                                                <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
+                                                <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
+                                            </div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Coba x = 3</div>
-                                        <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
-                                        <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Coba x = 3</div>
+                                                <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
+                                                <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
+                                            </div>
 
-                                    <div class="contoh-hasil-box">
-                                        <b>Jadi, pembuat nolnya adalah:</b>
-                                        <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                                    </div>
-                                </div>
-                            `
+                                            <div class="contoh-hasil-box">
+                                                <b>Jadi, pembuat nolnya adalah:</b>
+                                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                            </div>
+                                        </div>
+                                    `
             },
 
             sintetik: {
                 badge: 'Metode 3',
                 title: 'Contoh Pembagian Sintetik',
                 html: `
-                                <div class="contoh-panel">
-                                    <p class="contoh-panel-text">Tentukan salah satu pembuat nol dari:</p>
-                                    <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
+                                        <div class="contoh-panel">
+                                            <p class="contoh-panel-text">Tentukan salah satu pembuat nol dari:</p>
+                                            <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 1</div>
-                                        <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
-                                    </div>
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 1</div>
+                                                <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
+                                            </div>
 
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 2</div>
-                                        <p>Gunakan pembagian sintetik dengan koefisien:</p>
-                                        <div class="rumus-box">$$1 \\quad -4 \\quad -11 \\quad 30$$</div>
-                                        <div class="rumus-box">
-                                            $$\\begin{array}{r|rrrr}
-                                            2 & 1 & -4 & -11 & 30 \\\\
-                                              &   & 2 & -4 & -30 \\\\
-                                            \\hline
-                                              & 1 & -2 & -15 & 0
-                                            \\end{array}$$
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 2</div>
+                                                <p>Gunakan pembagian sintetik dengan koefisien:</p>
+                                                <div class="rumus-box">$$1 \\quad -4 \\quad -11 \\quad 30$$</div>
+                                                <div class="rumus-box">
+                                                    $$\\begin{array}{r|rrrr}
+                                                    2 & 1 & -4 & -11 & 30 \\\\
+                                                      &   & 2 & -4 & -30 \\\\
+                                                    \\hline
+                                                      & 1 & -2 & -15 & 0
+                                                    \\end{array}$$
+                                                </div>
+                                            </div>
+
+                                            <div class="contoh-step-box">
+                                                <div class="contoh-step-title">Langkah 3</div>
+                                                <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
+                                                <div class="rumus-box">$$(x-2) \\text{ adalah faktor dari } P(x)$$</div>
+                                            </div>
+
+                                            <div class="contoh-hasil-box">
+                                                <b>Kesimpulan:</b>
+                                                <div class="rumus-box">$$x=2$$</div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="contoh-step-box">
-                                        <div class="contoh-step-title">Langkah 3</div>
-                                        <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
-                                        <div class="rumus-box">$$(x-2) \\text{ adalah faktor dari } P(x)$$</div>
-                                    </div>
-
-                                    <div class="contoh-hasil-box">
-                                        <b>Kesimpulan:</b>
-                                        <div class="rumus-box">$$x=2$$</div>
-                                    </div>
-                                </div>
-                            `
+                                    `
             }
         };
 
@@ -3918,15 +4038,15 @@
 
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
-                                <button
-                                    type="button"
-                                    class="grafik-click-point"
-                                    data-x="${x}"
-                                    style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
-                                    onclick="cekTitikGrafikMc4(this)"
-                                    aria-label="Titik x ${x}">
-                                </button>
-                            `;
+                                        <button
+                                            type="button"
+                                            class="grafik-click-point"
+                                            data-x="${x}"
+                                            style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
+                                            onclick="cekTitikGrafikMc4(this)"
+                                            aria-label="Titik x ${x}">
+                                        </button>
+                                    `;
             }
 
             return html;
@@ -3934,24 +4054,24 @@
 
         function buildGrafikInteraktifMc4() {
             return `
-                            <div class="grafik-board">
-                                <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
+                                    <div class="grafik-board">
+                                        <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
 
-                                <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
-                                <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
-                                <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
-                                <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
+                                        <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
+                                        <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
+                                        <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
+                                        <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
 
-                                ${buildTicksX()}
-                                ${buildTicksY()}
-                                ${buildLabelsX()}
-                                ${buildLabelsY()}
+                                        ${buildTicksX()}
+                                        ${buildTicksY()}
+                                        ${buildLabelsX()}
+                                        ${buildLabelsY()}
 
-                                <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+                                        <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
 
-                                ${buildClickablePoints()}
-                            </div>
-                        `;
+                                        ${buildClickablePoints()}
+                                    </div>
+                                `;
         }
 
         function aktifkanGrafikMari() {
@@ -4096,18 +4216,18 @@
             const yDot = `<circle cx="${xToPercent(0)}" cy="${yToPercent(6)}" r="1.15" fill="#f2994a"></circle>`;
 
             svg.innerHTML = `
-                            <path
-                                d="${d}"
-                                fill="none"
-                                stroke="#2d9cdb"
-                                stroke-width="0.7"
-                                vector-effect="non-scaling-stroke"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
-                            </path>
-                            ${rootDots}
-                            ${yDot}
-                        `;
+                                    <path
+                                        d="${d}"
+                                        fill="none"
+                                        stroke="#2d9cdb"
+                                        stroke-width="0.7"
+                                        vector-effect="non-scaling-stroke"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                    </path>
+                                    ${rootDots}
+                                    ${yDot}
+                                `;
         }
 
         function cekMari(no) {

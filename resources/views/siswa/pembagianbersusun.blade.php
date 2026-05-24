@@ -23,9 +23,7 @@
             --slot-bg: #fcfcfc;
             --slot-border: #d8d2cb;
             --correct: #2f8f46;
-            --correct-soft: rgba(47, 143, 70, .12);
             --wrong: #d84a3a;
-            --wrong-soft: rgba(216, 74, 58, .12);
             --white: #ffffff;
         }
 
@@ -53,16 +51,6 @@
             margin-right: 6px;
         }
 
-        .step-card.answered-correct {
-            border-left-color: var(--correct);
-            background: rgba(47, 143, 70, .05);
-        }
-
-        .step-card.answered-wrong {
-            border-left-color: var(--wrong);
-            background: rgba(216, 74, 58, .05);
-        }
-
         .tujuan-card,
         .content-card,
         .info-card,
@@ -82,6 +70,20 @@
         .tujuan-card {
             background: #f5ede6;
             border-left: 6px solid var(--orange);
+        }
+
+        .content-card {
+            background: var(--section-bg);
+            border-left: 6px solid var(--orange);
+        }
+
+        .latihan-card {
+            background: #fffaf6;
+            border-left: 6px solid var(--orange);
+        }
+
+        .info-card {
+            border-left: 6px solid #79c661;
         }
 
         .tujuan-title,
@@ -127,16 +129,6 @@
             margin: 0 0 20px;
         }
 
-        .content-card {
-            background: var(--section-bg);
-            border-left: 6px solid var(--orange);
-        }
-
-        .latihan-card {
-            background: #fffaf6;
-            border-left: 6px solid var(--orange);
-        }
-
         .mini-title {
             display: flex;
             align-items: center;
@@ -149,17 +141,106 @@
             font-size: 20px;
         }
 
+        .section-label {
+            display: inline-block;
+            background: #efb296;
+            border: 2px solid #ea6c2c;
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1d1d1d;
+            margin-bottom: 12px;
+        }
+
         .rumus-box {
             text-align: center;
             margin: 14px 0;
             overflow-x: auto;
+            overflow-y: hidden;
             padding: 8px 6px;
+            max-width: 100%;
+            -webkit-overflow-scrolling: touch;
         }
 
         .rumus-inline {
             display: inline-block;
             padding: 2px 4px;
         }
+
+        .rumus-box .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 4px;
+        }
+
+        .katex,
+        .katex-display,
+        .katex-html {
+            word-break: normal !important;
+            overflow-wrap: normal !important;
+        }
+
+        .info-card ul,
+        .contoh-card ul,
+        .latihan-card ul {
+            margin: 8px 0 0 22px;
+            padding-left: 16px;
+        }
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .ilustrasi-actions,
+        .contoh-actions,
+        .step-btn-row,
+        .latihan-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-materi {
+            border: none;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-family: inherit;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: var(--orange);
+            color: #fff;
+        }
+
+        .btn-muted {
+            background: #f3ebe4;
+            color: #5b4b3f;
+            border: 1px solid #dccbbe;
+        }
+
+        .btn-materi:hover {
+            opacity: .92;
+        }
+
+        .btn-materi:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+
+        /* =========================
+           EKSPLORASI
+        ========================= */
 
         .jawaban-status,
         .step-feedback {
@@ -235,68 +316,85 @@
             background: rgba(216, 74, 58, .08);
         }
 
-        .section-label {
-            display: inline-block;
-            background: #efb296;
-            border: 2px solid #ea6c2c;
-            border-radius: 999px;
-            padding: 8px 18px;
-            font-size: 16px;
-            font-weight: 700;
-            color: #1d1d1d;
-            margin-bottom: 12px;
+        /* =========================
+           MATERI TERKUNCI
+        ========================= */
+
+        .materi-terkunci {
+            display: none;
         }
 
-        .info-card {
-            border-left: 6px solid #79c661;
+        .materi-terkunci.show {
+            display: block;
+            animation: fadeMateri .35s ease;
         }
 
-        .info-card ul,
-        .contoh-card ul,
-        .latihan-card ul {
-            margin: 8px 0 0 22px;
-            padding-left: 16px;
+        @keyframes fadeMateri {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .ilustrasi-actions,
-        .contoh-actions,
-        .step-btn-row,
-        .latihan-actions {
+        /* =========================
+           ILUSTRASI BERTAHAP
+        ========================= */
+
+        .ilustrasi-card-simple {
+            background: #fffdfb;
+            border-left: 6px solid #f0a055;
+        }
+
+        .ilustrasi-top-simple {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ilustrasi-box-simple,
+        .ilustrasi-rumus-simple,
+        .ilustrasi-step-simple,
+        .ilustrasi-summary-simple {
+            background: #fff;
+            border: 1px solid #e8ddd2;
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .ilustrasi-box-simple {
+            background: #fff8f1;
+        }
+
+        .ilustrasi-box-simple p,
+        .ilustrasi-rumus-simple p,
+        .ilustrasi-step-simple p,
+        .ilustrasi-summary-simple p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4d433b;
+        }
+
+        .ilustrasi-tag-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 14px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
-        .btn-materi {
-            border: none;
-            border-radius: 12px;
-            padding: 10px 16px;
-            font-family: inherit;
-            font-size: 14.5px;
+        .ilustrasi-tag {
+            background: #eef8ef;
+            color: #1f6830;
+            border: 1px solid #d2e7d7;
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 13px;
             font-weight: 700;
-            cursor: pointer;
-            transition: .2s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary-green);
-            color: #fff;
-        }
-
-        .btn-secondary {
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .btn-muted {
-            background: #f3ebe4;
-            color: #5b4b3f;
-            border: 1px solid #dccbbe;
-        }
-
-        .btn-materi:hover {
-            opacity: .92;
         }
 
         .ilustrasi-content,
@@ -310,24 +408,54 @@
             display: block;
         }
 
-        .langkah-item {
-            background: #fff;
-            border: 1px solid #e6ece6;
-            border-left: 4px solid #79c661;
-            border-radius: 14px;
-            padding: 14px 16px;
-            margin-bottom: 12px;
+        .ilustrasi-step-simple {
             display: none;
+            border-left: 5px solid #79c661;
+            margin-bottom: 12px;
         }
 
-        .langkah-item.show {
+        .ilustrasi-step-simple.show {
             display: block;
         }
 
-        .langkah-item-title {
+        .ilustrasi-step-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .ilustrasi-step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef8ef;
+            border: 1px solid #d3e7d7;
+            color: #1f6830;
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .ilustrasi-step-title {
+            font-size: 17px;
             font-weight: 700;
             color: var(--primary-green);
-            margin-bottom: 8px;
+            margin: 0;
+        }
+
+        .ilustrasi-note-simple {
+            margin-top: 10px;
+            background: #fff8f1;
+            border: 1px dashed #efc8a9;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 14px;
+            color: #7a5b42;
+            line-height: 1.7;
         }
 
         .result-box,
@@ -345,72 +473,36 @@
             display: block;
         }
 
-        .step-card {
+        .result-box.ilustrasi-hasil-simple {
             display: none;
-            border-left: 6px solid #ea6c2c;
-            background: #fffdfb;
+            background: #f7fcf7;
+            border: 1px solid #cfe4d2;
+            border-radius: 18px;
+            padding: 18px;
         }
 
-        .step-card.active {
+        .result-box.ilustrasi-hasil-simple.show {
             display: block;
         }
 
-        .step-card.done {
-            border-left-color: #79c661;
-            background: #fcfffc;
+        .ilustrasi-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 12px;
         }
 
-        .step-label {
-            font-size: 16px;
+        .ilustrasi-summary-simple .label {
+            font-size: 13px;
             font-weight: 700;
-            color: var(--primary-green);
-            margin-bottom: 8px;
+            color: #6f7a70;
+            margin-bottom: 6px;
+            display: block;
         }
 
-        .step-answer-input {
-            width: 100%;
-            border: 1px solid #d8cbbf;
-            border-radius: 12px;
-            padding: 12px 14px;
-            font-size: 15px;
-            font-family: inherit;
-            color: #333;
-            background: #fff;
-            outline: none;
-            transition: .2s ease;
-        }
-
-        .step-answer-input:focus {
-            border-color: #79c661;
-            box-shadow: 0 0 0 3px rgba(121, 198, 97, .12);
-        }
-
-        .step-answer-input.correct-answer {
-            border-color: rgba(47, 143, 70, .65);
-            background: rgba(47, 143, 70, .06);
-            box-shadow: 0 0 0 3px rgba(47, 143, 70, .10);
-        }
-
-        .step-answer-input.wrong-answer {
-            border-color: rgba(216, 74, 58, .6);
-            background: rgba(216, 74, 58, .06);
-            box-shadow: 0 0 0 3px rgba(216, 74, 58, .10);
-        }
-
-        .step-helper {
-            font-size: 13.5px;
-            color: #7b6f66;
-            margin-top: 8px;
-            line-height: 1.7;
-        }
-
-        .step-solution {
-            margin-top: 10px;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px dashed rgba(47, 143, 70, .35);
-        }
+        /* =========================
+           PEMBAGIAN BERSUSUN DEFINISI
+        ========================= */
 
         .bersusun-section {
             margin-top: 30px;
@@ -490,12 +582,389 @@
             padding-left: 22px;
         }
 
-        .contoh-soft-box {
-            background: var(--orange-soft);
-            border: 1px solid #f0cfbd;
+        /* =========================
+           CONTOH PEMBAGIAN BERSUSUN RESPONSIVE
+        ========================= */
+
+        #contohPembagianBersusun,
+        #contohPembagianBersusun * {
+            box-sizing: border-box;
+        }
+
+        #contohPembagianBersusun {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun.contoh-step-card {
+            background: linear-gradient(180deg, #fffdfb 0%, #fff8f1 100%);
+            border: 1px solid #ead9ca;
+            border-left: 7px solid var(--orange);
+            border-radius: 22px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, .06);
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .contoh-step-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        #contohPembagianBersusun .contoh-step-label {
+            display: inline-block;
+            background: #eef8ef;
+            color: #1f6830;
+            border: 1px solid #cfe8d4;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #contohPembagianBersusun .contoh-step-title {
+            margin: 0;
+            color: var(--primary-green);
+            font-size: 22px;
+            line-height: 1.35;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        #contohPembagianBersusun .contoh-step-soal {
+            width: 100%;
+            max-width: 100%;
+            background: #ffffff;
+            border: 1px solid #eaded3;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .contoh-step-soal p {
+            margin: 0 0 8px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        #contohPembagianBersusun .contoh-step-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        #contohPembagianBersusun .contoh-step-actions .btn-materi {
+            min-width: 150px;
+        }
+
+        #contohPembagianBersusun .contoh-step-list {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .contoh-step-list::before {
+            content: "";
+            position: absolute;
+            left: 21px;
+            top: 12px;
+            bottom: 12px;
+            width: 3px;
+            background: #e5cdbb;
+            border-radius: 999px;
+        }
+
+        #contohPembagianBersusun .contoh-step-item {
+            display: none;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            grid-template-columns: 46px minmax(0, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+            animation: contohFadeIn .35s ease;
+        }
+
+        #contohPembagianBersusun .contoh-step-item.show {
+            display: grid;
+        }
+
+        @keyframes contohFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #contohPembagianBersusun .step-number-circle {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 6px 14px rgba(31, 122, 52, .22);
+            flex-shrink: 0;
+        }
+
+        #contohPembagianBersusun .step-content-box {
+            min-width: 0;
+            max-width: 100%;
+            background: #ffffff;
+            border: 1px solid #eaded3;
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .035);
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .step-content-box p {
+            font-size: 16px;
+            line-height: 1.85;
+            margin: 0 0 12px;
+            color: var(--text-dark);
+        }
+
+        #contohPembagianBersusun .step-mini-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        #contohPembagianBersusun .formula-highlight {
+            background: #fffaf6;
+            border: 1px solid #ead6c5;
+            border-radius: 16px;
+            padding: 13px 14px;
+            margin: 12px 0;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #contohPembagianBersusun .step-note {
+            background: #eef8ef;
+            border: 1px dashed #9fd0a9;
+            color: #1f6830;
+            border-radius: 14px;
+            padding: 11px 13px;
+            font-size: 14.5px;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        #contohPembagianBersusun .pembagian-bersusun-box {
+            background: #ffffff;
+            border: 1px solid #d9e6d8;
+            border-radius: 18px;
+            padding: 18px;
+            margin: 14px 0;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .rumus-bersusun-wrap {
+            background: #fcfcfc;
+            border: 1px solid #e4e4e4;
+            border-radius: 16px;
+            padding: 18px 14px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            text-align: center;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #contohPembagianBersusun .result-step {
+            background: linear-gradient(180deg, #ffffff 0%, #f4fbf5 100%);
+            border-color: #b9dec0;
+        }
+
+        #contohPembagianBersusun .hasil-grid-rapi {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin: 18px 0;
+        }
+
+        #contohPembagianBersusun .hasil-card-rapi,
+        #contohPembagianBersusun .hasil-bentuk-card {
+            min-width: 0;
+            max-width: 100%;
+            background: #fcfffc;
+            border: 1px solid #dbe8da;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        #contohPembagianBersusun .hasil-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f6b37;
+            margin-bottom: 12px;
+        }
+
+        #contohPembagianBersusun .hasil-formula-box {
+            background: #fff;
+            border: 1px solid #e4ede4;
+            border-radius: 14px;
+            padding: 16px 14px;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #contohPembagianBersusun .rumus-box,
+        #contohPembagianBersusun .formula-highlight,
+        #contohPembagianBersusun .hasil-formula-box,
+        #contohPembagianBersusun .rumus-bersusun-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #contohPembagianBersusun .katex,
+        #contohPembagianBersusun .katex-display,
+        #contohPembagianBersusun .katex-html {
+            max-width: 100%;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
+        }
+
+        #contohPembagianBersusun .katex-display {
+            margin: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 4px;
+        }
+
+        #contohPembagianBersusun .hasil-formula-box .katex,
+        #contohPembagianBersusun .formula-highlight .katex,
+        #contohPembagianBersusun .rumus-bersusun-wrap .katex {
+            display: inline-block;
+            white-space: nowrap !important;
+        }
+
+        #contohPembagianBersusun .rumus-box::-webkit-scrollbar,
+        #contohPembagianBersusun .formula-highlight::-webkit-scrollbar,
+        #contohPembagianBersusun .hasil-formula-box::-webkit-scrollbar,
+        #contohPembagianBersusun .rumus-bersusun-wrap::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        #contohPembagianBersusun .rumus-box::-webkit-scrollbar-thumb,
+        #contohPembagianBersusun .formula-highlight::-webkit-scrollbar-thumb,
+        #contohPembagianBersusun .hasil-formula-box::-webkit-scrollbar-thumb,
+        #contohPembagianBersusun .rumus-bersusun-wrap::-webkit-scrollbar-thumb {
+            background: #d8c8b8;
+            border-radius: 999px;
+        }
+
+        /* =========================
+           MARI MENCOBA
+        ========================= */
+
+        .step-card {
+            display: none;
+            border-left: 6px solid #ea6c2c;
+            background: #fffdfb;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        .step-card.done {
+            border-left-color: #79c661;
+            background: #fcfffc;
+        }
+
+        .step-card.answered-correct {
+            border-left-color: var(--correct);
+            background: rgba(47, 143, 70, .05);
+        }
+
+        .step-card.answered-wrong {
+            border-left-color: var(--wrong);
+            background: rgba(216, 74, 58, .05);
+        }
+
+        .step-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+
+        .step-answer-input {
+            width: 100%;
+            border: 1px solid #d8cbbf;
             border-radius: 12px;
             padding: 12px 14px;
-            margin-top: 14px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #333;
+            background: #fff;
+            outline: none;
+            transition: .2s ease;
+        }
+
+        .step-answer-input:focus {
+            border-color: #79c661;
+            box-shadow: 0 0 0 3px rgba(121, 198, 97, .12);
+        }
+
+        .step-answer-input.correct-answer {
+            border-color: rgba(47, 143, 70, .65);
+            background: rgba(47, 143, 70, .06);
+            box-shadow: 0 0 0 3px rgba(47, 143, 70, .10);
+        }
+
+        .step-answer-input.wrong-answer {
+            border-color: rgba(216, 74, 58, .6);
+            background: rgba(216, 74, 58, .06);
+            box-shadow: 0 0 0 3px rgba(216, 74, 58, .10);
+        }
+
+        .step-helper {
+            font-size: 13.5px;
+            color: #7b6f66;
+            margin-top: 8px;
+            line-height: 1.7;
+        }
+
+        .step-solution {
+            margin-top: 10px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px dashed rgba(47, 143, 70, .35);
         }
 
         .hasil-akhir-grid {
@@ -522,201 +991,9 @@
             display: block;
         }
 
-        .materi-terkunci {
-            display: none;
-        }
-
-        .materi-terkunci.show {
-            display: block;
-            animation: fadeMateri .35s ease;
-        }
-
-        @keyframes fadeMateri {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .ilustrasi-card-simple {
-            background: #fffdfb;
-            border-left: 6px solid #f0a055;
-        }
-
-        .ilustrasi-top-simple {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .ilustrasi-box-simple,
-        .ilustrasi-rumus-simple,
-        .ilustrasi-step-simple,
-        .ilustrasi-summary-simple {
-            background: #fff;
-            border: 1px solid #e8ddd2;
-            border-radius: 16px;
-            padding: 16px;
-        }
-
-        .ilustrasi-box-simple {
-            background: #fff8f1;
-        }
-
-        .ilustrasi-box-simple p,
-        .ilustrasi-rumus-simple p,
-        .ilustrasi-step-simple p,
-        .ilustrasi-summary-simple p {
-            margin: 0;
-            line-height: 1.8;
-            color: #4d433b;
-        }
-
-        .ilustrasi-tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .ilustrasi-tag {
-            background: #eef8ef;
-            color: #1f6830;
-            border: 1px solid #d2e7d7;
-            border-radius: 999px;
-            padding: 6px 12px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .ilustrasi-progress-wrap {
-            background: #fff;
-            border: 1px solid #ebdfd4;
-            border-radius: 16px;
-            padding: 14px;
-            margin: 10px 0 16px;
-        }
-
-        .ilustrasi-progress-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-
-        .ilustrasi-progress-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-
-        .ilustrasi-progress-text {
-            font-size: 13.5px;
-            color: #7b6f66;
-            font-weight: 700;
-        }
-
-        .ilustrasi-progress-bar {
-            width: 100%;
-            height: 12px;
-            background: #f4ebe2;
-            border-radius: 999px;
-            overflow: hidden;
-            border: 1px solid #ead8c8;
-        }
-
-        .ilustrasi-progress-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #79c661 0%, #f2b15f 100%);
-            border-radius: 999px;
-            transition: width .35s ease;
-        }
-
-        .ilustrasi-step-simple {
-            display: none;
-            border-left: 5px solid #79c661;
-            margin-bottom: 12px;
-        }
-
-        .ilustrasi-step-simple.show {
-            display: block;
-        }
-
-        .ilustrasi-step-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
-
-        .ilustrasi-step-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #eef8ef;
-            border: 1px solid #d3e7d7;
-            color: #1f6830;
-            border-radius: 999px;
-            padding: 5px 12px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .ilustrasi-step-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--primary-green);
-            margin: 0;
-        }
-
-        .ilustrasi-note-simple {
-            margin-top: 10px;
-            background: #fff8f1;
-            border: 1px dashed #efc8a9;
-            border-radius: 12px;
-            padding: 10px 12px;
-            font-size: 14px;
-            color: #7a5b42;
-            line-height: 1.7;
-        }
-
-        .result-box.ilustrasi-hasil-simple {
-            display: none;
-            background: #f7fcf7;
-            border: 1px solid #cfe4d2;
-            border-radius: 18px;
-            padding: 18px;
-        }
-
-        .result-box.ilustrasi-hasil-simple.show {
-            display: block;
-        }
-
-        .ilustrasi-summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .ilustrasi-summary-simple .label {
-            font-size: 13px;
-            font-weight: 700;
-            color: #6f7a70;
-            margin-bottom: 6px;
-            display: block;
-        }
+        /* =========================
+           LATIHAN DRAG AND DROP
+        ========================= */
 
         .latihan-match-board {
             background: #edf1f1;
@@ -733,6 +1010,7 @@
             margin-bottom: 8px;
             color: #404040;
             word-break: break-word;
+            overflow-x: auto;
         }
 
         .latihan-note {
@@ -936,93 +1214,34 @@
             color: #5d5248;
         }
 
+        /* =========================
+           RESPONSIVE LAPTOP KECIL
+        ========================= */
+
         @media (max-width: 1200px) {
+            #contohPembagianBersusun.contoh-step-card {
+                padding: 22px;
+            }
+
+            #contohPembagianBersusun .contoh-step-title {
+                font-size: 21px;
+                line-height: 1.35;
+            }
+
+            #contohPembagianBersusun .step-content-box {
+                padding: 17px;
+            }
 
             .langkah-target-grid,
             .isi-grid {
                 grid-template-columns: repeat(5, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hasil-akhir-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ilustrasi-top-simple,
-            .ilustrasi-summary-grid,
-            .langkah-target-grid,
-            .isi-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 640px) {
-            .materi-wrap {
-                padding: 12px 8px 28px;
-            }
-
-            .bab-title {
-                font-size: 24px;
-            }
-
-            .tujuan-card,
-            .content-card,
-            .info-card,
-            .contoh-card,
-            .step-card,
-            .final-result,
-            .langkah-putih-card,
-            .latihan-card {
-                padding: 16px;
-                border-radius: 16px;
-            }
-
-            .section-label {
-                font-size: 14px;
-                padding: 7px 14px;
-            }
-
-            .mini-title {
-                font-size: 18px;
-            }
-
-            .hasil-akhir-grid,
-            .ilustrasi-top-simple,
-            .ilustrasi-summary-grid,
-            .langkah-target-grid,
-            .isi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-materi {
-                width: 100%;
-                justify-content: center;
             }
         }
 
         /* =========================
-               RESPONSIVE: LAPTOP, TABLET, HP
-               Tambahkan di paling bawah <style>
-            ========================= */
+           RESPONSIVE TABLET
+        ========================= */
 
-        /* Laptop / desktop */
-        @media (min-width: 993px) {
-            .materi-wrap {
-                max-width: 1020px;
-            }
-
-            .langkah-target-grid,
-            .isi-grid {
-                grid-template-columns: repeat(5, minmax(0, 1fr));
-            }
-
-            .ilustrasi-top-simple {
-                grid-template-columns: 1.1fr .9fr;
-            }
-        }
-
-        /* Tablet */
         @media (max-width: 992px) {
             .materi-wrap {
                 max-width: 100%;
@@ -1057,7 +1276,8 @@
             }
 
             .hasil-akhir-grid,
-            .ilustrasi-summary-grid {
+            .ilustrasi-summary-grid,
+            .hasil-grid-rapi {
                 grid-template-columns: 1fr;
             }
 
@@ -1075,9 +1295,67 @@
                 max-height: 90px;
                 font-size: 12.5px;
             }
+
+            #contohPembagianBersusun.contoh-step-card {
+                padding: 18px;
+                border-radius: 18px;
+                margin: 20px 0;
+            }
+
+            #contohPembagianBersusun .contoh-step-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #contohPembagianBersusun .contoh-step-title {
+                font-size: 20px;
+                line-height: 1.35;
+            }
+
+            #contohPembagianBersusun .contoh-step-soal {
+                padding: 16px;
+            }
+
+            #contohPembagianBersusun .contoh-step-item {
+                grid-template-columns: 42px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            #contohPembagianBersusun .contoh-step-list::before {
+                left: 20px;
+            }
+
+            #contohPembagianBersusun .step-number-circle {
+                width: 42px;
+                height: 42px;
+                font-size: 15px;
+            }
+
+            #contohPembagianBersusun .step-content-box {
+                padding: 16px;
+            }
+
+            #contohPembagianBersusun .step-content-box p,
+            #contohPembagianBersusun .contoh-step-soal p {
+                font-size: 15.5px;
+                line-height: 1.75;
+            }
+
+            #contohPembagianBersusun .hasil-grid-rapi {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            #contohPembagianBersusun .hasil-card-rapi,
+            #contohPembagianBersusun .hasil-bentuk-card {
+                padding: 16px;
+            }
         }
 
-        /* HP */
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+
         @media (max-width: 640px) {
             .materi-wrap {
                 width: 100%;
@@ -1134,15 +1412,8 @@
             }
 
             .rumus-box {
-                overflow-x: auto;
                 padding: 8px 4px;
                 max-width: 100%;
-            }
-
-            .rumus-box .katex-display {
-                overflow-x: auto;
-                overflow-y: hidden;
-                padding-bottom: 4px;
             }
 
             .opsi-btn {
@@ -1240,44 +1511,7 @@
             .progress-dnd {
                 font-size: 13.5px;
             }
-        }
 
-        /* HP kecil */
-        @media (max-width: 420px) {
-            .bab-title {
-                font-size: 20px;
-            }
-
-            .tujuan-title,
-            .mini-title {
-                font-size: 16px;
-            }
-
-            .materi-paragraf,
-            .tujuan-card li,
-            .content-card p,
-            .content-card li,
-            .info-card p,
-            .info-card li,
-            .contoh-card p,
-            .contoh-card li,
-            .step-question,
-            .latihan-card p,
-            .latihan-card li {
-                font-size: 14px;
-            }
-
-            .rumus-box {
-                font-size: 13px;
-            }
-
-            .isi-card-content .katex {
-                font-size: 0.9em !important;
-            }
-        }
-
-        /* MODE KLIK UNTUK HP */
-        @media (max-width: 640px) {
             .isi-card {
                 cursor: pointer;
                 border-width: 2px;
@@ -1309,11 +1543,193 @@
                 line-height: 1.6;
                 color: #6b4a32;
             }
+
+            #contohPembagianBersusun.contoh-step-card {
+                padding: 14px;
+                border-radius: 16px;
+                border-left-width: 5px;
+                margin: 18px 0;
+            }
+
+            #contohPembagianBersusun .contoh-step-label {
+                font-size: 12.5px;
+                padding: 5px 11px;
+                margin-bottom: 8px;
+            }
+
+            #contohPembagianBersusun .contoh-step-title {
+                font-size: 18px;
+                line-height: 1.35;
+            }
+
+            #contohPembagianBersusun .contoh-step-soal {
+                padding: 13px;
+                border-radius: 14px;
+            }
+
+            #contohPembagianBersusun .contoh-step-soal p,
+            #contohPembagianBersusun .step-content-box p {
+                font-size: 14.5px;
+                line-height: 1.7;
+            }
+
+            #contohPembagianBersusun .contoh-step-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            #contohPembagianBersusun .contoh-step-actions .btn-materi {
+                width: 100%;
+                min-width: 0;
+                padding: 11px 12px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            #contohPembagianBersusun .contoh-step-list::before {
+                left: 17px;
+                width: 2px;
+            }
+
+            #contohPembagianBersusun .contoh-step-item {
+                grid-template-columns: 36px minmax(0, 1fr);
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            #contohPembagianBersusun .step-number-circle {
+                width: 36px;
+                height: 36px;
+                font-size: 13px;
+            }
+
+            #contohPembagianBersusun .step-content-box {
+                padding: 13px;
+                border-radius: 14px;
+            }
+
+            #contohPembagianBersusun .step-mini-title {
+                font-size: 15.5px;
+                line-height: 1.4;
+            }
+
+            #contohPembagianBersusun .formula-highlight,
+            #contohPembagianBersusun .hasil-formula-box,
+            #contohPembagianBersusun .rumus-bersusun-wrap,
+            #contohPembagianBersusun .pembagian-bersusun-box {
+                padding: 10px;
+                border-radius: 12px;
+            }
+
+            #contohPembagianBersusun .step-note {
+                font-size: 13.5px;
+                line-height: 1.6;
+                padding: 10px;
+            }
+
+            #contohPembagianBersusun .hasil-card-title {
+                font-size: 15.5px;
+            }
+
+            #contohPembagianBersusun .hasil-card-rapi,
+            #contohPembagianBersusun .hasil-bentuk-card {
+                padding: 13px;
+                border-radius: 14px;
+            }
+
+            #contohPembagianBersusun .katex {
+                font-size: 0.92em !important;
+            }
+
+            #contohPembagianBersusun .rumus-bersusun-wrap {
+                text-align: left;
+            }
+
+            #contohPembagianBersusun .rumus-bersusun-wrap .katex-display {
+                min-width: max-content;
+            }
         }
 
         @media (min-width: 641px) {
             .click-mode-info {
                 display: none;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE HP KECIL
+        ========================= */
+
+        @media (max-width: 420px) {
+            .bab-title {
+                font-size: 20px;
+            }
+
+            .tujuan-title,
+            .mini-title {
+                font-size: 16px;
+            }
+
+            .materi-paragraf,
+            .tujuan-card li,
+            .content-card p,
+            .content-card li,
+            .info-card p,
+            .info-card li,
+            .contoh-card p,
+            .contoh-card li,
+            .step-question,
+            .latihan-card p,
+            .latihan-card li {
+                font-size: 14px;
+            }
+
+            .rumus-box {
+                font-size: 13px;
+            }
+
+            .isi-card-content .katex {
+                font-size: 0.9em !important;
+            }
+
+            #contohPembagianBersusun.contoh-step-card {
+                padding: 12px;
+            }
+
+            #contohPembagianBersusun .contoh-step-title {
+                font-size: 16.5px;
+            }
+
+            #contohPembagianBersusun .contoh-step-soal p,
+            #contohPembagianBersusun .step-content-box p {
+                font-size: 14px;
+            }
+
+            #contohPembagianBersusun .step-mini-title {
+                font-size: 15px;
+            }
+
+            #contohPembagianBersusun .contoh-step-item {
+                grid-template-columns: 32px minmax(0, 1fr);
+                gap: 7px;
+            }
+
+            #contohPembagianBersusun .contoh-step-list::before {
+                left: 15px;
+            }
+
+            #contohPembagianBersusun .step-number-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            #contohPembagianBersusun .step-content-box {
+                padding: 11px;
+            }
+
+            #contohPembagianBersusun .katex {
+                font-size: 0.86em !important;
             }
         }
     </style>
@@ -1488,20 +1904,10 @@
                     </div>
 
                     <div class="ilustrasi-rumus-simple">
-                        <p style="font-weight:700; color:#1f6830; margin-bottom:8px;">Contoh ilustrasi:</p>
+                        <p style="font-weight:700; color:#1f6830; margin-bottom:8px;">Contoh:</p>
                         <div class="rumus-box" style="margin:0;">
                             $$\frac{2x^3+9x^2+4x+7}{x+2}$$
                         </div>
-                    </div>
-                </div>
-
-                <div class="ilustrasi-progress-wrap">
-                    <div class="ilustrasi-progress-head">
-                        <div class="ilustrasi-progress-title">Progress Ilustrasi</div>
-                        <div class="ilustrasi-progress-text" id="progressTextIlustrasi">0 dari 9 langkah dibuka</div>
-                    </div>
-                    <div class="ilustrasi-progress-bar">
-                        <div class="ilustrasi-progress-fill" id="progressFillIlustrasi"></div>
                     </div>
                 </div>
 
@@ -1510,7 +1916,6 @@
                 </p>
 
                 <div class="ilustrasi-actions">
-                    <button type="button" class="btn-materi btn-primary" id="btnShowIlustrasi">Buka Ilustrasi</button>
                     <button type="button" class="btn-materi btn-secondary" id="btnNextLangkah">Buka Langkah 1</button>
                     <button type="button" class="btn-materi btn-muted" id="btnResetLangkah">Ulangi</button>
                 </div>
@@ -1593,7 +1998,8 @@
                         </div>
                         <p>Kalikan \(-6\) dengan pembagi \((x+2)\).</p>
                         <div class="rumus-box">$$-6(x+2)=-6x-12$$</div>
-                        <div class="ilustrasi-note-simple">Lalu lakukan satu pengurangan lagi untuk mencari sisa akhir.
+                        <div class="ilustrasi-note-simple">
+                            Lalu lakukan satu pengurangan lagi untuk mencari sisa akhir.
                         </div>
                     </div>
 
@@ -1604,8 +2010,9 @@
                         </div>
                         <p>Kurangkan bentuk terakhir untuk memperoleh sisa akhir pembagian.</p>
                         <div class="rumus-box">$$(-6x+7)-(-6x-12)=19$$</div>
-                        <div class="ilustrasi-note-simple">Karena derajat sisa sudah lebih kecil dari pembagi, proses
-                            selesai.</div>
+                        <div class="ilustrasi-note-simple">
+                            Karena derajat sisa sudah lebih kecil dari pembagi, proses selesai.
+                        </div>
                     </div>
 
                     <div class="result-box ilustrasi-hasil-simple" id="hasilBox">
@@ -1656,7 +2063,7 @@
                         <ul>
                             <li>\(Q(x)\) = hasil bagi</li>
                             <li>\(R(x)\) = sisa pembagian</li>
-                            <li>\(\deg R(x) < \deg D(x)\)</li>
+                            <li>Derajat sisa harus lebih kecil daripada derajat pembagi.</li>
                         </ul>
                     </div>
                 </div>
@@ -1671,6 +2078,356 @@
                         <li>Kurangkan dari polinomial yang sedang dikerjakan.</li>
                         <li>Ulangi langkah-langkah tersebut sampai sisa memenuhi syarat.</li>
                     </ol>
+                </div>
+            </div>
+
+            <!-- =========================
+            CONTOH INTERAKTIF PEMBAGIAN BERSUSUN
+            ========================= -->
+            <div class="contoh-step-card" id="contohPembagianBersusun">
+                <div class="contoh-step-header">
+                    <div>
+                        <div class="contoh-step-label">Contoh Pembagian Bersusun</div>
+                        <h3 class="contoh-step-title">Pembagian Polinomial dengan Pembagian Bersusun</h3>
+                    </div>
+
+
+                </div>
+
+                <div class="contoh-step-soal">
+                    <p>Bagilah polinomial berikut:</p>
+
+                    <div class="rumus-box">
+                        \[
+                        P(x)=4x^4+17x^3-3x+1
+                        \]
+                    </div>
+
+                    <p>dengan pembagi:</p>
+
+                    <div class="rumus-box">
+                        \[
+                        Q(x)=x^2+4x-1
+                        \]
+                    </div>
+                </div>
+
+                <div class="contoh-step-actions">
+                    <button type="button" class="btn-materi btn-primary" id="btnNextContohBersusun">
+                        Buka Langkah 1
+                    </button>
+
+                    <button type="button" class="btn-materi btn-muted" id="btnResetContohBersusun">
+                        Ulangi Contoh
+                    </button>
+
+                    <button type="button" class="btn-materi btn-secondary" id="btnShowAllContohBersusun">
+                        Tampilkan Semua
+                    </button>
+                </div>
+
+                <div class="contoh-step-list" id="contohStepList">
+
+                    <!-- LANGKAH 1 -->
+                    <div class="contoh-step-item" data-step="1">
+                        <div class="step-number-circle">1</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Persiapan</div>
+
+                            <p>
+                                Lengkapi polinomial berdasarkan urutan pangkat dari yang tertinggi sampai terendah.
+                                Karena tidak ada suku \(x^2\), maka ditulis sebagai \(0x^2\).
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                P(x)=4x^4+17x^3+0x^2-3x+1
+                                \]
+                            </div>
+
+                            <div class="formula-highlight">
+                                \[
+                                Q(x)=x^2+4x-1
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Menulis \(0x^2\) membantu agar proses pengurangan lebih rapi.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 2 -->
+                    <div class="contoh-step-item" data-step="2">
+                        <div class="step-number-circle">2</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 1 — Bagi</div>
+
+                            <p>
+                                Bagi suku pertama polinomial yang dibagi dengan suku pertama pembagi.
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                \frac{4x^4}{x^2}=4x^2
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Jadi, suku pertama hasil bagi adalah \(4x^2\).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 3 -->
+                    <div class="contoh-step-item" data-step="3">
+                        <div class="step-number-circle">3</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 1 — Kali</div>
+
+                            <p>
+                                Kalikan \(4x^2\) dengan seluruh pembagi \(x^2+4x-1\).
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                4x^2(x^2+4x-1)=4x^4+16x^3-4x^2
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Hasil perkalian ini akan dikurangkan dari polinomial awal.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 4 -->
+                    <div class="contoh-step-item" data-step="4">
+                        <div class="step-number-circle">4</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 1 — Kurang</div>
+
+                            <p>
+                                Kurangkan hasil perkalian dari polinomial awal.
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                (4x^4+17x^3+0x^2)-(4x^4+16x^3-4x^2)=x^3+4x^2
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Setelah dikurangkan, diperoleh \(x^3+4x^2\).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 5 -->
+                    <div class="contoh-step-item" data-step="5">
+                        <div class="step-number-circle">5</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Turunkan Suku Berikutnya</div>
+
+                            <p>
+                                Turunkan suku berikutnya, yaitu \(-3x\), sehingga diperoleh polinomial baru.
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                x^3+4x^2-3x
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Bentuk ini akan dibagi lagi pada iterasi berikutnya.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 6 -->
+                    <div class="contoh-step-item" data-step="6">
+                        <div class="step-number-circle">6</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 2 — Bagi</div>
+
+                            <p>
+                                Bagi suku pertama polinomial baru dengan suku pertama pembagi.
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                \frac{x^3}{x^2}=x
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Jadi, suku berikutnya pada hasil bagi adalah \(+x\).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 7 -->
+                    <div class="contoh-step-item" data-step="7">
+                        <div class="step-number-circle">7</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 2 — Kali</div>
+
+                            <p>
+                                Kalikan \(x\) dengan seluruh pembagi \(x^2+4x-1\).
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                x(x^2+4x-1)=x^3+4x^2-x
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Hasil ini akan dikurangkan dari polinomial sementara.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 8 -->
+                    <div class="contoh-step-item" data-step="8">
+                        <div class="step-number-circle">8</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Iterasi 2 — Kurang</div>
+
+                            <p>
+                                Kurangkan hasil perkalian dari polinomial sementara.
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                (x^3+4x^2-3x)-(x^3+4x^2-x)=-2x
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Setelah dikurangkan, diperoleh \(-2x\).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 9 -->
+                    <div class="contoh-step-item" data-step="9">
+                        <div class="step-number-circle">9</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Turunkan Suku Terakhir</div>
+
+                            <p>
+                                Turunkan suku terakhir, yaitu \(+1\).
+                            </p>
+
+                            <div class="formula-highlight">
+                                \[
+                                -2x+1
+                                \]
+                            </div>
+
+                            <div class="step-note">
+                                Bentuk ini menjadi sisa akhir karena derajatnya lebih kecil dari derajat pembagi.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 10 -->
+                    <div class="contoh-step-item" data-step="10">
+                        <div class="step-number-circle">10</div>
+
+                        <div class="step-content-box">
+                            <div class="step-mini-title">Bentuk Pembagian Bersusun</div>
+
+                            <p>
+                                Jika ditulis dalam bentuk pembagian bersusun, prosesnya menjadi seperti berikut.
+                            </p>
+
+                            <div class="pembagian-bersusun-box">
+                                <div class="rumus-bersusun-wrap">
+                                    \[
+                                    \begin{array}{r}
+                                    4x^2+x \\
+                                    \hline
+                                    x^2+4x-1)\,4x^4+17x^3+0x^2-3x+1 \\
+                                    \underline{-(4x^4+16x^3-4x^2)} \\
+                                    x^3+4x^2-3x \\
+                                    \underline{-(x^3+4x^2-x)} \\
+                                    -2x+1
+                                    \end{array}
+                                    \]
+                                </div>
+                            </div>
+
+                            <div class="step-note">
+                                Dari bentuk bersusun terlihat hasil bagi adalah \(4x^2+x\), dan sisanya adalah \(-2x+1\).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 11 -->
+                    <div class="contoh-step-item" data-step="11">
+                        <div class="step-number-circle">11</div>
+
+                        <div class="step-content-box result-step">
+                            <div class="step-mini-title">Hasil Akhir</div>
+
+                            <p>
+                                Karena derajat sisa \(-2x+1\) adalah 1, sedangkan derajat pembagi \(x^2+4x-1\) adalah 2,
+                                maka proses pembagian berhenti.
+                            </p>
+
+                            <div class="hasil-grid-rapi">
+                                <div class="hasil-card-rapi">
+                                    <div class="hasil-card-title">Hasil Bagi</div>
+                                    <div class="hasil-formula-box">
+                                        \[
+                                        H(x)=4x^2+x
+                                        \]
+                                    </div>
+                                </div>
+
+                                <div class="hasil-card-rapi">
+                                    <div class="hasil-card-title">Sisa</div>
+                                    <div class="hasil-formula-box">
+                                        \[
+                                        S(x)=-2x+1
+                                        \]
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hasil-bentuk-card">
+                                <div class="hasil-card-title">Bentuk Perkalian</div>
+                                <div class="hasil-formula-box large">
+                                    \[
+                                    4x^4+17x^3-3x+1=(x^2+4x-1)(4x^2+x)+(-2x+1)
+                                    \]
+                                </div>
+                            </div>
+
+                            <div class="hasil-bentuk-card">
+                                <div class="hasil-card-title">Bentuk Pecahan</div>
+                                <div class="hasil-formula-box large">
+                                    \[
+                                    \frac{4x^4+17x^3-3x+1}{x^2+4x-1}
+                                    =
+                                    4x^2+x+\frac{-2x+1}{x^2+4x-1}
+                                    \]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2228,6 +2985,133 @@
                 }
 
                 /* =========================
+                   CONTOH INTERAKTIF PEMBAGIAN BERSUSUN BARU
+                   ID HTML yang dibutuhkan:
+                   contohPembagianBersusun
+                   btnNextContohBersusun
+                   btnResetContohBersusun
+                   btnShowAllContohBersusun
+                   contohProgressText
+                   contohProgressPercent
+                   contohProgressFill
+                   .contoh-step-item
+                ========================== */
+                const contohBersusun = document.getElementById('contohPembagianBersusun');
+
+                const contohSteps = contohBersusun
+                    ? Array.from(contohBersusun.querySelectorAll('.contoh-step-item'))
+                    : [];
+
+                const btnNextContohBersusun = document.getElementById('btnNextContohBersusun');
+                const btnResetContohBersusun = document.getElementById('btnResetContohBersusun');
+                const btnShowAllContohBersusun = document.getElementById('btnShowAllContohBersusun');
+
+                const contohProgressText = document.getElementById('contohProgressText');
+                const contohProgressPercent = document.getElementById('contohProgressPercent');
+                const contohProgressFill = document.getElementById('contohProgressFill');
+
+                let contohCurrentStep = 0;
+
+                function updateContohProgress() {
+                    const total = contohSteps.length;
+                    const percent = total > 0 ? Math.round((contohCurrentStep / total) * 100) : 0;
+
+                    if (contohProgressText) {
+                        contohProgressText.textContent = contohCurrentStep + ' dari ' + total + ' langkah dibuka';
+                    }
+
+                    if (contohProgressPercent) {
+                        contohProgressPercent.textContent = percent + '%';
+                    }
+
+                    if (contohProgressFill) {
+                        contohProgressFill.style.width = percent + '%';
+                    }
+
+                    if (btnNextContohBersusun) {
+                        if (contohCurrentStep >= total) {
+                            btnNextContohBersusun.textContent = 'Semua Langkah Sudah Dibuka';
+                            btnNextContohBersusun.disabled = true;
+                        } else {
+                            btnNextContohBersusun.textContent = 'Buka Langkah ' + (contohCurrentStep + 1);
+                            btnNextContohBersusun.disabled = false;
+                        }
+                    }
+                }
+
+                function showContohStep(index, shouldScroll = true) {
+                    if (!contohSteps[index]) return;
+
+                    contohSteps[index].classList.add('show');
+                    renderMath(contohSteps[index]);
+
+                    if (shouldScroll) {
+                        contohSteps[index].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                    }
+                }
+
+                function resetContohBersusun() {
+                    contohCurrentStep = 0;
+
+                    contohSteps.forEach((step) => {
+                        step.classList.remove('show');
+                    });
+
+                    updateContohProgress();
+
+                    if (contohBersusun) {
+                        renderMath(contohBersusun);
+                    }
+                }
+
+                function showAllContohBersusun() {
+                    contohSteps.forEach((step) => {
+                        step.classList.add('show');
+                    });
+
+                    contohCurrentStep = contohSteps.length;
+                    updateContohProgress();
+
+                    if (contohBersusun) {
+                        renderMath(contohBersusun);
+                    }
+                }
+
+                if (btnNextContohBersusun) {
+                    btnNextContohBersusun.addEventListener('click', function () {
+                        if (contohCurrentStep < contohSteps.length) {
+                            showContohStep(contohCurrentStep, true);
+                            contohCurrentStep++;
+                            updateContohProgress();
+                        }
+                    });
+                }
+
+                if (btnResetContohBersusun) {
+                    btnResetContohBersusun.addEventListener('click', function () {
+                        resetContohBersusun();
+
+                        if (contohBersusun) {
+                            contohBersusun.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                }
+
+                if (btnShowAllContohBersusun) {
+                    btnShowAllContohBersusun.addEventListener('click', function () {
+                        showAllContohBersusun();
+                    });
+                }
+
+                resetContohBersusun();
+
+                /* =========================
                    Contoh interaktif / Mari Mencoba
                 ========================== */
                 const btnMulaiContoh = document.getElementById('btnMulaiContoh');
@@ -2265,169 +3149,169 @@
                 const feedbackText = {
                     1: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
-                        </p>
-                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
-                        </p>
-                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `
                     },
                     2: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
-                        </p>
-                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                        <p style="margin-bottom:0;">
-                            Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
+                                        </p>
+                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
-                        </p>
-                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
+                                        </p>
+                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `
                     },
                     3: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Sekarang kurangkan hasil perkalian dari pembilang semula.
-                        </p>
-                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                        <p style="margin-bottom:0;">
-                            Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Sekarang kurangkan hasil perkalian dari pembilang semula.
+                                        </p>
+                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
-                        </p>
-                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
+                                        </p>
+                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `
                     },
                     4: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Ulangi pola yang sama menggunakan sisa baru.
-                        </p>
-                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Ulangi pola yang sama menggunakan sisa baru.
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
-                        </p>
-                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                        </p>
+                                    </div>
+                                `
                     },
                     5: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
-                        </p>
-                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                        <p style="margin-bottom:0;">
-                            Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
+                                        </p>
+                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
-                        </p>
-                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
+                                        </p>
+                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
+                                        </p>
+                                    </div>
+                                `
                     },
                     6: {
                         benar: `
-                    <b>Benar ✅</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
-                        </p>
-                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                        <div class="rumus-box">$$s=4$$</div>
-                        <p style="margin-bottom:0;">
-                            Hasil akhir sudah tepat.
-                        </p>
-                    </div>
-                `,
+                                    <b>Benar ✅</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                        <div class="rumus-box">$$s=4$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Hasil akhir sudah tepat.
+                                        </p>
+                                    </div>
+                                `,
                         salah: `
-                    <b>Jawaban masih salah ❌</b>
-                    <div class="step-solution">
-                        <p style="margin-top:0;">
-                            Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
-                        </p>
-                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                        <div class="rumus-box">$$s=4$$</div>
-                        <p style="margin-bottom:0;">
-                            Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
-                        </p>
-                    </div>
-                `
+                                    <b>Jawaban masih salah ❌</b>
+                                    <div class="step-solution">
+                                        <p style="margin-top:0;">
+                                            Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
+                                        </p>
+                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                        <div class="rumus-box">$$s=4$$</div>
+                                        <p style="margin-bottom:0;">
+                                            Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
+                                        </p>
+                                    </div>
+                                `
                     }
                 };
 
@@ -2443,8 +3327,6 @@
                         .replace(/\}/g, '')
                         .replace(/\\left/g, '')
                         .replace(/\\right/g, '')
-
-                        /* pangkat unicode */
                         .replace(/⁰/g, '^0')
                         .replace(/¹/g, '^1')
                         .replace(/²/g, '^2')
@@ -2455,12 +3337,9 @@
                         .replace(/⁷/g, '^7')
                         .replace(/⁸/g, '^8')
                         .replace(/⁹/g, '^9')
-
-                        /* bentuk latex */
                         .replace(/\^\{(\d+)\}/g, '$1')
                         .replace(/\^\((\d+)\)/g, '$1')
                         .replace(/\^(\d+)/g, '$1')
-
                         .replace(/[()]/g, '');
                 }
 
@@ -2599,7 +3478,6 @@
                 /* =========================
                    LATIHAN SOAL
                 ========================== */
-
                 async function saveProgressMateri() {
                     const csrfToken = document
                         .querySelector('meta[name="csrf-token"]')

@@ -1,12 +1,18 @@
 /* =========================================================
    Mari Mencoba: Derajat Suatu Polinomial — p5.js RESPONSIVE
-   FIX:
-   - Desktop/tablet besar: soal kiri, angka jawaban kanan
-   - HP/tablet kecil: soal di atas, angka jawaban di bawah
-   - Canvas ikut lebar parent
-   - Tinggi canvas dihitung otomatis sesuai isi
-   - Tombol tidak keluar dari host
-   - Drag & drop tetap jalan
+   FIX FINAL:
+   - Jawaban benar:
+     1 = 5
+     2 = 9
+     3 = 1
+     4 = 7
+     5 = 6
+   - Benar = hijau
+   - Salah/kosong = merah
+   - Angka jawaban diacak di panel jawaban
+   - Bisa drag & drop di HP, tablet, laptop/PC
+   - Scroll halaman HP tetap bisa saat sentuh area kosong
+   - FIX: hasil/skor diletakkan di bawah kotak no. 5 dan di atas tombol
 ========================================================= */
 
 (function () {
@@ -20,19 +26,27 @@
     { text: "Derajat dari 6a²b⁴", answer: 6 },
   ];
 
+  const answerTokens = [5, 9, 1, 7, 6];
+
   const BG = [232, 245, 233];
   const PANEL = [250, 255, 250];
   const TEXT = [34, 51, 34];
   const MUTED = [110, 129, 110];
   const BORDER = [168, 188, 168];
+
   const OK = [40, 167, 69];
+  const OK_SOFT = [232, 248, 237];
+
   const ERR = [229, 62, 62];
+  const ERR_SOFT = [255, 235, 235];
 
   const sketch = (p) => {
     let tokens = [];
     let zones = [];
+
     let checkBtn;
     let resetBtn;
+
     let checked = false;
     let score = 0;
     let hostEl = null;
@@ -41,8 +55,8 @@
 
     let paddingX = 20;
     let startY = 92;
-    let gap = 68;
-    let zoneH = 56;
+    let gap = 80;
+    let zoneH = 70;
     let zoneW = 0;
     let zoneX = 0;
 
@@ -51,7 +65,10 @@
     let tokenPanelW = 0;
     let tokenPanelH = 0;
 
-    let btnY = 0;
+    let resultY = 0;
+    let btnYFinal = 0;
+
+    let touchBound = false;
 
     const getHostWidth = () => {
       hostEl = hostEl || document.getElementById(HOST_ID);
@@ -71,12 +88,12 @@
         this.y = y;
         this.w = 72;
         this.h = 44;
+
         this.dragging = false;
         this.offsetX = 0;
         this.offsetY = 0;
 
-        this.zone = null;
-        this.lastZone = null;
+        this.zoneIndex = null;
         this.home = p.createVector(x, y);
       }
 
@@ -94,27 +111,31 @@
         p.fill(TEXT);
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(isMobile ? 16 : 18);
-        p.text(this.value, this.x + this.w / 2, this.y + this.h / 2);
+        p.text(String(this.value), this.x + this.w / 2, this.y + this.h / 2);
       }
 
       contains(mx, my) {
         return (
-          mx > this.x &&
-          mx < this.x + this.w &&
-          my > this.y &&
-          my < this.y + this.h
+          mx >= this.x &&
+          mx <= this.x + this.w &&
+          my >= this.y &&
+          my <= this.y + this.h
         );
       }
 
       startDrag(mx, my) {
+        checked = false;
+        score = 0;
+
         this.dragging = true;
         this.offsetX = mx - this.x;
         this.offsetY = my - this.y;
 
-        if (this.zone) {
-          this.zone.token = null;
-          this.zone = null;
+        if (this.zoneIndex !== null && zones[this.zoneIndex]) {
+          zones[this.zoneIndex].token = null;
         }
+
+        this.zoneIndex = null;
       }
 
       drag(mx, my) {
@@ -122,6 +143,9 @@
 
         this.x = mx - this.offsetX;
         this.y = my - this.offsetY;
+
+        this.x = p.constrain(this.x, 0, p.width - this.w);
+        this.y = p.constrain(this.y, 0, p.height - this.h - 70);
       }
 
       endDrag() {
@@ -129,11 +153,11 @@
 
         this.dragging = false;
 
-        let bestZ = null;
+        let bestZone = null;
         let bestArea = 0;
 
-        for (let z of zones) {
-          const overlap = overlapArea(
+        zones.forEach((z) => {
+          const area = overlapArea(
             this.x,
             this.y,
             this.w,
@@ -144,38 +168,29 @@
             z.h
           );
 
-          if (overlap > bestArea) {
-            bestArea = overlap;
-            bestZ = z;
+          if (area > bestArea) {
+            bestArea = area;
+            bestZone = z;
           }
-        }
+        });
 
-        if (bestZ && bestArea > 10) {
-          if (!bestZ.token) {
-            snapToZone(this, bestZ);
-          } else {
-            const other = bestZ.token;
-
-            snapToZone(this, bestZ);
-
-            other.zone = null;
-            other.lastZone = null;
-            other.x = other.home.x;
-            other.y = other.home.y;
+        if (bestZone && bestArea > 10) {
+          if (bestZone.token && bestZone.token !== this) {
+            const oldToken = bestZone.token;
+            oldToken.zoneIndex = null;
+            returnToHome(oldToken);
           }
+
+          snapToZone(this, bestZone);
         } else {
-          if (this.lastZone) {
-            snapToZone(this, this.lastZone);
-          } else {
-            this.x = this.home.x;
-            this.y = this.home.y;
-          }
+          returnToHome(this);
         }
       }
     }
 
     class Zone {
-      constructor(label, answer, x, y, w, h) {
+      constructor(index, label, answer, x, y, w, h) {
+        this.index = index;
         this.label = label;
         this.answer = answer;
         this.x = x;
@@ -185,44 +200,72 @@
         this.token = null;
       }
 
+      isCorrect() {
+        if (!this.token) return false;
+        return parseInt(this.token.value, 10) === parseInt(this.answer, 10);
+      }
+
       draw() {
+        const correct = this.isCorrect();
+
         p.noStroke();
         p.fill(0, 0, 0, 30);
         p.rect(this.x + 3, this.y + 4, this.w, this.h, 14);
 
-        let bcol = BORDER;
-        let bweight = 2;
+        let borderColor = BORDER;
+        let fillColor = PANEL;
+        let borderWeight = 2;
 
         if (checked) {
-          if (this.token && parseInt(this.token.value, 10) === parseInt(this.answer, 10)) {
-            bcol = OK;
-            bweight = 3;
+          if (correct) {
+            borderColor = OK;
+            fillColor = OK_SOFT;
+            borderWeight = 4;
           } else {
-            bcol = ERR;
-            bweight = 3;
+            borderColor = ERR;
+            fillColor = ERR_SOFT;
+            borderWeight = 4;
           }
         }
 
-        p.stroke(bcol);
-        p.strokeWeight(bweight);
-        p.fill(PANEL);
+        p.stroke(borderColor);
+        p.strokeWeight(borderWeight);
+        p.fill(fillColor);
         p.rect(this.x, this.y, this.w, this.h, 14);
+
+        const answerText = this.token ? String(this.token.value) : "Seret angka";
+        const answerSpace = isMobile ? 98 : 135;
+        const labelMaxW = this.w - answerSpace - 30;
 
         p.noStroke();
         p.fill(TEXT);
         p.textAlign(p.LEFT, p.CENTER);
-        p.textSize(isMobile ? 13 : 16);
+        p.textSize(isMobile ? 12.5 : 15);
 
-        const answerText = this.token ? String(this.token.value) : "Seret angka";
-        const answerSpace = isMobile ? 86 : 120;
-        const labelMaxW = this.w - answerSpace - 24;
-
-        drawSingleLineText(this.label, this.x + 12, this.y + this.h / 2, labelMaxW);
+        drawWrappedText(
+          this.label,
+          this.x + 12,
+          this.y + this.h / 2,
+          labelMaxW,
+          isMobile ? 16 : 18,
+          2
+        );
 
         p.textAlign(p.RIGHT, p.CENTER);
-        p.fill(this.token ? TEXT : MUTED);
+
+        if (checked) {
+          p.fill(correct ? OK : ERR);
+        } else {
+          p.fill(this.token ? TEXT : MUTED);
+        }
+
         p.textSize(isMobile ? 13 : 15);
         p.text(answerText, this.x + this.w - 12, this.y + this.h / 2);
+
+        if (checked) {
+          p.textSize(isMobile ? 17 : 19);
+          p.text(correct ? "✓" : "×", this.x + this.w - 12, this.y + 18);
+        }
       }
     }
 
@@ -231,10 +274,12 @@
       const w = getHostWidth();
 
       isMobile = w < 650;
+
       paddingX = isMobile ? 12 : 24;
       startY = isMobile ? 86 : 96;
-      zoneH = isMobile ? 58 : 56;
-      gap = isMobile ? 66 : 70;
+
+      zoneH = isMobile ? 78 : 70;
+      gap = isMobile ? 88 : 82;
 
       if (!p._renderer) {
         const c = p.createCanvas(w, 600);
@@ -243,12 +288,17 @@
         p.resizeCanvas(w, p.height);
       }
 
+      setupCanvasTouch();
+
       if (hostEl) {
         hostEl.style.position = "relative";
         hostEl.style.width = "100%";
         hostEl.style.maxWidth = "100%";
         hostEl.style.overflow = "hidden";
         hostEl.style.boxSizing = "border-box";
+        hostEl.style.touchAction = "pan-y";
+        hostEl.style.userSelect = "none";
+        hostEl.style.webkitUserSelect = "none";
       }
 
       zones = [];
@@ -260,6 +310,7 @@
         for (let i = 0; i < questions.length; i++) {
           zones.push(
             new Zone(
+              i,
               `${i + 1}. ${questions[i].text} → Derajat =`,
               questions[i].answer,
               zoneX,
@@ -275,19 +326,19 @@
         tokenPanelX = paddingX;
         tokenPanelY = zonesBottom + 22;
         tokenPanelW = w - paddingX * 2;
-        tokenPanelH = 130;
+        tokenPanelH = 132;
       } else {
         const sideGap = 18;
 
         tokenPanelW = Math.min(240, Math.max(190, w * 0.24));
         zoneX = paddingX;
         zoneW = w - paddingX * 2 - tokenPanelW - sideGap;
-
         zoneW = Math.max(360, zoneW);
 
         for (let i = 0; i < questions.length; i++) {
           zones.push(
             new Zone(
+              i,
               `${i + 1}. ${questions[i].text}   →  Derajat =`,
               questions[i].answer,
               zoneX,
@@ -303,14 +354,21 @@
         tokenPanelH = zones[zones.length - 1].y + zoneH - startY;
       }
 
-      const contentBottom = Math.max(
-        zones[zones.length - 1].y + zoneH,
-        tokenPanelY + tokenPanelH
-      );
+      const zonesBottom = zones[zones.length - 1].y + zoneH;
+      const contentBottom = Math.max(zonesBottom, tokenPanelY + tokenPanelH);
 
-      const scoreSpace = checked ? 42 : 12;
-      const buttonSpace = 74;
-      const neededH = Math.ceil(contentBottom + scoreSpace + buttonSpace);
+      /*
+        HASIL DIBUAT AREA SENDIRI:
+        posisinya di bawah kotak terakhir/token panel,
+        dan tombol berada di bawah hasil.
+      */
+      resultY = contentBottom + 34;
+
+      const resultAreaH = checked ? 70 : 18;
+      const buttonGap = 18;
+      btnYFinal = contentBottom + resultAreaH + buttonGap;
+
+      const neededH = Math.ceil(btnYFinal + 58);
 
       p.resizeCanvas(w, neededH);
 
@@ -319,15 +377,111 @@
       }
 
       relayoutTokens();
+      restoreTokenZones();
       setupButtons();
     };
 
-    const relayoutTokens = () => {
-      const tokenValues = [5, 9, 1, 7, 6];
+    const setupCanvasTouch = () => {
+      if (!p.canvas) return;
 
+      const canvasEl = p.canvas;
+
+      canvasEl.style.width = "100%";
+      canvasEl.style.height = "auto";
+      canvasEl.style.display = "block";
+      canvasEl.style.touchAction = "pan-y";
+      canvasEl.style.userSelect = "none";
+      canvasEl.style.webkitUserSelect = "none";
+
+      if (touchBound) return;
+      touchBound = true;
+
+      canvasEl.addEventListener(
+        "touchstart",
+        function (e) {
+          const touch = e.touches && e.touches[0];
+          if (!touch) return;
+
+          const pos = getTouchPos(touch);
+
+          if (pos.y > btnYFinal - 8) return;
+
+          for (let i = tokens.length - 1; i >= 0; i--) {
+            if (tokens[i].contains(pos.x, pos.y)) {
+              e.preventDefault();
+
+              tokens[i].startDrag(pos.x, pos.y);
+
+              const t = tokens.splice(i, 1)[0];
+              tokens.push(t);
+
+              return;
+            }
+          }
+        },
+        { passive: false }
+      );
+
+      canvasEl.addEventListener(
+        "touchmove",
+        function (e) {
+          const activeToken = tokens.find((t) => t.dragging);
+
+          if (!activeToken) return;
+
+          const touch = e.touches && e.touches[0];
+          if (!touch) return;
+
+          e.preventDefault();
+
+          const pos = getTouchPos(touch);
+          activeToken.drag(pos.x, pos.y);
+        },
+        { passive: false }
+      );
+
+      canvasEl.addEventListener(
+        "touchend",
+        function (e) {
+          const activeToken = tokens.find((t) => t.dragging);
+
+          if (!activeToken) return;
+
+          e.preventDefault();
+          activeToken.endDrag();
+        },
+        { passive: false }
+      );
+
+      canvasEl.addEventListener(
+        "touchcancel",
+        function (e) {
+          const activeToken = tokens.find((t) => t.dragging);
+
+          if (!activeToken) return;
+
+          e.preventDefault();
+          activeToken.endDrag();
+        },
+        { passive: false }
+      );
+    };
+
+    const getTouchPos = (touch) => {
+      const rect = p.canvas.getBoundingClientRect();
+      const scaleX = p.width / rect.width;
+      const scaleY = p.height / rect.height;
+
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+      };
+    };
+
+    const relayoutTokens = () => {
       if (tokens.length === 0) {
-        shuffleArray(tokenValues);
-        tokens = tokenValues.map((v) => new Token(v, 0, 0));
+        const shuffled = shuffleArray([...answerTokens]);
+        tokens = shuffled.map((v) => new Token(v, 0, 0));
       }
 
       const tokenW = isMobile ? 60 : 72;
@@ -342,10 +496,17 @@
       let cols;
 
       if (isMobile) {
-        cols = Math.min(tokens.length, Math.max(2, Math.floor((tokenPanelW - 24 + gapT) / (tokenW + gapT))));
+        cols = Math.min(
+          tokens.length,
+          Math.max(2, Math.floor((tokenPanelW - 24 + gapT) / (tokenW + gapT)))
+        );
       } else {
         const availableH = Math.max(1, tokenPanelH - 54);
-        const rowsByHeight = Math.max(1, Math.floor((availableH + gapT) / (tokenH + gapT)));
+        const rowsByHeight = Math.max(
+          1,
+          Math.floor((availableH + gapT) / (tokenH + gapT))
+        );
+
         cols = Math.ceil(tokens.length / rowsByHeight);
         cols = Math.min(2, Math.max(1, cols));
       }
@@ -362,20 +523,27 @@
       tokens.forEach((t, i) => {
         const c = i % cols;
         const r = Math.floor(i / cols);
+
         const x = baseX + c * (tokenW + gapT);
         const y = baseY + r * (tokenH + gapT);
 
         t.home.set(x, y);
 
-        if (!t.dragging && !t.zone) {
+        if (!t.dragging && t.zoneIndex === null) {
           t.x = x;
           t.y = y;
         }
       });
+    };
 
+    const restoreTokenZones = () => {
       zones.forEach((z) => {
-        if (z.token) {
-          snapToZone(z.token, z);
+        z.token = null;
+      });
+
+      tokens.forEach((t) => {
+        if (t.zoneIndex !== null && zones[t.zoneIndex]) {
+          snapToZone(t, zones[t.zoneIndex]);
         }
       });
     };
@@ -405,25 +573,23 @@
         const btnW = Math.max(120, (w - paddingX * 2 - 10) / 2);
         const gapBtn = 10;
         const left0 = paddingX;
-        btnY = p.height - 58;
 
         setBtnSize(checkBtn, btnW, 14);
         setBtnSize(resetBtn, btnW, 14);
 
-        checkBtn.position(left0, btnY);
-        resetBtn.position(left0 + btnW + gapBtn, btnY);
+        checkBtn.position(left0, btnYFinal);
+        resetBtn.position(left0 + btnW + gapBtn, btnYFinal);
       } else {
         const btnW = 160;
         const gapBtn = 12;
         const totalBtn = btnW * 2 + gapBtn;
         const left0 = (w - totalBtn) / 2;
-        btnY = p.height - 54;
 
         setBtnSize(checkBtn, btnW, 15);
         setBtnSize(resetBtn, btnW, 15);
 
-        checkBtn.position(left0, btnY);
-        resetBtn.position(left0 + btnW + gapBtn, btnY);
+        checkBtn.position(left0, btnYFinal);
+        resetBtn.position(left0 + btnW + gapBtn, btnYFinal);
       }
     };
 
@@ -467,58 +633,65 @@
 
       zones.forEach((z) => z.draw());
 
-      const idle = tokens.filter((t) => !t.dragging);
-      const dragging = tokens.filter((t) => t.dragging);
+      const idleTokens = tokens.filter((t) => !t.dragging);
+      const draggingTokens = tokens.filter((t) => t.dragging);
 
-      idle.forEach((t) => t.draw());
-      dragging.forEach((t) => t.draw());
+      idleTokens.forEach((t) => t.draw());
+      draggingTokens.forEach((t) => t.draw());
 
-      if (checked) {
-        p.fill(TEXT);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(isMobile ? 15 : 18);
-        p.text(`Skor: ${score} / ${zones.length}`, p.width / 2, p.height - 86);
+      drawResultArea();
+    };
 
-        if (score === zones.length) {
-          confetti();
-        }
+    const drawResultArea = () => {
+      if (!checked) return;
+
+      p.noStroke();
+      p.textAlign(p.CENTER, p.CENTER);
+
+      if (score === zones.length) {
+        p.fill(OK);
+        p.textSize(isMobile ? 14 : 17);
+        p.text("Semua jawaban benar!", p.width / 2, resultY);
+      }
+
+      p.fill(TEXT);
+      p.textSize(isMobile ? 15 : 18);
+      p.text(`Skor: ${score} / ${zones.length}`, p.width / 2, resultY + 28);
+
+      if (score === zones.length) {
+        confetti();
       }
     };
 
     p.mousePressed = () => {
-      if (p.mouseY > p.height - 75) return;
+      if (p.mouseY > btnYFinal - 8) return;
 
       for (let i = tokens.length - 1; i >= 0; i--) {
         if (tokens[i].contains(p.mouseX, p.mouseY)) {
           tokens[i].startDrag(p.mouseX, p.mouseY);
+
           const t = tokens.splice(i, 1)[0];
           tokens.push(t);
+
           break;
         }
       }
     };
 
     p.mouseDragged = () => {
-      tokens.forEach((t) => t.drag(p.mouseX, p.mouseY));
+      tokens.forEach((t) => {
+        if (t.dragging) {
+          t.drag(p.mouseX, p.mouseY);
+        }
+      });
     };
 
     p.mouseReleased = () => {
-      tokens.forEach((t) => t.endDrag());
-    };
-
-    p.touchStarted = () => {
-      p.mousePressed();
-      return false;
-    };
-
-    p.touchMoved = () => {
-      p.mouseDragged();
-      return false;
-    };
-
-    p.touchEnded = () => {
-      p.mouseReleased();
-      return false;
+      tokens.forEach((t) => {
+        if (t.dragging) {
+          t.endDrag();
+        }
+      });
     };
 
     const checkAnswers = () => {
@@ -526,11 +699,15 @@
       score = 0;
 
       zones.forEach((z) => {
-        if (z.token && parseInt(z.token.value, 10) === parseInt(z.answer, 10)) {
+        if (z.isCorrect()) {
           score++;
         }
       });
 
+      /*
+        Rebuild layout setelah checked=true supaya area hasil muncul
+        di bawah kotak no.5 dan tombol turun ke bawah.
+      */
       buildLayout();
     };
 
@@ -542,14 +719,17 @@
         z.token = null;
       });
 
-      tokens.forEach((t) => {
-        t.zone = null;
-        t.lastZone = null;
-        t.x = t.home.x;
-        t.y = t.home.y;
-      });
+      const shuffled = shuffleArray([...answerTokens]);
+
+      tokens = shuffled.map((v) => new Token(v, 0, 0));
 
       buildLayout();
+    };
+
+    const returnToHome = (token) => {
+      token.zoneIndex = null;
+      token.x = token.home.x;
+      token.y = token.home.y;
     };
 
     const setBtnSize = (btn, w, fontSize) => {
@@ -574,6 +754,7 @@
     const overlapArea = (x1, y1, w1, h1, x2, y2, w2, h2) => {
       const xo = Math.max(0, Math.min(x1 + w1, x2 + w2) - Math.max(x1, x2));
       const yo = Math.max(0, Math.min(y1 + h1, y2 + h2) - Math.max(y1, y2));
+
       return xo * yo;
     };
 
@@ -581,16 +762,8 @@
       token.x = zone.x + zone.w - token.w - 12;
       token.y = zone.y + (zone.h - token.h) / 2;
 
-      token.zone = zone;
-      token.lastZone = zone;
+      token.zoneIndex = zone.index;
       zone.token = token;
-    };
-
-    const shuffleArray = (a) => {
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
     };
 
     const drawTokenPanel = () => {
@@ -615,18 +788,53 @@
       p.text("Angka jawaban:", x + w / 2, y + 24);
     };
 
-    const drawSingleLineText = (txt, x, y, maxW) => {
-      let out = txt;
+    const drawWrappedText = (txt, x, centerY, maxW, lineH, maxLines) => {
+      const words = txt.split(" ");
+      const lines = [];
+      let line = "";
 
-      while (p.textWidth(out) > maxW && out.length > 4) {
-        out = out.slice(0, -2);
+      for (let i = 0; i < words.length; i++) {
+        const testLine = line ? line + " " + words[i] : words[i];
+
+        if (p.textWidth(testLine) <= maxW) {
+          line = testLine;
+        } else {
+          if (line) lines.push(line);
+          line = words[i];
+        }
       }
 
-      if (out !== txt) {
-        out = out.slice(0, -3) + "...";
+      if (line) lines.push(line);
+
+      const finalLines = lines.slice(0, maxLines);
+
+      if (lines.length > maxLines) {
+        let last = finalLines[maxLines - 1];
+
+        while (p.textWidth(last + "...") > maxW && last.length > 3) {
+          last = last.slice(0, -1);
+        }
+
+        finalLines[maxLines - 1] = last + "...";
       }
 
-      p.text(out, x, y);
+      const totalH = finalLines.length * lineH;
+      const startTextY = centerY - totalH / 2 + lineH / 2;
+
+      finalLines.forEach((ln, idx) => {
+        p.text(ln, x, startTextY + idx * lineH);
+      });
+    };
+
+    const shuffleArray = (arr) => {
+      const a = [...arr];
+
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+
+      return a;
     };
 
     const confetti = () => {

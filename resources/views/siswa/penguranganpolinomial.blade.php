@@ -2710,7 +2710,7 @@
                             data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
-                                Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta.
+                                Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta (gunakan tanda kurung untuk membedakan kelompoknya).
                             </div>
                             <input type="text" class="latihan-input" placeholder="">
                             <div class="latihan-actions">
@@ -2760,7 +2760,7 @@
                             data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
-                                Kelompokkan suku $y^3$, suku $y$, dan konstanta.
+                                Kelompokkan suku $y^3$, suku $y$, dan konstanta (gunakan tanda kurung untuk membedakan kelompok).
                             </div>
                             <input type="text" class="latihan-input" placeholder="">
                             <div class="latihan-actions">

@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                    delimiters: [
-                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                    ]
-                                                                                                });"></script>
+                                                                                                            delimiters: [
+                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                            ]
+                                                                                                        });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -447,6 +447,11 @@
             box-sizing: border-box;
         }
 
+        /*
+            PENTING UNTUK HP:
+            pan-y membuat halaman tetap bisa discroll ke atas/bawah.
+            Jangan pakai touch-action: none di sini.
+        */
         .p5-host {
             width: 100%;
             max-width: 100%;
@@ -458,12 +463,22 @@
             border: 2px solid var(--outer-line);
             background: #fff;
             position: relative;
+
+            touch-action: pan-y;
+            -ms-touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .p5-host canvas {
             display: block;
             width: 100% !important;
             height: auto !important;
+
+            touch-action: pan-y;
+            -ms-touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .p5-host button {
@@ -1071,6 +1086,7 @@
                 <div class="summary" id="quizSummary"></div>
             </div>
         </div>
+
         {{-- BAGIAN LANJUTAN: AWALNYA TERSEMBUNYI --}}
         <div id="bagianLanjutan" class="locked">
 
@@ -1101,8 +1117,8 @@
                         <div class="contoh-row">
                             <div class="mono-box">$$x^2y^7$$</div>
                             <div class="explain" id="ex2">
-                                Derajat monomial ini adalah <b>9</b>, karena jumlah pangkat variabel $x$ dan $y$ adalah $2 +
-                                7 = 9$.
+                                Derajat monomial ini adalah <b>9</b>, karena jumlah pangkat variabel $x$ dan $y$
+                                adalah $2 + 7 = 9$.
                             </div>
                         </div>
 
@@ -1116,8 +1132,8 @@
                         <div class="contoh-row" style="margin-bottom:0;">
                             <div class="mono-box">$$2.17x^3yz^3$$</div>
                             <div class="explain" id="ex4">
-                                Derajat monomial ini adalah <b>7</b>, karena jumlah pangkat variabel $x$, $y$, dan $z$
-                                adalah $3 + 1 + 3 = 7$.
+                                Derajat monomial ini adalah <b>7</b>, karena jumlah pangkat variabel $x$, $y$,
+                                dan $z$ adalah $3 + 1 + 3 = 7$.
                             </div>
                         </div>
                     </div>
@@ -1156,7 +1172,7 @@
                 </div>
             </div>
 
-            {{-- CARD 5: Contoh Soal (INTERAKTIF + LOCK) --}}
+            {{-- CARD 5: Contoh Soal --}}
             <div class="card card-example">
                 <div class="title-box">📘 Contoh Soal</div>
 
@@ -1252,6 +1268,7 @@
                     yaitu pangkat tertinggi dari variabel yang muncul dalam polinomial tersebut.
                 </p>
             </div>
+
             {{-- CARD 7: Latihan --}}
             <div class="card card-try latihan-card-fit">
                 <div class="title-box">🎯 Latihan</div>
@@ -1342,7 +1359,6 @@
 
                         <div class="lat-feedback" id="fb-mystery"></div>
                         <div class="lat-status-done" id="done3"></div>
-
                     </div>
 
                     {{-- SOAL 4 --}}
@@ -1369,7 +1385,6 @@
 
                         <div class="lat-feedback" id="fb-detect"></div>
                         <div class="lat-status-done" id="done4"></div>
-
                     </div>
 
                     <div class="lat-final" id="latihanFinalScore">Selesaikan latihan secara berurutan.</div>
@@ -1378,713 +1393,736 @@
         </div>
     </div>
 
-    {{-- p5.js + interaktif --}}
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.min.js"></script>
+  {{-- p5.js + interaktif --}}
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.min.js"></script>
 
-    <!-- Save Progress -->
-    <script>
-        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
-    </script>
+<script>
+    window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
+</script>
 
-    {{-- interaktif lama --}}
+{{-- pakai versi agar HP tidak membaca cache JS lama --}}
+<script src="{{ asset('js/interaktif1b.js?v=16') }}"></script>
 
-    <script src="{{ asset('js/interaktif1b.js') }}"></script>
-    <script>
-        (function () {
-            // ===== QUIZ eksplorasi: semua soal harus DIJAWAB, tidak harus benar =====
-            const quiz = document.getElementById("quiz3");
-            const qitems = quiz ? Array.from(quiz.querySelectorAll(".qitem")) : [];
-            const summary = document.getElementById("quizSummary");
-            const bagianLanjutan = document.getElementById("bagianLanjutan");
+<script>
+    (function () {
+        // ===== QUIZ EKSPLORASI =====
+        const quiz = document.getElementById("quiz3");
+        const qitems = quiz ? Array.from(quiz.querySelectorAll(".qitem")) : [];
+        const summary = document.getElementById("quizSummary");
+        const bagianLanjutan = document.getElementById("bagianLanjutan");
 
-            const unlockMateri = () => {
-                if (!bagianLanjutan) return;
-                bagianLanjutan.classList.add("show");
-                requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-            };
+        const unlockMateri = () => {
+            if (!bagianLanjutan) return;
 
-            const updateSummary = () => {
-                const done = qitems.filter(q => q.dataset.done === "1").length;
+            bagianLanjutan.classList.add("show");
 
-                if (summary) {
-                    if (done < qitems.length) {
-                        summary.textContent = `Progress eksplorasi: ${done}/${qitems.length}`;
-                    } else {
-                        summary.textContent = `Semua soal sudah dijawab.`;
-                    }
-                }
-
-                if (qitems.length > 0 && done === qitems.length) {
-                    unlockMateri();
-                }
-            };
-
-            qitems.forEach(qitem => {
-                const terms = qitem.querySelectorAll(".term");
-                const feedback = qitem.querySelector(".feedback");
-
-                const reset = () => {
-                    terms.forEach(t => t.classList.remove("correct", "wrong"));
-                    if (feedback) {
-                        feedback.classList.remove("ok", "no");
-                        feedback.textContent = "";
-                    }
-                };
-
-                terms.forEach(t => {
-                    t.addEventListener("click", () => {
-                        reset();
-
-                        const isCorrect = t.dataset.correct === "1";
-                        qitem.dataset.done = "1";
-
-                        if (isCorrect) {
-                            t.classList.add("correct");
-                            if (feedback) {
-                                feedback.classList.add("ok");
-                                feedback.textContent = "✅ Benar!";
-                            }
-                        } else {
-                            t.classList.add("wrong");
-                            if (feedback) {
-                                feedback.classList.add("no");
-                                feedback.textContent = "❌ Salah!";
-                            }
-                        }
-
-                        updateSummary();
-                    });
-                });
+            requestAnimationFrame(() => {
+                window.dispatchEvent(new Event("resize"));
             });
+        };
 
-            updateSummary();
+        const updateSummary = () => {
+            const done = qitems.filter(q => q.dataset.done === "1").length;
 
-            // ===== CONTOH: toggle (bisa banyak terbuka) =====
-            const pills = Array.from(document.querySelectorAll(".pill-num"));
-            const btnReset = document.getElementById("contohReset");
-
-            pills.forEach(p => {
-                p.addEventListener("click", () => {
-                    const id = p.dataset.target;
-                    const target = document.getElementById(id);
-                    if (!target) return;
-
-                    const willOpen = !target.classList.contains("show");
-                    target.classList.toggle("show");
-                    p.classList.toggle("active", willOpen);
-
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                });
-            });
-
-            if (btnReset) {
-                btnReset.addEventListener("click", () => {
-                    pills.forEach(p => p.classList.remove("active"));
-                    document.querySelectorAll(".explain").forEach(ex => ex.classList.remove("show"));
-                });
-            }
-
-            // ===== TOGGLE PENYELESAIAN (ACCORDION) =====
-            const solBoxes = Array.from(document.querySelectorAll(".sol-box"));
-            const solContents = Array.from(document.querySelectorAll(".sol-content"));
-            const solUnlockAll = document.getElementById("solUnlockAll");
-            let allSolved = false;
-
-            const checkAllSolved = () => {
-                const solQuiz = document.getElementById("solQuiz");
-                if (!solQuiz) return false;
-                const items = Array.from(solQuiz.querySelectorAll(".sol-quiz-item"));
-                return items.length > 0 && items.every(it => it.dataset.done === "1");
-            };
-
-            solBoxes.forEach(box => {
-                box.addEventListener("click", () => {
-                    if (!allSolved) return;
-
-                    const id = box.dataset.target;
-                    const content = document.getElementById(id);
-                    if (!content) return;
-
-                    const isOpen = content.classList.contains("show");
-
-                    solContents.forEach(c => c.classList.remove("show"));
-                    solBoxes.forEach(b => b.classList.remove("active"));
-
-                    if (!isOpen) {
-                        content.classList.add("show");
-                        box.classList.add("active");
-                    }
-
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                });
-            });
-
-            // ===== INTERAKTIF CONTOH SOAL: OTOMATIS TANPA TOMBOL CEK =====
-            const solQuiz = document.getElementById("solQuiz");
-            if (solQuiz) {
-                const items = Array.from(solQuiz.querySelectorAll(".sol-quiz-item"));
-
-                const openSolution = (id) => {
-                    const content = document.getElementById(id);
-                    const box = solBoxes.find(b => b.dataset.target === id);
-                    if (!content) return;
-
-                    solContents.forEach(c => c.classList.remove("show"));
-                    solBoxes.forEach(b => b.classList.remove("active"));
-
-                    content.classList.add("show");
-
-                    if (allSolved && box) box.classList.add("active");
-
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                    content.scrollIntoView({ behavior: "smooth", block: "start" });
-                };
-
-                items.forEach(item => {
-                    const ans = parseInt(item.dataset.answer, 10);
-                    const solId = item.dataset.sol;
-
-                    const input = item.querySelector(".sol-input");
-                    const btnShow = item.querySelector(".sol-btn.show");
-                    const fb = item.querySelector(".sol-feedback");
-
-                    const setFeedback = (ok, text) => {
-                        if (!fb) return;
-                        fb.classList.remove("ok", "no");
-                        fb.classList.add(ok ? "ok" : "no");
-                        fb.textContent = text;
-                    };
-
-                    const checkAuto = () => {
-                        const raw = (input.value || "").trim();
-
-                        if (raw === "") {
-                            item.dataset.done = "0";
-                            btnShow.disabled = true;
-                            if (fb) {
-                                fb.classList.remove("ok", "no");
-                                fb.textContent = "";
-                            }
-                            return;
-                        }
-
-                        const val = parseInt(raw, 10);
-
-                        if (Number.isNaN(val)) {
-                            item.dataset.done = "0";
-                            btnShow.disabled = true;
-                            setFeedback(false, "❌ Salah!");
-                            return;
-                        }
-
-                        if (val === ans) {
-                            item.dataset.done = "1";
-                            btnShow.disabled = false;
-                            setFeedback(true, "✅ Benar! Penyelesaian terbuka.");
-
-                            if (checkAllSolved()) {
-                                allSolved = true;
-                                if (solUnlockAll) solUnlockAll.style.display = "block";
-                                requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                            }
-                        } else {
-                            item.dataset.done = "0";
-                            btnShow.disabled = true;
-                            setFeedback(false, "❌ Salah!");
-                        }
-                    };
-
-                    input.addEventListener("input", checkAuto);
-                    input.addEventListener("change", checkAuto);
-
-                    btnShow.addEventListener("click", () => {
-                        if (btnShow.disabled) return;
-                        openSolution(solId);
-                    });
-                });
-            }
-        })();
-    </script>
-
-
-    <script>
-        window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
-    </script>
-
-    <script>
-        async function saveProgressMateri() {
-            const csrfToken = document
-                .querySelector('meta[name="csrf-token"]')
-                ?.getAttribute("content");
-
-            if (!window.completeMateriUrl || !csrfToken) {
-                console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
-                return false;
-            }
-
-            try {
-                const response = await fetch(window.completeMateriUrl, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": csrfToken,
-                        "X-Requested-With": "XMLHttpRequest",
-                        "Accept": "application/json",
-                    },
-                    body: JSON.stringify({}),
-                });
-
-                return response.ok;
-            } catch (error) {
-                console.error(error);
-                return false;
-            }
-        }
-
-        function bukaNextButton() {
-            const nextBtn = document.getElementById("nextMateriBtn");
-            if (!nextBtn) return;
-
-            const url = nextBtn.dataset.nextUrl;
-            if (!url) return;
-
-            const link = document.createElement("a");
-            link.href = url;
-            link.id = "nextMateriBtn";
-            link.className = "btn-nav next-btn";
-            link.textContent = "Next →";
-
-            nextBtn.replaceWith(link);
-        }
-
-        // ===== LATIHAN SOAL =====
-        (function () {
-            const latihan1 = document.getElementById("latihan1");
-            const latihan2 = document.getElementById("latihan2");
-            const latihan3 = document.getElementById("latihan3");
-            const latihan4 = document.getElementById("latihan4");
-
-            const btnCheck1 = document.getElementById("btnCheck1");
-            const btnCheck2 = document.getElementById("btnCheck2");
-            const btnCheck3 = document.getElementById("btnCheck3");
-            const btnCheck4 = document.getElementById("btnCheck4");
-
-            const tfSelects = Array.from(document.querySelectorAll(".tf1"));
-            const fbTrueFalse = document.getElementById("fb-truefalse");
-            const fbWinner = document.getElementById("fb-winner");
-            const fbMystery = document.getElementById("fb-mystery");
-            const fbDetect = document.getElementById("fb-detect");
-            const finalScore = document.getElementById("latihanFinalScore");
-
-            const done1 = document.getElementById("done1");
-            const done2 = document.getElementById("done2");
-            const done3 = document.getElementById("done3");
-            const done4 = document.getElementById("done4");
-
-            const lock2 = document.getElementById("lock2");
-            const lock3 = document.getElementById("lock3");
-            const lock4 = document.getElementById("lock4");
-
-            const winnerTerm = document.getElementById("winnerTerm");
-            const winnerDegree = document.getElementById("winnerDegree");
-            const mysteryDegree = document.getElementById("mysteryDegree");
-            const detectHighest = document.getElementById("detectHighest");
-            const detectPoly = document.getElementById("detectPoly");
-
-            const setFb = (el, ok, html) => {
-                if (!el) return;
-                el.classList.remove("ok", "no");
-                el.classList.add(ok ? "ok" : "no");
-                el.innerHTML = html;
-            };
-
-            const setDoneText = (el, text) => {
-                if (!el) return;
-                el.textContent = text;
-            };
-
-            /* =========================
-               NORMALISASI JAWABAN PANGKAT
-               Menerima:
-               3x5, 3x^5, 3x⁵
-            ========================== */
-            const normalize = (s) =>
-                (s || "")
-                    .toLowerCase()
-                    .trim()
-                    .replace(/\s+/g, "")
-                    .replace(/×/g, "x")
-                    .replace(/–/g, "-")
-                    .replace(/−/g, "-")
-                    .replace(/\+\-/g, "-");
-
-            const superscriptToNormal = (s) => {
-                const map = {
-                    "⁰": "0",
-                    "¹": "1",
-                    "²": "2",
-                    "³": "3",
-                    "⁴": "4",
-                    "⁵": "5",
-                    "⁶": "6",
-                    "⁷": "7",
-                    "⁸": "8",
-                    "⁹": "9",
-                    "⁻": "-"
-                };
-
-                return (s || "").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (match) => {
-                    return "^" + match.split("").map(ch => map[ch] || "").join("");
-                });
-            };
-
-            const normalizePoly = (raw) => {
-                let s = normalize(raw);
-                if (!s) return "";
-
-                s = superscriptToNormal(s);
-
-                s = s
-                    .replace(/\*\*/g, "^")
-
-                    /* x(5), y(2), a(3) menjadi x^5, y^2, a^3 */
-                    .replace(/([a-z])\((-?\d+)\)/g, "$1^$2")
-
-                    /* x5, y2, a3 menjadi x^5, y^2, a^3 */
-                    .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
-                        const prev = full[offset - 1] || "";
-                        if (prev === "^") return match;
-                        return `${varName}^${power}`;
-                    })
-
-                    .replace(/\+\-/g, "-")
-                    .replace(/^\+/, "")
-
-                    /* 1x menjadi x */
-                    .replace(/(^|[+\-])1([a-z])/g, "$1$2")
-
-                    /* -1x menjadi -x */
-                    .replace(/(^|[+\-])-1([a-z])/g, "$1-$2")
-
-                    /* x^1 menjadi x */
-                    .replace(/\^1(?!\d)/g, "")
-
-                    /* x^02 menjadi x^2 */
-                    .replace(/\^0+(\d+)/g, "^$1");
-
-                return s;
-            };
-
-            const unlockSection = (section, lockEl) => {
-                if (!section) return;
-                section.classList.remove("disabled");
-                section.dataset.unlocked = "1";
-                if (lockEl) lockEl.style.display = "none";
-            };
-
-            const lockSection = (section, lockEl, message) => {
-                if (!section) return;
-                section.classList.add("disabled");
-                section.dataset.unlocked = "0";
-                section.dataset.done = "0";
-                if (lockEl) {
-                    lockEl.style.display = "block";
-                    lockEl.textContent = message;
-                }
-            };
-
-            const updateFinalScore = () => {
-                const score =
-                    (latihan1?.dataset.done === "1" ? 1 : 0) +
-                    (latihan2?.dataset.done === "1" ? 1 : 0) +
-                    (latihan3?.dataset.done === "1" ? 1 : 0) +
-                    (latihan4?.dataset.done === "1" ? 1 : 0);
-
-                if (!finalScore) return;
-
-                if (score < 4) {
-                    finalScore.innerHTML = `Progress latihan: ${score}/4 soal selesai benar.`;
+            if (summary) {
+                if (done < qitems.length) {
+                    summary.textContent = `Progress eksplorasi: ${done}/${qitems.length}`;
                 } else {
-                    finalScore.innerHTML = `🎉 Hebat! Semua soal latihan selesai benar (4/4).`;
+                    summary.textContent = "Semua soal sudah dijawab.";
+                }
+            }
+
+            if (qitems.length > 0 && done === qitems.length) {
+                unlockMateri();
+            }
+        };
+
+        qitems.forEach(qitem => {
+            const terms = qitem.querySelectorAll(".term");
+            const feedback = qitem.querySelector(".feedback");
+
+            const reset = () => {
+                terms.forEach(t => t.classList.remove("correct", "wrong"));
+
+                if (feedback) {
+                    feedback.classList.remove("ok", "no");
+                    feedback.textContent = "";
                 }
             };
 
-            const resetSoal2 = () => {
-                if (winnerTerm) winnerTerm.value = "";
-                if (winnerDegree) winnerDegree.value = "";
-                if (fbWinner) {
-                    fbWinner.innerHTML = "";
-                    fbWinner.classList.remove("ok", "no");
-                }
-                setDoneText(done2, "");
-                lockSection(latihan2, lock2, "🔒 Selesaikan Soal 1 dengan benar terlebih dahulu.");
-            };
+            terms.forEach(t => {
+                t.addEventListener("click", () => {
+                    reset();
 
-            const resetSoal3 = () => {
-                if (mysteryDegree) mysteryDegree.value = "";
-                if (fbMystery) {
-                    fbMystery.innerHTML = "";
-                    fbMystery.classList.remove("ok", "no");
-                }
-                setDoneText(done3, "");
-                lockSection(latihan3, lock3, "🔒 Selesaikan Soal 2 dengan benar terlebih dahulu.");
-            };
+                    const isCorrect = t.dataset.correct === "1";
+                    qitem.dataset.done = "1";
 
-            const resetSoal4 = () => {
-                if (detectHighest) detectHighest.value = "";
-                if (detectPoly) detectPoly.value = "";
-                if (fbDetect) {
-                    fbDetect.innerHTML = "";
-                    fbDetect.classList.remove("ok", "no");
-                }
-                setDoneText(done4, "");
-                lockSection(latihan4, lock4, "🔒 Selesaikan Soal 3 dengan benar terlebih dahulu.");
-            };
+                    if (isCorrect) {
+                        t.classList.add("correct");
 
-            // Kondisi awal
-            if (latihan1) {
-                latihan1.dataset.unlocked = "1";
-            }
-
-            resetSoal2();
-            resetSoal3();
-            resetSoal4();
-
-            // ===== SOAL 1 =====
-            if (btnCheck1) {
-                btnCheck1.addEventListener("click", () => {
-                    let allAnswered = true;
-                    let tfCorrect = 0;
-
-                    tfSelects.forEach(sel => {
-                        if (!sel.value) allAnswered = false;
-                        if (sel.value && sel.value === sel.dataset.answer) {
-                            tfCorrect++;
-                        }
-                    });
-
-                    if (!allAnswered) {
-                        setFb(
-                            fbTrueFalse,
-                            false,
-                            `⚠️ Pilih semua jawaban terlebih dahulu.`
-                        );
-                        return;
-                    }
-
-                    if (tfCorrect === 2) {
-                        latihan1.dataset.done = "1";
-                        setDoneText(done1, "Soal 1 selesai.");
-                        setFb(
-                            fbTrueFalse,
-                            true,
-                            `
-                            <div>✅ Semua jawaban benar.</div>
-                            <div><b>Penjelasan:</b></div>
-                            <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
-                            <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
-                            `
-                        );
-
-                        unlockSection(latihan2, lock2);
-                    } else {
-                        latihan1.dataset.done = "0";
-                        setDoneText(done1, "");
-                        setFb(
-                            fbTrueFalse,
-                            false,
-                            `
-                            <div>❌ Jawaban Soal 1 belum tepat.</div>
-                            <div><b>Penjelasan jawaban benar:</b></div>
-                            <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
-                            <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
-                            `
-                        );
-
-                        resetSoal2();
-                        resetSoal3();
-                        resetSoal4();
-                    }
-
-                    updateFinalScore();
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                });
-            }
-
-            // ===== SOAL 2 =====
-            if (btnCheck2) {
-                btnCheck2.addEventListener("click", () => {
-                    if (!latihan2 || latihan2.dataset.unlocked !== "1") return;
-
-                    if (!winnerTerm.value || !winnerDegree.value) {
-                        setFb(
-                            fbWinner,
-                            false,
-                            `⚠️ Lengkapi semua jawaban terlebih dahulu.`
-                        );
-                        return;
-                    }
-
-                    const winnerOk =
-                        winnerTerm &&
-                        winnerDegree &&
-                        normalizePoly(winnerTerm.value) === normalizePoly("3x^5") &&
-                        parseInt(winnerDegree.value || "", 10) === 5;
-
-                    if (winnerOk) {
-                        latihan2.dataset.done = "1";
-                        setDoneText(done2, "Soal 2 selesai.");
-                        setFb(
-                            fbWinner,
-                            true,
-                            `
-                            <div>✅ Jawaban benar.</div>
-                            <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
-                            `
-                        );
-
-                        unlockSection(latihan3, lock3);
-                    } else {
-                        latihan2.dataset.done = "0";
-                        setDoneText(done2, "");
-                        setFb(
-                            fbWinner,
-                            false,
-                            `
-                            <div>❌ Soal 2 belum tepat.</div>
-                            <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
-                            `
-                        );
-
-                        resetSoal3();
-                        resetSoal4();
-                    }
-
-                    updateFinalScore();
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                });
-            }
-
-            // ===== SOAL 3 =====
-            if (btnCheck3) {
-                btnCheck3.addEventListener("click", () => {
-                    if (!latihan3 || latihan3.dataset.unlocked !== "1") return;
-
-                    if (!mysteryDegree.value) {
-                        setFb(
-                            fbMystery,
-                            false,
-                            `⚠️ Isi jawaban terlebih dahulu.`
-                        );
-                        return;
-                    }
-
-                    const mysteryOk =
-                        mysteryDegree &&
-                        parseInt(mysteryDegree.value || "", 10) === 6;
-
-                    if (mysteryOk) {
-                        latihan3.dataset.done = "1";
-                        setDoneText(done3, "Soal 3 selesai.");
-                        setFb(
-                            fbMystery,
-                            true,
-                            `
-                            <div>✅ Jawaban benar.</div>
-                            <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
-                            `
-                        );
-                        unlockSection(latihan4, lock4);
-                    } else {
-                        latihan3.dataset.done = "0";
-                        setDoneText(done3, "");
-                        setFb(
-                            fbMystery,
-                            false,
-                            `
-                            <div>❌ Soal 3 belum tepat.</div>
-                            <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
-                            `
-                        );
-
-                        resetSoal4();
-                    }
-
-                    updateFinalScore();
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-                });
-            }
-
-            // ===== SOAL 4 =====
-            if (btnCheck4) {
-                btnCheck4.addEventListener("click", async () => {
-                    if (!latihan4 || latihan4.dataset.unlocked !== "1") return;
-
-                    if (!detectHighest.value || !detectPoly.value) {
-                        setFb(
-                            fbDetect,
-                            false,
-                            `⚠️ Lengkapi semua jawaban terlebih dahulu.`
-                        );
-                        return;
-                    }
-
-                    const detectHighestOk =
-                        detectHighest &&
-                        parseInt(detectHighest.value || "", 10) === 5;
-
-                    const detectPolyOk =
-                        detectPoly &&
-                        parseInt(detectPoly.value || "", 10) === 5;
-
-                    if (detectHighestOk && detectPolyOk) {
-                        latihan4.dataset.done = "1";
-                        setDoneText(done4, "Soal 4 selesai.");
-                        setFb(
-                            fbDetect,
-                            true,
-                            `
-                            <div>✅ Jawaban benar.</div>
-                            <div><b>Penjelasan:</b></div>
-                            <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
-                            <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
-                            <div>• <b>4</b> memiliki derajat <b>0</b></div>
-                            <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
-                            `
-                        );
-
-                        const saved = await saveProgressMateri();
-
-                        if (saved) {
-                            bukaNextButton();
-                        } else {
-                            console.warn("Progress materi gagal disimpan.");
+                        if (feedback) {
+                            feedback.classList.add("ok");
+                            feedback.textContent = "✅ Benar!";
                         }
                     } else {
-                        latihan4.dataset.done = "0";
-                        setDoneText(done4, "");
-                        setFb(
-                            fbDetect,
-                            false,
-                            `
-                            <div>❌ Soal 4 belum tepat.</div>
-                            <div><b>Penjelasan jawaban benar:</b></div>
-                            <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
-                            <div>• Derajat <b>−xy</b> = <b>2</b></div>
-                            <div>• Derajat <b>4</b> = <b>0</b></div>
-                            <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
-                            `
-                        );
+                        t.classList.add("wrong");
+
+                        if (feedback) {
+                            feedback.classList.add("no");
+                            feedback.textContent = "❌ Salah!";
+                        }
                     }
 
-                    updateFinalScore();
-                    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+                    updateSummary();
                 });
-            }
+            });
+        });
 
-            updateFinalScore();
-        })();
-    </script>
+        updateSummary();
+
+        // ===== CONTOH: TOGGLE PENJELASAN =====
+        const pills = Array.from(document.querySelectorAll(".pill-num"));
+        const btnReset = document.getElementById("contohReset");
+
+        pills.forEach(p => {
+            p.addEventListener("click", () => {
+                const id = p.dataset.target;
+                const target = document.getElementById(id);
+
+                if (!target) return;
+
+                const willOpen = !target.classList.contains("show");
+
+                target.classList.toggle("show");
+                p.classList.toggle("active", willOpen);
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        });
+
+        if (btnReset) {
+            btnReset.addEventListener("click", () => {
+                pills.forEach(p => p.classList.remove("active"));
+                document.querySelectorAll(".explain").forEach(ex => ex.classList.remove("show"));
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        }
+
+        // ===== CONTOH SOAL: OTOMATIS TANPA TOMBOL CEK =====
+        const solBoxes = Array.from(document.querySelectorAll(".sol-box"));
+        const solContents = Array.from(document.querySelectorAll(".sol-content"));
+        const solUnlockAll = document.getElementById("solUnlockAll");
+        const solQuiz = document.getElementById("solQuiz");
+        let allSolved = false;
+
+        const checkAllSolved = () => {
+            if (!solQuiz) return false;
+
+            const items = Array.from(solQuiz.querySelectorAll(".sol-quiz-item"));
+            return items.length > 0 && items.every(it => it.dataset.done === "1");
+        };
+
+        solBoxes.forEach(box => {
+            box.addEventListener("click", () => {
+                if (!allSolved) return;
+
+                const id = box.dataset.target;
+                const content = document.getElementById(id);
+
+                if (!content) return;
+
+                const isOpen = content.classList.contains("show");
+
+                solContents.forEach(c => c.classList.remove("show"));
+                solBoxes.forEach(b => b.classList.remove("active"));
+
+                if (!isOpen) {
+                    content.classList.add("show");
+                    box.classList.add("active");
+                }
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        });
+
+        if (solQuiz) {
+            const items = Array.from(solQuiz.querySelectorAll(".sol-quiz-item"));
+
+            const openSolution = id => {
+                const content = document.getElementById(id);
+                const box = solBoxes.find(b => b.dataset.target === id);
+
+                if (!content) return;
+
+                solContents.forEach(c => c.classList.remove("show"));
+                solBoxes.forEach(b => b.classList.remove("active"));
+
+                content.classList.add("show");
+
+                if (allSolved && box) {
+                    box.classList.add("active");
+                }
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+
+                content.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            };
+
+            items.forEach(item => {
+                const ans = parseInt(item.dataset.answer, 10);
+                const solId = item.dataset.sol;
+
+                const input = item.querySelector(".sol-input");
+                const btnShow = item.querySelector(".sol-btn.show");
+                const fb = item.querySelector(".sol-feedback");
+
+                if (!input || !btnShow) return;
+
+                const setFeedback = (ok, text) => {
+                    if (!fb) return;
+
+                    fb.classList.remove("ok", "no");
+                    fb.classList.add(ok ? "ok" : "no");
+                    fb.textContent = text;
+                };
+
+                const clearFeedback = () => {
+                    if (!fb) return;
+
+                    fb.classList.remove("ok", "no");
+                    fb.textContent = "";
+                };
+
+                const checkAuto = () => {
+                    const raw = (input.value || "").trim();
+
+                    if (raw === "") {
+                        item.dataset.done = "0";
+                        btnShow.disabled = true;
+                        clearFeedback();
+                        return;
+                    }
+
+                    const val = parseInt(raw, 10);
+
+                    if (Number.isNaN(val)) {
+                        item.dataset.done = "0";
+                        btnShow.disabled = true;
+                        setFeedback(false, "❌ Salah!");
+                        return;
+                    }
+
+                    if (val === ans) {
+                        item.dataset.done = "1";
+                        btnShow.disabled = false;
+                        setFeedback(true, "✅ Benar! Penyelesaian terbuka.");
+
+                        if (checkAllSolved()) {
+                            allSolved = true;
+
+                            if (solUnlockAll) {
+                                solUnlockAll.style.display = "block";
+                            }
+
+                            requestAnimationFrame(() => {
+                                window.dispatchEvent(new Event("resize"));
+                            });
+                        }
+                    } else {
+                        item.dataset.done = "0";
+                        btnShow.disabled = true;
+                        setFeedback(false, "❌ Salah!");
+                    }
+                };
+
+                input.addEventListener("input", checkAuto);
+                input.addEventListener("change", checkAuto);
+
+                btnShow.addEventListener("click", () => {
+                    if (btnShow.disabled) return;
+                    openSolution(solId);
+                });
+            });
+        }
+    })();
+</script>
+
+<script>
+    async function saveProgressMateri() {
+        const csrfToken = document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute("content");
+
+        if (!window.completeMateriUrl || !csrfToken) {
+            console.warn("completeMateriUrl atau CSRF token tidak ditemukan.");
+            return false;
+        }
+
+        try {
+            const response = await fetch(window.completeMateriUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken,
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({})
+            });
+
+            return response.ok;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+
+    function bukaNextButton() {
+        const nextBtn = document.getElementById("nextMateriBtn");
+
+        if (!nextBtn) return;
+
+        const url = nextBtn.dataset.nextUrl;
+
+        if (!url) return;
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.id = "nextMateriBtn";
+        link.className = "btn-nav next-btn";
+        link.textContent = "Next →";
+
+        nextBtn.replaceWith(link);
+    }
+
+    // ===== LATIHAN SOAL =====
+    (function () {
+        const latihan1 = document.getElementById("latihan1");
+        const latihan2 = document.getElementById("latihan2");
+        const latihan3 = document.getElementById("latihan3");
+        const latihan4 = document.getElementById("latihan4");
+
+        const btnCheck1 = document.getElementById("btnCheck1");
+        const btnCheck2 = document.getElementById("btnCheck2");
+        const btnCheck3 = document.getElementById("btnCheck3");
+        const btnCheck4 = document.getElementById("btnCheck4");
+
+        const tfSelects = Array.from(document.querySelectorAll(".tf1"));
+
+        const fbTrueFalse = document.getElementById("fb-truefalse");
+        const fbWinner = document.getElementById("fb-winner");
+        const fbMystery = document.getElementById("fb-mystery");
+        const fbDetect = document.getElementById("fb-detect");
+        const finalScore = document.getElementById("latihanFinalScore");
+
+        const done1 = document.getElementById("done1");
+        const done2 = document.getElementById("done2");
+        const done3 = document.getElementById("done3");
+        const done4 = document.getElementById("done4");
+
+        const lock2 = document.getElementById("lock2");
+        const lock3 = document.getElementById("lock3");
+        const lock4 = document.getElementById("lock4");
+
+        const winnerTerm = document.getElementById("winnerTerm");
+        const winnerDegree = document.getElementById("winnerDegree");
+        const mysteryDegree = document.getElementById("mysteryDegree");
+        const detectHighest = document.getElementById("detectHighest");
+        const detectPoly = document.getElementById("detectPoly");
+
+        const setFb = (el, ok, html) => {
+            if (!el) return;
+
+            el.classList.remove("ok", "no");
+            el.classList.add(ok ? "ok" : "no");
+            el.innerHTML = html;
+        };
+
+        const clearFb = el => {
+            if (!el) return;
+
+            el.classList.remove("ok", "no");
+            el.innerHTML = "";
+        };
+
+        const setDoneText = (el, text) => {
+            if (!el) return;
+            el.textContent = text;
+        };
+
+        const normalize = s =>
+            (s || "")
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, "")
+                .replace(/×/g, "x")
+                .replace(/–/g, "-")
+                .replace(/−/g, "-")
+                .replace(/\+\-/g, "-");
+
+        const superscriptToNormal = s => {
+            const map = {
+                "⁰": "0",
+                "¹": "1",
+                "²": "2",
+                "³": "3",
+                "⁴": "4",
+                "⁵": "5",
+                "⁶": "6",
+                "⁷": "7",
+                "⁸": "8",
+                "⁹": "9",
+                "⁻": "-"
+            };
+
+            return (s || "").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, match => {
+                return "^" + match.split("").map(ch => map[ch] || "").join("");
+            });
+        };
+
+        const normalizePoly = raw => {
+            let s = normalize(raw);
+
+            if (!s) return "";
+
+            s = superscriptToNormal(s);
+
+            s = s
+                .replace(/\*\*/g, "^")
+                .replace(/([a-z])\((-?\d+)\)/g, "$1^$2")
+                .replace(/([a-z])(\d+)/g, (match, varName, power, offset, full) => {
+                    const prev = full[offset - 1] || "";
+                    if (prev === "^") return match;
+                    return `${varName}^${power}`;
+                })
+                .replace(/\+\-/g, "-")
+                .replace(/^\+/, "")
+                .replace(/(^|[+\-])1([a-z])/g, "$1$2")
+                .replace(/(^|[+\-])-1([a-z])/g, "$1-$2")
+                .replace(/\^1(?!\d)/g, "")
+                .replace(/\^0+(\d+)/g, "^$1");
+
+            return s;
+        };
+
+        const unlockSection = (section, lockEl) => {
+            if (!section) return;
+
+            section.classList.remove("disabled");
+            section.dataset.unlocked = "1";
+
+            if (lockEl) {
+                lockEl.style.display = "none";
+            }
+        };
+
+        const lockSection = (section, lockEl, message) => {
+            if (!section) return;
+
+            section.classList.add("disabled");
+            section.dataset.unlocked = "0";
+            section.dataset.done = "0";
+
+            if (lockEl) {
+                lockEl.style.display = "block";
+                lockEl.textContent = message;
+            }
+        };
+
+        const updateFinalScore = () => {
+            const score =
+                (latihan1?.dataset.done === "1" ? 1 : 0) +
+                (latihan2?.dataset.done === "1" ? 1 : 0) +
+                (latihan3?.dataset.done === "1" ? 1 : 0) +
+                (latihan4?.dataset.done === "1" ? 1 : 0);
+
+            if (!finalScore) return;
+
+            if (score < 4) {
+                finalScore.innerHTML = `Progress latihan: ${score}/4 soal selesai benar.`;
+            } else {
+                finalScore.innerHTML = "🎉 Hebat! Semua soal latihan selesai benar (4/4).";
+            }
+        };
+
+        const resetSoal2 = () => {
+            if (winnerTerm) winnerTerm.value = "";
+            if (winnerDegree) winnerDegree.value = "";
+
+            clearFb(fbWinner);
+            setDoneText(done2, "");
+            lockSection(latihan2, lock2, "🔒 Selesaikan Soal 1 dengan benar terlebih dahulu.");
+        };
+
+        const resetSoal3 = () => {
+            if (mysteryDegree) mysteryDegree.value = "";
+
+            clearFb(fbMystery);
+            setDoneText(done3, "");
+            lockSection(latihan3, lock3, "🔒 Selesaikan Soal 2 dengan benar terlebih dahulu.");
+        };
+
+        const resetSoal4 = () => {
+            if (detectHighest) detectHighest.value = "";
+            if (detectPoly) detectPoly.value = "";
+
+            clearFb(fbDetect);
+            setDoneText(done4, "");
+            lockSection(latihan4, lock4, "🔒 Selesaikan Soal 3 dengan benar terlebih dahulu.");
+        };
+
+        if (latihan1) {
+            latihan1.dataset.unlocked = "1";
+        }
+
+        resetSoal2();
+        resetSoal3();
+        resetSoal4();
+
+        // ===== SOAL 1 =====
+        if (btnCheck1) {
+            btnCheck1.addEventListener("click", () => {
+                let allAnswered = true;
+                let tfCorrect = 0;
+
+                tfSelects.forEach(sel => {
+                    if (!sel.value) allAnswered = false;
+
+                    if (sel.value && sel.value === sel.dataset.answer) {
+                        tfCorrect++;
+                    }
+                });
+
+                if (!allAnswered) {
+                    setFb(fbTrueFalse, false, "⚠️ Pilih semua jawaban terlebih dahulu.");
+                    return;
+                }
+
+                if (tfCorrect === 2) {
+                    latihan1.dataset.done = "1";
+                    setDoneText(done1, "Soal 1 selesai.");
+
+                    setFb(
+                        fbTrueFalse,
+                        true,
+                        `
+                        <div>✅ Semua jawaban benar.</div>
+                        <div><b>Penjelasan:</b></div>
+                        <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
+                        <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
+                        `
+                    );
+
+                    unlockSection(latihan2, lock2);
+                } else {
+                    latihan1.dataset.done = "0";
+                    setDoneText(done1, "");
+
+                    setFb(
+                        fbTrueFalse,
+                        false,
+                        `
+                        <div>❌ Jawaban Soal 1 belum tepat.</div>
+                        <div><b>Penjelasan jawaban benar:</b></div>
+                        <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
+                        <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
+                        `
+                    );
+
+                    resetSoal2();
+                    resetSoal3();
+                    resetSoal4();
+                }
+
+                updateFinalScore();
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        }
+
+        // ===== SOAL 2 =====
+        if (btnCheck2) {
+            btnCheck2.addEventListener("click", () => {
+                if (!latihan2 || latihan2.dataset.unlocked !== "1") return;
+
+                if (!winnerTerm.value || !winnerDegree.value) {
+                    setFb(fbWinner, false, "⚠️ Lengkapi semua jawaban terlebih dahulu.");
+                    return;
+                }
+
+                const winnerOk =
+                    normalizePoly(winnerTerm.value) === normalizePoly("3x^5") &&
+                    parseInt(winnerDegree.value || "", 10) === 5;
+
+                if (winnerOk) {
+                    latihan2.dataset.done = "1";
+                    setDoneText(done2, "Soal 2 selesai.");
+
+                    setFb(
+                        fbWinner,
+                        true,
+                        `
+                        <div>✅ Jawaban benar.</div>
+                        <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
+                        `
+                    );
+
+                    unlockSection(latihan3, lock3);
+                } else {
+                    latihan2.dataset.done = "0";
+                    setDoneText(done2, "");
+
+                    setFb(
+                        fbWinner,
+                        false,
+                        `
+                        <div>❌ Soal 2 belum tepat.</div>
+                        <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
+                        `
+                    );
+
+                    resetSoal3();
+                    resetSoal4();
+                }
+
+                updateFinalScore();
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        }
+
+        // ===== SOAL 3 =====
+        if (btnCheck3) {
+            btnCheck3.addEventListener("click", () => {
+                if (!latihan3 || latihan3.dataset.unlocked !== "1") return;
+
+                if (!mysteryDegree.value) {
+                    setFb(fbMystery, false, "⚠️ Isi jawaban terlebih dahulu.");
+                    return;
+                }
+
+                const mysteryOk = parseInt(mysteryDegree.value || "", 10) === 6;
+
+                if (mysteryOk) {
+                    latihan3.dataset.done = "1";
+                    setDoneText(done3, "Soal 3 selesai.");
+
+                    setFb(
+                        fbMystery,
+                        true,
+                        `
+                        <div>✅ Jawaban benar.</div>
+                        <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
+                        `
+                    );
+
+                    unlockSection(latihan4, lock4);
+                } else {
+                    latihan3.dataset.done = "0";
+                    setDoneText(done3, "");
+
+                    setFb(
+                        fbMystery,
+                        false,
+                        `
+                        <div>❌ Soal 3 belum tepat.</div>
+                        <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
+                        `
+                    );
+
+                    resetSoal4();
+                }
+
+                updateFinalScore();
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        }
+
+        // ===== SOAL 4 =====
+        if (btnCheck4) {
+            btnCheck4.addEventListener("click", async () => {
+                if (!latihan4 || latihan4.dataset.unlocked !== "1") return;
+
+                if (!detectHighest.value || !detectPoly.value) {
+                    setFb(fbDetect, false, "⚠️ Lengkapi semua jawaban terlebih dahulu.");
+                    return;
+                }
+
+                const detectHighestOk = parseInt(detectHighest.value || "", 10) === 5;
+                const detectPolyOk = parseInt(detectPoly.value || "", 10) === 5;
+
+                if (detectHighestOk && detectPolyOk) {
+                    latihan4.dataset.done = "1";
+                    setDoneText(done4, "Soal 4 selesai.");
+
+                    setFb(
+                        fbDetect,
+                        true,
+                        `
+                        <div>✅ Jawaban benar.</div>
+                        <div><b>Penjelasan:</b></div>
+                        <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
+                        <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
+                        <div>• <b>4</b> memiliki derajat <b>0</b></div>
+                        <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
+                        `
+                    );
+
+                    const saved = await saveProgressMateri();
+
+                    if (saved) {
+                        bukaNextButton();
+                    } else {
+                        console.warn("Progress materi gagal disimpan.");
+                    }
+                } else {
+                    latihan4.dataset.done = "0";
+                    setDoneText(done4, "");
+
+                    setFb(
+                        fbDetect,
+                        false,
+                        `
+                        <div>❌ Soal 4 belum tepat.</div>
+                        <div><b>Penjelasan jawaban benar:</b></div>
+                        <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
+                        <div>• Derajat <b>−xy</b> = <b>2</b></div>
+                        <div>• Derajat <b>4</b> = <b>0</b></div>
+                        <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
+                        `
+                    );
+                }
+
+                updateFinalScore();
+
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
+            });
+        }
+
+        updateFinalScore();
+    })();
+</script>
 @endsection
 
 @section('nav')

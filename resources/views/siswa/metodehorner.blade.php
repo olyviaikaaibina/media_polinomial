@@ -672,8 +672,8 @@
         }
 
         /* =========================
-                       HORNER INTERAKTIF
-                    ========================= */
+                           HORNER INTERAKTIF
+                        ========================= */
 
         .horner-premium-wrap {
             margin-top: 18px;
@@ -857,8 +857,8 @@
         }
 
         /* =========================
-                       HORNER MARI MENCOBA
-                    ========================= */
+                           HORNER MARI MENCOBA
+                        ========================= */
 
         .horner-table-wrap {
             margin: 14px 0 16px;
@@ -960,8 +960,8 @@
         }
 
         /* =========================
-                       LATIHAN
-                    ========================= */
+                           LATIHAN
+                        ========================= */
 
         .latihan-card {
             position: relative;
@@ -1116,8 +1116,8 @@
         }
 
         /* =========================
-                       HORNER LATIHAN
-                    ========================= */
+                           HORNER LATIHAN
+                        ========================= */
 
         .latihan-horner-wrap {
             margin: 18px 0 10px;
@@ -1242,8 +1242,8 @@
         }
 
         /* =========================
-                       ANIMASI
-                    ========================= */
+                           ANIMASI
+                        ========================= */
 
         .horner-animate {
             transition: all 0.5s ease;
@@ -1267,8 +1267,8 @@
         }
 
         /* =========================
-                       RESPONSIVE TABLET
-                    ========================= */
+                           RESPONSIVE TABLET
+                        ========================= */
 
         @media (max-width: 900px) {
             .materi-wrapper {
@@ -1286,8 +1286,8 @@
         }
 
         /* =========================
-                       RESPONSIVE HP
-                    ========================= */
+                           RESPONSIVE HP
+                        ========================= */
 
         @media (max-width: 768px) {
             .materi-wrapper {
@@ -1605,8 +1605,8 @@
         }
 
         /* =========================
-                       RESPONSIVE HP KECIL
-                    ========================= */
+                           RESPONSIVE HP KECIL
+                        ========================= */
 
         @media (max-width: 480px) {
             .materi-wrapper {
@@ -1777,8 +1777,8 @@
         }
 
         /* =========================
-           HASIL AKHIR LATIHAN RAPI
-        ========================= */
+               HASIL AKHIR LATIHAN RAPI
+            ========================= */
 
         .hasil-akhir-wrap {
             display: flex;
@@ -3088,13 +3088,13 @@
                 latihanJawaban.s1turun === '4' &&
                 latihanJawaban.s1proses === '4,11,17' &&
                 cocokSalahSatu(latihanJawaban.s1hasil, [
-                    '4x2+11x+17,sisa32',
-                    '4x²+11x+17,sisa32',
-                    '4x^2+11x+17,sisa32',
-                    'Q(x)=4x²+11x+17,sisa=32',
-                    'Q(x)=4x^2+11x+17,sisa=32',
-                    '4x²+11x+17sisa32',
-                    '4x^2+11x+17sisa32'
+                    '4x2+11x+17,sisa36',
+                    '4x²+11x+17,sisa36',
+                    '4x^2+11x+17,sisa36',
+                    'Q(x)=4x²+11x+17,sisa=36',
+                    'Q(x)=4x^2+11x+17,sisa=36',
+                    '4x²+11x+17sisa36',
+                    '4x^2+11x+17sisa36'
                 ]);
 
             const feedback = document.getElementById('latihanFeedback1');
@@ -3107,7 +3107,7 @@
                 tandaiSemuaBenar('s1koef', '4,3,-5,2');
                 tandaiSemuaBenar('s1turun', '4');
                 tandaiSemuaBenar('s1proses', '4,11,17');
-                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa32');
+                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
 
                 feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai. Soal nomor 2 sekarang terbuka.';
                 feedback.className = 'latihan-feedback success';
@@ -3121,7 +3121,7 @@
             tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
             tandaiYangDipilihSalah('s1turun', '4');
             tandaiYangDipilihSalah('s1proses', '4,11,17');
-            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa32');
+            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
 
             feedback.innerHTML = 'Masih ada pilihan yang salah pada soal nomor 1.';
             feedback.className = 'latihan-feedback error';
@@ -3130,7 +3130,6 @@
             kunciSoal2();
             return false;
         }
-
         function cekRealtimeLatihan2() {
             if (!soal1Benar) return;
 

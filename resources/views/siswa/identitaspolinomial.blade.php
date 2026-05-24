@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                                delimiters: [
-                                                                                                                                                                                                                                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                                    {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                                ]
-                                                                                                                                                                                                                                                                                            });"></script>
+                                                                                                                                                                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                                                                                                                                    });"></script>
 
     <style>
         :root {
@@ -958,8 +958,8 @@
         }
 
         /* =========================
-                                                                                                                                       LATIHAN DRAG & DROP
-                                                                                                                                    ========================= */
+                                                                                                                                                                               LATIHAN DRAG & DROP
+                                                                                                                                                                            ========================= */
         .latihan-drag-wrap {
             margin-top: 38px;
         }
@@ -1400,8 +1400,8 @@
         }
 
         /* =========================
-                                                                                                            SIFAT INTERAKTIF MODERN
-                                                                                                            ========================= */
+                                                                                                                                                    SIFAT INTERAKTIF MODERN
+                                                                                                                                                    ========================= */
         .sifat-interaktif {
             margin: 30px 0;
             padding: 26px 22px 24px;
@@ -1765,8 +1765,8 @@
         }
 
         /* =========================
-                                                       SIFAT INTERAKTIF - FINAL
-                                                       ========================= */
+                                                                                               SIFAT INTERAKTIF - FINAL
+                                                                                               ========================= */
 
         .sifat-wrapper {
             position: relative;
@@ -2532,9 +2532,9 @@
         }
 
         /* =====================================================
-               RESPONSIVE FINAL: HP, TABLET, LAPTOP
-               Letakkan PALING BAWAH setelah semua CSS lama
-            ===================================================== */
+                                                       RESPONSIVE FINAL: HP, TABLET, LAPTOP
+                                                       Letakkan PALING BAWAH setelah semua CSS lama
+                                                    ===================================================== */
 
         /* Supaya padding dan lebar elemen tidak bikin overflow */
         *,
@@ -2579,9 +2579,9 @@
         }
 
         /* =====================================================
-               LAPTOP / DESKTOP
-               1025px ke atas
-            ===================================================== */
+                                                       LAPTOP / DESKTOP
+                                                       1025px ke atas
+                                                    ===================================================== */
         @media (min-width: 1025px) {
             .materi-wrap {
                 padding: 24px 24px 48px;
@@ -2626,9 +2626,9 @@
         }
 
         /* =====================================================
-               TABLET
-               641px - 1024px
-            ===================================================== */
+                                                       TABLET
+                                                       641px - 1024px
+                                                    ===================================================== */
         @media (min-width: 641px) and (max-width: 1024px) {
             .materi-wrap {
                 max-width: 92%;
@@ -2720,9 +2720,9 @@
         }
 
         /* =====================================================
-               HP / MOBILE
-               640px ke bawah
-            ===================================================== */
+                                                       HP / MOBILE
+                                                       640px ke bawah
+                                                    ===================================================== */
         @media (max-width: 640px) {
             .materi-wrap {
                 max-width: 100%;
@@ -3011,9 +3011,9 @@
         }
 
         /* =====================================================
-               HP KECIL
-               420px ke bawah
-            ===================================================== */
+                                                       HP KECIL
+                                                       420px ke bawah
+                                                    ===================================================== */
         @media (max-width: 420px) {
             .materi-wrap {
                 padding-left: 10px;
@@ -3058,6 +3058,628 @@
             .quiz-option-chip {
                 padding: 9px 10px;
             }
+        }
+
+        .materi-wrap li,
+        .materi-wrap .materi-paragraf p,
+        .materi-wrap .lanjutan-paragraf p,
+        .materi-wrap .definisi-text,
+        .materi-wrap .sifat-text,
+        .materi-wrap .contoh-card p,
+        .materi-wrap .langkah-kecil,
+        .materi-wrap .langkah-note,
+        .materi-wrap .asal-langkah,
+        .materi-wrap .mari-instruksi,
+        .materi-wrap .latihan-drag-intro,
+        .materi-wrap .sifat-subtitle-modern,
+        .materi-wrap .sifat-detail-box-text,
+        .materi-wrap .sifat-mini-quiz-question,
+        .materi-wrap .eksplorasi-quiz-question,
+        .materi-wrap .eksplorasi-feedback,
+        .materi-wrap .eksplorasi-penjelasan,
+        .materi-wrap .drag-feedback,
+        .materi-wrap .drag-summary {
+            text-align: justify !important;
+            text-justify: inter-word;
+        }
+
+        /* Rumus dan judul jangan ikut justify */
+        .materi-wrap .formula-center,
+        .materi-wrap .identitas-rumus,
+        .materi-wrap .contoh-rumus,
+        .materi-wrap .langkah-rumus,
+        .materi-wrap .sifat-detail-rumus,
+        .materi-wrap .latihan-modern-soal,
+        .materi-wrap .drag-math,
+        .materi-wrap .pair-soal {
+            text-align: center !important;
+        }
+
+        /* Petunjuk tap untuk tablet dan HP */
+        .tap-helper {
+            display: none;
+            margin: 10px 0 14px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fff8eb;
+            border: 1px solid #f2cf87;
+            color: #855d12;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Saat kartu dipilih dengan tap */
+        .drag-item.selected {
+            border-color: #2997d3 !important;
+            background: #eaf7ff !important;
+            box-shadow: 0 0 0 3px rgba(41, 151, 211, .14) !important;
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        /* Saat kotak jawaban ditekan */
+        .drag-dropzone.selected-target {
+            border-color: #2997d3 !important;
+            background: #eef8ff !important;
+        }
+
+        /* Laptop tetap drag and drop */
+        @media (min-width: 1025px) {
+            .drag-item {
+                cursor: grab !important;
+            }
+
+            .drag-item:active {
+                cursor: grabbing !important;
+            }
+        }
+
+        /* Tablet dan HP: mode tap */
+        @media (max-width: 1024px) {
+            .tap-helper {
+                display: block;
+            }
+
+            .drag-bank {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+            }
+
+            .drag-item {
+                width: 100% !important;
+                cursor: pointer !important;
+                touch-action: manipulation;
+            }
+
+            .drag-dropzone {
+                cursor: pointer !important;
+                min-height: 130px;
+            }
+
+            .drag-dropzone-title::after {
+                content: " — tekan di sini";
+                font-weight: 600;
+                color: #2997d3;
+            }
+        }
+
+        /* HP kecil: jawaban satu kolom */
+        @media (max-width: 640px) {
+            .drag-bank {
+                grid-template-columns: 1fr !important;
+            }
+
+            .tap-helper {
+                font-size: 13.5px;
+            }
+
+            .drag-dropzone-title::after {
+                display: block;
+                margin-top: 4px;
+                font-size: 12.5px;
+            }
+        }
+
+        /* =====================================================
+                   FIX CONTOH PERTAMA RESPONSIF
+                   Target: #contoh-identitas
+                ===================================================== */
+
+        #contoh-identitas {
+            width: 100%;
+            max-width: 100%;
+            margin: 32px 0 28px;
+            padding: 34px 22px 24px;
+            overflow: visible;
+        }
+
+        #contoh-identitas .contoh-badge {
+            top: -24px;
+            left: 28px;
+            min-width: 180px;
+            text-align: center;
+            z-index: 5;
+        }
+
+        #contoh-identitas .contoh-soal {
+            font-size: clamp(15px, 1.6vw, 17px);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        #contoh-identitas .contoh-rumus {
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.5;
+            margin: 14px 0 24px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 6px;
+        }
+
+        #contoh-identitas .langkah-box {
+            width: 100%;
+            max-width: 100%;
+            min-height: auto;
+            padding: 18px;
+            border-radius: 16px;
+            overflow: visible;
+        }
+
+        #contoh-identitas .langkah-item {
+            width: 100%;
+        }
+
+        #contoh-identitas .langkah-kecil {
+            font-size: clamp(15px, 1.7vw, 17px);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        #contoh-identitas .langkah-rumus {
+            font-size: clamp(22px, 3vw, 32px);
+            line-height: 1.5;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 6px;
+        }
+
+        #contoh-identitas .langkah-note,
+        #contoh-identitas .asal-langkah {
+            font-size: clamp(14px, 1.5vw, 15.5px);
+            line-height: 1.8;
+            text-align: justify;
+            overflow-wrap: anywhere;
+        }
+
+        #contoh-identitas .contoh-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        #contoh-identitas .btn-contoh {
+            white-space: nowrap;
+        }
+
+        #contoh-identitas .langkah-indikator {
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        /* Tablet */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #contoh-identitas {
+                padding: 32px 18px 22px;
+                border-radius: 20px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                left: 22px;
+                min-width: 160px;
+                font-size: 14px;
+                padding: 7px 22px;
+            }
+
+            #contoh-identitas .contoh-rumus,
+            #contoh-identitas .langkah-rumus {
+                font-size: 28px;
+            }
+
+            #contoh-identitas .langkah-box {
+                padding: 16px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            #contoh-identitas {
+                margin-top: 34px;
+                padding: 30px 12px 18px;
+                border-radius: 18px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                left: 14px;
+                top: -20px;
+                min-width: 130px;
+                font-size: 13px;
+                padding: 7px 16px;
+            }
+
+            #contoh-identitas .contoh-soal {
+                font-size: 14px;
+                line-height: 1.75;
+                text-align: justify;
+            }
+
+            #contoh-identitas .contoh-rumus {
+                font-size: 22px;
+                margin: 12px 0 18px;
+            }
+
+            #contoh-identitas .langkah-box {
+                padding: 14px 12px;
+                border-radius: 14px;
+            }
+
+            #contoh-identitas .langkah-kecil {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            #contoh-identitas .langkah-rumus {
+                font-size: 22px;
+            }
+
+            #contoh-identitas .langkah-note,
+            #contoh-identitas .asal-langkah {
+                font-size: 13.5px;
+                line-height: 1.75;
+                padding: 10px;
+            }
+
+            #contoh-identitas .contoh-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #contoh-identitas .btn-contoh {
+                width: 100%;
+                text-align: center;
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            #contoh-identitas .langkah-indikator {
+                text-align: center;
+                font-size: 13px;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 420px) {
+
+            #contoh-identitas .contoh-rumus,
+            #contoh-identitas .langkah-rumus {
+                font-size: 19px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+        }
+
+        /* Pisahkan contoh dan latihan agar tidak tampak satu card */
+        #contoh-faktorisasi {
+            margin-bottom: 34px !important;
+        }
+
+        #latihan-drag-identitas-lima {
+            margin-top: 42px !important;
+        }
+
+        #latihan-drag-identitas-lima .latihan-drag-card {
+            border-radius: 22px;
+            box-shadow: 0 8px 20px rgba(41, 151, 211, 0.08);
+        }
+
+        /* Card contoh utama */
+        #contoh-identitas {
+            width: 100%;
+            max-width: 100%;
+            margin: 34px auto 30px !important;
+            padding: 36px 22px 24px !important;
+            border-radius: 22px;
+            overflow: visible !important;
+        }
+
+        /* Badge CONTOH */
+        #contoh-identitas .contoh-badge {
+            top: -22px;
+            left: 28px;
+            z-index: 5;
+        }
+
+        /* Teks soal */
+        #contoh-identitas .contoh-soal {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            overflow-wrap: anywhere;
+        }
+
+        /* Rumus besar di atas */
+        #contoh-identitas .contoh-rumus {
+            width: 100%;
+            max-width: 100%;
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.5;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 6px 0 10px;
+            margin: 12px 0 22px;
+        }
+
+        /* Kotak langkah */
+        #contoh-identitas .langkah-box {
+            width: 100%;
+            max-width: 100%;
+            min-height: auto !important;
+            padding: 18px !important;
+            border-radius: 18px;
+            overflow: visible !important;
+        }
+
+        /* Isi langkah */
+        #contoh-identitas .langkah-item,
+        #contoh-identitas .langkah-faktor {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Judul langkah */
+        #contoh-identitas .langkah-kecil {
+            font-size: 16px;
+            line-height: 1.75;
+            text-align: justify;
+            overflow-wrap: anywhere;
+        }
+
+        /* Rumus di dalam langkah */
+        #contoh-identitas .langkah-rumus {
+            width: 100%;
+            max-width: 100%;
+            font-size: clamp(20px, 2.7vw, 30px);
+            line-height: 1.5;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 6px 0 10px;
+        }
+
+        /* Kotak catatan */
+        #contoh-identitas .langkah-note,
+        #contoh-identitas .asal-langkah {
+            width: 100%;
+            max-width: 100%;
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        /* Rumus KaTeX supaya tidak memaksa card melebar */
+        #contoh-identitas .katex-display {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 6px;
+        }
+
+        #contoh-identitas .katex {
+            white-space: normal;
+        }
+
+        /* Tombol bawah */
+        #contoh-identitas .contoh-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            padding-bottom: 8px;
+        }
+
+        #contoh-identitas .btn-contoh {
+            white-space: nowrap;
+            min-height: 42px;
+        }
+
+        /* Indikator langkah */
+        #contoh-identitas .langkah-indikator {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+        TABLET
+        ===================================================== */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #contoh-identitas {
+                padding: 34px 18px 22px !important;
+                border-radius: 20px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                left: 22px;
+                top: -20px;
+                min-width: 150px;
+                font-size: 14px;
+                padding: 7px 22px;
+            }
+
+            #contoh-identitas .contoh-soal {
+                font-size: 15.5px;
+            }
+
+            #contoh-identitas .contoh-rumus {
+                font-size: 28px;
+            }
+
+            #contoh-identitas .langkah-box {
+                padding: 16px !important;
+            }
+
+            #contoh-identitas .langkah-rumus {
+                font-size: 25px;
+            }
+
+            #contoh-identitas .langkah-note,
+            #contoh-identitas .asal-langkah {
+                font-size: 14.5px;
+            }
+
+            #contoh-identitas .contoh-actions {
+                justify-content: flex-start;
+            }
+
+            #contoh-identitas .btn-contoh {
+                flex: 1 1 180px;
+                text-align: center;
+            }
+        }
+
+
+        /* =====================================================
+        HP
+        ===================================================== */
+        @media (max-width: 640px) {
+            #contoh-identitas {
+                margin-top: 34px !important;
+                padding: 32px 12px 18px !important;
+                border-radius: 18px;
+                border-width: 2px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                top: -19px;
+                left: 14px;
+                min-width: 120px;
+                font-size: 13px;
+                padding: 7px 16px;
+            }
+
+            #contoh-identitas .contoh-soal {
+                font-size: 14px;
+                line-height: 1.75;
+                text-align: justify;
+            }
+
+            #contoh-identitas .contoh-rumus {
+                font-size: 21px;
+                line-height: 1.5;
+                margin: 10px 0 16px;
+                padding-bottom: 8px;
+            }
+
+            #contoh-identitas .langkah-box {
+                padding: 14px 10px !important;
+                border-radius: 14px;
+            }
+
+            #contoh-identitas .langkah-kecil {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            #contoh-identitas .langkah-rumus {
+                font-size: 20px;
+                line-height: 1.5;
+                padding-bottom: 8px;
+            }
+
+            #contoh-identitas .langkah-note,
+            #contoh-identitas .asal-langkah {
+                font-size: 13.5px;
+                line-height: 1.75;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            #contoh-identitas .contoh-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 9px;
+            }
+
+            #contoh-identitas .btn-contoh {
+                width: 100%;
+                text-align: center !important;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            #contoh-identitas .langkah-indikator {
+                text-align: center;
+                font-size: 13px;
+            }
+        }
+
+
+        /* =====================================================
+        HP KECIL
+        ===================================================== */
+        @media (max-width: 420px) {
+            #contoh-identitas {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+
+            #contoh-identitas .contoh-rumus,
+            #contoh-identitas .langkah-rumus {
+                font-size: 18px;
+            }
+
+            #contoh-identitas .contoh-badge {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+
+            #contoh-identitas .langkah-note,
+            #contoh-identitas .asal-langkah {
+                font-size: 13px;
+            }
+        }
+
+
+        /* =====================================================
+        FIX SUPAYA AREA MATERI TIDAK MEMOTONG TOMBOL DI BAWAH
+        ===================================================== */
+
+        .materi-wrap,
+        #materi-lanjutan,
+        .contoh-card,
+        .langkah-box {
+            overflow: visible !important;
+        }
+
+        /* Kalau ada container dari layout yang tinggi tetap dan memotong isi */
+        .content,
+        .content-wrapper,
+        .materi-content,
+        .main-content,
+        .halaman-materi,
+        .materi-container {
+            overflow-y: auto !important;
         }
     </style>
 
@@ -3821,531 +4443,105 @@
                 <div class="langkah-indikator" id="indikator-faktor">Langkah 1 dari 6</div>
 
 
-                <div class="latihan-drag-wrap" id="latihan-drag-identitas-lima">
-                    <div class="latihan-drag-header">LATIHAN</div>
+            </div>
 
-                    <div class="latihan-drag-card">
-                        <p class="latihan-drag-intro">
-                            Seret setiap kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.
-                            Setelah semua kartu disusun, tekan <b>Cek Jawaban</b> untuk melihat hasil dan penjelasannya.
-                        </p>
 
-                        <div class="latihan-drag-section">
-                            <div class="latihan-drag-title">A. Apakah ini identitas polinomial?</div>
+            {{-- LATIHAN DIPISAH DARI CONTOH --}}
+            <div class="latihan-drag-wrap" id="latihan-drag-identitas-lima">
+                <div class="latihan-drag-header">LATIHAN</div>
 
-                            <div class="drag-area-row">
-                                <div class="drag-dropzone" data-role="identitas-zone">
-                                    <div class="drag-dropzone-title">IDENTITAS</div>
-                                    <div class="drag-dropzone-body" id="zone-identitas-lima"></div>
-                                </div>
+                <div class="latihan-drag-card">
+                    <p class="latihan-drag-intro">
+                        Seret setiap kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.
+                        Setelah semua kartu disusun, tekan <b>Cek Jawaban</b> untuk melihat hasil dan penjelasannya.
+                    </p>
 
-                                <div class="drag-dropzone" data-role="bukan-zone">
-                                    <div class="drag-dropzone-title">BUKAN IDENTITAS</div>
-                                    <div class="drag-dropzone-body" id="zone-bukan-lima"></div>
-                                </div>
+                    <div class="tap-helper">
+                        <b>Untuk tablet dan HP:</b> tekan salah satu kartu jawaban terlebih dahulu,
+                        lalu tekan kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b> untuk menaruh jawabannya.
+                    </div>
+
+                    <div class="latihan-drag-section">
+                        <div class="latihan-drag-title">A. Apakah ini identitas polinomial?</div>
+
+                        <div class="drag-area-row">
+                            <div class="drag-dropzone" data-role="identitas-zone">
+                                <div class="drag-dropzone-title">IDENTITAS</div>
+                                <div class="drag-dropzone-body" id="zone-identitas-lima"></div>
                             </div>
 
-                            <div class="drag-bank" id="bank-identitas-lima">
-                                <div class="drag-item" draggable="true" data-answer="identitas" data-id="q1">
-                                    <div class="drag-number">1</div>
-                                    <div class="drag-math">$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$</div>
-                                </div>
-
-                                <div class="drag-item" draggable="true" data-answer="bukan" data-id="q2">
-                                    <div class="drag-number">2</div>
-                                    <div class="drag-math">$(2y+5)(2y-5) = 4y^2 - 10y - 25$</div>
-                                </div>
-
-                                <div class="drag-item" draggable="true" data-answer="identitas" data-id="q3">
-                                    <div class="drag-number">3</div>
-                                    <div class="drag-math">$(x+a)(x-a) = x^2 - a^2$</div>
-                                </div>
-
-                                <div class="drag-item" draggable="true" data-answer="bukan" data-id="q4">
-                                    <div class="drag-number">4</div>
-                                    <div class="drag-math">$(x-4)^2 = x^2 - 4$</div>
-                                </div>
-
-                                <div class="drag-item" draggable="true" data-answer="identitas" data-id="q5">
-                                    <div class="drag-number">5</div>
-                                    <div class="drag-math">$a^3 + b^3 = (a+b)(a^2-ab+b^2)$</div>
-                                </div>
+                            <div class="drag-dropzone" data-role="bukan-zone">
+                                <div class="drag-dropzone-title">BUKAN IDENTITAS</div>
+                                <div class="drag-dropzone-body" id="zone-bukan-lima"></div>
                             </div>
-
-                            <div class="drag-action-row">
-                                <button type="button" class="drag-btn drag-btn-primary" id="cek-identitas-lima">Cek
-                                    Jawaban</button>
-                                <button type="button" class="drag-btn" id="reset-identitas-lima">Ulangi</button>
-                            </div>
-
-                            <div class="drag-summary" id="summary-identitas-lima"></div>
-
-                            <div class="drag-feedback" id="feedback-identitas-lima"></div>
                         </div>
+
+                        <div class="drag-bank" id="bank-identitas-lima">
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q1">
+                                <div class="drag-number">1</div>
+                                <div class="drag-math">$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="bukan" data-id="q2">
+                                <div class="drag-number">2</div>
+                                <div class="drag-math">$(2y+5)(2y-5) = 4y^2 - 10y - 25$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q3">
+                                <div class="drag-number">3</div>
+                                <div class="drag-math">$(x+a)(x-a) = x^2 - a^2$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="bukan" data-id="q4">
+                                <div class="drag-number">4</div>
+                                <div class="drag-math">$(x-4)^2 = x^2 - 4$</div>
+                            </div>
+
+                            <div class="drag-item" draggable="true" data-answer="identitas" data-id="q5">
+                                <div class="drag-number">5</div>
+                                <div class="drag-math">$a^3 + b^3 = (a+b)(a^2-ab+b^2)$</div>
+                            </div>
+                        </div>
+
+                        <div class="drag-action-row">
+                            <button type="button" class="drag-btn drag-btn-primary" id="cek-identitas-lima">
+                                Cek Jawaban
+                            </button>
+
+                            <button type="button" class="drag-btn" id="reset-identitas-lima">
+                                Ulangi
+                            </button>
+                        </div>
+
+                        <div class="drag-summary" id="summary-identitas-lima"></div>
+
+                        <div class="drag-feedback" id="feedback-identitas-lima"></div>
                     </div>
                 </div>
             </div>
-
-            <script>
-                (function () {
-                    const langkah = Array.from(document.querySelectorAll('#contoh-identitas .langkah-item'));
-                    const btnPrev = document.getElementById('btn-prev-langkah');
-                    const btnNext = document.getElementById('btn-next-langkah');
-                    const btnReset = document.getElementById('btn-reset-langkah');
-                    const indikator = document.getElementById('indikator-langkah');
-
-                    if (!langkah.length) return;
-
-                    let index = 0;
-
-                    function renderLangkah() {
-                        langkah.forEach((item, i) => {
-                            item.classList.toggle('active', i === index);
-                        });
-
-                        indikator.textContent = `Langkah ${index + 1} dari ${langkah.length}`;
-
-                        btnPrev.disabled = index === 0;
-                        btnPrev.style.opacity = index === 0 ? '.5' : '1';
-
-                        btnNext.disabled = index === langkah.length - 1;
-                        btnNext.style.opacity = index === langkah.length - 1 ? '.5' : '1';
-                    }
-
-                    btnNext?.addEventListener('click', function () {
-                        if (index < langkah.length - 1) {
-                            index++;
-                            renderLangkah();
-                        }
-                    });
-
-                    btnPrev?.addEventListener('click', function () {
-                        if (index > 0) {
-                            index--;
-                            renderLangkah();
-                        }
-                    });
-
-                    btnReset?.addEventListener('click', function () {
-                        index = 0;
-                        renderLangkah();
-                    });
-
-                    renderLangkah();
-                })();
-
-                (function () {
-                    const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
-
-                    quizItems.forEach((item) => {
-                        const correctAnswer = item.dataset.correct;
-                        const options = item.querySelectorAll('.eksplorasi-opsi');
-                        const feedback = item.querySelector('.eksplorasi-feedback');
-                        const explanation = item.querySelector('.eksplorasi-penjelasan');
-
-                        options.forEach((option) => {
-                            option.addEventListener('click', function () {
-                                const selected = this.dataset.value;
-
-                                options.forEach((btn) => {
-                                    btn.classList.remove('benar', 'salah');
-                                    btn.disabled = false;
-                                });
-
-                                explanation.classList.remove('show');
-                                feedback.className = 'eksplorasi-feedback show';
-
-                                if (selected === correctAnswer) {
-                                    this.classList.add('benar');
-                                    feedback.classList.add('benar');
-                                    feedback.innerHTML = '✔ Jawabanmu benar.';
-                                    explanation.classList.add('show');
-                                } else {
-                                    this.classList.add('salah');
-                                    feedback.classList.add('salah');
-                                    feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
-                                }
-
-                                if (typeof renderMathInElement === 'function') {
-                                    renderMathInElement(item, {
-                                        delimiters: [
-                                            { left: '$$', right: '$$', display: true },
-                                            { left: '$', right: '$', display: false }
-                                        ]
-                                    });
-                                }
-                            });
-                        });
-                    });
-                })();
-
-                (function () {
-                    const btnCek = document.getElementById('cek-jawaban-faktorisasi');
-                    const btnUlang = document.getElementById('ulangi-faktorisasi');
-                    const input = document.getElementById('jawaban-faktorisasi');
-                    const penjelasan = document.getElementById('penjelasan-faktorisasi');
-                    const langkahBox = document.getElementById('langkah-jawaban-faktorisasi');
-                    const quizItem = document.getElementById('quiz-faktorisasi-item');
-
-                    if (!btnCek || !btnUlang || !input || !penjelasan || !langkahBox || !quizItem) return;
-
-                    function normalisasiJawaban(teks) {
-                        return teks
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .toLowerCase();
-                    }
-
-                    btnCek.addEventListener('click', function () {
-                        const jawaban = normalisasiJawaban(input.value);
-                        const benar1 = normalisasiJawaban('(x+4)(x-4)');
-                        const benar2 = normalisasiJawaban('(x-4)(x+4)');
-
-                        quizItem.classList.remove('benar', 'salah');
-                        penjelasan.style.display = 'block';
-                        langkahBox.style.display = 'block';
-
-                        if (jawaban === benar1 || jawaban === benar2) {
-                            quizItem.classList.add('benar');
-                            penjelasan.innerHTML = `
-                                                            ✔ <b>Benar!</b> Jawabanmu tepat.
-                                                            Bentuk $x^2 - 16$ adalah <b>selisih dua kuadrat</b> karena
-                                                            $16 = 4^2$, sehingga:
-                                                            $$x^2 - 16 = x^2 - 4^2 = (x+4)(x-4).$$
-                                                            Jadi faktorisasi yang benar adalah <b>$(x+4)(x-4)$</b>
-                                                            atau <b>$(x-4)(x+4)$</b>.
-                                                        `;
-                        } else {
-                            quizItem.classList.add('salah');
-                            penjelasan.innerHTML = `
-                                                            ✘ <b>Jawabanmu belum tepat.</b>
-                                                            Bentuk $x^2 - 16$ harus dikenali sebagai:
-                                                            $$x^2 - 16 = x^2 - 4^2$$
-                                                            lalu gunakan identitas:
-                                                            $$a^2 - b^2 = (a+b)(a-b)$$
-                                                            sehingga hasil yang benar adalah:
-                                                            $$x^2 - 16 = (x+4)(x-4).$$
-                                                        `;
-                        }
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        input.value = '';
-                        penjelasan.innerHTML = '';
-                        penjelasan.style.display = 'none';
-                        langkahBox.style.display = 'none';
-                        quizItem.classList.remove('benar', 'salah');
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    });
-                })();
-
-                (function () {
-                    const langkahFaktor = Array.from(document.querySelectorAll('#contoh-faktorisasi .langkah-faktor'));
-                    const btnPrevFaktor = document.getElementById('btn-prev-faktor');
-                    const btnNextFaktor = document.getElementById('btn-next-faktor');
-                    const btnResetFaktor = document.getElementById('btn-reset-faktor');
-                    const indikatorFaktor = document.getElementById('indikator-faktor');
-
-                    if (!langkahFaktor.length) return;
-
-                    let indexFaktor = 0;
-
-                    function renderLangkahFaktor() {
-                        langkahFaktor.forEach((item, i) => {
-                            item.classList.toggle('active', i === indexFaktor);
-                        });
-
-                        indikatorFaktor.textContent = `Langkah ${indexFaktor + 1} dari ${langkahFaktor.length}`;
-
-                        btnPrevFaktor.disabled = indexFaktor === 0;
-                        btnPrevFaktor.style.opacity = indexFaktor === 0 ? '.5' : '1';
-
-                        btnNextFaktor.disabled = indexFaktor === langkahFaktor.length - 1;
-                        btnNextFaktor.style.opacity = indexFaktor === langkahFaktor.length - 1 ? '.5' : '1';
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('contoh-faktorisasi'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    btnNextFaktor?.addEventListener('click', function () {
-                        if (indexFaktor < langkahFaktor.length - 1) {
-                            indexFaktor++;
-                            renderLangkahFaktor();
-                        }
-                    });
-
-                    btnPrevFaktor?.addEventListener('click', function () {
-                        if (indexFaktor > 0) {
-                            indexFaktor--;
-                            renderLangkahFaktor();
-                        }
-                    });
-
-                    btnResetFaktor?.addEventListener('click', function () {
-                        indexFaktor = 0;
-                        renderLangkahFaktor();
-                    });
-
-                    renderLangkahFaktor();
-                })();
-
-                (function () {
-                    const btnCek = document.getElementById('cek-jawaban');
-                    const btnUlang = document.getElementById('ulangi');
-                    const btnNext = document.getElementById('next-step');
-
-                    const input = document.getElementById('jawaban');
-                    const penjelasan = document.querySelector('.penjelasan');
-                    const langkahBox = document.getElementById('langkah-jawaban');
-                    const langkah = document.querySelectorAll('#langkah-jawaban .langkah-item');
-
-                    let index = 0;
-
-                    btnCek.addEventListener('click', function () {
-                        const jawaban = input.value.replace(/\s/g, '');
-                        const benar1 = "(x+4)(x-4)";
-                        const benar2 = "(x-4)(x+4)";
-
-                        if (jawaban === benar1 || jawaban === benar2) {
-                            penjelasan.innerHTML = "✔ Benar! Ini adalah selisih dua kuadrat.";
-                            penjelasan.style.color = "green";
-                        } else {
-                            penjelasan.innerHTML = "✘ Salah! Coba lagi. Gunakan konsep selisih dua kuadrat.";
-                            penjelasan.style.color = "red";
-                        }
-
-                        langkahBox.style.display = "block";
-                    });
-
-                    btnNext.addEventListener('click', function () {
-                        langkah.forEach((l, i) => {
-                            l.classList.remove('active');
-                            if (i === index) l.classList.add('active');
-                        });
-
-                        if (index < langkah.length - 1) {
-                            index++;
-                        }
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        input.value = "";
-                        penjelasan.innerHTML = "";
-                        langkahBox.style.display = "none";
-                        index = 0;
-                        langkah.forEach(l => l.classList.remove('active'));
-                        langkah[0].classList.add('active');
-                    });
-                })();
-
-                (function () {
-                    function normalize(text) {
-                        return (text || '')
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*\*/g, '^')
-                            .replace(/²/g, '^2')
-                            .replace(/³/g, '^3')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function aktifkanStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        if (panel) panel.classList.remove('locked');
-                        if (input) input.disabled = false;
-                        if (btn) btn.disabled = false;
-                    }
-
-                    function setFeedback(step, status, message) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = message;
-
-                        if (status === 'benar') {
-                            explain.classList.add('show');
-                        } else {
-                            explain.classList.remove('show');
-                        }
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-modern'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    // STEP 1
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step1').value);
-
-                        if (
-                            val.includes('selisihduakubik') ||
-                            val.includes('selisihkubik')
-                        ) {
-                            setFeedback(1, 'benar', '✔ Benar! Bentuk $x^3 - 27$ adalah selisih dua kubik.');
-                            aktifkanStep(2);
-                        } else {
-                            setFeedback(1, 'salah', '✘ Belum tepat. Coba perhatikan bahwa $27 = 3^3$.');
-                        }
-                    });
-
-                    // STEP 2
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2').value);
-
-                        const benarA = val.includes('a=x') && val.includes('b=3');
-                        const benarB = val.includes('b=3') && val.includes('a=x');
-
-                        if (benarA || benarB) {
-                            setFeedback(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
-                            aktifkanStep(3);
-                        } else {
-                            setFeedback(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
-                        }
-                    });
-
-                    // STEP 3
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3').value);
-                        const opsi1 = normalize('(a-b)(a^2+ab+b^2)');
-                        const opsi2 = normalize('a^3-b^3=(a-b)(a^2+ab+b^2)');
-
-                        if (val === opsi1 || val === opsi2 || val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            setFeedback(3, 'benar', '✔ Benar! Itulah identitas selisih dua kubik.');
-                            aktifkanStep(4);
-                        } else {
-                            setFeedback(3, 'salah', '✘ Belum tepat. Ingat rumus: $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
-                        }
-                    });
-
-                    // STEP 4
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4').value);
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            setFeedback(4, 'benar', '✔ Benar! Hasil faktorisasinya tepat.');
-                            document.getElementById('latihan-final-note')?.classList.add('show');
-                        } else {
-                            setFeedback(4, 'salah', '✘ Jawaban belum tepat. Coba substitusi $a=x$ dan $b=3$ ke rumus.');
-                        }
-                    });
-                })();
-
-                (function () {
-                    function normalize(text) {
-                        return text
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function tampilkan(step, status, pesan) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = pesan;
-                        explain.classList.add('show');
-
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(document.getElementById('mari-mencoba-modern'), {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step1').value);
-
-                        if (val.includes('selisihduakubik') || val.includes('selisihkubik')) {
-                            tampilkan(1, 'benar', '✔ Benar! $x^3 - 27$ adalah bentuk selisih dua kubik.');
-                        } else {
-                            tampilkan(1, 'salah', '✘ Belum tepat. Petunjuk: $27 = 3^3$, jadi bentuknya adalah selisih dua kubik.');
-                        }
-                    });
-
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2').value);
-                        const benar = (val.includes('a=x') && val.includes('b=3')) || (val.includes('b=3') && val.includes('a=x'));
-
-                        if (benar) {
-                            tampilkan(2, 'benar', '✔ Benar! Nilainya adalah $a=x$ dan $b=3$.');
-                        } else {
-                            tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan $x^3 - 27$ dengan bentuk $a^3 - b^3$.');
-                        }
-                    });
-
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3').value);
-
-                        if (val.includes('a^3-b^3=') && val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            tampilkan(3, 'benar', '✔ Benar! Itu adalah identitas selisih dua kubik.');
-                        } else if (val.includes('a-b') && val.includes('a^2+ab+b^2')) {
-                            tampilkan(3, 'benar', '✔ Benar! Bentuk faktor yang kamu tulis sudah sesuai.');
-                        } else {
-                            tampilkan(3, 'salah', '✘ Belum tepat. Rumusnya adalah $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.');
-                        }
-                    });
-
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4')?.value);
-
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            tampilkan(4, 'benar', '🎉 Benar. Faktorisasi sudah tepat.', true);
-                        } else {
-                            tampilkan(4, 'salah', '✘ Belum tepat. Coba substitusikan nilai ke rumus dengan lebih teliti.');
-                        }
-                    });
-                })();
-            </script>
-
-
-
             <script>
                 window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
-            </script>
-            <script>
+
+                /* =====================================================
+                   GLOBAL RENDER MATH
+                ===================================================== */
+                function renderMathSafe(target = document.body) {
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(target, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '\\[', right: '\\]', display: true }
+                            ],
+                            throwOnError: false
+                        });
+                    }
+                }
+
+                /* =====================================================
+                   PROGRESS MATERI + BUKA KUIS
+                ===================================================== */
                 function bukaQuizButton() {
                     const quizBtn = document.getElementById("quizBabBtn");
                     if (!quizBtn) return;
@@ -4361,224 +4557,6 @@
 
                     quizBtn.replaceWith(link);
                 }
-                (function () {
-                    const latihanRoot = document.getElementById('latihan-drag-identitas');
-                    if (!latihanRoot) return;
-
-                    const draggableItems = latihanRoot.querySelectorAll('.drag-item');
-                    const dropzones = latihanRoot.querySelectorAll('.drag-dropzone');
-                    const pairTargets = latihanRoot.querySelectorAll('.pair-target');
-
-                    const bankSoal = document.getElementById('bank-soal-identitas');
-                    const bankFaktor = document.getElementById('bank-faktorisasi');
-
-                    const btnCek = document.getElementById('cek-latihan-drag');
-                    const btnReset = document.getElementById('reset-latihan-drag');
-
-                    const feedbackIdentitas = document.getElementById('feedback-identitas-drag');
-                    const feedbackFaktorisasi = document.getElementById('feedback-faktorisasi-drag');
-                    const summary = document.getElementById('summary-latihan-drag');
-
-                    let activeDrag = null;
-
-                    draggableItems.forEach((item) => {
-                        item.addEventListener('dragstart', function () {
-                            activeDrag = this;
-                            this.classList.add('dragging');
-                        });
-
-                        item.addEventListener('dragend', function () {
-                            this.classList.remove('dragging');
-                        });
-                    });
-
-                    dropzones.forEach((zone) => {
-                        zone.addEventListener('dragover', function (e) {
-                            e.preventDefault();
-                            this.classList.add('over');
-                        });
-
-                        zone.addEventListener('dragleave', function () {
-                            this.classList.remove('over');
-                        });
-
-                        zone.addEventListener('drop', function (e) {
-                            e.preventDefault();
-                            this.classList.remove('over');
-                            if (!activeDrag) return;
-
-                            const body = this.querySelector('.drag-dropzone-body');
-                            if (body && activeDrag.dataset.answer) {
-                                body.appendChild(activeDrag);
-                                rerenderMath();
-                            }
-                        });
-                    });
-
-                    pairTargets.forEach((target) => {
-                        target.addEventListener('dragover', function (e) {
-                            e.preventDefault();
-                            this.classList.add('over');
-                        });
-
-                        target.addEventListener('dragleave', function () {
-                            this.classList.remove('over');
-                        });
-
-                        target.addEventListener('drop', function (e) {
-                            e.preventDefault();
-                            this.classList.remove('over');
-                            if (!activeDrag) return;
-                            if (!activeDrag.classList.contains('factor-item')) return;
-
-                            const existing = this.querySelector('.factor-item');
-                            if (existing) {
-                                bankFaktor.appendChild(existing);
-                            }
-
-                            this.appendChild(activeDrag);
-                            rerenderMath();
-                        });
-                    });
-
-                    function rerenderMath() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(latihanRoot, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    function tampilkanBox(el, type, html) {
-                        el.className = 'drag-feedback show ' + type;
-                        el.innerHTML = html;
-                    }
-
-                    function tampilkanSummary(type, html) {
-                        summary.className = 'drag-summary show ' + type;
-                        summary.innerHTML = html;
-                    }
-
-                    btnCek?.addEventListener('click', function () {
-                        let skor = 0;
-                        const total = 4;
-
-                        // ===== CEK BAGIAN A =====
-                        let benarIdentitas = 0;
-
-                        const cardsIdentitas = document.querySelectorAll('#zone-identitas .drag-item');
-                        const cardsBukan = document.querySelectorAll('#zone-bukan-identitas .drag-item');
-
-                        cardsIdentitas.forEach((card) => {
-                            if (card.dataset.answer === 'identitas') benarIdentitas++;
-                        });
-
-                        cardsBukan.forEach((card) => {
-                            if (card.dataset.answer === 'bukan') benarIdentitas++;
-                        });
-
-                        skor += benarIdentitas;
-
-                        if (benarIdentitas === 2) {
-                            tampilkanBox(
-                                feedbackIdentitas,
-                                'ok',
-                                `✔ Bagian A benar semua.<br>
-                                                            <b>Penjelasan:</b><br>
-                                                            1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ adalah identitas kubik penjumlahan dua suku.<br>
-                                                            2. $(2y+5)(2y-5)$ seharusnya sama dengan $4y^2 - 25$, jadi pernyataan
-                                                            $4y^2 - 10y - 25$ <b>bukan identitas</b>.`
-                            );
-                        } else {
-                            tampilkanBox(
-                                feedbackIdentitas,
-                                'no',
-                                `✘ Bagian A belum tepat semuanya.<br>
-                                                            <b>Petunjuk:</b><br>
-                                                            Gunakan identitas $(a+b)(a-b)=a^2-b^2$ dan rumus kubik penjumlahan dua suku.`
-                            );
-                        }
-
-                        // ===== CEK BAGIAN B =====
-                        let benarFaktor = 0;
-
-                        pairTargets.forEach((target) => {
-                            const card = target.querySelector('.factor-item');
-                            if (card && card.dataset.pairAnswer === target.dataset.pair) {
-                                benarFaktor++;
-                            }
-                        });
-
-                        skor += benarFaktor;
-
-                        if (benarFaktor === 2) {
-                            tampilkanBox(
-                                feedbackFaktorisasi,
-                                'ok',
-                                `✔ Bagian B benar semua.<br>
-                                                            <b>Penjelasan:</b><br>
-                                                            3. $49-x^2 = 7^2-x^2 = (7+x)(7-x)$ menggunakan identitas selisih dua kuadrat.<br>
-                                                            4. $27p^3+125 = (3p)^3+5^3 = (3p+5)(9p^2-15p+25)$ menggunakan identitas jumlah dua kubik.`
-                            );
-                        } else {
-                            tampilkanBox(
-                                feedbackFaktorisasi,
-                                'no',
-                                `✘ Bagian B masih ada yang belum tepat.<br>
-                                                            <b>Petunjuk:</b><br>
-                                                            - $49-x^2$ cocok dengan selisih dua kuadrat.<br>
-                                                            - $27p^3+125$ cocok dengan jumlah dua kubik.`
-                            );
-                        }
-
-                        if (skor === total) {
-                            tampilkanSummary(
-                                'ok',
-                                `🎉 Skor kamu <b>${skor}/${total}</b>. Semua jawaban benar. Bagus sekali!`
-                            );
-                        } else {
-                            tampilkanSummary(
-                                'no',
-                                `Skor kamu <b>${skor}/${total}</b>. Coba susun lagi kartunya lalu tekan <b>Cek Jawaban</b>.`
-                            );
-                        }
-
-                        rerenderMath();
-                    });
-
-                    btnReset?.addEventListener('click', function () {
-                        feedbackIdentitas.className = 'drag-feedback';
-                        feedbackIdentitas.innerHTML = '';
-
-                        feedbackFaktorisasi.className = 'drag-feedback';
-                        feedbackFaktorisasi.innerHTML = '';
-
-                        summary.className = 'drag-summary';
-                        summary.innerHTML = '';
-
-                        document.querySelectorAll('#zone-identitas .drag-item, #zone-bukan-identitas .drag-item').forEach((card) => {
-                            bankSoal.appendChild(card);
-                        });
-
-                        pairTargets.forEach((target) => {
-                            const card = target.querySelector('.factor-item');
-                            if (card) {
-                                bankFaktor.appendChild(card);
-                            }
-                        });
-
-                        rerenderMath();
-                    });
-
-                    rerenderMath();
-                })();
-            </script>
-
-            <script>
-                // ================= LATIHAN SOAL =================
 
                 async function saveProgressMateri() {
                     const csrfToken = document
@@ -4609,22 +4587,6 @@
                     }
                 }
 
-                function bukaQuizButton() {
-                    const quizBtn = document.getElementById("quizBabBtn");
-                    if (!quizBtn) return;
-
-                    const url = quizBtn.dataset.quizUrl;
-                    if (!url) return;
-
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.id = "quizBabBtn";
-                    link.className = "btn-nav next-btn";
-                    link.textContent = "Kuis →";
-
-                    quizBtn.replaceWith(link);
-                }
-
                 let progressSudahDisimpan = false;
 
                 async function simpanProgressDanBukaKuis() {
@@ -4647,6 +4609,409 @@
                     return false;
                 }
 
+                /* =====================================================
+                   EKSPLORASI: PILIHAN GANDA + BUKA MATERI LANJUTAN
+                ===================================================== */
+                (function () {
+                    const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
+                    const materiLanjutan = document.getElementById('materi-lanjutan');
+
+                    if (!quizItems.length) return;
+
+                    function cekSemuaEksplorasiTerjawab() {
+                        const semuaTerjawab = Array.from(quizItems).every((item) => {
+                            return item.dataset.answered === 'true';
+                        });
+
+                        if (semuaTerjawab && materiLanjutan) {
+                            materiLanjutan.classList.add('show');
+                            renderMathSafe(materiLanjutan);
+                        }
+                    }
+
+                    if (materiLanjutan) {
+                        materiLanjutan.classList.remove('show');
+                    }
+
+                    quizItems.forEach((item) => {
+                        const correctAnswer = item.dataset.correct;
+                        const options = item.querySelectorAll('.eksplorasi-opsi');
+                        const feedback = item.querySelector('.eksplorasi-feedback');
+                        const explanation = item.querySelector('.eksplorasi-penjelasan');
+
+                        item.dataset.answered = 'false';
+
+                        options.forEach((option) => {
+                            option.addEventListener('click', function () {
+                                const selected = this.dataset.value;
+
+                                options.forEach((btn) => {
+                                    btn.classList.remove('benar', 'salah');
+                                });
+
+                                if (explanation) {
+                                    explanation.classList.remove('show');
+                                }
+
+                                if (feedback) {
+                                    feedback.className = 'eksplorasi-feedback show';
+                                }
+
+                                if (selected === correctAnswer) {
+                                    this.classList.add('benar');
+
+                                    if (feedback) {
+                                        feedback.classList.add('benar');
+                                        feedback.innerHTML = '✔ Jawabanmu benar.';
+                                    }
+
+                                    if (explanation) {
+                                        explanation.classList.add('show');
+                                    }
+                                } else {
+                                    this.classList.add('salah');
+
+                                    if (feedback) {
+                                        feedback.classList.add('salah');
+                                        feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
+                                    }
+                                }
+
+                                item.dataset.answered = 'true';
+
+                                cekSemuaEksplorasiTerjawab();
+                                renderMathSafe(item);
+                            });
+                        });
+                    });
+                })();
+
+                /* =====================================================
+                   CONTOH IDENTITAS: LANGKAH 1 - 6
+                ===================================================== */
+                (function () {
+                    const langkah = Array.from(document.querySelectorAll('#contoh-identitas .langkah-item'));
+                    const btnPrev = document.getElementById('btn-prev-langkah');
+                    const btnNext = document.getElementById('btn-next-langkah');
+                    const btnReset = document.getElementById('btn-reset-langkah');
+                    const indikator = document.getElementById('indikator-langkah');
+
+                    if (!langkah.length) return;
+
+                    let index = 0;
+
+                    function renderLangkah() {
+                        langkah.forEach((item, i) => {
+                            item.classList.toggle('active', i === index);
+                        });
+
+                        if (indikator) {
+                            indikator.textContent = `Langkah ${index + 1} dari ${langkah.length}`;
+                        }
+
+                        if (btnPrev) {
+                            btnPrev.disabled = index === 0;
+                            btnPrev.style.opacity = index === 0 ? '.5' : '1';
+                        }
+
+                        if (btnNext) {
+                            btnNext.disabled = index === langkah.length - 1;
+                            btnNext.style.opacity = index === langkah.length - 1 ? '.5' : '1';
+                        }
+
+                        renderMathSafe(document.getElementById('contoh-identitas') || document.body);
+                    }
+
+                    btnNext?.addEventListener('click', function () {
+                        if (index < langkah.length - 1) {
+                            index++;
+                            renderLangkah();
+                        }
+                    });
+
+                    btnPrev?.addEventListener('click', function () {
+                        if (index > 0) {
+                            index--;
+                            renderLangkah();
+                        }
+                    });
+
+                    btnReset?.addEventListener('click', function () {
+                        index = 0;
+                        renderLangkah();
+                    });
+
+                    renderLangkah();
+                })();
+
+                /* =====================================================
+                   CONTOH FAKTORISASI: LANGKAH 1 - 6
+                ===================================================== */
+                (function () {
+                    const langkahFaktor = Array.from(document.querySelectorAll('#contoh-faktorisasi .langkah-faktor'));
+                    const btnPrevFaktor = document.getElementById('btn-prev-faktor');
+                    const btnNextFaktor = document.getElementById('btn-next-faktor');
+                    const btnResetFaktor = document.getElementById('btn-reset-faktor');
+                    const indikatorFaktor = document.getElementById('indikator-faktor');
+
+                    if (!langkahFaktor.length) return;
+
+                    let indexFaktor = 0;
+
+                    function renderLangkahFaktor() {
+                        langkahFaktor.forEach((item, i) => {
+                            item.classList.toggle('active', i === indexFaktor);
+                        });
+
+                        if (indikatorFaktor) {
+                            indikatorFaktor.textContent = `Langkah ${indexFaktor + 1} dari ${langkahFaktor.length}`;
+                        }
+
+                        if (btnPrevFaktor) {
+                            btnPrevFaktor.disabled = indexFaktor === 0;
+                            btnPrevFaktor.style.opacity = indexFaktor === 0 ? '.5' : '1';
+                        }
+
+                        if (btnNextFaktor) {
+                            btnNextFaktor.disabled = indexFaktor === langkahFaktor.length - 1;
+                            btnNextFaktor.style.opacity = indexFaktor === langkahFaktor.length - 1 ? '.5' : '1';
+                        }
+
+                        renderMathSafe(document.getElementById('contoh-faktorisasi') || document.body);
+                    }
+
+                    btnNextFaktor?.addEventListener('click', function () {
+                        if (indexFaktor < langkahFaktor.length - 1) {
+                            indexFaktor++;
+                            renderLangkahFaktor();
+                        }
+                    });
+
+                    btnPrevFaktor?.addEventListener('click', function () {
+                        if (indexFaktor > 0) {
+                            indexFaktor--;
+                            renderLangkahFaktor();
+                        }
+                    });
+
+                    btnResetFaktor?.addEventListener('click', function () {
+                        indexFaktor = 0;
+                        renderLangkahFaktor();
+                    });
+
+                    renderLangkahFaktor();
+                })();
+
+                /* =====================================================
+                   SIFAT INTERAKTIF
+                ===================================================== */
+                (function () {
+                    const root = document.getElementById('sifat-interaktif');
+                    if (!root) return;
+
+                    const tabs = root.querySelectorAll('.sifat-tab');
+                    const cards = root.querySelectorAll('.sifat-card-item');
+                    const btnRandom = document.getElementById('btn-rumus-acak');
+
+                    const detailKategori = document.getElementById('detail-kategori');
+                    const detailTitle = document.getElementById('detail-title');
+                    const detailRumus = document.getElementById('detail-rumus');
+                    const detailPenjelasan = document.getElementById('detail-penjelasan');
+                    const detailContoh = document.getElementById('detail-contoh');
+
+                    function setActiveCard(card) {
+                        if (!card) return;
+
+                        cards.forEach(item => item.classList.remove('active'));
+                        card.classList.add('active');
+
+                        const kategori = card.dataset.kategori || '';
+                        const title = card.dataset.title || '';
+                        const rumus = card.dataset.rumus || '';
+                        const penjelasan = card.dataset.penjelasan || '';
+                        const contoh = card.dataset.contoh || '';
+
+                        if (detailKategori) detailKategori.textContent = kategori.toUpperCase();
+                        if (detailTitle) detailTitle.textContent = title;
+                        if (detailRumus) detailRumus.innerHTML = `\\(${rumus}\\)`;
+                        if (detailPenjelasan) detailPenjelasan.textContent = penjelasan;
+                        if (detailContoh) detailContoh.innerHTML = `\\(${contoh}\\)`;
+
+                        renderMathSafe(root);
+                    }
+
+                    cards.forEach(card => {
+                        card.addEventListener('click', function () {
+                            setActiveCard(this);
+                        });
+                    });
+
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', function () {
+                            tabs.forEach(t => t.classList.remove('active'));
+                            this.classList.add('active');
+
+                            const filter = this.dataset.filter;
+                            let firstVisible = null;
+
+                            cards.forEach(card => {
+                                const kategori = card.dataset.kategori;
+
+                                if (filter === 'semua' || kategori === filter) {
+                                    card.classList.remove('hidden');
+                                    if (!firstVisible) firstVisible = card;
+                                } else {
+                                    card.classList.add('hidden');
+                                    card.classList.remove('active');
+                                }
+                            });
+
+                            if (firstVisible) {
+                                setActiveCard(firstVisible);
+                            }
+                        });
+                    });
+
+                    btnRandom?.addEventListener('click', function () {
+                        const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
+                        if (!visibleCards.length) return;
+
+                        const randomIndex = Math.floor(Math.random() * visibleCards.length);
+                        setActiveCard(visibleCards[randomIndex]);
+                    });
+
+                    const miniQuizBtns = root.querySelectorAll('.mini-quiz-btn');
+                    const miniQuizFeedback = document.getElementById('mini-quiz-feedback');
+
+                    miniQuizBtns.forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            miniQuizBtns.forEach(item => item.classList.remove('benar', 'salah'));
+
+                            if (!miniQuizFeedback) return;
+
+                            if (this.dataset.answer === 'benar') {
+                                this.classList.add('benar');
+                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
+                                miniQuizFeedback.innerHTML = `
+                                                        ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
+                                                        \\(8 = 2^3\\), sehingga cocok dengan identitas:
+                                                        \\[
+                                                            a^3 - b^3 = (a-b)(a^2+ab+b^2)
+                                                        \\]
+                                                    `;
+                            } else {
+                                this.classList.add('salah');
+                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
+                                miniQuizFeedback.innerHTML = `
+                                                        ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
+                                                        bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
+                                                    `;
+                            }
+
+                            renderMathSafe(root);
+                        });
+                    });
+
+                    const firstActive = root.querySelector('.sifat-card-item.active') || root.querySelector('.sifat-card-item');
+                    if (firstActive) setActiveCard(firstActive);
+
+                    renderMathSafe(root);
+                })();
+
+                /* =====================================================
+                   MARI MENCOBA: BENAR / SALAH
+                ===================================================== */
+                (function () {
+                    const form = document.getElementById('quiz-form');
+                    const btnCek = document.getElementById('cek-jawaban');
+                    const btnUlang = document.getElementById('ulangi');
+                    const hasilSkor = document.getElementById('hasil-skor');
+                    const quizItems = Array.from(document.querySelectorAll('#quiz-form .quiz-item'));
+
+                    if (!form || !btnCek || !btnUlang || !quizItems.length) return;
+
+                    btnCek.addEventListener('click', function () {
+                        let skor = 0;
+                        let semuaTerjawab = true;
+
+                        quizItems.forEach((item, index) => {
+                            const correct = item.dataset.correct;
+                            const explain = item.dataset.explain;
+                            const wrongMsg = item.dataset.wrong;
+                            const checked = item.querySelector(`input[name="q${index + 1}"]:checked`);
+                            const penjelasan = item.querySelector('.penjelasan');
+
+                            item.classList.remove('benar', 'salah');
+
+                            if (penjelasan) {
+                                penjelasan.innerHTML = '';
+                            }
+
+                            if (!checked) {
+                                semuaTerjawab = false;
+                                return;
+                            }
+
+                            if (checked.value === correct) {
+                                skor++;
+                                item.classList.add('benar');
+
+                                if (penjelasan) {
+                                    penjelasan.innerHTML = `✔ <b>Benar.</b> ${explain}`;
+                                }
+                            } else {
+                                item.classList.add('salah');
+
+                                if (penjelasan) {
+                                    penjelasan.innerHTML = `✘ <b>Belum tepat.</b> ${wrongMsg}`;
+                                }
+                            }
+                        });
+
+                        if (!hasilSkor) return;
+
+                        if (!semuaTerjawab) {
+                            hasilSkor.className = 'hasil-skor show perlu-lagi';
+                            hasilSkor.innerHTML = 'Semua soal harus dijawab terlebih dahulu sebelum mengecek jawaban.';
+                            renderMathSafe(form);
+                            return;
+                        }
+
+                        if (skor === quizItems.length) {
+                            hasilSkor.className = 'hasil-skor show bagus';
+                            hasilSkor.innerHTML = `🎉 Skor kamu <b>${skor}/${quizItems.length}</b>. Hebat, semua jawaban benar!`;
+                        } else {
+                            hasilSkor.className = 'hasil-skor show perlu-lagi';
+                            hasilSkor.innerHTML = `Skor kamu <b>${skor}/${quizItems.length}</b>. Perhatikan bagian yang masih salah lalu coba lagi.`;
+                        }
+
+                        renderMathSafe(form);
+                    });
+
+                    btnUlang.addEventListener('click', function () {
+                        form.reset();
+
+                        quizItems.forEach((item) => {
+                            item.classList.remove('benar', 'salah');
+
+                            const penjelasan = item.querySelector('.penjelasan');
+                            if (penjelasan) penjelasan.innerHTML = '';
+                        });
+
+                        if (hasilSkor) {
+                            hasilSkor.className = 'hasil-skor';
+                            hasilSkor.innerHTML = '';
+                        }
+
+                        renderMathSafe(form);
+                    });
+
+                    renderMathSafe(form);
+                })();
+
+                /* =====================================================
+                   LATIHAN DRAG DROP + TAP TABLET/HP
+                ===================================================== */
                 (function () {
                     const root = document.getElementById('latihan-drag-identitas-lima');
                     if (!root) return;
@@ -4662,31 +5027,22 @@
                     const feedback = document.getElementById('feedback-identitas-lima');
 
                     let activeDrag = null;
-
-                    function initDragItems() {
-                        const items = root.querySelectorAll('.drag-item');
-
-                        items.forEach((item) => {
-                            item.addEventListener('dragstart', function () {
-                                activeDrag = this;
-                                this.classList.add('dragging');
-                            });
-
-                            item.addEventListener('dragend', function () {
-                                this.classList.remove('dragging');
-                            });
-                        });
-                    }
+                    let selectedCard = null;
 
                     function rerenderMath() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
+                        renderMathSafe(root);
+                    }
+
+                    function clearSelected() {
+                        root.querySelectorAll('.drag-item').forEach(item => {
+                            item.classList.remove('selected');
+                        });
+
+                        root.querySelectorAll('.drag-dropzone').forEach(zone => {
+                            zone.classList.remove('selected-target');
+                        });
+
+                        selectedCard = null;
                     }
 
                     function setSummary(type, html) {
@@ -4699,6 +5055,46 @@
                         if (!feedback) return;
                         feedback.className = 'drag-feedback show ' + type;
                         feedback.innerHTML = html;
+                    }
+
+                    function moveCardToZone(card, zone) {
+                        if (!card || !zone) return;
+
+                        const body = zone.querySelector('.drag-dropzone-body');
+                        if (!body) return;
+
+                        body.appendChild(card);
+                        clearSelected();
+                        rerenderMath();
+                    }
+
+                    function initDragAndTapItems() {
+                        const items = root.querySelectorAll('.drag-item');
+
+                        items.forEach((item) => {
+                            item.setAttribute('draggable', 'true');
+
+                            item.addEventListener('dragstart', function () {
+                                activeDrag = this;
+                                this.classList.add('dragging');
+                            });
+
+                            item.addEventListener('dragend', function () {
+                                this.classList.remove('dragging');
+                                activeDrag = null;
+                            });
+
+                            item.addEventListener('click', function (e) {
+                                e.stopPropagation();
+
+                                root.querySelectorAll('.drag-item').forEach(card => {
+                                    card.classList.remove('selected');
+                                });
+
+                                this.classList.add('selected');
+                                selectedCard = this;
+                            });
+                        });
                     }
 
                     dropzones.forEach((zone) => {
@@ -4716,12 +5112,25 @@
                             this.classList.remove('over');
 
                             if (!activeDrag) return;
+                            moveCardToZone(activeDrag, this);
+                        });
 
-                            const body = this.querySelector('.drag-dropzone-body');
-                            if (!body) return;
+                        zone.addEventListener('click', function () {
+                            root.querySelectorAll('.drag-dropzone').forEach(item => {
+                                item.classList.remove('selected-target');
+                            });
 
-                            body.appendChild(activeDrag);
-                            rerenderMath();
+                            this.classList.add('selected-target');
+
+                            if (!selectedCard) {
+                                setSummary(
+                                    'no',
+                                    'Pilih kartu jawaban terlebih dahulu, lalu tekan kotak IDENTITAS atau BUKAN IDENTITAS.'
+                                );
+                                return;
+                            }
+
+                            moveCardToZone(selectedCard, this);
                         });
                     });
 
@@ -4742,7 +5151,7 @@
 
                             setFeedback(
                                 'no',
-                                'Masih ada kartu yang belum disusun. Seret semua kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.'
+                                'Masih ada kartu yang belum disusun. Susun semua kartu ke kotak <b>IDENTITAS</b> atau <b>BUKAN IDENTITAS</b>.'
                             );
 
                             return;
@@ -4789,52 +5198,51 @@
                         setFeedback(
                             skor === 5 ? 'ok' : 'no',
                             `
-                                <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
+                                                <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
 
-                                <div style="margin-bottom:12px;">
-                                    <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
-                                    Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$ dikembangkan,
-                                    hasilnya selalu:
-                                    $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
-                                    Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah <b>identitas polinomial</b>.
-                                </div>
+                                                <div style="margin-bottom:12px; text-align:justify;">
+                                                    <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
+                                                    Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$
+                                                    dikembangkan, hasilnya selalu:
+                                                    $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
+                                                    Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah
+                                                    <b>identitas polinomial</b>.
+                                                </div>
 
-                                <div style="margin-bottom:12px;">
-                                    <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
-                                    Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
-                                    $$ (a+b)(a-b)=a^2-b^2 $$
-                                    dengan $a=2y$ dan $b=5$, sehingga:
-                                    $$ (2y+5)(2y-5) = (2y)^2 - 5^2 = 4y^2 - 25 $$
-                                    Jadi ruas kanan yang benar seharusnya <b>$4y^2 - 25$</b>, bukan <b>$4y^2 - 10y - 25$</b>.
-                                    Maka pernyataan ini <b>bukan identitas</b>.
-                                </div>
+                                                <div style="margin-bottom:12px; text-align:justify;">
+                                                    <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
+                                                    Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
+                                                    $$ (a+b)(a-b)=a^2-b^2 $$
+                                                    dengan $a=2y$ dan $b=5$, sehingga:
+                                                    $$ (2y+5)(2y-5)=4y^2-25 $$
+                                                    Jadi ruas kanan yang benar seharusnya <b>$4y^2-25$</b>, bukan
+                                                    <b>$4y^2-10y-25$</b>. Maka pernyataan ini <b>bukan identitas</b>.
+                                                </div>
 
-                                <div style="margin-bottom:12px;">
-                                    <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
-                                    Ini juga merupakan rumus <b>selisih dua kuadrat</b>:
-                                    $$ (x+a)(x-a)=x^2-a^2 $$
-                                    Hasil ini selalu benar untuk semua nilai $x$ dan $a$, sehingga termasuk
-                                    <b>identitas polinomial</b>.
-                                </div>
+                                                <div style="margin-bottom:12px; text-align:justify;">
+                                                    <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
+                                                    Ini merupakan rumus <b>selisih dua kuadrat</b>:
+                                                    $$ (x+a)(x-a)=x^2-a^2 $$
+                                                    Bentuk tersebut selalu benar untuk semua nilai $x$ dan $a$.
+                                                </div>
 
-                                <div style="margin-bottom:12px;">
-                                    <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
-                                    Gunakan rumus <b>kuadrat selisih dua suku</b>:
-                                    $$ (a-b)^2 = a^2 - 2ab + b^2 $$
-                                    dengan $a=x$ dan $b=4$, maka:
-                                    $$ (x-4)^2 = x^2 - 8x + 16 $$
-                                    Jadi hasilnya bukan <b>$x^2 - 4$</b>. Karena ruas kiri dan ruas kanan tidak sama,
-                                    maka ini <b>bukan identitas</b>.
-                                </div>
+                                                <div style="margin-bottom:12px; text-align:justify;">
+                                                    <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
+                                                    Gunakan rumus <b>kuadrat selisih dua suku</b>:
+                                                    $$ (a-b)^2 = a^2 - 2ab + b^2 $$
+                                                    dengan $a=x$ dan $b=4$, maka:
+                                                    $$ (x-4)^2 = x^2 - 8x + 16 $$
+                                                    Jadi hasilnya bukan <b>$x^2-4$</b>.
+                                                </div>
 
-                                <div style="margin-bottom:4px;">
-                                    <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
-                                    Ini adalah rumus baku <b>jumlah dua kubik</b>:
-                                    $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
-                                    Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
-                                    <b>identitas polinomial</b>.
-                                </div>
-                                `
+                                                <div style="margin-bottom:4px; text-align:justify;">
+                                                    <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
+                                                    Ini adalah rumus baku <b>jumlah dua kubik</b>:
+                                                    $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
+                                                    Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
+                                                    <b>identitas polinomial</b>.
+                                                </div>
+                                                `
                         );
 
                         rerenderMath();
@@ -4842,6 +5250,7 @@
 
                     btnReset?.addEventListener('click', function () {
                         progressSudahDisimpan = false;
+                        clearSelected();
 
                         const cardsInZones = root.querySelectorAll(
                             '#zone-identitas-lima .drag-item, #zone-bukan-lima .drag-item'
@@ -4864,481 +5273,18 @@
                         rerenderMath();
                     });
 
-                    initDragItems();
+                    initDragAndTapItems();
                     rerenderMath();
                 })();
-            </script>
 
-            <script>
-                (function () {
-                    const root = document.getElementById('sifat-interaktif');
-                    if (!root) return;
-
-                    const tabs = root.querySelectorAll('.sifat-tab');
-                    const cards = root.querySelectorAll('.sifat-card-item');
-                    const btnRandom = document.getElementById('btn-rumus-acak');
-
-                    const detailKategori = document.getElementById('detail-kategori');
-                    const detailTitle = document.getElementById('detail-title');
-                    const detailRumus = document.getElementById('detail-rumus');
-                    const detailPenjelasan = document.getElementById('detail-penjelasan');
-                    const detailContoh = document.getElementById('detail-contoh');
-
-                    function renderMathArea() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false },
-                                    { left: '\\(', right: '\\)', display: false },
-                                    { left: '\\[', right: '\\]', display: true }
-                                ]
-                            });
-                        }
-                    }
-
-                    function setActiveCard(card) {
-                        cards.forEach(item => item.classList.remove('active'));
-                        card.classList.add('active');
-
-                        const kategori = card.dataset.kategori || '';
-                        const title = card.dataset.title || '';
-                        const rumus = card.dataset.rumus || '';
-                        const penjelasan = card.dataset.penjelasan || '';
-                        const contoh = card.dataset.contoh || '';
-
-                        detailKategori.textContent = kategori.toUpperCase();
-                        detailTitle.textContent = title;
-                        detailRumus.innerHTML = `\\(${rumus}\\)`;
-                        detailPenjelasan.textContent = penjelasan;
-                        detailContoh.innerHTML = `\\(${contoh}\\)`;
-
-                        renderMathArea();
-                    }
-
-                    cards.forEach(card => {
-                        card.addEventListener('click', function () {
-                            setActiveCard(this);
-                        });
-                    });
-
-                    tabs.forEach(tab => {
-                        tab.addEventListener('click', function () {
-                            tabs.forEach(t => t.classList.remove('active'));
-                            this.classList.add('active');
-
-                            const filter = this.dataset.filter;
-
-                            let firstVisible = null;
-
-                            cards.forEach(card => {
-                                const kategori = card.dataset.kategori;
-
-                                if (filter === 'semua' || kategori === filter) {
-                                    card.classList.remove('hidden');
-                                    if (!firstVisible) firstVisible = card;
-                                } else {
-                                    card.classList.add('hidden');
-                                    card.classList.remove('active');
-                                }
-                            });
-
-                            if (firstVisible) {
-                                setActiveCard(firstVisible);
-                            }
-                        });
-                    });
-
-                    btnRandom?.addEventListener('click', function () {
-                        const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
-                        if (!visibleCards.length) return;
-
-                        const randomIndex = Math.floor(Math.random() * visibleCards.length);
-                        setActiveCard(visibleCards[randomIndex]);
-                    });
-
-                    const miniQuizBtns = root.querySelectorAll('.mini-quiz-btn');
-                    const miniQuizFeedback = document.getElementById('mini-quiz-feedback');
-
-                    miniQuizBtns.forEach(btn => {
-                        btn.addEventListener('click', function () {
-                            miniQuizBtns.forEach(item => item.classList.remove('benar', 'salah'));
-
-                            if (this.dataset.answer === 'benar') {
-                                this.classList.add('benar');
-                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
-                                miniQuizFeedback.innerHTML = `
-                                                                ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
-                                                                \\(8 = 2^3\\), sehingga cocok dengan identitas:
-                                                                \\[
-                                                                    a^3 - b^3 = (a-b)(a^2+ab+b^2)
-                                                                \\]
-                                                            `;
-                            } else {
-                                this.classList.add('salah');
-                                miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
-                                miniQuizFeedback.innerHTML = `
-                                                                ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
-                                                                bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
-                                                            `;
-                            }
-
-                            renderMathArea();
-                        });
-                    });
-
-                    renderMathArea();
-                })();
-            </script>
-
-            <script>
-                (function () {
-                    const form = document.getElementById('quiz-form');
-                    const btnCek = document.getElementById('cek-jawaban');
-                    const btnUlang = document.getElementById('ulangi');
-                    const hasilSkor = document.getElementById('hasil-skor');
-                    const quizItems = Array.from(document.querySelectorAll('#quiz-form .quiz-item'));
-
-                    if (!form || !btnCek || !btnUlang || !quizItems.length) return;
-
-                    function renderMath(target) {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(target, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    btnCek.addEventListener('click', function () {
-                        let skor = 0;
-                        let semuaTerjawab = true;
-
-                        quizItems.forEach((item, index) => {
-                            const correct = item.dataset.correct;
-                            const explain = item.dataset.explain;
-                            const wrongMsg = item.dataset.wrong;
-                            const checked = item.querySelector(`input[name="q${index + 1}"]:checked`);
-                            const penjelasan = item.querySelector('.penjelasan');
-
-                            item.classList.remove('benar', 'salah');
-                            penjelasan.innerHTML = '';
-
-                            if (!checked) {
-                                semuaTerjawab = false;
-                                return;
-                            }
-
-                            if (checked.value === correct) {
-                                skor++;
-                                item.classList.add('benar');
-                                penjelasan.innerHTML = `✔ <b>Benar.</b> ${explain}`;
-                            } else {
-                                item.classList.add('salah');
-                                penjelasan.innerHTML = `✘ <b>Belum tepat.</b> ${wrongMsg}`;
-                            }
-                        });
-
-                        if (!semuaTerjawab) {
-                            hasilSkor.className = 'hasil-skor show perlu-lagi';
-                            hasilSkor.innerHTML = 'Semua soal harus dijawab terlebih dahulu sebelum mengecek jawaban.';
-                            renderMath(form);
-                            return;
-                        }
-
-                        if (skor === quizItems.length) {
-                            hasilSkor.className = 'hasil-skor show bagus';
-                            hasilSkor.innerHTML = `🎉 Skor kamu <b>${skor}/${quizItems.length}</b>. Hebat, semua jawaban benar!`;
-                        } else {
-                            hasilSkor.className = 'hasil-skor show perlu-lagi';
-                            hasilSkor.innerHTML = `Skor kamu <b>${skor}/${quizItems.length}</b>. Perhatikan bagian yang masih salah lalu coba lagi.`;
-                        }
-
-                        renderMath(form);
-                    });
-
-                    btnUlang.addEventListener('click', function () {
-                        form.reset();
-
-                        quizItems.forEach((item) => {
-                            item.classList.remove('benar', 'salah');
-                            const penjelasan = item.querySelector('.penjelasan');
-                            penjelasan.innerHTML = '';
-                        });
-
-                        hasilSkor.className = 'hasil-skor';
-                        hasilSkor.innerHTML = '';
-
-                        renderMath(form);
-                    });
-
-                    renderMath(form);
-                })();
-            </script>
-
-            <script>
-                (function () {
-                    const root = document.getElementById('mari-mencoba-modern');
-                    if (!root) return;
-
-                    let selectedStep1 = '';
-
-                    function normalize(text) {
-                        return (text || '')
-                            .toLowerCase()
-                            .replace(/\s+/g, '')
-                            .replace(/\*/g, '')
-                            .replace(/[()]/g, '');
-                    }
-
-                    function renderMathArea() {
-                        if (typeof renderMathInElement === 'function') {
-                            renderMathInElement(root, {
-                                delimiters: [
-                                    { left: '$$', right: '$$', display: true },
-                                    { left: '$', right: '$', display: false }
-                                ]
-                            });
-                        }
-                    }
-
-                    function aktifkanStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        panel?.classList.remove('locked');
-
-                        if (input) input.disabled = false;
-                        if (btn) btn.disabled = false;
-                    }
-
-                    function resetFeedback(step) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        if (feed) {
-                            feed.className = 'step-feedback';
-                            feed.innerHTML = '';
-                        }
-
-                        if (explain) {
-                            explain.classList.remove('show');
-                        }
-                    }
-
-                    function resetStep(stepNumber) {
-                        const panel = document.getElementById(`step${stepNumber}`);
-                        const input = document.getElementById(`input-step${stepNumber}`);
-                        const btn = document.getElementById(`btn-step${stepNumber}`);
-
-                        panel?.classList.add('locked');
-
-                        if (input) {
-                            input.disabled = true;
-                            input.value = '';
-                        }
-
-                        if (btn) btn.disabled = true;
-
-                        resetFeedback(stepNumber);
-                    }
-
-                    function resetMulaiDari(stepNumber) {
-                        for (let i = stepNumber; i <= 4; i++) {
-                            resetStep(i);
-                        }
-                    }
-
-                    function tampilkan(step, status, pesan, showExplain = false) {
-                        const feed = document.getElementById(`feed-step${step}`);
-                        const explain = document.getElementById(`explain-step${step}`);
-
-                        if (!feed) return;
-
-                        feed.className = 'step-feedback ' + status;
-                        feed.innerHTML = pesan;
-
-                        if (showExplain) {
-                            explain?.classList.add('show');
-                        } else {
-                            explain?.classList.remove('show');
-                        }
-
-                        renderMathArea();
-                    }
-
-                    function resetStep1Styles() {
-                        const opsi = root.querySelectorAll('#opsi-step1 .step-option-btn');
-                        opsi.forEach((btn) => {
-                            btn.classList.remove('selected', 'correct', 'wrong');
-                        });
-                    }
-
-                    resetMulaiDari(2);
-
-                    // STEP 1
-                    const opsiStep1 = root.querySelectorAll('#opsi-step1 .step-option-btn');
-
-                    opsiStep1.forEach((btn) => {
-                        btn.addEventListener('click', function () {
-                            resetStep1Styles();
-                            resetFeedback(1);
-                            this.classList.add('selected');
-                            selectedStep1 = this.dataset.value;
-                        });
-                    });
-
-                    document.getElementById('btn-step1')?.addEventListener('click', function () {
-                        if (!selectedStep1) {
-                            tampilkan(1, 'salah', '✘ Pilih salah satu jawaban terlebih dahulu.');
-                            return;
-                        }
-
-                        const selectedBtn = root.querySelector('#opsi-step1 .step-option-btn.selected');
-
-                        if (selectedStep1 === 'selisih-dua-kubik') {
-                            selectedBtn?.classList.add('correct');
-                            tampilkan(1, 'benar', '✔ Benar. Polanya sudah sesuai.', true);
-                            aktifkanStep(2);
-                        } else {
-                            selectedBtn?.classList.add('wrong');
-                            tampilkan(1, 'salah', '✘ Belum tepat. Coba perhatikan jenis pangkat dan tanda operasinya.');
-                            resetMulaiDari(2);
-                        }
-                    });
-
-                    // STEP 2
-                    document.getElementById('btn-step2')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step2')?.value);
-                        const benarA = val.includes('a=x') && val.includes('b=3');
-                        const benarB = val.includes('b=3') && val.includes('a=x');
-
-                        if (benarA || benarB) {
-                            tampilkan(2, 'benar', '✔ Benar. Nilai yang dipilih sudah sesuai.', true);
-                            aktifkanStep(3);
-                        } else {
-                            tampilkan(2, 'salah', '✘ Belum tepat. Cocokkan kembali dengan bentuk umum $a^3-b^3$.');
-                            resetMulaiDari(3);
-                        }
-                    });
-
-                    // STEP 3
-                    document.getElementById('btn-step3')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step3')?.value);
-
-                        const cocok1 = val === normalize('a3-b3=(a-b)(a2+ab+b2)');
-                        const cocok2 = val === normalize('(a-b)(a^2+ab+b^2)');
-                        const cocok3 = val.includes('a-b') && val.includes('a^2+ab+b^2');
-
-                        if (cocok1 || cocok2 || cocok3) {
-                            tampilkan(3, 'benar', '✔ Benar. Rumus identitas yang digunakan sudah tepat.', true);
-                            aktifkanStep(4);
-                        } else {
-                            tampilkan(3, 'salah', '✘ Belum tepat. Tulis kembali identitas selisih dua kubik.');
-                            resetMulaiDari(4);
-                        }
-                    });
-
-                    // STEP 4
-                    document.getElementById('btn-step4')?.addEventListener('click', function () {
-                        const val = normalize(document.getElementById('input-step4')?.value);
-                        const benar1 = normalize('(x-3)(x^2+3x+9)');
-                        const benar2 = normalize('(x^2+3x+9)(x-3)');
-
-                        if (val === benar1 || val === benar2) {
-                            tampilkan(4, 'benar', '🎉 Benar. Faktorisasi sudah tepat.', true);
-                        } else {
-                            tampilkan(4, 'salah', '✘ Belum tepat. Coba substitusikan nilai ke rumus dengan lebih teliti.');
-                        }
-                    });
-
-                    renderMathArea();
-                })();
-
-                (function () {
-                    const quizItems = document.querySelectorAll('.eksplorasi-quiz-item');
-                    const materiLanjutan = document.getElementById('materi-lanjutan');
-
-                    // fungsi cek semua soal sudah dijawab
-                    function cekSemuaEksplorasiTerjawab() {
-                        const semuaTerjawab = Array.from(quizItems).every((item) => {
-                            return item.dataset.answered === 'true';
-                        });
-
-                        if (semuaTerjawab && materiLanjutan) {
-                            materiLanjutan.classList.add('show');
-
-                            if (typeof renderMathInElement === 'function') {
-                                renderMathInElement(materiLanjutan, {
-                                    delimiters: [
-                                        { left: '$$', right: '$$', display: true },
-                                        { left: '$', right: '$', display: false }
-                                    ]
-                                });
-                            }
-                        }
-                    }
-
-                    // sembunyikan dulu
-                    if (materiLanjutan) {
-                        materiLanjutan.classList.remove('show');
-                    }
-
-                    quizItems.forEach((item) => {
-                        const correctAnswer = item.dataset.correct;
-                        const options = item.querySelectorAll('.eksplorasi-opsi');
-                        const feedback = item.querySelector('.eksplorasi-feedback');
-                        const explanation = item.querySelector('.eksplorasi-penjelasan');
-
-                        // tandai belum dijawab
-                        item.dataset.answered = 'false';
-
-                        options.forEach((option) => {
-                            option.addEventListener('click', function () {
-                                const selected = this.dataset.value;
-
-                                // reset tampilan
-                                options.forEach((btn) => {
-                                    btn.classList.remove('benar', 'salah');
-                                });
-
-                                explanation.classList.remove('show');
-                                feedback.className = 'eksplorasi-feedback show';
-
-                                // cek jawaban
-                                if (selected === correctAnswer) {
-                                    this.classList.add('benar');
-                                    feedback.classList.add('benar');
-                                    feedback.innerHTML = '✔ Jawabanmu benar.';
-                                    explanation.classList.add('show');
-                                } else {
-                                    this.classList.add('salah');
-                                    feedback.classList.add('salah');
-                                    feedback.innerHTML = '✘ Jawabanmu belum tepat. Coba perhatikan kembali pola bentuk aljabarnya.';
-                                }
-
-                                // tandai sudah dijawab
-                                item.dataset.answered = 'true';
-
-                                // cek semua soal
-                                cekSemuaEksplorasiTerjawab();
-
-                                // render math
-                                if (typeof renderMathInElement === 'function') {
-                                    renderMathInElement(item, {
-                                        delimiters: [
-                                            { left: '$$', right: '$$', display: true },
-                                            { left: '$', right: '$', display: false }
-                                        ]
-                                    });
-                                }
-                            });
-                        });
-                    });
-                })();
+                /* =====================================================
+                   INIT AKHIR
+                ===================================================== */
+                window.addEventListener('load', function () {
+                    setTimeout(() => {
+                        renderMathSafe(document.body);
+                    }, 300);
+                });
             </script>
         </div>
     </div>
