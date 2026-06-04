@@ -5,11 +5,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                        delimiters: [
-                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                        ]
-                                                                                                                                    });"></script>
+                                                                                                                                                delimiters: [
+                                                                                                                                                    {left: '$$', right: '$$', display: true},
+                                                                                                                                                    {left: '$', right: '$', display: false}
+                                                                                                                                                ]
+                                                                                                                                            });"></script>
 
     <style>
         :root {
@@ -2503,7 +2503,7 @@
 
                     <div class="interaktif-wrap" data-answer="5x^3-2x^2+4x+6-3x^3-x^2+2x+5">
                         <div class="interaktif-title">Tulis bentuk setelah kurung dibuka</div>
-                        <input type="text" class="interaktif-input" placeholder="Contoh penulisan: 5x^3-2x^2+..." />
+                        <input type="text" class="interaktif-input" placeholder="Isi jawaban" />
                         <div class="interaktif-actions">
                             <button type="button" class="interaktif-check">Cek</button>
                             <span class="interaktif-feedback"></span>
@@ -2535,7 +2535,7 @@
 
                     <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
                         <div class="interaktif-title">Tulis hasil akhir</div>
-                        <input type="text" class="interaktif-input" placeholder="Tulis hasil polinomial akhirnya" />
+                        <input type="text" class="interaktif-input" placeholder="Isi jawaban" />
                         <div class="interaktif-actions">
                             <button type="button" class="interaktif-check">Cek</button>
                             <span class="interaktif-feedback"></span>
@@ -2698,7 +2698,7 @@
                             <div class="latihan-step-help">
                                 Ubah semua tanda pada polinomial kedua karena ada minus di depan kurung.
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2710,9 +2710,10 @@
                             data-answer="(9x^2-2x^2)+(-4x-3x)+(7+5)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
-                                Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta (gunakan tanda kurung untuk membedakan kelompoknya).
+                                Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta
+                                (gunakan tanda kurung untuk membedakan kelompoknya).
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2725,7 +2726,7 @@
                             <div class="latihan-step-help">
                                 Hitung tiap kelompok, lalu tulis hasil polinomial akhirnya.
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2748,7 +2749,7 @@
                             <div class="latihan-step-help">
                                 Balik semua tanda di dalam kurung kedua.
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2760,9 +2761,10 @@
                             data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
-                                Kelompokkan suku $y^3$, suku $y$, dan konstanta (gunakan tanda kurung untuk membedakan kelompok).
+                                Kelompokkan suku $y^3$, suku $y$, dan konstanta (gunakan tanda kurung untuk membedakan
+                                kelompok).
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2775,7 +2777,7 @@
                             <div class="latihan-step-help">
                                 Hitung semua kelompok, lalu tulis hasil akhirnya.
                             </div>
-                            <input type="text" class="latihan-input" placeholder="">
+                            <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
                                 <button type="button" class="latihan-check">Cek</button>
                                 <button type="button" class="latihan-reset">Reset</button>
@@ -2793,9 +2795,11 @@
                 <div id="latihan-final-message" class="final-message">
                     ✅ Bagus! Semua langkah pada latihan A dan B sudah benar.
                 </div>
-            </div>
+           </div>
         </div>
     </div>
+       
+
 
     <script>
         window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
@@ -3263,10 +3267,10 @@
                 {
                     name: "Gerbang 1 — Buka Kurung",
                     prompt: `
-                $$
-                (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                $$
-                `,
+                        $$
+                        (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                        $$
+                        `,
                     dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                     hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                     answers: [
@@ -3282,10 +3286,10 @@
                 {
                     name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                     prompt: `
-                $$
-                5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                $$
-                `,
+                        $$
+                        5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                        $$
+                        `,
                     dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                     hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                     answers: [
@@ -3298,10 +3302,10 @@
                 {
                     name: "Gerbang 3 — Sederhanakan",
                     prompt: `
-                $$
-                (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                $$
-                `,
+                        $$
+                        (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                        $$
+                        `,
                     dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                     hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                     answers: [
@@ -3538,8 +3542,8 @@
             🔒 Kuis
         </span>
     @else
-    <span class="btn-nav next-btn disabled">
-        Next →
-    </span>
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
     @endif
 @endsection

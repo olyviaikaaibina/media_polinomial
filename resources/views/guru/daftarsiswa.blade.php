@@ -4,6 +4,7 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         /*
         |--------------------------------------------------------------------------
@@ -35,8 +36,8 @@
         */
         .page-mobile-header {
             display: none;
-            width: 100%;
-            margin-bottom: 18px;
+            width: auto;
+            margin: 0;
         }
 
         .page-burger-btn {
@@ -69,7 +70,7 @@
             inset: 0;
             display: none;
             background: rgba(47, 43, 37, 0.45);
-            z-index: 998;
+            z-index: 9998;
         }
 
         .page-sidebar-overlay.show {
@@ -90,16 +91,14 @@
                 display: block;
             }
 
-            body :is(
-                .sidebar,
+            body :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) {
+                .side-navbar) {
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -110,37 +109,32 @@
                 overflow-y: auto !important;
                 background: #9caf8f !important;
                 background-color: #9caf8f !important;
-                z-index: 999 !important;
+                z-index: 9999 !important;
                 transform: translateX(-110%) !important;
                 transition: transform 0.25s ease !important;
                 box-shadow: 18px 0 40px rgba(47, 43, 37, 0.22) !important;
                 border-right: none !important;
             }
 
-            body.sidebar-mobile-open :is(
-                .sidebar,
+            body.sidebar-mobile-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) {
+                .side-navbar) {
                 transform: translateX(0) !important;
             }
 
-            body.sidebar-mobile-open :is(
-                .sidebar,
+            body.sidebar-mobile-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) :is(
-                .brand,
+                .side-navbar) :is(.brand,
                 .logo,
                 .sidebar-brand,
                 .sidebar-header,
@@ -151,35 +145,30 @@
                 .menu-wrapper,
                 .nav-wrapper,
                 .collapse,
-                .offcanvas-body
-            ) {
+                .offcanvas-body) {
                 background: transparent !important;
                 background-color: transparent !important;
             }
 
-            body.sidebar-mobile-open :is(
-                .sidebar,
+            body.sidebar-mobile-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) > * {
+                .side-navbar)>* {
                 background-color: transparent !important;
             }
 
-            body.sidebar-mobile-open :is(
-                .sidebar,
+            body.sidebar-mobile-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) a {
+                .side-navbar) a {
                 color: #2f2b25;
             }
         }
@@ -428,10 +417,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
+                position: fixed;
+                top: 145px;
+                left: 48px;
+                z-index: 10000;
+                width: auto;
+                height: auto;
+                margin: 0;
             }
 
             .siswa-page {
-                padding: 22px 22px 48px;
+                padding: 145px 22px 48px;
             }
 
             .siswa-header-card {
@@ -463,17 +459,19 @@
         |--------------------------------------------------------------------------
         */
         @media (max-width: 768px) {
-            .siswa-page {
-                padding: 18px 16px 44px;
+            .page-mobile-header {
+                top: 145px;
+                left: 48px;
+                margin: 0;
             }
 
-            .page-mobile-header {
-                margin-bottom: 16px;
+            .siswa-page {
+                padding: 145px 16px 44px;
             }
 
             .page-burger-btn {
-                width: 66px;
-                height: 66px;
+                width: 68px;
+                height: 68px;
                 border-radius: 20px;
             }
 
@@ -538,13 +536,18 @@
         |--------------------------------------------------------------------------
         */
         @media (max-width: 576px) {
+            .page-mobile-header {
+                top: 145px;
+                left: 48px;
+            }
+
             .siswa-page {
-                padding: 14px 12px 38px;
+                padding: 145px 12px 38px;
             }
 
             .page-burger-btn {
-                width: 66px;
-                height: 66px;
+                width: 68px;
+                height: 68px;
                 border-radius: 20px;
                 border-width: 3px;
             }
@@ -612,18 +615,23 @@
         |--------------------------------------------------------------------------
         */
         @media (max-width: 380px) {
+            .page-mobile-header {
+                top: 145px;
+                left: 48px;
+            }
+
             .siswa-page {
-                padding: 12px 10px 34px;
+                padding: 145px 10px 34px;
             }
 
             .page-burger-btn {
-                width: 62px;
-                height: 62px;
-                border-radius: 19px;
+                width: 68px;
+                height: 68px;
+                border-radius: 20px;
             }
 
             .page-burger-btn i {
-                font-size: 32px;
+                font-size: 34px;
             }
 
             .siswa-header-card {
@@ -707,13 +715,15 @@
 
                                 <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownExport">
                                     <li>
-                                        <a class="dropdown-item text-danger fw-semibold" href="{{ route('siswa.export.pdf') }}">
+                                        <a class="dropdown-item text-danger fw-semibold"
+                                            href="{{ route('siswa.export.pdf') }}">
                                             <i class="bi bi-file-earmark-pdf me-2"></i>
                                             Export as PDF
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item text-success fw-semibold" href="{{ route('siswa.export.excel') }}">
+                                        <a class="dropdown-item text-success fw-semibold"
+                                            href="{{ route('siswa.export.excel') }}">
                                             <i class="bi bi-file-earmark-excel me-2"></i>
                                             Export as Excel
                                         </a>
@@ -765,20 +775,16 @@
                                         <td>
                                             <div class="aksi-wrap">
                                                 <button type="button" class="btn btn-outline-primary btn-sm rounded-pill"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editSiswa"
-                                                    data-id="{{ $siswa->id }}"
-                                                    data-nama="{{ $siswa->nama }}"
-                                                    data-email="{{ $siswa->email }}"
-                                                    data-nis="{{ $siswa->nis }}"
+                                                    data-bs-toggle="modal" data-bs-target="#editSiswa"
+                                                    data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}"
+                                                    data-email="{{ $siswa->email }}" data-nis="{{ $siswa->nis }}"
                                                     data-jenis_kelamin="{{ $siswa->jenis_kelamin }}"
                                                     data-kelas="{{ str_replace(' ', '', $siswa->kelas) }}">
                                                     Edit
                                                 </button>
 
                                                 <form action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"
-                                                    class="d-inline"
-                                                    onsubmit="return confirm('Yakin mau hapus siswa ini?')">
+                                                    class="d-inline" onsubmit="return confirm('Yakin mau hapus siswa ini?')">
                                                     @csrf
                                                     @method('DELETE')
 

@@ -2335,7 +2335,7 @@
 
             <div class="latihan-polynomial-wrapper">
 
-                <div class="latihan-title">🎯 Latihan Penjumlahan Polinomial</div>
+                <div class="latihan-title">Latihan</div>
                 <p class="latihan-desc">
                     Kerjakan berurutan. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar.
                 </p>
@@ -2351,7 +2351,7 @@
                         </div>
 
                         <div class="jawaban-area">
-                            <input type="text" id="jawaban-1" placeholder="Contoh: 9y + 6">
+                            <input type="text" id="jawaban-1" placeholder="Jawaban kamu...">
                             <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
                             <span id="fb-1"></span>
                         </div>
@@ -2377,7 +2377,7 @@
                         </div>
 
                         <div class="jawaban-area">
-                            <input type="text" id="jawaban-2" placeholder="Contoh: 6x² + 2x - 4" disabled>
+                            <input type="text" id="jawaban-2" placeholder="Jawaban kamu..." disabled>
                             <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
                             <span id="fb-2"></span>
                         </div>
@@ -2404,7 +2404,7 @@
                         </div>
 
                         <div class="jawaban-area">
-                            <input type="text" id="jawaban-3" placeholder="Contoh: 7x³ + x² + x + 5" disabled>
+                            <input type="text" id="jawaban-3" placeholder="Jawaban kamu..." disabled>
                             <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
                             <span id="fb-3"></span>
                         </div>

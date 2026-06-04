@@ -371,72 +371,60 @@
             padding: 14px 10px;
         }
 
-        .hasil-box {
-            background: linear-gradient(135deg, #f8fbf5 0%, #f2f7ee 100%);
-            border: 1px solid #dfe7d7;
-            border-radius: 24px;
-            padding: 24px 20px;
+        /* HASIL BAGIAN KESIMPULAN */
+        .hasil-box,
+        .hasil-box.hasil-sederhana,
+        .hasil-box.hasil-menarik {
+            background: #f6f9f1;
+            border: 1px solid #dce6d3;
+            border-radius: 12px;
+            padding: 30px 25px;
             text-align: center;
-        }
-
-        .hasil-menarik {
+            box-shadow: none;
             position: relative;
             overflow: hidden;
-            padding: 30px 24px;
         }
 
-        .hasil-menarik::before {
-            content: "";
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            background: rgba(174, 191, 152, 0.16);
-            border-radius: 50%;
-            top: -70px;
-            left: -60px;
-        }
-
-        .hasil-menarik::after {
-            content: "";
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            background: rgba(240, 180, 41, 0.13);
-            border-radius: 50%;
-            bottom: -70px;
-            right: -50px;
+        .hasil-box::before,
+        .hasil-box::after,
+        .hasil-menarik::before,
+        .hasil-menarik::after,
+        .hasil-sederhana::before,
+        .hasil-sederhana::after {
+            display: none !important;
+            content: none !important;
         }
 
         .hasil-badge {
             position: relative;
             z-index: 1;
             display: inline-block;
-            padding: 7px 16px;
-            border-radius: 999px;
-            background: #aebf98;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 12px;
+            background: #9caf7d;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 7px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
 
         .hasil-label {
             position: relative;
             z-index: 1;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
-            color: #60705f;
-            margin-bottom: 10px;
+            color: #5a6654;
+            margin-bottom: 12px;
         }
 
         .hasil-rumus {
             position: relative;
             z-index: 1;
-            font-size: 46px;
+            font-size: 42px;
             font-weight: 800;
-            color: #2f3a30;
-            margin: 10px 0 22px;
-            line-height: 1.4;
+            color: #2f3a2f;
+            margin: 8px 0 28px;
+            line-height: 1.35;
         }
 
         .hasil-komponen {
@@ -445,58 +433,91 @@
             display: flex;
             justify-content: center;
             align-items: stretch;
-            gap: 12px;
-            margin: 20px auto;
+            gap: 18px;
             flex-wrap: wrap;
+            margin: 0 auto 24px;
         }
 
         .komponen-card {
-            width: 180px;
+            width: 190px;
+            min-height: 175px;
             background: #ffffff;
-            border: 1px solid #dfe7d7;
-            border-radius: 20px;
-            padding: 16px 12px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-            transition: 0.3s ease;
+            border: 1px solid #dfe6d8;
+            border-radius: 10px;
+            padding: 18px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
         }
 
         .komponen-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
         }
 
         .komponen-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
+            width: 95px;
+            min-height: 58px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .komponen-susunan {
+            width: 100px;
+        }
+
+        .komponen-kardus {
+            width: 80px;
+            font-size: 30px;
+        }
+
+        .komponen-buah {
+            width: 95px;
         }
 
         .komponen-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
-            color: #5b6658;
-            margin-bottom: 6px;
+            color: #4d5948;
+            margin-bottom: 8px;
         }
 
         .komponen-rumus {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
-            color: #2f3a30;
+            color: #2f3a2f;
         }
 
         .komponen-plus {
             display: flex;
             align-items: center;
+            justify-content: center;
             font-size: 28px;
             font-weight: 800;
-            color: #8ca178;
+            color: #82946b;
         }
 
         .hasil-kalimat {
             position: relative;
             z-index: 1;
-            margin-top: 18px;
-            font-size: 17px;
+            margin-top: 10px;
+            font-size: 18px;
             line-height: 1.8;
-            color: #4d554b;
+            color: #4f594c;
+        }
+
+        .hasil-kalimat strong {
+            color: #2f3a2f;
+            font-weight: 800;
         }
 
         .rumus-section {
@@ -1306,6 +1327,7 @@
         }
     </style>
 
+
     <div class="materi-container">
         <div class="materi-title">APERSEPSI</div>
 
@@ -1368,7 +1390,7 @@
                 </div>
 
                 <div class="note-mini">
-                    Contoh yang akan muncul pada apersepsi ini adalah <strong>x × x = x²</strong>.
+                    Contoh yang akan muncul pada apersepsi ini adalah <strong>a × a = a²</strong>.
                 </div>
             </div>
 
@@ -1523,7 +1545,7 @@
             </div>
 
             <!-- HASIL -->
-            <div class="hasil-box hasil-menarik">
+            <div class="hasil-box hasil-sederhana">
                 <div class="hasil-badge">Kesimpulan</div>
 
                 <div class="hasil-label">Sekarang kita jumlahkan semua bagian cerita</div>
@@ -1534,7 +1556,14 @@
 
                 <div class="hasil-komponen">
                     <div class="komponen-card">
-                        <div class="komponen-icon">📦</div>
+                        <div class="komponen-icon">
+                            <span>📦</span>
+                            <span>📦</span>
+                            <span>📦</span>
+                            <span>📦</span>
+                            <span>📦</span>
+                            <span>📦</span>
+                        </div>
                         <div class="komponen-title">Susunan Kardus</div>
                         <div class="komponen-rumus">3x<sup>2</sup></div>
                     </div>
@@ -1542,7 +1571,10 @@
                     <div class="komponen-plus">+</div>
 
                     <div class="komponen-card">
-                        <div class="komponen-icon">➕</div>
+                        <div class="komponen-icon">
+                            <span>📦</span>
+                            <span>📦</span>
+                        </div>
                         <div class="komponen-title">Kardus Tambahan</div>
                         <div class="komponen-rumus">2x</div>
                     </div>
@@ -1550,7 +1582,13 @@
                     <div class="komponen-plus">+</div>
 
                     <div class="komponen-card">
-                        <div class="komponen-icon">🍎</div>
+                        <div class="komponen-icon">
+                            <span>🍊</span>
+                            <span>🍊</span>
+                            <span>🍊</span>
+                            <span>🍊</span>
+                            <span>🍊</span>
+                        </div>
                         <div class="komponen-title">Buah Lepas</div>
                         <div class="komponen-rumus">5</div>
                     </div>

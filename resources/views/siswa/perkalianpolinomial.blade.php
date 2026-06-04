@@ -2490,37 +2490,37 @@
 
                         <div class="blank-line blank-item" data-answer="2x^2">
                             <span class="math-part">$$2x(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="8x">
                             <span class="math-part">$$2x(4)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x">
                             <span class="math-part">$$1(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="4">
                             <span class="math-part">$$1(4)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="2x^2+8x+x+4">
                             <span class="math-part">Bentuk sebelum disederhanakan =</span>
-                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="..." />
+                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="2x^2+9x+4">
                             <span class="math-part">Hasil akhir =</span>
-                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="..." />
+                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
@@ -2544,37 +2544,37 @@
 
                         <div class="blank-line blank-item" data-answer="x^2">
                             <span class="math-part">$$x(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="5x">
                             <span class="math-part">$$x(5)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="-2x">
                             <span class="math-part">$$-2(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="-10">
                             <span class="math-part">$$-2(5)=$$</span>
-                            <input class="blank-input" type="text" placeholder="..." />
+                            <input class="blank-input" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x^2+5x-2x-10">
                             <span class="math-part">Bentuk sebelum disederhanakan =</span>
-                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="..." />
+                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x^2+3x-10">
                             <span class="math-part">Hasil akhir =</span>
-                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="..." />
+                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="" />
                             <span class="blank-feedback"></span>
                         </div>
 
