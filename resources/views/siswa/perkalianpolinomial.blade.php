@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                    delimiters: [
-                                                        {left: '$$', right: '$$', display: true},
-                                                        {left: '$', right: '$', display: false}
-                                                    ]
-                                                });"></script>
+                                                                                                            delimiters: [
+                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                            ]
+                                                                                                        });"></script>
 
     <style>
         :root {
@@ -1294,9 +1294,9 @@
         }
 
         /* ================================
-           RESPONSIVE: LAPTOP, TABLET, HP
-           Tempel di paling bawah <style>
-        ================================ */
+                                                                   RESPONSIVE: LAPTOP, TABLET, HP
+                                                                   Tempel di paling bawah <style>
+                                                                ================================ */
 
         /* Laptop / desktop besar */
         @media (min-width: 1025px) {
@@ -1667,6 +1667,439 @@
                 width: 100%;
                 min-width: 0;
             }
+        }
+
+        .susun-table-bersusun {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .susun-table-bersusun td {
+            padding: 8px 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .susun-table-bersusun .col-op {
+            width: 55px;
+        }
+
+        .susun-table-bersusun .col-x2,
+        .susun-table-bersusun .col-x,
+        .susun-table-bersusun .col-c {
+            width: calc((100% - 55px) / 3);
+        }
+
+        .susun-term {
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .susun-table-bersusun .op {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        .susun-line td,
+        .susun-table-bersusun .line td {
+            border-top: 3px solid #9a9a9a;
+            height: 12px;
+            padding: 0;
+        }
+
+        .susun-hint-cell {
+            text-align: left !important;
+            padding-top: 14px !important;
+        }
+
+        .susun-result-cell {
+            position: relative;
+        }
+
+        .susun-input {
+            width: 100%;
+            min-height: 46px;
+            border: 2px solid #dce9dd;
+            border-radius: 14px;
+            padding: 8px 14px;
+            font-size: 1.2rem;
+            text-align: center;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .susun-input:focus {
+            border-color: #7fa06b;
+            box-shadow: 0 0 0 3px rgba(127, 160, 107, 0.18);
+        }
+
+        .final-input {
+            font-weight: 700;
+        }
+
+        /* =========================
+                       CARD JAWABAN CONTOH C
+                       ========================= */
+
+        .contoh-answer-card {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+            background: #ffffff;
+            border: 1px solid #dfe8dc;
+            border-radius: 20px;
+            padding: 18px;
+            margin-top: 16px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+        }
+
+        .contoh-left-area {
+            width: 390px;
+            flex-shrink: 0;
+        }
+
+        .contoh-right-area {
+            flex: 1;
+            min-width: 0;
+            border-left: 4px solid #93b47e;
+            padding-left: 18px;
+        }
+
+        .contoh-small-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #3f4a3f;
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+                       TABEL KECIL
+                       ========================= */
+
+        .contoh-table-box {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .contoh-answer-table {
+            width: 360px;
+            max-width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .contoh-answer-table th,
+        .contoh-answer-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .contoh-answer-table thead th {
+            background: #82cc67;
+            color: #173517;
+            height: 46px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-right: 1px solid #6fb65b;
+            border-bottom: 1px solid #6fb65b;
+        }
+
+        .contoh-answer-table tbody th {
+            background: #82cc67;
+            color: #173517;
+            width: 72px;
+            height: 58px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-right: 1px solid #6fb65b;
+            border-bottom: 1px solid #6fb65b;
+        }
+
+        .contoh-answer-table tbody td {
+            background: #f5f5f5;
+            height: 58px;
+            padding: 7px;
+            border-right: 1px solid #d7d7d7;
+            border-bottom: 1px solid #d7d7d7;
+        }
+
+        .contoh-answer-table tr th:last-child,
+        .contoh-answer-table tr td:last-child {
+            border-right: none;
+        }
+
+        .contoh-answer-table tbody tr:last-child th,
+        .contoh-answer-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================
+                       INPUT DI DALAM TABEL
+                       ========================= */
+
+        .table-answer-input {
+            width: 76px;
+            max-width: 100%;
+            height: 32px;
+            border: 1.8px solid #dce9dd;
+            border-radius: 10px;
+            background: #ffffff;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 4px 7px;
+            outline: none;
+        }
+
+        .table-answer-input:focus {
+            border-color: #7fa06b;
+            box-shadow: 0 0 0 3px rgba(127, 160, 107, 0.16);
+        }
+
+        /* =========================
+                       HINT KATEX
+                       ========================= */
+
+        .hint-katex {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .hint-content {
+            line-height: 1.7;
+        }
+
+        .hint-content .katex {
+            font-size: 1em;
+        }
+
+        /* =========================
+                       INPUT HASIL DI SAMPING
+                       ========================= */
+
+        .contoh-result-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            margin: 10px 0 16px;
+            width: 100%;
+        }
+
+        .equal-symbol {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #3d3d3d;
+            width: 24px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .result-answer-input {
+            flex: 1;
+            min-width: 240px;
+            height: 38px;
+            border: 1.8px solid #dce9dd;
+            border-radius: 10px;
+            background: #ffffff;
+            text-align: left;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            outline: none;
+        }
+
+        .result-answer-input:focus {
+            border-color: #7fa06b;
+            box-shadow: 0 0 0 3px rgba(127, 160, 107, 0.16);
+        }
+
+        /* =========================
+                       FEEDBACK DI SAMPING INPUT
+                       ========================= */
+
+        .susun-feedback {
+            display: inline-block;
+            min-width: 76px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .susun-feedback.benar {
+            color: #2e9b47;
+        }
+
+        .susun-feedback.salah {
+            color: #d64545;
+        }
+
+        .result-feedback {
+            margin-left: 2px;
+        }
+
+        /* =========================
+                       TOMBOL CEK DI SAMPING / KIRI
+                       ========================= */
+
+        .susun-actions-side {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .blank-summary {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4f5f4f;
+        }
+
+        /* =========================
+                       RESPONSIVE
+                       ========================= */
+
+        @media (max-width: 850px) {
+            .contoh-answer-card {
+                flex-direction: column;
+            }
+
+            .contoh-left-area {
+                width: 100%;
+            }
+
+            .contoh-right-area {
+                border-left: none;
+                border-top: 4px solid #93b47e;
+                padding-left: 0;
+                padding-top: 16px;
+            }
+
+            .contoh-table-box {
+                justify-content: center;
+            }
+
+            .contoh-answer-table {
+                width: 360px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .contoh-answer-card {
+                padding: 14px;
+            }
+
+            .contoh-answer-table {
+                width: 100%;
+            }
+
+            .contoh-answer-table thead th {
+                height: 42px;
+                font-size: 0.88rem;
+            }
+
+            .contoh-answer-table tbody th,
+            .contoh-answer-table tbody td {
+                height: 52px;
+            }
+
+            .table-answer-input {
+                width: 66px;
+                height: 30px;
+                font-size: 0.82rem;
+            }
+
+            .contoh-result-row {
+                gap: 7px;
+            }
+
+            .result-answer-input {
+                min-width: 0;
+                font-size: 0.88rem;
+            }
+
+            .susun-feedback {
+                min-width: auto;
+                font-size: 0.78rem;
+            }
+        }
+
+        /* =========================
+               LATIHAN TERAKHIR BERURUTAN
+               ========================= */
+
+        .game-soal {
+            position: relative;
+        }
+
+        .game-soal.locked {
+            opacity: 0.55;
+            filter: grayscale(0.25);
+            pointer-events: none;
+        }
+
+        .game-soal.locked::after {
+            content: "Selesaikan soal sebelumnya terlebih dahulu";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 14px;
+            color: #4b5563;
+            font-weight: 900;
+            z-index: 5;
+        }
+
+        .game-soal.done {
+            border-color: rgba(27, 122, 42, .35);
+            background: linear-gradient(180deg, #f3fff5, #ffffff);
+        }
+
+        .game-check-one-wrap {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .game-check-one {
+            padding: 9px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, .14);
+            background: #fff;
+            cursor: pointer;
+            font-weight: 900;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .game-check-one:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .06);
+            transition: .12s ease;
+        }
+
+        .game-check-one:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #quiz-summary {
+            display: none !important;
         }
     </style>
 
@@ -2367,103 +2800,107 @@
                             $$(x+2)(x+3)$$
                         </div>
 
-                        <div class="susun-card">
-                            <div class="susun-wrap">
-                                <table class="susun-table">
-                                    <tr>
-                                        <td></td>
-                                        <td>$$(x+2)$$</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="op">×</td>
-                                        <td>$$(x+3)$$</td>
-                                    </tr>
+                        <div class="contoh-answer-card">
 
-                                    <tr class="line">
-                                        <td colspan="2"></td>
-                                    </tr>
+                            {{-- BAGIAN KIRI: TABEL JAWABAN --}}
+                            <div class="contoh-left-area">
+                                <div class="contoh-small-title">Lengkapi tabel perkalian berikut.</div>
 
-                                    <tr>
-                                        <td></td>
-                                        <td class="susun-result-cell" style="text-align:left;">
-                                            <div class="hint-toggle">
-                                                <div class="hint-btn">Hint</div>
-                                                <div class="hint-content">
-                                                    Kalikan <b>3</b> ke semua suku pada <b>(x + 2)</b>.
-                                                    Fokus dulu pada hasil perkalian dengan bilangan tetap.
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <div class="contoh-table-box">
+                                    <table class="contoh-answer-table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>$x$</th>
+                                                <th>$+2$</th>
+                                            </tr>
+                                        </thead>
 
-                                    <tr class="susun-item-c" data-answer="3x+6">
-                                        <td></td>
-                                        <td class="susun-result-cell">
-                                            <input class="susun-input" type="text" placeholder="Baris 1" />
-                                            <span class="susun-feedback"></span>
-                                        </td>
-                                    </tr>
+                                        <tbody>
+                                            <tr>
+                                                <th>$x$</th>
 
-                                    <tr>
-                                        <td></td>
-                                        <td class="susun-result-cell" style="text-align:left;">
-                                            <div class="hint-toggle">
-                                                <div class="hint-btn">Hint</div>
-                                                <div class="hint-content">
-                                                    Kalikan <b>x</b> ke semua suku pada <b>(x + 2)</b>.
-                                                    Saat variabel sama dikalikan, pangkat dijumlahkan.
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                <td class="susun-item-c" data-answer="x^2">
+                                                    <input class="susun-input table-answer-input" type="text"
+                                                        placeholder="..." />
+                                                    <span class="susun-feedback"></span>
+                                                </td>
 
-                                    <tr class="susun-item-c" data-answer="x^2+2x">
-                                        <td></td>
-                                        <td class="susun-result-cell">
-                                            <input class="susun-input" type="text" placeholder="Baris 2" />
-                                            <span class="susun-feedback"></span>
-                                        </td>
-                                    </tr>
+                                                <td class="susun-item-c" data-answer="2x">
+                                                    <input class="susun-input table-answer-input" type="text"
+                                                        placeholder="..." />
+                                                    <span class="susun-feedback"></span>
+                                                </td>
+                                            </tr>
 
-                                    <tr class="line">
-                                        <td colspan="2"></td>
-                                    </tr>
+                                            <tr>
+                                                <th>$+3$</th>
 
-                                    <tr>
-                                        <td></td>
-                                        <td class="susun-result-cell" style="text-align:left;">
-                                            <div class="hint-toggle">
-                                                <div class="hint-btn">Hint</div>
-                                                <div class="hint-content">
-                                                    Jumlahkan hasil dari Baris 1 dan Baris 2.
-                                                    Gabungkan suku-suku sejenis agar lebih sederhana.
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                <td class="susun-item-c" data-answer="3x">
+                                                    <input class="susun-input table-answer-input" type="text"
+                                                        placeholder="..." />
+                                                    <span class="susun-feedback"></span>
+                                                </td>
 
-                                    <tr class="susun-item-c" data-answer="x^2+5x+6">
-                                        <td></td>
-                                        <td class="susun-result-cell">
-                                            <input class="susun-input" type="text" placeholder="Hasil akhir" />
-                                            <span class="susun-feedback"></span>
-                                        </td>
-                                    </tr>
-                                </table>
+                                                <td class="susun-item-c" data-answer="6">
+                                                    <input class="susun-input table-answer-input" type="text"
+                                                        placeholder="..." />
+                                                    <span class="susun-feedback"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
-                            <div class="susun-actions">
-                                <button type="button" class="mini-btn" id="contoh-c-checkall">Cek Semua</button>
-                                <span class="blank-summary" id="contoh-c-summary"></span>
+                            {{-- BAGIAN KANAN: INPUT HASIL DAN CEK --}}
+                            <div class="contoh-right-area">
+                                <div class="contoh-small-title">Tuliskan hasil dari tabel.</div>
+
+                                <div class="hint-toggle hint-katex">
+                                    <div class="hint-btn">Hint</div>
+                                    <div class="hint-content">
+                                        Kalikan suku pada baris dengan suku pada kolom.
+                                        Dari tabel akan diperoleh \(x^2\), \(2x\), \(3x\), dan \(6\).
+                                    </div>
+                                </div>
+
+                                <div class="susun-item-c contoh-result-row" data-answer="x^2+2x+3x+6">
+                                    <span class="equal-symbol">=</span>
+                                    <input class="susun-input result-answer-input" type="text"
+                                        placeholder="x² + 2x + 3x + 6" />
+                                    <span class="susun-feedback result-feedback"></span>
+                                </div>
+
+                                <div class="hint-toggle hint-katex">
+                                    <div class="hint-btn">Hint</div>
+                                    <div class="hint-content">
+                                        Gabungkan suku sejenis, yaitu \(2x\) dan \(3x\).
+                                        Karena \(2x+3x=5x\), hasil akhirnya menjadi \(x^2+5x+6\).
+                                    </div>
+                                </div>
+
+                                <div class="susun-item-c contoh-result-row" data-answer="x^2+5x+6">
+                                    <span class="equal-symbol">=</span>
+                                    <input class="susun-input result-answer-input" type="text" placeholder="x² + 5x + 6" />
+                                    <span class="susun-feedback result-feedback"></span>
+                                </div>
+
+                                <div class="susun-actions-side">
+                                    <button type="button" class="mini-btn" id="contoh-c-checkall">Cek Semua</button>
+                                    <span class="blank-summary" id="contoh-c-summary"></span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="penjelasan-box" id="penjelasan-c">
                             <div class="penjelasan-mini-title">Penjelasan Contoh</div>
+
                             <ol class="penjelasan-mini-list">
-                                <li>Kalikan $3$ ke semua suku pada $(x+2)$: $$3(x+2)=3x+6$$</li>
-                                <li>Kalikan $x$ ke semua suku pada $(x+2)$: $$x(x+2)=x^2+2x$$</li>
-                                <li>Jumlahkan kedua hasil tersebut.</li>
+                                <li>Kalikan suku pada baris dengan suku pada kolom.</li>
+                                <li>Isi setiap kotak kosong pada tabel sesuai hasil perkaliannya.</li>
+                                <li>Tuliskan semua hasil perkalian dari tabel.</li>
+                                <li>Gabungkan suku yang sejenis, yaitu $2x$ dan $3x$.</li>
                             </ol>
 
                             <div class="penjelasan-final">
@@ -2473,7 +2910,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- =========================
             C. LATIHAN
             ========================== --}}
@@ -3300,6 +3736,73 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
+                function normalizeMath(str) {
+                    return str
+                        .toLowerCase()
+                        .replace(/\s+/g, "")
+                        .replace(/−/g, "-")
+                        .replace(/²/g, "^2")
+                        .replace(/³/g, "^3")
+                        .replace(/\*/g, "")
+                        .replace(/×/g, "");
+                }
+
+                function renderKatexInside(element) {
+                    if (typeof renderMathInElement === "function") {
+                        renderMathInElement(element, {
+                            delimiters: [
+                                { left: "$$", right: "$$", display: true },
+                                { left: "\\(", right: "\\)", display: false },
+                                { left: "$", right: "$", display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
+                }
+
+                renderKatexInside(document.getElementById("contoh-c"));
+
+                const btn = document.getElementById("contoh-c-checkall");
+                const summary = document.getElementById("contoh-c-summary");
+
+                if (btn) {
+                    btn.addEventListener("click", function () {
+                        const items = document.querySelectorAll("#contoh-c .susun-item-c");
+                        let benar = 0;
+
+                        items.forEach(function (item) {
+                            const input = item.querySelector(".susun-input");
+                            const feedback = item.querySelector(".susun-feedback");
+
+                            if (!input || !feedback) return;
+
+                            const jawabanBenar = normalizeMath(item.dataset.answer);
+                            const jawabanUser = normalizeMath(input.value);
+
+                            if (jawabanUser === jawabanBenar) {
+                                feedback.textContent = "✓ Benar";
+                                feedback.classList.remove("salah");
+                                feedback.classList.add("benar");
+                                benar++;
+                            } else {
+                                feedback.textContent = "✗ Salah";
+                                feedback.classList.remove("benar");
+                                feedback.classList.add("salah");
+                            }
+                        });
+
+                        if (benar === items.length) {
+                            summary.textContent = "Semua jawaban benar!";
+                        } else {
+                            summary.textContent = "Jawaban benar " + benar + " dari " + items.length + ".";
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
                 const hints = document.querySelectorAll(".hint-toggle");
 
                 hints.forEach((hint) => {
@@ -3371,11 +3874,11 @@
                 progressSudahDisimpan = true;
 
                 const berhasilSimpan = await saveProgressMateri();
+                const finalNote = document.getElementById("game-final-note");
 
                 if (berhasilSimpan) {
                     bukaQuizButton();
 
-                    const finalNote = document.getElementById("game-final-note");
                     if (finalNote) {
                         finalNote.style.display = "block";
                         finalNote.textContent = "✅ Semua jawaban benar. Progress berhasil disimpan. Kuis sudah terbuka.";
@@ -3385,7 +3888,6 @@
                 } else {
                     progressSudahDisimpan = false;
 
-                    const finalNote = document.getElementById("game-final-note");
                     if (finalNote) {
                         finalNote.style.display = "block";
                         finalNote.textContent = "✅ Jawaban benar, tetapi progress gagal disimpan. Silakan coba lagi.";
@@ -3396,11 +3898,16 @@
             }
 
             document.addEventListener("DOMContentLoaded", function () {
-                const soalList = document.querySelectorAll(".game-soal");
+                const latihanBox = document.getElementById("game-latihan");
+                if (!latihanBox) return;
+
+                const soalList = Array.from(latihanBox.querySelectorAll(".game-soal"));
                 const scoreEl = document.getElementById("game-score");
                 const finalNote = document.getElementById("game-final-note");
-                const btnCheck = document.getElementById("game-check-score");
+                const btnCheckGlobal = document.getElementById("game-check-score");
                 const btnReset = document.getElementById("game-reset");
+
+                let currentIndex = 0;
 
                 const simpleNormalize = (value) => {
                     return (value || "")
@@ -3411,108 +3918,222 @@
                         .replace(/−/g, "-");
                 };
 
-                soalList.forEach((soal) => {
-                    const options = soal.querySelectorAll(".game-option");
+                function setStatus(soal, text, type = "") {
                     const status = soal.querySelector(".game-status");
+                    if (!status) return;
+
+                    status.textContent = text;
+                    status.classList.remove("ok", "no");
+
+                    if (type === "ok") status.classList.add("ok");
+                    if (type === "no") status.classList.add("no");
+                }
+
+                function lockSoal(index) {
+                    const soal = soalList[index];
+                    if (!soal) return;
+
+                    soal.classList.add("locked");
+                    soal.classList.remove("done");
+                    setStatus(soal, "Terkunci");
+                }
+
+                function unlockSoal(index) {
+                    const soal = soalList[index];
+                    if (!soal) return;
+
+                    soal.classList.remove("locked");
+                    setStatus(soal, "Belum dijawab");
+                }
+
+                function markDone(index) {
+                    const soal = soalList[index];
+                    if (!soal) return;
+
+                    soal.classList.remove("locked");
+                    soal.classList.add("done");
+                    setStatus(soal, "Benar", "ok");
+
+                    const options = soal.querySelectorAll(".game-option");
+                    options.forEach(option => {
+                        option.disabled = true;
+                    });
+
+                    const btn = soal.querySelector(".game-check-one");
+                    if (btn) {
+                        btn.disabled = true;
+                        btn.textContent = "Sudah Benar";
+                    }
+                }
+
+                function hitungBenar() {
+                    let benar = 0;
+
+                    soalList.forEach((soal) => {
+                        const selected = soal.querySelector(".game-option.selected");
+                        const answer = simpleNormalize(soal.dataset.answer || "");
+
+                        if (selected && simpleNormalize(selected.dataset.value || "") === answer) {
+                            benar++;
+                        }
+                    });
+
+                    return benar;
+                }
+
+                function resetLatihan() {
+                    currentIndex = 0;
+                    progressSudahDisimpan = false;
+
+                    soalList.forEach((soal, index) => {
+                        const options = soal.querySelectorAll(".game-option");
+
+                        soal.classList.remove("locked", "done");
+
+                        options.forEach(option => {
+                            option.disabled = false;
+                            option.classList.remove("selected", "correct", "wrong");
+                        });
+
+                        const btn = soal.querySelector(".game-check-one");
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.textContent = "Cek Jawaban";
+                        }
+
+                        if (index === 0) {
+                            unlockSoal(index);
+                        } else {
+                            lockSoal(index);
+                        }
+                    });
+
+                    if (scoreEl) {
+                        scoreEl.textContent = "Kerjakan soal 1 terlebih dahulu.";
+                    }
+
+                    if (finalNote) {
+                        finalNote.style.display = "none";
+                        finalNote.textContent = "";
+                        finalNote.classList.remove("ok", "no");
+                    }
+                }
+
+                /*
+                   Tombol Lihat Skor disembunyikan
+                   karena sekarang ceknya satu-satu per soal.
+                */
+                if (btnCheckGlobal) {
+                    btnCheckGlobal.style.display = "none";
+                }
+
+                /*
+                   Buat tombol Cek Jawaban di setiap soal
+                   tanpa perlu ubah HTML latihan.
+                */
+                soalList.forEach((soal, index) => {
+                    const oldWrap = soal.querySelector(".game-check-one-wrap");
+                    if (oldWrap) oldWrap.remove();
+
+                    const wrap = document.createElement("div");
+                    wrap.className = "game-check-one-wrap";
+
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "game-check-one";
+                    btn.textContent = "Cek Jawaban";
+
+                    wrap.appendChild(btn);
+                    soal.appendChild(wrap);
+
+                    const options = soal.querySelectorAll(".game-option");
 
                     options.forEach((opt) => {
                         opt.addEventListener("click", function () {
-                            options.forEach(o => o.classList.remove("selected"));
-                            this.classList.add("selected");
+                            if (soal.classList.contains("locked")) return;
+                            if (soal.classList.contains("done")) return;
+                            if (index !== currentIndex) return;
 
-                            status.textContent = "Sudah dipilih";
-                            status.classList.remove("ok", "no");
+                            options.forEach(o => {
+                                o.classList.remove("selected", "wrong");
+                            });
+
+                            this.classList.add("selected");
+                            setStatus(soal, "Sudah dipilih");
+
+                            if (finalNote) {
+                                finalNote.style.display = "none";
+                                finalNote.textContent = "";
+                                finalNote.classList.remove("ok", "no");
+                            }
                         });
                     });
-                });
 
-                if (btnCheck) {
-                    btnCheck.addEventListener("click", async function () {
-                        let benar = 0;
-                        let terjawab = 0;
+                    btn.addEventListener("click", async function () {
+                        if (soal.classList.contains("locked")) return;
+                        if (soal.classList.contains("done")) return;
+                        if (index !== currentIndex) return;
 
-                        soalList.forEach((soal) => {
-                            const answer = simpleNormalize(soal.dataset.answer || "");
-                            const status = soal.querySelector(".game-status");
-                            const options = soal.querySelectorAll(".game-option");
-                            const selected = soal.querySelector(".game-option.selected");
+                        const answer = simpleNormalize(soal.dataset.answer || "");
+                        const selected = soal.querySelector(".game-option.selected");
 
-                            options.forEach(o => o.classList.remove("correct", "wrong"));
+                        options.forEach(o => o.classList.remove("correct", "wrong"));
 
-                            if (!selected) {
-                                status.textContent = "Belum dijawab";
-                                status.classList.remove("ok", "no");
-                                return;
+                        if (!selected) {
+                            setStatus(soal, "Pilih jawaban dulu", "no");
+
+                            if (scoreEl) {
+                                scoreEl.textContent = `Pilih jawaban pada soal ${index + 1} terlebih dahulu.`;
                             }
 
-                            terjawab++;
-                            const value = simpleNormalize(selected.dataset.value || "");
-
-                            if (value === answer) {
-                                benar++;
-                                selected.classList.add("correct");
-                                status.textContent = "Benar";
-                                status.classList.remove("no");
-                                status.classList.add("ok");
-                            } else {
-                                selected.classList.add("wrong");
-                                status.textContent = "Salah";
-                                status.classList.remove("ok");
-                                status.classList.add("no");
-
-                                options.forEach((o) => {
-                                    const optVal = simpleNormalize(o.dataset.value || "");
-                                    if (optVal === answer) {
-                                        o.classList.add("correct");
-                                    }
-                                });
-                            }
-                        });
-
-                        if (scoreEl) {
-                            scoreEl.textContent = `Skor: ${benar}/${soalList.length}`;
+                            return;
                         }
 
-                        if (finalNote) {
-                            finalNote.style.display = (terjawab === soalList.length) ? "block" : "none";
+                        const value = simpleNormalize(selected.dataset.value || "");
 
-                            if (terjawab === soalList.length && benar !== soalList.length) {
-                                finalNote.textContent = "Hebat! Semua soal sudah dikerjakan. Periksa lagi kalau masih ada yang salah, lalu coba sampai benar semua.";
+                        if (value === answer) {
+                            selected.classList.add("correct");
+                            markDone(index);
+
+                            const benar = hitungBenar();
+
+                            if (index < soalList.length - 1) {
+                                currentIndex++;
+                                unlockSoal(currentIndex);
+
+                                if (scoreEl) {
+                                    scoreEl.textContent = `Benar. Soal ${currentIndex + 1} sudah terbuka. Skor: ${benar}/${soalList.length}`;
+                                }
+                            } else {
+                                if (scoreEl) {
+                                    scoreEl.textContent = `Skor: ${benar}/${soalList.length}`;
+                                }
+
+                                await handleLatihanSelesai();
+                            }
+                        } else {
+                            selected.classList.add("wrong");
+                            setStatus(soal, "Salah", "no");
+
+                            if (scoreEl) {
+                                scoreEl.textContent = `Jawaban soal ${index + 1} masih salah. Coba lagi.`;
+                            }
+
+                            if (finalNote) {
+                                finalNote.style.display = "block";
+                                finalNote.textContent = "Soal berikutnya belum terbuka karena jawaban ini belum benar.";
                                 finalNote.classList.remove("ok");
                                 finalNote.classList.add("no");
                             }
                         }
-
-                        if (benar === soalList.length && terjawab === soalList.length) {
-                            await handleLatihanSelesai();
-                        }
                     });
-                }
+                });
 
                 if (btnReset) {
-                    btnReset.addEventListener("click", function () {
-                        soalList.forEach((soal) => {
-                            const status = soal.querySelector(".game-status");
-                            const options = soal.querySelectorAll(".game-option");
-
-                            options.forEach((o) => {
-                                o.classList.remove("selected", "correct", "wrong");
-                            });
-
-                            status.textContent = "Belum dijawab";
-                            status.classList.remove("ok", "no");
-                        });
-
-                        progressSudahDisimpan = false;
-
-                        if (scoreEl) scoreEl.textContent = "";
-                        if (finalNote) {
-                            finalNote.style.display = "none";
-                            finalNote.textContent = "";
-                            finalNote.classList.remove("ok", "no");
-                        }
-                    });
+                    btnReset.addEventListener("click", resetLatihan);
                 }
+
+                resetLatihan();
             });
         </script>
     </div>

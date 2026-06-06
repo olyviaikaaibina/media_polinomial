@@ -57,8 +57,9 @@
 
         .rumus {
             text-align: center;
-            font-size: 26px;
-            font-style: italic;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
             margin: 12px 0;
         }
 
@@ -79,8 +80,9 @@
 
         .question-value {
             text-align: center;
-            font-size: 26px;
-            font-style: italic;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
         }
 
         .input-line {
@@ -223,7 +225,7 @@
         .info-box.orange {
             background: #f2cfc2;
             border: 1.5px solid #e2a285;
-            margin-bottom: 8px;
+            margin-bottom: 36px;
         }
 
         .section-heading {
@@ -375,8 +377,9 @@
 
         .definisi-rumus {
             text-align: center;
-            font-size: 40px;
-            font-style: italic;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: normal;
             margin: 18px 0;
             color: #5a4339;
         }
@@ -402,7 +405,7 @@
         }
 
         .contoh-premium-card {
-            margin: 8px 0 30px;
+            margin: 18px 0 30px;
             padding: 28px 24px 24px;
             background: linear-gradient(180deg, #f7fcf4 0%, #eef8ea 100%);
             border: 1.5px solid #cfe7c7;
@@ -672,8 +675,8 @@
         }
 
         /* =========================
-                           HORNER INTERAKTIF
-                        ========================= */
+                                                                                                                       HORNER INTERAKTIF
+                                                                                                                    ========================= */
 
         .horner-premium-wrap {
             margin-top: 18px;
@@ -857,8 +860,8 @@
         }
 
         /* =========================
-                           HORNER MARI MENCOBA
-                        ========================= */
+                                                                                                                       HORNER MARI MENCOBA
+                                                                                                                    ========================= */
 
         .horner-table-wrap {
             margin: 14px 0 16px;
@@ -960,8 +963,8 @@
         }
 
         /* =========================
-                           LATIHAN
-                        ========================= */
+                                                                                                                       LATIHAN
+                                                                                                                    ========================= */
 
         .latihan-card {
             position: relative;
@@ -1116,8 +1119,8 @@
         }
 
         /* =========================
-                           HORNER LATIHAN
-                        ========================= */
+                                                                                                                       HORNER LATIHAN
+                                                                                                                    ========================= */
 
         .latihan-horner-wrap {
             margin: 18px 0 10px;
@@ -1242,8 +1245,8 @@
         }
 
         /* =========================
-                           ANIMASI
-                        ========================= */
+                                                                                                                       ANIMASI
+                                                                                                                    ========================= */
 
         .horner-animate {
             transition: all 0.5s ease;
@@ -1267,8 +1270,8 @@
         }
 
         /* =========================
-                           RESPONSIVE TABLET
-                        ========================= */
+                                                                                                                       RESPONSIVE TABLET
+                                                                                                                    ========================= */
 
         @media (max-width: 900px) {
             .materi-wrapper {
@@ -1286,8 +1289,8 @@
         }
 
         /* =========================
-                           RESPONSIVE HP
-                        ========================= */
+                                                                                                                       RESPONSIVE HP
+                                                                                                                    ========================= */
 
         @media (max-width: 768px) {
             .materi-wrapper {
@@ -1605,8 +1608,8 @@
         }
 
         /* =========================
-                           RESPONSIVE HP KECIL
-                        ========================= */
+                                                                                                                       RESPONSIVE HP KECIL
+                                                                                                                    ========================= */
 
         @media (max-width: 480px) {
             .materi-wrapper {
@@ -1777,8 +1780,8 @@
         }
 
         /* =========================
-               HASIL AKHIR LATIHAN RAPI
-            ========================= */
+                                                                                                           HASIL AKHIR LATIHAN RAPI
+                                                                                                        ========================= */
 
         .hasil-akhir-wrap {
             display: flex;
@@ -1879,6 +1882,470 @@
                 font-size: 12px;
                 border-radius: 5px;
             }
+        }
+
+        /* =========================
+                                       TABEL HORNER SEPERTI GAMBAR + TANDA PLUS
+                                    ========================= */
+
+        #card-step-6 .horner-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            padding: 14px 4px 18px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #card-step-6 .horner-board {
+            --cell-w: 88px;
+            --cell-h: 58px;
+            --k-w: 68px;
+            --col-gap: 14px;
+            --row-gap: 12px;
+            --line-x: 81px;
+            --line-y-1: 64px;
+            --line-y-2: 134px;
+
+            position: relative;
+            display: grid;
+            grid-template-columns: var(--k-w) repeat(4, var(--cell-w));
+            grid-template-rows: repeat(3, var(--cell-h));
+            column-gap: var(--col-gap);
+            row-gap: var(--row-gap);
+            width: max-content;
+            margin: 0 auto;
+
+            /* kanan dilebarkan untuk tempat tanda + */
+            padding: 0 48px 0 6px;
+        }
+
+        #card-step-6 .horner-line {
+            position: absolute;
+            background: #6d6a66;
+            border-radius: 999px;
+            z-index: 1;
+        }
+
+        #card-step-6 .horner-line-v {
+            left: var(--line-x);
+            top: 10px;
+            width: 4px;
+            height: 132px;
+        }
+
+        #card-step-6 .horner-line-top {
+            left: var(--line-x);
+            right: 48px;
+            top: var(--line-y-1);
+            height: 4px;
+        }
+
+        #card-step-6 .horner-line-bottom {
+            left: var(--line-x);
+            right: 48px;
+            top: var(--line-y-2);
+            height: 4px;
+        }
+
+        #card-step-6 .horner-cell,
+        #card-step-6 .horner-k-badge {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-weight: 800;
+            color: #575048;
+        }
+
+        #card-step-6 .horner-cell {
+            width: var(--cell-w);
+            height: var(--cell-h);
+            border-radius: 16px;
+            border: 1px solid #dfe6dc;
+            background: #fbfdfb;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+
+        #card-step-6 .horner-bottom {
+            background: #fbfff9;
+        }
+
+        #card-step-6 .horner-k-badge {
+            grid-column: 1;
+            grid-row: 2;
+            width: var(--k-w);
+            height: 68px;
+            border-radius: 18px;
+            border: 1px solid #a9d39f;
+            background: #d9efd2;
+            color: #2f7838;
+            font-size: 29px;
+        }
+
+        #card-step-6 .horner-input {
+            padding: 0;
+            text-align: center;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        #card-step-6 .horner-input:focus {
+            border-color: #67ba68;
+            background: #e8f6e3;
+            color: #247b34;
+            box-shadow: 0 0 0 4px rgba(83, 184, 91, 0.16);
+        }
+
+        #card-step-6 .horner-input.is-correct,
+        #card-step-6 .horner-cell.is-green {
+            border-color: #67ba68;
+            background: #e8f6e3;
+            color: #247b34;
+            box-shadow: 0 0 0 4px rgba(83, 184, 91, 0.16);
+        }
+
+        /* Tanda + di ujung kanan garis bawah */
+        #card-step-6 .horner-plus-sign {
+            position: absolute;
+            z-index: 4;
+
+            right: 9px;
+            top: calc(var(--line-y-2) - 15px);
+
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            font-weight: 900;
+            color: #575048;
+        }
+
+        /* Posisi baris */
+        #card-step-6 .row-top {
+            grid-row: 1;
+        }
+
+        #card-step-6 .row-mid {
+            grid-row: 2;
+        }
+
+        #card-step-6 .row-bottom {
+            grid-row: 3;
+        }
+
+        /* Posisi kolom angka */
+        #card-step-6 .col-1 {
+            grid-column: 2;
+        }
+
+        #card-step-6 .col-2 {
+            grid-column: 3;
+        }
+
+        #card-step-6 .col-3 {
+            grid-column: 4;
+        }
+
+        #card-step-6 .col-4 {
+            grid-column: 5;
+        }
+
+        /* Responsive HP */
+        @media (max-width: 520px) {
+            #card-step-6 .horner-board {
+                --cell-w: 78px;
+                --cell-h: 54px;
+                --k-w: 62px;
+                --col-gap: 12px;
+                --row-gap: 10px;
+                --line-x: 74px;
+                --line-y-1: 59px;
+                --line-y-2: 123px;
+
+                padding: 0 44px 0 6px;
+            }
+
+            #card-step-6 .horner-line-top {
+                right: 44px;
+            }
+
+            #card-step-6 .horner-line-bottom {
+                right: 44px;
+            }
+
+            #card-step-6 .horner-cell {
+                font-size: 24px;
+            }
+
+            #card-step-6 .horner-k-badge {
+                height: 62px;
+                font-size: 26px;
+            }
+
+            #card-step-6 .horner-line-v {
+                height: 122px;
+            }
+
+            #card-step-6 .horner-plus-sign {
+                right: 8px;
+                top: calc(var(--line-y-2) - 14px);
+                font-size: 27px;
+            }
+        }
+
+
+
+        /* =========================
+                                               TABEL HORNER LATIHAN SOAL 2
+                                            ========================= */
+
+        #latihanSoal2 .latihan-horner-wrap {
+            width: 100%;
+            overflow-x: auto;
+            padding: 14px 4px 18px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #latihanSoal2 .latihan-horner-board {
+            --cell-w: 88px;
+            --cell-h: 58px;
+            --k-w: 68px;
+            --col-gap: 14px;
+            --row-gap: 12px;
+            --line-x: 81px;
+            --line-y-1: 64px;
+            --line-y-2: 134px;
+
+            position: relative;
+            display: grid;
+            grid-template-columns: var(--k-w) repeat(4, var(--cell-w));
+            grid-template-rows: repeat(3, var(--cell-h));
+            column-gap: var(--col-gap);
+            row-gap: var(--row-gap);
+
+            width: max-content;
+            margin: 0 auto;
+
+            /* kanan dibuat lebih lebar untuk tempat tanda + */
+            padding: 0 48px 0 6px;
+        }
+
+        /* Garis tabel */
+        #latihanSoal2 .latihan-line {
+            position: absolute;
+            background: #6d6a66;
+            border-radius: 999px;
+            z-index: 1;
+        }
+
+        #latihanSoal2 .latihan-line-v {
+            left: var(--line-x);
+            top: 10px;
+            width: 4px;
+            height: 132px;
+        }
+
+        #latihanSoal2 .latihan-line-top {
+            left: var(--line-x);
+            right: 48px;
+            top: var(--line-y-1);
+            height: 4px;
+        }
+
+        #latihanSoal2 .latihan-line-bottom {
+            left: var(--line-x);
+            right: 48px;
+            top: var(--line-y-2);
+            height: 4px;
+        }
+
+        /* Kotak angka */
+        #latihanSoal2 .latihan-horner-cell,
+        #latihanSoal2 .latihan-k-badge {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-weight: 800;
+            color: #575048;
+        }
+
+        #latihanSoal2 .latihan-horner-cell {
+            width: var(--cell-w);
+            height: var(--cell-h);
+            border-radius: 16px;
+            border: 1px solid #dfe6dc;
+            background: #fbfdfb;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+
+        #latihanSoal2 .latihan-bottom {
+            background: #fbfff9;
+        }
+
+        /* Kotak nilai k */
+        #latihanSoal2 .latihan-k-badge {
+            grid-column: 1;
+            grid-row: 2;
+
+            width: var(--k-w);
+            height: 68px;
+            border-radius: 18px;
+            border: 1px solid #a9d39f;
+            background: #d9efd2;
+            color: #2f7838;
+            font-size: 29px;
+        }
+
+        /* Input tabel */
+        #latihanSoal2 .latihan-horner-input {
+            padding: 0;
+            text-align: center;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        #latihanSoal2 .latihan-horner-input:focus {
+            border-color: #67ba68;
+            background: #e8f6e3;
+            color: #247b34;
+            box-shadow: 0 0 0 4px rgba(83, 184, 91, 0.16);
+        }
+
+        #latihanSoal2 .latihan-horner-input:disabled {
+            opacity: 1;
+            cursor: not-allowed;
+        }
+
+        /* Tanda + di ujung kanan garis bawah */
+        #latihanSoal2 .latihan-plus-sign {
+            position: absolute;
+            z-index: 4;
+
+            right: 9px;
+            top: calc(var(--line-y-2) - 15px);
+
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            font-weight: 900;
+            color: #575048;
+        }
+
+        /* Posisi baris */
+        #latihanSoal2 .latihan-horner-board .row-top {
+            grid-row: 1;
+        }
+
+        #latihanSoal2 .latihan-horner-board .row-mid {
+            grid-row: 2;
+        }
+
+        #latihanSoal2 .latihan-horner-board .row-bottom {
+            grid-row: 3;
+        }
+
+        /* Posisi kolom */
+        #latihanSoal2 .latihan-horner-board .col-1 {
+            grid-column: 2;
+        }
+
+        #latihanSoal2 .latihan-horner-board .col-2 {
+            grid-column: 3;
+        }
+
+        #latihanSoal2 .latihan-horner-board .col-3 {
+            grid-column: 4;
+        }
+
+        #latihanSoal2 .latihan-horner-board .col-4 {
+            grid-column: 5;
+        }
+
+        /* Responsive HP */
+        @media (max-width: 520px) {
+            #latihanSoal2 .latihan-horner-board {
+                --cell-w: 78px;
+                --cell-h: 54px;
+                --k-w: 62px;
+                --col-gap: 12px;
+                --row-gap: 10px;
+                --line-x: 74px;
+                --line-y-1: 59px;
+                --line-y-2: 123px;
+
+                padding: 0 44px 0 6px;
+            }
+
+            #latihanSoal2 .latihan-line-top {
+                right: 44px;
+            }
+
+            #latihanSoal2 .latihan-line-bottom {
+                right: 44px;
+            }
+
+            #latihanSoal2 .latihan-horner-cell {
+                font-size: 24px;
+            }
+
+            #latihanSoal2 .latihan-k-badge {
+                height: 62px;
+                font-size: 26px;
+            }
+
+            #latihanSoal2 .latihan-line-v {
+                height: 122px;
+            }
+
+            #latihanSoal2 .latihan-plus-sign {
+                right: 8px;
+                top: calc(var(--line-y-2) - 14px);
+                font-size: 27px;
+            }
+        }
+
+        /* Tanda + di tabel Horner contoh */
+        .contoh-premium-card .horner-board-animasi {
+            padding-right: 34px;
+        }
+
+        .contoh-premium-card .horner-board-animasi .horner-line-horizontal-top,
+        .contoh-premium-card .horner-board-animasi .horner-line-horizontal-bottom {
+            right: 34px;
+        }
+
+        .contoh-premium-card .horner-premium-plus {
+            position: absolute;
+            right: 0;
+            top: 104px;
+            z-index: 10;
+
+            font-size: 28px;
+            font-weight: 900;
+            color: #575048;
+            line-height: 1;
         }
     </style>
 
@@ -2049,38 +2516,40 @@
 
                 <div class="contoh-premium-header">
                     <div class="contoh-premium-title">Mari Pelajari Satu Contoh dengan Teliti</div>
-                    <div class="contoh-premium-rumus">(2x³ − x² + 3x − 5) ÷ (x − 2)</div>
+                    <div class="contoh-premium-rumus">(2x³ − x² + 3x − 18) ÷ (x − 2)</div>
                 </div>
 
                 <div class="langkah-grid">
                     <div class="langkah-mini-card">
                         <div class="langkah-mini-judul">1. Tulis koefisien</div>
                         <div class="langkah-mini-isi">
-                            Dari bentuk <strong>2x³ − x² + 3x − 5</strong>, koefisiennya adalah:
-                            <strong>2, -1, 3, -5</strong>.
+                            Dari bentuk <strong>2x³ − x² + 3x − 18</strong>, koefisiennya adalah
+                            <strong>2, -1, 3, -18</strong>.
                         </div>
                     </div>
 
                     <div class="langkah-mini-card">
                         <div class="langkah-mini-judul">2. Tentukan nilai k</div>
                         <div class="langkah-mini-isi">
-                            Karena pembagi adalah <strong>(x − 2)</strong>, maka nilai <strong>k = 2</strong>.
+                            Karena pembagi adalah <strong>(x − 2)</strong>, maka nilai
+                            <strong>k = 2</strong>.
                         </div>
                     </div>
 
                     <div class="langkah-mini-card">
                         <div class="langkah-mini-judul">3. Turunkan koefisien pertama</div>
                         <div class="langkah-mini-isi">
-                            Koefisien pertama, yaitu <strong>2</strong>, langsung diturunkan ke baris bawah.
+                            Koefisien pertama, yaitu <strong>2</strong>, langsung diturunkan
+                            ke baris bawah.
                         </div>
                     </div>
 
                     <div class="langkah-mini-card">
                         <div class="langkah-mini-judul">4. Kalikan lalu jumlahkan</div>
                         <div class="langkah-mini-isi">
-                            Angka di bawah dikalikan dengan <strong>k</strong>, lalu hasilnya dijumlahkan dengan koefisien
-                            berikutnya.
-                            Ulangi sampai selesai.
+                            Angka di baris bawah dikalikan dengan <strong>k</strong>.
+                            Hasil perkalian diletakkan di baris tengah, lalu dijumlahkan
+                            dengan koefisien berikutnya.
                         </div>
                     </div>
                 </div>
@@ -2090,51 +2559,64 @@
                     <div class="horner-premium-subtitle">
                         Klik angka pada tabel berikut untuk melihat penjelasan asal angka tersebut.
                     </div>
+
                     <div class="horner-board horner-board-animasi">
                         <div class="horner-line-vertical"></div>
                         <div class="horner-line-horizontal-top"></div>
                         <div class="horner-line-horizontal-bottom"></div>
 
+                        <!-- Tanda tambah di ujung kanan garis bawah -->
+                        <div class="horner-premium-plus">+</div>
+
+                        <!-- Nilai k -->
                         <div class="horner-k-box horner-click"
                             onclick="showHornerInfo(this, 'Nilai <strong>k = 2</strong> karena pembaginya berbentuk <strong>(x − 2)</strong>. Pada metode Horner, angka dari pembagi inilah yang dipakai untuk proses perkalian berulang.')">
                             2
                         </div>
 
+                        <!-- Baris atas: koefisien -->
                         <div id="atas1" class="horner-cell top horner-click horner-anim-item"
                             style="grid-column:2; grid-row:1;"
                             onclick="showHornerInfo(this, 'Angka <strong>2</strong> adalah koefisien dari <strong>2x³</strong>. Ini adalah koefisien pertama dari polinomial.')">
                             2
                         </div>
+
                         <div id="atas2" class="horner-cell top horner-click horner-anim-item"
                             style="grid-column:3; grid-row:1;"
                             onclick="showHornerInfo(this, 'Angka <strong>-1</strong> adalah koefisien dari <strong>-x²</strong>. Jadi koefisien keduanya adalah <strong>-1</strong>.')">
                             -1
                         </div>
+
                         <div id="atas3" class="horner-cell top horner-click horner-anim-item"
                             style="grid-column:4; grid-row:1;"
                             onclick="showHornerInfo(this, 'Angka <strong>3</strong> adalah koefisien dari <strong>3x</strong>. Ini menjadi koefisien ketiga pada tabel Horner.')">
                             3
                         </div>
+
                         <div id="atas4" class="horner-cell top horner-click horner-anim-item"
                             style="grid-column:5; grid-row:1;"
-                            onclick="showHornerInfo(this, 'Angka <strong>-5</strong> adalah konstanta dari polinomial. Nilai ini ditulis sebagai koefisien terakhir.')">
-                            -5
+                            onclick="showHornerInfo(this, 'Angka <strong>-18</strong> adalah konstanta dari polinomial. Nilai ini ditulis sebagai koefisien terakhir.')">
+                            -18
                         </div>
 
+                        <!-- Sel kosong di baris tengah kolom pertama -->
                         <div class="horner-empty-cell" style="grid-column:2; grid-row:2;"></div>
 
+                        <!-- Baris tengah: hasil perkalian -->
                         <div id="tengah1"
                             class="horner-cell horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:3; grid-row:2;"
                             onclick="showHornerInfo(this, 'Angka <strong>4</strong> diperoleh dari <strong>2 × 2</strong>, yaitu hasil mengalikan nilai yang diturunkan (<strong>2</strong>) dengan nilai <strong>k = 2</strong>.')">
                             4
                         </div>
+
                         <div id="tengah2"
                             class="horner-cell horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:4; grid-row:2;"
                             onclick="showHornerInfo(this, 'Angka <strong>6</strong> diperoleh dari <strong>3 × 2</strong>. Nilai <strong>3</strong> berasal dari hasil penjumlahan sebelumnya, lalu dikalikan dengan <strong>k = 2</strong>.')">
                             6
                         </div>
+
                         <div id="tengah3"
                             class="horner-cell horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:5; grid-row:2;"
@@ -2142,28 +2624,32 @@
                             18
                         </div>
 
+                        <!-- Baris bawah: hasil penjumlahan -->
                         <div id="bawah1" class="horner-cell bottom horner-click horner-anim-item"
                             style="grid-column:2; grid-row:3;"
                             onclick="showHornerInfo(this, 'Angka <strong>2</strong> di baris bawah diperoleh dengan cara <strong>langsung menurunkan koefisien pertama</strong> dari baris atas.')">
                             2
                         </div>
+
                         <div id="bawah2"
                             class="horner-cell bottom horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:3; grid-row:3;"
                             onclick="showHornerInfo(this, 'Angka <strong>3</strong> diperoleh dari <strong>-1 + 4</strong>. Koefisien kedua dijumlahkan dengan hasil perkalian sebelumnya.')">
                             3
                         </div>
+
                         <div id="bawah3"
                             class="horner-cell bottom horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:4; grid-row:3;"
                             onclick="showHornerInfo(this, 'Angka <strong>9</strong> diperoleh dari <strong>3 + 6</strong>. Koefisien berikutnya dijumlahkan dengan hasil perkalian sebelumnya.')">
                             9
                         </div>
+
                         <div id="bawah4"
                             class="horner-cell bottom horner-click horner-anim-item horner-hidden-awal horner-pop-target"
                             style="grid-column:5; grid-row:3;"
-                            onclick="showHornerInfo(this, 'Angka <strong>13</strong> diperoleh dari <strong>-5 + 18</strong>. Ini adalah angka terakhir pada baris bawah, sehingga menjadi <strong>sisa pembagian</strong>.')">
-                            13
+                            onclick="showHornerInfo(this, 'Angka <strong>0</strong> diperoleh dari <strong>-18 + 18</strong>. Ini adalah angka terakhir pada baris bawah, sehingga menjadi <strong>sisa pembagian</strong>.')">
+                            0
                         </div>
                     </div>
 
@@ -2182,7 +2668,7 @@
 
                         <div class="hasil-chip">
                             <div class="hasil-chip-label">Sisa</div>
-                            <div class="hasil-chip-value">13</div>
+                            <div class="hasil-chip-value">0</div>
                         </div>
                     </div>
                 </div>
@@ -2335,33 +2821,35 @@
                     </div>
 
                     <div class="horner-table-wrap">
-                        <div class="horner-table">
-                            <div class="horner-k">1</div>
+                        <div class="horner-board">
+                            <div class="horner-line horner-line-v"></div>
+                            <div class="horner-line horner-line-top"></div>
+                            <div class="horner-line horner-line-bottom"></div>
 
-                            <div class="horner-top-row">
-                                <span>3</span>
-                                <span>5</span>
-                                <span>-2</span>
-                                <span>1</span>
-                            </div>
+                            <!-- Nilai k -->
+                            <div class="horner-k-badge">1</div>
 
-                            <div class="horner-mid-row">
-                                <span class="horner-empty"></span>
-                                <input id="t61" class="horner-cell-input">
-                                <input id="t62" class="horner-cell-input">
-                                <input id="t63" class="horner-cell-input">
-                                <span class="horner-plus">+</span>
-                            </div>
+                            <!-- Baris koefisien -->
+                            <div class="horner-cell row-top col-1">3</div>
+                            <div class="horner-cell row-top col-2">5</div>
+                            <div class="horner-cell row-top col-3">-2</div>
+                            <div class="horner-cell row-top col-4">1</div>
 
-                            <div class="horner-bottom-row">
-                                <span class="horner-bold">3</span>
-                                <input id="t64" class="horner-cell-input">
-                                <input id="t65" class="horner-cell-input">
-                                <input id="t66" class="horner-cell-input">
-                            </div>
+                            <!-- Baris tengah: hasil perkalian -->
+                            <input id="t61" class="horner-cell horner-input row-mid col-2" type="text">
+                            <input id="t62" class="horner-cell horner-input row-mid col-3" type="text">
+                            <input id="t63" class="horner-cell horner-input row-mid col-4" type="text">
+
+                            <!-- Tanda plus di kanan garis -->
+                            <div class="horner-plus-sign">+</div>
+
+                            <!-- Baris bawah: hasil penjumlahan -->
+                            <div class="horner-cell horner-bottom row-bottom col-1">3</div>
+                            <input id="t64" class="horner-cell horner-input horner-bottom row-bottom col-2" type="text">
+                            <input id="t65" class="horner-cell horner-input horner-bottom row-bottom col-3" type="text">
+                            <input id="t66" class="horner-cell horner-input horner-bottom row-bottom col-4" type="text">
                         </div>
                     </div>
-
                     <button class="btn-langkah" onclick="cekStep6()">Cek Langkah 6</button>
                     <div id="fb6" class="feedback-step"></div>
                     <div id="penjelasan6" class="penjelasan-step">
@@ -2511,30 +2999,39 @@
                         </div>
 
                         <div class="latihan-horner-wrap">
-                            <div class="latihan-horner">
-                                <div class="latihan-horner-k">2</div>
+                            <div class="latihan-horner-board">
+                                <div class="latihan-line latihan-line-v"></div>
+                                <div class="latihan-line latihan-line-top"></div>
+                                <div class="latihan-line latihan-line-bottom"></div>
 
-                                <div class="latihan-horner-top">
-                                    <span>2</span>
-                                    <span>-1</span>
-                                    <span>4</span>
-                                    <span>-8</span>
-                                </div>
+                                <!-- Nilai k -->
+                                <div class="latihan-k-badge">2</div>
 
-                                <div class="latihan-horner-mid">
-                                    <span></span>
-                                    <input id="s2m1" disabled>
-                                    <input id="s2m2" disabled>
-                                    <input id="s2m3" disabled>
-                                    <span>+</span>
-                                </div>
+                                <!-- Baris 1: koefisien -->
+                                <div class="latihan-horner-cell row-top col-1">2</div>
+                                <div class="latihan-horner-cell row-top col-2">-1</div>
+                                <div class="latihan-horner-cell row-top col-3">4</div>
+                                <div class="latihan-horner-cell row-top col-4">-8</div>
 
-                                <div class="latihan-horner-bottom">
-                                    <span>2</span>
-                                    <input id="s2b1" disabled>
-                                    <input id="s2b2" disabled>
-                                    <input id="s2b3" disabled>
-                                </div>
+                                <!-- Baris 2: hasil perkalian -->
+                                <input id="s2m1" class="latihan-horner-cell latihan-horner-input row-mid col-2" disabled>
+                                <input id="s2m2" class="latihan-horner-cell latihan-horner-input row-mid col-3" disabled>
+                                <input id="s2m3" class="latihan-horner-cell latihan-horner-input row-mid col-4" disabled>
+
+                                <!-- Tanda plus sebelum baris ketiga -->
+                                <div class="latihan-plus-sign">+</div>
+
+                                <!-- Baris 3: hasil penjumlahan -->
+                                <div class="latihan-horner-cell latihan-bottom row-bottom col-1">2</div>
+                                <input id="s2b1"
+                                    class="latihan-horner-cell latihan-horner-input latihan-bottom row-bottom col-2"
+                                    disabled>
+                                <input id="s2b2"
+                                    class="latihan-horner-cell latihan-horner-input latihan-bottom row-bottom col-3"
+                                    disabled>
+                                <input id="s2b3"
+                                    class="latihan-horner-cell latihan-horner-input latihan-bottom row-bottom col-4"
+                                    disabled>
                             </div>
                         </div>
                     </div>

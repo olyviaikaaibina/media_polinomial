@@ -1076,46 +1076,64 @@
         }
 
         .konsep-container {
-            margin-top: 12px;
+            margin-top: 20px;
+            background: linear-gradient(180deg, #fffdf9 0%, #f9f5ef 100%);
+            border: 1.5px solid #d8cbb9;
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
         }
 
         .konsep-menu {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
         .konsep-btn {
-            flex: 1;
-            padding: 8px 10px;
-            border-radius: 10px;
-            border: 1px solid #cdbfae;
-            background: #f4ede6;
+            border: 1.5px solid #ccbca8;
+            background: #f4efe8;
+            color: #4b4138;
+            border-radius: 16px;
+            padding: 14px 18px;
             cursor: pointer;
-            font-size: 13.5px;
+            font-size: 16px;
             font-weight: 700;
-            transition: 0.25s;
+            font-family: Georgia, 'Times New Roman', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
         }
 
         .konsep-btn:hover {
-            background: #e8f3e6;
+            background: #edf6ea;
             color: #2f7d32;
+            border-color: #8dbb8f;
+            transform: translateY(-2px);
         }
 
         .konsep-btn.active {
-            background: #2f7d32;
-            color: white;
+            background: linear-gradient(135deg, #2f7d32 0%, #3d9441 100%);
+            color: #ffffff;
+            border-color: #2f7d32;
+            box-shadow: 0 8px 18px rgba(47, 125, 50, 0.18);
+        }
+
+        .konsep-content {
+            position: relative;
         }
 
         .konsep-box {
             display: none;
-            background: #fffaf4;
-            border: 1.5px solid #8dbb8f;
-            border-radius: 14px;
-            padding: 14px;
-            font-size: 14px;
-            line-height: 1.7;
+            background: #fffdfa;
+            border: 2px solid #8dbb8f;
+            border-radius: 20px;
+            padding: 22px 22px 20px 22px;
+            font-size: 15.8px;
+            line-height: 1.85;
+            color: #4b4138;
             animation: fadeSlide 0.3s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
         }
 
         .konsep-box.show {
@@ -1123,20 +1141,97 @@
         }
 
         .konsep-box h3 {
-            font-size: 14.5px;
-            margin-bottom: 6px;
+            font-size: 17px;
+            margin: 0 0 14px 0;
+            color: #2f7d32;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .konsep-box p {
+            margin: 0 0 14px 0;
         }
 
         .konsep-box ul {
-            margin: 6px 0 0 18px;
+            margin: 8px 0 0 20px;
+            padding-left: 10px;
+        }
+
+        .konsep-box ul li {
+            margin-bottom: 10px;
         }
 
         .rumus {
+            margin: 18px auto 12px auto;
+            background: #eef7ea;
+            border: 1.5px solid #b7d7b9;
+            border-radius: 16px;
+            padding: 14px 18px;
             text-align: center;
-            font-size: 15px;
+            font-size: 20px;
             color: #1f5c24;
             font-weight: 700;
-            margin: 8px 0;
+            width: fit-content;
+            min-width: 280px;
+            max-width: 100%;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .konsep-box strong {
+            color: #2b5f2d;
+        }
+
+        .konsep-box em {
+            font-style: normal !important;
+            font-weight: 600;
+        }
+
+        .konsep-box p[style*="text-align:center"] {
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4b4138;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .konsep-container {
+                padding: 14px;
+                border-radius: 18px;
+            }
+
+            .konsep-menu {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .konsep-btn {
+                width: 100%;
+                font-size: 15px;
+                padding: 12px 14px;
+            }
+
+            .konsep-box {
+                padding: 16px;
+                font-size: 14.8px;
+                line-height: 1.75;
+                border-radius: 16px;
+            }
+
+            .konsep-box h3 {
+                font-size: 16px;
+            }
+
+            .rumus {
+                width: 100%;
+                min-width: 0;
+                font-size: 17px;
+                line-height: 1.7;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
         }
 
         @keyframes fadeSlide {
@@ -1400,9 +1495,9 @@
         }
 
         /* =========================
-               RESPONSIVE GLOBAL
-               HP - TABLET - LAPTOP
-            ========================= */
+                                                   RESPONSIVE GLOBAL
+                                                   HP - TABLET - LAPTOP
+                                                ========================= */
 
         * {
             box-sizing: border-box;
@@ -1431,9 +1526,9 @@
         }
 
         /* =========================
-               LAPTOP / DESKTOP
-               min-width: 1025px
-            ========================= */
+                                                   LAPTOP / DESKTOP
+                                                   min-width: 1025px
+                                                ========================= */
 
         @media (min-width: 1025px) {
             .materi-content {
@@ -1463,9 +1558,9 @@
         }
 
         /* =========================
-               TABLET
-               769px - 1024px
-            ========================= */
+                                                   TABLET
+                                                   769px - 1024px
+                                                ========================= */
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .materi-content {
@@ -1525,9 +1620,9 @@
         }
 
         /* =========================
-               HP / MOBILE
-               max-width: 768px
-            ========================= */
+                                                   HP / MOBILE
+                                                   max-width: 768px
+                                                ========================= */
 
         @media (max-width: 768px) {
             .materi-content {
@@ -1748,9 +1843,9 @@
         }
 
         /* =========================
-               HP KECIL
-               max-width: 480px
-            ========================= */
+                                                   HP KECIL
+                                                   max-width: 480px
+                                                ========================= */
 
         @media (max-width: 480px) {
             .materi-content {
@@ -1849,8 +1944,8 @@
         }
 
         /* =========================
-           RESPONSIVE KHUSUS TABEL HORNER
-        ========================= */
+                                               RESPONSIVE KHUSUS TABEL HORNER
+                                            ========================= */
 
         .horner-card,
         .horner-card-latihan {
@@ -2100,6 +2195,12 @@
                 min-width: 26px;
                 font-size: 24px;
             }
+        }
+
+        /* SUPAYA RUMUS TIDAK MIRING */
+        .materi-content em,
+        .materi-content i {
+            font-style: normal !important;
         }
     </style>
 
@@ -2484,12 +2585,12 @@
                 </div>
             </div>
 
-            <p class="catatan-bawah">
-                Untuk lebih memahami bagaimana Teorema Sisa bekerja dalam berbagai bentuk pembagi,
-                perhatikan tabel berikut. Klik pada bagian <em>pembagi</em> untuk melihat penjelasannya.
-            </p>
-
             <div class="tabel-interaktif-wrapper">
+
+                <p class="catatan-bawah">
+                    Untuk lebih memahami bagaimana Teorema Sisa bekerja dalam berbagai bentuk pembagi,
+                    perhatikan tabel berikut. Klik pada bagian <em>pembagi</em> untuk melihat penjelasannya.
+                </p>
                 <table class="tabel-interaktif">
                     <thead>
                         <tr>
@@ -2879,6 +2980,10 @@
         let soal1Step2Benar = false;
         let soal1Step3Benar = false;
 
+        let soal2Step1Benar = false;
+        let soal2Step2Benar = false;
+        let soal2Step3Benar = false;
+
         function normalisasiInput(text) {
             return (text || '')
                 .toString()
@@ -3005,28 +3110,28 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Nilai yang kamu hitung sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                        <br><br>
-                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                        <br>
-                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                        <br><br>
-                                        Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                    `;
+                                                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                                                            <br><br>
+                                                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                                                            <br>
+                                                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                                                            <br><br>
+                                                                            Jadi, hasil perhitungan pada Aktivitas 1 adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                                                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                        Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
-                                        <br><br>
-                                        <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
-                                        <br>
-                                        <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
-                                        <br><br>
-                                        Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                    `;
+                                                                            Untuk polinomial <em>P(x) = x<sup>2</sup> − 2x + 3</em>:
+                                                                            <br><br>
+                                                                            <strong>P(1)</strong> = 1<sup>2</sup> − 2(1) + 3 = 1 − 2 + 3 = <strong>2</strong>
+                                                                            <br>
+                                                                            <strong>P(3)</strong> = 3<sup>2</sup> − 2(3) + 3 = 9 − 6 + 3 = <strong>6</strong>
+                                                                            <br><br>
+                                                                            Jadi jawaban yang benar adalah <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                                                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -3058,35 +3163,35 @@
                 feedback.innerHTML = 'Jawaban terdeteksi benar. Dugaan sisamu sudah tepat.';
 
                 penjelasan.innerHTML = `
-                                        Dari Aktivitas 1 diperoleh:
-                                        <br><br>
-                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        <br><br>
-                                        Maka:
-                                        <ul class="eksplorasi-list">
-                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
-                                            <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
-                                        </ul>
-                                        Jadi jawaban yang benar adalah:
-                                        <br>
-                                        <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
-                                    `;
+                                                                            Dari Aktivitas 1 diperoleh:
+                                                                            <br><br>
+                                                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                                                            <br><br>
+                                                                            Maka:
+                                                                            <ul class="eksplorasi-list">
+                                                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 1)</em>, dugaan sisanya adalah <strong>2</strong>.</li>
+                                                                                <li>Jika <em>P(x)</em> dibagi dengan <em>(x − 3)</em>, dugaan sisanya adalah <strong>6</strong>.</li>
+                                                                            </ul>
+                                                                            Jadi jawaban yang benar adalah:
+                                                                            <br>
+                                                                            <strong>(x − 1) → 2</strong> dan <strong>(x − 3) → 6</strong>.
+                                                                        `;
                 penjelasan.classList.add('show');
             } else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Jawaban terdeteksi masih salah. Berikut jawaban yang benar.';
 
                 penjelasan.innerHTML = `
-                                        Gunakan hasil Aktivitas 1:
-                                        <br><br>
-                                        <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
-                                        <br><br>
-                                        Maka jawaban yang benar adalah:
-                                        <ul class="eksplorasi-list">
-                                            <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
-                                            <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
-                                        </ul>
-                                    `;
+                                                                            Gunakan hasil Aktivitas 1:
+                                                                            <br><br>
+                                                                            <strong>P(1) = 2</strong> dan <strong>P(3) = 6</strong>.
+                                                                            <br><br>
+                                                                            Maka jawaban yang benar adalah:
+                                                                            <ul class="eksplorasi-list">
+                                                                                <li>Untuk pembagi <em>(x − 1)</em>, dugaan sisa = <strong>2</strong></li>
+                                                                                <li>Untuk pembagi <em>(x − 3)</em>, dugaan sisa = <strong>6</strong></li>
+                                                                            </ul>
+                                                                        `;
                 penjelasan.classList.add('show');
             }
 
@@ -3182,31 +3287,31 @@
 
             if (id === 1) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
-                                        Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
-                                        <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
-                                        <div class="rumus-penjelasan">Sisa = P(2)</div>
-                                        Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
-                                        cukup substitusikan <em>x = 2</em> ke dalam polinomial.
-                                    `;
+                                                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 2)</div>
+                                                                            Bentuk pembagi <strong>(x − 2)</strong> sudah langsung sesuai dengan bentuk umum
+                                                                            <em>(x − c)</em>, sehingga diperoleh <strong>c = 2</strong>.
+                                                                            <div class="rumus-penjelasan">Sisa = P(2)</div>
+                                                                            Artinya, untuk mencari sisa pembagian polinomial oleh <em>(x − 2)</em>,
+                                                                            cukup substitusikan <em>x = 2</em> ke dalam polinomial.
+                                                                        `;
             } else if (id === 2) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
-                                        Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
-                                        <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
-                                        <div class="rumus-penjelasan">Sisa = P(−3)</div>
-                                        Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
-                                        disubstitusikan ke polinomial justru <strong>−3</strong>.
-                                    `;
+                                                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x + 3)</div>
+                                                                            Bentuk <strong>(x + 3)</strong> perlu ditulis ulang menjadi
+                                                                            <em>(x − (−3))</em>, sehingga diperoleh <strong>c = −3</strong>.
+                                                                            <div class="rumus-penjelasan">Sisa = P(−3)</div>
+                                                                            Jadi, walaupun pada pembagi terlihat tanda <strong>plus</strong>, nilai yang
+                                                                            disubstitusikan ke polinomial justru <strong>−3</strong>.
+                                                                        `;
             } else if (id === 3) {
                 box.innerHTML = `
-                                        <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
-                                        Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
-                                        Maka sisanya diperoleh dari
-                                        <div class="rumus-penjelasan">Sisa = P(0)</div>
-                                        Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
-                                        sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
-                                    `;
+                                                                            <div class="penjelasan-pembagi-title">Penjelasan untuk pembagi (x − 0)</div>
+                                                                            Pada pembagi <strong>(x − 0)</strong>, nilai <strong>c = 0</strong>.
+                                                                            Maka sisanya diperoleh dari
+                                                                            <div class="rumus-penjelasan">Sisa = P(0)</div>
+                                                                            Ketika <em>x = 0</em>, semua suku yang memuat <em>x</em> akan bernilai nol,
+                                                                            sehingga yang tersisa hanyalah <strong>konstanta terakhir</strong> dari polinomial.
+                                                                        `;
             }
         }
 
@@ -3386,11 +3491,19 @@
 
             if (!feedback || !penjelasan) return;
 
-            feedback.className = isBenar ? 'latihan-feedback benar' : 'latihan-feedback salah';
-            feedback.innerHTML = feedbackText;
+            if (isBenar) {
+                feedback.className = 'latihan-feedback benar';
+                feedback.innerHTML = feedbackText;
 
-            penjelasan.innerHTML = penjelasanText;
-            penjelasan.classList.add('show');
+                penjelasan.innerHTML = penjelasanText;
+                penjelasan.classList.add('show');
+            } else {
+                feedback.className = 'latihan-feedback salah';
+                feedback.innerHTML = 'Jawaban masih salah. Coba periksa kembali langkahmu.';
+
+                penjelasan.innerHTML = 'Perhatikan kembali konsep pada langkah ini, lalu coba pilih atau isi jawaban lagi.';
+                penjelasan.classList.add('show');
+            }
         }
 
         function tandaiPilihan(button, benar) {
@@ -3535,6 +3648,7 @@
 
         function cekPilihanSoal2Step1(button, value) {
             if (value === '1') {
+                soal2Step1Benar = true;
                 tandaiPilihan(button, true);
 
                 setFeedback(
@@ -3545,6 +3659,7 @@
                     'Pembagi <em>(x − 1)</em> berarti sesuai bentuk <em>(x − c)</em>, sehingga diperoleh <strong>c = 1</strong>.'
                 );
             } else {
+                soal2Step1Benar = false;
                 tandaiPilihan(button, false);
 
                 setFeedback(
@@ -3559,6 +3674,7 @@
 
         function cekPilihanSoal2Step2(button, value) {
             if (value === 'benar') {
+                soal2Step2Benar = true;
                 tandaiPilihan(button, true);
 
                 setFeedback(
@@ -3569,6 +3685,7 @@
                     'Karena ada suku yang hilang yaitu <em>x<sup>5</sup></em>, <em>x<sup>3</sup></em>, dan <em>x<sup>2</sup></em>, maka koefisien lengkap harus ditulis <strong>2, 0, -3, 0, 0, 7, -5</strong>.'
                 );
             } else {
+                soal2Step2Benar = false;
                 tandaiPilihan(button, false);
 
                 setFeedback(
@@ -3624,6 +3741,19 @@
 
             if (!feedback) return;
 
+            soal2Step3Benar = benarSemua;
+
+            if (!soal2Step1Benar || !soal2Step2Benar) {
+                feedback.className = 'latihan-feedback salah';
+                feedback.innerHTML = 'Langkah 1 dan Langkah 2 Soal 2 harus dijawab benar terlebih dahulu sebelum Kuis terbuka.';
+
+                if (finalBox) {
+                    finalBox.style.display = 'none';
+                }
+
+                return;
+            }
+
             if (benarSemua) {
                 feedback.className = 'latihan-feedback benar';
                 feedback.innerHTML = 'Jawaban benar. Tabel Horner sudah lengkap dan tepat. Progress sedang disimpan...';
@@ -3654,7 +3784,9 @@
                     feedback.innerHTML = '✅ Jawaban benar, tetapi progress gagal disimpan. Silakan klik cek lagi.';
                     feedback.className = 'latihan-feedback salah';
                 }
-            } else {
+            }
+
+            else {
                 feedback.className = 'latihan-feedback salah';
                 feedback.innerHTML = 'Masih ada isian yang salah. Periksa kembali tabel Horner.';
 

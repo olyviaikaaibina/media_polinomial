@@ -925,10 +925,6 @@
             max-width: 760px;
         }
 
-        .jenis-icon-wrap {
-            flex-shrink: 0;
-        }
-
         .jenis-icon {
             width: 74px;
             height: 74px;
@@ -2060,7 +2056,7 @@
                 <h3 class="title">Tujuan Pembelajaran</h3>
             </div>
             <ol>
-                <li>Melakukan operasi <b>penjumlahan</b>, <b>pengurangan</b>, dan <b>perkalian</b> pada <b>polinomial</b>.
+                <li>Melakukan operasi penjumlahan, pengurangan, dan perkalian pada polinomial dengan tepat.
                 </li>
             </ol>
         </div>
@@ -2173,9 +2169,6 @@
                             Perhatikan bahwa suku sejenis harus memiliki <b>variabel yang sama</b> dan
                             <b>pangkat yang sama</b>.
                         </p>
-                    </div>
-                    <div class="jenis-icon-wrap">
-                        <div class="jenis-icon">∑</div>
                     </div>
                 </div>
 

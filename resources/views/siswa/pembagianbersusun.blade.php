@@ -189,8 +189,8 @@
         }
 
         /* =========================
-           TOMBOL
-        ========================= */
+                           TOMBOL
+                        ========================= */
 
         .ilustrasi-actions,
         .contoh-actions,
@@ -239,8 +239,8 @@
         }
 
         /* =========================
-           EKSPLORASI
-        ========================= */
+                           EKSPLORASI
+                        ========================= */
 
         .jawaban-status,
         .step-feedback {
@@ -317,8 +317,8 @@
         }
 
         /* =========================
-           MATERI TERKUNCI
-        ========================= */
+                           MATERI TERKUNCI
+                        ========================= */
 
         .materi-terkunci {
             display: none;
@@ -342,8 +342,8 @@
         }
 
         /* =========================
-           ILUSTRASI BERTAHAP
-        ========================= */
+                           ILUSTRASI BERTAHAP
+                        ========================= */
 
         .ilustrasi-card-simple {
             background: #fffdfb;
@@ -501,8 +501,8 @@
         }
 
         /* =========================
-           PEMBAGIAN BERSUSUN DEFINISI
-        ========================= */
+                           PEMBAGIAN BERSUSUN DEFINISI
+                        ========================= */
 
         .bersusun-section {
             margin-top: 30px;
@@ -583,8 +583,8 @@
         }
 
         /* =========================
-           CONTOH PEMBAGIAN BERSUSUN RESPONSIVE
-        ========================= */
+                           CONTOH PEMBAGIAN BERSUSUN RESPONSIVE
+                        ========================= */
 
         #contohPembagianBersusun,
         #contohPembagianBersusun * {
@@ -887,8 +887,8 @@
         }
 
         /* =========================
-           MARI MENCOBA
-        ========================= */
+                           MARI MENCOBA
+                        ========================= */
 
         .step-card {
             display: none;
@@ -992,8 +992,8 @@
         }
 
         /* =========================
-           LATIHAN DRAG AND DROP
-        ========================= */
+                           LATIHAN DRAG AND DROP
+                        ========================= */
 
         .latihan-match-board {
             background: #edf1f1;
@@ -1215,8 +1215,8 @@
         }
 
         /* =========================
-           RESPONSIVE LAPTOP KECIL
-        ========================= */
+                           RESPONSIVE LAPTOP KECIL
+                        ========================= */
 
         @media (max-width: 1200px) {
             #contohPembagianBersusun.contoh-step-card {
@@ -1239,8 +1239,8 @@
         }
 
         /* =========================
-           RESPONSIVE TABLET
-        ========================= */
+                           RESPONSIVE TABLET
+                        ========================= */
 
         @media (max-width: 992px) {
             .materi-wrap {
@@ -1353,8 +1353,8 @@
         }
 
         /* =========================
-           RESPONSIVE HP
-        ========================= */
+                           RESPONSIVE HP
+                        ========================= */
 
         @media (max-width: 640px) {
             .materi-wrap {
@@ -1657,8 +1657,8 @@
         }
 
         /* =========================
-           RESPONSIVE HP KECIL
-        ========================= */
+                           RESPONSIVE HP KECIL
+                        ========================= */
 
         @media (max-width: 420px) {
             .bab-title {
@@ -1732,6 +1732,264 @@
                 font-size: 0.86em !important;
             }
         }
+
+
+        /* =========================
+               LANGKAH 10 SAJA
+               PEMBAGIAN BERSUSUN INTERAKTIF
+            ========================= */
+
+        .contoh-step-item[data-step="10"] .pembagian-bersusun-box {
+            width: 100%;
+            margin-top: 14px;
+            padding: 18px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #dbe7f3;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-instruction {
+            margin-bottom: 12px;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* Biar di HP bisa digeser, bukan rusak turun-turun */
+        .contoh-step-item[data-step="10"] .ld-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 4px 0 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Kotak utama pembagian */
+        .contoh-step-item[data-step="10"] .ld-board {
+            display: inline-block;
+            min-width: 620px;
+            padding: 18px 16px 14px;
+            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            color: #111827;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 22px;
+            line-height: 1.45;
+        }
+
+        /* Hasil bagi di atas */
+        .contoh-step-item[data-step="10"] .ld-quotient {
+            margin-left: 210px;
+            margin-bottom: 3px;
+            white-space: nowrap;
+        }
+
+        /* Baris pembagian */
+        .contoh-step-item[data-step="10"] .ld-main {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-divisor {
+            padding-top: 9px;
+            padding-right: 8px;
+            white-space: nowrap;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-work {
+            min-width: 415px;
+            padding-top: 8px;
+            padding-left: 12px;
+            border-top: 2px solid #111827;
+            border-left: 2px solid #111827;
+            white-space: nowrap;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-row {
+            min-height: 34px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-subtract {
+            color: #334155;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-symbol {
+            margin: 0 3px;
+        }
+
+        /* Garis pengurangan */
+        .contoh-step-item[data-step="10"] .ld-line {
+            height: 2px;
+            background: #111827;
+            margin: 0 0 5px;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-line-1 {
+            width: 300px;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-line-2 {
+            width: 230px;
+        }
+
+        /* Posisi turunannya */
+        .contoh-step-item[data-step="10"] .ld-indent-1 {
+            margin-left: 88px;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-indent-2 {
+            margin-left: 220px;
+        }
+
+        /* Tombol angka/suku yang bisa diklik */
+        .contoh-step-item[data-step="10"] .ld-chip {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 2px 5px;
+            margin: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.18s ease;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-chip:hover,
+        .contoh-step-item[data-step="10"] .ld-chip.active {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+        }
+
+        .contoh-step-item[data-step="10"] .ld-chip:focus {
+            outline: none;
+            background: #fef3c7;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.22);
+        }
+
+        .contoh-step-item[data-step="10"] .ld-final {
+            color: #b91c1c;
+            font-weight: 800;
+        }
+
+        /* Kotak penjelasan */
+        .contoh-step-item[data-step="10"] .ld-explain-box {
+            margin-top: 16px;
+            min-height: 88px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid #bfdbfe;
+            line-height: 1.65;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-explain-title {
+            margin-bottom: 4px;
+            color: #1d4ed8;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .contoh-step-item[data-step="10"] .ld-explain-text {
+            color: #334155;
+            font-size: 15px;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            .contoh-step-item[data-step="10"] .pembagian-bersusun-box {
+                padding: 14px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-board {
+                min-width: 570px;
+                font-size: 19px;
+                padding: 16px 14px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-quotient {
+                margin-left: 190px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-work {
+                min-width: 385px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-indent-1 {
+                margin-left: 78px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-indent-2 {
+                margin-left: 200px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-line-1 {
+                width: 285px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-line-2 {
+                width: 215px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 480px) {
+            .contoh-step-item[data-step="10"] .pembagian-bersusun-box {
+                padding: 12px;
+                border-radius: 16px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-instruction {
+                font-size: 13px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-board {
+                min-width: 540px;
+                font-size: 17px;
+                padding: 14px 12px;
+                border-radius: 14px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-quotient {
+                margin-left: 180px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-work {
+                min-width: 365px;
+                padding-left: 10px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-indent-1 {
+                margin-left: 70px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-indent-2 {
+                margin-left: 185px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-line-1 {
+                width: 275px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-line-2 {
+                width: 205px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-explain-box {
+                padding: 12px;
+            }
+
+            .contoh-step-item[data-step="10"] .ld-explain-title,
+            .contoh-step-item[data-step="10"] .ld-explain-text {
+                font-size: 14px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1742,7 +2000,7 @@
         <div class="tujuan-card">
             <div class="tujuan-title">Tujuan Pembelajaran</div>
             <ol>
-                <li>Melakukan pembagian polinomial serta menerapkan teorema sisa dalam perhitungannya.</li>
+                <li>Melakukan pembagian polinomial serta menerapkan teorema sisa dalam perhitungannya dengan tepat.</li>
             </ol>
         </div>
 
@@ -1778,7 +2036,6 @@
 
             <div class="eks-soal-wrap">
                 <div class="mini-title" style="font-size:18px; margin-top: 18px;">
-                    <span class="mini-icon">❓</span>
                     <span>Pertanyaan</span>
                 </div>
 
@@ -2082,16 +2339,14 @@
             </div>
 
             <!-- =========================
-            CONTOH INTERAKTIF PEMBAGIAN BERSUSUN
-            ========================= -->
+                CONTOH INTERAKTIF PEMBAGIAN BERSUSUN
+                ========================= -->
             <div class="contoh-step-card" id="contohPembagianBersusun">
                 <div class="contoh-step-header">
                     <div>
                         <div class="contoh-step-label">Contoh Pembagian Bersusun</div>
                         <h3 class="contoh-step-title">Pembagian Polinomial dengan Pembagian Bersusun</h3>
                     </div>
-
-
                 </div>
 
                 <div class="contoh-step-soal">
@@ -2347,25 +2602,103 @@
                         <div class="step-number-circle">10</div>
 
                         <div class="step-content-box">
-                            <div class="step-mini-title">Bentuk Pembagian Bersusun</div>
+                            <div class="step-mini-title">Bentuk Pembagian Bersusun Interaktif</div>
 
                             <p>
-                                Jika ditulis dalam bentuk pembagian bersusun, prosesnya menjadi seperti berikut.
+                                Klik bagian pada bentuk pembagian bersusun di bawah ini untuk melihat penjelasannya.
                             </p>
 
                             <div class="pembagian-bersusun-box">
-                                <div class="rumus-bersusun-wrap">
-                                    \[
-                                    \begin{array}{r}
-                                    4x^2+x \\
-                                    \hline
-                                    x^2+4x-1)\,4x^4+17x^3+0x^2-3x+1 \\
-                                    \underline{-(4x^4+16x^3-4x^2)} \\
-                                    x^3+4x^2-3x \\
-                                    \underline{-(x^3+4x^2-x)} \\
-                                    -2x+1
-                                    \end{array}
-                                    \]
+                                <div class="ld-instruction">
+                                    Klik suku atau baris perhitungan:
+                                </div>
+
+                                <div class="ld-scroll">
+                                    <div class="ld-board" id="longDivisionInteractive">
+
+                                        <!-- Hasil bagi -->
+                                        <div class="ld-quotient">
+                                            <button type="button" class="ld-chip" data-title="Suku pertama hasil bagi"
+                                                data-text="4x² diperoleh dari 4x⁴ dibagi x². Jadi, 4x⁴ : x² = 4x².">
+                                                4x<sup>2</sup>
+                                            </button>
+
+                                            <span class="ld-symbol">+</span>
+
+                                            <button type="button" class="ld-chip" data-title="Suku kedua hasil bagi"
+                                                data-text="x diperoleh dari x³ dibagi x². Jadi, x³ : x² = x.">
+                                                x
+                                            </button>
+                                        </div>
+
+                                        <div class="ld-main">
+
+                                            <!-- Pembagi -->
+                                            <div class="ld-divisor">
+                                                <button type="button" class="ld-chip" data-title="Pembagi"
+                                                    data-text="Pembaginya adalah x² + 4x − 1. Bentuk ini dipakai untuk membagi polinomial utama.">
+                                                    x<sup>2</sup> + 4x − 1
+                                                </button>
+                                            </div>
+
+                                            <!-- Proses bersusun -->
+                                            <div class="ld-work">
+
+                                                <div class="ld-row">
+                                                    <button type="button" class="ld-chip"
+                                                        data-title="Polinomial yang dibagi"
+                                                        data-text="Ini adalah polinomial utama yang dibagi. Karena tidak ada suku x², maka ditulis 0x² agar urutan pangkatnya lengkap.">
+                                                        4x<sup>4</sup> + 17x<sup>3</sup> + 0x<sup>2</sup> − 3x + 1
+                                                    </button>
+                                                </div>
+
+                                                <div class="ld-row ld-subtract">
+                                                    <button type="button" class="ld-chip" data-title="Hasil kali pertama"
+                                                        data-text="Baris ini berasal dari 4x² dikalikan dengan pembagi. 4x²(x² + 4x − 1) = 4x⁴ + 16x³ − 4x².">
+                                                        −(4x<sup>4</sup> + 16x<sup>3</sup> − 4x<sup>2</sup>)
+                                                    </button>
+                                                </div>
+
+                                                <div class="ld-line ld-line-1"></div>
+
+                                                <div class="ld-row ld-indent-1">
+                                                    <button type="button" class="ld-chip"
+                                                        data-title="Sisa sementara pertama"
+                                                        data-text="Setelah pengurangan pertama: 4x⁴ habis, 17x³ − 16x³ = x³, dan 0x² − (−4x²) = 4x². Lalu −3x diturunkan.">
+                                                        x<sup>3</sup> + 4x<sup>2</sup> − 3x
+                                                    </button>
+                                                </div>
+
+                                                <div class="ld-row ld-subtract ld-indent-1">
+                                                    <button type="button" class="ld-chip" data-title="Hasil kali kedua"
+                                                        data-text="Baris ini berasal dari x dikalikan dengan pembagi. x(x² + 4x − 1) = x³ + 4x² − x.">
+                                                        −(x<sup>3</sup> + 4x<sup>2</sup> − x)
+                                                    </button>
+                                                </div>
+
+                                                <div class="ld-line ld-line-2 ld-indent-1"></div>
+
+                                                <div class="ld-row ld-indent-2">
+                                                    <button type="button" class="ld-chip ld-final" data-title="Sisa akhir"
+                                                        data-text="Hasil akhirnya adalah −2x + 1. Karena derajat −2x + 1 lebih kecil daripada derajat pembagi x² + 4x − 1, maka pembagian berhenti.">
+                                                        −2x + 1
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kotak penjelasan -->
+                                <div class="ld-explain-box" id="ldExplainBox">
+                                    <div class="ld-explain-title" id="ldExplainTitle">
+                                        Penjelasan
+                                    </div>
+
+                                    <div class="ld-explain-text" id="ldExplainText">
+                                        Pilih salah satu bagian pada bentuk pembagian bersusun untuk melihat penjelasannya.
+                                    </div>
                                 </div>
                             </div>
 
@@ -2390,6 +2723,7 @@
                             <div class="hasil-grid-rapi">
                                 <div class="hasil-card-rapi">
                                     <div class="hasil-card-title">Hasil Bagi</div>
+
                                     <div class="hasil-formula-box">
                                         \[
                                         H(x)=4x^2+x
@@ -2399,6 +2733,7 @@
 
                                 <div class="hasil-card-rapi">
                                     <div class="hasil-card-title">Sisa</div>
+
                                     <div class="hasil-formula-box">
                                         \[
                                         S(x)=-2x+1
@@ -2409,6 +2744,7 @@
 
                             <div class="hasil-bentuk-card">
                                 <div class="hasil-card-title">Bentuk Perkalian</div>
+
                                 <div class="hasil-formula-box large">
                                     \[
                                     4x^4+17x^3-3x+1=(x^2+4x-1)(4x^2+x)+(-2x+1)
@@ -2418,6 +2754,7 @@
 
                             <div class="hasil-bentuk-card">
                                 <div class="hasil-card-title">Bentuk Pecahan</div>
+
                                 <div class="hasil-formula-box large">
                                     \[
                                     \frac{4x^4+17x^3-3x+1}{x^2+4x-1}
@@ -2428,6 +2765,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -3149,169 +3487,169 @@
                 const feedbackText = {
                     1: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Kita membagi suku berpangkat tertinggi pada pembilang dengan suku berpangkat tertinggi pada penyebut.
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi suku pertama hasil bagi adalah \\(2x^2\\). Lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Ambil suku tertinggi pada pembilang, yaitu \\(2x^3\\), lalu bagi dengan suku tertinggi pada penyebut, yaitu \\(x\\).
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{2x^3}{x}=2x^2$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban yang benar adalah <b>\\(2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `
                     },
                     2: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
-                                        </p>
-                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Suku hasil bagi pertama harus dikalikan ke seluruh penyebut.
+                                                        </p>
+                                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Hasil perkaliannya tepat. Lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
-                                        </p>
-                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Kalikan \\(2x^2\\) ke setiap suku dalam \\((x+1)\\).
+                                                        </p>
+                                                        <div class="rumus-box">$$2x^2(x+1)=2x^3+2x^2$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban yang benar adalah <b>\\(2x^3+2x^2\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `
                     },
                     3: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Sekarang kurangkan hasil perkalian dari pembilang semula.
-                                        </p>
-                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Sekarang kurangkan hasil perkalian dari pembilang semula.
+                                                        </p>
+                                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Sisa baru sudah tepat. Lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
-                                        </p>
-                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Kurangkan suku-suku sejenis dengan teliti, terutama tanda negatif.
+                                                        </p>
+                                                        <div class="rumus-box">$$(2x^3+3x^2-2x+1)-(2x^3+2x^2)=x^2-2x+1$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban yang benar adalah <b>\\(x^2-2x+1\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `
                     },
                     4: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Ulangi pola yang sama menggunakan sisa baru.
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Ulangi pola yang sama menggunakan sisa baru.
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi suku kedua hasil bagi adalah \\(x\\). Lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Ambil suku tertinggi dari sisa baru, yaitu \\(x^2\\), lalu bagi dengan \\(x\\).
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{x^2}{x}=x$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban yang benar adalah <b>\\(x\\)</b>. Sekarang lanjut ke langkah berikutnya.
+                                                        </p>
+                                                    </div>
+                                                `
                     },
                     5: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
-                                        </p>
-                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Kalikan \\(x\\) dengan \\((x+1)\\), lalu kurangkan dari sisa sebelumnya.
+                                                        </p>
+                                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Sisa baru yang diperoleh sudah tepat. Lanjut ke langkah terakhir.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
-                                        </p>
-                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
-                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Kerjakan dua tahap: kalikan dulu, lalu kurangkan.
+                                                        </p>
+                                                        <div class="rumus-box">$$x(x+1)=x^2+x$$</div>
+                                                        <div class="rumus-box">$$(x^2-2x+1)-(x^2+x)=-3x+1$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban yang benar adalah <b>\\(-3x+1\\)</b>. Sekarang lanjut ke langkah terakhir.
+                                                        </p>
+                                                    </div>
+                                                `
                     },
                     6: {
                         benar: `
-                                    <b>Benar ✅</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                        <div class="rumus-box">$$s=4$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Hasil akhir sudah tepat.
-                                        </p>
-                                    </div>
-                                `,
+                                                    <b>Benar ✅</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Putaran terakhir dilakukan dengan pola yang sama: bagi, kali, lalu kurang.
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                                        <div class="rumus-box">$$s=4$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Hasil akhir sudah tepat.
+                                                        </p>
+                                                    </div>
+                                                `,
                         salah: `
-                                    <b>Jawaban masih salah ❌</b>
-                                    <div class="step-solution">
-                                        <p style="margin-top:0;">
-                                            Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
-                                        </p>
-                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
-                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
-                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
-                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
-                                        <div class="rumus-box">$$s=4$$</div>
-                                        <p style="margin-bottom:0;">
-                                            Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
-                                        </p>
-                                    </div>
-                                `
+                                                    <b>Jawaban masih salah ❌</b>
+                                                    <div class="step-solution">
+                                                        <p style="margin-top:0;">
+                                                            Langkah terakhir tetap memakai pola yang sama sampai didapat hasil bagi dan sisa.
+                                                        </p>
+                                                        <div class="rumus-box">$$\\frac{-3x}{x}=-3$$</div>
+                                                        <div class="rumus-box">$$-3(x+1)=-3x-3$$</div>
+                                                        <div class="rumus-box">$$(-3x+1)-(-3x-3)=4$$</div>
+                                                        <div class="rumus-box">$$h(x)=2x^2+x-3$$</div>
+                                                        <div class="rumus-box">$$s=4$$</div>
+                                                        <p style="margin-bottom:0;">
+                                                            Jadi jawaban akhirnya adalah <b>\\(h(x)=2x^2+x-3\\)</b> dan <b>\\(s=4\\)</b>.
+                                                        </p>
+                                                    </div>
+                                                `
                     }
                 };
 
@@ -3814,6 +4152,33 @@
                 resetDndExercise();
                 updateEksplorasiProgress();
                 renderMath(document.body);
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const longDivisionBoxes = document.querySelectorAll('.pembagian-bersusun-box');
+
+                longDivisionBoxes.forEach(function (box) {
+                    const chips = box.querySelectorAll('.ld-chip');
+                    const titleBox = box.querySelector('.ld-explain-title');
+                    const textBox = box.querySelector('.ld-explain-text');
+
+                    if (!chips.length || !titleBox || !textBox) return;
+
+                    chips.forEach(function (chip) {
+                        chip.addEventListener('click', function () {
+                            chips.forEach(function (item) {
+                                item.classList.remove('active');
+                            });
+
+                            chip.classList.add('active');
+
+                            titleBox.textContent = chip.getAttribute('data-title') || 'Penjelasan';
+                            textBox.textContent = chip.getAttribute('data-text') || 'Tidak ada penjelasan.';
+                        });
+                    });
+                });
             });
         </script>
     </div>

@@ -5,11 +5,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                delimiters: [
-                                                                                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                                                                                    {left: '$', right: '$', display: false}
-                                                                                                                                                ]
-                                                                                                                                            });"></script>
+                                                                                                                                                    delimiters: [
+                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                    ]
+                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -2351,6 +2351,11 @@
                 inset: 7px;
             }
         }
+
+        /* Hilangkan tulisan eksplorasi sudah terisi */
+        #quiz-final-message {
+            display: none !important;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2795,10 +2800,10 @@
                 <div id="latihan-final-message" class="final-message">
                     ✅ Bagus! Semua langkah pada latihan A dan B sudah benar.
                 </div>
-           </div>
+            </div>
         </div>
     </div>
-       
+
 
 
     <script>
@@ -3267,10 +3272,10 @@
                 {
                     name: "Gerbang 1 — Buka Kurung",
                     prompt: `
-                        $$
-                        (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                        $$
-                        `,
+                            $$
+                            (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                            $$
+                            `,
                     dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                     hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                     answers: [
@@ -3286,10 +3291,10 @@
                 {
                     name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                     prompt: `
-                        $$
-                        5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                        $$
-                        `,
+                            $$
+                            5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                            $$
+                            `,
                     dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                     hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                     answers: [
@@ -3302,10 +3307,10 @@
                 {
                     name: "Gerbang 3 — Sederhanakan",
                     prompt: `
-                        $$
-                        (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                        $$
-                        `,
+                            $$
+                            (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                            $$
+                            `,
                     dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                     hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                     answers: [

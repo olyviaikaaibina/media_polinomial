@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                delimiters: [
-                                                                                    {left: '$$', right: '$$', display: true},
-                                                                                    {left: '$', right: '$', display: false}
-                                                                                ]
-                                                                            });"></script>
+                                                                                                        delimiters: [
+                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                        ]
+                                                                                                    });"></script>
 
     <style>
         :root {
@@ -108,14 +108,19 @@
         }
 
         .tujuan-card ol {
-            margin: 0;
-            padding-left: 22px;
+            margin: 0 !important;
+            padding-left: 0 !important;
             color: var(--muted);
+            font-size: 12px;
+            list-style-position: inside;
         }
 
         .tujuan-card li {
             margin: 6px 0 0;
-            text-align: justify;
+            padding-left: 0;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.8;
         }
 
         .section-title {
@@ -462,11 +467,7 @@
         }
 
         .quiz-summary {
-            margin-left: 0;
-            margin-top: 10px;
-            font-weight: 800;
-            color: var(--green);
-            display: block;
+            display: none !important;
         }
 
         /* Materi lanjutan disembunyikan dulu */
@@ -556,6 +557,9 @@
             background: var(--blue-soft);
             border: 1px solid rgba(45, 108, 223, .18);
             color: var(--muted);
+            text-align: justify !important;
+            text-justify: inter-word;
+            line-height: 1.8;
         }
 
         .definisi-block {
@@ -800,6 +804,232 @@
             flex-wrap: wrap;
             margin-top: 14px;
         }
+
+        .contoh-wrap {
+            width: 100%;
+            margin: 24px 0;
+            padding: 28px 30px;
+            background: #f8fbff;
+            border-left: 6px solid #5b9bd5;
+            border-radius: 18px;
+            box-sizing: border-box;
+        }
+
+        .contoh-badge {
+            display: inline-block;
+            min-width: 120px;
+            text-align: center;
+            background: #ffd6c2;
+            border: 1px solid #efb59c;
+            border-radius: 999px;
+            padding: 8px 28px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #2d2d2d;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .contoh-sub {
+            font-size: 15px;
+            color: #555;
+            margin: 0 0 18px;
+            line-height: 1.7;
+        }
+
+        .kartu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .kartu {
+            background: #ffffff;
+            border: 1px solid #e3e6ea;
+            border-radius: 16px;
+            padding: 20px 22px;
+            min-height: 160px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            outline: none;
+        }
+
+        .kartu:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .kartu:focus {
+            border-color: #5b9bd5;
+            box-shadow: 0 0 0 3px rgba(91, 155, 213, 0.18);
+        }
+
+        .kartu.active {
+            border-color: #5b9bd5;
+            background: #fbfdff;
+        }
+
+        .kartu-top {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
+
+        .kartu-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: #555;
+            border: 1px solid #e0e0e0;
+            border-radius: 999px;
+            padding: 6px 14px;
+            background: #ffffff;
+        }
+
+        .kartu-ekspresi {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111;
+            margin: 8px 0 12px;
+            line-height: 1.4;
+        }
+
+        .kartu-hint {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .kartu-penjelasan {
+            display: none;
+            margin-top: 16px;
+            padding: 14px 16px;
+            background: #eef7ff;
+            border-left: 4px solid #5b9bd5;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        .kartu.active .kartu-penjelasan {
+            display: block;
+        }
+
+        .kartu.active .kartu-tag {
+            background: #5b9bd5;
+            color: #ffffff;
+            border-color: #5b9bd5;
+        }
+
+        .pecahan {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            line-height: 1;
+            margin-right: 3px;
+        }
+
+        .pecahan span:first-child {
+            border-bottom: 1.5px solid currentColor;
+            padding: 0 4px 2px;
+        }
+
+        .pecahan span:last-child {
+            padding: 2px 4px 0;
+        }
+
+        .pecahan.kecil {
+            font-size: 0.85em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .contoh-wrap {
+                padding: 24px 24px;
+            }
+
+            .kartu-grid {
+                gap: 15px;
+            }
+
+            .kartu-ekspresi {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contoh-wrap {
+                padding: 22px 18px;
+                border-left-width: 5px;
+            }
+
+            .kartu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contoh-badge {
+                font-size: 14px;
+                padding: 7px 22px;
+            }
+
+            .contoh-sub {
+                font-size: 14px;
+            }
+
+            .kartu {
+                padding: 18px 16px;
+                min-height: auto;
+            }
+
+            .kartu-top {
+                justify-content: flex-start;
+            }
+
+            .kartu-ekspresi {
+                font-size: 26px;
+            }
+
+            .kartu-hint {
+                font-size: 14px;
+            }
+
+            .kartu-penjelasan {
+                font-size: 13.5px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contoh-wrap {
+                padding: 18px 14px;
+                border-radius: 14px;
+            }
+
+            .kartu {
+                border-radius: 14px;
+                padding: 16px 14px;
+            }
+
+            .kartu-tag {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+
+            .kartu-ekspresi {
+                font-size: 24px;
+            }
+
+            .kartu-penjelasan {
+                padding: 12px 13px;
+                font-size: 13px;
+                line-height: 1.75;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -816,7 +1046,7 @@
             <ol>
                 <li>
                     Menjelaskan pengertian polinomial dan fungsi polinomial, serta mengidentifikasi
-                    karakteristiknya.
+                    karakteristiknya dengan tepat.
                 </li>
             </ol>
         </div>
@@ -868,7 +1098,7 @@
 
             <!-- PERTANYAAN TETAP -->
             <div class="question" id="eksplorasi-quiz">
-                <div class="qtitle">Pertanyaan Eksplorasi</div>
+                <div class="qtitle">Pertanyaan</div>
 
                 <ol class="quiz-list">
                     <li class="quiz-item" data-type="set" data-answer="2x,3y,5">
@@ -923,17 +1153,26 @@
 
             <div class="contoh-wrap" id="contoh-kartu">
                 <div class="contoh-badge">CONTOH</div>
-                <p class="contoh-sub">Klik setiap kartu untuk melihat penjelasan (tap di HP juga bisa).</p>
+                <p class="contoh-sub">Klik setiap kartu untuk melihat penjelasan.</p>
 
                 <div class="kartu-grid">
                     <div class="kartu" tabindex="0">
                         <div class="kartu-top">
                             <div class="kartu-tag">Klik untuk penjelasan</div>
                         </div>
-                        <div class="kartu-ekspresi">$6x^2$</div>
+
+                        <div class="kartu-ekspresi">
+                            6x<sup>2</sup>
+                        </div>
+
                         <p class="kartu-hint">Apakah ini monomial?</p>
+
                         <div class="kartu-penjelasan">
-                            Monomial ✅ karena terdiri dari satu suku dan variabel berpangkat bilangan cacah.
+                            Bentuk aljabar <strong>6x<sup>2</sup></strong> merupakan monomial karena hanya terdiri atas satu
+                            suku,
+                            yaitu <strong>6x<sup>2</sup></strong>. Pangkat variabel <strong>x</strong> adalah
+                            <strong>2</strong>,
+                            dan <strong>2</strong> termasuk bilangan cacah.
                         </div>
                     </div>
 
@@ -941,10 +1180,17 @@
                         <div class="kartu-top">
                             <div class="kartu-tag">Klik untuk penjelasan</div>
                         </div>
-                        <div class="kartu-ekspresi">$-6$</div>
+
+                        <div class="kartu-ekspresi">
+                            −6
+                        </div>
+
                         <p class="kartu-hint">Termasuk monomial?</p>
+
                         <div class="kartu-penjelasan">
-                            Monomial ✅ karena konstanta juga termasuk satu suku (tanpa variabel).
+                            Bentuk aljabar <strong>−6</strong> merupakan monomial karena <strong>−6</strong> adalah
+                            konstanta.
+                            Konstanta dapat disebut monomial karena dapat dipandang sebagai satu suku tanpa variabel.
                         </div>
                     </div>
 
@@ -952,10 +1198,25 @@
                         <div class="kartu-top">
                             <div class="kartu-tag">Klik untuk penjelasan</div>
                         </div>
-                        <div class="kartu-ekspresi">$\frac{1}{6}x^2$</div>
+
+                        <div class="kartu-ekspresi">
+                            <span class="pecahan">
+                                <span>1</span>
+                                <span>6</span>
+                            </span>x<sup>2</sup>
+                        </div>
+
                         <p class="kartu-hint">Koefisien pecahan boleh?</p>
+
                         <div class="kartu-penjelasan">
-                            Monomial ✅ karena koefisien boleh pecahan, yang penting tetap satu suku.
+                            Bentuk aljabar <strong><span
+                                    class="pecahan kecil"><span>1</span><span>6</span></span>x<sup>2</sup></strong>
+                            merupakan monomial karena hanya terdiri atas satu suku, yaitu
+                            <strong><span class="pecahan kecil"><span>1</span><span>6</span></span>x<sup>2</sup></strong>.
+                            Koefisiennya adalah <strong><span
+                                    class="pecahan kecil"><span>1</span><span>6</span></span></strong>,
+                            dan pangkat variabel <strong>x</strong> adalah <strong>2</strong>, sehingga bentuk tersebut
+                            memenuhi syarat monomial.
                         </div>
                     </div>
 
@@ -963,13 +1224,23 @@
                         <div class="kartu-top">
                             <div class="kartu-tag">Klik untuk penjelasan</div>
                         </div>
-                        <div class="kartu-ekspresi">$5x + 2x^2$</div>
+
+                        <div class="kartu-ekspresi">
+                            5x + 2x<sup>2</sup>
+                        </div>
+
                         <p class="kartu-hint">Ini monomial atau bukan?</p>
+
                         <div class="kartu-penjelasan">
-                            Bukan monomial ❌ karena ada tanda “+” yang memisahkan menjadi dua suku.
+                            Bentuk aljabar <strong>5x + 2x<sup>2</sup></strong> bukan merupakan monomial karena terdiri atas
+                            dua suku,
+                            yaitu <strong>5x</strong> dan <strong>2x<sup>2</sup></strong>. Bentuk tersebut merupakan
+                            polinomial
+                            yang terdiri atas dua suku.
                         </div>
                     </div>
                 </div>
+
 
                 <p style="margin:10px 0 0; text-align:justify; color: var(--muted);">
                     Jika monomial tidak memiliki variabel, maka disebut konstanta, seperti $-8$ atau $25$. Sedangkan
@@ -1323,7 +1594,24 @@
         <script>
             window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
         </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const kartuList = document.querySelectorAll('#contoh-kartu .kartu');
 
+                kartuList.forEach(function (kartu) {
+                    kartu.addEventListener('click', function () {
+                        kartu.classList.toggle('active');
+                    });
+
+                    kartu.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            kartu.classList.toggle('active');
+                        }
+                    });
+                });
+            });
+        </script>
         <script>
             async function saveProgressMateri() {
                 const csrfToken = document
@@ -1429,20 +1717,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                        <div class="quiz-soal-title">Soal ${i + 1}</div>
-                        <div class="quiz-ekspresi">${q.expr}</div>
+                                                <div class="quiz-soal-title">Soal ${i + 1}</div>
+                                                <div class="quiz-ekspresi">${q.expr}</div>
 
-                        <div class="quiz-options-new">
-                            <label>
-                                <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                            </label>
-                            <label>
-                                <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                            </label>
-                        </div>
+                                                <div class="quiz-options-new">
+                                                    <label>
+                                                        <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                                    </label>
+                                                </div>
 
-                        <div class="feedback-box" id="fb${i}"></div>
-                    `;
+                                                <div class="feedback-box" id="fb${i}"></div>
+                                            `;
                         container.appendChild(div);
                     });
 
@@ -1485,24 +1773,24 @@
 
                         if (saved) {
                             resultBox.innerHTML = `
-                            Skor: ${score}/${questions.length}<br>
-                            Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
-                        `;
+                                                    Skor: ${score}/${questions.length}<br>
+                                                    Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
+                                                `;
                             resultBox.style.color = "green";
 
                             bukaNextButton();
                         } else {
                             resultBox.innerHTML = `
-                            Skor: ${score}/${questions.length}<br>
-                            Jawaban benar, tapi progres belum tersimpan.
-                        `;
+                                                    Skor: ${score}/${questions.length}<br>
+                                                    Jawaban benar, tapi progres belum tersimpan.
+                                                `;
                             resultBox.style.color = "orange";
                         }
                     } else {
                         resultBox.innerHTML = `
-                        Skor: ${score}/${questions.length}<br>
-                        Masih ada jawaban yang belum tepat. Coba lagi ya.
-                    `;
+                                                Skor: ${score}/${questions.length}<br>
+                                                Masih ada jawaban yang belum tepat. Coba lagi ya.
+                                            `;
                         resultBox.style.color = "red";
                     }
 
