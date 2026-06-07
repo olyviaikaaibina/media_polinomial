@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                                                                        delimiters: [
-                                                                                                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                                                                        ]
-                                                                                                                                                                                                                                                                                                                                    });"></script>
+                                                                                                                                                                                                                                                                                                                                                                                    delimiters: [
+                                                                                                                                                                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                                                                                                    ]
+                                                                                                                                                                                                                                                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -958,8 +958,8 @@
         }
 
         /* =========================
-                                                                                                                                                                               LATIHAN DRAG & DROP
-                                                                                                                                                                            ========================= */
+                                                                                                                                                                                                                           LATIHAN DRAG & DROP
+                                                                                                                                                                                                                        ========================= */
         .latihan-drag-wrap {
             margin-top: 38px;
         }
@@ -1400,8 +1400,8 @@
         }
 
         /* =========================
-                                                                                                                                                    SIFAT INTERAKTIF MODERN
-                                                                                                                                                    ========================= */
+                                                                                                                                                                                                SIFAT INTERAKTIF MODERN
+                                                                                                                                                                                                ========================= */
         .sifat-interaktif {
             margin: 30px 0;
             padding: 26px 22px 24px;
@@ -1765,8 +1765,8 @@
         }
 
         /* =========================
-                                                                                               SIFAT INTERAKTIF - FINAL
-                                                                                               ========================= */
+                                                                                                                                           SIFAT INTERAKTIF - FINAL
+                                                                                                                                           ========================= */
 
         .sifat-wrapper {
             position: relative;
@@ -2532,9 +2532,9 @@
         }
 
         /* =====================================================
-                                                       RESPONSIVE FINAL: HP, TABLET, LAPTOP
-                                                       Letakkan PALING BAWAH setelah semua CSS lama
-                                                    ===================================================== */
+                                                                                                   RESPONSIVE FINAL: HP, TABLET, LAPTOP
+                                                                                                   Letakkan PALING BAWAH setelah semua CSS lama
+                                                                                                ===================================================== */
 
         /* Supaya padding dan lebar elemen tidak bikin overflow */
         *,
@@ -2579,9 +2579,9 @@
         }
 
         /* =====================================================
-                                                       LAPTOP / DESKTOP
-                                                       1025px ke atas
-                                                    ===================================================== */
+                                                                                                   LAPTOP / DESKTOP
+                                                                                                   1025px ke atas
+                                                                                                ===================================================== */
         @media (min-width: 1025px) {
             .materi-wrap {
                 padding: 24px 24px 48px;
@@ -2626,9 +2626,9 @@
         }
 
         /* =====================================================
-                                                       TABLET
-                                                       641px - 1024px
-                                                    ===================================================== */
+                                                                                                   TABLET
+                                                                                                   641px - 1024px
+                                                                                                ===================================================== */
         @media (min-width: 641px) and (max-width: 1024px) {
             .materi-wrap {
                 max-width: 92%;
@@ -2720,9 +2720,9 @@
         }
 
         /* =====================================================
-                                                       HP / MOBILE
-                                                       640px ke bawah
-                                                    ===================================================== */
+                                                                                                   HP / MOBILE
+                                                                                                   640px ke bawah
+                                                                                                ===================================================== */
         @media (max-width: 640px) {
             .materi-wrap {
                 max-width: 100%;
@@ -3011,9 +3011,9 @@
         }
 
         /* =====================================================
-                                                       HP KECIL
-                                                       420px ke bawah
-                                                    ===================================================== */
+                                                                                                   HP KECIL
+                                                                                                   420px ke bawah
+                                                                                                ===================================================== */
         @media (max-width: 420px) {
             .materi-wrap {
                 padding-left: 10px;
@@ -3182,9 +3182,9 @@
         }
 
         /* =====================================================
-                   FIX CONTOH PERTAMA RESPONSIF
-                   Target: #contoh-identitas
-                ===================================================== */
+                                                               FIX CONTOH PERTAMA RESPONSIF
+                                                               Target: #contoh-identitas
+                                                            ===================================================== */
 
         #contoh-identitas {
             width: 100%;
@@ -3511,8 +3511,8 @@
 
 
         /* =====================================================
-        TABLET
-        ===================================================== */
+                                                    TABLET
+                                                    ===================================================== */
         @media (min-width: 641px) and (max-width: 1024px) {
             #contoh-identitas {
                 padding: 34px 18px 22px !important;
@@ -3560,8 +3560,8 @@
 
 
         /* =====================================================
-        HP
-        ===================================================== */
+                                                    HP
+                                                    ===================================================== */
         @media (max-width: 640px) {
             #contoh-identitas {
                 margin-top: 34px !important;
@@ -3636,8 +3636,8 @@
 
 
         /* =====================================================
-        HP KECIL
-        ===================================================== */
+                                                    HP KECIL
+                                                    ===================================================== */
         @media (max-width: 420px) {
             #contoh-identitas {
                 padding-left: 10px !important;
@@ -3661,9 +3661,6 @@
         }
 
 
-        /* =====================================================
-        FIX SUPAYA AREA MATERI TIDAK MEMOTONG TOMBOL DI BAWAH
-        ===================================================== */
 
         .materi-wrap,
         #materi-lanjutan,
@@ -3680,6 +3677,494 @@
         .halaman-materi,
         .materi-container {
             overflow-y: auto !important;
+        }
+
+
+        /* TUJUAN PEMBELAJARAN - KECIL & SEDERHANA */
+
+        .tujuan-card {
+            position: relative;
+            width: 100%;
+            margin: 0 0 24px 0;
+            padding: 18px 22px 20px 38px;
+            background: #f4ece6;
+            border: 1px solid #d7c8bd;
+            border-radius: 20px;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        .tujuan-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8px;
+            height: 100%;
+            background: #e0702b;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .tujuan-header .title {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+            font-weight: 900;
+            color: #18752d;
+            line-height: 1.2;
+        }
+
+        .tujuan-card ol {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .tujuan-card li {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #555;
+            text-align: left !important;
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            .tujuan-card {
+                padding: 16px 14px 18px 28px;
+                border-radius: 16px;
+            }
+
+            .tujuan-card::before {
+                width: 7px;
+                border-radius: 16px 0 0 16px;
+            }
+
+            .tujuan-header .title {
+                font-size: 19px;
+            }
+
+            .tujuan-card ol {
+                padding-left: 20px;
+            }
+
+            .tujuan-card li {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        }
+
+
+
+        .eksplorasi-card {
+            position: relative;
+            margin: 18px 0 22px 0 !important;
+            padding: 18px 20px 20px !important;
+            background: #f4ece6 !important;
+            border: 1px solid #d7c8bd !important;
+            border-left: 8px solid #e0702b !important;
+            border-radius: 18px !important;
+            box-shadow: none !important;
+        }
+
+        .eksplorasi-title {
+            font-size: 20px !important;
+            font-weight: 900 !important;
+            color: #18752d !important;
+            margin-bottom: 10px !important;
+        }
+
+        .eksplorasi-title::before {
+            font-size: 16px !important;
+        }
+
+        .eksplorasi-content {
+            margin-top: 8px !important;
+            min-height: auto !important;
+        }
+
+        .eksplorasi-card .materi-paragraf p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            margin-bottom: 10px !important;
+        }
+
+        .eksplorasi-card .formula-center {
+            font-size: 20px !important;
+            margin: 8px 0 12px !important;
+        }
+
+        .eksplorasi-card hr {
+            margin: 14px 0 !important;
+        }
+
+        .eksplorasi-soal {
+            margin-top: 10px !important;
+        }
+
+        .eksplorasi-soal p {
+            margin: 0 0 8px 0 !important;
+            font-size: 15px !important;
+        }
+
+        .eksplorasi-quiz-item {
+            margin-top: 12px !important;
+            padding: 12px 14px !important;
+            background: #fffaf7 !important;
+            border: 1px solid #ead6c7 !important;
+            border-radius: 12px !important;
+        }
+
+        .eksplorasi-quiz-question {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            margin: 0 0 10px 0 !important;
+        }
+
+        .eksplorasi-opsi-row {
+            gap: 8px !important;
+        }
+
+        .eksplorasi-opsi {
+            min-width: 150px !important;
+            padding: 9px 12px !important;
+            border-radius: 10px !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+
+        .eksplorasi-feedback {
+            margin-top: 10px !important;
+            padding: 8px 10px !important;
+            border-radius: 9px !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+
+        .eksplorasi-penjelasan {
+            margin-top: 10px !important;
+            padding: 10px 12px !important;
+            border-radius: 9px !important;
+            font-size: 13.5px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Tablet */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .eksplorasi-card {
+                padding: 17px 18px 19px !important;
+                border-radius: 16px !important;
+            }
+
+            .eksplorasi-title {
+                font-size: 19px !important;
+            }
+
+            .eksplorasi-card .formula-center {
+                font-size: 19px !important;
+            }
+
+            .eksplorasi-opsi {
+                min-width: calc(50% - 8px) !important;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            .eksplorasi-card {
+                margin: 16px 0 20px 0 !important;
+                padding: 16px 13px 17px 18px !important;
+                border-left-width: 7px !important;
+                border-radius: 15px !important;
+            }
+
+            .eksplorasi-title {
+                font-size: 17px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .eksplorasi-title::before {
+                font-size: 14px !important;
+            }
+
+            .eksplorasi-card .materi-paragraf p {
+                font-size: 14px !important;
+                line-height: 1.55 !important;
+                margin-bottom: 8px !important;
+                text-align: left !important;
+            }
+
+            .eksplorasi-card .formula-center {
+                font-size: 17px !important;
+                margin: 6px 0 10px !important;
+            }
+
+            .eksplorasi-quiz-item {
+                padding: 10px 11px !important;
+                border-radius: 10px !important;
+            }
+
+            .eksplorasi-quiz-question {
+                font-size: 14px !important;
+                text-align: left !important;
+            }
+
+            .eksplorasi-opsi-row {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+
+            .eksplorasi-opsi {
+                width: 100% !important;
+                min-width: 100% !important;
+                padding: 9px 10px !important;
+                font-size: 13.5px !important;
+            }
+
+            .eksplorasi-feedback,
+            .eksplorasi-penjelasan {
+                font-size: 13px !important;
+                text-align: left !important;
+            }
+        }
+
+        /* =====================================================
+                   DEFINISI - CARD OREN, BADGE IJO
+                ===================================================== */
+
+        .definisi-block {
+            position: relative;
+            width: 100%;
+            max-width: 880px;
+            margin: 42px 0 20px 0;
+            padding: 42px 22px 20px;
+            background: #efb39f;
+            border: 1.5px solid rgba(0, 0, 0, .18);
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        .definisi-pill {
+            position: absolute;
+            top: -22px;
+            left: -16px;
+            min-width: 190px;
+            text-align: center;
+            background: #9ac98d;
+            color: #000;
+            font-weight: 900;
+            padding: 10px 26px;
+            border-radius: 999px;
+            border: 3px solid #2f9e44;
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: .4px;
+            z-index: 2;
+        }
+
+        .definisi-text {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #000;
+            text-align: justify;
+        }
+
+        .definisi-block .formula-center {
+            text-align: center;
+            font-size: 18px;
+            margin: 10px 0;
+            color: #000;
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            .definisi-block {
+                margin-top: 36px;
+                padding: 36px 14px 16px;
+            }
+
+            .definisi-pill {
+                top: -18px;
+                left: -8px;
+                min-width: 140px;
+                font-size: 13px;
+                padding: 8px 18px;
+                border-width: 2px;
+            }
+
+            .definisi-text {
+                font-size: 14px;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .definisi-block .formula-center {
+                font-size: 18px;
+            }
+        }
+
+
+
+
+        #contoh-identitas,
+        #contoh-faktorisasi {
+            margin: 26px 0 26px !important;
+            padding: 28px 18px 18px !important;
+            border-radius: 18px !important;
+            border: 2px solid #4aa12f !important;
+            background: #fff !important;
+            box-shadow: none !important;
+        }
+
+        /* Badge CONTOH */
+        #contoh-identitas .contoh-badge,
+        #contoh-faktorisasi .contoh-badge {
+            top: -18px !important;
+            left: 24px !important;
+            min-width: 140px !important;
+            padding: 7px 20px !important;
+            font-size: 14px !important;
+            border-radius: 999px !important;
+            background: #efb39f !important;
+            border: 2px solid #e0702b !important;
+            color: #000 !important;
+        }
+
+        /* Teks soal */
+        #contoh-identitas .contoh-soal,
+        #contoh-faktorisasi .contoh-soal {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            margin-bottom: 10px !important;
+        }
+
+        /* Rumus besar di atas */
+        #contoh-identitas .contoh-rumus,
+        #contoh-faktorisasi .contoh-rumus {
+            font-size: 24px !important;
+            line-height: 1.4 !important;
+            margin: 8px 0 18px !important;
+            padding-bottom: 4px !important;
+        }
+
+        /* Kotak langkah */
+        #contoh-identitas .langkah-box,
+        #contoh-faktorisasi .langkah-box {
+            padding: 14px 14px !important;
+            border-radius: 14px !important;
+            background: #f8fbf8 !important;
+            min-height: auto !important;
+        }
+
+        /* Teks langkah */
+        #contoh-identitas .langkah-kecil,
+        #contoh-faktorisasi .langkah-kecil {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            margin-bottom: 8px !important;
+        }
+
+        /* Rumus di dalam langkah */
+        #contoh-identitas .langkah-rumus,
+        #contoh-faktorisasi .langkah-rumus {
+            font-size: 22px !important;
+            line-height: 1.4 !important;
+            margin: 6px 0 10px !important;
+            padding-bottom: 4px !important;
+        }
+
+        /* Kotak penjelasan */
+        #contoh-identitas .langkah-note,
+        #contoh-identitas .asal-langkah,
+        #contoh-faktorisasi .langkah-note,
+        #contoh-faktorisasi .asal-langkah {
+            font-size: 13.5px !important;
+            line-height: 1.6 !important;
+            padding: 9px 10px !important;
+            border-radius: 8px !important;
+        }
+
+        /* Tombol */
+        #contoh-identitas .contoh-actions,
+        #contoh-faktorisasi .contoh-actions {
+            gap: 8px !important;
+            margin-top: 12px !important;
+        }
+
+        #contoh-identitas .btn-contoh,
+        #contoh-faktorisasi .btn-contoh {
+            padding: 7px 12px !important;
+            font-size: 13.5px !important;
+            border-radius: 9px !important;
+            min-height: auto !important;
+        }
+
+        /* Indikator langkah */
+        #contoh-identitas .langkah-indikator,
+        #contoh-faktorisasi .langkah-indikator {
+            font-size: 13px !important;
+            margin-top: 8px !important;
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+
+            #contoh-identitas,
+            #contoh-faktorisasi {
+                padding: 26px 12px 16px !important;
+                border-radius: 16px !important;
+                margin: 24px 0 24px !important;
+            }
+
+            #contoh-identitas .contoh-badge,
+            #contoh-faktorisasi .contoh-badge {
+                top: -16px !important;
+                left: 14px !important;
+                min-width: 115px !important;
+                font-size: 12.5px !important;
+                padding: 6px 14px !important;
+            }
+
+            #contoh-identitas .contoh-soal,
+            #contoh-faktorisasi .contoh-soal {
+                font-size: 14px !important;
+                line-height: 1.55 !important;
+            }
+
+            #contoh-identitas .contoh-rumus,
+            #contoh-faktorisasi .contoh-rumus {
+                font-size: 19px !important;
+                margin: 6px 0 14px !important;
+            }
+
+            #contoh-identitas .langkah-box,
+            #contoh-faktorisasi .langkah-box {
+                padding: 12px 10px !important;
+            }
+
+            #contoh-identitas .langkah-kecil,
+            #contoh-faktorisasi .langkah-kecil {
+                font-size: 13.5px !important;
+            }
+
+            #contoh-identitas .langkah-rumus,
+            #contoh-faktorisasi .langkah-rumus {
+                font-size: 18px !important;
+            }
+
+            #contoh-identitas .langkah-note,
+            #contoh-identitas .asal-langkah,
+            #contoh-faktorisasi .langkah-note,
+            #contoh-faktorisasi .asal-langkah {
+                font-size: 13px !important;
+                line-height: 1.55 !important;
+            }
+
+            #contoh-identitas .btn-contoh,
+            #contoh-faktorisasi .btn-contoh {
+                width: 100% !important;
+                font-size: 13px !important;
+                padding: 8px 10px !important;
+            }
         }
     </style>
 
@@ -3698,7 +4183,7 @@
             <ol>
                 <li>
                     Membuktikan identitas polinomial serta memanfaatkannya untuk menyelesaikan
-                    masalah pemfaktoran polinomial.
+                    masalah pemfaktoran polinomial dengan tepat.
                 </li>
             </ol>
         </div>
@@ -4893,19 +5378,19 @@
                                 this.classList.add('benar');
                                 miniQuizFeedback.className = 'sifat-mini-quiz-feedback show benar';
                                 miniQuizFeedback.innerHTML = `
-                                                        ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
-                                                        \\(8 = 2^3\\), sehingga cocok dengan identitas:
-                                                        \\[
-                                                            a^3 - b^3 = (a-b)(a^2+ab+b^2)
-                                                        \\]
-                                                    `;
+                                                                                                    ✔ Tepat! Bentuk \\(x^3 - 8\\) adalah selisih dua kubik karena
+                                                                                                    \\(8 = 2^3\\), sehingga cocok dengan identitas:
+                                                                                                    \\[
+                                                                                                        a^3 - b^3 = (a-b)(a^2+ab+b^2)
+                                                                                                    \\]
+                                                                                                `;
                             } else {
                                 this.classList.add('salah');
                                 miniQuizFeedback.className = 'sifat-mini-quiz-feedback show salah';
                                 miniQuizFeedback.innerHTML = `
-                                                        ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
-                                                        bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
-                                                    `;
+                                                                                                    ✘ Belum tepat. Karena \\(x^3 - 8 = x^3 - 2^3\\),
+                                                                                                    bentuk ini termasuk <b>selisih dua kubik</b>, bukan kuadrat.
+                                                                                                `;
                             }
 
                             renderMathSafe(root);
@@ -5166,7 +5651,6 @@
                         diBukan.forEach((card) => {
                             if (card.dataset.answer === 'bukan') skor++;
                         });
-
                         if (skor === 5) {
                             setSummary(
                                 'ok',
@@ -5186,6 +5670,56 @@
                                     'Jawaban sudah benar, tetapi progress gagal disimpan. Silakan klik Cek Jawaban lagi.'
                                 );
                             }
+
+                            setFeedback(
+                                'ok',
+                                `
+            <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
+
+            <div style="margin-bottom:12px; text-align:justify;">
+                <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
+                Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$
+                dikembangkan, hasilnya selalu:
+                $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
+                Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah
+                <b>identitas polinomial</b>.
+            </div>
+
+            <div style="margin-bottom:12px; text-align:justify;">
+                <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
+                Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
+                $$ (a+b)(a-b)=a^2-b^2 $$
+                dengan $a=2y$ dan $b=5$, sehingga:
+                $$ (2y+5)(2y-5)=4y^2-25 $$
+                Jadi ruas kanan yang benar seharusnya <b>$4y^2-25$</b>, bukan
+                <b>$4y^2-10y-25$</b>. Maka pernyataan ini <b>bukan identitas</b>.
+            </div>
+
+            <div style="margin-bottom:12px; text-align:justify;">
+                <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
+                Ini merupakan rumus <b>selisih dua kuadrat</b>:
+                $$ (x+a)(x-a)=x^2-a^2 $$
+                Bentuk tersebut selalu benar untuk semua nilai $x$ dan $a$.
+            </div>
+
+            <div style="margin-bottom:12px; text-align:justify;">
+                <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
+                Gunakan rumus <b>kuadrat selisih dua suku</b>:
+                $$ (a-b)^2 = a^2 - 2ab + b^2 $$
+                dengan $a=x$ dan $b=4$, maka:
+                $$ (x-4)^2 = x^2 - 8x + 16 $$
+                Jadi hasilnya bukan <b>$x^2-4$</b>.
+            </div>
+
+            <div style="margin-bottom:4px; text-align:justify;">
+                <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
+                Ini adalah rumus baku <b>jumlah dua kubik</b>:
+                $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
+                Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
+                <b>identitas polinomial</b>.
+            </div>
+            `
+                            );
                         } else {
                             progressSudahDisimpan = false;
 
@@ -5193,57 +5727,12 @@
                                 'no',
                                 `Skor kamu <b>${skor}/5</b>. Masih ada jawaban yang perlu diperbaiki.`
                             );
+
+                            if (feedback) {
+                                feedback.className = 'drag-feedback';
+                                feedback.innerHTML = '';
+                            }
                         }
-
-                        setFeedback(
-                            skor === 5 ? 'ok' : 'no',
-                            `
-                                                <div style="font-weight:700; margin-bottom:10px;">Penjelasan setiap soal:</div>
-
-                                                <div style="margin-bottom:12px; text-align:justify;">
-                                                    <b>1. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ → IDENTITAS</b><br>
-                                                    Ini adalah rumus baku <b>kubik penjumlahan dua suku</b>. Jika bentuk $(a+b)^3$
-                                                    dikembangkan, hasilnya selalu:
-                                                    $$ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 $$
-                                                    Karena berlaku untuk semua nilai $a$ dan $b$, maka ini adalah
-                                                    <b>identitas polinomial</b>.
-                                                </div>
-
-                                                <div style="margin-bottom:12px; text-align:justify;">
-                                                    <b>2. $(2y+5)(2y-5) = 4y^2 - 10y - 25$ → BUKAN IDENTITAS</b><br>
-                                                    Bentuk ruas kiri mengikuti pola <b>selisih dua kuadrat</b>:
-                                                    $$ (a+b)(a-b)=a^2-b^2 $$
-                                                    dengan $a=2y$ dan $b=5$, sehingga:
-                                                    $$ (2y+5)(2y-5)=4y^2-25 $$
-                                                    Jadi ruas kanan yang benar seharusnya <b>$4y^2-25$</b>, bukan
-                                                    <b>$4y^2-10y-25$</b>. Maka pernyataan ini <b>bukan identitas</b>.
-                                                </div>
-
-                                                <div style="margin-bottom:12px; text-align:justify;">
-                                                    <b>3. $(x+a)(x-a) = x^2 - a^2$ → IDENTITAS</b><br>
-                                                    Ini merupakan rumus <b>selisih dua kuadrat</b>:
-                                                    $$ (x+a)(x-a)=x^2-a^2 $$
-                                                    Bentuk tersebut selalu benar untuk semua nilai $x$ dan $a$.
-                                                </div>
-
-                                                <div style="margin-bottom:12px; text-align:justify;">
-                                                    <b>4. $(x-4)^2 = x^2 - 4$ → BUKAN IDENTITAS</b><br>
-                                                    Gunakan rumus <b>kuadrat selisih dua suku</b>:
-                                                    $$ (a-b)^2 = a^2 - 2ab + b^2 $$
-                                                    dengan $a=x$ dan $b=4$, maka:
-                                                    $$ (x-4)^2 = x^2 - 8x + 16 $$
-                                                    Jadi hasilnya bukan <b>$x^2-4$</b>.
-                                                </div>
-
-                                                <div style="margin-bottom:4px; text-align:justify;">
-                                                    <b>5. $a^3 + b^3 = (a+b)(a^2-ab+b^2)$ → IDENTITAS</b><br>
-                                                    Ini adalah rumus baku <b>jumlah dua kubik</b>:
-                                                    $$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $$
-                                                    Bentuk ini selalu benar untuk semua nilai $a$ dan $b$, jadi termasuk
-                                                    <b>identitas polinomial</b>.
-                                                </div>
-                                                `
-                        );
 
                         rerenderMath();
                     });

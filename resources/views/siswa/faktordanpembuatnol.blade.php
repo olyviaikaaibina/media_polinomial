@@ -7,11 +7,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body,{
-                                                                                                                                                                    delimiters:[
-                                                                                                                                                                        {left:'$$',right:'$$',display:true},
-                                                                                                                                                                        {left:'$',right:'$',display:false}
-                                                                                                                                                                    ]
-                                                                                                                                                                });"></script>
+                                                                                                                                                                                                                                                                                        delimiters:[
+                                                                                                                                                                                                                                                                                            {left:'$$',right:'$$',display:true},
+                                                                                                                                                                                                                                                                                            {left:'$',right:'$',display:false}
+                                                                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                                                                                    });"></script>
 
     <style>
         :root {
@@ -1410,8 +1410,8 @@
         }
 
         /* =========================
-                                                                                                                                       CARD TAMBAHAN MATERI
-                                                                                                                                    ========================= */
+                                                                                                                                                                                                                                                           CARD TAMBAHAN MATERI
+                                                                                                                                                                                                                                                        ========================= */
         .info-card {
             position: relative;
             margin-top: 24px;
@@ -1541,8 +1541,8 @@
         }
 
         /* =========================
-                                                                                                                                       LANGKAH CARI PEMBUAT NOL
-                                                                                                                                    ========================= */
+                                                                                                                                                                                                                                                           LANGKAH CARI PEMBUAT NOL
+                                                                                                                                                                                                                                                        ========================= */
         .langkah-cari-wrap {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1613,8 +1613,8 @@
         }
 
         /* =========================
-                                                                                                                                       CONTOH MINI + TIP
-                                                                                                                                    ========================= */
+                                                                                                                                                                                                                                                           CONTOH MINI + TIP
+                                                                                                                                                                                                                                                        ========================= */
         .contoh-mini {
             margin-top: 18px;
             background: rgba(255, 255, 255, .84);
@@ -1646,8 +1646,8 @@
         }
 
         /* =========================
-                                                                                                                                       RESPONSIVE
-                                                                                                                                    ========================= */
+                                                                                                                                                                                                                                                           RESPONSIVE
+                                                                                                                                                                                                                                                        ========================= */
         @media (max-width: 900px) {
 
             .info-grid,
@@ -1699,8 +1699,8 @@
         }
 
         /* =========================
-                                                                                                                           STRATEGI INTERAKTIF
-                                                                                                                        ========================= */
+                                                                                                                                                                                                                                               STRATEGI INTERAKTIF
+                                                                                                                                                                                                                                            ========================= */
         .clickable-card {
             cursor: pointer;
             user-select: none;
@@ -1805,8 +1805,8 @@
         }
 
         /* =========================
-                                                                                                               METODE INTERAKTIF
-                                                                                                            ========================= */
+                                                                                                                                                                                                                                   METODE INTERAKTIF
+                                                                                                                                                                                                                                ========================= */
         .metode-wrap {
             margin-top: 12px;
         }
@@ -1844,8 +1844,8 @@
         }
 
         /* =========================
-                                                                                                               PANEL CONTOH BERSAMA
-                                                                                                            ========================= */
+                                                                                                                                                                                                                                   PANEL CONTOH BERSAMA
+                                                                                                                                                                                                                                ========================= */
         .contoh-bersama-box {
             margin-top: 20px;
             background: rgba(255, 255, 255, .86);
@@ -2092,9 +2092,9 @@
         }
 
         /* =========================
-                   RESPONSIVE GLOBAL FIX
-                   HP, TABLET, LAPTOP
-                ========================= */
+                                                                                                                                       RESPONSIVE GLOBAL FIX
+                                                                                                                                       HP, TABLET, LAPTOP
+                                                                                                                                    ========================= */
 
         /* Supaya padding tidak membuat elemen melebar */
         *,
@@ -2135,9 +2135,9 @@
         }
 
         /* =========================
-                   LAPTOP / DESKTOP
-                   >= 1025px
-                ========================= */
+                                                                                                                                       LAPTOP / DESKTOP
+                                                                                                                                       >= 1025px
+                                                                                                                                    ========================= */
         @media (min-width: 1025px) {
             .materi-wrap {
                 padding: 28px 24px 48px;
@@ -2163,9 +2163,9 @@
         }
 
         /* =========================
-                   TABLET
-                   769px - 1024px
-                ========================= */
+                                                                                                                                       TABLET
+                                                                                                                                       769px - 1024px
+                                                                                                                                    ========================= */
         @media (min-width: 769px) and (max-width: 1024px) {
             .materi-wrap {
                 max-width: 920px;
@@ -2243,9 +2243,9 @@
         }
 
         /* =========================
-                   HP / MOBILE
-                   <= 768px
-                ========================= */
+                                                                                                                                       HP / MOBILE
+                                                                                                                                       <= 768px
+                                                                                                                                    ========================= */
         @media (max-width: 768px) {
             .materi-wrap {
                 padding: 16px 12px 32px;
@@ -2536,9 +2536,9 @@
         }
 
         /* =========================
-                   HP KECIL
-                   <= 480px
-                ========================= */
+                                                                                                                                       HP KECIL
+                                                                                                                                       <= 480px
+                                                                                                                                    ========================= */
         @media (max-width: 480px) {
             .materi-wrap {
                 padding: 14px 10px 28px;
@@ -2616,9 +2616,9 @@
         }
 
         /* =========================
-       FIX POSISI CARD FAKTOR
-       BIAR TENGAH & TIDAK BOROS TEMPAT
-    ========================= */
+                                                                                                                           FIX POSISI CARD FAKTOR
+                                                                                                                           BIAR TENGAH & TIDAK BOROS TEMPAT
+                                                                                                                        ========================= */
 
         .info-card.definisi-card {
             max-width: 900px;
@@ -2692,6 +2692,646 @@
                 min-width: 0;
                 height: auto;
                 padding: 10px 14px;
+            }
+        }
+
+        /* =========================
+                                                                                                                       FIX EKSPLORASI LEBIH KECIL
+                                                                                                                       ========================= */
+
+        .card.card-eksplorasi {
+            max-width: 860px;
+            margin: 18px auto 20px;
+            padding: 18px 20px !important;
+            border-radius: 18px;
+            border-left-width: 5px;
+        }
+
+        .card-eksplorasi .title-box {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .card-eksplorasi .eksplorasi-text {
+            font-size: 15px;
+            line-height: 1.65;
+            margin-top: 6px;
+        }
+
+        .card-eksplorasi .rumus-box {
+            margin: 10px auto;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+
+        .card-eksplorasi .eksplorasi-highlight {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .card-eksplorasi .eksplorasi-question {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 14px;
+        }
+
+        .card-eksplorasi .eksplorasi-question-title {
+            font-size: 15px;
+            margin-bottom: 10px;
+            line-height: 1.55;
+        }
+
+        .card-eksplorasi .opsi-row {
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .card-eksplorasi .opsi-btn {
+            min-width: 105px;
+            padding: 9px 13px;
+            border-radius: 11px;
+            font-size: 13px;
+        }
+
+        .card-eksplorasi .eksplorasi-feedback {
+            margin-top: 10px;
+            padding: 9px 11px;
+            border-radius: 11px;
+            font-size: 13px;
+        }
+
+        .card-eksplorasi .eksplorasi-penjelasan {
+            margin-top: 10px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .card.card-eksplorasi {
+                max-width: 100%;
+                margin: 14px auto 16px;
+                padding: 14px 12px !important;
+                border-radius: 16px;
+            }
+
+            .card-eksplorasi .title-box {
+                font-size: 16px;
+            }
+
+            .card-eksplorasi .eksplorasi-text {
+                font-size: 14px;
+            }
+
+            .card-eksplorasi .rumus-box {
+                padding: 9px 10px;
+                font-size: 14px;
+            }
+
+            .card-eksplorasi .eksplorasi-question {
+                padding: 12px;
+                margin-top: 12px;
+            }
+
+            .card-eksplorasi .opsi-btn {
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+
+        /* =========================
+                                                                                                                   JUSTIFY KALIMAT SAJA
+                                                                                                                   ========================= */
+
+        .materi-wrap p,
+        .materi-wrap .eksplorasi-text,
+        .materi-wrap .eksplorasi-highlight,
+        .materi-wrap .eksplorasi-penjelasan,
+        .materi-wrap .contoh-text,
+        .materi-wrap .info-desc,
+        .materi-wrap .konsep-preview,
+        .materi-wrap .konsep-body p,
+        .materi-wrap .definisi-header p,
+        .materi-wrap .definisi-item div,
+        .materi-wrap .definisi-kesimpulan,
+        .materi-wrap .langkah-cari-text,
+        .materi-wrap .cara-faktor-text,
+        .materi-wrap .contoh-panel-text,
+        .materi-wrap .cara-box,
+        .materi-wrap .note-box,
+        .materi-wrap .tip-box,
+        .materi-wrap .grafik-penjelasan {
+            text-align: justify;
+            text-align-last: left;
+        }
+
+        /* =========================
+                                                                                                   FIX CARD METODE BIAR RATA
+                                                                                                   ========================= */
+
+        .metode-wrap {
+            align-items: stretch;
+        }
+
+        .metode-card {
+            height: 100%;
+            min-height: 220px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .metode-card .langkah-header {
+            width: 100%;
+            align-items: flex-start !important;
+        }
+
+        .metode-card .langkah-cari-no {
+            margin-top: 0;
+        }
+
+        .metode-card .langkah-cari-title-wrap {
+            padding-top: 2px;
+        }
+
+        /* =========================
+                                                                                               TABEL HORNER INTERAKTIF
+                                                                                               ========================= */
+
+        .horner-interaktif {
+            margin-top: 14px;
+            background: #ffffff;
+            border: 1.5px solid #dbe7ef;
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .horner-title-mini {
+            font-size: 14px;
+            font-weight: 800;
+            color: #355e9a;
+            margin-bottom: 12px;
+        }
+
+        .horner-board-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 8px 0 12px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .horner-board {
+            position: relative;
+            width: max-content;
+            min-width: 650px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 78px repeat(4, 100px) 44px;
+            grid-template-rows: 64px 64px 64px;
+            column-gap: 14px;
+            row-gap: 8px;
+            align-items: center;
+        }
+
+        .horner-board::before {
+            content: "";
+            position: absolute;
+            left: 86px;
+            top: 6px;
+            bottom: 10px;
+            width: 4px;
+            background: #6b6660;
+            border-radius: 999px;
+            z-index: 1;
+        }
+
+        .horner-line {
+            position: absolute;
+            left: 86px;
+            right: 52px;
+            height: 4px;
+            background: #6b6660;
+            border-radius: 999px;
+            z-index: 1;
+        }
+
+        .horner-line.top {
+            top: 72px;
+        }
+
+        .horner-line.bottom {
+            top: 144px;
+        }
+
+        .horner-cell,
+        .horner-k,
+        .horner-plus {
+            position: relative;
+            z-index: 3;
+        }
+
+        .horner-cell {
+            width: 100%;
+            height: 54px;
+            border: 1.5px solid #dfe7dd;
+            border-radius: 18px;
+            background: #ffffff;
+            color: #514b45;
+            font-size: 24px;
+            font-weight: 800;
+            font-family: Georgia, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .horner-cell:hover {
+            transform: translateY(-2px);
+            border-color: #8fcf7b;
+            background: #f8fff5;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .07);
+        }
+
+        .horner-cell.active {
+            background: #e7f6df;
+            border-color: #63b64f;
+            color: #2d6a31;
+            box-shadow: 0 8px 18px rgba(99, 182, 79, .18);
+        }
+
+        .horner-cell.hasil {
+            background: #f7fcf5;
+        }
+
+        .horner-cell.kali {
+            background: #fffdfb;
+        }
+
+        .horner-k {
+            grid-column: 1;
+            grid-row: 2;
+            width: 64px;
+            height: 64px;
+            border: 1.5px solid #9fd688;
+            border-radius: 18px;
+            background: #ddf4d3;
+            color: #2d6a31;
+            font-size: 24px;
+            font-weight: 900;
+            font-family: Georgia, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .horner-k:hover,
+        .horner-k.active {
+            transform: translateY(-2px);
+            background: #c9efbc;
+            border-color: #63b64f;
+        }
+
+        .horner-plus {
+            grid-column: 6;
+            grid-row: 2 / span 2;
+            font-size: 42px;
+            font-weight: 800;
+            color: #6b6660;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horner-explain-box {
+            margin-top: 14px;
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            color: #2d6a31;
+            border-radius: 16px;
+            padding: 14px 16px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .horner-interaktif {
+                padding: 14px;
+                border-radius: 16px;
+            }
+
+            .horner-board {
+                min-width: 560px;
+                grid-template-columns: 66px repeat(4, 82px) 36px;
+                grid-template-rows: 58px 58px 58px;
+                column-gap: 12px;
+            }
+
+            .horner-board::before {
+                left: 74px;
+            }
+
+            .horner-line {
+                left: 74px;
+                right: 44px;
+            }
+
+            .horner-line.top {
+                top: 66px;
+            }
+
+            .horner-line.bottom {
+                top: 132px;
+            }
+
+            .horner-cell {
+                height: 50px;
+                font-size: 21px;
+                border-radius: 15px;
+            }
+
+            .horner-k {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
+                border-radius: 15px;
+            }
+
+            .horner-plus {
+                font-size: 34px;
+            }
+        }
+
+        /* =========================
+                                                                                   FIX TANDA + TABEL HORNER
+                                                                                   ========================= */
+
+        .horner-board {
+            grid-template-columns: 78px repeat(4, 100px) 80px !important;
+        }
+
+        .horner-line {
+            right: 105px !important;
+        }
+
+        .horner-plus {
+            grid-column: 6 !important;
+            grid-row: 2 / span 2 !important;
+            width: 44px;
+            height: 44px;
+            margin-left: 8px;
+            background: #ffffff;
+            border-radius: 999px;
+            color: #6b6660;
+            font-size: 38px;
+            font-weight: 800;
+            z-index: 5;
+            align-self: center;
+            justify-self: center;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .horner-board {
+                grid-template-columns: 66px repeat(4, 82px) 64px !important;
+            }
+
+            .horner-line {
+                right: 84px !important;
+            }
+
+            .horner-plus {
+                width: 38px;
+                height: 38px;
+                font-size: 32px;
+                margin-left: 4px;
+            }
+        }
+
+        /* =========================
+                                                                           GRAFIK CONTOH INTERAKTIF
+                                                                           ========================= */
+
+        .grafik-contoh-wrap {
+            margin-top: 18px;
+            background: #f7fcf5;
+            border: 2px dashed #cfe0c8;
+            border-radius: 22px;
+            padding: 18px;
+        }
+
+        .grafik-contoh-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #2d6a31;
+            margin-bottom: 12px;
+        }
+
+        .grafik-contoh-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 8px 0 12px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* =========================
+                                               GRAFIK CONTOH INTERAKTIF RAPI
+                                               ========================= */
+
+        .grafik-contoh-wrap {
+            margin-top: 18px;
+            background: #f7fcf5;
+            border: 2px dashed #cfe0c8;
+            border-radius: 22px;
+            padding: 18px;
+        }
+
+        .grafik-contoh-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #2d6a31;
+            margin-bottom: 12px;
+        }
+
+        .grafik-contoh-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 8px 0 12px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .grafik-contoh-board {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            aspect-ratio: 17 / 9;
+            height: auto;
+            min-height: 260px;
+            margin: 0 auto;
+            border-radius: 18px;
+            background:
+                repeating-linear-gradient(to right,
+                    #edf1ed 0,
+                    #edf1ed 1px,
+                    transparent 1px,
+                    transparent 52px),
+                repeating-linear-gradient(to bottom,
+                    #edf1ed 0,
+                    #edf1ed 1px,
+                    transparent 1px,
+                    transparent 52px),
+                #ffffff;
+            overflow: hidden;
+        }
+
+        .grafik-contoh-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .grafik-point-wrap {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+
+        .grafik-point-btn {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 3px solid #ffffff;
+            background: #ff3b30;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .20);
+            transition: .2s ease;
+        }
+
+        .grafik-point-btn:hover,
+        .grafik-point-btn.active {
+            transform: scale(1.18);
+            background: #2f8f3a;
+        }
+
+        .grafik-point-label {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #d8e3d3;
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #444;
+            white-space: nowrap;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .08);
+        }
+
+        .grafik-point-label.up {
+            bottom: 24px;
+        }
+
+        .grafik-point-label.down {
+            top: 24px;
+        }
+
+        .grafik-origin-label {
+            position: absolute;
+            transform: translate(10px, -26px);
+            background: #ffffff;
+            border: 1px solid #d8e3d3;
+            border-radius: 999px;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #666;
+            z-index: 4;
+            white-space: nowrap;
+        }
+
+        .grafik-contoh-info {
+            margin-top: 14px;
+            background: #eef9ea;
+            border: 1px solid #b9deb0;
+            color: #2d6a31;
+            border-radius: 16px;
+            padding: 13px 15px;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .grafik-contoh-wrap {
+                padding: 14px;
+                border-radius: 18px;
+            }
+
+            .grafik-contoh-board {
+                width: 560px;
+                height: 320px;
+            }
+
+            .grafik-point-btn {
+                width: 16px;
+                height: 16px;
+            }
+
+            .grafik-point-label {
+                font-size: 11px;
+            }
+        }
+
+        /* =========================
+                           FIX RESPONSIVE GRAFIK CONTOH
+                           ========================= */
+
+        @media (max-width: 768px) {
+            .grafik-contoh-board {
+                width: 100%;
+                max-width: 100%;
+                min-height: 280px;
+            }
+
+            .grafik-point-btn {
+                width: 15px;
+                height: 15px;
+            }
+
+            .grafik-point-label {
+                font-size: 10px;
+                padding: 3px 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grafik-contoh-wrap {
+                padding: 12px;
+            }
+
+            .grafik-contoh-board {
+                min-height: 260px;
+            }
+
+            .grafik-point-label {
+                font-size: 10px;
             }
         }
     </style>
@@ -2853,27 +3493,51 @@
                     <div class="cara-faktor-title">Cara mendapatkan faktor</div>
 
                     <p class="cara-faktor-text">
-                        Cari <b>dua bilangan</b> yang:
+                        Kita akan memfaktorkan:
                     </p>
 
-                    <ul class="cara-faktor-list">
-                        <li>hasil kalinya = <b>$-2$</b></li>
-                        <li>jumlahnya = <b>$-1$</b></li>
-                    </ul>
-
                     <div class="rumus-box">
-                        $$-2 \text{ dan } 1$$
+                        $$x^2 - x - 2$$
+                    </div>
+
+                    <div class="tip-box">
+                        <b>Trik cepat:</b><br>
+                        Cari 2 bilangan yang:
+                        <br>
+                        ✅ dikali menjadi <b>$-2$</b>
+                        <br>
+                        ✅ dijumlahkan menjadi <b>$-1$</b>
                     </div>
 
                     <p class="cara-faktor-text">
-                        Maka:
+                        Bilangan yang cocok adalah <b>$-2$</b> dan <b>$1$</b>.
+                    </p>
+
+                    <div class="rumus-box">
+                        $$(-2)(1)=-2$$
+                    </div>
+
+                    <div class="rumus-box">
+                        $$-2+1=-1$$
+                    </div>
+
+                    <p class="cara-faktor-text">
+                        Jadi, bentuk faktornya adalah:
                     </p>
 
                     <div class="rumus-box">
                         $$x^2 - x - 2 = (x-2)(x+1)$$
                     </div>
+
+                    <div class="tip-box">
+                        <b>Kesimpulan:</b><br>
+                        Karena bilangan yang cocok adalah <b>$-2$</b> dan <b>$1$</b>, maka faktornya menjadi
+                        <b>$(x-2)$</b> dan <b>$(x+1)$</b>.
+                    </div>
                 </div>
             </div>
+
+
 
             <div class="konsep-grid">
                 <div class="konsep-card" onclick="toggleKonsep(this)">
@@ -2890,14 +3554,16 @@
                     </div>
 
                     <div class="konsep-body">
-                        <p>Pembuat nol suatu polinomial adalah nilai $x$ yang membuat nilai polinomial sama dengan nol.</p>
+                        <p>Pembuat nol suatu polinomial adalah nilai $x$ yang membuat nilai polinomial sama dengan nol.
+                        </p>
 
                         <div class="rumus-box">
                             $$P(x)=0$$
                         </div>
 
                         <p>
-                            Jika suatu polinomial memiliki faktor $(x-a)$, maka saat $x=a$, nilai polinomial menjadi nol.
+                            Jika suatu polinomial memiliki faktor $(x-a)$, maka saat $x=a$, nilai polinomial menjadi
+                            nol.
                             Karena itu, grafik akan memotong sumbu-$x$ di titik yang sesuai.
                         </p>
 
@@ -2940,7 +3606,8 @@
                         </div>
 
                         <div class="konsep-highlight">
-                            <b>Intinya:</b> setiap faktor linear memberi tahu letak titik potong grafik dengan sumbu-$x$.
+                            <b>Intinya:</b> setiap faktor linear memberi tahu letak titik potong grafik dengan
+                            sumbu-$x$.
                         </div>
                     </div>
                 </div>
@@ -3197,9 +3864,18 @@
                                     <li>Memotong sumbu-$x$ di $(-1,0)$ dan $(2,0)$</li>
                                     <li>Memotong sumbu-$y$ di $(0,-2)$</li>
                                 </ul>
-                                <div class="graph-placeholder">
-                                    <img src="{{ asset('img/grafik4.2.png') }}" alt="Grafik 4.2"
-                                        style="max-width:100%; height:auto; border-radius:12px;">
+                                <div class="grafik-contoh-wrap">
+                                    <div class="grafik-contoh-title">
+                                        Klik titik berwarna merah untuk melihat keterangannya.
+                                    </div>
+
+                                    <div class="grafik-contoh-scroll">
+                                        <div id="grafikContohBoard" class="grafik-contoh-board"></div>
+                                    </div>
+
+                                    <div id="grafikContohInfo" class="grafik-contoh-info">
+                                        Klik salah satu titik merah pada grafik.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3609,112 +4285,206 @@
                 badge: 'Metode 1',
                 title: 'Contoh Faktorisasi',
                 html: `
-                                        <div class="contoh-panel">
-                                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                                            <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
+                                                                                                                                                            <div class="contoh-panel">
+                                                                                                                                                                <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                                                                                                                                                <div class="rumus-box">$$x^2 - 5x + 6 = 0$$</div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 1</div>
-                                                <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
-                                                <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Langkah 1</div>
+                                                                                                                                                                    <p>Cari dua bilangan yang hasil kalinya $6$ dan jumlahnya $-5$.</p>
+                                                                                                                                                                    <div class="rumus-box">$$-2 \\text{ dan } -3$$</div>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 2</div>
-                                                <p>Faktorkan bentuk kuadratnya.</p>
-                                                <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Langkah 2</div>
+                                                                                                                                                                    <p>Faktorkan bentuk kuadratnya.</p>
+                                                                                                                                                                    <div class="rumus-box">$$(x-2)(x-3)=0$$</div>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 3</div>
-                                                <p>Gunakan sifat hasil kali nol.</p>
-                                                <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
-                                                <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Langkah 3</div>
+                                                                                                                                                                    <p>Gunakan sifat hasil kali nol.</p>
+                                                                                                                                                                    <div class="rumus-box">$$x-2=0 \\quad \\text{atau} \\quad x-3=0$$</div>
+                                                                                                                                                                    <div class="rumus-box">$$x=2 \\quad \\text{atau} \\quad x=3$$</div>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-hasil-box">
-                                                <b>Jadi, pembuat nolnya adalah:</b>
-                                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                                            </div>
-                                        </div>
-                                    `
+                                                                                                                                                                <div class="contoh-hasil-box">
+                                                                                                                                                                    <b>Jadi, pembuat nolnya adalah:</b>
+                                                                                                                                                                    <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        `
             },
 
             substitusi: {
                 badge: 'Metode 2',
                 title: 'Contoh Substitusi',
                 html: `
-                                        <div class="contoh-panel">
-                                            <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
-                                            <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
+                                                                                                                                                            <div class="contoh-panel">
+                                                                                                                                                                <p class="contoh-panel-text">Tentukan pembuat nol dari:</p>
+                                                                                                                                                                <div class="rumus-box">$$P(x)=x^2-5x+6$$</div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Coba x = 1</div>
-                                                <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
-                                                <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Coba x = 1</div>
+                                                                                                                                                                    <div class="rumus-box">$$P(1)=1^2-5(1)+6=1-5+6=2$$</div>
+                                                                                                                                                                    <p>Karena hasilnya bukan $0$, maka $x=1$ bukan pembuat nol.</p>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Coba x = 2</div>
-                                                <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
-                                                <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Coba x = 2</div>
+                                                                                                                                                                    <div class="rumus-box">$$P(2)=2^2-5(2)+6=4-10+6=0$$</div>
+                                                                                                                                                                    <p>Karena hasilnya $0$, maka $x=2$ adalah pembuat nol.</p>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Coba x = 3</div>
-                                                <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
-                                                <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
-                                            </div>
+                                                                                                                                                                <div class="contoh-step-box">
+                                                                                                                                                                    <div class="contoh-step-title">Coba x = 3</div>
+                                                                                                                                                                    <div class="rumus-box">$$P(3)=3^2-5(3)+6=9-15+6=0$$</div>
+                                                                                                                                                                    <p>Karena hasilnya $0$, maka $x=3$ adalah pembuat nol.</p>
+                                                                                                                                                                </div>
 
-                                            <div class="contoh-hasil-box">
-                                                <b>Jadi, pembuat nolnya adalah:</b>
-                                                <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
-                                            </div>
-                                        </div>
-                                    `
+                                                                                                                                                                <div class="contoh-hasil-box">
+                                                                                                                                                                    <b>Jadi, pembuat nolnya adalah:</b>
+                                                                                                                                                                    <div class="rumus-box">$$x=2 \\text{ dan } x=3$$</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        `
             },
 
             sintetik: {
                 badge: 'Metode 3',
                 title: 'Contoh Pembagian Sintetik',
                 html: `
-                                        <div class="contoh-panel">
-                                            <p class="contoh-panel-text">Tentukan salah satu pembuat nol dari:</p>
-                                            <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
+                                                                                                <div class="contoh-panel">
+                                                                                                    <p class="contoh-panel-text">
+                                                                                                        Kita akan mencoba apakah <b>$x=2$</b> adalah pembuat nol dari:
+                                                                                                    </p>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 1</div>
-                                                <p>Coba salah satu faktor dari $30$, misalnya $x=2$.</p>
-                                            </div>
+                                                                                                    <div class="rumus-box">$$P(x)=x^3-4x^2-11x+30$$</div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 2</div>
-                                                <p>Gunakan pembagian sintetik dengan koefisien:</p>
-                                                <div class="rumus-box">$$1 \\quad -4 \\quad -11 \\quad 30$$</div>
-                                                <div class="rumus-box">
-                                                    $$\\begin{array}{r|rrrr}
-                                                    2 & 1 & -4 & -11 & 30 \\\\
-                                                      &   & 2 & -4 & -30 \\\\
-                                                    \\hline
-                                                      & 1 & -2 & -15 & 0
-                                                    \\end{array}$$
-                                                </div>
-                                            </div>
+                                                                                                    <div class="contoh-step-box">
+                                                                                                        <div class="contoh-step-title">Langkah 1</div>
+                                                                                                        <p>
+                                                                                                            Tulis koefisien polinomialnya, yaitu:
+                                                                                                        </p>
+                                                                                                        <div class="rumus-box">$$1,\\ -4,\\ -11,\\ 30$$</div>
+                                                                                                    </div>
 
-                                            <div class="contoh-step-box">
-                                                <div class="contoh-step-title">Langkah 3</div>
-                                                <p>Karena sisanya $0$, maka $x=2$ adalah pembuat nol.</p>
-                                                <div class="rumus-box">$$(x-2) \\text{ adalah faktor dari } P(x)$$</div>
-                                            </div>
+                                                                                                    <div class="contoh-step-box">
+                                                                                                        <div class="contoh-step-title">Langkah 2</div>
+                                                                                                        <p>
+                                                                                                            Klik angka pada tabel Horner berikut untuk melihat prosesnya.
+                                                                                                        </p>
 
-                                            <div class="contoh-hasil-box">
-                                                <b>Kesimpulan:</b>
-                                                <div class="rumus-box">$$x=2$$</div>
-                                            </div>
-                                        </div>
-                                    `
+                                                                                                        <div class="horner-interaktif">
+                                                                                                            <div class="horner-title-mini">Tabel Horner untuk $x=2$</div>
+
+                                                                                                            <div class="horner-board-scroll">
+                                                                                                                <div class="horner-board">
+                                                                                                                    <span class="horner-line top"></span>
+                                                                                                                    <span class="horner-line bottom"></span>
+
+                                                                                                                    <button type="button" class="horner-k" onclick="showHornerExplain('k', this)">2</button>
+
+                                                                                                                    <button type="button" class="horner-cell" style="grid-column:2; grid-row:1;"
+                                                                                                                        onclick="showHornerExplain('top1', this)">1</button>
+
+                                                                                                                    <button type="button" class="horner-cell" style="grid-column:3; grid-row:1;"
+                                                                                                                        onclick="showHornerExplain('top2', this)">−4</button>
+
+                                                                                                                    <button type="button" class="horner-cell" style="grid-column:4; grid-row:1;"
+                                                                                                                        onclick="showHornerExplain('top3', this)">−11</button>
+
+                                                                                                                    <button type="button" class="horner-cell" style="grid-column:5; grid-row:1;"
+                                                                                                                        onclick="showHornerExplain('top4', this)">30</button>
+
+                                                                                                                    <button type="button" class="horner-cell kali" style="grid-column:3; grid-row:2;"
+                                                                                                                        onclick="showHornerExplain('kali1', this)">2</button>
+
+                                                                                                                    <button type="button" class="horner-cell kali" style="grid-column:4; grid-row:2;"
+                                                                                                                        onclick="showHornerExplain('kali2', this)">−4</button>
+
+                                                                                                                    <button type="button" class="horner-cell kali" style="grid-column:5; grid-row:2;"
+                                                                                                                        onclick="showHornerExplain('kali3', this)">−30</button>
+
+                                                                                                                    <button type="button" class="horner-cell hasil" style="grid-column:2; grid-row:3;"
+                                                                                                                        onclick="showHornerExplain('hasil1', this)">1</button>
+
+                                                                                                                    <button type="button" class="horner-cell hasil" style="grid-column:3; grid-row:3;"
+                                                                                                                        onclick="showHornerExplain('hasil2', this)">−2</button>
+
+                                                                                                                    <button type="button" class="horner-cell hasil" style="grid-column:4; grid-row:3;"
+                                                                                                                        onclick="showHornerExplain('hasil3', this)">−15</button>
+
+                                                                                                                    <button type="button" class="horner-cell hasil" style="grid-column:5; grid-row:3;"
+                                                                                                                        onclick="showHornerExplain('hasil4', this)">0</button>
+
+                                                                                                                    <div class="horner-plus">+</div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div id="hornerExplainBox" class="horner-explain-box">
+                                                                                                                Klik salah satu angka pada tabel untuk melihat penjelasannya.
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="contoh-step-box">
+                                                                                                        <div class="contoh-step-title">Langkah 3</div>
+                                                                                                        <p>
+                                                                                                            Baris bawah menghasilkan:
+                                                                                                        </p>
+
+                                                                                                        <div class="rumus-box">$$1,\\ -2,\\ -15,\\ 0$$</div>
+
+                                                                                                        <p>
+                                                                                                            Angka terakhir adalah <b>$0$</b>, artinya sisanya nol.
+                                                                                                            Jadi, <b>$x=2$</b> adalah pembuat nol.
+                                                                                                        </p>
+                                                                                                    </div>
+
+                                                                                                    <div class="contoh-hasil-box">
+                                                                                                        <b>Kesimpulan:</b><br>
+                                                                                                        Karena sisanya <b>$0$</b>, maka <b>$(x-2)$</b> adalah faktor dari $P(x)$.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            `
             }
+
         };
+
+        function showHornerExplain(key, btn) {
+            const box = document.getElementById('hornerExplainBox');
+            if (!box) return;
+
+            document.querySelectorAll('.horner-cell, .horner-k').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (btn) btn.classList.add('active');
+
+            const penjelasan = {
+                k: '<b>Angka 2</b> dipakai karena kita sedang menguji pembuat nol <b>$x=2$</b>. Jika sisanya 0, berarti <b>$(x-2)$</b> adalah faktor.',
+
+                top1: 'Koefisien pertama adalah <b>1</b>. Angka ini langsung diturunkan ke baris hasil.',
+                top2: 'Koefisien kedua adalah <b>−4</b>. Nanti angka ini dijumlahkan dengan hasil perkalian sebelumnya.',
+                top3: 'Koefisien ketiga adalah <b>−11</b>. Nanti angka ini dijumlahkan dengan <b>−4</b>.',
+                top4: 'Koefisien terakhir adalah <b>30</b>. Hasil akhirnya akan menentukan sisa pembagian.',
+
+                hasil1: 'Angka <b>1</b> diturunkan langsung dari koefisien pertama.',
+                kali1: 'Kalikan angka kiri dengan hasil pertama: <b>$2 \\times 1 = 2$</b>.',
+                hasil2: 'Jumlahkan: <b>$-4 + 2 = -2$</b>. Maka hasil berikutnya adalah <b>−2</b>.',
+
+                kali2: 'Kalikan angka kiri dengan hasil sebelumnya: <b>$2 \\times (-2) = -4$</b>.',
+                hasil3: 'Jumlahkan: <b>$-11 + (-4) = -15$</b>. Maka hasil berikutnya adalah <b>−15</b>.',
+
+                kali3: 'Kalikan angka kiri dengan hasil sebelumnya: <b>$2 \\times (-15) = -30$</b>.',
+                hasil4: 'Jumlahkan: <b>$30 + (-30) = 0$</b>. Karena sisanya <b>0</b>, maka <b>$x=2$</b> adalah pembuat nol.'
+            };
+
+            box.innerHTML = penjelasan[key] || 'Klik angka pada tabel untuk melihat penjelasannya.';
+
+            renderMathSafe();
+        }
 
         function normalizeText(text) {
             return (text || '')
@@ -3802,6 +4572,12 @@
             btn.textContent = box.classList.contains('show') ? 'Sembunyikan Jawaban' : 'Lihat Jawaban';
 
             renderMathSafe();
+
+            if (id === 'jawaban4' && box.classList.contains('show')) {
+                setTimeout(() => {
+                    renderGrafikContoh();
+                }, 100);
+            }
         }
 
         function cekProgressEksplorasi() {
@@ -4038,15 +4814,15 @@
 
             for (let x = grafikMc4Config.xmin + 1; x <= grafikMc4Config.xmax - 1; x++) {
                 html += `
-                                        <button
-                                            type="button"
-                                            class="grafik-click-point"
-                                            data-x="${x}"
-                                            style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
-                                            onclick="cekTitikGrafikMc4(this)"
-                                            aria-label="Titik x ${x}">
-                                        </button>
-                                    `;
+                                                                                                                                                            <button
+                                                                                                                                                                type="button"
+                                                                                                                                                                class="grafik-click-point"
+                                                                                                                                                                data-x="${x}"
+                                                                                                                                                                style="left:${xToPercent(x)}%; top:${yToPercent(0)}%;"
+                                                                                                                                                                onclick="cekTitikGrafikMc4(this)"
+                                                                                                                                                                aria-label="Titik x ${x}">
+                                                                                                                                                            </button>
+                                                                                                                                                        `;
             }
 
             return html;
@@ -4054,24 +4830,24 @@
 
         function buildGrafikInteraktifMc4() {
             return `
-                                    <div class="grafik-board">
-                                        <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
+                                                                                                                                                        <div class="grafik-board">
+                                                                                                                                                            <div class="grafik-header-note">Klik semua titik potong sumbu-x (y = 0).</div>
 
-                                        <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
-                                        <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
-                                        <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
-                                        <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
+                                                                                                                                                            <div class="grafik-axis-x" style="top:${yToPercent(0)}%;"></div>
+                                                                                                                                                            <div class="grafik-axis-y" style="left:${xToPercent(0)}%;"></div>
+                                                                                                                                                            <div class="grafik-arrow-x" style="top:${yToPercent(0)}%;"></div>
+                                                                                                                                                            <div class="grafik-arrow-y" style="left:${xToPercent(0)}%;"></div>
 
-                                        ${buildTicksX()}
-                                        ${buildTicksY()}
-                                        ${buildLabelsX()}
-                                        ${buildLabelsY()}
+                                                                                                                                                            ${buildTicksX()}
+                                                                                                                                                            ${buildTicksY()}
+                                                                                                                                                            ${buildLabelsX()}
+                                                                                                                                                            ${buildLabelsY()}
 
-                                        <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+                                                                                                                                                            <svg id="grafikCurveLayer" class="grafik-curve-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
 
-                                        ${buildClickablePoints()}
-                                    </div>
-                                `;
+                                                                                                                                                            ${buildClickablePoints()}
+                                                                                                                                                        </div>
+                                                                                                                                                    `;
         }
 
         function aktifkanGrafikMari() {
@@ -4216,18 +4992,18 @@
             const yDot = `<circle cx="${xToPercent(0)}" cy="${yToPercent(6)}" r="1.15" fill="#f2994a"></circle>`;
 
             svg.innerHTML = `
-                                    <path
-                                        d="${d}"
-                                        fill="none"
-                                        stroke="#2d9cdb"
-                                        stroke-width="0.7"
-                                        vector-effect="non-scaling-stroke"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                    </path>
-                                    ${rootDots}
-                                    ${yDot}
-                                `;
+                                                                                                                                                        <path
+                                                                                                                                                            d="${d}"
+                                                                                                                                                            fill="none"
+                                                                                                                                                            stroke="#2d9cdb"
+                                                                                                                                                            stroke-width="0.7"
+                                                                                                                                                            vector-effect="non-scaling-stroke"
+                                                                                                                                                            stroke-linecap="round"
+                                                                                                                                                            stroke-linejoin="round">
+                                                                                                                                                        </path>
+                                                                                                                                                        ${rootDots}
+                                                                                                                                                        ${yDot}
+                                                                                                                                                    `;
         }
 
         function cekMari(no) {
@@ -4555,6 +5331,99 @@
             }
         }
 
+        function renderGrafikContoh() {
+            const board = document.getElementById('grafikContohBoard');
+            if (!board) return;
+
+            const rect = board.getBoundingClientRect();
+            const W = rect.width || 680;
+            const H = rect.height || 360;
+
+            const pad = {
+                left: 54,
+                right: 30,
+                top: 24,
+                bottom: 30
+            };
+
+            const xmin = -3;
+            const xmax = 3;
+            const ymin = -3;
+            const ymax = 4;
+
+            function f(x) {
+                return x * x - x - 2;
+            }
+
+            function mapX(x) {
+                return pad.left + ((x - xmin) / (xmax - xmin)) * (W - pad.left - pad.right);
+            }
+
+            function mapY(y) {
+                return pad.top + ((ymax - y) / (ymax - ymin)) * (H - pad.top - pad.bottom);
+            }
+
+            let d = '';
+            let started = false;
+
+            for (let i = 0; i <= 500; i++) {
+                const x = xmin + (i / 500) * (xmax - xmin);
+                const y = f(x);
+
+                if (y < ymin || y > ymax) {
+                    started = false;
+                    continue;
+                }
+
+                const px = mapX(x);
+                const py = mapY(y);
+
+                if (!started) {
+                    d += `M ${px} ${py} `;
+                    started = true;
+                } else {
+                    d += `L ${px} ${py} `;
+                }
+            }
+
+            const axisX = mapY(0);
+            const axisY = mapX(0);
+
+            function pointHTML(key, x, y, label, posisiLabel = 'up') {
+                return `
+                                                    <div class="grafik-point-wrap" style="left:${mapX(x)}px; top:${mapY(y)}px;">
+                                                        <button type="button"
+                                                            class="grafik-point-btn"
+                                                            onclick="showGrafikContohInfo('${key}', this)">
+                                                        </button>
+                                                        <span class="grafik-point-label ${posisiLabel}">${label}</span>
+                                                    </div>
+                                                `;
+            }
+
+            board.innerHTML = `
+                                                <svg class="grafik-contoh-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+                                                    <line x1="${pad.left}" y1="${axisX}" x2="${W - pad.right}" y2="${axisX}"
+                                                        stroke="#6d6d6d" stroke-width="3" />
+                                                    <line x1="${axisY}" y1="${pad.top}" x2="${axisY}" y2="${H - pad.bottom}"
+                                                        stroke="#6d6d6d" stroke-width="3" />
+
+                                                    <path d="${d}"
+                                                        fill="none"
+                                                        stroke="#f2994a"
+                                                        stroke-width="2.4"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                                ${pointHTML('minus1', -1, 0, '(-1, 0)', 'up')}
+                                                ${pointHTML('dua', 2, 0, '(2, 0)', 'up')}
+                                                ${pointHTML('ymin2', 0, -2, '(0, -2)', 'down')}
+
+                                                <div class="grafik-origin-label" style="left:${axisY}px; top:${axisX}px;">(0, 0)</div>
+                                            `;
+        }
+
         function showMetode(key, btn) {
             const data = metodeMateriMap[key];
             if (!data) return;
@@ -4615,15 +5484,37 @@
             renderMathSafe();
         }
 
+        function showGrafikContohInfo(key, btn) {
+            const info = document.getElementById('grafikContohInfo');
+            if (!info) return;
+
+            document.querySelectorAll('.grafik-point-btn').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (btn) btn.classList.add('active');
+
+            const teks = {
+                minus1: '<b>Titik (-1, 0)</b> adalah titik potong dengan sumbu-x. Artinya saat <b>x = -1</b>, nilai fungsi sama dengan <b>0</b>.',
+                dua: '<b>Titik (2, 0)</b> adalah titik potong dengan sumbu-x. Artinya saat <b>x = 2</b>, nilai fungsi sama dengan <b>0</b>.',
+                ymin2: '<b>Titik (0, -2)</b> adalah titik potong dengan sumbu-y. Titik ini diperoleh dengan mensubstitusikan <b>x = 0</b>, sehingga <b>f(0) = -2</b>.'
+            };
+
+            info.innerHTML = teks[key] || 'Klik salah satu titik merah pada grafik.';
+        }
+
         window.cekMari = cekMari;
         window.cekTitikGrafikMc4 = cekTitikGrafikMc4;
         window.cekOpsiEksplorasi = cekOpsiEksplorasi;
         window.toggleJawaban = toggleJawaban;
+        window.showGrafikContohInfo = showGrafikContohInfo;
+        window.renderGrafikContoh = renderGrafikContoh;
         window.showMetode = showMetode;
         window.toggleKonsep = toggleKonsep;
         window.toggleCaraFaktor = toggleCaraFaktor;
         window.cekSoal1 = cekSoal1;
         window.cekSoal2 = cekSoal2;
+
 
         window.addEventListener('load', function () {
             setTimeout(() => {
@@ -4644,7 +5535,16 @@
 
                 activeMetode = null;
                 renderMathSafe();
+                renderGrafikContoh();
             }, 300);
+        });
+
+        window.addEventListener('resize', function () {
+            clearTimeout(window.grafikContohResizeTimer);
+
+            window.grafikContohResizeTimer = setTimeout(() => {
+                renderGrafikContoh();
+            }, 200);
         });
     </script>
 

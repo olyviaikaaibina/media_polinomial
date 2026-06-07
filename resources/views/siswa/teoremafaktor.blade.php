@@ -1362,8 +1362,8 @@
         }
 
         /* =========================
-           RESET
-        ========================= */
+                                                                                       RESET
+                                                                                    ========================= */
 
         *,
         *::before,
@@ -1385,8 +1385,8 @@
         }
 
         /* =========================
-           WRAPPER UTAMA
-        ========================= */
+                                                                                       WRAPPER UTAMA
+                                                                                    ========================= */
 
         .materi-wrap {
             width: 100%;
@@ -1400,8 +1400,8 @@
         }
 
         /* =========================
-           TEKS DASAR
-        ========================= */
+                                                                                       TEKS DASAR
+                                                                                    ========================= */
 
         p,
         li {
@@ -1432,8 +1432,8 @@
         }
 
         /* =========================
-           HILANGKAN TULISAN MIRING DI EKSPLORASI
-        ========================= */
+                                                                                       HILANGKAN TULISAN MIRING DI EKSPLORASI
+                                                                                    ========================= */
 
         .card-eksplorasi,
         .card-eksplorasi *,
@@ -1452,8 +1452,8 @@
         }
 
         /* =========================
-           KATEX / RUMUS
-        ========================= */
+                                                                                       KATEX / RUMUS
+                                                                                    ========================= */
 
         .katex {
             max-width: 100%;
@@ -1477,8 +1477,8 @@
         }
 
         /* =========================
-           JUDUL
-        ========================= */
+                                                                                       JUDUL
+                                                                                    ========================= */
 
         .top-title {
             display: flex;
@@ -1524,8 +1524,8 @@
         }
 
         /* =========================
-           CARD UMUM
-        ========================= */
+                                                                                       CARD UMUM
+                                                                                    ========================= */
 
         .card {
             width: 100%;
@@ -1580,8 +1580,8 @@
         }
 
         /* =========================
-           EKSPLORASI
-        ========================= */
+                                                                                       EKSPLORASI
+                                                                                    ========================= */
 
         .card-eksplorasi {
             position: relative;
@@ -1704,8 +1704,8 @@
         }
 
         /* =========================
-           RUMUS BOX
-        ========================= */
+                                                                                       RUMUS BOX
+                                                                                    ========================= */
 
         .rumus-box {
             width: 100% !important;
@@ -1739,8 +1739,8 @@
         }
 
         /* =========================
-           DRAG DROP
-        ========================= */
+                                                                                       DRAG DROP
+                                                                                    ========================= */
 
         .bank-label {
             display: inline-block !important;
@@ -1812,8 +1812,8 @@
         }
 
         /* =========================
-           DROP AREA
-        ========================= */
+                                                                                       DROP AREA
+                                                                                    ========================= */
 
         .drop-list {
             display: grid !important;
@@ -1885,8 +1885,8 @@
         }
 
         /* =========================
-           STATUS & FEEDBACK
-        ========================= */
+                                                                                       STATUS & FEEDBACK
+                                                                                    ========================= */
 
         .status-box,
         .feedback {
@@ -1920,8 +1920,8 @@
         }
 
         /* =========================
-           PENJELASAN EKSPLORASI
-        ========================= */
+                                                                                       PENJELASAN EKSPLORASI
+                                                                                    ========================= */
 
         .explanation-box {
             display: none !important;
@@ -2009,8 +2009,8 @@
         }
 
         /* =========================
-           DEFINISI TANPA ORNAMEN / TANPA SHAPE PUTIH
-        ========================= */
+                                                                                       DEFINISI TANPA ORNAMEN / TANPA SHAPE PUTIH
+                                                                                    ========================= */
 
         .definisi-modern {
             position: relative;
@@ -2094,8 +2094,8 @@
         }
 
         /* =========================
-           SIFAT
-        ========================= */
+                                                                                       SIFAT
+                                                                                    ========================= */
 
         .sifat-box,
         .sifat-box.modern {
@@ -2200,8 +2200,8 @@
         }
 
         /* =========================
-           CONTOH
-        ========================= */
+                                                                                       CONTOH
+                                                                                    ========================= */
 
         .contoh-wrap,
         .contoh-rasional-wrap {
@@ -2281,8 +2281,8 @@
         }
 
         /* =========================
-           LANGKAH / INPUT
-        ========================= */
+                                                                                       LANGKAH / INPUT
+                                                                                    ========================= */
 
         .langkah-card {
             width: 100%;
@@ -2419,14 +2419,14 @@
         }
 
         /* =========================
-           HORNER
-        ========================= */
+                                                       HORNER - STYLE BARU SEPERTI GAMBAR KE-4
+                                                    ========================= */
 
         .horner-caption {
             text-align: center;
             font-size: 16px;
             color: #555;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             line-height: 1.5;
         }
 
@@ -2436,71 +2436,310 @@
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
-            margin: 12px 0 10px;
-            padding-bottom: 6px;
+            margin: 16px 0 12px;
+            padding: 10px 0 18px;
         }
 
+        /* tabel utama */
         .horner-table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            font-size: 22px;
-            color: #222;
-            font-family: "Times New Roman", Times, serif;
-            min-width: 420px;
-            width: max-content;
+            --h-left: 88px;
+            --h-col: 128px;
+            --h-row: 78px;
+            --h-card-w: 112px;
+            --h-card-h: 58px;
+            --h-line-1: 74px;
+            --h-line-2: 152px;
+            --h-v-height: 144px;
+            --h-plus-top: 102px;
+
+            display: block !important;
+            position: relative !important;
+            margin: 0 auto !important;
+            min-width: 650px !important;
+            width: max-content !important;
+
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+
+            font-family: "Times New Roman", Times, serif !important;
+            color: #514d47 !important;
         }
 
+        /* isi tabel dibuat seperti grid */
+        .horner-table tbody {
+            display: block !important;
+            position: relative !important;
+            padding-right: 42px !important;
+        }
+
+        /* garis horizontal atas */
+        .horner-table tbody::before {
+            content: "" !important;
+            position: absolute !important;
+            left: var(--h-left) !important;
+            right: 0 !important;
+            top: var(--h-line-1) !important;
+            height: 5px !important;
+            background: #6f6f6f !important;
+            border-radius: 999px !important;
+            z-index: 1 !important;
+        }
+
+        /* garis horizontal bawah */
+        .horner-table tbody::after {
+            content: "" !important;
+            position: absolute !important;
+            left: var(--h-left) !important;
+            right: 0 !important;
+            top: var(--h-line-2) !important;
+            height: 5px !important;
+            background: #6f6f6f !important;
+            border-radius: 999px !important;
+            z-index: 1 !important;
+        }
+
+        /* garis vertikal kiri */
+        .horner-table::before {
+            content: "" !important;
+            position: absolute !important;
+            left: var(--h-left) !important;
+            top: 10px !important;
+            width: 5px !important;
+            height: var(--h-v-height) !important;
+            background: #6f6f6f !important;
+            border-radius: 999px !important;
+            z-index: 1 !important;
+        }
+
+        /* tanda tambah di kanan */
+        .horner-table::after {
+            content: "+" !important;
+            position: absolute !important;
+            right: -10px !important;
+            top: var(--h-plus-top) !important;
+            z-index: 3 !important;
+
+            color: #5a554f !important;
+            font-size: 42px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+        }
+
+        /* baris */
+        .horner-table tr {
+            display: grid !important;
+            grid-template-columns: var(--h-left) repeat(4, var(--h-col)) !important;
+            height: var(--h-row) !important;
+            align-items: center !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        /* reset td lama */
         .horner-table td {
-            width: 72px;
-            height: 56px;
-            text-align: center;
-            vertical-align: middle;
+            width: auto !important;
+            height: auto !important;
+            padding: 0 !important;
+            border: none !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            text-align: center !important;
+            vertical-align: middle !important;
         }
 
-        .horner-table .left-number {
-            width: 52px;
-            font-weight: 700;
-        }
-
-        .horner-top {
-            border-top: 3px solid #333;
-        }
-
-        .horner-left {
-            border-left: 3px solid #333;
-        }
-
-        .horner-bottom {
-            border-bottom: 3px solid #333;
-        }
-
+        /* hapus garis bawaan lama */
+        .horner-top,
+        .horner-left,
+        .horner-bottom,
         .horner-sisa {
-            border-left: 3px solid #333;
-            border-top: 3px solid #333;
-            border-bottom: 3px solid #333;
+            border: none !important;
         }
 
+        /* angka pembagi di kiri, misalnya 1 atau -2 */
+        .horner-table .left-number {
+            justify-self: center !important;
+            align-self: center !important;
+
+            width: 74px !important;
+            height: 74px !important;
+
+            background: #dff3d8 !important;
+            border: 1.5px solid #b9dfb3 !important;
+            border-radius: 18px !important;
+
+            color: #267f35 !important;
+            font-size: 30px !important;
+            font-weight: 900 !important;
+        }
+
+        /* angka koefisien baris atas */
+        .horner-table tr:first-child td:not(.left-number) {
+            justify-self: center !important;
+            align-self: center !important;
+
+            width: var(--h-card-w) !important;
+            height: var(--h-card-h) !important;
+
+            background: #ffffff !important;
+            border: 1.5px solid #e0e7dd !important;
+            border-radius: 20px !important;
+
+            color: #5a554f !important;
+            font-size: 30px !important;
+            font-weight: 900 !important;
+
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .05) !important;
+        }
+
+        /* angka hasil bawah yang bukan input, contoh: 2, -7, 3 */
+        .horner-table tr:nth-child(3) td:not(:first-child) {
+            justify-self: center !important;
+            align-self: center !important;
+
+            width: var(--h-card-w) !important;
+            height: var(--h-card-h) !important;
+
+            background: #fbfff8 !important;
+            border: 1.5px solid #e0e7dd !important;
+            border-radius: 20px !important;
+
+            color: #5a554f !important;
+            font-size: 30px !important;
+            font-weight: 900 !important;
+
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .04) !important;
+        }
+
+        /* kalau td berisi input, jangan bikin kotak dobel */
+        .horner-table tr:nth-child(3) td:has(.horner-box),
+        .horner-table tr:nth-child(2) td:has(.horner-box) {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* kotak input */
         .horner-box {
-            width: 42px;
-            height: 34px;
-            border: 1.8px solid #b0b0b0;
-            border-radius: 7px;
-            text-align: center;
-            font-size: 18px;
-            font-family: inherit;
-            outline: none;
-            background: #fff;
-            color: #222;
+            width: 94px !important;
+            height: 58px !important;
+
+            border: 1.8px solid #dfe7dc !important;
+            border-radius: 18px !important;
+
+            background: #fbfff8 !important;
+            color: #3f3f3f !important;
+
+            text-align: center !important;
+            font-size: 24px !important;
+            font-weight: 900 !important;
+            font-family: "Times New Roman", Times, serif !important;
+
+            outline: none !important;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .04) !important;
         }
 
         .horner-box:focus {
-            border-color: var(--green);
-            box-shadow: 0 0 0 2px rgba(27, 122, 42, .12);
+            border-color: #58b84f !important;
+            box-shadow: 0 0 0 4px rgba(88, 184, 79, .14) !important;
+        }
+
+        /* tetap pertahankan warna benar/salah */
+        .horner-box.input-correct {
+            border: 2px solid #2e9b50 !important;
+            background: #f1fff5 !important;
+            color: #1f6e38 !important;
+        }
+
+        .horner-box.input-wrong {
+            border: 2px solid #d64545 !important;
+            background: #fff5f5 !important;
+            color: #9f1f1f !important;
+        }
+
+
+        /* =========================
+                                                       RESPONSIVE HORNER
+                                                    ========================= */
+        @media (max-width: 768px) {
+            .horner-table {
+                --h-left: 66px;
+                --h-col: 96px;
+                --h-row: 64px;
+                --h-card-w: 82px;
+                --h-card-h: 46px;
+                --h-line-1: 60px;
+                --h-line-2: 124px;
+                --h-v-height: 118px;
+                --h-plus-top: 84px;
+
+                min-width: 510px !important;
+            }
+
+            .horner-table .left-number {
+                width: 54px !important;
+                height: 54px !important;
+                border-radius: 14px !important;
+                font-size: 22px !important;
+            }
+
+            .horner-table tr:first-child td:not(.left-number),
+            .horner-table tr:nth-child(3) td:not(:first-child) {
+                border-radius: 15px !important;
+                font-size: 22px !important;
+            }
+
+            .horner-box {
+                width: 70px !important;
+                height: 46px !important;
+                border-radius: 14px !important;
+                font-size: 20px !important;
+            }
+
+            .horner-table::after {
+                right: -6px !important;
+                font-size: 32px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .horner-table {
+                --h-left: 58px;
+                --h-col: 84px;
+                --h-row: 58px;
+                --h-card-w: 72px;
+                --h-card-h: 42px;
+                --h-line-1: 54px;
+                --h-line-2: 112px;
+                --h-v-height: 106px;
+                --h-plus-top: 76px;
+
+                min-width: 455px !important;
+            }
+
+            .horner-table .left-number {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 20px !important;
+            }
+
+            .horner-table tr:first-child td:not(.left-number),
+            .horner-table tr:nth-child(3) td:not(:first-child) {
+                font-size: 20px !important;
+            }
+
+            .horner-box {
+                width: 62px !important;
+                height: 40px !important;
+                font-size: 18px !important;
+            }
         }
 
         /* =========================
-           FINAL EXPLANATION
-        ========================= */
+                                                                                       FINAL EXPLANATION
+                                                                                    ========================= */
 
         .final-explanation {
             display: none;
@@ -2539,8 +2778,8 @@
         }
 
         /* =========================
-           LATIHAN
-        ========================= */
+                                                                                       LATIHAN
+                                                                                    ========================= */
 
         .latihan-wrap {
             width: 100%;
@@ -2642,8 +2881,8 @@
         }
 
         /* =========================
-           LOCK SOAL 2
-        ========================= */
+                                                                                       LOCK SOAL 2
+                                                                                    ========================= */
 
         .latihan-terkunci {
             position: relative;
@@ -2673,8 +2912,8 @@
         }
 
         /* =========================
-           ANIMASI
-        ========================= */
+                                                                                       ANIMASI
+                                                                                    ========================= */
 
         @keyframes fadeIn {
             from {
@@ -2689,8 +2928,8 @@
         }
 
         /* =========================
-           TABLET
-        ========================= */
+                                                                                       TABLET
+                                                                                    ========================= */
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .materi-wrap {
@@ -2758,8 +2997,8 @@
         }
 
         /* =========================
-           HP
-        ========================= */
+                                                                                       HP
+                                                                                    ========================= */
 
         @media (max-width: 768px) {
             .materi-wrap {
@@ -2959,8 +3198,8 @@
         }
 
         /* =========================
-           HP KECIL
-        ========================= */
+                                                                                       HP KECIL
+                                                                                    ========================= */
 
         @media (max-width: 480px) {
             .materi-wrap {
@@ -3062,6 +3301,839 @@
                 width: 100%;
             }
         }
+
+        /* =========================
+                                                   FIX EKSPLORASI LEBIH KECIL
+                                                   ========================= */
+
+        .materi-wrap .card-eksplorasi {
+            max-width: 820px !important;
+            margin: 16px auto 20px !important;
+            padding: 16px 18px !important;
+            border-radius: 15px !important;
+            border-left-width: 5px !important;
+        }
+
+        .materi-wrap .eksplorasi-bar {
+            margin-bottom: 12px !important;
+            gap: 8px !important;
+        }
+
+        .materi-wrap .eksplorasi-icon-mini {
+            width: 22px !important;
+            height: 22px !important;
+            font-size: 11px !important;
+        }
+
+        .materi-wrap .eksplorasi-bar h3 {
+            font-size: 20px !important;
+        }
+
+        .materi-wrap .eksplorasi-story {
+            margin-bottom: 12px !important;
+        }
+
+        .materi-wrap .eksplorasi-story p,
+        .materi-wrap .card-eksplorasi p,
+        .materi-wrap .card-eksplorasi li {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+            margin-bottom: 8px !important;
+        }
+
+        .materi-wrap .card-eksplorasi .rumus-box {
+            margin: 8px 0 !important;
+            padding: 9px 10px !important;
+            border-radius: 12px !important;
+        }
+
+        .materi-wrap .card-eksplorasi .rumus-besar {
+            font-size: 15px !important;
+        }
+
+        .materi-wrap .explore-grid {
+            gap: 14px !important;
+            margin-top: 10px !important;
+        }
+
+        .materi-wrap .mini-card {
+            padding: 14px !important;
+            border-radius: 15px !important;
+        }
+
+        .materi-wrap .mini-card h4 {
+            font-size: 17px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .materi-wrap .mini-card p {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 10px !important;
+        }
+
+        .materi-wrap .bank-label {
+            font-size: 12px !important;
+            padding: 5px 11px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .materi-wrap .drag-bank {
+            gap: 8px !important;
+        }
+
+        .materi-wrap .drag-item {
+            font-size: 13px !important;
+            padding: 8px 11px !important;
+            border-radius: 11px !important;
+        }
+
+        .materi-wrap .small-note {
+            font-size: 12px !important;
+            line-height: 1.4 !important;
+            margin-top: 7px !important;
+        }
+
+        .materi-wrap .drop-list {
+            gap: 10px !important;
+        }
+
+        .materi-wrap .drop-row {
+            grid-template-columns: 92px minmax(0, 1fr) !important;
+            gap: 8px !important;
+        }
+
+        .materi-wrap .drop-label {
+            font-size: 14px !important;
+            padding: 7px 8px !important;
+            border-radius: 10px !important;
+        }
+
+        .materi-wrap .drop-zone {
+            min-height: 46px !important;
+            padding: 7px !important;
+            border-radius: 12px !important;
+        }
+
+        .materi-wrap .drop-zone::after {
+            font-size: 12px !important;
+        }
+
+        .materi-wrap .status-box,
+        .materi-wrap .feedback {
+            margin-top: 8px !important;
+            padding: 8px 10px !important;
+            font-size: 13px !important;
+            border-radius: 10px !important;
+        }
+
+        .materi-wrap .explanation-box,
+        .materi-wrap #explainGabungan,
+        .materi-wrap #explainMakna {
+            height: 210px !important;
+            min-height: 210px !important;
+            max-height: 210px !important;
+            margin-top: 10px !important;
+            padding: 12px 14px !important;
+            border-radius: 12px !important;
+            border-left-width: 4px !important;
+        }
+
+        .materi-wrap .explanation-box h5 {
+            font-size: 16px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .materi-wrap .explanation-box p {
+            font-size: 13px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 8px !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .materi-wrap .card-eksplorasi {
+                max-width: 100% !important;
+                padding: 12px !important;
+                border-radius: 14px !important;
+                margin: 12px auto 16px !important;
+            }
+
+            .materi-wrap .eksplorasi-bar h3 {
+                font-size: 18px !important;
+            }
+
+            .materi-wrap .explore-grid {
+                gap: 12px !important;
+            }
+
+            .materi-wrap .mini-card {
+                padding: 12px !important;
+            }
+
+            .materi-wrap .mini-card h4 {
+                font-size: 16px !important;
+            }
+
+            .materi-wrap .drop-row {
+                grid-template-columns: 1fr !important;
+                gap: 6px !important;
+            }
+
+            .materi-wrap .drop-zone {
+                min-height: 42px !important;
+            }
+
+            .materi-wrap .explanation-box,
+            .materi-wrap #explainGabungan,
+            .materi-wrap #explainMakna {
+                height: 190px !important;
+                min-height: 190px !important;
+                max-height: 190px !important;
+            }
+        }
+    </style>
+
+    <style>
+        .materi-wrap {
+            overflow: visible !important;
+            overflow-x: hidden !important;
+        }
+
+        /* =========================
+                                                            DEFINISI
+                                                            ========================= */
+        .materi-wrap .definisi-modern {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 820px !important;
+            margin: 34px auto 26px !important;
+            padding: 34px 20px 18px !important;
+
+            background: #f7c5b4 !important;
+            border: 1.5px solid #f0a58b !important;
+            border-radius: 15px !important;
+
+            box-shadow: 0 5px 12px rgba(166, 94, 68, .10) !important;
+            overflow: visible !important;
+        }
+
+        .materi-wrap .definisi-modern::before,
+        .materi-wrap .definisi-modern::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .materi-wrap .definisi-pill {
+            position: absolute !important;
+            top: -18px !important;
+            left: 20px !important;
+            z-index: 30 !important;
+
+            min-width: 105px !important;
+            height: 36px !important;
+            padding: 0 18px !important;
+
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            background: #92ca7d !important;
+            border: 2px solid #459647 !important;
+            border-radius: 999px !important;
+
+            color: #111 !important;
+            font-size: 15px !important;
+            font-weight: 900 !important;
+            line-height: 1 !important;
+
+            box-shadow: 0 4px 10px rgba(69, 150, 71, .16) !important;
+            margin: 0 !important;
+            transform: none !important;
+        }
+
+        .materi-wrap .definisi-modern p,
+        .materi-wrap .definisi-modern li {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+            color: #2f3a4d !important;
+            font-weight: 400 !important;
+            margin-bottom: 7px !important;
+        }
+
+        .materi-wrap .definisi-modern strong {
+            font-weight: 400 !important;
+        }
+
+        .materi-wrap .definisi-modern ul {
+            margin: 6px 0 0 22px !important;
+            padding-left: 12px !important;
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .materi-wrap .definisi-modern .rumus-besar {
+            width: 100% !important;
+            margin: 6px 0 10px !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            text-align: center !important;
+            font-size: 15px !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+        }
+
+
+        /* =========================
+                                                            SIFAT
+                                                            ========================= */
+        .materi-wrap .sifat-box,
+        .materi-wrap .sifat-box.modern {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 820px !important;
+
+            margin: 36px auto 26px !important;
+            padding: 38px 20px 18px !important;
+
+            background: #ffffff !important;
+            border: 1.5px solid #dedbd3 !important;
+            border-left: 5px solid #58b84f !important;
+            border-radius: 15px !important;
+
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .06) !important;
+            overflow: visible !important;
+        }
+
+        .materi-wrap .sifat-box::before,
+        .materi-wrap .sifat-box::after,
+        .materi-wrap .sifat-box.modern::before,
+        .materi-wrap .sifat-box.modern::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* SIFAT yang pakai wrapper */
+        .materi-wrap .sifat-label-wrap {
+            position: absolute !important;
+            top: -18px !important;
+            left: 20px !important;
+            z-index: 30 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        }
+
+        /* SIFAT yang langsung tanpa wrapper */
+        .materi-wrap .sifat-box>.sifat-label,
+        .materi-wrap .sifat-box.modern>.sifat-label {
+            position: absolute !important;
+            top: -18px !important;
+            left: 20px !important;
+            z-index: 30 !important;
+            margin: 0 !important;
+        }
+
+        .materi-wrap .sifat-label,
+        .materi-wrap .sifat-badge {
+            min-width: 105px !important;
+            height: 36px !important;
+            padding: 0 18px !important;
+
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            background: #f5b295 !important;
+            border: 2px solid #f36b24 !important;
+            border-radius: 999px !important;
+
+            color: #111 !important;
+            font-size: 15px !important;
+            font-weight: 900 !important;
+            line-height: 1 !important;
+
+            box-shadow: 0 4px 10px rgba(243, 107, 36, .14) !important;
+            transform: none !important;
+        }
+
+        .materi-wrap .sifat-box p,
+        .materi-wrap .sifat-box li,
+        .materi-wrap .sifat-box.modern p,
+        .materi-wrap .sifat-box.modern li {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+            color: #3f3f3f !important;
+            font-weight: 500 !important;
+            margin-bottom: 7px !important;
+            white-space: normal !important;
+        }
+
+        .materi-wrap .sifat-box>.katex-display,
+        .materi-wrap .sifat-box.modern>.katex-display {
+            display: block !important;
+            width: 100% !important;
+            margin: 6px 0 10px !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            text-align: center !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+        }
+
+        .materi-wrap .sifat-box .katex,
+        .materi-wrap .sifat-box.modern .katex,
+        .materi-wrap .definisi-modern .katex {
+            font-size: .88em !important;
+        }
+
+
+        /* =========================
+                                                            CONTOH
+                                                            ========================= */
+        .materi-wrap .contoh-wrap,
+        .materi-wrap .contoh-rasional-wrap {
+            position: relative !important;
+            width: 100% !important;
+            margin-top: 48px !important;
+            margin-bottom: 34px !important;
+            overflow: visible !important;
+        }
+
+        .materi-wrap .contoh-pill,
+        .materi-wrap .contoh-rasional-pill {
+            position: absolute !important;
+            top: -24px !important;
+            left: 28px !important;
+            z-index: 30 !important;
+
+            min-width: 145px !important;
+            height: 50px !important;
+            padding: 0 26px !important;
+
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            background: #92ca7d !important;
+            border: 3px solid #459647 !important;
+            border-radius: 999px !important;
+
+            color: #111 !important;
+            font-size: 20px !important;
+            font-weight: 900 !important;
+            line-height: 1 !important;
+
+            box-shadow: 0 6px 14px rgba(69, 150, 71, .18) !important;
+            margin: 0 !important;
+            transform: none !important;
+        }
+
+        .materi-wrap .contoh-area,
+        .materi-wrap .contoh-rasional-box {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 100% !important;
+
+            margin-top: 0 !important;
+            padding: 54px 26px 24px !important;
+
+            background: #f5fff1 !important;
+            border: 1.5px solid #9bcf91 !important;
+            border-left: 7px solid #58b84f !important;
+            border-radius: 18px !important;
+
+            box-shadow: 0 6px 14px rgba(70, 139, 66, .10) !important;
+            overflow: visible !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .materi-wrap .contoh-area .judul-kecil,
+        .materi-wrap .contoh-rasional-box .judul-kecil {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+
+            margin: 0 0 8px !important;
+            color: #247e35 !important;
+            font-size: 20px !important;
+            font-weight: 900 !important;
+            line-height: 1.25 !important;
+        }
+
+        .materi-wrap .contoh-area .judul-kecil::before,
+        .materi-wrap .contoh-rasional-box .judul-kecil::before {
+            content: "" !important;
+            width: 15px !important;
+            height: 15px !important;
+            border-radius: 5px !important;
+            background: #70c96a !important;
+            flex-shrink: 0 !important;
+        }
+
+        .materi-wrap .soal-rumus {
+            width: 100% !important;
+            margin: 8px 0 14px !important;
+            text-align: left !important;
+            color: #333 !important;
+            font-size: 20px !important;
+            font-weight: 800 !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+        }
+
+        .materi-wrap .contoh-area p,
+        .materi-wrap .contoh-area li,
+        .materi-wrap .contoh-rasional-box p,
+        .materi-wrap .contoh-rasional-box li {
+            font-size: 16px !important;
+            line-height: 1.65 !important;
+            color: #333 !important;
+        }
+
+
+        /* =========================
+                                                            LANGKAH
+                                                            ========================= */
+        .materi-wrap .langkah-card {
+            background: #ffffff !important;
+            border: 1.5px solid #e0e0e0 !important;
+            border-radius: 14px !important;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .07) !important;
+            padding: 16px 18px !important;
+        }
+
+        .materi-wrap .langkah-title {
+            color: #202020 !important;
+            font-size: 18px !important;
+            font-weight: 900 !important;
+        }
+
+        .materi-wrap .langkah-sub {
+            color: #555 !important;
+            font-size: 15px !important;
+        }
+
+
+        /* =========================
+                                                            RESPONSIVE HP
+                                                            ========================= */
+        @media (max-width: 768px) {
+
+            .materi-wrap .definisi-modern,
+            .materi-wrap .sifat-box,
+            .materi-wrap .sifat-box.modern,
+            .materi-wrap .contoh-area,
+            .materi-wrap .contoh-rasional-box {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                padding-bottom: 20px !important;
+                border-radius: 15px !important;
+            }
+
+            /* DEFINISI lebih kecil di HP */
+            .materi-wrap .definisi-modern {
+                max-width: 100% !important;
+                margin: 30px auto 22px !important;
+                padding-top: 30px !important;
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+                padding-bottom: 16px !important;
+                border-radius: 14px !important;
+            }
+
+            /* SIFAT lebih kecil di HP */
+            .materi-wrap .sifat-box,
+            .materi-wrap .sifat-box.modern {
+                max-width: 100% !important;
+                margin: 32px auto 22px !important;
+                padding-top: 34px !important;
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+                padding-bottom: 16px !important;
+                border-left-width: 4px !important;
+                border-radius: 14px !important;
+            }
+
+            .materi-wrap .contoh-wrap,
+            .materi-wrap .contoh-rasional-wrap {
+                margin-top: 42px !important;
+            }
+
+            .materi-wrap .contoh-area,
+            .materi-wrap .contoh-rasional-box {
+                padding-top: 50px !important;
+            }
+
+            /* Badge DEFINISI & SIFAT kecil */
+            .materi-wrap .definisi-pill,
+            .materi-wrap .sifat-label,
+            .materi-wrap .sifat-badge {
+                min-width: 88px !important;
+                height: 32px !important;
+                padding: 0 14px !important;
+                font-size: 13px !important;
+            }
+
+            .materi-wrap .definisi-pill,
+            .materi-wrap .sifat-label-wrap,
+            .materi-wrap .sifat-box>.sifat-label,
+            .materi-wrap .sifat-box.modern>.sifat-label {
+                top: -16px !important;
+                left: 16px !important;
+            }
+
+            /* Badge CONTOH tetap seperti semula */
+            .materi-wrap .contoh-pill,
+            .materi-wrap .contoh-rasional-pill {
+                min-width: 100px !important;
+                height: 38px !important;
+                padding: 0 16px !important;
+                font-size: 15px !important;
+                top: -19px !important;
+                left: 18px !important;
+            }
+
+            .materi-wrap .definisi-modern p,
+            .materi-wrap .definisi-modern li,
+            .materi-wrap .sifat-box p,
+            .materi-wrap .sifat-box li,
+            .materi-wrap .sifat-box.modern p,
+            .materi-wrap .sifat-box.modern li {
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+            }
+
+            .materi-wrap .contoh-area p,
+            .materi-wrap .contoh-area li,
+            .materi-wrap .contoh-rasional-box p,
+            .materi-wrap .contoh-rasional-box li {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+
+            .materi-wrap .contoh-area .judul-kecil,
+            .materi-wrap .contoh-rasional-box .judul-kecil {
+                font-size: 18px !important;
+            }
+
+            .materi-wrap .definisi-modern .rumus-besar {
+                font-size: 14px !important;
+            }
+
+            .materi-wrap .soal-rumus {
+                font-size: 16px !important;
+            }
+
+            .materi-wrap .sifat-box .katex,
+            .materi-wrap .sifat-box.modern .katex,
+            .materi-wrap .definisi-modern .katex {
+                font-size: .84em !important;
+            }
+        }
+
+        /* PARAGRAF PEMBUAT NOL RASIONAL */
+        .materi-wrap .paragraf-rasional {
+            text-align: justify !important;
+            font-weight: 400 !important;
+        }
+
+        /* =========================
+                   FIX PETUNJUK MENJAWAB DI BAGIAN CONTOH
+                   ========================= */
+
+        /* Tombol lihat petunjuk menjawab dibuat turun ke bawah, bukan sejajar/samping */
+        .materi-wrap .contoh-area .btn-petunjuk,
+        .materi-wrap .contoh-rasional-box .btn-petunjuk {
+            display: block !important;
+            width: fit-content !important;
+            margin: 10px 0 12px 0 !important;
+        }
+
+        /* Isi dalam petunjuk dibuat justify */
+        .materi-wrap .contoh-area .cara-menjawab-box p,
+        .materi-wrap .contoh-rasional-box .cara-menjawab-box p {
+            text-align: justify !important;
+            text-justify: inter-word !important;
+        }
+
+        /* Supaya box petunjuk tetap turun di bawah tombol */
+        .materi-wrap .contoh-area .cara-menjawab-box,
+        .materi-wrap .contoh-rasional-box .cara-menjawab-box {
+            display: none;
+            width: 100% !important;
+            clear: both !important;
+        }
+
+        .materi-wrap .contoh-area .cara-menjawab-box.show,
+        .materi-wrap .contoh-rasional-box .cara-menjawab-box.show {
+            display: block !important;
+        }
+
+        @media (max-width: 768px) {
+
+            .materi-wrap .contoh-area .btn-petunjuk,
+            .materi-wrap .contoh-rasional-box .btn-petunjuk {
+                width: 100% !important;
+            }
+        }
+
+        /* =========================
+           FIX CONTOH: KECILKAN SEDIKIT BIAR PAS
+           ========================= */
+
+        /* Jarak dan lebar contoh dibuat lebih rapi */
+        .materi-wrap .contoh-wrap,
+        .materi-wrap .contoh-rasional-wrap {
+            max-width: 860px !important;
+            margin: 42px auto 28px !important;
+        }
+
+        /* Badge CONTOH dikecilkan */
+        .materi-wrap .contoh-pill,
+        .materi-wrap .contoh-rasional-pill {
+            min-width: 118px !important;
+            height: 40px !important;
+            padding: 0 18px !important;
+
+            top: -20px !important;
+            left: 22px !important;
+
+            font-size: 16px !important;
+            border-width: 2px !important;
+            box-shadow: 0 4px 10px rgba(69, 150, 71, .14) !important;
+        }
+
+        /* Kotak utama CONTOH dikecilkan */
+        .materi-wrap .contoh-area,
+        .materi-wrap .contoh-rasional-box {
+            max-width: 860px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+
+            padding: 44px 20px 20px !important;
+            border-radius: 15px !important;
+            border-left-width: 5px !important;
+        }
+
+        /* Judul di dalam contoh */
+        .materi-wrap .contoh-area .judul-kecil,
+        .materi-wrap .contoh-rasional-box .judul-kecil {
+            font-size: 17px !important;
+            margin-bottom: 6px !important;
+            gap: 8px !important;
+        }
+
+        .materi-wrap .contoh-area .judul-kecil::before,
+        .materi-wrap .contoh-rasional-box .judul-kecil::before {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 4px !important;
+        }
+
+        /* Rumus di bagian contoh */
+        .materi-wrap .contoh-area .soal-rumus,
+        .materi-wrap .contoh-rasional-box .soal-rumus {
+            font-size: 17px !important;
+            margin: 6px 0 10px !important;
+        }
+
+        /* Teks contoh */
+        .materi-wrap .contoh-area p,
+        .materi-wrap .contoh-area li,
+        .materi-wrap .contoh-rasional-box p,
+        .materi-wrap .contoh-rasional-box li {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+        }
+
+        /* Card langkah di dalam contoh */
+        .materi-wrap .contoh-area .langkah-card,
+        .materi-wrap .contoh-rasional-box .langkah-card {
+            padding: 13px 14px !important;
+            margin-top: 13px !important;
+            border-radius: 12px !important;
+        }
+
+        /* Judul langkah */
+        .materi-wrap .contoh-area .langkah-title,
+        .materi-wrap .contoh-rasional-box .langkah-title {
+            font-size: 16px !important;
+            margin-bottom: 5px !important;
+        }
+
+        /* Deskripsi langkah */
+        .materi-wrap .contoh-area .langkah-sub,
+        .materi-wrap .contoh-rasional-box .langkah-sub {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 9px !important;
+        }
+
+        /* Input dan tombol dalam contoh */
+        .materi-wrap .contoh-area .input-jawaban,
+        .materi-wrap .contoh-rasional-box .input-jawaban {
+            padding: 9px 11px !important;
+            font-size: 14px !important;
+            border-radius: 9px !important;
+        }
+
+        .materi-wrap .contoh-area .btn-petunjuk,
+        .materi-wrap .contoh-rasional-box .btn-petunjuk {
+            padding: 8px 14px !important;
+            font-size: 13px !important;
+            border-radius: 9px !important;
+            margin: 8px 0 10px 0 !important;
+        }
+
+        /* Kotak petunjuk dan penjelasan langkah */
+        .materi-wrap .contoh-area .cara-menjawab-box,
+        .materi-wrap .contoh-area .penjelasan-step,
+        .materi-wrap .contoh-rasional-box .cara-menjawab-box,
+        .materi-wrap .contoh-rasional-box .penjelasan-step {
+            padding: 11px 13px !important;
+            border-radius: 10px !important;
+            margin-top: 10px !important;
+        }
+
+        @media (max-width: 768px) {
+
+            .materi-wrap .contoh-wrap,
+            .materi-wrap .contoh-rasional-wrap {
+                max-width: 100% !important;
+                margin: 36px auto 24px !important;
+            }
+
+            .materi-wrap .contoh-area,
+            .materi-wrap .contoh-rasional-box {
+                padding: 40px 14px 16px !important;
+                border-radius: 14px !important;
+            }
+
+            .materi-wrap .contoh-pill,
+            .materi-wrap .contoh-rasional-pill {
+                min-width: 95px !important;
+                height: 34px !important;
+                font-size: 14px !important;
+                top: -17px !important;
+                left: 16px !important;
+            }
+
+            .materi-wrap .contoh-area .judul-kecil,
+            .materi-wrap .contoh-rasional-box .judul-kecil {
+                font-size: 16px !important;
+            }
+
+            .materi-wrap .contoh-area p,
+            .materi-wrap .contoh-area li,
+            .materi-wrap .contoh-rasional-box p,
+            .materi-wrap .contoh-rasional-box li {
+                font-size: 13px !important;
+                line-height: 1.55 !important;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -3079,8 +4151,7 @@
             </div>
             <ol>
                 <li>
-                    Melakukan pemfaktoran polinomial dan menentukan pembuat nol
-                    (baik real maupun kompleks).
+                    Melakukan pemfaktoran polinomial dan menentukan pembuat nol dengan tepat.
                 </li>
             </ol>
         </div>
@@ -3120,7 +4191,7 @@
                 <!-- PERTANYAAN 1 -->
                 <div class="mini-card">
                     <h4>Pertanyaan 1</h4>
-                    <p>Hitung nilai fungsi berikut, lalu cocokkan dengan hasil yang benar.</p>
+                    <p>Hitung nilai fungsi diatas, lalu cocokkan dengan hasil yang benar.</p>
 
                     <div class="bank-label">Seret pilihan jawaban</div>
                     <div class="drag-bank" id="answerBank1">
@@ -3516,7 +4587,8 @@
 
                         <div id="stepExplain3" class="penjelasan-step">
                             <p>
-                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
+                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan
+                                \(1\).
                             </p>
                             <p style="margin-top:8px;">
                                 Baris keduanya adalah:
@@ -3577,7 +4649,8 @@
 
                         <div id="stepExplain4" class="penjelasan-step">
                             <p>
-                                Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan \(1\).
+                                Cari dua bilangan yang hasil kalinya \(-4\) dan jumlahnya \(-3\), yaitu \(-4\) dan
+                                \(1\).
                             </p>
                             <p style="margin-top:8px;">
                                 \[
@@ -3634,14 +4707,14 @@
                 </div>
             </div>
 
-            <p>
+            <p class="paragraf-rasional">
                 Selain menggunakan petunjuk khusus seperti pada contoh pertama, soal yang sama juga dapat
                 diselesaikan
                 dengan cara yang lebih sistematis, yaitu menggunakan
                 <span class="highlight">Pembuat Nol Rasional</span>.
             </p>
 
-            <p>
+            <p class="paragraf-rasional">
                 Dengan cara ini, kita mencari dulu semua kandidat akar rasional yang mungkin, lalu menguji salah
                 satunya.
                 Setelah itu, langkah selanjutnya tetap dapat dilanjutkan dengan Teorema Faktor dan metode Horner.
@@ -3890,7 +4963,8 @@
 
                         <div id="rasionalExplain4" class="penjelasan-step">
                             <p>
-                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan \(1\).
+                                Pada metode Horner, angka pada baris kedua diperoleh dari hasil kali bertahap dengan
+                                \(1\).
                             </p>
                             <p style="margin-top:8px;">
                                 Baris keduanya adalah:
@@ -4225,7 +5299,8 @@
 
                             <div id="latihan2Area" class="latihan-terkunci">
                                 <div class="latihan-soal-text">
-                                    Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial berikut,
+                                    Gunakan Sifat Pembuat Nol Rasional untuk menentukan pembuat nol dari polinomial
+                                    berikut,
                                     lalu faktorkan polinomial tersebut hingga bentuk paling sederhana:
                                 </div>
 
