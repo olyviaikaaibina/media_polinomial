@@ -12,7 +12,14 @@
 
         h3 {
             text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            text-align: center;
             margin-bottom: 16px;
+            font-size: 11px;
+            font-weight: bold;
         }
 
         h4 {
@@ -55,7 +62,30 @@
 </head>
 
 <body>
+    @php
+        $kelasAktif = $kelas ?? 'semua';
+    @endphp
+
     <h3>Rekapitulasi Nilai</h3>
+
+    <div class="subtitle">
+        @if($kelasAktif && $kelasAktif !== 'semua')
+            Kelas {{ str_replace(' ', '', $kelasAktif) }}
+        @else
+            Semua Kelas
+        @endif
+    </div>
+
+    <table class="summary-table">
+        <tr>
+            <th>Siswa Dinilai</th>
+            <td>{{ $siswaDinilai ?? 0 }}</td>
+        </tr>
+        <tr>
+            <th>Rata-rata Nilai</th>
+            <td>{{ $rataRataNilai ?? 0 }}</td>
+        </tr>
+    </table>
 
     <h4>Rekap Nilai Siswa</h4>
 
@@ -89,8 +119,12 @@
                     </td>
 
                     @foreach ($quizzes as $quiz)
+                        @php
+                            $nilaiKuis = $siswa->nilai_kuis[$quiz->id] ?? null;
+                        @endphp
+
                         <td>
-                            {{ $siswa->nilai_kuis[$quiz->id] !== null ? $siswa->nilai_kuis[$quiz->id] : '-' }}
+                            {{ $nilaiKuis !== null ? $nilaiKuis : '-' }}
                         </td>
                     @endforeach
 
@@ -117,6 +151,14 @@
     <div class="page-break"></div>
 
     <h3>Rata-rata Nilai & Progres Kuis</h3>
+
+    <div class="subtitle">
+        @if($kelasAktif && $kelasAktif !== 'semua')
+            Kelas {{ str_replace(' ', '', $kelasAktif) }}
+        @else
+            Semua Kelas
+        @endif
+    </div>
 
     <h4>Rata-rata Nilai per Kuis</h4>
 

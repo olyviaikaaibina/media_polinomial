@@ -24,10 +24,10 @@
 
     <style>
         /*
-        |--------------------------------------------------------------------------
-        | Reset
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Reset
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .content-area,
         .main-content,
         .page-content,
@@ -47,10 +47,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Burger Icon seperti gambar
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Burger Icon seperti gambar
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .rekap-mobile-header {
             display: none;
             width: 100%;
@@ -111,10 +111,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Paksa sidebar bawaan layout jadi drawer hijau saat mobile
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Paksa sidebar bawaan layout jadi drawer hijau saat mobile
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 991.98px) {
             body.rekap-sidebar-open {
                 overflow: hidden;
@@ -124,16 +124,14 @@
                 display: block;
             }
 
-            body :is(
-                .sidebar,
+            body :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) {
+                .side-navbar) {
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -151,43 +149,36 @@
                 border-right: none !important;
             }
 
-            body.rekap-sidebar-open :is(
-                .sidebar,
+            body.rekap-sidebar-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) {
+                .side-navbar) {
                 transform: translateX(0) !important;
             }
 
-            body.rekap-sidebar-open :is(
-                .sidebar,
+            body.rekap-sidebar-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) > * {
+                .side-navbar)>* {
                 background-color: transparent !important;
             }
 
-            body.rekap-sidebar-open :is(
-                .sidebar,
+            body.rekap-sidebar-open :is(.sidebar,
                 .sidebar-guru,
                 .guru-sidebar,
                 .navbarguru-sidebar,
                 .navbar-guru-sidebar,
                 .layout-sidebar,
                 .side-menu,
-                .side-navbar
-            ) :is(
-                .brand,
+                .side-navbar) :is(.brand,
                 .logo,
                 .sidebar-brand,
                 .sidebar-header,
@@ -198,18 +189,17 @@
                 .menu-wrapper,
                 .nav-wrapper,
                 .collapse,
-                .offcanvas-body
-            ) {
+                .offcanvas-body) {
                 background: transparent !important;
                 background-color: transparent !important;
             }
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Page Wrapper
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Page Wrapper
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .rekap-page {
             min-height: 100vh;
             padding: 28px 36px 55px;
@@ -225,10 +215,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Header Page
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Header Page
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .rekap-header-card {
             margin-bottom: 24px;
             padding: 28px 30px;
@@ -308,35 +298,75 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
+            justify-content: flex-start;
+            gap: 3px;
+            width: auto !important;
+            flex-shrink: 0;
+            margin-left: auto;
         }
 
         .export-button {
-            border: 0;
-            background: #6b7280;
-            color: #ffffff;
-            font-weight: 800;
-            box-shadow: 0 8px 18px rgba(55, 65, 81, 0.18);
-            min-height: 42px;
-            white-space: nowrap;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+
+            width: 170px !important;
+            min-width: 170px !important;
+            max-width: 170px !important;
+
+            height: 42px !important;
+            min-height: 42px !important;
+
+            padding: 0 18px !important;
+            border-radius: 999px !important;
+            border: 1.4px solid #7a8793 !important;
+
+            background: #ffffff !important;
+            color: #66788a !important;
+
+            font-size: 13.5px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+            box-shadow: none !important;
+        }
+
+        .export-button i {
+            font-size: 15px !important;
+            line-height: 1 !important;
+        }
+
+        .export-note {
+            display: none !important;
         }
 
         .export-button:hover {
-            background: #4b5563;
-            color: #ffffff;
+            background: #f8fafc;
+            color: #566777;
+            border-color: #66788a;
+        }
+
+        .export-button:focus,
+        .export-button:active {
+            background: #ffffff !important;
+            color: #66788a !important;
+            border-color: #66788a !important;
+            box-shadow: none !important;
         }
 
         .export-note {
             color: #70685d;
-            font-size: 12.5px;
+            font-size: 9.5px;
             font-weight: 600;
+            text-align: right;
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Card Modern
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Card Modern
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .modern-card {
             border: 0;
             border-radius: 24px;
@@ -442,10 +472,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Table
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Table
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .rekap-table-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -563,10 +593,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Chart dan Progress
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Chart dan Progress
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         .chart-progress-row {
             align-items: flex-start;
         }
@@ -647,10 +677,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Responsive Laptop Kecil
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Responsive Laptop Kecil
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 1199px) {
             .rekap-page {
                 padding: 26px 28px 50px;
@@ -671,10 +701,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Responsive Tablet
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Responsive Tablet
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 992px) {
             .rekap-mobile-header {
                 display: flex;
@@ -696,7 +726,14 @@
             }
 
             .rekap-header-actions {
-                align-items: flex-start;
+                width: 100% !important;
+                align-items: stretch;
+                margin-left: 0;
+            }
+
+            .export-button {
+                width: 100% !important;
+                min-width: 0;
             }
 
             .section-header-modern {
@@ -726,10 +763,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Responsive HP Besar
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Responsive HP Besar
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 768px) {
             .rekap-page {
                 padding: 18px 16px 44px;
@@ -763,10 +800,14 @@
                 justify-content: flex-start;
             }
 
-            .rekap-header-actions,
-            .rekap-header-actions .dropdown,
+            .rekap-header-actions {
+                width: auto !important;
+            }
+
             .rekap-header-actions .export-button {
-                width: 100%;
+                width: 115px !important;
+                min-width: 115px !important;
+                max-width: 115px !important;
             }
 
             .export-button {
@@ -822,10 +863,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Responsive HP Kecil
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Responsive HP Kecil
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 576px) {
             .rekap-page {
                 padding: 14px 12px 38px;
@@ -951,10 +992,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Responsive HP Sangat Kecil
-        |--------------------------------------------------------------------------
-        */
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        | Responsive HP Sangat Kecil
+                                                                                        |--------------------------------------------------------------------------
+                                                                                        */
         @media (max-width: 380px) {
             .rekap-page {
                 padding: 12px 10px 34px;
@@ -1000,10 +1041,78 @@
                 height: 230px;
             }
         }
+
+        .rekap-header-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .export-button {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: auto !important;
+            min-width: 190px;
+            min-height: 46px;
+            padding: 0 20px;
+            border-radius: 999px;
+            border: 1.5px solid #7a8793;
+            background: #ffffff;
+            color: #66788a;
+            font-size: 14px;
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;
+            box-shadow: none;
+            transition: all 0.2s ease;
+        }
+
+        .export-button i {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .export-button:hover {
+            background: #f8fafc;
+            color: #566777;
+            border-color: #66788a;
+        }
+
+        .export-button:focus,
+        .export-button:active {
+            background: #ffffff !important;
+            color: #66788a !important;
+            border-color: #66788a !important;
+            box-shadow: none !important;
+        }
+
+        .export-note {
+            color: #70685d;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .rekap-header-actions {
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .export-button {
+            width: 100%;
+            min-height: 56px;
+            font-size: 17px;
+            justify-content: center;
+        }
+
+        .export-note {
+            text-align: left;
+        }
     </style>
 
     <div class="rekap-sidebar-overlay" id="rekapSidebarOverlay"></div>
-
     <div class="rekap-page">
         <div class="rekap-content">
 
@@ -1047,38 +1156,19 @@
                         </div>
                     </div>
 
+                    {{-- EXPORT --}}
                     <div class="rekap-header-actions">
-                        <div class="dropdown">
-                            <button class="btn btn-sm rounded-pill px-4 dropdown-toggle export-button" type="button"
-                                id="dropdownExport" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-download me-1"></i> Export
-                            </button>
-
-                            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownExport">
-                                <li>
-                                    <a class="dropdown-item fw-semibold text-danger"
-                                        href="{{ route('rekapnilai.export.pdf') }}">
-                                        <i class="bi bi-file-earmark-pdf me-2"></i>
-                                        Export as PDF
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item fw-semibold text-success"
-                                        href="{{ route('rekapnilai.export.excel') }}">
-                                        <i class="bi bi-file-earmark-excel me-2"></i>
-                                        Export as Excel
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <button type="button" class="btn export-button" data-bs-toggle="modal"
+                            data-bs-target="#modalExportRekap">
+                            <i class="bi bi-download"></i>
+                            <span>Export Data</span>
+                        </button>
 
                         <small class="export-note">
                             <i class="bi bi-info-circle me-1"></i>
                             Gunakan export untuk arsip nilai.
                         </small>
                     </div>
-
                 </div>
             </div>
 
@@ -1110,9 +1200,9 @@
                                 <i class="bi bi-search text-muted"></i>
                             </span>
 
-                            <input type="text" id="searchSiswa" class="form-control" placeholder="Cari nama siswa">
+                            <input type="text" id="searchSiswa" class="form-control" placeholder="Cari nama atau kelas">
 
-                            <button class="btn btn-outline-secondary btn-sm" type="button">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="btnCariSiswa">
                                 Cari
                             </button>
                         </div>
@@ -1326,13 +1416,73 @@
         </div>
     </div>
 
+    {{-- MODAL EXPORT REKAP --}}
+    <div class="modal fade" id="modalExportRekap" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <form id="formExportRekap" method="GET">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="bi bi-download me-1"></i>
+                            Export Rekapitulasi Nilai
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {{-- PILIH FORMAT --}}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Pilih format export</label>
+                            <select id="exportRekapFormat" class="form-select" required>
+                                <option value="">-- Pilih Format --</option>
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel</option>
+                            </select>
+                        </div>
+
+                        {{-- PILIH KELAS --}}
+                        <div class="mb-3 d-none" id="exportRekapKelasBox">
+                            <label class="form-label fw-bold">Pilih kelas</label>
+                            <select name="kelas" id="exportRekapKelas" class="form-select">
+                                <option value="semua">Semua Kelas</option>
+                                <option value="XI1">XI1</option>
+                                <option value="XI2">XI2</option>
+                                <option value="XI3">XI3</option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-info d-none mb-0" id="exportRekapInfo">
+                            Pilih kelas yang ingin diexport, lalu klik tombol export.
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">
+                            Batal
+                        </button>
+
+                        <button type="submit" id="btnExportRekapSubmit" class="btn btn-success rounded-pill px-4 d-none">
+                            <i class="bi bi-download me-1"></i>
+                            Export
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     <script type="application/json" id="chart-labels">
-        {!! json_encode($chartLabels) !!}
-    </script>
+                                                                                        {!! json_encode($chartLabels) !!}
+                                                                                    </script>
 
     <script type="application/json" id="chart-data">
-        {!! json_encode($chartData) !!}
-    </script>
+                                                                                        {!! json_encode($chartData) !!}
+                                                                                    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1575,25 +1725,91 @@
                 });
             }
 
+
+
             /*
-            |--------------------------------------------------------------------------
-            | Search Nama Siswa
-            |--------------------------------------------------------------------------
-            */
+    |--------------------------------------------------------------------------
+    | Export Rekap Nilai PDF / Excel
+    |--------------------------------------------------------------------------
+    */
+            const exportRekapFormat = document.getElementById('exportRekapFormat');
+            const exportRekapKelasBox = document.getElementById('exportRekapKelasBox');
+            const exportRekapInfo = document.getElementById('exportRekapInfo');
+            const btnExportRekapSubmit = document.getElementById('btnExportRekapSubmit');
+            const formExportRekap = document.getElementById('formExportRekap');
+
+            if (exportRekapFormat && formExportRekap) {
+                exportRekapFormat.addEventListener('change', function () {
+                    const format = this.value;
+
+                    if (!format) {
+                        exportRekapKelasBox.classList.add('d-none');
+                        exportRekapInfo.classList.add('d-none');
+                        btnExportRekapSubmit.classList.add('d-none');
+                        formExportRekap.removeAttribute('action');
+                        return;
+                    }
+
+                    exportRekapKelasBox.classList.remove('d-none');
+                    exportRekapInfo.classList.remove('d-none');
+                    btnExportRekapSubmit.classList.remove('d-none');
+
+                    if (format === 'pdf') {
+                        formExportRekap.action = "{{ route('rekapnilai.export.pdf') }}";
+                        btnExportRekapSubmit.className = 'btn btn-danger rounded-pill px-4';
+                        btnExportRekapSubmit.innerHTML = '<i class="bi bi-file-earmark-pdf me-1"></i> Export PDF';
+                    }
+
+                    if (format === 'excel') {
+                        formExportRekap.action = "{{ route('rekapnilai.export.excel') }}";
+                        btnExportRekapSubmit.className = 'btn btn-success rounded-pill px-4';
+                        btnExportRekapSubmit.innerHTML = '<i class="bi bi-file-earmark-excel me-1"></i> Export Excel';
+                    }
+                });
+
+                formExportRekap.addEventListener('submit', function (event) {
+                    if (!exportRekapFormat.value) {
+                        event.preventDefault();
+                        alert('Pilih format export terlebih dahulu.');
+                    }
+                });
+            }
+            /*
+    |--------------------------------------------------------------------------
+    | Search Nama Siswa dan Kelas
+    |--------------------------------------------------------------------------
+    */
             const searchInput = document.getElementById('searchSiswa');
+            const btnCariSiswa = document.getElementById('btnCariSiswa');
+
+            function cariSiswaDanKelas() {
+                const keyword = searchInput.value.toLowerCase().replace(/\s+/g, '');
+                const rows = document.querySelectorAll('.rekap-row');
+
+                rows.forEach(function (row) {
+                    const namaElement = row.querySelector('.nama-siswa');
+                    const kelasElement = row.querySelector('.kelas-badge');
+
+                    const nama = namaElement
+                        ? namaElement.textContent.toLowerCase().replace(/\s+/g, '')
+                        : '';
+
+                    const kelas = kelasElement
+                        ? kelasElement.textContent.toLowerCase().replace(/\s+/g, '')
+                        : '';
+
+                    const cocok = nama.includes(keyword) || kelas.includes(keyword);
+
+                    row.style.display = cocok ? '' : 'none';
+                });
+            }
 
             if (searchInput) {
-                searchInput.addEventListener('keyup', function () {
-                    const keyword = this.value.toLowerCase();
-                    const rows = document.querySelectorAll('.rekap-row');
+                searchInput.addEventListener('keyup', cariSiswaDanKelas);
+            }
 
-                    rows.forEach(function (row) {
-                        const namaElement = row.querySelector('.nama-siswa');
-                        const nama = namaElement ? namaElement.textContent.toLowerCase() : '';
-
-                        row.style.display = nama.includes(keyword) ? '' : 'none';
-                    });
-                });
+            if (btnCariSiswa) {
+                btnCariSiswa.addEventListener('click', cariSiswaDanKelas);
             }
         });
     </script>

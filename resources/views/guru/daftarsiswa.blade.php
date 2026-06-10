@@ -4,13 +4,13 @@
 
 @section('content')
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         /*
-        |--------------------------------------------------------------------------
-        | Reset Layout
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | Reset Layout
+                                                |--------------------------------------------------------------------------
+                                                */
         .content-area,
         .main-content,
         .page-content,
@@ -30,58 +30,196 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Tombol Burger Mobile
-        |--------------------------------------------------------------------------
-        */
+    |--------------------------------------------------------------------------
+    | Burger mobile dibuat semirip gambar kedua
+    |--------------------------------------------------------------------------
+    */
         .page-mobile-header {
             display: none;
-            width: auto;
-            margin: 0;
+            width: 100%;
+            margin: 0 0 18px 0;
+            padding: 0;
         }
 
         .page-burger-btn {
-            width: 68px;
-            height: 68px;
-            border: 3px solid #8fa283;
-            border-radius: 20px;
-            background: #ffffff;
+            width: 102px;
+            height: 102px;
+            border: 4px solid #8fa283;
+            border-radius: 28px;
+            background: #f8f8f8;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: #4b453d;
             box-shadow: none;
-            transition: 0.2s ease;
+            font-size: 0;
+            padding: 0;
         }
 
         .page-burger-btn:hover {
-            background: #f7faf4;
-            transform: translateY(-1px);
+            background: #f5f6f2;
         }
 
-        .page-burger-btn i {
-            font-size: 34px;
-            line-height: 1;
+        .page-burger-icon {
+            width: 44px;
+            height: 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .page-sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            display: none;
-            background: rgba(47, 43, 37, 0.45);
-            z-index: 9998;
-        }
-
-        .page-sidebar-overlay.show {
+        .page-burger-icon span {
             display: block;
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: #5b5147;
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Sidebar Existing dari layout.navbarguru
-        |--------------------------------------------------------------------------
-        */
+    |--------------------------------------------------------------------------
+    | Tablet
+    |--------------------------------------------------------------------------
+    */
+        @media (max-width: 992px) {
+            .page-mobile-header {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                position: static !important;
+                margin: 0 0 22px 0;
+                padding-left: 4px;
+            }
+
+            body.sidebar-mobile-open .page-mobile-header {
+                display: none !important;
+            }
+
+            .siswa-page {
+                padding: 46px 22px 48px;
+            }
+
+            .siswa-header-card {
+                margin-top: 0;
+                padding: 26px;
+                border-radius: 28px;
+            }
+        }
+
+        /*
+    |--------------------------------------------------------------------------
+    | HP besar
+    |--------------------------------------------------------------------------
+    */
+        @media (max-width: 768px) {
+            .page-mobile-header {
+                margin: 0 0 20px 0;
+                padding-left: 4px;
+            }
+
+            .siswa-page {
+                padding: 46px 16px 44px;
+            }
+
+            .page-burger-btn {
+                width: 100px;
+                height: 100px;
+                border-radius: 28px;
+                border-width: 4px;
+            }
+
+            .page-burger-icon {
+                width: 42px;
+                height: 32px;
+            }
+
+            .page-burger-icon span {
+                height: 6px;
+            }
+
+            .siswa-header-card {
+                padding: 22px;
+                border-radius: 28px;
+            }
+        }
+
+        /*
+    |--------------------------------------------------------------------------
+    | HP kecil
+    |--------------------------------------------------------------------------
+    */
+        @media (max-width: 576px) {
+            .page-mobile-header {
+                margin: 0 0 18px 0;
+                padding-left: 2px;
+            }
+
+            .siswa-page {
+                padding: 46px 12px 38px;
+            }
+
+            .page-burger-btn {
+                width: 96px;
+                height: 96px;
+                border-radius: 27px;
+                border-width: 4px;
+            }
+
+            .page-burger-icon {
+                width: 40px;
+                height: 30px;
+            }
+
+            .page-burger-icon span {
+                height: 5.5px;
+            }
+
+            .siswa-header-card {
+                padding: 18px;
+                border-radius: 26px;
+            }
+        }
+
+        /*
+    |--------------------------------------------------------------------------
+    | HP sangat kecil
+    |--------------------------------------------------------------------------
+    */
+        @media (max-width: 380px) {
+            .page-mobile-header {
+                margin: 0 0 16px 0;
+                padding-left: 0;
+            }
+
+            .siswa-page {
+                padding: 42px 10px 34px;
+            }
+
+            .page-burger-btn {
+                width: 88px;
+                height: 88px;
+                border-radius: 24px;
+            }
+
+            .page-burger-icon {
+                width: 36px;
+                height: 27px;
+            }
+
+            .page-burger-icon span {
+                height: 5px;
+            }
+
+            .siswa-header-card {
+                border-radius: 24px;
+            }
+        }
+
+        /*
+                                                |--------------------------------------------------------------------------
+                                                | Sidebar Existing dari layout.navbarguru
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 992px) {
             body.sidebar-mobile-open {
                 overflow: hidden;
@@ -174,10 +312,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Halaman Daftar Siswa
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | Halaman Daftar Siswa
+                                                |--------------------------------------------------------------------------
+                                                */
         .siswa-page {
             min-height: 100vh;
             padding: 28px 36px 55px;
@@ -393,10 +531,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Laptop kecil
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | Laptop kecil
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 1199px) {
             .siswa-page {
                 padding: 26px 28px 50px;
@@ -408,18 +546,18 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | Tablet
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | Tablet
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 992px) {
             .page-mobile-header {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                position: fixed;
-                top: 145px;
-                left: 48px;
+                position: static !important;
+                top: auto !important;
+                left: auto !important;
                 z-index: 10000;
                 width: auto;
                 height: auto;
@@ -427,7 +565,7 @@
             }
 
             .siswa-page {
-                padding: 145px 22px 48px;
+                padding: 22px 22px 48px;
             }
 
             .siswa-header-card {
@@ -454,10 +592,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | HP besar
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | HP besar
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 768px) {
             .page-mobile-header {
                 top: 145px;
@@ -531,10 +669,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | HP kecil
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | HP kecil
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 576px) {
             .page-mobile-header {
                 top: 145px;
@@ -610,10 +748,10 @@
         }
 
         /*
-        |--------------------------------------------------------------------------
-        | HP sangat kecil
-        |--------------------------------------------------------------------------
-        */
+                                                |--------------------------------------------------------------------------
+                                                | HP sangat kecil
+                                                |--------------------------------------------------------------------------
+                                                */
         @media (max-width: 380px) {
             .page-mobile-header {
                 top: 145px;
@@ -646,6 +784,45 @@
                 min-width: 740px;
             }
         }
+
+        .export-picker {
+            width: auto;
+        }
+
+        .export-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .export-select {
+            width: 160px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .export-btn {
+            padding: 8px 14px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .page-burger-icon {
+            width: 30px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page-burger-icon span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            border-radius: 999px;
+            background: #4b453d;
+        }
     </style>
 
     <div class="page-sidebar-overlay" id="pageSidebarOverlay"></div>
@@ -656,7 +833,11 @@
             {{-- Tombol Burger Mobile --}}
             <div class="page-mobile-header">
                 <button type="button" class="page-burger-btn" id="pageBurgerBtn" aria-label="Buka Sidebar">
-                    <i class="bi bi-list"></i>
+                    <span class="page-burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
                 </button>
             </div>
 
@@ -706,31 +887,11 @@
                     <div class="siswa-actions">
 
                         {{-- EXPORT --}}
-                        <div class="export-dropdown">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-secondary rounded-pill px-4 dropdown-toggle" type="button"
-                                    id="dropdownExport" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-download me-1"></i> Export Data
-                                </button>
-
-                                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownExport">
-                                    <li>
-                                        <a class="dropdown-item text-danger fw-semibold"
-                                            href="{{ route('siswa.export.pdf') }}">
-                                            <i class="bi bi-file-earmark-pdf me-2"></i>
-                                            Export as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-success fw-semibold"
-                                            href="{{ route('siswa.export.excel') }}">
-                                            <i class="bi bi-file-earmark-excel me-2"></i>
-                                            Export as Excel
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold"
+                            data-bs-toggle="modal" data-bs-target="#modalExportSiswa">
+                            <i class="bi bi-download me-1"></i>
+                            Export Data
+                        </button>
 
                         {{-- TAMBAH SISWA --}}
                         <button class="btn btn-success rounded-pill px-4 fw-semibold btn-add" data-bs-toggle="modal"
@@ -810,6 +971,65 @@
 
                     {{ $siswas->withQueryString()->links() }}
                 </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- MODAL EXPORT --}}
+    <div class="modal fade" id="modalExportSiswa" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <form id="formExportSiswa" method="GET">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="bi bi-download me-1"></i>
+                            Export Data Siswa
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {{-- PILIH FORMAT --}}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Pilih format export</label>
+                            <select id="exportFormat" class="form-select" required>
+                                <option value="">-- Pilih Format --</option>
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel</option>
+                            </select>
+                        </div>
+
+                        {{-- PILIH KELAS --}}
+                        <div class="mb-3 d-none" id="exportKelasBox">
+                            <label class="form-label fw-bold">Pilih kelas</label>
+                            <select name="kelas" id="exportKelas" class="form-select">
+                                <option value="semua">Semua Kelas</option>
+                                <option value="XI1">XI1</option>
+                                <option value="XI2">XI2</option>
+                                <option value="XI3">XI3</option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-info d-none mb-0" id="exportInfo">
+                            Pilih kelas yang ingin diexport, lalu klik tombol export.
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">
+                            Batal
+                        </button>
+
+                        <button type="submit" id="btnExportSubmit" class="btn btn-success rounded-pill px-4 d-none">
+                            <i class="bi bi-download me-1"></i>
+                            Export
+                        </button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
@@ -939,7 +1159,6 @@
             </div>
         </div>
     </div>
-
     {{-- SCRIPT --}}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1023,6 +1242,55 @@
                 form.action = `/siswa/${id}`;
             });
         });
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Export Siswa PDF / Excel
+    |--------------------------------------------------------------------------
+    */
+        const exportFormat = document.getElementById('exportFormat');
+        const exportKelasBox = document.getElementById('exportKelasBox');
+        const exportInfo = document.getElementById('exportInfo');
+        const btnExportSubmit = document.getElementById('btnExportSubmit');
+        const formExportSiswa = document.getElementById('formExportSiswa');
+
+        if (exportFormat && formExportSiswa) {
+            exportFormat.addEventListener('change', function () {
+                const format = this.value;
+
+                if (!format) {
+                    exportKelasBox.classList.add('d-none');
+                    exportInfo.classList.add('d-none');
+                    btnExportSubmit.classList.add('d-none');
+                    formExportSiswa.removeAttribute('action');
+                    return;
+                }
+
+                exportKelasBox.classList.remove('d-none');
+                exportInfo.classList.remove('d-none');
+                btnExportSubmit.classList.remove('d-none');
+
+                if (format === 'pdf') {
+                    formExportSiswa.action = "{{ route('siswa.export.pdf') }}";
+                    btnExportSubmit.className = 'btn btn-danger rounded-pill px-4';
+                    btnExportSubmit.innerHTML = '<i class="bi bi-file-earmark-pdf me-1"></i> Export PDF';
+                }
+
+                if (format === 'excel') {
+                    formExportSiswa.action = "{{ route('siswa.export.excel') }}";
+                    btnExportSubmit.className = 'btn btn-success rounded-pill px-4';
+                    btnExportSubmit.innerHTML = '<i class="bi bi-file-earmark-excel me-1"></i> Export Excel';
+                }
+            });
+
+            formExportSiswa.addEventListener('submit', function (event) {
+                if (!exportFormat.value) {
+                    event.preventDefault();
+                    alert('Pilih format export terlebih dahulu.');
+                }
+            });
+        }
     </script>
 
 @endsection

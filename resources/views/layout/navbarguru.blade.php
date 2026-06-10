@@ -386,13 +386,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('petunjukpenggunaan') ? 'active' : '' }}"
-              href="{{ route('petunjukpenggunaan') }}">
-              Petunjuk Penggunaan
-            </a>
-          </li>
-
           <li class="nav-item d-flex">
             <form action="{{ route('guru.logout') }}" method="POST" class="logout-form">
               @csrf

@@ -13,6 +13,8 @@
    - Bisa drag & drop di HP, tablet, laptop/PC
    - Scroll halaman HP tetap bisa saat sentuh area kosong
    - FIX: hasil/skor diletakkan di bawah kotak no. 5 dan di atas tombol
+   - FIX: Pangkat/derajat 1 tidak ditulis, contoh x¹ menjadi x
+   - FIX: Seret angka bebas ke kotak mana saja, tidak otomatis ke kotak pertama
 ========================================================= */
 
 (function () {
@@ -21,8 +23,8 @@
   const questions = [
     { text: "Derajat dari ( 4x⁵ )", answer: 5 },
     { text: "Derajat dari ( x²y⁷ )", answer: 9 },
-    { text: "Derajat dari ( 0.12x¹ )", answer: 1 },
-    { text: "Derajat dari ( 2.17x³y¹z³ )", answer: 7 },
+    { text: "Derajat dari ( 0.12x )", answer: 1 },
+    { text: "Derajat dari ( 2.17x³yz³ )", answer: 7 },
     { text: "Derajat dari 6a²b⁴", answer: 6 },
   ];
 
@@ -153,35 +155,23 @@
 
         this.dragging = false;
 
-        let bestZone = null;
-        let bestArea = 0;
+        /*
+          FIX UTAMA:
+          Dulu zona dipilih berdasarkan overlapArea, sehingga pada beberapa kondisi
+          token pertama bisa selalu terbaca masuk ke kotak pertama.
+          Sekarang zona dipilih berdasarkan titik tengah token.
+          Jadi angka akan masuk ke kotak yang memang kamu arahkan.
+        */
+        const targetZone = getDropZoneForToken(this);
 
-        zones.forEach((z) => {
-          const area = overlapArea(
-            this.x,
-            this.y,
-            this.w,
-            this.h,
-            z.x,
-            z.y,
-            z.w,
-            z.h
-          );
-
-          if (area > bestArea) {
-            bestArea = area;
-            bestZone = z;
-          }
-        });
-
-        if (bestZone && bestArea > 10) {
-          if (bestZone.token && bestZone.token !== this) {
-            const oldToken = bestZone.token;
+        if (targetZone) {
+          if (targetZone.token && targetZone.token !== this) {
+            const oldToken = targetZone.token;
             oldToken.zoneIndex = null;
             returnToHome(oldToken);
           }
 
-          snapToZone(this, bestZone);
+          snapToZone(this, targetZone);
         } else {
           returnToHome(this);
         }
@@ -357,11 +347,6 @@
       const zonesBottom = zones[zones.length - 1].y + zoneH;
       const contentBottom = Math.max(zonesBottom, tokenPanelY + tokenPanelH);
 
-      /*
-        HASIL DIBUAT AREA SENDIRI:
-        posisinya di bawah kotak terakhir/token panel,
-        dan tombol berada di bawah hasil.
-      */
       resultY = contentBottom + 34;
 
       const resultAreaH = checked ? 70 : 18;
@@ -625,7 +610,7 @@
 
       const subtitle = isMobile
         ? "Seret angka ke kotak jawaban."
-        : "Seret angka derajat ke kotak jawaban tiap soal, lalu klik Periksa.";
+        : "Seret angka derajat ke kotak jawaban mana saja, lalu klik Periksa.";
 
       p.text(subtitle, p.width / 2, isMobile ? 43 : 52);
 
@@ -704,10 +689,6 @@
         }
       });
 
-      /*
-        Rebuild layout setelah checked=true supaya area hasil muncul
-        di bawah kotak no.5 dan tombol turun ke bawah.
-      */
       buildLayout();
     };
 
@@ -749,6 +730,25 @@
       btn.style("cursor", "pointer");
       btn.style("box-shadow", "0 4px 10px rgba(0,0,0,0.12)");
       btn.style("font-family", "Times New Roman, Times, serif");
+    };
+
+    const getDropZoneForToken = (token) => {
+      const centerX = token.x + token.w / 2;
+      const centerY = token.y + token.h / 2;
+
+      const tolerance = isMobile ? 14 : 10;
+
+      for (const z of zones) {
+        const insideX = centerX >= z.x && centerX <= z.x + z.w;
+        const insideY =
+          centerY >= z.y - tolerance && centerY <= z.y + z.h + tolerance;
+
+        if (insideX && insideY) {
+          return z;
+        }
+      }
+
+      return null;
     };
 
     const overlapArea = (x1, y1, w1, h1, x2, y2, w2, h2) => {

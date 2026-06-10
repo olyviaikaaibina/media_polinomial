@@ -9,6 +9,13 @@ use Maatwebsite\Excel\Concerns\FromArray;
 
 class RekapNilaiExport implements FromArray
 {
+    protected $kelas;
+
+    public function __construct($kelas = null)
+    {
+        $this->kelas = $kelas;
+    }
+
     public function array(): array
     {
         $quizzes = Quiz::with('bab')
@@ -22,18 +29,41 @@ class RekapNilaiExport implements FromArray
             ->orderBy('id')
             ->first();
 
-        $siswas = Siswa::orderBy('nama', 'asc')->get();
+        /*
+        |--------------------------------------------------------------------------
+        | Ambil siswa sesuai kelas yang dipilih
+        |--------------------------------------------------------------------------
+        */
+        $siswaQuery = Siswa::query();
+
+        if ($this->kelas && $this->kelas !== 'semua') {
+            $siswaQuery->whereRaw("REPLACE(kelas, ' ', '') = ?", [$this->kelas]);
+        }
+
+        $siswas = $siswaQuery->orderBy('nama', 'asc')->get();
+        $studentIds = $siswas->pluck('id');
 
         $data = [];
 
         // JUDUL
-        $data[] = ['REKAPITULASI NILAI'];
+        if ($this->kelas && $this->kelas !== 'semua') {
+            $data[] = ['REKAPITULASI NILAI KELAS ' . $this->kelas];
+        } else {
+            $data[] = ['REKAPITULASI NILAI SEMUA KELAS'];
+        }
+
         $data[] = [];
 
         // RINGKASAN
         $siswaDinilai = 0;
-        $semuaNilai = QuizAttempt::whereNotNull('score')->pluck('score');
-        $rataRataNilai = $semuaNilai->count() > 0 ? round($semuaNilai->avg(), 1) : 0;
+
+        $semuaNilai = QuizAttempt::whereNotNull('score')
+            ->whereIn('student_id', $studentIds)
+            ->pluck('score');
+
+        $rataRataNilai = $semuaNilai->count() > 0
+            ? round($semuaNilai->avg(), 1)
+            : 0;
 
         foreach ($siswas as $siswa) {
             $punyaNilai = QuizAttempt::where('student_id', $siswa->id)
@@ -135,6 +165,7 @@ class RekapNilaiExport implements FromArray
 
         foreach ($quizzes as $index => $quiz) {
             $avgScore = QuizAttempt::where('quiz_id', $quiz->id)
+                ->whereIn('student_id', $studentIds)
                 ->whereNotNull('score')
                 ->avg('score');
 
@@ -156,6 +187,7 @@ class RekapNilaiExport implements FromArray
 
         foreach ($quizzes as $index => $quiz) {
             $jumlahIkut = QuizAttempt::where('quiz_id', $quiz->id)
+                ->whereIn('student_id', $studentIds)
                 ->whereNotNull('score')
                 ->distinct('student_id')
                 ->count('student_id');

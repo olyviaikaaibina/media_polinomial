@@ -5,11 +5,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                    delimiters: [
-                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                    ]
-                                                                                                                                                });"></script>
+                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                            ]
+                                                                                                                                                                        });"></script>
 
     <style>
         :root {
@@ -2352,9 +2352,99 @@
             }
         }
 
-        /* Hilangkan tulisan eksplorasi sudah terisi */
+        /* ===================== RAPIKAN EKSPLORASI ===================== */
+
+        /* Hilangkan pesan box eksplorasi */
         #quiz-final-message {
             display: none !important;
+        }
+
+        /* Rapatkan jarak antar soal eksplorasi */
+        #eksplorasi-quiz .quiz-list {
+            margin-top: 8px;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            margin: 0 0 16px !important;
+            padding: 0;
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            margin-bottom: 6px !important;
+            line-height: 1.45;
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            padding: 10px 12px !important;
+            min-height: 44px;
+            border-radius: 12px;
+        }
+
+        #eksplorasi-quiz .quiz-actions {
+            margin-top: 6px !important;
+            min-height: 0;
+        }
+
+        #eksplorasi-quiz .quiz-feedback {
+            line-height: 1.45;
+            padding: 6px 10px;
+        }
+
+        #quiz-message {
+            margin-left: 0;
+        }
+
+        .petunjuk-box {
+            margin: 8px 0 16px;
+            padding: 16px 20px;
+            background: #f8f1de;
+            border: 1px solid #e3c77f;
+            border-left: 8px solid #d8a628;
+            border-radius: 18px;
+            color: #7a5a1f;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .04);
+        }
+
+        .petunjuk-title {
+            font-weight: 900;
+            font-size: 18px;
+            color: #6c4b14;
+        }
+
+        .petunjuk-box b {
+            color: #6c4b14;
+        }
+
+        /* Tablet */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .petunjuk-box {
+                padding: 14px 16px;
+                font-size: 15px;
+                border-radius: 16px;
+            }
+
+            .petunjuk-title {
+                font-size: 17px;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 480px) {
+            .petunjuk-box {
+                padding: 12px 14px;
+                font-size: 14.5px;
+                line-height: 1.7;
+                border-left-width: 6px;
+                border-radius: 14px;
+                text-align: left;
+            }
+
+            .petunjuk-title {
+                font-size: 16px;
+            }
         }
     </style>
 
@@ -2582,6 +2672,11 @@
                                 Gunakan strategi: buka kurung → kelompokkan → sederhanakan.
                             </p>
                         </div>
+
+                        <div class="game-story-note" style="margin-top:10px;">
+                            <b>Petunjuk:</b> Untuk menulis pangkat, ketik angka setelah variabel, misalnya
+                            <b>x2</b> untuk $x^2$ dan <b>x3</b> untuk $x^3$.
+                        </div>
                     </div>
 
                     <div class="game-panel">
@@ -2684,9 +2779,14 @@
             <div class="contoh-wrap">
                 <div class="contoh-pill">LATIHAN</div>
 
-                <p class="contoh-desc">
-                    Kerjakan latihan berikut langkah demi langkah. Isi jawaban pada setiap tahap, lalu cek hasilnya.
-                </p>
+                <div class="petunjuk-box">
+                    <span class="petunjuk-title">Petunjuk Penggunaan:</span>
+                    Kerjakan latihan secara berurutan. Selesaikan Latihan A terlebih dahulu sampai benar, lalu Latihan B
+                    akan terbuka.
+                    Isi setiap langkah, kemudian klik <b>Cek</b> atau gunakan tombol <b>Cek Semua</b>.
+                    Untuk menulis pangkat, ketik angka setelah variabel, misalnya <b>x2</b> untuk $x^2$ dan <b>x3</b> untuk
+                    $x^3$.
+                </div>
 
                 <div class="latihan-grid" id="latihan-grid">
                     {{-- LATIHAN A --}}
@@ -2863,86 +2963,177 @@
 
             /* ===================== EKSPLORASI ===================== */
 
+            /* ===================== EKSPLORASI ===================== */
+
             const quiz = document.getElementById("eksplorasi-quiz");
 
             if (quiz) {
                 const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                const summary = document.getElementById("quiz-summary");
-                const finalMsg = document.getElementById("quiz-final-message");
+                const oldSummary = document.getElementById("quiz-summary");
                 const materiLanjutan = document.getElementById("materi-lanjutan");
 
+                let checkAllBtn = document.getElementById("quiz-check-all");
+                let message = document.getElementById("quiz-message");
+
+                /*
+                |----------------------------------------------------------
+                | Membuat tombol Cek Semua otomatis
+                |----------------------------------------------------------
+                */
+                if (oldSummary && !checkAllBtn) {
+                    const wrapper = oldSummary.parentElement;
+
+                    checkAllBtn = document.createElement("button");
+                    checkAllBtn.type = "button";
+                    checkAllBtn.id = "quiz-check-all";
+                    checkAllBtn.className = "quiz-checkall";
+                    checkAllBtn.textContent = "Cek Semua";
+
+                    message = document.createElement("span");
+                    message.id = "quiz-message";
+                    message.className = "quiz-summary";
+
+                    oldSummary.remove();
+
+                    if (wrapper) {
+                        wrapper.classList.add("global-actions");
+                        wrapper.appendChild(checkAllBtn);
+                        wrapper.appendChild(message);
+                    }
+                }
+
+                /*
+                |----------------------------------------------------------
+                | Kondisi awal
+                |----------------------------------------------------------
+                */
+                const resetEksplorasiView = () => {
+                    if (message) {
+                        message.textContent = "";
+                    }
+
+                    if (materiLanjutan) {
+                        materiLanjutan.style.display = "none";
+                    }
+                };
+
+                /*
+                |----------------------------------------------------------
+                | Cek satu jawaban eksplorasi
+                |----------------------------------------------------------
+                */
                 const checkItem = (item) => {
                     const input = item.querySelector(".quiz-input");
                     const fb = item.querySelector(".quiz-feedback");
+
                     const userRaw = input ? input.value : "";
+                    const answerRaw = item.getAttribute("data-answer") || "";
+
                     const user = normalizePoly(userRaw);
-                    const ans = normalizePoly(item.getAttribute("data-answer") || "");
+                    const answer = normalizePoly(answerRaw);
 
                     if (!userRaw.trim()) {
-                        clearFb(fb);
-                        return null;
+                        setFb(fb, false, "Benar", "Jawaban belum diisi");
+                        return {
+                            filled: false,
+                            correct: false
+                        };
                     }
 
-                    const ok = user === ans;
-                    setFb(fb, ok, "Benar", "Salah");
-                    return ok;
+                    const ok = user === answer;
+
+                    if (ok) {
+                        setFb(fb, true, "Benar");
+                    } else {
+                        setFb(fb, false, "Benar", `Salah. Jawaban benar: ${answerRaw}`);
+                    }
+
+                    return {
+                        filled: true,
+                        correct: ok
+                    };
                 };
 
-                const updateEksplorasiState = () => {
+                /*
+                |----------------------------------------------------------
+                | Tombol Cek Semua
+                |----------------------------------------------------------
+                */
+                checkAllBtn?.addEventListener("click", () => {
                     let terisi = 0;
-                    let benar = 0;
 
                     items.forEach(item => {
-                        const input = item.querySelector(".quiz-input");
                         const result = checkItem(item);
 
-                        if (input && input.value.trim() !== "") {
+                        if (result.filled) {
                             terisi++;
-                        }
-
-                        if (result === true) {
-                            benar++;
                         }
                     });
 
                     const total = items.length;
-
-                    if (summary) {
-                        summary.textContent = `Terisi ${terisi}/${total} • Benar ${benar}/${total}`;
-                    }
-
                     const semuaTerisi = terisi === total;
 
-                    if (finalMsg) {
-                        if (semuaTerisi) finalMsg.classList.add("ok");
-                        else finalMsg.classList.remove("ok");
+                    if (!semuaTerisi) {
+                        if (message) {
+                            message.textContent = "Lengkapi semua jawaban terlebih dahulu.";
+                        }
+
+                        if (materiLanjutan) {
+                            materiLanjutan.style.display = "none";
+                        }
+
+                        return;
+                    }
+
+                    /*
+                    |------------------------------------------------------
+                    | Materi lanjutan terbuka asal semua jawaban sudah diisi
+                    | Tidak harus benar semua
+                    |------------------------------------------------------
+                    */
+                    if (message) {
+                        message.textContent = "";
                     }
 
                     if (materiLanjutan) {
-                        materiLanjutan.style.display = semuaTerisi ? "block" : "none";
+                        materiLanjutan.style.display = "block";
                     }
-                };
 
+                    if (typeof renderMathInElement === "function") {
+                        renderMathInElement(document.body, {
+                            delimiters: [
+                                { left: "$$", right: "$$", display: true },
+                                { left: "$", right: "$", display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
+                });
+
+                /*
+                |----------------------------------------------------------
+                | Tidak periksa otomatis saat mengetik
+                | Hanya bersihkan feedback
+                |----------------------------------------------------------
+                */
                 items.forEach(item => {
                     const input = item.querySelector(".quiz-input");
+                    const fb = item.querySelector(".quiz-feedback");
 
                     input?.addEventListener("input", () => {
-                        updateEksplorasiState();
+                        clearFb(fb);
+                        resetEksplorasiView();
                     });
 
                     input?.addEventListener("keydown", (e) => {
                         if (e.key === "Enter") {
                             e.preventDefault();
-                            updateEksplorasiState();
+                            checkAllBtn?.click();
                         }
-                    });
-
-                    input?.addEventListener("blur", () => {
-                        updateEksplorasiState();
                     });
                 });
 
-                updateEksplorasiState();
+                resetEksplorasiView();
             }
 
             /* ===================== TRIK CEPAT ===================== */
@@ -3272,10 +3463,10 @@
                 {
                     name: "Gerbang 1 — Buka Kurung",
                     prompt: `
-                            $$
-                            (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                            $$
-                            `,
+                                                    $$
+                                                    (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                                    $$
+                                                    `,
                     dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                     hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                     answers: [
@@ -3291,10 +3482,10 @@
                 {
                     name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                     prompt: `
-                            $$
-                            5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                            $$
-                            `,
+                                                    $$
+                                                    5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                                                    $$
+                                                    `,
                     dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                     hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                     answers: [
@@ -3307,10 +3498,10 @@
                 {
                     name: "Gerbang 3 — Sederhanakan",
                     prompt: `
-                            $$
-                            (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                            $$
-                            `,
+                                                    $$
+                                                    (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                                                    $$
+                                                    `,
                     dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                     hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                     answers: [

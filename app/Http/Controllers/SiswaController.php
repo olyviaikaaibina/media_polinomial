@@ -11,19 +11,19 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
-  public function index(Request $request)
-{
-    $query = Siswa::query();
+    public function index(Request $request)
+    {
+        $query = Siswa::query();
 
-    // FILTER KELAS
-    if ($request->filled('kelas')) {
-        $query->where('kelas', $request->kelas);
+        // FILTER KELAS
+        if ($request->filled('kelas')) {
+            $query->where('kelas', $request->kelas);
+        }
+
+        $siswas = $query->paginate(10)->withQueryString();
+
+        return view('guru.daftarsiswa', compact('siswas'));
     }
-
-    $siswas = $query->paginate(10)->withQueryString();
-
-    return view('guru.daftarsiswa', compact('siswas'));
-}
 
     public function store(Request $request)
     {
@@ -101,18 +101,37 @@ class SiswaController extends Controller
             ->route('daftarsiswa')
             ->with('success', 'Siswa berhasil dihapus');
     }
-    public function exportPdf()
+    public function exportPdf(Request $request)
     {
-        $siswas = \App\Models\Siswa::orderBy('id', 'desc')->get();
-        $pdf = Pdf::loadView('guru.daftarsiswa_pdf', compact('siswas'))
+        $kelas = $request->query('kelas');
+
+        $query = Siswa::query();
+
+        if ($kelas && $kelas !== 'semua') {
+            $query->where('kelas', $kelas);
+        }
+
+        $siswas = $query->orderBy('id', 'desc')->get();
+
+        $namaFile = ($kelas && $kelas !== 'semua')
+            ? 'daftar_siswa_kelas_' . $kelas . '.pdf'
+            : 'daftar_siswa_semua_kelas.pdf';
+
+        $pdf = Pdf::loadView('guru.daftarsiswa_pdf', compact('siswas', 'kelas'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('daftar_siswa.pdf');
+        return $pdf->download($namaFile);
     }
 
-    public function exportExcel()
+    public function exportExcel(Request $request)
     {
-        return Excel::download(new SiswaExport, 'daftar_siswa.xlsx');
+        $kelas = $request->query('kelas');
+
+        $namaFile = ($kelas && $kelas !== 'semua')
+            ? 'daftar_siswa_kelas_' . $kelas . '.xlsx'
+            : 'daftar_siswa_semua_kelas.xlsx';
+
+        return Excel::download(new SiswaExport($kelas), $namaFile);
     }
 
 }

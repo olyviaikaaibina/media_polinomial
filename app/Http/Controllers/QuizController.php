@@ -74,9 +74,15 @@ class QuizController extends Controller
         ]);
     }
 
-    public function exportRekapPdf()
+    public function exportRekapPdf(Request $request)
     {
-        $data = $this->getRekapNilaiData();
+        $kelas = $request->query('kelas');
+
+        $data = $this->getRekapNilaiData($kelas);
+
+        $namaFile = ($kelas && $kelas !== 'semua')
+            ? 'rekap_nilai_kelas_' . $kelas . '.pdf'
+            : 'rekap_nilai_semua_kelas.pdf';
 
         $pdf = Pdf::loadView('guru.rekapnilai_pdf', [
             'rekapNilai' => $data['rekapNilai'],
@@ -86,17 +92,24 @@ class QuizController extends Controller
             'chartLabels' => $data['chartLabels'],
             'chartData' => $data['chartData'],
             'progressData' => $data['progressData'],
+            'kelas' => $kelas,
         ])->setPaper('A4', 'landscape');
 
-        return $pdf->download('rekap_nilai.pdf');
+        return $pdf->download($namaFile);
     }
 
-    public function exportRekapExcel()
+    public function exportRekapExcel(Request $request)
     {
-        return Excel::download(new RekapNilaiExport(), 'rekap_nilai.xlsx');
+        $kelas = $request->query('kelas');
+
+        $namaFile = ($kelas && $kelas !== 'semua')
+            ? 'rekap_nilai_kelas_' . $kelas . '.xlsx'
+            : 'rekap_nilai_semua_kelas.xlsx';
+
+        return Excel::download(new RekapNilaiExport($kelas), $namaFile);
     }
 
-    private function getRekapNilaiData()
+    private function getRekapNilaiData($kelas = null)
     {
         /*
         |--------------------------------------------------------------------------
@@ -121,10 +134,17 @@ class QuizController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Ambil semua siswa
+        | Ambil siswa sesuai kelas yang dipilih
         |--------------------------------------------------------------------------
         */
-        $siswas = Siswa::orderBy('nama', 'asc')->get();
+        $siswaQuery = Siswa::query();
+
+        if ($kelas && $kelas !== 'semua') {
+            $siswaQuery->whereRaw("REPLACE(kelas, ' ', '') = ?", [$kelas]);
+        }
+
+        $siswas = $siswaQuery->orderBy('nama', 'asc')->get();
+        $studentIds = $siswas->pluck('id');
 
         /*
         |--------------------------------------------------------------------------
@@ -238,30 +258,39 @@ class QuizController extends Controller
         | Rata-rata seluruh nilai
         |--------------------------------------------------------------------------
         */
-        $semuaNilai = QuizAttempt::whereNotNull('score')->pluck('score');
+        $semuaNilai = QuizAttempt::whereNotNull('score')
+            ->whereIn('student_id', $studentIds)
+            ->pluck('score');
 
         $rataRataNilai = $semuaNilai->count() > 0
             ? round($semuaNilai->avg(), 1)
             : 0;
 
         /*
-        |--------------------------------------------------------------------------
-        | Data chart rata-rata nilai
-        |--------------------------------------------------------------------------
-        */
+   |--------------------------------------------------------------------------
+   | Data chart rata-rata nilai
+   | Ambil nilai tertinggi tiap siswa, lalu dirata-ratakan
+   |--------------------------------------------------------------------------
+   */
         $chartLabels = [];
         $chartData = [];
 
         foreach ($quizzes as $quiz) {
             $chartLabels[] = $quiz->title;
 
-            $avgScore = QuizAttempt::where('quiz_id', $quiz->id)
-                ->whereNotNull('score')
-                ->avg('score');
+            $nilaiTertinggiPerSiswa = $siswas->map(function ($siswa) use ($quiz) {
+                return QuizAttempt::where('student_id', $siswa->id)
+                    ->where('quiz_id', $quiz->id)
+                    ->whereNotNull('score')
+                    ->max('score');
+            })->filter(function ($nilai) {
+                return $nilai !== null;
+            });
 
-            $chartData[] = $avgScore ? round($avgScore, 1) : 0;
+            $chartData[] = $nilaiTertinggiPerSiswa->count() > 0
+                ? round($nilaiTertinggiPerSiswa->avg(), 1)
+                : 0;
         }
-
         /*
         |--------------------------------------------------------------------------
         | Data progress siswa mengikuti kuis
@@ -272,6 +301,7 @@ class QuizController extends Controller
 
         foreach ($quizzes as $quiz) {
             $jumlahIkut = QuizAttempt::where('quiz_id', $quiz->id)
+                ->whereIn('student_id', $studentIds)
                 ->whereNotNull('score')
                 ->distinct('student_id')
                 ->count('student_id');

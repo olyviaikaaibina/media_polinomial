@@ -8,12 +8,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                            delimiters: [
-                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                            ]
-                                                                                                                                                        });">
-                                                                                                                                                        </script>
+                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                        ]
+                                                                                                                                                                                    });">
+                                                                                                                                                                                    </script>
 
     <style>
         :root {
@@ -2041,6 +2041,32 @@
                 padding: 12px;
             }
         }
+
+        #quiz-summary {
+            display: none !important;
+        }
+
+        .quiz-list {
+            margin-top: 6px;
+        }
+
+        .quiz-item {
+            margin: 8px 0 12px;
+        }
+
+        .quiz-q {
+            margin-bottom: 4px;
+            line-height: 1.45;
+        }
+
+        .quiz-actions {
+            margin-top: 6px;
+            min-height: 0;
+        }
+
+        .quiz-feedback:empty {
+            display: none !important;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2118,7 +2144,10 @@
                     </li>
                 </ol>
 
-                <div style="margin-top:10px;">
+                <div class="quiz-actions" style="margin-top:10px;">
+                    <button type="button" id="cek-semua-eksplorasi" class="mini-btn">
+                        Cek Semua
+                    </button>
                     <span id="quiz-summary" class="quiz-summary"></span>
                 </div>
             </div>
@@ -2230,6 +2259,13 @@
                         Penyelesaian: Kelompokkan suku sejenis
                     </div>
 
+                    {{-- PETUNJUK CONTOH --}}
+                    <div class="note"
+                        style="margin:10px 0 14px; padding:12px 14px; border-radius:12px; background:#fffbea; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
+                        <b>Petunjuk pengerjaan:</b>
+                        Isi hasil operasi pada setiap baris sesuai suku sejenisnya. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³. Lalu klik <b>Cek Semua</b> setelah semua jawaban terisi.
+                    </div>
+
                     <div class="table-wrap">
                         <table class="materi-table contoh-table">
                             <thead>
@@ -2245,7 +2281,7 @@
                                     <td>$(3x^3 + 4x^3)$</td>
                                     <td>$(3 + 4)x^3$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" />
+                                        <input class="hasil-input" type="text" placeholder="contoh: 1x³" />
                                         <div class="katex-answer"></div>
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
@@ -2257,7 +2293,7 @@
                                     <td>$(5x^2 - 3x^2)$</td>
                                     <td>$(5 - 3)x^2$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" />
+                                        <input class="hasil-input" type="text" placeholder="contoh: 2x²" />
                                         <div class="katex-answer"></div>
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
@@ -2269,7 +2305,7 @@
                                     <td>$(-2x + x)$</td>
                                     <td>$(-2 + 1)x$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" />
+                                        <input class="hasil-input" type="text" placeholder="contoh: -1x" />
                                         <div class="katex-answer"></div>
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
@@ -2281,7 +2317,7 @@
                                     <td>$(7 - 5)$</td>
                                     <td>$(7 - 5)$</td>
                                     <td>
-                                        <input class="hasil-input" type="text" />
+                                        <input class="hasil-input" type="text" placeholder="contoh: 2" />
                                         <div class="katex-answer"></div>
                                         <div class="mini-actions">
                                             <span class="mini-feedback"></span>
@@ -2298,7 +2334,7 @@
 
                         <div class="mini-actions" style="justify-content:flex-start;">
                             <input id="contoh-final" class="hasil-input" style="max-width:420px; text-align:left;"
-                                type="text" />
+                                type="text" placeholder="contoh: 1x³ + 2x² + 3x + 4" />
                             <span id="contoh-final-fb" class="mini-feedback"></span>
                         </div>
 
@@ -2328,92 +2364,92 @@
 
             <div class="latihan-polynomial-wrapper">
 
-                <div class="latihan-title">Latihan</div>
-                <p class="latihan-desc">
-                    Kerjakan berurutan. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar.
-                </p>
+            <div class="latihan-title">Latihan</div>
 
-                <div class="soal-card soal-1" id="soal-1">
-                    <div class="isi-soal">
-                        <h4>1. Penjumlahan 2 Suku</h4>
+<div class="latihan-desc"
+    style="margin:8px 0 22px; padding:12px 14px; border-radius:14px; background:#fffbea; border:1px solid #f2df9b; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
+    <b>Petunjuk Penggunaan:</b>
+    Kerjakan soal secara berurutan. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar. Setelah semua latihan benar, progress akan tersimpan dan tombol Next terbuka.
+</div>
 
-                        <div class="soal-susun">
-                            <div>6y - 4</div>
-                            <div>+ 3y + 10</div>
-                            <div class="garis-susun"></div>
-                        </div>
+<div class="soal-card soal-1" id="soal-1">
+    <div class="isi-soal">
+        <h4>1. Penjumlahan 2 Suku</h4>
 
-                        <div class="jawaban-area">
-                            <input type="text" id="jawaban-1" placeholder="Jawaban kamu...">
-                            <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
-                            <span id="fb-1"></span>
-                        </div>
+        <div class="soal-susun">
+            <div>6y - 4</div>
+            <div>+ 3y + 10</div>
+            <div class="garis-susun"></div>
+        </div>
 
-                        <div class="penjelasan" id="step-1">
-                            <b>Pengerjaan:</b>
-                            <p>6y + 3y = 9y</p>
-                            <p>-4 + 10 = 6</p>
-                            <p>Jadi hasilnya adalah <b>9y + 6</b>.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="jawaban-area">
+            <input type="text" id="jawaban-1" placeholder="Jawaban kamu...">
+            <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
+            <span id="fb-1"></span>
+        </div>
 
-                <div class="soal-card soal-2 locked" id="soal-2">
+        <div class="penjelasan" id="step-1">
+            <b>Pengerjaan:</b>
+            <p>6y + 3y = 9y</p>
+            <p>-4 + 10 = 6</p>
+            <p>Jadi hasilnya adalah <b>9y + 6</b>.</p>
+        </div>
+    </div>
+</div>
 
-                    <div class="isi-soal">
-                        <h4>2. Penjumlahan 3 Suku</h4>
+<div class="soal-card soal-2 locked" id="soal-2">
+    <div class="isi-soal">
+        <h4>2. Penjumlahan 3 Suku</h4>
 
-                        <div class="soal-susun">
-                            <div>2x² + 3x - 5</div>
-                            <div>+ 4x² - x + 1</div>
-                            <div class="garis-susun"></div>
-                        </div>
+        <div class="soal-susun">
+            <div>2x² + 3x - 5</div>
+            <div>+ 4x² - x + 1</div>
+            <div class="garis-susun"></div>
+        </div>
 
-                        <div class="jawaban-area">
-                            <input type="text" id="jawaban-2" placeholder="Jawaban kamu..." disabled>
-                            <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
-                            <span id="fb-2"></span>
-                        </div>
+        <div class="jawaban-area">
+            <input type="text" id="jawaban-2" placeholder="Jawaban kamu..." disabled>
+            <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
+            <span id="fb-2"></span>
+        </div>
 
-                        <div class="penjelasan" id="step-2">
-                            <b>Pengerjaan:</b>
-                            <p>2x² + 4x² = 6x²</p>
-                            <p>3x + (-x) = 2x</p>
-                            <p>-5 + 1 = -4</p>
-                            <p>Jadi hasilnya adalah <b>6x² + 2x - 4</b>.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="penjelasan" id="step-2">
+            <b>Pengerjaan:</b>
+            <p>2x² + 4x² = 6x²</p>
+            <p>3x + (-x) = 2x</p>
+            <p>-5 + 1 = -4</p>
+            <p>Jadi hasilnya adalah <b>6x² + 2x - 4</b>.</p>
+        </div>
+    </div>
+</div>
 
-                <div class="soal-card soal-3 locked" id="soal-3">
+<div class="soal-card soal-3 locked" id="soal-3">
+    <div class="isi-soal">
+        <h4>3. Penjumlahan 4 Suku</h4>
 
-                    <div class="isi-soal">
-                        <h4>3. Penjumlahan 4 Suku</h4>
+        <div class="soal-susun">
+            <div>3x³ + 2x² - 5x + 7</div>
+            <div>+ 4x³ - x² + 6x - 2</div>
+            <div class="garis-susun"></div>
+        </div>
 
-                        <div class="soal-susun">
-                            <div>3x³ + 2x² - 5x + 7</div>
-                            <div>+ 4x³ - x² + 6x - 2</div>
-                            <div class="garis-susun"></div>
-                        </div>
+        <div class="jawaban-area">
+            <input type="text" id="jawaban-3" placeholder="Jawaban kamu..." disabled>
+            <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
+            <span id="fb-3"></span>
+        </div>
 
-                        <div class="jawaban-area">
-                            <input type="text" id="jawaban-3" placeholder="Jawaban kamu..." disabled>
-                            <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
-                            <span id="fb-3"></span>
-                        </div>
-
-                        <div class="penjelasan" id="step-3">
-                            <b>Pengerjaan:</b>
-                            <p>3x³ + 4x³ = 7x³</p>
-                            <p>2x² + (-x²) = x²</p>
-                            <p>-5x + 6x = x</p>
-                            <p>7 + (-2) = 5</p>
-                            <p>Jadi hasilnya adalah <b>7x³ + x² + x + 5</b>.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="penjelasan" id="step-3">
+            <b>Pengerjaan:</b>
+            <p>3x³ + 4x³ = 7x³</p>
+            <p>2x² + (-x²) = x²</p>
+            <p>-5x + 6x = x</p>
+            <p>7 + (-2) = 5</p>
+            <p>Jadi hasilnya adalah <b>7x³ + x² + x + 5</b>.</p>
+        </div>
+    </div>
+</div>
+</div>
 
         </div> {{-- end #materi-lanjutan --}}
 
@@ -2538,23 +2574,28 @@
                 };
 
                 /* =========================
-                EKSPLORASI QUIZ
-                ========================== */
+    EKSPLORASI QUIZ
+    ========================== */
+                /* =========================
+    EKSPLORASI QUIZ
+    ========================== */
                 const materiLanjutan = document.getElementById("materi-lanjutan");
 
                 const clearFeedback = (item) => {
                     const fb = item.querySelector(".quiz-feedback");
                     if (!fb) return;
+
                     fb.classList.remove("ok", "no");
                     fb.textContent = "";
                 };
 
-                const showFeedback = (item, ok, msgOk, msgNo) => {
+                const showFeedback = (item, ok, text) => {
                     const fb = item.querySelector(".quiz-feedback");
                     if (!fb) return;
+
                     fb.classList.remove("ok", "no");
                     fb.classList.add(ok ? "ok" : "no");
-                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Salah ❌");
+                    fb.textContent = text;
                 };
 
                 const getInputValue = (item) => {
@@ -2567,67 +2608,117 @@
                 };
 
                 const checkItem = (item) => {
-                    const type = item.getAttribute("data-type");
                     const valRaw = getInputValue(item);
+                    const expectedRaw = item.getAttribute("data-answer") || "";
 
                     if (!valRaw.trim()) {
-                        clearFeedback(item);
-                        return null;
+                        showFeedback(item, false, "Isi jawaban dulu.");
+                        return {
+                            filled: false,
+                            correct: false
+                        };
                     }
 
-                    if (type === "oneof") {
-                        const expected = normalize(item.getAttribute("data-answer") || "");
-                        const val = normalize(valRaw);
-                        const ok = val === expected;
-                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
-                        return ok;
+                    const expected = normalize(expectedRaw);
+                    const val = normalize(valRaw);
+                    const ok = val === expected;
+
+                    if (ok) {
+                        showFeedback(item, true, "Benar ✅");
+                    } else {
+                        showFeedback(item, false, `Salah ❌ Jawaban benar: ${expectedRaw}`);
                     }
 
-                    showFeedback(item, false, "", "Tipe soal belum dikenali.");
-                    return false;
-                };
-
-                const updateUnlock = () => {
-                    const quiz = document.getElementById("eksplorasi-quiz");
-                    if (!quiz || !materiLanjutan) return;
-
-                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                    const filledCount = items.filter((it) => isFilled(it)).length;
-                    const allFilled = filledCount === items.length;
-
-                    const summary = document.getElementById("quiz-summary");
-                    if (summary) summary.textContent = `Terisi: ${filledCount}/${items.length}`;
-
-                    materiLanjutan.style.display = allFilled ? "block" : "none";
-
-                    if (allFilled) {
-                        rerenderKatex();
-                        initLatihanPolinom();
-                    }
+                    return {
+                        filled: true,
+                        correct: ok
+                    };
                 };
 
                 const quiz = document.getElementById("eksplorasi-quiz");
+
                 if (quiz) {
                     const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                    const summary = document.getElementById("quiz-summary");
+
+                    if (summary) {
+                        summary.textContent = "";
+                        summary.style.display = "none";
+                    }
+
+                    if (materiLanjutan) {
+                        materiLanjutan.style.display = "none";
+                    }
+
+                    let btnCekSemua = document.getElementById("cek-semua-eksplorasi");
+
+                    if (!btnCekSemua) {
+                        const tombolWrap = document.createElement("div");
+                        tombolWrap.className = "quiz-actions";
+                        tombolWrap.style.marginTop = "8px";
+
+                        btnCekSemua = document.createElement("button");
+                        btnCekSemua.type = "button";
+                        btnCekSemua.id = "cek-semua-eksplorasi";
+                        btnCekSemua.className = "mini-btn";
+                        btnCekSemua.textContent = "Cek Semua";
+
+                        tombolWrap.appendChild(btnCekSemua);
+                        quiz.appendChild(tombolWrap);
+                    }
 
                     items.forEach((item) => {
                         const input = item.querySelector(".quiz-input");
                         if (!input) return;
 
                         input.addEventListener("input", () => {
-                            checkItem(item);
-                            updateUnlock();
-                            rerenderKatex();
-                        });
+                            clearFeedback(item);
 
-                        input.addEventListener("blur", () => {
-                            checkItem(item);
-                            updateUnlock();
-                            rerenderKatex();
+                            if (summary) {
+                                summary.textContent = "";
+                                summary.style.display = "none";
+                            }
+
+                            if (materiLanjutan) {
+                                materiLanjutan.style.display = "none";
+                            }
                         });
                     });
-                }
 
+                    btnCekSemua.addEventListener("click", () => {
+                        let filled = 0;
+                        let correct = 0;
+                        const total = items.length;
+
+                        items.forEach((item) => {
+                            const result = checkItem(item);
+
+                            if (result.filled) filled++;
+                            if (result.correct) correct++;
+                        });
+
+                        if (summary) {
+                            summary.textContent = "";
+                            summary.style.display = "none";
+                        }
+
+                        if (filled < total) {
+                            if (materiLanjutan) {
+                                materiLanjutan.style.display = "none";
+                            }
+
+                            rerenderKatex();
+                            return;
+                        }
+
+                        if (materiLanjutan) {
+                            materiLanjutan.style.display = "block";
+                        }
+
+                        rerenderKatex();
+                        initLatihanPolinom();
+                    });
+                }
                 /* =========================
                 CONTOH INTERAKTIF
                 ========================== */
@@ -2945,8 +3036,6 @@
                 /* =========================
                 INIT
                 ========================== */
-                initLatihanPolinom();
-                updateUnlock();
                 rerenderKatex();
             })();
         </script>

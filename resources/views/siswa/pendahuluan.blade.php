@@ -1,6 +1,12 @@
 @extends('layout.halamanmateri')
 
 @section('content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
     <style>
         .materi-container {
             width: 100%;
@@ -1325,6 +1331,41 @@
                 padding: 10px 12px;
             }
         }
+
+        .katex {
+            font-size: inherit !important;
+        }
+
+        .katex-display {
+            margin: 0 !important;
+        }
+
+        .mini-rumus .katex-display,
+        .ingat-rumus .katex-display,
+        .ingat-ket .katex-display,
+        .alur-rumus .katex-display,
+        .hasil-rumus .katex-display,
+        .komponen-rumus .katex-display,
+        .rumus-trigger .katex-display,
+        .unsur-bubble .katex-display {
+            margin: 0 !important;
+        }
+
+        .mini-rumus .katex,
+        .ingat-rumus .katex,
+        .ingat-ket .katex,
+        .alur-rumus .katex,
+        .hasil-rumus .katex,
+        .komponen-rumus .katex,
+        .rumus-trigger .katex,
+        .unsur-bubble .katex {
+            font-size: inherit !important;
+            color: inherit !important;
+        }
+
+        .katex-display>.katex {
+            display: inline-block !important;
+        }
     </style>
 
 
@@ -1338,8 +1379,8 @@
                     <div class="konsep-title">Eksponen</div>
                     <div class="konsep-desc">
                         Eksponen adalah bentuk singkat dari <strong>perkalian berulang</strong> pada bilangan yang sama.
-                        Jadi, <strong>x²</strong> berarti <strong>x × x</strong>.
-                        <div class="mini-rumus">x × x = x<sup>2</sup></div>
+                        Jadi, <strong>\(x^2\)</strong> berarti <strong>\(x \times x\)</strong>.
+                        <div class="mini-rumus">$$x \times x = x^2$$</div>
                     </div>
                 </div>
 
@@ -1349,7 +1390,7 @@
                         Aljabar adalah bentuk matematika yang memuat <strong>angka</strong>,
                         <strong>huruf/variabel</strong>, dan <strong>operasi hitung</strong>.
                         Variabel dipakai untuk menyatakan nilai yang belum diketahui.
-                        <div class="mini-rumus">2x + 5</div>
+                        <div class="mini-rumus">$$3x + 2y + 5$$</div>
                     </div>
                 </div>
             </div>
@@ -1366,35 +1407,35 @@
                 <div class="ingat-grid">
                     <div class="ingat-card eksponen-card">
                         <div class="ingat-icon">✦</div>
-                        <div class="ingat-rumus">a<sup>m</sup> × a<sup>n</sup></div>
-                        <div class="ingat-ket">= a<sup>m+n</sup><br>Pangkat dijumlahkan</div>
+                        <div class="ingat-rumus">$$a^m \times a^n$$</div>
+                        <div class="ingat-ket">$$= a^{m+n}$$<br>Pangkat dijumlahkan</div>
                     </div>
 
                     <div class="ingat-card eksponen-card">
                         <div class="ingat-icon">✦</div>
-                        <div class="ingat-rumus">x<sup>m</sup> : x<sup>n</sup></div>
-                        <div class="ingat-ket">= x<sup>m-n</sup><br>dengan x ≠ 0</div>
+                        <div class="ingat-rumus">$$x^m : x^n$$</div>
+                        <div class="ingat-ket">$$= x^{m-n}$$<br>dengan \(x \ne 0\)</div>
                     </div>
 
                     <div class="ingat-card eksponen-card">
                         <div class="ingat-icon">✦</div>
-                        <div class="ingat-rumus">(a<sup>m</sup>)<sup>n</sup></div>
-                        <div class="ingat-ket">= a<sup>mn</sup><br>Pangkat dikalikan</div>
+                        <div class="ingat-rumus">$$(a^m)^n$$</div>
+                        <div class="ingat-ket">$$= a^{mn}$$<br>Pangkat dikalikan</div>
                     </div>
 
                     <div class="ingat-card eksponen-card">
                         <div class="ingat-icon">✦</div>
-                        <div class="ingat-rumus">a<sup>0</sup></div>
-                        <div class="ingat-ket">= 1<br>untuk a ≠ 0</div>
+                        <div class="ingat-rumus">$$a^0$$</div>
+                        <div class="ingat-ket">$$= 1$$<br>untuk \(a \ne 0\)</div>
                     </div>
                 </div>
 
                 <div class="note-mini">
-                    Contoh yang akan muncul pada apersepsi ini adalah <strong>a × a = a²</strong>.
+                    Contoh eksponen: <strong>\(a \times a = a^2\)</strong>.
                 </div>
             </div>
 
-            <!-- SIFAT ALJABAR -->
+            <!-- KONSEP DASAR ALJABAR -->
             <div class="ringkasan-box">
                 <div class="ringkasan-header">
                     <div class="ringkasan-title">Konsep Dasar Aljabar</div>
@@ -1412,14 +1453,14 @@
 
                     <div class="ingat-card aljabar-card">
                         <div class="ingat-icon">◆</div>
-                        <div class="ingat-rumus">ax + bx</div>
-                        <div class="ingat-ket">= (a+b)x</div>
+                        <div class="ingat-rumus">$$3x + 2y + 5$$</div>
+                        <div class="ingat-ket">terdiri dari 3 suku</div>
                     </div>
 
                     <div class="ingat-card aljabar-card">
                         <div class="ingat-icon">◆</div>
-                        <div class="ingat-rumus">ab</div>
-                        <div class="ingat-ket">berarti a × b</div>
+                        <div class="ingat-rumus">$$3x$$</div>
+                        <div class="ingat-ket">berarti \(3 \times x\)</div>
                     </div>
 
                     <div class="ingat-card aljabar-card">
@@ -1430,8 +1471,8 @@
                 </div>
 
                 <div class="note-mini">
-                    Dalam bentuk <strong>3x² + 2x + 5</strong>, sukunya adalah <strong>3x²</strong>,
-                    <strong>2x</strong>, dan <strong>5</strong>.
+                    Dalam bentuk <strong>\(3x + 2y + 5\)</strong>, sukunya adalah
+                    <strong>\(3x\)</strong>, <strong>\(2y\)</strong>, dan <strong>5</strong>.
                 </div>
             </div>
         </div>
@@ -1447,18 +1488,20 @@
 
         <!-- CERITA -->
         <p class="materi-text">
-            Seorang pedagang buah menyimpan buahnya di dalam beberapa kardus.
-            Banyak buah dalam satu kardus dinyatakan dengan <strong>x</strong>.
+            Seorang pedagang buah memiliki beberapa kardus buah.
+            Banyak apel dalam satu kardus apel dinyatakan dengan <strong>\(x\)</strong>,
+            sedangkan banyak jeruk dalam satu kardus jeruk dinyatakan dengan <strong>\(y\)</strong>.
+            Pedagang tersebut memiliki 3 kardus apel, 2 kardus jeruk, dan 5 buah lepas.
         </p>
 
         <div class="gambar-box">
-            <img src="{{ asset('img/kardusbuah.png') }}" alt="Gambar kardus buah">
+            <img src="{{ asset('img/kardusbuahh.png') }}" alt="Gambar kardus buah">
         </div>
 
         <!-- MENYUSUN BENTUK ALJABAR -->
         <div class="alur-box">
             <div class="alur-header">
-                <h3 class="alur-title">Menyusun bentuk aljabar dari cerita kardus buah</h3>
+                <h3 class="alur-title">Menyusun bentuk aljabar dari cerita buah</h3>
                 <p class="alur-desc">
                     Klik setiap langkah untuk melihat penjelasannya.
                 </p>
@@ -1467,58 +1510,48 @@
             <div class="alur-grid">
                 <div class="alur-card klik-card">
                     <div class="alur-step">1</div>
-                    <div class="alur-card-title">Susunan Kardus</div>
+                    <div class="alur-card-title">Kardus Apel</div>
 
                     <div class="alur-preview">
-                        Klik untuk melihat mengapa susunan kardus menjadi <strong>3x<sup>2</sup></strong>.
+                        Klik untuk melihat mengapa 3 kardus apel menjadi <strong>\(3x\)</strong>.
                     </div>
 
                     <div class="alur-detail">
                         <div class="alur-card-text">
-                            Perhatikan <strong>1 susunan kardus</strong>.
-                            Susunan ini berbentuk persegi.
-                            Terdapat <strong>x baris</strong> dan setiap baris berisi <strong>x buah</strong>.
+                            Banyak apel dalam satu kardus apel dinyatakan dengan <strong>\(x\)</strong>.
+                            Karena ada <strong>3 kardus apel</strong>, maka banyak apel adalah:
                         </div>
 
                         <div class="alur-rumus">
-                            x × x = x<sup>2</sup>
+                            $$3 \times x = 3x$$
                         </div>
 
                         <div class="alur-card-text">
-                            Artinya, <strong>1 susunan = x<sup>2</sup> buah</strong>.
-                            Karena ada <strong>3 susunan</strong>, maka:
-                        </div>
-
-                        <div class="alur-rumus">
-                            3 × x<sup>2</sup> = 3x<sup>2</sup>
-                        </div>
-
-                        <div class="alur-card-text">
-                            Jadi, buah dari semua susunan adalah <strong>3x<sup>2</sup></strong>.
+                            Jadi, bagian apel ditulis sebagai <strong>\(3x\)</strong>.
                         </div>
                     </div>
                 </div>
 
                 <div class="alur-card klik-card">
                     <div class="alur-step">2</div>
-                    <div class="alur-card-title">Kardus Tambahan</div>
+                    <div class="alur-card-title">Kardus Jeruk</div>
 
                     <div class="alur-preview">
-                        Klik untuk melihat mengapa kardus tambahan menjadi <strong>2x</strong>.
+                        Klik untuk melihat mengapa 2 kardus jeruk menjadi <strong>\(2y\)</strong>.
                     </div>
 
                     <div class="alur-detail">
                         <div class="alur-card-text">
-                            Selain itu, ada <strong>2 kardus tambahan</strong>.
-                            Setiap kardus berisi <strong>x buah</strong>.
+                            Banyak jeruk dalam satu kardus jeruk dinyatakan dengan <strong>\(y\)</strong>.
+                            Karena ada <strong>2 kardus jeruk</strong>, maka banyak jeruk adalah:
                         </div>
 
                         <div class="alur-rumus">
-                            2 × x = 2x
+                            $$2 \times y = 2y$$
                         </div>
 
                         <div class="alur-card-text">
-                            Jadi, tambahan buahnya adalah <strong>2x</strong>.
+                            Jadi, bagian jeruk ditulis sebagai <strong>\(2y\)</strong>.
                         </div>
                     </div>
                 </div>
@@ -1534,11 +1567,11 @@
                     <div class="alur-detail">
                         <div class="alur-card-text">
                             Di luar kardus, terdapat <strong>5 buah lepas</strong>.
-                            Buah ini tidak menggunakan variabel, sehingga langsung ditulis sebagai:
+                            Karena jumlahnya sudah diketahui dan tidak memuat variabel, maka langsung ditulis sebagai:
                         </div>
 
                         <div class="alur-rumus">
-                            5
+                            $$5$$
                         </div>
                     </div>
                 </div>
@@ -1551,21 +1584,21 @@
                 <div class="hasil-label">Sekarang kita jumlahkan semua bagian cerita</div>
 
                 <div class="hasil-rumus">
-                    3x<sup>2</sup> + 2x + 5
+                    $$3x + 2y + 5$$
                 </div>
 
                 <div class="hasil-komponen">
                     <div class="komponen-card">
                         <div class="komponen-icon">
                             <span>📦</span>
+                            <span>🍎</span>
                             <span>📦</span>
+                            <span>🍎</span>
                             <span>📦</span>
-                            <span>📦</span>
-                            <span>📦</span>
-                            <span>📦</span>
+                            <span>🍎</span>
                         </div>
-                        <div class="komponen-title">Susunan Kardus</div>
-                        <div class="komponen-rumus">3x<sup>2</sup></div>
+                        <div class="komponen-title">Kardus Apel</div>
+                        <div class="komponen-rumus">$$3x$$</div>
                     </div>
 
                     <div class="komponen-plus">+</div>
@@ -1573,21 +1606,22 @@
                     <div class="komponen-card">
                         <div class="komponen-icon">
                             <span>📦</span>
+                            <span>🍊</span>
                             <span>📦</span>
+                            <span>🍊</span>
                         </div>
-                        <div class="komponen-title">Kardus Tambahan</div>
-                        <div class="komponen-rumus">2x</div>
+                        <div class="komponen-title">Kardus Jeruk</div>
+                        <div class="komponen-rumus">$$2y$$</div>
                     </div>
 
                     <div class="komponen-plus">+</div>
-
                     <div class="komponen-card">
                         <div class="komponen-icon">
-                            <span>🍊</span>
-                            <span>🍊</span>
-                            <span>🍊</span>
-                            <span>🍊</span>
-                            <span>🍊</span>
+                            <span>🍐</span>
+                            <span>🍐</span>
+                            <span>🍐</span>
+                            <span>🍐</span>
+                            <span>🍐</span>
                         </div>
                         <div class="komponen-title">Buah Lepas</div>
                         <div class="komponen-rumus">5</div>
@@ -1596,7 +1630,7 @@
 
                 <div class="hasil-kalimat">
                     Jadi, bentuk aljabarnya adalah
-                    <strong>3x<sup>2</sup> + 2x + 5</strong>.
+                    <strong>\(3x + 2y + 5\)</strong>.
                 </div>
             </div>
         </div>
@@ -1606,13 +1640,13 @@
             <div class="rumus-title">Klik untuk melihat unsur-unsurnya</div>
 
             <div id="rumusTrigger" class="rumus-trigger">
-                3x<sup>2</sup> + 2x + 5
+                $$3x + 2y + 5$$
             </div>
 
             <div id="penjelasanBox" class="penjelasan-box">
                 <div class="penjelasan-wrapper">
                     <div class="penjelasan-heading">
-                        Unsur-unsur pada bentuk aljabar <strong>3x<sup>2</sup> + 2x + 5</strong>
+                        Unsur-unsur pada bentuk aljabar <strong>\(3x + 2y + 5\)</strong>
                     </div>
 
                     <div class="unsur-grid">
@@ -1628,11 +1662,10 @@
 
                         <div class="unsur-card var-card">
                             <div class="unsur-line var-line"></div>
-                            <div class="unsur-bubble var-bubble">x</div>
+                            <div class="unsur-bubble var-bubble">\(x, y\)</div>
                             <div class="unsur-name var-name">Variabel</div>
                             <div class="unsur-desc">
-                                Variabel merupakan suatu lambang pengganti pada suatu bilangan yang belum
-                                diketahui nilainya dengan jelas.
+                                Variabel merupakan lambang pengganti suatu nilai yang belum diketahui.
                             </div>
                         </div>
 
@@ -1641,8 +1674,7 @@
                             <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
                             <div class="unsur-name koef-name">Koefisien</div>
                             <div class="unsur-desc">
-                                Koefisien merupakan bilangan yang memuat atau mengalikan variabel dalam suatu
-                                suku pada bentuk aljabar.
+                                Koefisien merupakan bilangan yang mengalikan variabel dalam suatu suku.
                             </div>
                         </div>
 
@@ -1651,8 +1683,7 @@
                             <div class="unsur-bubble konst-bubble">5</div>
                             <div class="unsur-name konst-name">Konstanta</div>
                             <div class="unsur-desc">
-                                Konstanta adalah suku dalam bentuk aljabar yang berupa bilangan dan tidak
-                                memuat variabel.
+                                Konstanta adalah suku berupa bilangan dan tidak memuat variabel.
                             </div>
                         </div>
                     </div>
@@ -1661,39 +1692,38 @@
                         <div class="detail-item">
                             <div class="detail-icon icon-var"></div>
                             <div class="detail-text">
-                                <strong>Variabel</strong> merupakan suatu lambang pengganti pada suatu bilangan
-                                yang belum diketahui nilainya dengan jelas. Variabel disebut juga sebagai
-                                <strong>peubah</strong> dan biasanya dilambangkan dengan huruf kecil seperti
-                                <strong>a, b, c, ..., z</strong>. Pada bentuk aljabar
-                                <strong>3x<sup>2</sup> + 2x + 5</strong>, variabelnya adalah <strong>x</strong>.
+                                <strong>Variabel</strong> merupakan lambang pengganti suatu nilai yang belum diketahui.
+                                Pada bentuk aljabar <strong>\(3x + 2y + 5\)</strong>,
+                                variabelnya adalah <strong>\(x\)</strong> dan <strong>\(y\)</strong>.
+                                Dalam cerita, <strong>\(x\)</strong> menyatakan banyak apel dalam satu kardus apel,
+                                sedangkan <strong>\(y\)</strong> menyatakan banyak jeruk dalam satu kardus jeruk.
                             </div>
                         </div>
 
                         <div class="detail-item">
                             <div class="detail-icon icon-suku"></div>
                             <div class="detail-text">
-                                <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang terdiri dari
-                                variabel beserta koefisiennya atau berupa konstanta, yang dipisahkan oleh
+                                <strong>Suku</strong> merupakan bagian dari bentuk aljabar yang dipisahkan oleh
                                 operasi jumlah atau selisih. Pada bentuk ini, sukunya adalah
-                                <strong>3x<sup>2</sup></strong>, <strong>2x</strong>, dan <strong>5</strong>.
+                                <strong>\(3x\)</strong>, <strong>\(2y\)</strong>, dan <strong>5</strong>.
                             </div>
                         </div>
 
                         <div class="detail-item">
                             <div class="detail-icon icon-koef"></div>
                             <div class="detail-text">
-                                <strong>Koefisien</strong> merupakan bilangan yang memuat atau mengalikan
-                                variabel dalam suatu suku pada bentuk aljabar. Pada bentuk ini, koefisien
-                                <strong>3</strong> terdapat pada <strong>3x<sup>2</sup></strong>, sedangkan
-                                koefisien <strong>2</strong> terdapat pada <strong>2x</strong>.
+                                <strong>Koefisien</strong> merupakan bilangan yang mengalikan variabel.
+                                Pada bentuk ini, koefisien <strong>3</strong> terdapat pada
+                                <strong>\(3x\)</strong>, sedangkan koefisien <strong>2</strong>
+                                terdapat pada <strong>\(2y\)</strong>.
                             </div>
                         </div>
 
                         <div class="detail-item">
                             <div class="detail-icon icon-konst"></div>
                             <div class="detail-text">
-                                <strong>Konstanta</strong> adalah suku dalam bentuk aljabar yang berupa
-                                bilangan dan tidak memuat variabel. Pada bentuk ini, konstantanya adalah
+                                <strong>Konstanta</strong> adalah suku berupa bilangan dan tidak memuat variabel.
+                                Pada bentuk <strong>\(3x + 2y + 5\)</strong>, konstantanya adalah
                                 <strong>5</strong>.
                             </div>
                         </div>
@@ -1763,7 +1793,7 @@
                 <div class="isian-wrap soal2-wrap">
                     <div class="isian-line soal2-line">
                         <span class="soal2-text">
-                            a. Bentuk aljabar <strong>2x + 5</strong> memiliki
+                            a. Bentuk aljabar <strong>\(2x + 5\)</strong> memiliki
                         </span>
 
                         <span class="suku-blank">
@@ -1774,7 +1804,7 @@
 
                     <div class="isian-line soal2-line">
                         <span class="soal2-text">
-                            b. Bentuk aljabar <strong>3x² + 2x + 5</strong> memiliki
+                            b. Bentuk aljabar <strong>\(3x + 2y + 5\)</strong> memiliki
                         </span>
 
                         <span class="suku-blank">
@@ -1791,8 +1821,8 @@
                 <div class="question-head">
                     <div class="question-number">3</div>
                     <div class="question-text">
-                        Berdasarkan gambar kardus buah, apa makna dari <strong>x²</strong> pada bentuk aljabar
-                        <strong>3x² + 2x + 5</strong> cerita kardus buah?
+                        Berdasarkan cerita pedagang buah, apa makna dari <strong>\(2y\)</strong>
+                        pada bentuk aljabar <strong>\(3x + 2y + 5\)</strong>?
                     </div>
                 </div>
 
@@ -1801,20 +1831,19 @@
                 <div class="opsi-grid" id="opsiSoal3">
                     <div class="opsi-card" data-benar="false" data-choice-question="3">
                         <div class="opsi-desc">
-                            Banyak buah lepas yang tidak dimasukkan ke dalam kardus.
+                            Banyak apel dari 3 kardus apel.
                         </div>
                     </div>
 
                     <div class="opsi-card" data-benar="true" data-choice-question="3">
                         <div class="opsi-desc">
-                            Banyak buah dalam satu susunan persegi, karena terdapat <em>x</em> baris dan
-                            <em>x</em> kolom sehingga menjadi <em>x × x</em>.
+                            Banyak jeruk dari 2 kardus jeruk, karena setiap kardus jeruk berisi \(y\) jeruk.
                         </div>
                     </div>
 
                     <div class="opsi-card" data-benar="false" data-choice-question="3">
                         <div class="opsi-desc">
-                            Banyak kardus tambahan di luar susunan utama.
+                            Banyak buah lepas yang tidak dimasukkan ke dalam kardus.
                         </div>
                     </div>
                 </div>
@@ -1823,6 +1852,30 @@
             </div>
         </div>
     </div>
+    <script>
+        function renderMathSafe(root = document.body) {
+            if (typeof renderMathInElement !== 'function') {
+                console.warn('KaTeX belum termuat.');
+                return;
+            }
+
+            renderMathInElement(root, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderMathSafe(document.body);
+        });
+
+        window.addEventListener('load', function () {
+            renderMathSafe(document.body);
+        });
+    </script>
     <script>
         (function () {
             let initialized = false;
@@ -2131,22 +2184,34 @@
                     if (!kosongA) a.classList.add(benarA ? 'correct' : 'wrong');
                     if (!kosongB) b.classList.add(benarB ? 'correct' : 'wrong');
 
-                    if (!kosongA && !kosongB && benarA && benarB) {
+                    // Kalau baru salah satu yang diisi
+                    if (kosongA || kosongB) {
+                        paksaTampilFeedback(
+                            'feedback2',
+                            'info',
+                            'Lanjutkan mengisi semua jawaban.'
+                        );
+                        return;
+                    }
+
+                    // Kalau dua-duanya sudah diisi dan benar
+                    if (benarA && benarB) {
                         paksaTampilFeedback(
                             'feedback2',
                             'success',
                             'Bagus. Jumlah suku pada kedua bentuk sudah benar.' +
-                            '<span class="explain">Penjelasan: bentuk <strong>2x + 5</strong> memiliki 2 suku, yaitu <strong>2x</strong> dan <strong>5</strong>. Bentuk <strong>3x² + 2x + 5</strong> memiliki 3 suku, yaitu <strong>3x²</strong>, <strong>2x</strong>, dan <strong>5</strong>.</span>'
+                            '<span class="explain">Penjelasan: bentuk <strong>2x + 5</strong> memiliki 2 suku, yaitu <strong>2x</strong> dan <strong>5</strong>. Bentuk <strong>3x + 2y + 5</strong> memiliki 3 suku, yaitu <strong>3x</strong>, <strong>2y</strong>, dan <strong>5</strong>.</span>'
                         );
-                    } else if (!kosongA || !kosongB) {
-                        paksaTampilFeedback(
-                            'feedback2',
-                            'error',
-                            'Masih ada jawaban yang belum tepat. Ingat, suku dipisahkan oleh tanda tambah atau kurang.'
-                        );
+                        return;
                     }
-                }
 
+                    // Kalau dua-duanya sudah diisi tapi ada yang salah
+                    paksaTampilFeedback(
+                        'feedback2',
+                        'error',
+                        'Masih ada jawaban yang belum tepat. Ingat, suku dipisahkan oleh tanda tambah atau kurang.'
+                    );
+                }
                 function cekSoal3() {
                     const pilihan = selectedChoices[3];
 
@@ -2166,18 +2231,17 @@
                         paksaTampilFeedback(
                             'feedback3',
                             'success',
-                            'Benar. x² menyatakan banyak buah dalam satu susunan persegi.' +
-                            '<span class="explain">Penjelasan: satu susunan terdiri dari <strong>x baris</strong> dan <strong>x kolom</strong>, sehingga banyak buahnya adalah <strong>x × x = x²</strong>.</span>'
+                            'Benar. 2y menyatakan banyak jeruk dari 2 kardus jeruk.' +
+                            '<span class="explain">Penjelasan: dalam cerita, y menyatakan banyak jeruk dalam satu kardus jeruk. Karena ada 2 kardus jeruk, maka banyak jeruk ditulis sebagai <strong>2 × y = 2y</strong>.</span>'
                         );
                     } else {
                         paksaTampilFeedback(
                             'feedback3',
                             'error',
-                            'Jawaban itu belum tepat. Coba ingat kembali bahwa x² berasal dari x × x.'
+                            'Jawaban itu belum tepat. Coba periksa kembali makna setiap bagian pada bentuk aljabar.'
                         );
                     }
                 }
-
                 document.querySelectorAll('[data-choice-question]').forEach(card => {
                     card.addEventListener('click', function (e) {
                         e.preventDefault();

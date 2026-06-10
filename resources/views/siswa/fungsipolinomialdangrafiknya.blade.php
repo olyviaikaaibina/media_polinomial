@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                                                                                            ]
-                                                                                                                                                                                                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                                                                                                                                                                                                    });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -1629,6 +1629,96 @@
                 padding: 14px;
             }
         }
+
+        /* ===== FIX LATIHAN NO. 3: HAPUS KOLOM COCOK ===== */
+        .match-table.latihan-match-mobile {
+            display: grid !important;
+            grid-template-columns: minmax(260px, 1.35fr) minmax(120px, .65fr) minmax(240px, 1fr) !important;
+            gap: 14px !important;
+            align-items: stretch !important;
+            margin-top: 14px !important;
+        }
+
+        .match-table.latihan-match-mobile .match-header {
+            padding: 14px 16px !important;
+            border-radius: 14px !important;
+            background: #f1f3f6 !important;
+            color: #111 !important;
+            font-size: 14px !important;
+            font-weight: 900 !important;
+            text-align: center !important;
+        }
+
+        .match-table.latihan-match-mobile .match-item {
+            min-width: 0 !important;
+            padding: 14px 16px !important;
+            border: 1px solid rgba(0, 0, 0, .10) !important;
+            border-radius: 14px !important;
+            background: #fff !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .match-table.latihan-match-mobile .fungsi-col {
+            grid-column: auto !important;
+        }
+
+        .match-table.latihan-match-mobile .jawaban-col {
+            grid-column: auto !important;
+        }
+
+        .match-table.latihan-match-mobile .perilaku-col {
+            grid-column: auto !important;
+        }
+
+        .match-table.latihan-match-mobile .latihan-input {
+            width: 100% !important;
+        }
+
+        .match-table.latihan-match-mobile .latihan-input.kecil {
+            max-width: 110px !important;
+            text-align: center !important;
+            text-transform: uppercase !important;
+        }
+
+        .match-table.latihan-match-mobile .mobile-label {
+            display: none;
+        }
+
+        /* HP / Tablet */
+        @media (max-width: 860px) {
+            .match-table.latihan-match-mobile {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            .match-table.latihan-match-mobile .match-header {
+                display: none !important;
+            }
+
+            .match-table.latihan-match-mobile .match-item {
+                display: block !important;
+                padding: 12px !important;
+            }
+
+            .match-table.latihan-match-mobile .fungsi-col {
+                border-left: 5px solid #8AD06E !important;
+                background: #f8fff6 !important;
+            }
+
+            .match-table.latihan-match-mobile .mobile-label {
+                display: block !important;
+                margin-bottom: 6px !important;
+                color: #555 !important;
+                font-size: 13px !important;
+                font-weight: 900 !important;
+            }
+
+            .match-table.latihan-match-mobile .latihan-input.kecil {
+                max-width: 100% !important;
+                text-align: left !important;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1740,6 +1830,7 @@
                             </div>
 
                             <div class="btn-row">
+                                <button type="button" class="btn-cek" id="btnCekExplore">✅ Cek Semua</button>
                                 <button type="button" class="btn-reset" id="btnResetExplore">↺ Reset</button>
                                 <button type="button" class="btn-reset" id="btnShowExplain" disabled>💡 Lihat
                                     Pembahasan</button>
@@ -1873,7 +1964,7 @@
                             </div>
 
                             <div class="poly-info-card">
-                                <div class="poly-info-label">Jumlah Suku</div>
+                                <div class="poly-info-label">Banyak Suku</div>
                                 <div class="poly-info-value small" id="terms">1 suku</div>
                             </div>
 
@@ -2350,164 +2441,197 @@
                     </div>
                 </div>
             </div>
-      
 
-        {{-- =========================
-        LATIHAN
-        ========================= --}}
-        <div class="card card-example">
-            <div class="latihan-title-row">
-                <div class="latihan-badge">LATIHAN</div>
+
+
+            {{-- =========================
+            LATIHAN
+            ========================= --}}
+            {{-- =========================
+            LATIHAN
+            ========================= --}}
+            <div class="card card-example">
+                <div class="latihan-title-row">
+                    <div class="latihan-badge">LATIHAN</div>
+                </div>
+
+                {{-- PETUNJUK LATIHAN --}}
+                <div class="note" style="margin-bottom:18px;">
+                    <b>Petunjuk pengerjaan:</b> Kerjakan soal berurutan. Untuk pangkat, ketik angka setelah variabel,
+                    misalnya <b>x2</b> untuk <b>x²</b> dan <b>x3</b> untuk <b>x³</b>. Titik ditulis dalam bentuk
+                    <b>(x, y)</b>.
+                </div>
+
+                {{-- 1. Analisis Fungsi Polinomial --}}
+                <section class="latihan-section" id="latihanSoal1">
+                    <h3>1. Analisis Fungsi Polinomial</h3>
+
+                    <div class="latihan-rumus">
+                        Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b>
+                    </div>
+
+                    <p class="latihan-sub">Tentukan:</p>
+
+                    <div class="latihan-grid">
+                        <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
+                        <input type="text" id="a1" class="latihan-input" placeholder="Jawaban kamu...">
+
+                        <div class="soal-label">b. Banyak sukunya</div>
+                        <input type="text" id="a2" class="latihan-input" placeholder="Jawaban kamu...">
+
+                        <div class="soal-label">c. Suku utamanya</div>
+                        <input type="text" id="a3" class="latihan-input" placeholder="Jawaban kamu...">
+
+                        <div class="soal-label">d. Koefisien utamanya</div>
+                        <input type="text" id="a4" class="latihan-input" placeholder="Jawaban kamu...">
+
+                        <div class="soal-label">e. Perilaku ujung grafiknya</div>
+                        <input type="text" id="a5" class="latihan-input" placeholder="Jawaban kamu...">
+                    </div>
+
+                    <div class="latihan-actions bawah">
+                        <button type="button" class="latihan-btn" id="cekSoal1Btn">
+                            CEK JAWABAN NO. 1
+                        </button>
+                    </div>
+
+                    <div id="hasilSoal1" class="hasil-latihan">
+                        Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.
+                    </div>
+                </section>
+
+                {{-- 2. Grafik Fungsi Kuadrat --}}
+                <section class="latihan-section latihan-locked" id="latihanSoal2">
+                    <h3>2. Grafik Fungsi Kuadrat</h3>
+
+                    <div class="latihan-rumus">
+                        Diberikan fungsi <b>f(x) = x² − 2x − 8</b>
+                    </div>
+
+                    <p class="latihan-sub">Tentukan pula:</p>
+
+                    <div class="latihan-grid">
+                        <div class="soal-label">a. Titik potong dengan sumbu-x</div>
+                        <input type="text" id="b1" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+
+                        <div class="soal-label">b. Titik potong dengan sumbu-y</div>
+                        <input type="text" id="b2" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+
+                        <div class="soal-label">c. Vertex / titik puncak</div>
+                        <input type="text" id="b3" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+                    </div>
+
+                    <div class="latihan-actions bawah">
+                        <button type="button" class="latihan-btn" id="cekSoal2Btn" disabled>
+                            CEK JAWABAN NO. 2
+                        </button>
+                    </div>
+
+                    <div id="hasilSoal2" class="hasil-latihan">
+                        Soal nomor 2 akan terbuka jika nomor 1 sudah benar.
+                    </div>
+                </section>
+
+                {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
+                <section class="latihan-section latihan-locked" id="latihanSoal3">
+                    <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
+
+                    <p class="latihan-sub">
+                        Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
+                    </p>
+
+                    <div class="grafik-box">
+                        <div class="grafik-caption">Grafik A, B, C:</div>
+
+                        <div class="grafik-row">
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/A.png') }}" alt="Grafik A">
+                                <div class="grafik-huruf">A</div>
+                            </div>
+
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/B.png') }}" alt="Grafik B">
+                                <div class="grafik-huruf">B</div>
+                            </div>
+
+                            <div class="grafik-item">
+                                <img src="{{ asset('img/C.png') }}" alt="Grafik C">
+                                <div class="grafik-huruf">C</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="match-table latihan-match-mobile">
+                        {{-- Header --}}
+                        <div class="match-header fungsi-col">Fungsinya</div>
+                        <div class="match-header jawaban-col">Jawaban</div>
+                        <div class="match-header perilaku-col">Perilaku Ujung</div>
+
+                        {{-- Baris 1 --}}
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
+                        </div>
+
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c1">Jawaban</label>
+                            <input type="text" id="c1" class="latihan-input kecil" placeholder="Jawaban kamu..." disabled>
+                        </div>
+
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c1u">Perilaku Ujung</label>
+                            <input type="text" id="c1u" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+                        </div>
+
+                        {{-- Baris 2 --}}
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
+                        </div>
+
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c2">Jawaban</label>
+                            <input type="text" id="c2" class="latihan-input kecil" placeholder="Jawaban kamu..." disabled>
+                        </div>
+
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c2u">Perilaku Ujung</label>
+                            <input type="text" id="c2u" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+                        </div>
+
+                        {{-- Baris 3 --}}
+                        <div class="match-item fungsi-col">
+                            <div class="mobile-label">Fungsi</div>
+                            <div><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
+                        </div>
+
+                        <div class="match-item jawaban-col">
+                            <label class="mobile-label" for="c3">Jawaban</label>
+                            <input type="text" id="c3" class="latihan-input kecil" placeholder="Jawaban kamu..." disabled>
+                        </div>
+
+                        <div class="match-item perilaku-col">
+                            <label class="mobile-label" for="c3u">Perilaku Ujung</label>
+                            <input type="text" id="c3u" class="latihan-input" placeholder="Jawaban kamu..." disabled>
+                        </div>
+                    </div>
+
+                    <div class="latihan-actions bawah">
+                        <button type="button" class="latihan-btn" id="cekSoal3Btn" disabled>
+                            CEK JAWABAN NO. 3
+                        </button>
+
+                        <button type="button" class="latihan-btn reset" id="resetLatihanBtn">
+                            RESET SEMUA
+                        </button>
+                    </div>
+
+                    <div id="hasilSoal3" class="hasil-latihan">
+                        Soal nomor 3 akan terbuka jika nomor 2 sudah benar.
+                    </div>
+                </section>
             </div>
-
-            {{-- 1. Analisis Fungsi Polinomial --}}
-            <section class="latihan-section" id="latihanSoal1">
-                <h3>1. Analisis Fungsi Polinomial</h3>
-                <div class="latihan-rumus">Diberikan fungsi <b>p(x) = 7x³ − 3x² + 15</b></div>
-                <p class="latihan-sub">Tentukan:</p>
-
-                <div class="latihan-grid">
-                    <div class="soal-label">a. Derajat fungsi polinomial tersebut</div>
-                    <input type="text" id="a1" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">b. Jumlah sukunya</div>
-                    <input type="text" id="a2" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">c. Suku utamanya</div>
-                    <input type="text" id="a3" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">d. Koefisien utamanya</div>
-                    <input type="text" id="a4" class="latihan-input" placeholder="Jawaban...">
-
-                    <div class="soal-label">e. Perilaku ujung grafiknya</div>
-                    <input type="text" id="a5" class="latihan-input" placeholder="Contoh: kiri turun kanan naik">
-                </div>
-
-                <div class="latihan-actions bawah">
-                    <button type="button" class="latihan-btn" id="cekSoal1Btn">CEK JAWABAN NO. 1</button>
-                </div>
-
-                <div id="hasilSoal1" class="hasil-latihan">
-                    Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.
-                </div>
-            </section>
-
-            {{-- 2. Grafik Fungsi Kuadrat --}}
-            <section class="latihan-section latihan-locked" id="latihanSoal2">
-                <h3>2. Grafik Fungsi Kuadrat</h3>
-                <div class="latihan-rumus">Diberikan fungsi <b>f(x) = x² − 2x − 8</b></div>
-                <p class="latihan-sub">Tentukan pula:</p>
-
-                <div class="latihan-grid">
-                    <div class="soal-label">a. Titik potong dengan sumbu-x</div>
-                    <input type="text" id="b1" class="latihan-input" placeholder="Jawaban..." disabled>
-
-                    <div class="soal-label">b. Titik potong dengan sumbu-y</div>
-                    <input type="text" id="b2" class="latihan-input" placeholder="Jawaban..." disabled>
-
-                    <div class="soal-label">c. Vertex / titik puncak</div>
-                    <input type="text" id="b3" class="latihan-input" placeholder="Jawaban..." disabled>
-                </div>
-
-                <div class="latihan-actions bawah">
-                    <button type="button" class="latihan-btn" id="cekSoal2Btn" disabled>CEK JAWABAN NO. 2</button>
-                </div>
-
-                <div id="hasilSoal2" class="hasil-latihan">
-                    Soal nomor 2 akan terbuka jika nomor 1 sudah benar.
-                </div>
-            </section>
-
-            {{-- 3. Perilaku Ujung & Mencocokkan Grafik --}}
-            <section class="latihan-section latihan-locked" id="latihanSoal3">
-                <h3>3. Perilaku Ujung &amp; Mencocokkan Grafik</h3>
-                <p class="latihan-sub">
-                    Tentukan grafik yang sesuai untuk masing-masing fungsi berikut berdasarkan perilaku ujungnya.
-                </p>
-
-                <div class="grafik-box">
-                    <div class="grafik-caption">Grafik A, B, C:</div>
-                    <div class="grafik-row">
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/A.png') }}" alt="Grafik A">
-                            <div class="grafik-huruf">A</div>
-                        </div>
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/B.png') }}" alt="Grafik B">
-                            <div class="grafik-huruf">B</div>
-                        </div>
-                        <div class="grafik-item">
-                            <img src="{{ asset('img/C.png') }}" alt="Grafik C">
-                            <div class="grafik-huruf">C</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="match-table latihan-match-mobile">
-                    <div class="match-header fungsi-col">Fungsinya</div>
-                    <div class="match-header jawaban-col">Jawaban</div>
-                    <div class="match-header perilaku-col">Perilaku Ujung</div>
-                    <div class="match-header cocok-col">Cocok</div>
-
-                    <div class="match-item fungsi-col">
-                        <div class="mobile-label">Fungsi</div>
-                        <div><b>1.</b> <i>f(x)</i> = 2x³ + 5x² − 1</div>
-                    </div>
-                    <div class="match-item jawaban-col">
-                        <label class="mobile-label" for="c1">Jawaban</label>
-                        <input type="text" id="c1" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-                    <div class="match-item perilaku-col">
-                        <label class="mobile-label" for="c1u">Perilaku Ujung</label>
-                        <input type="text" id="c1u" class="latihan-input" placeholder="Contoh: turun-naik" disabled>
-                    </div>
-                    <div class="match-item cocok-col">
-                        <label class="mobile-label" for="c1c">Cocok</label>
-                        <input type="text" id="c1c" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-
-                    <div class="match-item fungsi-col">
-                        <div class="mobile-label">Fungsi</div>
-                        <div><b>2.</b> <i>g(x)</i> = 3x⁴ − 6x² + 2</div>
-                    </div>
-                    <div class="match-item jawaban-col">
-                        <label class="mobile-label" for="c2">Jawaban</label>
-                        <input type="text" id="c2" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-                    <div class="match-item perilaku-col">
-                        <label class="mobile-label" for="c2u">Perilaku Ujung</label>
-                        <input type="text" id="c2u" class="latihan-input" placeholder="Contoh: naik-naik" disabled>
-                    </div>
-                    <div class="match-item cocok-col">
-                        <label class="mobile-label" for="c2c">Cocok</label>
-                        <input type="text" id="c2c" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-
-                    <div class="match-item fungsi-col">
-                        <div class="mobile-label">Fungsi</div>
-                        <div><b>3.</b> <i>h(x)</i> = −x⁴ + 2x² − 3</div>
-                    </div>
-                    <div class="match-item jawaban-col">
-                        <label class="mobile-label" for="c3">Jawaban</label>
-                        <input type="text" id="c3" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-                    <div class="match-item perilaku-col">
-                        <label class="mobile-label" for="c3u">Perilaku Ujung</label>
-                        <input type="text" id="c3u" class="latihan-input" placeholder="Contoh: turun-turun" disabled>
-                    </div>
-                    <div class="match-item cocok-col">
-                        <label class="mobile-label" for="c3c">Cocok</label>
-                        <input type="text" id="c3c" class="latihan-input kecil" placeholder="A/B/C" disabled>
-                    </div>
-                </div>
-
-                <div class="latihan-actions bawah">
-                    <button type="button" class="latihan-btn" id="cekSoal3Btn" disabled>CEK JAWABAN NO. 3</button>
-                    <button type="button" class="latihan-btn reset" id="resetLatihanBtn">RESET SEMUA</button>
-                </div>
-            </section>
         </div>
-    </div>
     </div>
 
     <!-- Save Progress -->
@@ -2517,6 +2641,18 @@
 
     {{-- =========================
     SCRIPT EKSPLORASI
+    ========================= --}}
+    {{-- =========================
+    SCRIPT EKSPLORASI
+    - Tidak cek otomatis
+    - Cek jawaban hanya lewat tombol Cek Semua
+    ========================= --}}
+    {{-- =========================
+    SCRIPT EKSPLORASI
+    - Tidak cek otomatis
+    - Cek hanya lewat tombol Cek Semua
+    - Tulisan "Belum dicek" hilang
+    - Feedback besar disembunyikan
     ========================= --}}
     <script>
         (function () {
@@ -2531,7 +2667,6 @@
                 }
             };
 
-            // ==== Eksplorasi canvas ====
             const slider = document.getElementById('expX');
             const kpiX = document.getElementById('kpiX');
             const kpiFx = document.getElementById('kpiFx');
@@ -2545,7 +2680,6 @@
             const txtIdea = document.getElementById('txtIdea');
             const explainBox = document.getElementById('expExplain');
 
-            // ==== Jawaban siswa ====
             const studentFx = document.getElementById('studentFx');
             const studentPos = document.getElementById('studentPos');
             const studentTrend = document.getElementById('studentTrend');
@@ -2557,11 +2691,24 @@
             const feedbackExplore = document.getElementById('feedbackExplore');
             const btnResetExplore = document.getElementById('btnResetExplore');
             const btnShowExplain = document.getElementById('btnShowExplain');
+            const materiLanjutan = document.getElementById('materiLanjutan');
+            const materiLockedInfo = document.getElementById('materiLockedInfo');
 
             const canvas = document.getElementById('expGraph');
             const ctx = canvas ? canvas.getContext('2d') : null;
 
             let exploreInfoUnlocked = false;
+
+            let btnCekExplore = document.getElementById('btnCekExplore');
+
+            if (!btnCekExplore && btnResetExplore) {
+                btnCekExplore = document.createElement('button');
+                btnCekExplore.type = 'button';
+                btnCekExplore.id = 'btnCekExplore';
+                btnCekExplore.className = 'btn-cek';
+                btnCekExplore.innerHTML = '✅ Cek Semua';
+                btnResetExplore.parentNode.insertBefore(btnCekExplore, btnResetExplore);
+            }
 
             function fx(x) {
                 return x * x - 2 * x - 3;
@@ -2579,20 +2726,88 @@
                 return 'Tetap';
             }
 
-            function setMiniStatus(el, state, text) {
-                if (!el) return;
-                el.className = 'mini-badge';
-                if (state === 'ok') el.classList.add('good');
-                if (state === 'bad') el.classList.add('info');
-                el.textContent = text;
+            function hideFeedbackExplore() {
+                if (!feedbackExplore) return;
+                feedbackExplore.className = 'feedback';
+                feedbackExplore.innerHTML = '';
+                feedbackExplore.style.setProperty('display', 'none', 'important');
             }
 
-            function allAnswered() {
-                return (
-                    studentFx?.value !== '' &&
-                    !!studentPos?.value &&
-                    !!studentTrend?.value
-                );
+            function setMiniStatus(el, state, text) {
+                if (!el) return;
+
+                el.className = 'mini-badge';
+                el.textContent = text || '';
+
+                if (!text) {
+                    el.style.display = 'none';
+                    return;
+                }
+
+                el.style.display = 'inline-flex';
+                el.style.marginTop = '8px';
+
+                el.style.borderColor = 'rgba(0,0,0,.12)';
+                el.style.background = '#fff';
+                el.style.color = '#555';
+
+                if (state === 'ok') {
+                    el.style.borderColor = 'rgba(27,122,42,.22)';
+                    el.style.background = 'rgba(27,122,42,.08)';
+                    el.style.color = '#0f5f22';
+                }
+
+                if (state === 'bad') {
+                    el.style.borderColor = 'rgba(214,40,40,.22)';
+                    el.style.background = 'rgba(214,40,40,.10)';
+                    el.style.color = '#8b1e1e';
+                }
+
+                if (state === 'empty') {
+                    el.style.borderColor = 'rgba(217,119,6,.22)';
+                    el.style.background = 'rgba(217,119,6,.10)';
+                    el.style.color = '#7a4a00';
+                }
+            }
+
+            function hideAllMiniStatus() {
+                setMiniStatus(statusFx, '', '');
+                setMiniStatus(statusPos, '', '');
+                setMiniStatus(statusTrend, '', '');
+            }
+
+            function lockMateri() {
+                exploreInfoUnlocked = false;
+
+                if (materiLanjutan) {
+                    materiLanjutan.style.display = 'none';
+                }
+
+                if (materiLockedInfo) {
+                    materiLockedInfo.className = 'info-feedback';
+                    materiLockedInfo.innerHTML = '';
+                }
+
+                if (btnShowExplain) {
+                    btnShowExplain.disabled = true;
+                }
+            }
+
+            function unlockMateri() {
+                exploreInfoUnlocked = true;
+
+                if (materiLanjutan) {
+                    materiLanjutan.style.display = 'block';
+                }
+
+                if (materiLockedInfo) {
+                    materiLockedInfo.className = 'info-feedback ok';
+                    materiLockedInfo.innerHTML = '';
+                }
+
+                if (btnShowExplain) {
+                    btnShowExplain.disabled = false;
+                }
             }
 
             function updateKPIVisibility(x, y, trend) {
@@ -2609,16 +2824,20 @@
 
             function resizeCanvas() {
                 if (!canvas || !ctx) return;
+
                 const dpr = window.devicePixelRatio || 1;
                 const rect = canvas.getBoundingClientRect();
+
                 canvas.width = Math.floor(rect.width * dpr);
                 canvas.height = Math.floor(rect.height * dpr);
+
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
 
             function worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax) {
                 const sx = pad + (x - xMin) * (W - 2 * pad) / (xMax - xMin);
                 const sy = (H - pad) - (y - yMin) * (H - 2 * pad) / (yMax - yMin);
+
                 return { sx, sy };
             }
 
@@ -2630,14 +2849,18 @@
                 const H = rect.height;
                 const pad = 28;
 
-                const xMin = -6, xMax = 6;
+                const xMin = -6;
+                const xMax = 6;
 
-                let minY = Infinity, maxY = -Infinity;
+                let minY = Infinity;
+                let maxY = -Infinity;
+
                 for (let x = xMin; x <= xMax; x += 0.25) {
                     const y = fx(x);
                     minY = Math.min(minY, y);
                     maxY = Math.max(maxY, y);
                 }
+
                 const yMin = Math.floor(minY - 2);
                 const yMax = Math.ceil(maxY + 2);
 
@@ -2647,9 +2870,11 @@
 
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = 'rgba(0,0,0,.06)';
+
                 for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x += 1) {
                     const p1 = worldToScreen(x, yMin, W, H, pad, xMin, xMax, yMin, yMax);
                     const p2 = worldToScreen(x, yMax, W, H, pad, xMin, xMax, yMin, yMax);
+
                     ctx.beginPath();
                     ctx.moveTo(p1.sx, p1.sy);
                     ctx.lineTo(p2.sx, p2.sy);
@@ -2659,6 +2884,7 @@
                 for (let y = yMin; y <= yMax; y += 2) {
                     const p1 = worldToScreen(xMin, y, W, H, pad, xMin, xMax, yMin, yMax);
                     const p2 = worldToScreen(xMax, y, W, H, pad, xMin, xMax, yMin, yMax);
+
                     ctx.beginPath();
                     ctx.moveTo(p1.sx, p1.sy);
                     ctx.lineTo(p2.sx, p2.sy);
@@ -2667,6 +2893,7 @@
 
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = 'rgba(0,0,0,.28)';
+
                 const oy = worldToScreen(xMin, 0, W, H, pad, xMin, xMax, yMin, yMax).sy;
                 const ox = worldToScreen(0, yMin, W, H, pad, xMin, xMax, yMin, yMax).sx;
 
@@ -2687,6 +2914,7 @@
                 ctx.lineWidth = 3;
                 ctx.strokeStyle = 'rgba(43,108,176,.90)';
                 ctx.beginPath();
+
                 let started = false;
                 const samples = 240;
 
@@ -2694,6 +2922,7 @@
                     const x = xMin + (xMax - xMin) * (i / samples);
                     const y = fx(x);
                     const p = worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax);
+
                     if (!started) {
                         ctx.moveTo(p.sx, p.sy);
                         started = true;
@@ -2701,6 +2930,7 @@
                         ctx.lineTo(p.sx, p.sy);
                     }
                 }
+
                 ctx.stroke();
 
                 const y0 = fx(x0);
@@ -2708,6 +2938,7 @@
 
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = 'rgba(27,122,42,.18)';
+
                 ctx.beginPath();
                 ctx.moveTo(p0.sx, pad);
                 ctx.lineTo(p0.sx, H - pad);
@@ -2730,14 +2961,12 @@
                 ctx.stroke();
             }
 
-            const SPECIAL = {
-                vertex: { x: 1, y: -4 }
-            };
-
             function setInsight(kind, text) {
                 if (!insightChip) return;
+
                 insightChip.classList.remove('ok', 'warn');
                 insightChip.textContent = text;
+
                 if (kind) {
                     insightChip.classList.add(kind === 'ok' ? 'ok' : 'warn');
                 }
@@ -2752,39 +2981,37 @@
                     txtPoint.innerHTML = `Titik saat ini adalah $(${x},${y})$.`;
                 }
 
-                const posisi = (y > 0)
-                    ? `Titik <b>di atas</b> sumbu-x (positif).`
-                    : (y < 0)
-                        ? `Titik <b>di bawah</b> sumbu-x (negatif).`
-                        : `Titik tepat <b>di sumbu-x</b> (akar).`;
+                const posisi = y > 0
+                    ? `Titik <b>di atas</b> sumbu-x karena nilai $f(x)$ positif.`
+                    : y < 0
+                        ? `Titik <b>di bawah</b> sumbu-x karena nilai $f(x)$ negatif.`
+                        : `Titik tepat <b>pada sumbu-x</b> karena nilai $f(x)=0$.`;
 
-                const arah = (trend === 'Naik')
-                    ? `Nilai $f(x)$ <b>naik</b>.`
-                    : (trend === 'Turun')
-                        ? `Nilai $f(x)$ <b>turun</b>.`
-                        : `Nilai $f(x)$ <b>tetap</b>.`;
+                const arah = trend === 'Naik'
+                    ? `Nilai fungsi sedang <b>naik</b>.`
+                    : trend === 'Turun'
+                        ? `Nilai fungsi sedang <b>turun</b>.`
+                        : `Nilai fungsi berada pada titik perubahan arah, sehingga dianggap <b>tetap</b>.`;
 
                 if (txtPos) {
                     txtPos.innerHTML = `${posisi} ${arah}`;
                 }
 
-                const isVertex = (x === SPECIAL.vertex.x && y === SPECIAL.vertex.y);
-
                 if (txtIdea) {
                     if (y === 0) {
-                        txtIdea.innerHTML = `✅ Ini <b>titik potong sumbu-x</b> karena $f(${x})=0$.`;
-                    } else if (isVertex) {
-                        txtIdea.innerHTML = `⭐ Ini <b>titik puncak (minimum)</b> yaitu $(1,-4)$.`;
+                        txtIdea.innerHTML = `✅ Ini merupakan <b>titik potong sumbu-x</b> karena $f(${x})=0$.`;
+                    } else if (x === 1 && y === -4) {
+                        txtIdea.innerHTML = `⭐ Ini merupakan <b>titik puncak minimum</b>, yaitu $(1,-4)$.`;
                     } else if (x < 1) {
-                        txtIdea.innerHTML = `Mendekati $x=1$, nilai $f(x)$ cenderung <b>mengecil</b>.`;
+                        txtIdea.innerHTML = `Saat $x$ mendekati 1 dari kiri, nilai $f(x)$ cenderung <b>mengecil</b>.`;
                     } else {
-                        txtIdea.innerHTML = `Lewat $x=1$, nilai $f(x)$ cenderung <b>membesar</b>.`;
+                        txtIdea.innerHTML = `Setelah melewati $x=1$, nilai $f(x)$ cenderung <b>membesar</b>.`;
                     }
                 }
 
                 if (y === 0) {
                     setInsight('ok', 'Insight: titik potong sumbu-x');
-                } else if (isVertex) {
+                } else if (x === 1 && y === -4) {
                     setInsight('ok', 'Insight: titik puncak');
                 } else {
                     setInsight('warn', 'Insight: amati perubahan');
@@ -2800,7 +3027,8 @@
             }
 
             function showExplanation() {
-                if (!slider || !explainBox || !allAnswered()) return;
+                if (!slider || !explainBox || !exploreInfoUnlocked) return;
+
                 const x = parseInt(slider.value, 10);
                 const y = fx(x);
                 const trend = getCorrectTrend(x);
@@ -2809,69 +3037,78 @@
                 updateExplanation(x, y, trend);
             }
 
-            function validateExploreAnswers() {
-                if (!slider || !feedbackExplore) return;
+            function resetAfterAnswerChanged() {
+                hideAllMiniStatus();
+                hideFeedbackExplore();
+                lockMateri();
+                hideExplanation();
+                setInsight('', 'Insight: siap diamati');
+
+                if (slider) {
+                    const x = parseInt(slider.value, 10);
+                    const y = fx(x);
+                    const trend = getCorrectTrend(x);
+                    updateKPIVisibility(x, y, trend);
+                }
+            }
+
+            function cekExploreAnswers() {
+                if (!slider) return;
 
                 const x = parseInt(slider.value, 10);
                 const y = fx(x);
                 const posisiBenar = getCorrectPosition(y);
                 const trendBenar = getCorrectTrend(x);
 
-                if (studentFx?.value === '') {
-                    setMiniStatus(statusFx, '', 'Belum dijawab');
+                let kosong = [];
+
+                if (!studentFx || studentFx.value.trim() === '') {
+                    kosong.push('1');
+                    setMiniStatus(statusFx, 'empty', 'Belum dijawab');
                 } else if (Number(studentFx.value) === y) {
                     setMiniStatus(statusFx, 'ok', 'Benar');
                 } else {
                     setMiniStatus(statusFx, 'bad', 'Salah');
                 }
 
-                if (!studentPos?.value) {
-                    setMiniStatus(statusPos, '', 'Belum dijawab');
+                if (!studentPos || !studentPos.value) {
+                    kosong.push('2');
+                    setMiniStatus(statusPos, 'empty', 'Belum dijawab');
                 } else if (studentPos.value === posisiBenar) {
                     setMiniStatus(statusPos, 'ok', 'Benar');
                 } else {
                     setMiniStatus(statusPos, 'bad', 'Salah');
                 }
 
-                if (!studentTrend?.value) {
-                    setMiniStatus(statusTrend, '', 'Belum dijawab');
+                if (!studentTrend || !studentTrend.value) {
+                    kosong.push('3');
+                    setMiniStatus(statusTrend, 'empty', 'Belum dijawab');
                 } else if (studentTrend.value === trendBenar) {
                     setMiniStatus(statusTrend, 'ok', 'Benar');
                 } else {
                     setMiniStatus(statusTrend, 'bad', 'Salah');
                 }
 
-                if (allAnswered()) {
-                    exploreInfoUnlocked = true;
+                if (kosong.length) {
+                    lockMateri();
                     updateKPIVisibility(x, y, trendBenar);
-
-                    if (btnShowExplain) btnShowExplain.disabled = false;
-
-                    feedbackExplore.className = 'feedback ok';
-                    feedbackExplore.innerHTML =
-                        `✅ Semua soal sudah terjawab. Status jawaban terdeteksi otomatis, dan pembahasan sekarang bisa dibuka.`;
-                } else {
-                    exploreInfoUnlocked = false;
-                    updateKPIVisibility(x, y, trendBenar);
-
-                    if (btnShowExplain) btnShowExplain.disabled = true;
-                    feedbackExplore.className = 'feedback';
-                    feedbackExplore.innerHTML = 'Semua jawaban sudah diisi.';
                     hideExplanation();
+                    hideFeedbackExplore();
+                    return;
                 }
+
+                unlockMateri();
+                updateKPIVisibility(x, y, trendBenar);
+                updateExplanation(x, y, trendBenar);
+                hideFeedbackExplore();
+                rerenderMath(document.body);
             }
 
             function resetStudentAnswerState() {
-                setMiniStatus(statusFx, '', 'Belum dijawab');
-                setMiniStatus(statusPos, '', 'Belum dijawab');
-                setMiniStatus(statusTrend, '', 'Belum dijawab');
-
-                if (feedbackExplore) {
-                    feedbackExplore.className = 'feedback';
-                    feedbackExplore.innerHTML = 'Amati grafiknya, lalu isi jawabanmu.';
-                }
-
-                if (btnShowExplain) btnShowExplain.disabled = true;
+                hideAllMiniStatus();
+                hideFeedbackExplore();
+                lockMateri();
+                hideExplanation();
                 setInsight('', 'Insight: siap diamati');
             }
 
@@ -2884,65 +3121,78 @@
 
                 updateKPIVisibility(x, y, trend);
 
-                if (coordChip) coordChip.textContent = `Titik: (${x}, ${y})`;
+                if (coordChip) {
+                    coordChip.textContent = `Titik: (${x}, ${y})`;
+                }
 
                 resizeCanvas();
                 drawGraph(x);
             }
 
-            studentFx?.addEventListener('input', validateExploreAnswers);
-            studentPos?.addEventListener('change', validateExploreAnswers);
-            studentTrend?.addEventListener('change', validateExploreAnswers);
+            btnCekExplore?.addEventListener('click', function () {
+                cekExploreAnswers();
+            });
+
+            studentFx?.addEventListener('input', function () {
+                resetAfterAnswerChanged();
+                updateExplorerUI();
+            });
+
+            studentPos?.addEventListener('change', function () {
+                resetAfterAnswerChanged();
+                updateExplorerUI();
+            });
+
+            studentTrend?.addEventListener('change', function () {
+                resetAfterAnswerChanged();
+                updateExplorerUI();
+            });
 
             btnResetExplore?.addEventListener('click', function () {
                 if (studentFx) studentFx.value = '';
                 if (studentPos) studentPos.value = '';
                 if (studentTrend) studentTrend.value = '';
 
-                exploreInfoUnlocked = false;
+                resetStudentAnswerState();
 
                 if (slider) {
                     const x = parseInt(slider.value, 10);
                     updateKPIVisibility(x, fx(x), getCorrectTrend(x));
                 }
 
-                hideExplanation();
-                resetStudentAnswerState();
                 rerenderMath(document.body);
             });
 
             btnShowExplain?.addEventListener('click', function () {
-                if (allAnswered()) {
+                if (exploreInfoUnlocked) {
                     showExplanation();
                 }
             });
 
             if (slider && canvas && ctx) {
-                window.addEventListener('resize', () => {
+                window.addEventListener('resize', function () {
                     resizeCanvas();
                     updateExplorerUI();
                 });
 
-                slider.addEventListener('input', () => {
-                    exploreInfoUnlocked = false;
-                    updateExplorerUI();
-                    hideExplanation();
-
+                slider.addEventListener('input', function () {
                     if (studentFx) studentFx.value = '';
                     if (studentPos) studentPos.value = '';
                     if (studentTrend) studentTrend.value = '';
 
                     resetStudentAnswerState();
+                    updateExplorerUI();
                 });
 
-                requestAnimationFrame(() => {
+                requestAnimationFrame(function () {
                     resizeCanvas();
                     updateExplorerUI();
-                    hideExplanation();
                     resetStudentAnswerState();
                 });
             }
 
+            hideFeedbackExplore();
+            hideAllMiniStatus();
             rerenderMath(document.body);
         })();
     </script>
@@ -3120,12 +3370,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                                                                                                                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                                                                                                                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                                                                                                                                                                                            ${posisiGrafik}
-                                                                                                                                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
-                                                                                                                                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                                                                                                                                                                                        `;
+                                                                                                                                                                                                                                                        Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                                                                                                                                                                                        Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                                                                                                                                                                                        ${posisiGrafik}
+                                                                                                                                                                                                                                                        Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                                                                                                                                                                                        saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                                                                                                                                                                                    `;
                 }
             }
 
@@ -3666,453 +3916,6 @@
         })();
     </script>
 
-    <script>
-        (function () {
-            const rerenderMath = (root) => {
-                if (window.renderMathInElement) {
-                    renderMathInElement(root || document.body, {
-                        delimiters: [
-                            { left: '$$', right: '$$', display: true },
-                            { left: '$', right: '$', display: false }
-                        ]
-                    });
-                }
-            };
-
-            const slider = document.getElementById('expX');
-            const kpiX = document.getElementById('kpiX');
-            const kpiFx = document.getElementById('kpiFx');
-            const kpiTrend = document.getElementById('kpiTrend');
-            const insightChip = document.getElementById('expInsightChip');
-            const coordChip = document.getElementById('expCoordChip');
-
-            const txtSub = document.getElementById('txtSub');
-            const txtPoint = document.getElementById('txtPoint');
-            const txtPos = document.getElementById('txtPos');
-            const txtIdea = document.getElementById('txtIdea');
-            const explainBox = document.getElementById('expExplain');
-
-            const studentFx = document.getElementById('studentFx');
-            const studentPos = document.getElementById('studentPos');
-            const studentTrend = document.getElementById('studentTrend');
-
-            const statusFx = document.getElementById('statusFx');
-            const statusPos = document.getElementById('statusPos');
-            const statusTrend = document.getElementById('statusTrend');
-
-            const feedbackExplore = document.getElementById('feedbackExplore');
-            const btnResetExplore = document.getElementById('btnResetExplore');
-            const btnShowExplain = document.getElementById('btnShowExplain');
-
-            const materiLanjutan = document.getElementById('materiLanjutan');
-            const materiLockedInfo = document.getElementById('materiLockedInfo');
-
-            const canvas = document.getElementById('expGraph');
-            const ctx = canvas ? canvas.getContext('2d') : null;
-
-            let exploreInfoUnlocked = false;
-
-            function fx(x) {
-                return x * x - 2 * x - 3;
-            }
-
-            function getCorrectPosition(y) {
-                if (y > 0) return 'atas';
-                if (y < 0) return 'bawah';
-                return 'sumbu';
-            }
-
-            function getCorrectTrend(x) {
-                if (x < 1) return 'Turun';
-                if (x > 1) return 'Naik';
-                return 'Tetap';
-            }
-
-            function setMiniStatus(el, state, text) {
-                if (!el) return;
-                el.className = 'mini-badge';
-                if (state === 'ok') el.classList.add('good');
-                if (state === 'bad') el.classList.add('info');
-                el.textContent = text;
-            }
-
-            function allAnswered() {
-                return (
-                    studentFx?.value !== '' &&
-                    !!studentPos?.value &&
-                    !!studentTrend?.value
-                );
-            }
-
-            function lockMateri() {
-                exploreInfoUnlocked = false;
-
-                if (materiLanjutan) materiLanjutan.style.display = 'none';
-                if (materiLockedInfo) {
-                    materiLockedInfo.className = 'info-feedback';
-                    materiLockedInfo.innerHTML = 'Selesaikan semua pertanyaan pada bagian eksplorasi terlebih dahulu agar materi berikutnya terbuka.';
-                }
-
-                if (btnShowExplain) btnShowExplain.disabled = true;
-            }
-
-            function unlockMateri() {
-                exploreInfoUnlocked = true;
-
-                if (materiLanjutan) materiLanjutan.style.display = 'block';
-                if (materiLockedInfo) {
-                    materiLockedInfo.className = 'info-feedback ok';
-                    materiLockedInfo.innerHTML = '';
-                }
-
-                if (btnShowExplain) btnShowExplain.disabled = false;
-            }
-
-            function updateKPIVisibility(x, y, trend) {
-                if (kpiX) kpiX.textContent = x;
-
-                if (exploreInfoUnlocked) {
-                    if (kpiFx) kpiFx.textContent = y;
-                    if (kpiTrend) kpiTrend.textContent = trend;
-                } else {
-                    if (kpiFx) kpiFx.textContent = '—';
-                    if (kpiTrend) kpiTrend.textContent = '—';
-                }
-            }
-
-            function resizeCanvas() {
-                if (!canvas || !ctx) return;
-                const dpr = window.devicePixelRatio || 1;
-                const rect = canvas.getBoundingClientRect();
-                canvas.width = Math.floor(rect.width * dpr);
-                canvas.height = Math.floor(rect.height * dpr);
-                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            }
-
-            function worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax) {
-                const sx = pad + (x - xMin) * (W - 2 * pad) / (xMax - xMin);
-                const sy = (H - pad) - (y - yMin) * (H - 2 * pad) / (yMax - yMin);
-                return { sx, sy };
-            }
-
-            function drawGraph(x0) {
-                if (!canvas || !ctx) return;
-
-                const rect = canvas.getBoundingClientRect();
-                const W = rect.width;
-                const H = rect.height;
-                const pad = 28;
-
-                const xMin = -6, xMax = 6;
-
-                let minY = Infinity, maxY = -Infinity;
-                for (let x = xMin; x <= xMax; x += 0.25) {
-                    const y = fx(x);
-                    minY = Math.min(minY, y);
-                    maxY = Math.max(maxY, y);
-                }
-                const yMin = Math.floor(minY - 2);
-                const yMax = Math.ceil(maxY + 2);
-
-                ctx.clearRect(0, 0, W, H);
-                ctx.fillStyle = 'rgba(243,247,255,.45)';
-                ctx.fillRect(0, 0, W, H);
-
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = 'rgba(0,0,0,.06)';
-                for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x += 1) {
-                    const p1 = worldToScreen(x, yMin, W, H, pad, xMin, xMax, yMin, yMax);
-                    const p2 = worldToScreen(x, yMax, W, H, pad, xMin, xMax, yMin, yMax);
-                    ctx.beginPath();
-                    ctx.moveTo(p1.sx, p1.sy);
-                    ctx.lineTo(p2.sx, p2.sy);
-                    ctx.stroke();
-                }
-
-                for (let y = yMin; y <= yMax; y += 2) {
-                    const p1 = worldToScreen(xMin, y, W, H, pad, xMin, xMax, yMin, yMax);
-                    const p2 = worldToScreen(xMax, y, W, H, pad, xMin, xMax, yMin, yMax);
-                    ctx.beginPath();
-                    ctx.moveTo(p1.sx, p1.sy);
-                    ctx.lineTo(p2.sx, p2.sy);
-                    ctx.stroke();
-                }
-
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(0,0,0,.28)';
-                const oy = worldToScreen(xMin, 0, W, H, pad, xMin, xMax, yMin, yMax).sy;
-                const ox = worldToScreen(0, yMin, W, H, pad, xMin, xMax, yMin, yMax).sx;
-
-                if (0 >= yMin && 0 <= yMax) {
-                    ctx.beginPath();
-                    ctx.moveTo(pad, oy);
-                    ctx.lineTo(W - pad, oy);
-                    ctx.stroke();
-                }
-
-                if (0 >= xMin && 0 <= xMax) {
-                    ctx.beginPath();
-                    ctx.moveTo(ox, pad);
-                    ctx.lineTo(ox, H - pad);
-                    ctx.stroke();
-                }
-
-                ctx.lineWidth = 3;
-                ctx.strokeStyle = 'rgba(43,108,176,.90)';
-                ctx.beginPath();
-                let started = false;
-                const samples = 240;
-
-                for (let i = 0; i <= samples; i++) {
-                    const x = xMin + (xMax - xMin) * (i / samples);
-                    const y = fx(x);
-                    const p = worldToScreen(x, y, W, H, pad, xMin, xMax, yMin, yMax);
-                    if (!started) {
-                        ctx.moveTo(p.sx, p.sy);
-                        started = true;
-                    } else {
-                        ctx.lineTo(p.sx, p.sy);
-                    }
-                }
-                ctx.stroke();
-
-                const y0 = fx(x0);
-                const p0 = worldToScreen(x0, y0, W, H, pad, xMin, xMax, yMin, yMax);
-
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(27,122,42,.18)';
-                ctx.beginPath();
-                ctx.moveTo(p0.sx, pad);
-                ctx.lineTo(p0.sx, H - pad);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.moveTo(pad, p0.sy);
-                ctx.lineTo(W - pad, p0.sy);
-                ctx.stroke();
-
-                ctx.fillStyle = 'rgba(27,122,42,.95)';
-                ctx.beginPath();
-                ctx.arc(p0.sx, p0.sy, 6, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.strokeStyle = 'rgba(255,255,255,.95)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(p0.sx, p0.sy, 9, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            const SPECIAL = {
-                vertex: { x: 1, y: -4 }
-            };
-
-            function setInsight(kind, text) {
-                if (!insightChip) return;
-                insightChip.classList.remove('ok', 'warn');
-                insightChip.textContent = text;
-                if (kind) {
-                    insightChip.classList.add(kind === 'ok' ? 'ok' : 'warn');
-                }
-            }
-
-            function updateExplanation(x, y, trend) {
-                if (txtSub) {
-                    txtSub.innerHTML = `Masukkan $x=${x}$ ke fungsi: $f(${x})=${x}^2-2(${x})-3=${y}$.`;
-                }
-
-                if (txtPoint) {
-                    txtPoint.innerHTML = `Titik saat ini adalah $(${x},${y})$.`;
-                }
-
-                const posisi = (y > 0)
-                    ? `Titik <b>di atas</b> sumbu-x (positif).`
-                    : (y < 0)
-                        ? `Titik <b>di bawah</b> sumbu-x (negatif).`
-                        : `Titik tepat <b>di sumbu-x</b> (akar).`;
-
-                const arah = (trend === 'Naik')
-                    ? `Nilai $f(x)$ <b>naik</b>.`
-                    : (trend === 'Turun')
-                        ? `Nilai $f(x)$ <b>turun</b>.`
-                        : `Nilai $f(x)$ <b>tetap</b>.`;
-
-                if (txtPos) {
-                    txtPos.innerHTML = `${posisi} ${arah}`;
-                }
-
-                const isVertex = (x === SPECIAL.vertex.x && y === SPECIAL.vertex.y);
-
-                if (txtIdea) {
-                    if (y === 0) {
-                        txtIdea.innerHTML = `✅ Ini <b>titik potong sumbu-x</b> karena $f(${x})=0$.`;
-                    } else if (isVertex) {
-                        txtIdea.innerHTML = `⭐ Ini <b>titik puncak (minimum)</b> yaitu $(1,-4)$.`;
-                    } else if (x < 1) {
-                        txtIdea.innerHTML = `Mendekati $x=1$, nilai $f(x)$ cenderung <b>mengecil</b>.`;
-                    } else {
-                        txtIdea.innerHTML = `Lewat $x=1$, nilai $f(x)$ cenderung <b>membesar</b>.`;
-                    }
-                }
-
-                if (y === 0) {
-                    setInsight('ok', 'Insight: titik potong sumbu-x');
-                } else if (isVertex) {
-                    setInsight('ok', 'Insight: titik puncak');
-                } else {
-                    setInsight('warn', 'Insight: amati perubahan');
-                }
-
-                rerenderMath(explainBox);
-            }
-
-            function hideExplanation() {
-                if (explainBox) explainBox.style.display = 'none';
-            }
-
-            function showExplanation() {
-                if (!slider || !explainBox || !allAnswered()) return;
-                const x = parseInt(slider.value, 10);
-                const y = fx(x);
-                const trend = getCorrectTrend(x);
-
-                explainBox.style.display = 'block';
-                updateExplanation(x, y, trend);
-            }
-
-            function validateExploreAnswers() {
-                if (!slider || !feedbackExplore) return;
-
-                const x = parseInt(slider.value, 10);
-                const y = fx(x);
-                const posisiBenar = getCorrectPosition(y);
-                const trendBenar = getCorrectTrend(x);
-
-                if (studentFx?.value === '') {
-                    setMiniStatus(statusFx, '', 'Belum dijawab');
-                } else if (Number(studentFx.value) === y) {
-                    setMiniStatus(statusFx, 'ok', 'Benar');
-                } else {
-                    setMiniStatus(statusFx, 'bad', 'Salah');
-                }
-
-                if (!studentPos?.value) {
-                    setMiniStatus(statusPos, '', 'Belum dijawab');
-                } else if (studentPos.value === posisiBenar) {
-                    setMiniStatus(statusPos, 'ok', 'Benar');
-                } else {
-                    setMiniStatus(statusPos, 'bad', 'Salah');
-                }
-
-                if (!studentTrend?.value) {
-                    setMiniStatus(statusTrend, '', 'Belum dijawab');
-                } else if (studentTrend.value === trendBenar) {
-                    setMiniStatus(statusTrend, 'ok', 'Benar');
-                } else {
-                    setMiniStatus(statusTrend, 'bad', 'Salah');
-                }
-
-                if (allAnswered()) {
-                    unlockMateri();
-                    updateKPIVisibility(x, y, trendBenar);
-
-                    feedbackExplore.className = 'feedback ok';
-                    feedbackExplore.innerHTML =
-                        ``;
-                } else {
-                    lockMateri();
-                    updateKPIVisibility(x, y, trendBenar);
-
-                    feedbackExplore.className = 'feedback';
-                    feedbackExplore.innerHTML =
-                        `Isi semua jawaban eksplorasi terlebih dahulu agar materi berikutnya terbuka.`;
-
-                    hideExplanation();
-                }
-            }
-
-            function resetStudentAnswerState() {
-                setMiniStatus(statusFx, '', 'Belum dijawab');
-                setMiniStatus(statusPos, '', 'Belum dijawab');
-                setMiniStatus(statusTrend, '', 'Belum dijawab');
-
-                if (feedbackExplore) {
-                    feedbackExplore.className = 'feedback';
-                    feedbackExplore.innerHTML = 'Amati grafiknya, lalu isi semua jawabanmu.';
-                }
-
-                setInsight('', 'Insight: siap diamati');
-                lockMateri();
-            }
-
-            function updateExplorerUI() {
-                if (!slider) return;
-
-                const x = parseInt(slider.value, 10);
-                const y = fx(x);
-                const trend = getCorrectTrend(x);
-
-                updateKPIVisibility(x, y, trend);
-
-                if (coordChip) coordChip.textContent = `Titik: (${x}, ${y})`;
-
-                resizeCanvas();
-                drawGraph(x);
-            }
-
-            studentFx?.addEventListener('input', validateExploreAnswers);
-            studentPos?.addEventListener('change', validateExploreAnswers);
-            studentTrend?.addEventListener('change', validateExploreAnswers);
-
-            btnResetExplore?.addEventListener('click', function () {
-                if (studentFx) studentFx.value = '';
-                if (studentPos) studentPos.value = '';
-                if (studentTrend) studentTrend.value = '';
-
-                hideExplanation();
-                resetStudentAnswerState();
-
-                if (slider) {
-                    const x = parseInt(slider.value, 10);
-                    updateKPIVisibility(x, fx(x), getCorrectTrend(x));
-                }
-
-                rerenderMath(document.body);
-            });
-
-            btnShowExplain?.addEventListener('click', function () {
-                if (allAnswered()) {
-                    showExplanation();
-                }
-            });
-
-            if (slider && canvas && ctx) {
-                window.addEventListener('resize', () => {
-                    resizeCanvas();
-                    updateExplorerUI();
-                });
-
-                slider.addEventListener('input', () => {
-                    if (studentFx) studentFx.value = '';
-                    if (studentPos) studentPos.value = '';
-                    if (studentTrend) studentTrend.value = '';
-
-                    hideExplanation();
-                    resetStudentAnswerState();
-                    updateExplorerUI();
-                });
-
-                requestAnimationFrame(() => {
-                    resizeCanvas();
-                    updateExplorerUI();
-                    hideExplanation();
-                    resetStudentAnswerState();
-                });
-            }
-
-            rerenderMath(document.body);
-        })();
-    </script>
 
     <script>
         window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
@@ -4481,7 +4284,7 @@
 
             const soal1Ids = ["a1", "a2", "a3", "a4", "a5"];
             const soal2Ids = ["b1", "b2", "b3"];
-            const soal3Ids = ["c1", "c1u", "c1c", "c2", "c2u", "c2c", "c3", "c3u", "c3c"];
+            const soal3Ids = ["c1", "c1u", "c2", "c2u", "c3", "c3u"];
 
             function normal(v) {
                 const superscriptMap = {
@@ -4538,15 +4341,14 @@
 
                 if (id === "c1") return v === "a";
                 if (id === "c1u") return v.includes("turun") && v.includes("naik");
-                if (id === "c1c") return v === "a";
+
 
                 if (id === "c2") return v === "b";
                 if (id === "c2u") return v.includes("naik") && !v.includes("turun");
-                if (id === "c2c") return v === "b";
 
                 if (id === "c3") return v === "c";
                 if (id === "c3u") return v.includes("turun") && !v.includes("naik");
-                if (id === "c3c") return v === "c";
+
 
                 return false;
             }

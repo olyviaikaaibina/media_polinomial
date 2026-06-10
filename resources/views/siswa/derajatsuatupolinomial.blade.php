@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                        delimiters: [
-                                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                                        ]
-                                                                                                                                                    });"></script>
+                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                            ]
+                                                                                                                                                                        });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -449,10 +449,10 @@
         }
 
         /*
-                                                        PENTING UNTUK HP:
-                                                        pan-y membuat halaman tetap bisa discroll ke atas/bawah.
-                                                        Jangan pakai touch-action: none di sini.
-                                                    */
+                                                                            PENTING UNTUK HP:
+                                                                            pan-y membuat halaman tetap bisa discroll ke atas/bawah.
+                                                                            Jangan pakai touch-action: none di sini.
+                                                                        */
         .p5-host {
             width: 100%;
             max-width: 100%;
@@ -1069,6 +1069,46 @@
         .contoh-note b {
             color: #000;
         }
+
+        /* =====================================================
+                   PETUNJUK PENGERJAAN LATIHAN
+                ===================================================== */
+
+        .petunjuk-latihan-box {
+            width: 100%;
+            margin: 14px 0 18px;
+            padding: 14px 18px;
+            border-radius: 13px;
+            background: #f4f6ff;
+            border: 1.5px solid #cbd8ff;
+            box-sizing: border-box;
+        }
+
+        .petunjuk-latihan-box p {
+            margin: 0;
+            color: #555555;
+            font-size: 15px;
+            line-height: 1.85;
+            text-align: justify;
+        }
+
+        .petunjuk-latihan-box strong {
+            font-weight: 700;
+            color: #424242;
+        }
+
+        @media (max-width: 768px) {
+            .petunjuk-latihan-box {
+                margin: 11px 0 15px;
+                padding: 11px 13px;
+                border-radius: 11px;
+            }
+
+            .petunjuk-latihan-box p {
+                font-size: 13.3px;
+                line-height: 1.75;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1445,10 +1485,19 @@
 
             {{-- CARD 7: Latihan --}}
             <div class="card card-try latihan-card-fit">
-                <div class="title-box">🎯 Latihan</div>
+                <div class="title-box">📝 Latihan</div>
 
+                <div class="petunjuk-latihan-box">
+                    <p>
+                        <strong>Petunjuk pengerjaan:</strong>
+                        Bacalah setiap soal dengan teliti, kemudian tentukan derajat dari bentuk aljabar atau polinomial
+                        yang diberikan.
+                        Pilih jawaban yang menurut kamu paling tepat, lalu tekan tombol <strong>Cek Jawaban</strong>.
+                        Kerjakan soal secara berurutan karena soal berikutnya hanya dapat dikerjakan setelah soal sebelumnya
+                        dijawab dengan benar.
+                    </p>
+                </div>
                 <div id="latihanBoard">
-
                     {{-- SOAL 1 --}}
                     <div class="lat-section yellow" id="latihan1" data-step="1" data-unlocked="1" data-done="0">
                         <div class="lat-title">1. Tebak Cepat (True or False)</div>
@@ -1814,17 +1863,17 @@
                             setFeedback(
                                 true,
                                 `
-                    <div>✅ <b>Benar.</b></div>
-                    <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
-                    `
+                                        <div>✅ <b>Benar.</b></div>
+                                        <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
+                                        `
                             );
                         } else {
                             setFeedback(
                                 false,
                                 `
-                    <div>❌ <b>Salah.</b></div>
-                    <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
-                    `
+                                        <div>❌ <b>Salah.</b></div>
+                                        <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
+                                        `
                             );
                         }
 
@@ -2099,11 +2148,11 @@
                             fbTrueFalse,
                             true,
                             `
-                                                                    <div>✅ Semua jawaban benar.</div>
-                                                                    <div><b>Penjelasan:</b></div>
-                                                                    <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
-                                                                    <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
-                                                                    `
+                                                                                        <div>✅ Semua jawaban benar.</div>
+                                                                                        <div><b>Penjelasan:</b></div>
+                                                                                        <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
+                                                                                        <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
+                                                                                        `
                         );
 
                         unlockSection(latihan2, lock2);
@@ -2115,11 +2164,11 @@
                             fbTrueFalse,
                             false,
                             `
-                                                                    <div>❌ Jawaban Soal 1 belum tepat.</div>
-                                                                    <div><b>Penjelasan jawaban benar:</b></div>
-                                                                    <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
-                                                                    <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
-                                                                    `
+                                                                                        <div>❌ Jawaban Soal 1 belum tepat.</div>
+                                                                                        <div><b>Penjelasan jawaban benar:</b></div>
+                                                                                        <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
+                                                                                        <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
+                                                                                        `
                         );
 
                         resetSoal2();
@@ -2157,9 +2206,9 @@
                             fbWinner,
                             true,
                             `
-                                                                    <div>✅ Jawaban benar.</div>
-                                                                    <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
-                                                                    `
+                                                                                        <div>✅ Jawaban benar.</div>
+                                                                                        <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
+                                                                                        `
                         );
 
                         unlockSection(latihan3, lock3);
@@ -2171,9 +2220,9 @@
                             fbWinner,
                             false,
                             `
-                                                                    <div>❌ Soal 2 belum tepat.</div>
-                                                                    <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
-                                                                    `
+                                                                                        <div>❌ Soal 2 belum tepat.</div>
+                                                                                        <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
+                                                                                        `
                         );
 
                         resetSoal3();
@@ -2208,9 +2257,9 @@
                             fbMystery,
                             true,
                             `
-                                                                    <div>✅ Jawaban benar.</div>
-                                                                    <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
-                                                                    `
+                                                                                        <div>✅ Jawaban benar.</div>
+                                                                                        <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
+                                                                                        `
                         );
 
                         unlockSection(latihan4, lock4);
@@ -2222,9 +2271,9 @@
                             fbMystery,
                             false,
                             `
-                                                                    <div>❌ Soal 3 belum tepat.</div>
-                                                                    <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
-                                                                    `
+                                                                                        <div>❌ Soal 3 belum tepat.</div>
+                                                                                        <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
+                                                                                        `
                         );
 
                         resetSoal4();
@@ -2259,13 +2308,13 @@
                             fbDetect,
                             true,
                             `
-                                                                    <div>✅ Jawaban benar.</div>
-                                                                    <div><b>Penjelasan:</b></div>
-                                                                    <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
-                                                                    <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
-                                                                    <div>• <b>4</b> memiliki derajat <b>0</b></div>
-                                                                    <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
-                                                                    `
+                                                                                        <div>✅ Jawaban benar.</div>
+                                                                                        <div><b>Penjelasan:</b></div>
+                                                                                        <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
+                                                                                        <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
+                                                                                        <div>• <b>4</b> memiliki derajat <b>0</b></div>
+                                                                                        <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
+                                                                                        `
                         );
 
                         const saved = await saveProgressMateri();
@@ -2283,13 +2332,13 @@
                             fbDetect,
                             false,
                             `
-                                                                    <div>❌ Soal 4 belum tepat.</div>
-                                                                    <div><b>Penjelasan jawaban benar:</b></div>
-                                                                    <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
-                                                                    <div>• Derajat <b>−xy</b> = <b>2</b></div>
-                                                                    <div>• Derajat <b>4</b> = <b>0</b></div>
-                                                                    <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
-                                                                    `
+                                                                                        <div>❌ Soal 4 belum tepat.</div>
+                                                                                        <div><b>Penjelasan jawaban benar:</b></div>
+                                                                                        <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
+                                                                                        <div>• Derajat <b>−xy</b> = <b>2</b></div>
+                                                                                        <div>• Derajat <b>4</b> = <b>0</b></div>
+                                                                                        <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
+                                                                                        `
                         );
                     }
 

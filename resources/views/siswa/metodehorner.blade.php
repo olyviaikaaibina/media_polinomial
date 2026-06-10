@@ -675,8 +675,8 @@
         }
 
         /* =========================
-                                                                                                                       HORNER INTERAKTIF
-                                                                                                                    ========================= */
+                                                                                                                                                                           HORNER INTERAKTIF
+                                                                                                                                                                        ========================= */
 
         .horner-premium-wrap {
             margin-top: 18px;
@@ -860,8 +860,8 @@
         }
 
         /* =========================
-                                                                                                                       HORNER MARI MENCOBA
-                                                                                                                    ========================= */
+                                                                                                                                                                           HORNER MARI MENCOBA
+                                                                                                                                                                        ========================= */
 
         .horner-table-wrap {
             margin: 14px 0 16px;
@@ -963,8 +963,8 @@
         }
 
         /* =========================
-                                                                                                                       LATIHAN
-                                                                                                                    ========================= */
+                                                                                                                                                                           LATIHAN
+                                                                                                                                                                        ========================= */
 
         .latihan-card {
             position: relative;
@@ -1119,8 +1119,8 @@
         }
 
         /* =========================
-                                                                                                                       HORNER LATIHAN
-                                                                                                                    ========================= */
+                                                                                                                                                                           HORNER LATIHAN
+                                                                                                                                                                        ========================= */
 
         .latihan-horner-wrap {
             margin: 18px 0 10px;
@@ -1245,8 +1245,8 @@
         }
 
         /* =========================
-                                                                                                                       ANIMASI
-                                                                                                                    ========================= */
+                                                                                                                                                                           ANIMASI
+                                                                                                                                                                        ========================= */
 
         .horner-animate {
             transition: all 0.5s ease;
@@ -1270,8 +1270,8 @@
         }
 
         /* =========================
-                                                                                                                       RESPONSIVE TABLET
-                                                                                                                    ========================= */
+                                                                                                                                                                           RESPONSIVE TABLET
+                                                                                                                                                                        ========================= */
 
         @media (max-width: 900px) {
             .materi-wrapper {
@@ -1289,8 +1289,8 @@
         }
 
         /* =========================
-                                                                                                                       RESPONSIVE HP
-                                                                                                                    ========================= */
+                                                                                                                                                                           RESPONSIVE HP
+                                                                                                                                                                        ========================= */
 
         @media (max-width: 768px) {
             .materi-wrapper {
@@ -1608,8 +1608,8 @@
         }
 
         /* =========================
-                                                                                                                       RESPONSIVE HP KECIL
-                                                                                                                    ========================= */
+                                                                                                                                                                           RESPONSIVE HP KECIL
+                                                                                                                                                                        ========================= */
 
         @media (max-width: 480px) {
             .materi-wrapper {
@@ -1780,8 +1780,8 @@
         }
 
         /* =========================
-                                                                                                           HASIL AKHIR LATIHAN RAPI
-                                                                                                        ========================= */
+                                                                                                                                                               HASIL AKHIR LATIHAN RAPI
+                                                                                                                                                            ========================= */
 
         .hasil-akhir-wrap {
             display: flex;
@@ -1885,8 +1885,8 @@
         }
 
         /* =========================
-                                       TABEL HORNER SEPERTI GAMBAR + TANDA PLUS
-                                    ========================= */
+                                                                                           TABEL HORNER SEPERTI GAMBAR + TANDA PLUS
+                                                                                        ========================= */
 
         #card-step-6 .horner-table-wrap {
             width: 100%;
@@ -2105,8 +2105,8 @@
 
 
         /* =========================
-                                               TABEL HORNER LATIHAN SOAL 2
-                                            ========================= */
+                                                                                                   TABEL HORNER LATIHAN SOAL 2
+                                                                                                ========================= */
 
         #latihanSoal2 .latihan-horner-wrap {
             width: 100%;
@@ -2347,6 +2347,243 @@
             color: #575048;
             line-height: 1;
         }
+
+        .horner-proses-card {
+            margin: 14px 0 20px;
+            background: #ffffff;
+            border: 1.5px solid #dcebd7;
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            box-shadow: 0 4px 14px rgba(47, 125, 50, 0.06);
+        }
+
+        .horner-proses-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2f7d32;
+            margin-bottom: 8px;
+        }
+
+        .horner-proses-subtitle {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #5f5a54;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        .proses-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .proses-info-item {
+            background: #f7fcf5;
+            border: 1px solid #d8ead2;
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .proses-info-label {
+            font-weight: 700;
+            color: #2f7d32;
+            margin-bottom: 4px;
+        }
+
+        .proses-alur {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .proses-row {
+            display: grid;
+            grid-template-columns: 38px 1fr;
+            gap: 12px;
+            align-items: flex-start;
+            background: #fbfbfb;
+            border: 1px solid #e7e4df;
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .proses-no {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #dff2d9;
+            color: #2f7d32;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .proses-judul {
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a4038;
+            margin-bottom: 6px;
+        }
+
+        .proses-rumus {
+            display: inline-block;
+            background: #eef8ec;
+            border: 1px solid #cfe7c7;
+            border-radius: 10px;
+            padding: 6px 12px;
+            color: #2f7d32;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .proses-keterangan {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #5f5a54;
+            text-align: justify;
+        }
+
+        .proses-kesimpulan {
+            margin-top: 14px;
+            background: #f3f7ff;
+            border: 1px solid #d5e2ff;
+            border-left: 4px solid #6aa2f0;
+            border-radius: 14px;
+            padding: 13px 15px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #4f4a43;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .proses-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .horner-proses-card {
+                padding: 15px 13px;
+            }
+
+            .proses-row {
+                grid-template-columns: 32px 1fr;
+                gap: 10px;
+                padding: 11px 12px;
+            }
+
+            .proses-no {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+            }
+
+            .proses-rumus,
+            .proses-keterangan,
+            .proses-info-item,
+            .proses-kesimpulan {
+                font-size: 13px;
+            }
+        }
+
+        .aksi-langkah {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn-hint {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 110px;
+            height: 44px;
+            padding: 0 18px;
+            background: linear-gradient(180deg, #f6b45b 0%, #e89a34 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(232, 154, 52, 0.18);
+            transition: 0.2s ease;
+        }
+
+        .btn-hint:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(180deg, #f8bf6f 0%, #e4932a 100%);
+        }
+
+        .hint-step {
+            display: none;
+            margin-top: 12px;
+            background: #fff8ed;
+            border: 1px solid #f0d3a8;
+            border-left: 4px solid #e89a34;
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #5f4a32;
+            text-align: justify;
+        }
+
+        .hint-step strong {
+            color: #b76516;
+        }
+
+        @media (max-width: 768px) {
+            .aksi-langkah {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-hint,
+            .btn-langkah {
+                width: 100%;
+            }
+
+            .hint-step {
+                font-size: 13px;
+            }
+        }
+
+        .petunjuk-latihan-box {
+            margin: 8px 0 18px;
+            padding: 16px 18px;
+            background: #f3f8ef;
+            border: 1.5px solid #cfe3c5;
+            border-left: 5px solid #8db36f;
+            border-radius: 16px;
+            color: #374151;
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .petunjuk-latihan-box b {
+            color: #2f7d32;
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .petunjuk-latihan-box {
+                padding: 14px 14px;
+                font-size: 14px;
+                line-height: 1.75;
+                border-radius: 14px;
+            }
+        }
     </style>
 
     <div class="materi-wrapper">
@@ -2406,6 +2643,12 @@
                 <input type="text" id="hasilAkhir" class="math-input">
             </div>
 
+            <div style="margin-top: 14px; text-align: center;">
+                <button type="button" class="btn-cek" onclick="cekEksplorasiManual()">
+                    Cek Semua
+                </button>
+            </div>
+
             <div id="feedbackJawaban" class="feedback-jawaban"></div>
 
             <div id="penjelasanBox" class="penjelasan-box" style="text-align:center;">
@@ -2429,11 +2672,6 @@
                         = 11
                     </strong>
                 </div>
-            </div>
-
-            <div class="keterangan-bawah">
-                Dari perhitungan di atas, terlihat bahwa proses substitusi langsung dapat menjadi cukup panjang.
-                Untuk mempermudah perhitungan nilai polinomial, dapat digunakan <b>Metode Horner</b>.
             </div>
         </div>
 
@@ -2519,42 +2757,127 @@
                     <div class="contoh-premium-rumus">(2x³ − x² + 3x − 18) ÷ (x − 2)</div>
                 </div>
 
-                <div class="langkah-grid">
-                    <div class="langkah-mini-card">
-                        <div class="langkah-mini-judul">1. Tulis koefisien</div>
-                        <div class="langkah-mini-isi">
-                            Dari bentuk <strong>2x³ − x² + 3x − 18</strong>, koefisiennya adalah
-                            <strong>2, -1, 3, -18</strong>.
-                        </div>
-                    </div>
-
-                    <div class="langkah-mini-card">
-                        <div class="langkah-mini-judul">2. Tentukan nilai k</div>
-                        <div class="langkah-mini-isi">
-                            Karena pembagi adalah <strong>(x − 2)</strong>, maka nilai
-                            <strong>k = 2</strong>.
-                        </div>
-                    </div>
-
-                    <div class="langkah-mini-card">
-                        <div class="langkah-mini-judul">3. Turunkan koefisien pertama</div>
-                        <div class="langkah-mini-isi">
-                            Koefisien pertama, yaitu <strong>2</strong>, langsung diturunkan
-                            ke baris bawah.
-                        </div>
-                    </div>
-
-                    <div class="langkah-mini-card">
-                        <div class="langkah-mini-judul">4. Kalikan lalu jumlahkan</div>
-                        <div class="langkah-mini-isi">
-                            Angka di baris bawah dikalikan dengan <strong>k</strong>.
-                            Hasil perkalian diletakkan di baris tengah, lalu dijumlahkan
-                            dengan koefisien berikutnya.
-                        </div>
-                    </div>
-                </div>
-
                 <div class="horner-premium-wrap">
+                    <div class="horner-proses-card">
+                        <div class="horner-proses-subtitle">
+                            Sebelum mengisi tabel Horner, tentukan dahulu nilai <strong>k</strong> dan koefisien
+                            polinomialnya.
+                            Setelah itu, lakukan pola <strong>turunkan → kalikan → jumlahkan</strong> sampai semua koefisien
+                            selesai dihitung.
+                        </div>
+
+                        <div class="proses-info-grid">
+                            <div class="proses-info-item">
+                                <div class="proses-info-label">Nilai k</div>
+                                Pembagi yang digunakan adalah <strong>(x − 2)</strong>. Karena bentuk umumnya adalah
+                                <strong>(x − k)</strong>, maka nilai <strong>k = 2</strong>.
+                            </div>
+
+                            <div class="proses-info-item">
+                                <div class="proses-info-label">Koefisien polinomial</div>
+                                Dari polinomial <strong>2x³ − x² + 3x − 18</strong>, koefisien yang ditulis berurutan adalah
+                                <strong>2, -1, 3, -18</strong>.
+                            </div>
+                        </div>
+
+                        <div class="proses-alur">
+                            <div class="proses-row">
+                                <div class="proses-no">1</div>
+                                <div>
+                                    <div class="proses-judul">Turunkan koefisien pertama</div>
+                                    <div class="proses-rumus">2 turun menjadi 2</div>
+                                    <div class="proses-keterangan">
+                                        Angka pertama pada baris koefisien adalah <strong>2</strong>. Pada metode Horner,
+                                        angka pertama ini langsung diturunkan ke baris bawah tanpa dihitung terlebih dahulu.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">2</div>
+                                <div>
+                                    <div class="proses-judul">Kalikan dengan nilai k</div>
+                                    <div class="proses-rumus">2 × 2 = 4</div>
+                                    <div class="proses-keterangan">
+                                        Angka <strong>2</strong> yang sudah diturunkan dikalikan dengan nilai
+                                        <strong>k = 2</strong>. Hasilnya adalah <strong>4</strong> dan diletakkan pada baris
+                                        tengah.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">3</div>
+                                <div>
+                                    <div class="proses-judul">Jumlahkan dengan koefisien berikutnya</div>
+                                    <div class="proses-rumus">-1 + 4 = 3</div>
+                                    <div class="proses-keterangan">
+                                        Koefisien berikutnya adalah <strong>-1</strong>. Jumlahkan koefisien tersebut dengan
+                                        hasil perkalian
+                                        sebelumnya, yaitu <strong>4</strong>. Hasilnya adalah <strong>3</strong> dan ditulis
+                                        pada baris bawah.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">4</div>
+                                <div>
+                                    <div class="proses-judul">Kalikan hasil baris bawah dengan k</div>
+                                    <div class="proses-rumus">3 × 2 = 6</div>
+                                    <div class="proses-keterangan">
+                                        Angka <strong>3</strong> dari baris bawah dikalikan lagi dengan nilai
+                                        <strong>k = 2</strong>. Hasil perkaliannya adalah <strong>6</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">5</div>
+                                <div>
+                                    <div class="proses-judul">Jumlahkan dengan koefisien berikutnya</div>
+                                    <div class="proses-rumus">3 + 6 = 9</div>
+                                    <div class="proses-keterangan">
+                                        Koefisien berikutnya adalah <strong>3</strong>. Jumlahkan dengan hasil perkalian
+                                        <strong>6</strong>, sehingga diperoleh <strong>9</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">6</div>
+                                <div>
+                                    <div class="proses-judul">Kalikan kembali dengan k</div>
+                                    <div class="proses-rumus">9 × 2 = 18</div>
+                                    <div class="proses-keterangan">
+                                        Angka <strong>9</strong> dari baris bawah dikalikan dengan nilai
+                                        <strong>k = 2</strong>. Hasilnya adalah <strong>18</strong> dan ditulis pada baris
+                                        tengah.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proses-row">
+                                <div class="proses-no">7</div>
+                                <div>
+                                    <div class="proses-judul">Jumlahkan dengan konstanta terakhir</div>
+                                    <div class="proses-rumus">-18 + 18 = 0</div>
+                                    <div class="proses-keterangan">
+                                        Konstanta terakhir adalah <strong>-18</strong>. Setelah dijumlahkan dengan
+                                        <strong>18</strong>, hasilnya adalah <strong>0</strong>. Angka terakhir ini menjadi
+                                        <strong>sisa pembagian</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proses-kesimpulan">
+                            Dari proses tersebut, baris bawah tabel Horner adalah <strong>2, 3, 9, 0</strong>.
+                            Angka <strong>2, 3, 9</strong> menjadi koefisien hasil bagi, sedangkan angka terakhir
+                            <strong>0</strong> menjadi sisa pembagian.
+                        </div>
+                    </div>
+
                     <div class="horner-premium-title">Tabel Horner Interaktif</div>
                     <div class="horner-premium-subtitle">
                         Klik angka pada tabel berikut untuk melihat penjelasan asal angka tersebut.
@@ -2687,31 +3010,37 @@
 
                     <div class="langkah-deskripsi">
                         Perhatikan bentuk pembagi <strong>(x − k)</strong>. Nilai yang berada setelah tanda minus itulah
-                        yang
-                        menjadi
-                        nilai <em>k</em>.
+                        yang menjadi nilai <em>k</em>.
                     </div>
 
                     <div class="input-group-inline">
                         <span>k =</span>
                         <input type="text" id="k" class="kecil-input">
-                        <button class="btn-langkah" onclick="cekStep1()">Cek Langkah 1</button>
+                    </div>
+
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint1')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep1()">Cek Langkah 1</button>
+                    </div>
+
+                    <div id="hint1" class="hint-step">
+                        <strong>Petunjuk:</strong> Lihat bentuk pembaginya. Jika pembagi berbentuk
+                        <strong>(x − k)</strong>, maka angka setelah tanda minus adalah nilai <strong>k</strong>.
                     </div>
 
                     <div id="fb1" class="feedback-step"></div>
+
                     <div id="penjelasan1" class="penjelasan-step">
                         Karena pembaginya adalah <strong>(x − 1)</strong>, maka nilai <strong>k = 1</strong>.
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-2">
+                <div class="langkah-card" id="card-step-2">
                     <div class="langkah-judul">2. Isi koefisien polinomial</div>
 
                     <div class="langkah-deskripsi">
                         Ambil hanya angka koefisien dari polinomial <strong>3x³ + 5x² − 2x + 1</strong> secara berurutan
-                        dari
-                        pangkat
-                        tertinggi ke terendah.
+                        dari pangkat tertinggi ke terendah.
                     </div>
 
                     <div class="input-group-inline">
@@ -2721,14 +3050,26 @@
                         <input id="c4" class="kecil-input">
                     </div>
 
-                    <button class="btn-langkah" onclick="cekStep2()">Cek Langkah 2</button>
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint2')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep2()">Cek Langkah 2</button>
+                    </div>
+
+                    <div id="hint2" class="hint-step">
+                        <strong>Petunjuk:</strong> Tulis angka yang menempel pada setiap suku.
+                        Urutannya dimulai dari suku berpangkat tertinggi, yaitu <strong>x³</strong>, lalu
+                        <strong>x²</strong>, lalu <strong>x</strong>, dan terakhir konstanta.
+                        Perhatikan tanda positif dan negatifnya.
+                    </div>
+
                     <div id="fb2" class="feedback-step"></div>
+
                     <div id="penjelasan2" class="penjelasan-step">
                         Koefisiennya adalah <strong>3, 5, -2, 1</strong>.
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-3">
+                <div class="langkah-card" id="card-step-3">
                     <div class="langkah-judul">3. Turunkan koefisien pertama</div>
 
                     <div class="langkah-deskripsi">
@@ -2739,22 +3080,32 @@
                     <div class="input-group-inline">
                         <span>Angka yang diturunkan =</span>
                         <input id="t1" class="kecil-input">
-                        <button class="btn-langkah" onclick="cekStep3()">Cek Langkah 3</button>
+                    </div>
+
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint3')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep3()">Cek Langkah 3</button>
+                    </div>
+
+                    <div id="hint3" class="hint-step">
+                        <strong>Petunjuk:</strong> Pada metode Horner, angka pertama dari daftar koefisien
+                        tidak dikalikan atau dijumlahkan dulu. Angka itu langsung diturunkan.
                     </div>
 
                     <div id="fb3" class="feedback-step"></div>
+
                     <div id="penjelasan3" class="penjelasan-step">
-                        Koefisien pertama adalah <strong>3</strong>, jadi langsung diturunkan menjadi <strong>3</strong>.
+                        Koefisien pertama adalah <strong>3</strong>, jadi langsung diturunkan menjadi
+                        <strong>3</strong>.
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-4">
+                <div class="langkah-card" id="card-step-4">
                     <div class="langkah-judul">4. Kalikan dengan k, lalu jumlahkan</div>
 
                     <div class="langkah-deskripsi">
                         Gunakan angka yang sudah diturunkan pada langkah sebelumnya. Kalikan angka itu dengan nilai
-                        <em>k</em>, lalu
-                        jumlahkan hasilnya dengan koefisien berikutnya.
+                        <em>k</em>, lalu jumlahkan hasilnya dengan koefisien berikutnya.
                     </div>
 
                     <div class="input-row">
@@ -2767,20 +3118,29 @@
                         <input id="s42" class="kecil-input">
                     </div>
 
-                    <button class="btn-langkah" onclick="cekStep4()">Cek Langkah 4</button>
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint4')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep4()">Cek Langkah 4</button>
+                    </div>
+
+                    <div id="hint4" class="hint-step">
+                        <strong>Petunjuk:</strong> Kalikan angka yang sudah diturunkan dengan nilai <strong>k</strong>.
+                        Setelah itu, hasil perkalian dijumlahkan dengan koefisien berikutnya, yaitu <strong>5</strong>.
+                    </div>
+
                     <div id="fb4" class="feedback-step"></div>
+
                     <div id="penjelasan4" class="penjelasan-step">
                         Hasil perkalian <strong>3 × 1 = 3</strong>, lalu <strong>5 + 3 = 8</strong>.
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-5">
+                <div class="langkah-card" id="card-step-5">
                     <div class="langkah-judul">5. Ulangi proses yang sama</div>
 
                     <div class="langkah-deskripsi">
                         Lanjutkan pola yang sama: hasil penjumlahan sebelumnya dikalikan dengan <em>k</em>, lalu dijumlahkan
-                        dengan
-                        koefisien berikutnya sampai semua koefisien habis.
+                        dengan koefisien berikutnya sampai semua koefisien habis.
                     </div>
 
                     <div class="input-row">
@@ -2803,21 +3163,31 @@
                         <input id="s54" class="kecil-input">
                     </div>
 
-                    <button class="btn-langkah" onclick="cekStep5()">Cek Langkah 5</button>
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint5')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep5()">Cek Langkah 5</button>
+                    </div>
+
+                    <div id="hint5" class="hint-step">
+                        <strong>Petunjuk:</strong> Gunakan pola yang sama. Hasil penjumlahan sebelumnya dikalikan dengan
+                        <strong>k</strong>, lalu hasilnya dijumlahkan dengan koefisien berikutnya.
+                        Karena <strong>k = 1</strong>, setiap angka yang dikalikan dengan 1 hasilnya tetap sama.
+                    </div>
+
                     <div id="fb5" class="feedback-step"></div>
+
                     <div id="penjelasan5" class="penjelasan-step">
                         Didapat <strong>8 × 1 = 8</strong>, lalu <strong>-2 + 8 = 6</strong>, kemudian
                         <strong>6 × 1 = 6</strong>, dan terakhir <strong>1 + 6 = 7</strong>.
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-6">
+                <div class="langkah-card" id="card-step-6">
                     <div class="langkah-judul">6. Lengkapi tabel Horner</div>
 
                     <div class="langkah-deskripsi">
                         Pindahkan hasil-hasil yang sudah didapat ke dalam tabel Horner. Baris tengah diisi hasil perkalian,
-                        sedangkan
-                        baris bawah diisi hasil penjumlahan.
+                        sedangkan baris bawah diisi hasil penjumlahan.
                     </div>
 
                     <div class="horner-table-wrap">
@@ -2826,32 +3196,40 @@
                             <div class="horner-line horner-line-top"></div>
                             <div class="horner-line horner-line-bottom"></div>
 
-                            <!-- Nilai k -->
                             <div class="horner-k-badge">1</div>
 
-                            <!-- Baris koefisien -->
                             <div class="horner-cell row-top col-1">3</div>
                             <div class="horner-cell row-top col-2">5</div>
                             <div class="horner-cell row-top col-3">-2</div>
                             <div class="horner-cell row-top col-4">1</div>
 
-                            <!-- Baris tengah: hasil perkalian -->
                             <input id="t61" class="horner-cell horner-input row-mid col-2" type="text">
                             <input id="t62" class="horner-cell horner-input row-mid col-3" type="text">
                             <input id="t63" class="horner-cell horner-input row-mid col-4" type="text">
 
-                            <!-- Tanda plus di kanan garis -->
                             <div class="horner-plus-sign">+</div>
 
-                            <!-- Baris bawah: hasil penjumlahan -->
                             <div class="horner-cell horner-bottom row-bottom col-1">3</div>
                             <input id="t64" class="horner-cell horner-input horner-bottom row-bottom col-2" type="text">
                             <input id="t65" class="horner-cell horner-input horner-bottom row-bottom col-3" type="text">
                             <input id="t66" class="horner-cell horner-input horner-bottom row-bottom col-4" type="text">
                         </div>
                     </div>
-                    <button class="btn-langkah" onclick="cekStep6()">Cek Langkah 6</button>
+
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint6')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep6()">Cek Langkah 6</button>
+                    </div>
+
+                    <div id="hint6" class="hint-step">
+                        <strong>Petunjuk:</strong> Baris tengah berisi hasil perkalian dengan <strong>k</strong>.
+                        Baris bawah berisi hasil penjumlahan antara koefisien di baris atas dan hasil perkalian di baris
+                        tengah.
+                        Ingat, angka pertama pada baris bawah sudah diturunkan, yaitu <strong>3</strong>.
+                    </div>
+
                     <div id="fb6" class="feedback-step"></div>
+
                     <div id="penjelasan6" class="penjelasan-step">
                         Baris tengah diisi hasil perkalian berturut-turut, yaitu <strong>3, 8, 6</strong>.
                         <br>
@@ -2859,7 +3237,7 @@
                     </div>
                 </div>
 
-                <div class="langkah-card step-locked" id="card-step-7">
+                <div class="langkah-card" id="card-step-7">
                     <div class="langkah-judul">7. Tentukan hasil bagi dan sisa</div>
 
                     <div class="langkah-deskripsi">
@@ -2889,8 +3267,19 @@
                         <input id="qx3" class="kecil-input">
                     </div>
 
-                    <button class="btn-langkah" onclick="cekStep7()">Cek Langkah 7</button>
+                    <div class="aksi-langkah">
+                        <button type="button" class="btn-hint" onclick="showHintStep('hint7')">Hint</button>
+                        <button type="button" class="btn-langkah" onclick="cekStep7()">Cek Langkah 7</button>
+                    </div>
+
+                    <div id="hint7" class="hint-step">
+                        <strong>Petunjuk:</strong> Lihat baris bawah tabel Horner. Angka terakhir adalah sisa.
+                        Angka-angka sebelum sisa menjadi koefisien hasil bagi. Karena polinomial awal berderajat 3,
+                        hasil baginya berderajat 2.
+                    </div>
+
                     <div id="fb7" class="feedback-step"></div>
+
                     <div id="penjelasan7" class="penjelasan-step">
                         Koefisien hasil bagi adalah <strong>3, 8, 6</strong> sehingga
                         <strong>Q(x) = 3x² + 8x + 6</strong>, dan sisanya adalah <strong>7</strong>.
@@ -2900,6 +3289,12 @@
 
             <div class="latihan-card">
                 <div class="latihan-badge">LATIHAN</div>
+
+                <div class="petunjuk-latihan-box">
+                    <b>Petunjuk pengerjaan:</b>
+                    Lengkapi setiap bagian latihan dengan jawaban yang tepat. Gunakan metode Horner sesuai langkah yang
+                    tersedia.
+                </div>
 
                 <!-- ================= SOAL 1 ================= -->
                 <div class="latihan-item" id="latihanSoal1">
@@ -3147,71 +3542,107 @@
             if (infoTerkunci) infoTerkunci.style.display = 'none';
         }
 
-        function cekEksplorasiOtomatis() {
-            const a1 = document.getElementById('a1');
-            const a2 = document.getElementById('a2');
-            const a3 = document.getElementById('a3');
-            const a4 = document.getElementById('a4');
-            const a5 = document.getElementById('a5');
-            const hasilAkhir = document.getElementById('hasilAkhir');
+        function ambilInputEksplorasi() {
+            return {
+                a1: document.getElementById('a1'),
+                a2: document.getElementById('a2'),
+                a3: document.getElementById('a3'),
+                a4: document.getElementById('a4'),
+                a5: document.getElementById('a5'),
+                hasilAkhir: document.getElementById('hasilAkhir')
+            };
+        }
+
+        function hapusStatusEksplorasi() {
+            const inputs = ambilInputEksplorasi();
+
+            Object.values(inputs).forEach(input => {
+                if (!input) return;
+                input.classList.remove('input-benar', 'input-salah');
+            });
+        }
+
+        function cekEksplorasiManual() {
+            const { a1, a2, a3, a4, a5, hasilAkhir } = ambilInputEksplorasi();
             const feedback = document.getElementById('feedbackJawaban');
             const penjelasanBox = document.getElementById('penjelasanBox');
 
-            if (!a1 || !a2 || !a3 || !a4 || !a5 || !hasilAkhir || !feedback || !penjelasanBox) return;
+            if (!a1 || !a2 || !a3 || !a4 || !a5 || !hasilAkhir || !feedback || !penjelasanBox) {
+                return false;
+            }
 
-            const v1 = a1.value.trim();
-            const v2 = a2.value.trim();
-            const v3 = a3.value.trim();
-            const v4 = a4.value.trim();
-            const v5 = a5.value.trim();
-            const vh = hasilAkhir.value.trim();
+            hapusStatusEksplorasi();
 
-            if (!semuaInputEksplorasiTerisi()) {
-                feedback.textContent = '';
-                penjelasanBox.style.display = 'none';
+            const daftarInput = [a1, a2, a3, a4, a5, hasilAkhir];
+            const semuaTerisi = daftarInput.every(input => input.value.trim() !== '');
 
-                [a1, a2, a3, a4, a5, hasilAkhir].forEach(input => {
+            if (!semuaTerisi) {
+                daftarInput.forEach(input => {
                     if (input.value.trim() === '') {
-                        input.classList.remove('input-benar', 'input-salah');
+                        input.classList.add('input-salah');
                     }
                 });
 
-                return;
-            }
-
-            const c1 = v1 === '16';
-            const c2 = v2 === '12';
-            const c3 = v3 === '16';
-            const c4 = v4 === '12';
-            const c5 = v5 === '11';
-            const ch = vh === '11';
-
-            setStatusInput(a1, c1);
-            setStatusInput(a2, c2);
-            setStatusInput(a3, c3);
-            setStatusInput(a4, c4);
-            setStatusInput(a5, c5);
-            setStatusInput(hasilAkhir, ch);
-
-            if (c1 && c2 && c3 && c4 && c5 && ch) {
-                jawabanBenar = true;
-                feedback.textContent = 'Semua jawaban benar. Materi lanjutan sudah terbuka.';
-                feedback.className = 'feedback-jawaban feedback-benar';
-                penjelasanBox.style.display = 'block';
-            } else {
-                jawabanBenar = false;
-                feedback.textContent = 'Semua kolom sudah terisi, tetapi masih ada jawaban yang salah. Materi lanjutan tetap dibuka.';
+                feedback.textContent = 'Lengkapi semua kolom terlebih dahulu, lalu klik Cek Semua.';
                 feedback.className = 'feedback-jawaban feedback-salah';
-                penjelasanBox.style.display = 'block';
+                penjelasanBox.style.display = 'none';
+
+                tutupMateriLanjutan();
+
+                return false;
             }
+
+            const hasilCek = [
+                { input: a1, benar: cocokSalahSatu(a1.value, ['16']) },
+                { input: a2, benar: cocokSalahSatu(a2.value, ['12']) },
+                { input: a3, benar: cocokSalahSatu(a3.value, ['16']) },
+                { input: a4, benar: cocokSalahSatu(a4.value, ['12']) },
+                { input: a5, benar: cocokSalahSatu(a5.value, ['11']) },
+                { input: hasilAkhir, benar: cocokSalahSatu(hasilAkhir.value, ['11']) }
+            ];
+
+            let semuaBenar = true;
+
+            hasilCek.forEach(item => {
+                setStatusInput(item.input, item.benar);
+
+                if (!item.benar) {
+                    semuaBenar = false;
+                }
+            });
+
+            jawabanBenar = semuaBenar;
+
+            penjelasanBox.style.display = 'block';
+
+            feedback.textContent = '';
+            feedback.className = 'feedback-jawaban';
 
             if (!eksplorasiSelesai) {
                 eksplorasiSelesai = true;
                 tampilkanMateriLanjutan();
             }
+
+            return true;
         }
 
-        function pasangAutoCheckEksplorasi() {
+        function tutupMateriLanjutan() {
+            const materi = document.getElementById('materiLanjutan');
+            const penjelasanBox = document.getElementById('penjelasanBox');
+
+            if (materi) {
+                materi.style.display = 'none';
+            }
+
+            if (penjelasanBox) {
+                penjelasanBox.style.display = 'none';
+            }
+
+            eksplorasiSelesai = false;
+            jawabanBenar = false;
+        }
+
+        function pasangManualEksplorasi() {
             const ids = ['a1', 'a2', 'a3', 'a4', 'a5', 'hasilAkhir'];
 
             ids.forEach(id => {
@@ -3219,13 +3650,32 @@
                 if (!el) return;
 
                 el.addEventListener('input', function () {
-                    if (el.value.trim() === '') {
-                        el.classList.remove('input-benar', 'input-salah');
-                    }
-                    cekEksplorasiOtomatis();
-                });
+                    el.classList.remove('input-benar', 'input-salah');
 
-                el.addEventListener('blur', cekEksplorasiOtomatis);
+                    const feedback = document.getElementById('feedbackJawaban');
+
+                    if (feedback) {
+                        feedback.textContent = '';
+                        feedback.className = 'feedback-jawaban';
+                    }
+
+                    const semuaMasihTerisi = ids.every(inputId => {
+                        const input = document.getElementById(inputId);
+                        return input && input.value.trim() !== '';
+                    });
+
+                    if (!semuaMasihTerisi) {
+                        tutupMateriLanjutan();
+
+                        ids.forEach(inputId => {
+                            const input = document.getElementById(inputId);
+
+                            if (input) {
+                                input.classList.remove('input-benar', 'input-salah');
+                            }
+                        });
+                    }
+                });
             });
         }
 
@@ -3304,13 +3754,22 @@
             }
         }
 
+        function showHintStep(id) {
+            const hint = document.getElementById(id);
+            if (!hint) return;
+
+            if (hint.style.display === 'block') {
+                hint.style.display = 'none';
+            } else {
+                hint.style.display = 'block';
+            }
+        }
+
         function cekStep1() {
             const v = document.getElementById('k')?.value.trim();
 
             if (v === '1') {
                 tampilBenar('fb1', 'penjelasan1', 'Benar, nilai k sudah tepat.');
-                kunciStepLama(1);
-                bukaStep(2);
             } else {
                 tampilSalah('fb1', 'penjelasan1', 'Masih salah. Perhatikan bentuk (x − k).');
             }
@@ -3324,8 +3783,6 @@
 
             if (c1 === '3' && c2 === '5' && c3 === '-2' && c4 === '1') {
                 tampilBenar('fb2', 'penjelasan2', 'Benar, koefisien ditulis dengan urut.');
-                kunciStepLama(2);
-                bukaStep(3);
             } else {
                 tampilSalah('fb2', 'penjelasan2', 'Masih ada koefisien yang belum tepat.');
             }
@@ -3336,8 +3793,6 @@
 
             if (v === '3') {
                 tampilBenar('fb3', 'penjelasan3', 'Benar, koefisien pertama langsung diturunkan.');
-                kunciStepLama(3);
-                bukaStep(4);
             } else {
                 tampilSalah('fb3', 'penjelasan3', 'Masih salah. Coba lihat koefisien pertama.');
             }
@@ -3349,8 +3804,6 @@
 
             if (a === '3' && b === '8') {
                 tampilBenar('fb4', 'penjelasan4', 'Benar, hasil perkalian dan penjumlahan sudah tepat.');
-                kunciStepLama(4);
-                bukaStep(5);
             } else {
                 tampilSalah('fb4', 'penjelasan4', 'Periksa lagi hasil kali dan hasil jumlahnya.');
             }
@@ -3364,8 +3817,6 @@
 
             if (a === '8' && b === '6' && c === '6' && d === '7') {
                 tampilBenar('fb5', 'penjelasan5', 'Benar, proses Horner sudah selesai.');
-                kunciStepLama(5);
-                bukaStep(6);
             } else {
                 tampilSalah('fb5', 'penjelasan5', 'Masih ada hasil yang belum tepat. Coba ulangi prosesnya.');
             }
@@ -3388,8 +3839,6 @@
                 t66 === '7'
             ) {
                 tampilBenar('fb6', 'penjelasan6', 'Benar, tabel Horner sudah lengkap.');
-                kunciStepLama(6);
-                bukaStep(7);
             } else {
                 tampilSalah('fb6', 'penjelasan6', 'Masih ada isian tabel yang belum tepat.');
             }
@@ -3894,7 +4343,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             showHornerStep(0);
-            pasangAutoCheckEksplorasi();
+            pasangManualEksplorasi();
 
             const penjelasan1 = document.getElementById('latihanPenjelasan1');
             const penjelasan2 = document.getElementById('latihanPenjelasan2');

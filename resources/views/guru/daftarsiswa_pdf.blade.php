@@ -9,6 +9,11 @@
             font-size: 12px; 
         }
 
+        h3 {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
         table { 
             width: 100%; 
             border-collapse: collapse; 
@@ -25,7 +30,14 @@
     </style>
 </head>
 <body>
-    <h3>Daftar Siswa</h3>
+    <h3>
+        Daftar Siswa
+        @if(isset($kelas) && $kelas && $kelas !== 'semua')
+            Kelas {{ str_replace(' ', '', $kelas) }}
+        @else
+            Semua Kelas
+        @endif
+    </h3>
 
     <table>
         <thead>
@@ -44,9 +56,9 @@
                 <tr>
                     <td>{{ $i + 1 }}</td>
                     <td>{{ $s->nama }}</td>
-                    <td>{{ $s->email }}</td>
-                    <td>{{ $s->nis }}</td>
-                    <td>{{ $s->jenis_kelamin }}</td>
+                    <td>{{ $s->email ?? '-' }}</td>
+                    <td>{{ $s->nis ?? '-' }}</td>
+                    <td>{{ $s->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                     <td>{{ str_replace(' ', '', $s->kelas) }}</td>
                 </tr>
             @endforeach

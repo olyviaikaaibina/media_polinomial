@@ -6,12 +6,13 @@
     ========================== --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                            delimiters: [
-                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                            ]
-                                                                                                        });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+                                                                                                                                                                    delimiters: [
+                                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                                    ]
+                                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -300,9 +301,9 @@
         .mini-feedback.no,
         .blank-feedback.no,
         .susun-feedback.no {
-            color: #8c2b00;
-            background: rgba(224, 112, 43, .10);
-            border: 1px solid rgba(224, 112, 43, .18);
+            color: #b91c1c;
+            background: rgba(220, 38, 38, 0.10);
+            border: 1px solid rgba(220, 38, 38, 0.18);
         }
 
         .quiz-summary,
@@ -336,9 +337,9 @@
         .hasil-input.is-wrong,
         .blank-input.is-wrong,
         .susun-input.is-wrong {
-            border: 2px solid #e0702b !important;
-            background: rgba(224, 112, 43, 0.08) !important;
-            box-shadow: 0 0 0 3px rgba(224, 112, 43, 0.08);
+            border: 2px solid #dc2626 !important;
+            background: rgba(220, 38, 38, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
         }
 
         /* materi lanjutan disembunyikan dulu */
@@ -1294,9 +1295,9 @@
         }
 
         /* ================================
-                                                                   RESPONSIVE: LAPTOP, TABLET, HP
-                                                                   Tempel di paling bawah <style>
-                                                                ================================ */
+                                                                                                                           RESPONSIVE: LAPTOP, TABLET, HP
+                                                                                                                           Tempel di paling bawah <style>
+                                                                                                                        ================================ */
 
         /* Laptop / desktop besar */
         @media (min-width: 1025px) {
@@ -1740,8 +1741,8 @@
         }
 
         /* =========================
-                       CARD JAWABAN CONTOH C
-                       ========================= */
+                                                                               CARD JAWABAN CONTOH C
+                                                                               ========================= */
 
         .contoh-answer-card {
             width: 100%;
@@ -1776,8 +1777,8 @@
         }
 
         /* =========================
-                       TABEL KECIL
-                       ========================= */
+                                                                               TABEL KECIL
+                                                                               ========================= */
 
         .contoh-table-box {
             width: 100%;
@@ -1842,8 +1843,8 @@
         }
 
         /* =========================
-                       INPUT DI DALAM TABEL
-                       ========================= */
+                                                                               INPUT DI DALAM TABEL
+                                                                               ========================= */
 
         .table-answer-input {
             width: 76px;
@@ -1864,8 +1865,8 @@
         }
 
         /* =========================
-                       HINT KATEX
-                       ========================= */
+                                                                               HINT KATEX
+                                                                               ========================= */
 
         .hint-katex {
             width: 100%;
@@ -1881,8 +1882,8 @@
         }
 
         /* =========================
-                       INPUT HASIL DI SAMPING
-                       ========================= */
+                                                                               INPUT HASIL DI SAMPING
+                                                                               ========================= */
 
         .contoh-result-row {
             display: flex;
@@ -1921,8 +1922,8 @@
         }
 
         /* =========================
-                       FEEDBACK DI SAMPING INPUT
-                       ========================= */
+                                                                               FEEDBACK DI SAMPING INPUT
+                                                                               ========================= */
 
         .susun-feedback {
             display: inline-block;
@@ -1945,8 +1946,8 @@
         }
 
         /* =========================
-                       TOMBOL CEK DI SAMPING / KIRI
-                       ========================= */
+                                                                               TOMBOL CEK DI SAMPING / KIRI
+                                                                               ========================= */
 
         .susun-actions-side {
             display: flex;
@@ -1964,8 +1965,8 @@
         }
 
         /* =========================
-                       RESPONSIVE
-                       ========================= */
+                                                                               RESPONSIVE
+                                                                               ========================= */
 
         @media (max-width: 850px) {
             .contoh-answer-card {
@@ -2033,8 +2034,8 @@
         }
 
         /* =========================
-               LATIHAN TERAKHIR BERURUTAN
-               ========================= */
+                                                                       LATIHAN TERAKHIR BERURUTAN
+                                                                       ========================= */
 
         .game-soal {
             position: relative;
@@ -2100,6 +2101,48 @@
 
         #quiz-summary {
             display: none !important;
+        }
+
+        .game-petunjuk-box {
+            margin: 0 0 16px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: #f3f7ff;
+            border: 1.5px solid #c8d8ff;
+            color: #4b5563;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .game-petunjuk-box b {
+            color: #4a4a4a;
+            font-weight: 900;
+        }
+
+        .game-petunjuk-box .jawaban-line {
+            margin-top: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .game-petunjuk-box {
+                font-size: 15.5px;
+                line-height: 1.75;
+                padding: 14px 15px;
+                border-radius: 15px;
+            }
+        }
+
+        p,
+        .lead-text,
+        .petunjuk-box,
+        .game-petunjuk-box,
+        .game-petunjuk-box .jawaban-line,
+        .hint-content,
+        .step-explain,
+        .metode-subtitle,
+        .tip-main-desc,
+        .tip-example-desc {
+            text-align: justify !important;
         }
     </style>
 
@@ -2167,7 +2210,10 @@
                     </li>
                 </ol>
 
-                <div style="margin-top:10px;">
+                <div class="quiz-actions" style="margin-top:12px;">
+                    <button type="button" id="quiz-check-all" class="quiz-checkall">
+                        Cek Semua
+                    </button>
                     <span id="quiz-summary" class="quiz-summary"></span>
                 </div>
             </div>
@@ -2272,6 +2318,10 @@
                         <div class="contoh-row-title">Hitunglah hasil dari:</div>
                         <div class="rumus-box">$$(3x^2)(4x^3)$$</div>
 
+                        <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
+                            Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
+                        </p>
+
                         <div class="step-card step-item" data-answer="12">
                             <div class="step-title">Langkah 1: Hitung koefisien</div>
                             <div class="step-explain">
@@ -2280,7 +2330,7 @@
                                 Kalikan kedua angka tersebut:
                                 <br>
                             </div>
-                            <input class="step-input" type="text" placeholder="Isi jawaban koefisien" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2293,7 +2343,7 @@
                                 Karena sama-sama memiliki variabel <b>x</b>, maka pangkatnya dijumlahkan:
                                 <br>
                             </div>
-                            <input class="step-input" type="text" placeholder="Isi jawaban variabel" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2309,7 +2359,7 @@
                                 Variabel = <b>$x^5$</b>
                                 <br>
                             </div>
-                            <input class="step-input" type="text" placeholder="Isi hasil akhir" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2348,13 +2398,19 @@
                     <span class="pill">MARI MENCOBA</span>
                 </div>
 
+                <div class="petunjuk-box"
+                    style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                    <b>Petunjuk pengerjaan:</b> Isi koefisien, pangkat variabel, lalu hasil akhirnya. Untuk menulis pangkat,
+                    ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
+                </div>
+
                 <div class="practice-wrap sideways">
                     <div class="practice-card practice-block" id="practice-a1">
                         <div class="practice-title">1. $$(2x^3)(5x^2)$$</div>
 
                         <div class="step-card step-item" data-answer="10">
                             <div class="step-title">Koefisien</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2362,7 +2418,7 @@
 
                         <div class="step-card step-item" data-answer="x^5">
                             <div class="step-title">Pangkat variabel</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2370,7 +2426,7 @@
 
                         <div class="step-card step-item" data-answer="10x^5">
                             <div class="step-title">Hasil akhir</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2387,7 +2443,7 @@
 
                         <div class="step-card step-item" data-answer="12">
                             <div class="step-title">Koefisien</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2395,7 +2451,7 @@
 
                         <div class="step-card step-item" data-answer="x^5">
                             <div class="step-title">Pangkat variabel</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2403,7 +2459,7 @@
 
                         <div class="step-card step-item" data-answer="12x^5">
                             <div class="step-title">Hasil akhir</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2420,7 +2476,7 @@
 
                         <div class="step-card step-item" data-answer="6">
                             <div class="step-title">Koefisien</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2428,7 +2484,7 @@
 
                         <div class="step-card step-item" data-answer="x^7">
                             <div class="step-title">Pangkat variabel</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2436,7 +2492,7 @@
 
                         <div class="step-card step-item" data-answer="6x^7">
                             <div class="step-title">Hasil akhir</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2474,6 +2530,10 @@
                         <div class="contoh-row-title">Gunakan aturan distributif.</div>
                         <div class="rumus-box">$$3x(2x^2-5x+4)$$</div>
 
+                        <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
+                            Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
+                        </p>
+
                         <div class="table-wrap">
                             <table class="materi-table">
                                 <thead>
@@ -2488,7 +2548,7 @@
                                         <td>$3x(2x^2)$</td>
                                         <td>$(3\cdot2)x^{1+2}$</td>
                                         <td>
-                                            <input class="hasil-input" type="text" />
+                                            <input class="hasil-input" type="text" placeholder="Jawaban kamu" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
                                                 <span class="mini-feedback"></span>
@@ -2501,7 +2561,7 @@
                                         <td>$3x(-5x)$</td>
                                         <td>$(3\cdot-5)x^{1+1}$</td>
                                         <td>
-                                            <input class="hasil-input" type="text" />
+                                            <input class="hasil-input" type="text" placeholder="Jawaban kamu" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
                                                 <span class="mini-feedback"></span>
@@ -2513,7 +2573,7 @@
                                         <td>$3x(4)$</td>
                                         <td>$(3\cdot4)x$</td>
                                         <td>
-                                            <input class="hasil-input" type="text" />
+                                            <input class="hasil-input" type="text" placeholder="Jawaban kamu" />
                                             <div class="katex-answer" aria-hidden="true"></div>
                                             <div class="mini-actions">
                                                 <span class="mini-feedback"></span>
@@ -2528,7 +2588,7 @@
                             <div class="contoh-row-title">Tuliskan hasil akhirnya:</div>
                             <div class="mini-actions" style="justify-content:flex-start;">
                                 <input id="contoh-final-b" class="hasil-input" style="max-width:420px; text-align:left;"
-                                    type="text" />
+                                    type="text" placeholder="Jawaban kamu" />
                                 <span id="contoh-final-fb-b" class="mini-feedback"></span>
                             </div>
 
@@ -2572,7 +2632,12 @@
                     <span class="pill">MARI MENCOBA</span>
                 </div>
 
-                <p>Distribusikan suku di depan kurung ke setiap suku di dalam kurung.</p>
+                <div class="petunjuk-box"
+                    style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                    <b>Petunjuk pengerjaan:</b> Distribusikan suku di depan kurung ke setiap suku di dalam kurung, lalu
+                    tuliskan hasil akhirnya. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan
+                    x3 untuk x³.
+                </div>
 
                 <div class="practice-wrap sideways">
                     <div class="practice-card practice-block" id="practice-b1">
@@ -2580,7 +2645,7 @@
 
                         <div class="step-card step-item" data-answer="12x^3">
                             <div class="step-title">Hasil perkalian pertama: $4x(3x^2)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2588,7 +2653,7 @@
 
                         <div class="step-card step-item" data-answer="-8x^2">
                             <div class="step-title">Hasil perkalian kedua: $4x(-2x)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2596,7 +2661,7 @@
 
                         <div class="step-card step-item" data-answer="20x">
                             <div class="step-title">Hasil perkalian ketiga: $4x(5)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2604,7 +2669,7 @@
 
                         <div class="step-card step-item" data-answer="12x^3-8x^2+20x">
                             <div class="step-title">Gabungkan semuanya</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2621,7 +2686,7 @@
 
                         <div class="step-card step-item" data-answer="10x^3">
                             <div class="step-title">Hasil perkalian pertama: $2x(5x^2)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2629,7 +2694,7 @@
 
                         <div class="step-card step-item" data-answer="2x^2">
                             <div class="step-title">Hasil perkalian kedua: $2x(x)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2637,7 +2702,7 @@
 
                         <div class="step-card step-item" data-answer="-6x">
                             <div class="step-title">Hasil perkalian ketiga: $2x(-3)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2645,7 +2710,7 @@
 
                         <div class="step-card step-item" data-answer="10x^3+2x^2-6x">
                             <div class="step-title">Gabungkan semuanya</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2662,7 +2727,7 @@
 
                         <div class="step-card step-item" data-answer="-12x^3">
                             <div class="step-title">Hasil perkalian pertama: $-3x(4x^2)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2670,7 +2735,7 @@
 
                         <div class="step-card step-item" data-answer="3x^2">
                             <div class="step-title">Hasil perkalian kedua: $-3x(-x)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2678,7 +2743,7 @@
 
                         <div class="step-card step-item" data-answer="-6x">
                             <div class="step-title">Hasil perkalian ketiga: $-3x(2)$</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2686,7 +2751,7 @@
 
                         <div class="step-card step-item" data-answer="-12x^3+3x^2-6x">
                             <div class="step-title">Gabungkan semuanya</div>
-                            <input class="step-input" type="text" />
+                            <input class="step-input" type="text" placeholder="Jawaban kamu" />
                             <div class="step-actions">
                                 <span class="step-feedback"></span>
                             </div>
@@ -2800,6 +2865,10 @@
                             $$(x+2)(x+3)$$
                         </div>
 
+                        <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
+                            Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
+                        </p>
+
                         <div class="contoh-answer-card">
 
                             {{-- BAGIAN KIRI: TABEL JAWABAN --}}
@@ -2867,8 +2936,7 @@
 
                                 <div class="susun-item-c contoh-result-row" data-answer="x^2+2x+3x+6">
                                     <span class="equal-symbol">=</span>
-                                    <input class="susun-input result-answer-input" type="text"
-                                        placeholder="x² + 2x + 3x + 6" />
+                                    <input class="susun-input result-answer-input" type="text" placeholder="Jawaban kamu" />
                                     <span class="susun-feedback result-feedback"></span>
                                 </div>
 
@@ -2882,7 +2950,7 @@
 
                                 <div class="susun-item-c contoh-result-row" data-answer="x^2+5x+6">
                                     <span class="equal-symbol">=</span>
-                                    <input class="susun-input result-answer-input" type="text" placeholder="x² + 5x + 6" />
+                                    <input class="susun-input result-answer-input" type="text" placeholder="Jawaban kamu" />
                                     <span class="susun-feedback result-feedback"></span>
                                 </div>
 
@@ -2910,6 +2978,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- =========================
             C. LATIHAN
             ========================== --}}
@@ -2918,7 +2987,12 @@
                     <span class="pill">MARI MENCOBA</span>
                 </div>
 
-                <p>Isi kotak kosong berikut agar proses distribusi menjadi lengkap, lalu tuliskan hasil akhirnya.</p>
+                <div class="petunjuk-box"
+                    style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                    <b>Petunjuk pengerjaan:</b> Isi kotak kosong agar proses distribusi menjadi lengkap, lalu tuliskan
+                    bentuk sebelum disederhanakan dan hasil akhirnya. Untuk menulis pangkat, ketik angka setelah variabel,
+                    misalnya x2 untuk x² dan x3 untuk x³.
+                </div>
 
                 <div class="blank-grid">
                     <div class="blank-card" id="blank-c1">
@@ -2926,37 +3000,37 @@
 
                         <div class="blank-line blank-item" data-answer="2x^2">
                             <span class="math-part">$$2x(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="8x">
                             <span class="math-part">$$2x(4)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x">
                             <span class="math-part">$$1(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="4">
                             <span class="math-part">$$1(4)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="2x^2+8x+x+4">
                             <span class="math-part">Bentuk sebelum disederhanakan =</span>
-                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="" />
+                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="2x^2+9x+4">
                             <span class="math-part">Hasil akhir =</span>
-                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="" />
+                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
@@ -2980,37 +3054,37 @@
 
                         <div class="blank-line blank-item" data-answer="x^2">
                             <span class="math-part">$$x(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="5x">
                             <span class="math-part">$$x(5)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="-2x">
                             <span class="math-part">$$-2(x)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="-10">
                             <span class="math-part">$$-2(5)=$$</span>
-                            <input class="blank-input" type="text" placeholder="" />
+                            <input class="blank-input" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x^2+5x-2x-10">
                             <span class="math-part">Bentuk sebelum disederhanakan =</span>
-                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="" />
+                            <input class="blank-input" style="max-width:260px;" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
                         <div class="blank-line blank-item" data-answer="x^2+3x-10">
                             <span class="math-part">Hasil akhir =</span>
-                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="" />
+                            <input class="blank-input" style="max-width:220px;" type="text" placeholder="Jawaban kamu" />
                             <span class="blank-feedback"></span>
                         </div>
 
@@ -3035,9 +3109,13 @@
                 <div class="game-latihan-head">LATIHAN</div>
 
                 <div class="game-latihan-box">
-                    <p class="game-intro">
-                        Pilih jawaban yang benar untuk setiap soal. Klik satu kartu jawaban pada tiap soal.
-                    </p>
+                    <div class="game-petunjuk-box">
+                        <b>Petunjuk pengerjaan:</b>
+                        Perhatikan setiap bentuk perkalian polinomial pada soal. Tentukan hasil perkaliannya dengan cara
+                        mengalikan setiap suku, memperhatikan tanda positif atau negatif, lalu menyederhanakan suku sejenis.
+                        <div class="jawaban-line">
+                        </div>
+                    </div>
 
                     <div class="game-grid">
 
@@ -3234,10 +3312,24 @@
                 // =========================
                 // EKSPLORASI AUTO CHECK
                 // =========================
+                // =========================
+                // EKSPLORASI CEK SEMUA
+                // Tidak koreksi otomatis.
+                // Materi terbuka jika semua jawaban sudah diisi,
+                // walaupun ada jawaban yang salah.
+                // =========================
+                // =========================
+                // EKSPLORASI CEK SEMUA
+                // Tidak koreksi otomatis.
+                // Materi terbuka jika semua jawaban sudah diisi,
+                // walaupun ada jawaban yang salah.
+                // =========================
                 const quiz = document.getElementById("eksplorasi-quiz");
 
                 if (quiz) {
                     const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+                    const summary = document.getElementById("quiz-summary");
+                    const btnCheckAll = document.getElementById("quiz-check-all");
 
                     const checkItem = (item) => {
                         const input = item.querySelector(".quiz-input");
@@ -3245,42 +3337,71 @@
 
                         const rawValue = input ? input.value.trim() : "";
                         const user = normalizePoly(rawValue);
-                        const ans = normalizePoly(item.getAttribute("data-answer") || "");
+
+                        const answerRaw = item.getAttribute("data-answer") || "";
+                        const ans = normalizePoly(answerRaw);
 
                         if (!rawValue) {
-                            clearFb(fb);
-                            clearInputState(input);
-                            return null;
+                            if (fb) {
+                                fb.style.display = "inline-block";
+                                fb.classList.remove("ok", "no");
+                                fb.classList.add("no");
+                                fb.textContent = "Wajib diisi";
+                            }
+
+                            setInputState(input, false);
+
+                            return {
+                                filled: false,
+                                correct: false
+                            };
                         }
 
                         const ok = user === ans;
-                        setFb(fb, ok, true);
-                        setInputState(input, ok);
-                        return ok;
-                    };
 
-                    const updateEksplorasiState = () => {
-                        const summary = document.getElementById("quiz-summary");
-                        const total = items.length;
+                        if (fb) {
+                            fb.style.display = "inline-block";
+                            fb.classList.remove("ok", "no");
+                            fb.classList.add(ok ? "ok" : "no");
 
-                        let correct = 0;
-                        let filled = 0;
-
-                        items.forEach(item => {
-                            const input = item.querySelector(".quiz-input");
-                            const value = input ? input.value.trim() : "";
-
-                            if (value !== "") filled++;
-
-                            const result = checkItem(item);
-                            if (result === true) correct++;
-                        });
-
-                        if (summary) {
-                            summary.textContent = `Terisi: ${filled}/${total} | Benar: ${correct}/${total}`;
+                            if (ok) {
+                                fb.textContent = "Benar";
+                            } else {
+                                fb.textContent = `Salah. Jawaban benar: ${answerRaw}`;
+                            }
                         }
 
-                        // tampil hanya jika semua soal eksplorasi sudah dikerjakan
+                        setInputState(input, ok);
+
+                        return {
+                            filled: true,
+                            correct: ok
+                        };
+                    };
+
+                    const cekSemuaEksplorasi = () => {
+                        const total = items.length;
+
+                        let filled = 0;
+                        let correct = 0;
+
+                        items.forEach(item => {
+                            const result = checkItem(item);
+
+                            if (result.filled) filled++;
+                            if (result.correct) correct++;
+                        });
+
+                        // Summary disembunyikan, jadi teksnya dikosongkan saja
+                        if (summary) {
+                            summary.textContent = "";
+                            summary.style.display = "none";
+                        }
+
+                        /*
+                           Materi terbuka jika semua soal eksplorasi sudah diisi.
+                           Tidak harus benar semua.
+                        */
                         if (filled === total) {
                             showAfterEksplorasi();
                         } else {
@@ -3290,20 +3411,33 @@
 
                     items.forEach(item => {
                         const input = item.querySelector(".quiz-input");
+                        const fb = item.querySelector(".quiz-feedback");
 
                         if (input) {
-                            input.addEventListener("input", updateEksplorasiState);
-                            input.addEventListener("blur", updateEksplorasiState);
+                            input.addEventListener("input", () => {
+                                clearFb(fb);
+                                clearInputState(input);
+
+                                if (summary) {
+                                    summary.textContent = "";
+                                    summary.style.display = "none";
+                                }
+                            });
+
                             input.addEventListener("keydown", (e) => {
                                 if (e.key === "Enter") {
                                     e.preventDefault();
-                                    updateEksplorasiState();
+                                    cekSemuaEksplorasi();
                                 }
                             });
                         }
                     });
 
-                    updateEksplorasiState();
+                    if (btnCheckAll) {
+                        btnCheckAll.addEventListener("click", cekSemuaEksplorasi);
+                    }
+
+                    hideAfterEksplorasi();
                 }
 
                 // =========================

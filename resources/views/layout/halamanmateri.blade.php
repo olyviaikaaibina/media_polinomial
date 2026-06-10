@@ -753,6 +753,45 @@
         max-width: 92vw;
       }
     }
+
+    /* ================================
+   WARNA SIDEBAR FINAL
+   Cream = belum aktif
+   Hijau muda = sedang aktif/diklik
+================================ */
+
+    /* Menu utama yang belum aktif */
+    .sidebar-menu-item,
+    .dropdown-toggle-btn {
+      background: #f3dfbd !important;
+      color: #4f4a3f !important;
+      font-weight: 700 !important;
+    }
+
+    /* Submenu yang belum aktif */
+    .dropdown-item {
+      background: #f3dfbd !important;
+      color: #5a5548 !important;
+      font-weight: 600 !important;
+    }
+
+    /* Hover saat diarahkan cursor */
+    .sidebar-menu-item:hover,
+    .dropdown-toggle-btn:hover,
+    .dropdown-item:hover {
+      background: #ead3ad !important;
+      color: #3f3a30 !important;
+    }
+
+    /* Submenu yang sedang aktif / halaman sedang dibuka */
+    .dropdown-item.active {
+      background: #d8e4cf !important;
+      color: #2f3a30 !important;
+      font-weight: 800 !important;
+      border-left: 6px solid #7f956a !important;
+    }
+
+   
   </style>
 </head>
 

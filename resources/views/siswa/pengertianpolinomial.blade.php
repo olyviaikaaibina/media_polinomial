@@ -4,12 +4,13 @@
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
-                                                                                                        delimiters: [
-                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                        ]
-                                                                                                    });"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+                                                                                                                            delimiters: [
+                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                            ]
+                                                                                                                        });"></script>
 
     <style>
         :root {
@@ -1138,6 +1139,18 @@
                 </ol>
 
                 <span id="quiz-summary" class="quiz-summary"></span>
+
+                <div class="quiz-actions" style="margin-top: 16px;">
+                    <button id="cekEksplorasiBtn" class="btnx primary" type="button">
+                        Cek Semua
+                    </button>
+
+                    <button id="resetEksplorasiBtn" class="btnx ghost" type="button">
+                        Reset
+                    </button>
+                </div>
+
+                <div id="eksplorasiResult" class="result-box"></div>
             </div>
         </div>
         <div id="materi-lanjutan">
@@ -1406,192 +1419,6 @@
         </script>
 
         <script>
-            (function () {
-                const normalize = (s) =>
-                    (s || "")
-                        .toLowerCase()
-                        .trim()
-                        .replace(/\s+/g, "")
-                        .replace(/×/g, "x");
-
-                const splitTokens = (s) => {
-                    return (s || "")
-                        .toLowerCase()
-                        .replace(/;/g, ",")
-                        .split(",")
-                        .flatMap(part => part.trim().split(/\s+/))
-                        .map(t => normalize(t))
-                        .filter(Boolean);
-                };
-
-                const setEqual = (a, b) => {
-                    const A = new Set(a), B = new Set(b);
-                    if (A.size !== B.size) return false;
-                    for (const x of A) {
-                        if (!B.has(x)) return false;
-                    }
-                    return true;
-                };
-
-                const clearFeedback = (item) => {
-                    const fb = item.querySelector(".quiz-feedback");
-                    if (!fb) return;
-                    fb.classList.remove("ok", "no");
-                    fb.textContent = "";
-                };
-
-                const showFeedback = (item, ok, msgOk, msgNo) => {
-                    const fb = item.querySelector(".quiz-feedback");
-                    if (!fb) return;
-                    fb.classList.remove("ok", "no");
-                    fb.classList.add(ok ? "ok" : "no");
-                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Belum tepat ❌");
-                };
-
-                const toYN = (raw) => {
-                    const v = (raw || "").toLowerCase().trim();
-                    if (["ya", "y", "benar", "iya"].includes(v)) return "ya";
-                    if (["tidak", "t", "tdk", "salah", "gak", "nggak"].includes(v)) return "tidak";
-                    return "";
-                };
-
-                const getInputValue = (item) => {
-                    const el = item.querySelector(".quiz-input");
-                    return el ? el.value : "";
-                };
-
-                const resetItem = (item) => {
-                    const el = item.querySelector(".quiz-input");
-                    if (el) el.value = "";
-                    clearFeedback(item);
-                    updateSummaryAndUnlock();
-                };
-
-                const checkItem = (item) => {
-                    const type = item.getAttribute("data-type");
-                    const valRaw = getInputValue(item);
-
-                    if (!valRaw.trim()) {
-                        clearFeedback(item);
-                        return false;
-                    }
-
-                    if (type === "set") {
-                        const expected = item.getAttribute("data-answer") || "";
-                        const expTokens = splitTokens(expected);
-                        const userTokens = splitTokens(valRaw);
-                        const ok = setEqual(userTokens, expTokens);
-                        showFeedback(item, ok, "Benar ✅", "Belum tepat ❌");
-                        return ok;
-                    }
-
-                    if (type === "oneof") {
-                        const expected = normalize(item.getAttribute("data-answer") || "");
-                        const val = normalize(valRaw);
-                        const ok = (val === expected) || val.startsWith(expected);
-                        showFeedback(item, ok, "Benar ✅", "Belum tepat ❌");
-                        return ok;
-                    }
-
-                    if (type === "yn") {
-                        const expected = normalize(item.getAttribute("data-answer") || "ya");
-                        const yn = toYN(valRaw);
-
-                        if (!yn) {
-                            showFeedback(item, false, "", "Gunakan ya / tidak ❌");
-                            return false;
-                        }
-
-                        const ok = (yn === expected);
-                        showFeedback(item, ok, "Benar ✅", "Belum tepat ❌");
-                        return ok;
-                    }
-
-                    showFeedback(item, false, "", "Tipe soal belum dikenali.");
-                    return false;
-                };
-
-                const materiLanjutan = document.getElementById("materi-lanjutan");
-                const summary = document.getElementById("quiz-summary");
-                let isUnlocked = false;
-
-                const unlockMateri = () => {
-                    if (!materiLanjutan || isUnlocked) return;
-
-                    isUnlocked = true;
-                    materiLanjutan.style.display = "block";
-
-                    requestAnimationFrame(() => {
-                        materiLanjutan.classList.add("show");
-                    });
-
-                    setTimeout(() => {
-                        materiLanjutan.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-                    }, 150);
-                };
-
-                const updateSummaryAndUnlock = () => {
-                    const quiz = document.getElementById("eksplorasi-quiz");
-                    if (!quiz) return;
-
-                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                    const total = items.length;
-                    let filled = 0;
-                    let correct = 0;
-
-                    items.forEach(item => {
-                        const val = getInputValue(item).trim();
-                        if (val !== "") filled++;
-
-                        const fb = item.querySelector(".quiz-feedback");
-                        if (fb && fb.classList.contains("ok")) correct++;
-                    });
-
-                    if (summary) {
-                        if (filled === 0) {
-                            summary.textContent = "";
-                        } else if (correct === total) {
-                            summary.textContent = `Semua jawaban benar ✅ Materi berikutnya sudah dibuka.`;
-                        } else {
-                            summary.textContent = `Jawaban benar: ${correct}/${total}`;
-                        }
-                    }
-
-                    if (correct === total) {
-                        unlockMateri();
-                    }
-                };
-
-                const quiz = document.getElementById("eksplorasi-quiz");
-                if (quiz) {
-                    quiz.querySelectorAll(".quiz-item").forEach(item => {
-                        const input = item.querySelector(".quiz-input");
-                        const btnReset = item.querySelector(".quiz-reset");
-
-                        if (input) {
-                            input.addEventListener("input", () => {
-                                checkItem(item);
-                                updateSummaryAndUnlock();
-                            });
-
-                            input.addEventListener("blur", () => {
-                                checkItem(item);
-                                updateSummaryAndUnlock();
-                            });
-                        }
-
-                        if (btnReset) {
-                            btnReset.addEventListener("click", () => resetItem(item));
-                        }
-                    });
-                }
-            })();
-        </script>
-
-        <script>
             window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
         </script>
         <script>
@@ -1717,20 +1544,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                                                <div class="quiz-soal-title">Soal ${i + 1}</div>
-                                                <div class="quiz-ekspresi">${q.expr}</div>
+                                                                    <div class="quiz-soal-title">Soal ${i + 1}</div>
+                                                                    <div class="quiz-ekspresi">${q.expr}</div>
 
-                                                <div class="quiz-options-new">
-                                                    <label>
-                                                        <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                                                    </label>
-                                                </div>
+                                                                    <div class="quiz-options-new">
+                                                                        <label>
+                                                                            <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                                                        </label>
+                                                                        <label>
+                                                                            <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                                                        </label>
+                                                                    </div>
 
-                                                <div class="feedback-box" id="fb${i}"></div>
-                                            `;
+                                                                    <div class="feedback-box" id="fb${i}"></div>
+                                                                `;
                         container.appendChild(div);
                     });
 
@@ -1773,24 +1600,24 @@
 
                         if (saved) {
                             resultBox.innerHTML = `
-                                                    Skor: ${score}/${questions.length}<br>
-                                                    Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
-                                                `;
+                                                                        Skor: ${score}/${questions.length}<br>
+                                                                        Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
+                                                                    `;
                             resultBox.style.color = "green";
 
                             bukaNextButton();
                         } else {
                             resultBox.innerHTML = `
-                                                    Skor: ${score}/${questions.length}<br>
-                                                    Jawaban benar, tapi progres belum tersimpan.
-                                                `;
+                                                                        Skor: ${score}/${questions.length}<br>
+                                                                        Jawaban benar, tapi progres belum tersimpan.
+                                                                    `;
                             resultBox.style.color = "orange";
                         }
                     } else {
                         resultBox.innerHTML = `
-                                                Skor: ${score}/${questions.length}<br>
-                                                Masih ada jawaban yang belum tepat. Coba lagi ya.
-                                            `;
+                                                                    Skor: ${score}/${questions.length}<br>
+                                                                    Masih ada jawaban yang belum tepat. Coba lagi ya.
+                                                                `;
                         resultBox.style.color = "red";
                     }
 
@@ -1890,26 +1717,12 @@
                     const B = new Set(b);
 
                     if (A.size !== B.size) return false;
+
                     for (const x of A) {
                         if (!B.has(x)) return false;
                     }
+
                     return true;
-                };
-
-                const clearFeedback = (item) => {
-                    const fb = item.querySelector(".quiz-feedback");
-                    if (!fb) return;
-                    fb.classList.remove("ok", "no");
-                    fb.textContent = "";
-                };
-
-                const showFeedback = (item, ok, msgOk, msgNo) => {
-                    const fb = item.querySelector(".quiz-feedback");
-                    if (!fb) return;
-
-                    fb.classList.remove("ok", "no");
-                    fb.classList.add(ok ? "ok" : "no");
-                    fb.textContent = ok ? (msgOk || "Benar ✅") : (msgNo || "Salah ❌");
                 };
 
                 const toYN = (raw) => {
@@ -1921,14 +1734,56 @@
                     return "";
                 };
 
+                const quiz = document.getElementById("eksplorasi-quiz");
+                const materiLanjutan = document.getElementById("materi-lanjutan");
+                const cekBtn = document.getElementById("cekEksplorasiBtn");
+                const resetBtn = document.getElementById("resetEksplorasiBtn");
+                const resultBox = document.getElementById("eksplorasiResult");
+                const summary = document.getElementById("quiz-summary");
+
+                let isUnlocked = false;
+
+                if (!quiz || !cekBtn) return;
+
+                const items = Array.from(quiz.querySelectorAll(".quiz-item"));
+
                 const getInputValue = (item) => {
-                    const el = item.querySelector(".quiz-input");
-                    return el ? el.value : "";
+                    const input = item.querySelector(".quiz-input");
+                    return input ? input.value : "";
                 };
 
-                const materiLanjutan = document.getElementById("materi-lanjutan");
-                const summary = document.getElementById("quiz-summary");
-                let isUnlocked = false;
+                const clearFeedback = (item) => {
+                    const fb = item.querySelector(".quiz-feedback");
+                    if (!fb) return;
+
+                    fb.classList.remove("ok", "no");
+                    fb.textContent = "";
+                };
+
+                const showFeedback = (item, ok, jawabanBenar) => {
+                    const fb = item.querySelector(".quiz-feedback");
+                    if (!fb) return;
+
+                    fb.classList.remove("ok", "no");
+                    fb.classList.add(ok ? "ok" : "no");
+
+                    if (ok) {
+                        fb.textContent = "Benar ✅";
+                    } else {
+                        fb.textContent = "Belum tepat ❌ Jawaban benar: " + jawabanBenar;
+                    }
+                };
+
+                const getJawabanBenarText = (item) => {
+                    const type = item.getAttribute("data-type");
+                    const answer = item.getAttribute("data-answer") || "";
+
+                    if (type === "set") {
+                        return answer.split(",").join(", ");
+                    }
+
+                    return answer;
+                };
 
                 const unlockMateri = () => {
                     if (!materiLanjutan || isUnlocked) return;
@@ -1952,110 +1807,136 @@
                 const checkItem = (item) => {
                     const type = item.getAttribute("data-type");
                     const valRaw = getInputValue(item);
+                    const expected = item.getAttribute("data-answer") || "";
 
                     if (!valRaw.trim()) {
-                        clearFeedback(item);
                         return false;
                     }
 
                     if (type === "set") {
-                        const expected = item.getAttribute("data-answer") || "";
                         const expTokens = splitTokens(expected);
                         const userTokens = splitTokens(valRaw);
-                        const ok = setEqual(userTokens, expTokens);
 
-                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
-                        return true; // tetap dianggap terjawab
+                        return setEqual(userTokens, expTokens);
                     }
 
                     if (type === "oneof") {
-                        const expected = normalize(item.getAttribute("data-answer") || "");
+                        const exp = normalize(expected);
                         const val = normalize(valRaw);
-                        const ok = (val === expected) || val.startsWith(expected);
 
-                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
-                        return true; // tetap dianggap terjawab
+                        return val === exp;
                     }
 
                     if (type === "yn") {
-                        const expected = normalize(item.getAttribute("data-answer") || "ya");
+                        const exp = normalize(expected || "ya");
                         const yn = toYN(valRaw);
 
-                        if (!yn) {
-                            showFeedback(item, false, "", "Gunakan ya / tidak ❌");
-                            return true; // tetap dianggap terjawab karena input sudah diisi
-                        }
-
-                        const ok = (yn === expected);
-                        showFeedback(item, ok, "Benar ✅", "Salah ❌");
-                        return true; // tetap dianggap terjawab
+                        return yn === exp;
                     }
 
-                    showFeedback(item, false, "", "Tipe soal belum dikenali.");
-                    return true;
+                    return false;
                 };
 
-                const updateSummaryAndUnlock = () => {
-                    const quiz = document.getElementById("eksplorasi-quiz");
-                    if (!quiz) return;
+                const semuaSudahDiisi = () => {
+                    return items.every(item => getInputValue(item).trim() !== "");
+                };
 
-                    const items = Array.from(quiz.querySelectorAll(".quiz-item"));
-                    const total = items.length;
+                const resetTampilan = () => {
+                    items.forEach(item => clearFeedback(item));
 
-                    let filled = 0;
-
-                    items.forEach(item => {
-                        const val = getInputValue(item).trim();
-                        if (val !== "") filled++;
-                    });
+                    if (resultBox) {
+                        resultBox.innerHTML = "";
+                        resultBox.style.color = "";
+                    }
 
                     if (summary) {
-                        if (filled === 0) {
-                            summary.textContent = "";
-                        } else if (filled === total) {
-                            summary.textContent = "Semua eksplorasi sudah dijawab ✅ Materi berikutnya sudah dibuka.";
-                        } else {
-                            summary.textContent = `Terjawab: ${filled}/${total}`;
-                        }
+                        summary.textContent = "";
                     }
+                };
 
-                    if (filled === total) {
-                        unlockMateri();
-                    } else {
+                cekBtn.addEventListener("click", () => {
+                    resetTampilan();
+
+                    if (!semuaSudahDiisi()) {
+                        if (resultBox) {
+                            resultBox.innerHTML = "Lengkapi semua jawaban eksplorasi terlebih dahulu.";
+                            resultBox.style.color = "orange";
+                        }
+
                         lockMateri();
+                        return;
                     }
-                };
 
-                const resetItem = (item) => {
-                    const el = item.querySelector(".quiz-input");
-                    if (el) el.value = "";
-                    clearFeedback(item);
-                    updateSummaryAndUnlock();
-                };
+                    items.forEach(item => {
+                        const ok = checkItem(item);
+                        const jawabanBenar = getJawabanBenarText(item);
 
-                const quiz = document.getElementById("eksplorasi-quiz");
-                if (quiz) {
-                    quiz.querySelectorAll(".quiz-item").forEach(item => {
-                        const input = item.querySelector(".quiz-input");
-                        const btnReset = item.querySelector(".quiz-reset");
+                        showFeedback(item, ok, jawabanBenar);
+                    });
 
-                        if (input) {
-                            input.addEventListener("input", () => {
-                                checkItem(item);
-                                updateSummaryAndUnlock();
-                            });
+                    // Tidak menampilkan ringkasan bawah.
+                    if (resultBox) {
+                        resultBox.innerHTML = "";
+                        resultBox.style.color = "";
+                    }
 
-                            input.addEventListener("blur", () => {
-                                checkItem(item);
-                                updateSummaryAndUnlock();
-                            });
+                    if (summary) {
+                        summary.textContent = "";
+                    }
+
+                    // Materi terbuka walaupun ada jawaban salah,
+                    // yang penting semua pertanyaan eksplorasi sudah terjawab.
+                    unlockMateri();
+                });
+
+                if (resetBtn) {
+                    resetBtn.addEventListener("click", () => {
+                        items.forEach(item => {
+                            const input = item.querySelector(".quiz-input");
+                            if (input) input.value = "";
+
+                            clearFeedback(item);
+                        });
+
+                        if (resultBox) {
+                            resultBox.innerHTML = "";
+                            resultBox.style.color = "";
                         }
 
-                        if (btnReset) {
-                            btnReset.addEventListener("click", () => resetItem(item));
+                        if (summary) {
+                            summary.textContent = "";
                         }
+
+                        lockMateri();
                     });
                 }
+
+                items.forEach(item => {
+                    const input = item.querySelector(".quiz-input");
+
+                    if (input) {
+                        input.addEventListener("input", () => {
+                            clearFeedback(item);
+
+                            if (resultBox) {
+                                resultBox.innerHTML = "";
+                                resultBox.style.color = "";
+                            }
+
+                            if (summary) {
+                                summary.textContent = "";
+                            }
+
+                            // Kalau ada jawaban yang dihapus,
+                            // materi lanjutan disembunyikan lagi.
+                            if (!semuaSudahDiisi()) {
+                                lockMateri();
+                            }
+                        });
+                    }
+                });
+
+                lockMateri();
             })();
         </script>
     </div>
@@ -2098,8 +1979,8 @@
             🔒 Kuis
         </span>
     @else
-        <span class="btn-nav next-btn disabled">
-            Next →
-        </span>
+    <span class="btn-nav next-btn disabled">
+        Next →
+    </span>
     @endif
 @endsection
