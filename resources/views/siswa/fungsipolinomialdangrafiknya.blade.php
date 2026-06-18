@@ -1830,7 +1830,7 @@
                             </div>
 
                             <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCekExplore">✅ Cek Semua</button>
+                                <button type="button" class="btn-cek" id="btnCekExplore">Cek Semua</button>
                                 <button type="button" class="btn-reset" id="btnResetExplore">↺ Reset</button>
                                 <button type="button" class="btn-reset" id="btnShowExplain" disabled>💡 Lihat
                                     Pembahasan</button>
@@ -2373,7 +2373,7 @@
                             </div>
 
                             <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCekContoh">✅ Cek Jawaban</button>
+                                <button type="button" class="btn-cek" id="btnCekContoh">Cek Jawaban</button>
                                 <button type="button" class="btn-reset" id="btnResetContoh">↺ Reset</button>
                             </div>
 

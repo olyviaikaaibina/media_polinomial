@@ -32,7 +32,7 @@ class SiswaController extends Controller
             'email' => 'nullable|email|max:100',
             'nis' => 'nullable|string|max:20',
             'jenis_kelamin' => 'nullable|in:L,P',
-            'kelas' => 'required|string|max:50|in:XI 1,XI 2,XI 3',
+           'kelas' => 'required|string|max:50|in:XI1,XI2,XI3',
             'password' => 'required|min:6',
         ]);
 
@@ -66,8 +66,8 @@ class SiswaController extends Controller
 
         $request->validate([
             'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:100|unique:siswa,email,' . $id,
-            'kelas' => 'required|string|max:50|in:XI 1,XI 2,XI 3',
+            'email' => 'nullable|email|max:100|unique:siswa,email,' . $id,
+            'kelas' => 'required|string|max:50|in:XI1,XI2,XI3',
             'nis' => 'nullable|string|max:20',
             'jenis_kelamin' => 'required|in:L,P',
             'password' => 'nullable|min:6',
@@ -135,5 +135,3 @@ class SiswaController extends Controller
     }
 
 }
-
-

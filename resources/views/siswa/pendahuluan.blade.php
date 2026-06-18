@@ -1370,7 +1370,7 @@
 
 
     <div class="materi-container">
-        <div class="materi-title">APERSEPSI</div>
+        <div class="materi-title">PENDAHULUAN</div>
 
         <!-- PENGANTAR EKSPONEN DAN ALJABAR -->
         <div class="intro-wrap">

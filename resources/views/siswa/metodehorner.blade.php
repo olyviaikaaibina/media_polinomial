@@ -675,8 +675,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           HORNER INTERAKTIF
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       HORNER INTERAKTIF
+                                                                                                                                                                                                    ========================= */
 
         .horner-premium-wrap {
             margin-top: 18px;
@@ -860,8 +860,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           HORNER MARI MENCOBA
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       HORNER MARI MENCOBA
+                                                                                                                                                                                                    ========================= */
 
         .horner-table-wrap {
             margin: 14px 0 16px;
@@ -963,8 +963,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           LATIHAN
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       LATIHAN
+                                                                                                                                                                                                    ========================= */
 
         .latihan-card {
             position: relative;
@@ -1119,8 +1119,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           HORNER LATIHAN
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       HORNER LATIHAN
+                                                                                                                                                                                                    ========================= */
 
         .latihan-horner-wrap {
             margin: 18px 0 10px;
@@ -1245,8 +1245,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           ANIMASI
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       ANIMASI
+                                                                                                                                                                                                    ========================= */
 
         .horner-animate {
             transition: all 0.5s ease;
@@ -1270,8 +1270,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           RESPONSIVE TABLET
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       RESPONSIVE TABLET
+                                                                                                                                                                                                    ========================= */
 
         @media (max-width: 900px) {
             .materi-wrapper {
@@ -1289,8 +1289,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           RESPONSIVE HP
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       RESPONSIVE HP
+                                                                                                                                                                                                    ========================= */
 
         @media (max-width: 768px) {
             .materi-wrapper {
@@ -1608,8 +1608,8 @@
         }
 
         /* =========================
-                                                                                                                                                                           RESPONSIVE HP KECIL
-                                                                                                                                                                        ========================= */
+                                                                                                                                                                                                       RESPONSIVE HP KECIL
+                                                                                                                                                                                                    ========================= */
 
         @media (max-width: 480px) {
             .materi-wrapper {
@@ -1780,8 +1780,8 @@
         }
 
         /* =========================
-                                                                                                                                                               HASIL AKHIR LATIHAN RAPI
-                                                                                                                                                            ========================= */
+                                                                                                                                                                                           HASIL AKHIR LATIHAN RAPI
+                                                                                                                                                                                        ========================= */
 
         .hasil-akhir-wrap {
             display: flex;
@@ -1885,8 +1885,8 @@
         }
 
         /* =========================
-                                                                                           TABEL HORNER SEPERTI GAMBAR + TANDA PLUS
-                                                                                        ========================= */
+                                                                                                                       TABEL HORNER SEPERTI GAMBAR + TANDA PLUS
+                                                                                                                    ========================= */
 
         #card-step-6 .horner-table-wrap {
             width: 100%;
@@ -2105,8 +2105,8 @@
 
 
         /* =========================
-                                                                                                   TABEL HORNER LATIHAN SOAL 2
-                                                                                                ========================= */
+                                                                                                                               TABEL HORNER LATIHAN SOAL 2
+                                                                                                                            ========================= */
 
         #latihanSoal2 .latihan-horner-wrap {
             width: 100%;
@@ -2584,6 +2584,66 @@
                 border-radius: 14px;
             }
         }
+
+        .soal-pol-awal-box {
+            margin: 12px 0 16px;
+            padding: 14px 16px;
+            background: #fbfbfb;
+            border: 1px solid #e7e4df;
+            border-radius: 12px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4a4038;
+            text-align: left;
+        }
+
+        .soal-pol-awal-box p {
+            margin: 0 0 8px 0;
+            text-align: justify;
+        }
+
+        .soal-pol-awal-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .soal-pol-awal-box .math-line {
+            display: block;
+            margin: 8px 0;
+            padding: 8px 10px;
+            background: #f3f8ef;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 700;
+            color: #2f7d32;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .soal-pol-awal-box {
+                font-size: 14px;
+                line-height: 1.75;
+                padding: 12px 13px;
+            }
+
+            .soal-pol-awal-box .math-line {
+                font-size: 15px;
+            }
+        }
+
+        .cek-semua-wrap {
+            margin-top: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .cek-semua-wrap .btn-cek {
+                width: 100%;
+            }
+        }
     </style>
 
     <div class="materi-wrapper">
@@ -2643,7 +2703,7 @@
                 <input type="text" id="hasilAkhir" class="math-input">
             </div>
 
-            <div style="margin-top: 14px; text-align: center;">
+            <div class="cek-semua-wrap">
                 <button type="button" class="btn-cek" onclick="cekEksplorasiManual()">
                     Cek Semua
                 </button>
@@ -3298,73 +3358,108 @@
 
                 <!-- ================= SOAL 1 ================= -->
                 <div class="latihan-item" id="latihanSoal1">
-                    <div class="latihan-soal-title">1. Tentukan hasil bagi dan sisa:</div>
-                    <div class="latihan-rumus">(4x³ + 3x² − 5x + 2) ÷ (x − 2)</div>
+                    <div class="latihan-soal-title">1. Menentukan Polinomial Awal</div>
+
+                    <div class="soal-pol-awal-box">
+                        <p>
+                            Diketahui suatu polinomial <strong>P(x)</strong> dibagi oleh
+                            <strong>(x − 2)</strong> menghasilkan hasil bagi:
+                        </p>
+
+                        <span class="math-line">
+                            Q(x) = 4x² + 11x + 17
+                        </span>
+
+                        <p>
+                            dan sisa <strong>36</strong>. Tentukan polinomial awal
+                            <strong>P(x)</strong>.
+                        </p>
+                    </div>
 
                     <div class="latihan-box">
-                        <div class="latihan-box-title">1. Nilai k</div>
+                        <div class="latihan-box-title">1. Nilai k dari pembagi (x − 2) adalah ...</div>
                         <div class="pilihan-wrap" data-group="s1k">
                             <button type="button" class="pilihan-btn" onclick="selectOption('s1k', this, '-2')">-2</button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1k', this, '1')">1</button>
                             <button type="button" class="pilihan-btn" onclick="selectOption('s1k', this, '2')">2</button>
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1k', this, '1')">1</button>
                         </div>
                     </div>
-
                     <div class="latihan-box">
-                        <div class="latihan-box-title">2. Koefisien polinomial</div>
+                        <div class="latihan-box-title">2. Bentuk hubungan pembagian yang benar adalah ...</div>
                         <div class="pilihan-wrap" data-group="s1koef">
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,5,2')">4,
-                                3, 5, 2</button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,3,-5,2')">4,
-                                3, -5, 2</button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1koef', this, '4,-3,-5,2')">4,
-                                -3, -5, 2</button>
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1koef', this, 'bentuk-benar')">
+                                P(x) = (x − 2)(4x² + 11x + 17) + 36
+                            </button>
+
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1koef', this, 'bentuk-salah1')">
+                                P(x) = (x + 2)(4x² + 11x + 17) + 36
+                            </button>
+
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1koef', this, 'bentuk-salah2')">
+                                P(x) = (x − 2)(4x² + 11x + 17) − 36
+                            </button>
                         </div>
                     </div>
 
                     <div class="latihan-box">
-                        <div class="latihan-box-title">3. Koefisien pertama yang diturunkan</div>
+                        <div class="latihan-box-title">3. Hasil dari (x − 2)(4x² + 11x + 17) adalah ...</div>
                         <div class="pilihan-wrap" data-group="s1turun">
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1turun', this, 'kali-benar')">
+                                4x³ + 3x² − 5x − 34
+                            </button>
+
                             <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1turun', this, '3')">3</button>
+                                onclick="selectOption('s1turun', this, 'kali-salah1')">
+                                4x³ + 13x² + 39x + 34
+                            </button>
+
                             <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1turun', this, '4')">4</button>
-                            <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1turun', this, '2')">2</button>
+                                onclick="selectOption('s1turun', this, 'kali-salah2')">
+                                4x³ + 3x² − 5x + 34
+                            </button>
                         </div>
                     </div>
 
                     <div class="latihan-box">
-                        <div class="latihan-box-title">4. Hasil proses Horner</div>
+                        <div class="latihan-box-title">4. Setelah ditambah sisa 36, diperoleh ...</div>
                         <div class="pilihan-wrap" data-group="s1proses">
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,10,15')">4
-                                → 10 → 15</button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,11,17')">4
-                                → 11 → 17</button>
-                            <button type="button" class="pilihan-btn" onclick="selectOption('s1proses', this, '4,8,16')">4 →
-                                8 → 16</button>
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1proses', this, 'tambah-benar')">
+                                4x³ + 3x² − 5x + 2
+                            </button>
+
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1proses', this, 'tambah-salah1')">
+                                4x³ + 3x² − 5x − 70
+                            </button>
+
+                            <button type="button" class="pilihan-btn"
+                                onclick="selectOption('s1proses', this, 'tambah-salah2')">
+                                4x³ + 3x² − 5x + 36
+                            </button>
                         </div>
                     </div>
 
                     <div class="latihan-box">
-                        <div class="latihan-box-title">5. Hasil akhir</div>
+                        <div class="latihan-box-title">5. Jadi, polinomial awal P(x) adalah ...</div>
                         <div class="pilihan-wrap" data-group="s1hasil">
-                            <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1hasil', this, '4x2+10x+15,sisa32')">
-                                Q(x) = 4x² + 10x + 15, sisa = 32
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1hasil', this, 'p-benar')">
+                                P(x) = 4x³ + 3x² − 5x + 2
                             </button>
-                            <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1hasil', this, '4x2+11x+17,sisa36')">
-                                Q(x) = 4x² + 11x + 17, sisa = 36
+
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1hasil', this, 'p-salah1')">
+                                P(x) = 4x³ + 3x² − 5x − 34
                             </button>
-                            <button type="button" class="pilihan-btn"
-                                onclick="selectOption('s1hasil', this, '4x2+11x+15,sisa30')">
-                                Q(x) = 4x² + 11x + 15, sisa = 30
+
+                            <button type="button" class="pilihan-btn" onclick="selectOption('s1hasil', this, 'p-salah2')">
+                                P(x) = 4x³ + 11x² + 17x + 36
                             </button>
                         </div>
                     </div>
 
-                    <!-- tombol cek no 1 -->
                     <div style="margin-top: 14px; text-align: center;">
                         <button class="btn-langkah" onclick="cekLatihan1()">Cek Jawaban No. 1</button>
                     </div>
@@ -3373,11 +3468,20 @@
 
                     <div id="latihanPenjelasan1" class="latihan-penjelasan">
                         <strong>Penjelasan Soal 1:</strong><br>
-                        Pembagi <strong>(x − 2)</strong> memberi nilai <strong>k = 2</strong>.<br>
-                        Koefisien polinomial adalah <strong>4, 3, -5, 2</strong>.<br>
-                        Koefisien pertama yang diturunkan adalah <strong>4</strong>.<br>
-                        Proses Horner: <strong>4 → 11 → 17 → 36</strong>.<br>
-                        Jadi hasil baginya <strong>Q(x) = 4x² + 11x + 17</strong> dan sisanya <strong>36</strong>.
+                        Karena pembagi adalah <strong>(x − 2)</strong>, maka nilai <strong>k = 2</strong>.<br>
+                        Hubungan antara polinomial, pembagi, hasil bagi, dan sisa adalah:
+                        <br>
+                        <strong>P(x) = (x − 2)(4x² + 11x + 17) + 36</strong>.<br><br>
+
+                        Hitung perkaliannya:
+                        <br>
+                        <strong>(x − 2)(4x² + 11x + 17) = 4x³ + 3x² − 5x − 34</strong>.<br><br>
+
+                        Kemudian tambahkan sisanya:
+                        <br>
+                        <strong>P(x) = 4x³ + 3x² − 5x − 34 + 36</strong>
+                        <br>
+                        <strong>P(x) = 4x³ + 3x² − 5x + 2</strong>.
                     </div>
                 </div>
 
@@ -4030,18 +4134,10 @@
 
             const benar =
                 latihanJawaban.s1k === '2' &&
-                latihanJawaban.s1koef === '4,3,-5,2' &&
-                latihanJawaban.s1turun === '4' &&
-                latihanJawaban.s1proses === '4,11,17' &&
-                cocokSalahSatu(latihanJawaban.s1hasil, [
-                    '4x2+11x+17,sisa36',
-                    '4x²+11x+17,sisa36',
-                    '4x^2+11x+17,sisa36',
-                    'Q(x)=4x²+11x+17,sisa=36',
-                    'Q(x)=4x^2+11x+17,sisa=36',
-                    '4x²+11x+17sisa36',
-                    '4x^2+11x+17sisa36'
-                ]);
+                latihanJawaban.s1koef === 'bentuk-benar' &&
+                latihanJawaban.s1turun === 'kali-benar' &&
+                latihanJawaban.s1proses === 'tambah-benar' &&
+                latihanJawaban.s1hasil === 'p-benar';
 
             const feedback = document.getElementById('latihanFeedback1');
             const penjelasan = document.getElementById('latihanPenjelasan1');
@@ -4050,10 +4146,10 @@
 
             if (benar) {
                 tandaiSemuaBenar('s1k', '2');
-                tandaiSemuaBenar('s1koef', '4,3,-5,2');
-                tandaiSemuaBenar('s1turun', '4');
-                tandaiSemuaBenar('s1proses', '4,11,17');
-                tandaiSemuaBenar('s1hasil', '4x2+11x+17,sisa36');
+                tandaiSemuaBenar('s1koef', 'bentuk-benar');
+                tandaiSemuaBenar('s1turun', 'kali-benar');
+                tandaiSemuaBenar('s1proses', 'tambah-benar');
+                tandaiSemuaBenar('s1hasil', 'p-benar');
 
                 feedback.innerHTML = 'Benar. Soal nomor 1 sudah selesai. Soal nomor 2 sekarang terbuka.';
                 feedback.className = 'latihan-feedback success';
@@ -4064,10 +4160,10 @@
             }
 
             tandaiYangDipilihSalah('s1k', '2');
-            tandaiYangDipilihSalah('s1koef', '4,3,-5,2');
-            tandaiYangDipilihSalah('s1turun', '4');
-            tandaiYangDipilihSalah('s1proses', '4,11,17');
-            tandaiYangDipilihSalah('s1hasil', '4x2+11x+17,sisa36');
+            tandaiYangDipilihSalah('s1koef', 'bentuk-benar');
+            tandaiYangDipilihSalah('s1turun', 'kali-benar');
+            tandaiYangDipilihSalah('s1proses', 'tambah-benar');
+            tandaiYangDipilihSalah('s1hasil', 'p-benar');
 
             feedback.innerHTML = 'Masih ada pilihan yang salah pada soal nomor 1.';
             feedback.className = 'latihan-feedback error';

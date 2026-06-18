@@ -379,13 +379,6 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
 
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('landingpage') ? 'active' : '' }}"
-              href="{{ route('landingpage') }}">
-              Beranda
-            </a>
-          </li>
-
           <li class="nav-item d-flex">
             <form action="{{ route('guru.logout') }}" method="POST" class="logout-form">
               @csrf

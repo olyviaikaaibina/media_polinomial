@@ -166,14 +166,6 @@
                                         Masuk
                                     </button>
                                 </div>
-
-                                {{-- Buat akun --}}
-                                <div class="guru-bottom-text"
-                                    style="margin-top: 18px; text-align:center; font-size:0.85rem; color:#4b5563;">
-                                    Belum punya akun?
-                                    <a href="{{ route('guru.register') }}" style="color:#16a34a;">Buat akun sekarang!</a>
-                                </div>
-
                             </form>
 
                         </div>

@@ -790,8 +790,6 @@
       font-weight: 800 !important;
       border-left: 6px solid #7f956a !important;
     }
-
-   
   </style>
 </head>
 
@@ -818,19 +816,6 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="topNavbar">
         <ul class="navbar-nav gap-4">
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('landingpage') ? 'active' : '' }}"
-              href="{{ route('landingpage') }}">
-              Beranda
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('petunjukpenggunaan') ? 'active' : '' }}"
-              href="{{ route('petunjukpenggunaan') }}">
-              Petunjuk Penggunaan
-            </a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('progressbelajar') ? 'active' : '' }}"
@@ -910,7 +895,7 @@
 
           <a href="{{ route('pendahuluan') }}"
             class="dropdown-item {{ request()->routeIs('pendahuluan') ? 'active' : '' }}">
-            Apersepsi
+            Pendahuluan
           </a>
         </div>
       </div>
@@ -953,7 +938,7 @@
           @endif
 
           @if ($isQuizAUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 1]) }}" class="dropdown-item {{ $quizActive(1) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 1]) }}" class="dropdown-item {{ $quizActive(1) }}">
               Kuis A
             </a>
           @else
@@ -1010,7 +995,7 @@
           @endif
 
           @if ($isQuizBUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 2]) }}" class="dropdown-item {{ $quizActive(2) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 2]) }}" class="dropdown-item {{ $quizActive(2) }}">
               Kuis B
             </a>
           @else
@@ -1067,7 +1052,7 @@
           @endif
 
           @if ($isQuizCUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 3]) }}" class="dropdown-item {{ $quizActive(3) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 3]) }}" class="dropdown-item {{ $quizActive(3) }}">
               Kuis C
             </a>
           @else
@@ -1112,7 +1097,7 @@
           @endif
 
           @if ($isQuizDUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 4]) }}" class="dropdown-item {{ $quizActive(4) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 4]) }}" class="dropdown-item {{ $quizActive(4) }}">
               Kuis D
             </a>
           @else
@@ -1145,7 +1130,7 @@
           @endif
 
           @if ($isQuizEUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 5]) }}" class="dropdown-item {{ $quizActive(5) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 5]) }}" class="dropdown-item {{ $quizActive(5) }}">
               Kuis E
             </a>
           @else
@@ -1166,7 +1151,7 @@
 
         <div class="dropdown-content">
           @if ($isEvaluasiUnlocked)
-            <a href="{{ route('quiz.show', ['id' => 6]) }}" class="dropdown-item {{ $quizActive(6) }}">
+            <a href="{{ route('quiz.petunjuk', ['id' => 6]) }}" class="dropdown-item {{ $quizActive(6) }}">
               Evaluasi
             </a>
           @else

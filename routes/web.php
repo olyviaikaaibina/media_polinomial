@@ -70,8 +70,21 @@ Route::middleware('auth:siswa')->group(function () {
     Route::get('/materi/{slug}', [MateriController::class, 'show'])->name('materi.show');
     Route::post('/materi/{id}/selesai', [MateriController::class, 'complete'])->name('materi.complete');
 
-    Route::get('/quiz/{id}', [QuizSiswaController::class, 'show'])->name('quiz.show');
-    Route::post('/quiz/{id}/submit', [QuizSiswaController::class, 'submit'])->name('quiz.submit');
+    // Kuis Siswa
+    Route::get('/quiz/{id}/petunjuk', [QuizSiswaController::class, 'petunjuk'])
+        ->name('quiz.petunjuk');
+
+    Route::get('/quiz/{id}/kerjakan', [QuizSiswaController::class, 'show'])
+        ->name('quiz.show');
+
+    Route::post('/quiz/{id}/submit', [QuizSiswaController::class, 'submit'])
+        ->name('quiz.submit');
+
+    // Kalau masih ada link lama /quiz/1, /quiz/2, dst,
+// otomatis diarahkan ke halaman petunjuk
+    Route::get('/quiz/{id}', function ($id) {
+        return redirect()->route('quiz.petunjuk', ['id' => $id]);
+    });
 });
 
 Route::post('/logout', [SiswaAuthController::class, 'logout'])->name('logout');

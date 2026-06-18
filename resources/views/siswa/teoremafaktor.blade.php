@@ -867,121 +867,383 @@
             kunciLatihan2();
 
             // =========================
-            // EKSPLORASI DRAG & DROP
+            // EKSPLORASI TANPA KOREKSI OTOMATIS
             // =========================
-            // =========================
-            // EKSPLORASI TAP + DRAG DROP
-            // =========================
-            let draggedItem = null;
-            let selectedItem = null;
-            let attemptedDrops = 0;
 
-            const dropZones = document.querySelectorAll('.drop-zone');
-            const totalDropZones = dropZones.length;
-            const finalBoxEks = document.getElementById('eksplorasiFinal');
+            let draggedItemEksplorasi = null;
+            let selectedItemEksplorasi = null;
 
-            const dropToStatusMap = {
-                'g1': 'statusEks1',
-                'g2': 'statusEks2'
+            const dropZonesEksplorasi = document.querySelectorAll('.card-eksplorasi .drop-zone');
+            const finalBoxEksplorasi = document.getElementById('eksplorasiFinal');
+            const materiEksplorasi = document.getElementById('materiSetelahEksplorasi');
+
+            const statusEksplorasiMap = {
+                g1: 'statusEks1',
+                g2: 'statusEks2'
             };
 
-            function getBankByGroup(group) {
+            function hideMateriEksplorasi() {
+                if (materiEksplorasi) {
+                    materiEksplorasi.style.display = 'none';
+                }
+            }
+
+            function showMateriEksplorasi() {
+                if (materiEksplorasi) {
+                    materiEksplorasi.style.display = 'block';
+                }
+            }
+
+            function getBankEksplorasi(group) {
                 return group === 'g1'
                     ? document.getElementById('answerBank1')
                     : document.getElementById('answerBank2');
             }
 
-            function showStatus(group, isCorrect, customText = '') {
-                const el = document.getElementById(dropToStatusMap[group]);
+            function getDroppedValueEksplorasi(zoneId) {
+                const zone = document.getElementById(zoneId);
+                const item = zone ? zone.querySelector('.drag-item') : null;
+
+                return item
+                    ? (item.dataset.value || '').toLowerCase().trim()
+                    : '';
+            }
+
+            function isAnsweredEksplorasi(zoneId) {
+                return getDroppedValueEksplorasi(zoneId) !== '';
+            }
+
+            function isCorrectEksplorasi(zoneId) {
+                const zone = document.getElementById(zoneId);
+                if (!zone) return false;
+
+                const droppedValue = getDroppedValueEksplorasi(zoneId);
+                const correctAnswer = (zone.dataset.answer || '').toLowerCase().trim();
+
+                return droppedValue === correctAnswer;
+            }
+
+            function showStatusEksplorasi(group, isCorrect, text) {
+                const el = document.getElementById(statusEksplorasiMap[group]);
                 if (!el) return;
 
-                el.textContent = customText || (isCorrect ? 'Benar' : 'Salah');
+                el.textContent = text;
                 el.className = isCorrect
                     ? 'status-box show success'
                     : 'status-box show error';
             }
 
-            function clearStatus(group) {
-                const el = document.getElementById(dropToStatusMap[group]);
+            function clearStatusEksplorasi(group) {
+                const el = document.getElementById(statusEksplorasiMap[group]);
                 if (!el) return;
 
                 el.textContent = '';
                 el.className = 'status-box';
             }
 
-            function hideExplanation(id) {
+            function showFinalEksplorasi(isCorrect, text) {
+                if (!finalBoxEksplorasi) return;
+
+                finalBoxEksplorasi.textContent = text;
+                finalBoxEksplorasi.className = isCorrect
+                    ? 'feedback ok show'
+                    : 'feedback no show';
+            }
+
+            function clearFinalEksplorasi() {
+                if (!finalBoxEksplorasi) return;
+
+                finalBoxEksplorasi.textContent = '';
+                finalBoxEksplorasi.className = 'feedback';
+            }
+
+            function hideExplanationEksplorasi(id) {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('show');
             }
 
-            function showExplanation(id) {
+            function showExplanationEksplorasi(id) {
                 const el = document.getElementById(id);
-                if (!el) return;
-
-                el.classList.add('show');
-
-                const title = el.querySelector('h5');
-
-                if (title) {
-                    title.innerHTML =
-                        id === 'explainGabungan'
-                            ? 'Penjelasan'
-                            : 'Penjelasan Makna';
-                }
+                if (el) el.classList.add('show');
             }
 
-            function isZoneAnswered(zoneId) {
+            function setDropStateEksplorasi(zoneId, isCorrect) {
                 const zone = document.getElementById(zoneId);
-                return zone ? !!zone.querySelector('.drag-item') : false;
+                if (!zone) return;
+
+                zone.classList.remove('correct', 'wrong');
+
+                if (zone.querySelector('.drag-item')) {
+                    zone.classList.add('filled');
+                }
+
+                if (isCorrect === true) {
+                    zone.classList.add('correct');
+                } else if (isCorrect === false) {
+                    zone.classList.add('wrong');
+                }
             }
 
-            function updateEksplorasiExplanations() {
+            function clearEksplorasiState() {
+                clearStatusEksplorasi('g1');
+                clearStatusEksplorasi('g2');
+                clearFinalEksplorasi();
+
+                hideExplanationEksplorasi('explainGabungan');
+                hideExplanationEksplorasi('explainMakna');
+
+                dropZonesEksplorasi.forEach(zone => {
+                    zone.classList.remove('correct', 'wrong', 'hovered');
+
+                    if (zone.querySelector('.drag-item')) {
+                        zone.classList.add('filled');
+                    } else {
+                        zone.classList.remove('filled');
+                    }
+                });
+
+                hideMateriEksplorasi();
+            }
+
+            function moveItemToBankEksplorasi(item, group) {
+                if (!item) return;
+
+                const bank = getBankEksplorasi(group);
+                if (!bank) return;
+
+                item.classList.remove('dragging', 'selected', 'locked');
+                item.setAttribute('draggable', 'true');
+
+                bank.appendChild(item);
+            }
+
+            function clearZoneEksplorasi(zone) {
+                if (!zone) return;
+
+                zone.innerHTML = '';
+                zone.classList.remove('filled', 'correct', 'wrong', 'hovered');
+            }
+
+            function placeItemToZoneEksplorasi(item, zone) {
+                if (!item || !zone) return;
+
+                const group = zone.dataset.group;
+                const existingItem = zone.querySelector('.drag-item');
+
+                if (existingItem && existingItem !== item) {
+                    moveItemToBankEksplorasi(existingItem, group);
+                }
+
+                const fromZone = item.parentElement;
 
                 if (
-                    isZoneAnswered('drop-p1') &&
-                    isZoneAnswered('drop-p2')
+                    fromZone &&
+                    fromZone.classList.contains('drop-zone') &&
+                    fromZone !== zone
                 ) {
-                    showExplanation('explainGabungan');
-                } else {
-                    hideExplanation('explainGabungan');
+                    clearZoneEksplorasi(fromZone);
                 }
 
-                if (isZoneAnswered('drop-makna')) {
-                    showExplanation('explainMakna');
+                zone.innerHTML = '';
+                zone.appendChild(item);
+                zone.classList.add('filled');
+                zone.classList.remove('correct', 'wrong');
+
+                selectedItemEksplorasi = null;
+
+                document.querySelectorAll('.card-eksplorasi .drag-item').forEach(el => {
+                    el.classList.remove('selected');
+                });
+
+                // Tidak koreksi otomatis.
+                // Warna benar/salah baru muncul saat tombol Cek Semua ditekan.
+                clearEksplorasiState();
+            }
+
+            function setupDragItemsEksplorasi() {
+                document.querySelectorAll('.card-eksplorasi .drag-item').forEach(item => {
+                    item.onclick = function () {
+                        document.querySelectorAll('.card-eksplorasi .drag-item').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+
+                        selectedItemEksplorasi = this;
+                        this.classList.add('selected');
+                    };
+
+                    item.addEventListener('dragstart', function () {
+                        draggedItemEksplorasi = this;
+                        this.classList.add('dragging');
+                    });
+
+                    item.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
+                    });
+                });
+            }
+
+            function setupDropZonesEksplorasi() {
+                dropZonesEksplorasi.forEach(zone => {
+                    zone.onclick = function () {
+                        if (!selectedItemEksplorasi) return;
+
+                        placeItemToZoneEksplorasi(selectedItemEksplorasi, this);
+                    };
+
+                    zone.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        this.classList.add('hovered');
+                    });
+
+                    zone.addEventListener('dragleave', function () {
+                        this.classList.remove('hovered');
+                    });
+
+                    zone.addEventListener('drop', function (e) {
+                        e.preventDefault();
+
+                        this.classList.remove('hovered');
+
+                        if (!draggedItemEksplorasi) return;
+
+                        placeItemToZoneEksplorasi(draggedItemEksplorasi, this);
+                        draggedItemEksplorasi = null;
+                    });
+                });
+            }
+
+            function setupBanksEksplorasi() {
+                document.querySelectorAll('.card-eksplorasi .drag-bank').forEach(bank => {
+                    bank.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                    });
+
+                    bank.addEventListener('drop', function (e) {
+                        e.preventDefault();
+
+                        if (!draggedItemEksplorasi) return;
+
+                        const fromZone = draggedItemEksplorasi.parentElement;
+
+                        if (fromZone && fromZone.classList.contains('drop-zone')) {
+                            clearZoneEksplorasi(fromZone);
+                        }
+
+                        draggedItemEksplorasi.classList.remove('dragging', 'selected');
+                        this.appendChild(draggedItemEksplorasi);
+
+                        draggedItemEksplorasi = null;
+                        selectedItemEksplorasi = null;
+
+                        clearEksplorasiState();
+                    });
+                });
+            }
+
+            function cekSemuaEksplorasi() {
+                const p1Terjawab = isAnsweredEksplorasi('drop-p1');
+                const p2Terjawab = isAnsweredEksplorasi('drop-p2');
+                const maknaTerjawab = isAnsweredEksplorasi('drop-makna');
+
+                const semuaTerjawab = p1Terjawab && p2Terjawab && maknaTerjawab;
+
+                hideExplanationEksplorasi('explainGabungan');
+                hideExplanationEksplorasi('explainMakna');
+
+                dropZonesEksplorasi.forEach(zone => {
+                    zone.classList.remove('correct', 'wrong');
+                });
+
+                if (!semuaTerjawab) {
+                    if (!p1Terjawab || !p2Terjawab) {
+                        showStatusEksplorasi(
+                            'g1',
+                            false,
+                            'Pertanyaan 1 belum lengkap. Isi nilai P(1) dan P(2) terlebih dahulu.'
+                        );
+                    } else {
+                        clearStatusEksplorasi('g1');
+                    }
+
+                    if (!maknaTerjawab) {
+                        showStatusEksplorasi(
+                            'g2',
+                            false,
+                            'Pertanyaan 2 belum dijawab. Seret makna hasil terlebih dahulu.'
+                        );
+                    } else {
+                        clearStatusEksplorasi('g2');
+                    }
+
+                    showFinalEksplorasi(
+                        false,
+                        'Eksplorasi belum lengkap. Materi berikutnya akan muncul setelah semua kotak jawaban terisi.'
+                    );
+
+                    hideMateriEksplorasi();
+                    return;
+                }
+
+                const benarP1 = isCorrectEksplorasi('drop-p1');
+                const benarP2 = isCorrectEksplorasi('drop-p2');
+                const benarMakna = isCorrectEksplorasi('drop-makna');
+
+                setDropStateEksplorasi('drop-p1', benarP1);
+                setDropStateEksplorasi('drop-p2', benarP2);
+                setDropStateEksplorasi('drop-makna', benarMakna);
+
+                const pertanyaan1Benar = benarP1 && benarP2;
+
+                if (pertanyaan1Benar) {
+                    showStatusEksplorasi(
+                        'g1',
+                        true,
+                        'Benar. Nilai P(1)=0 dan P(2)=-6.'
+                    );
                 } else {
-                    hideExplanation('explainMakna');
+                    showStatusEksplorasi(
+                        'g1',
+                        false,
+                        'Masih ada jawaban yang salah pada Pertanyaan 1. Perhatikan penjelasan di bawah.'
+                    );
+                    showExplanationEksplorasi('explainGabungan');
+                }
+
+                if (benarMakna) {
+                    showStatusEksplorasi(
+                        'g2',
+                        true,
+                        'Benar. Karena P(1)=0, maka sisa pembagian oleh (x-1) adalah 0.'
+                    );
+                } else {
+                    showStatusEksplorasi(
+                        'g2',
+                        false,
+                        'Jawaban makna belum tepat. Perhatikan penjelasan di bawah.'
+                    );
+                    showExplanationEksplorasi('explainMakna');
+                }
+
+                // Materi tetap muncul jika semua kotak sudah terjawab,
+                // meskipun ada jawaban yang salah.
+                showMateriEksplorasi();
+
+                clearFinalEksplorasi();
+
+                if (typeof rerenderMath === 'function') {
+                    rerenderMath();
                 }
             }
 
-            function checkEksplorasiSelesai() {
+            window.cekSemuaEksplorasi = cekSemuaEksplorasi;
 
-                if (
-                    attemptedDrops >= totalDropZones &&
-                    totalDropZones > 0
-                ) {
-                    if (finalBoxEks)
-                        finalBoxEks.classList.add('show');
+            setupDragItemsEksplorasi();
+            setupDropZonesEksplorasi();
+            setupBanksEksplorasi();
 
-                    showMateriSetelahEksplorasi();
-
-                } else {
-
-                    if (finalBoxEks)
-                        finalBoxEks.classList.remove('show');
-
-                    hideMateriSetelahEksplorasi();
-                }
-            }
-
-            function markAttempt(dropZone) {
-
-                if (!dropZone.dataset.attempted) {
-                    dropZone.dataset.attempted = 'true';
-                    attemptedDrops++;
-                }
-
-                checkEksplorasiSelesai();
-            }
+            hideExplanationEksplorasi('explainGabungan');
+            hideExplanationEksplorasi('explainMakna');
+            hideMateriEksplorasi();
 
             function moveItemToBank(item, group) {
 
@@ -1362,8 +1624,8 @@
         }
 
         /* =========================
-                                                                                       RESET
-                                                                                    ========================= */
+                                                                                                                                                           RESET
+                                                                                                                                                        ========================= */
 
         *,
         *::before,
@@ -1385,8 +1647,8 @@
         }
 
         /* =========================
-                                                                                       WRAPPER UTAMA
-                                                                                    ========================= */
+                                                                                                                                                           WRAPPER UTAMA
+                                                                                                                                                        ========================= */
 
         .materi-wrap {
             width: 100%;
@@ -1400,8 +1662,8 @@
         }
 
         /* =========================
-                                                                                       TEKS DASAR
-                                                                                    ========================= */
+                                                                                                                                                           TEKS DASAR
+                                                                                                                                                        ========================= */
 
         p,
         li {
@@ -1432,8 +1694,8 @@
         }
 
         /* =========================
-                                                                                       HILANGKAN TULISAN MIRING DI EKSPLORASI
-                                                                                    ========================= */
+                                                                                                                                                           HILANGKAN TULISAN MIRING DI EKSPLORASI
+                                                                                                                                                        ========================= */
 
         .card-eksplorasi,
         .card-eksplorasi *,
@@ -1452,8 +1714,8 @@
         }
 
         /* =========================
-                                                                                       KATEX / RUMUS
-                                                                                    ========================= */
+                                                                                                                                                           KATEX / RUMUS
+                                                                                                                                                        ========================= */
 
         .katex {
             max-width: 100%;
@@ -1477,8 +1739,8 @@
         }
 
         /* =========================
-                                                                                       JUDUL
-                                                                                    ========================= */
+                                                                                                                                                           JUDUL
+                                                                                                                                                        ========================= */
 
         .top-title {
             display: flex;
@@ -1524,8 +1786,8 @@
         }
 
         /* =========================
-                                                                                       CARD UMUM
-                                                                                    ========================= */
+                                                                                                                                                           CARD UMUM
+                                                                                                                                                        ========================= */
 
         .card {
             width: 100%;
@@ -1580,8 +1842,8 @@
         }
 
         /* =========================
-                                                                                       EKSPLORASI
-                                                                                    ========================= */
+                                                                                                                                                           EKSPLORASI
+                                                                                                                                                        ========================= */
 
         .card-eksplorasi {
             position: relative;
@@ -1704,8 +1966,8 @@
         }
 
         /* =========================
-                                                                                       RUMUS BOX
-                                                                                    ========================= */
+                                                                                                                                                           RUMUS BOX
+                                                                                                                                                        ========================= */
 
         .rumus-box {
             width: 100% !important;
@@ -1739,8 +2001,8 @@
         }
 
         /* =========================
-                                                                                       DRAG DROP
-                                                                                    ========================= */
+                                                                                                                                                           DRAG DROP
+                                                                                                                                                        ========================= */
 
         .bank-label {
             display: inline-block !important;
@@ -1812,8 +2074,8 @@
         }
 
         /* =========================
-                                                                                       DROP AREA
-                                                                                    ========================= */
+                                                                                                                                                           DROP AREA
+                                                                                                                                                        ========================= */
 
         .drop-list {
             display: grid !important;
@@ -1885,8 +2147,8 @@
         }
 
         /* =========================
-                                                                                       STATUS & FEEDBACK
-                                                                                    ========================= */
+                                                                                                                                                           STATUS & FEEDBACK
+                                                                                                                                                        ========================= */
 
         .status-box,
         .feedback {
@@ -1920,8 +2182,8 @@
         }
 
         /* =========================
-                                                                                       PENJELASAN EKSPLORASI
-                                                                                    ========================= */
+                                                                                                                                                           PENJELASAN EKSPLORASI
+                                                                                                                                                        ========================= */
 
         .explanation-box {
             display: none !important;
@@ -2009,8 +2271,8 @@
         }
 
         /* =========================
-                                                                                       DEFINISI TANPA ORNAMEN / TANPA SHAPE PUTIH
-                                                                                    ========================= */
+                                                                                                                                                           DEFINISI TANPA ORNAMEN / TANPA SHAPE PUTIH
+                                                                                                                                                        ========================= */
 
         .definisi-modern {
             position: relative;
@@ -2094,8 +2356,8 @@
         }
 
         /* =========================
-                                                                                       SIFAT
-                                                                                    ========================= */
+                                                                                                                                                           SIFAT
+                                                                                                                                                        ========================= */
 
         .sifat-box,
         .sifat-box.modern {
@@ -2200,8 +2462,8 @@
         }
 
         /* =========================
-                                                                                       CONTOH
-                                                                                    ========================= */
+                                                                                                                                                           CONTOH
+                                                                                                                                                        ========================= */
 
         .contoh-wrap,
         .contoh-rasional-wrap {
@@ -2281,8 +2543,8 @@
         }
 
         /* =========================
-                                                                                       LANGKAH / INPUT
-                                                                                    ========================= */
+                                                                                                                                                           LANGKAH / INPUT
+                                                                                                                                                        ========================= */
 
         .langkah-card {
             width: 100%;
@@ -2419,8 +2681,8 @@
         }
 
         /* =========================
-                                                       HORNER - STYLE BARU SEPERTI GAMBAR KE-4
-                                                    ========================= */
+                                                                                                                           HORNER - STYLE BARU SEPERTI GAMBAR KE-4
+                                                                                                                        ========================= */
 
         .horner-caption {
             text-align: center;
@@ -2661,8 +2923,8 @@
 
 
         /* =========================
-                                                       RESPONSIVE HORNER
-                                                    ========================= */
+                                                                                                                           RESPONSIVE HORNER
+                                                                                                                        ========================= */
         @media (max-width: 768px) {
             .horner-table {
                 --h-left: 66px;
@@ -2738,8 +3000,8 @@
         }
 
         /* =========================
-                                                                                       FINAL EXPLANATION
-                                                                                    ========================= */
+                                                                                                                                                           FINAL EXPLANATION
+                                                                                                                                                        ========================= */
 
         .final-explanation {
             display: none;
@@ -2778,8 +3040,8 @@
         }
 
         /* =========================
-                                                                                       LATIHAN
-                                                                                    ========================= */
+                                                                                                                                                           LATIHAN
+                                                                                                                                                        ========================= */
 
         .latihan-wrap {
             width: 100%;
@@ -2881,8 +3143,8 @@
         }
 
         /* =========================
-                                                                                       LOCK SOAL 2
-                                                                                    ========================= */
+                                                                                                                                                           LOCK SOAL 2
+                                                                                                                                                        ========================= */
 
         .latihan-terkunci {
             position: relative;
@@ -2912,8 +3174,8 @@
         }
 
         /* =========================
-                                                                                       ANIMASI
-                                                                                    ========================= */
+                                                                                                                                                           ANIMASI
+                                                                                                                                                        ========================= */
 
         @keyframes fadeIn {
             from {
@@ -2928,8 +3190,8 @@
         }
 
         /* =========================
-                                                                                       TABLET
-                                                                                    ========================= */
+                                                                                                                                                           TABLET
+                                                                                                                                                        ========================= */
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .materi-wrap {
@@ -2997,8 +3259,8 @@
         }
 
         /* =========================
-                                                                                       HP
-                                                                                    ========================= */
+                                                                                                                                                           HP
+                                                                                                                                                        ========================= */
 
         @media (max-width: 768px) {
             .materi-wrap {
@@ -3198,8 +3460,8 @@
         }
 
         /* =========================
-                                                                                       HP KECIL
-                                                                                    ========================= */
+                                                                                                                                                           HP KECIL
+                                                                                                                                                        ========================= */
 
         @media (max-width: 480px) {
             .materi-wrap {
@@ -3303,8 +3565,8 @@
         }
 
         /* =========================
-                                                   FIX EKSPLORASI LEBIH KECIL
-                                                   ========================= */
+                                                                                                                       FIX EKSPLORASI LEBIH KECIL
+                                                                                                                       ========================= */
 
         .materi-wrap .card-eksplorasi {
             max-width: 820px !important;
@@ -3501,8 +3763,8 @@
         }
 
         /* =========================
-                                                            DEFINISI
-                                                            ========================= */
+                                                                                                                                DEFINISI
+                                                                                                                                ========================= */
         .materi-wrap .definisi-modern {
             position: relative !important;
             width: 100% !important;
@@ -3586,8 +3848,8 @@
 
 
         /* =========================
-                                                            SIFAT
-                                                            ========================= */
+                                                                                                                                SIFAT
+                                                                                                                                ========================= */
         .materi-wrap .sifat-box,
         .materi-wrap .sifat-box.modern {
             position: relative !important;
@@ -3691,8 +3953,8 @@
 
 
         /* =========================
-                                                            CONTOH
-                                                            ========================= */
+                                                                                                                                CONTOH
+                                                                                                                                ========================= */
         .materi-wrap .contoh-wrap,
         .materi-wrap .contoh-rasional-wrap {
             position: relative !important;
@@ -3795,8 +4057,8 @@
 
 
         /* =========================
-                                                            LANGKAH
-                                                            ========================= */
+                                                                                                                                LANGKAH
+                                                                                                                                ========================= */
         .materi-wrap .langkah-card {
             background: #ffffff !important;
             border: 1.5px solid #e0e0e0 !important;
@@ -3818,8 +4080,8 @@
 
 
         /* =========================
-                                                            RESPONSIVE HP
-                                                            ========================= */
+                                                                                                                                RESPONSIVE HP
+                                                                                                                                ========================= */
         @media (max-width: 768px) {
 
             .materi-wrap .definisi-modern,
@@ -3941,8 +4203,8 @@
         }
 
         /* =========================
-                   FIX PETUNJUK MENJAWAB DI BAGIAN CONTOH
-                   ========================= */
+                                                                                       FIX PETUNJUK MENJAWAB DI BAGIAN CONTOH
+                                                                                       ========================= */
 
         /* Tombol lihat petunjuk menjawab dibuat turun ke bawah, bukan sejajar/samping */
         .materi-wrap .contoh-area .btn-petunjuk,
@@ -3981,8 +4243,8 @@
         }
 
         /* =========================
-           FIX CONTOH: KECILKAN SEDIKIT BIAR PAS
-           ========================= */
+                                                                               FIX CONTOH: KECILKAN SEDIKIT BIAR PAS
+                                                                               ========================= */
 
         /* Jarak dan lebar contoh dibuat lebih rapi */
         .materi-wrap .contoh-wrap,
@@ -4134,6 +4396,551 @@
                 line-height: 1.55 !important;
             }
         }
+
+        /* =========================
+                                                       TOMBOL CEK SEMUA EKSPLORASI
+                                                       ========================= */
+
+        .materi-wrap .eksplorasi-actions {
+            width: 100% !important;
+            margin-top: 16px !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+        }
+
+        .materi-wrap .btn-cek-eksplorasi {
+            margin-top: 0 !important;
+            background: #2f5597 !important;
+            color: #fff !important;
+        }
+
+        .materi-wrap .eksplorasi-actions #eksplorasiFinal {
+            flex: 1 1 260px !important;
+            margin-top: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+
+            .materi-wrap .btn-cek-eksplorasi,
+            .materi-wrap .eksplorasi-actions #eksplorasiFinal {
+                width: 100% !important;
+                flex: 1 1 100% !important;
+            }
+        }
+
+        /* =========================
+                                           PERBESAR SEDIKIT TAMPILAN EKSPLORASI
+                                           ========================= */
+
+        .materi-wrap .card-eksplorasi {
+            max-width: 900px !important;
+            padding: 20px 22px !important;
+            border-radius: 18px !important;
+        }
+
+        .materi-wrap .eksplorasi-bar {
+            margin-bottom: 16px !important;
+        }
+
+        .materi-wrap .eksplorasi-icon-mini {
+            width: 26px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+        }
+
+        .materi-wrap .eksplorasi-bar h3 {
+            font-size: 23px !important;
+        }
+
+        .materi-wrap .eksplorasi-story p,
+        .materi-wrap .card-eksplorasi p,
+        .materi-wrap .card-eksplorasi li {
+            font-size: 15.5px !important;
+            line-height: 1.65 !important;
+        }
+
+        .materi-wrap .card-eksplorasi .rumus-box {
+            padding: 12px 14px !important;
+            margin: 10px 0 12px !important;
+            border-radius: 14px !important;
+        }
+
+        .materi-wrap .card-eksplorasi .rumus-besar {
+            font-size: 17px !important;
+        }
+
+        .materi-wrap .explore-grid {
+            gap: 18px !important;
+            margin-top: 14px !important;
+        }
+
+        .materi-wrap .mini-card {
+            padding: 17px !important;
+            border-radius: 18px !important;
+        }
+
+        .materi-wrap .mini-card h4 {
+            font-size: 19px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .materi-wrap .mini-card p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+        }
+
+        .materi-wrap .bank-label {
+            font-size: 13px !important;
+            padding: 6px 13px !important;
+        }
+
+        .materi-wrap .drag-bank {
+            gap: 10px !important;
+        }
+
+        .materi-wrap .drag-item {
+            font-size: 14px !important;
+            padding: 10px 13px !important;
+            border-radius: 13px !important;
+        }
+
+        .materi-wrap .drop-row {
+            grid-template-columns: 105px minmax(0, 1fr) !important;
+            gap: 10px !important;
+        }
+
+        .materi-wrap .drop-label {
+            font-size: 15.5px !important;
+            padding: 9px 10px !important;
+        }
+
+        .materi-wrap .drop-zone {
+            min-height: 52px !important;
+            padding: 9px !important;
+            border-radius: 14px !important;
+        }
+
+        .materi-wrap .drop-zone::after {
+            font-size: 13px !important;
+        }
+
+        .materi-wrap .status-box,
+        .materi-wrap .feedback {
+            font-size: 14px !important;
+            padding: 10px 12px !important;
+        }
+
+        .materi-wrap .explanation-box,
+        .materi-wrap #explainGabungan,
+        .materi-wrap #explainMakna {
+            height: 240px !important;
+            min-height: 240px !important;
+            max-height: 240px !important;
+            padding: 15px 17px !important;
+        }
+
+        .materi-wrap .explanation-box h5 {
+            font-size: 18px !important;
+        }
+
+        .materi-wrap .explanation-box p {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .materi-wrap .card-eksplorasi {
+                padding: 15px !important;
+                border-radius: 16px !important;
+            }
+
+            .materi-wrap .eksplorasi-bar h3 {
+                font-size: 20px !important;
+            }
+
+            .materi-wrap .mini-card {
+                padding: 15px !important;
+            }
+
+            .materi-wrap .mini-card h4 {
+                font-size: 18px !important;
+            }
+
+            .materi-wrap .card-eksplorasi p,
+            .materi-wrap .mini-card p {
+                font-size: 14.5px !important;
+                line-height: 1.6 !important;
+            }
+
+            .materi-wrap .drag-item {
+                font-size: 14px !important;
+                padding: 10px 12px !important;
+            }
+
+            .materi-wrap .drop-zone {
+                min-height: 48px !important;
+            }
+
+            .materi-wrap .explanation-box,
+            .materi-wrap #explainGabungan,
+            .materi-wrap #explainMakna {
+                height: 220px !important;
+                min-height: 220px !important;
+                max-height: 220px !important;
+            }
+        }
+
+        /* =========================
+                       RUMUS MINI EKSPLORASI RAPI
+                       ========================= */
+
+        .materi-wrap .rumus-mini-eks {
+            width: 100% !important;
+            margin: 8px 0 12px !important;
+            padding: 9px 12px !important;
+            border-radius: 13px !important;
+            background: #f8fbff !important;
+            border: 1.5px dashed #b7c9df !important;
+            color: #40546b !important;
+            overflow: hidden !important;
+        }
+
+        .materi-wrap .rumus-mini-label {
+            display: block !important;
+            margin-bottom: 4px !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            color: #52677d !important;
+            text-align: center !important;
+        }
+
+        .materi-wrap .rumus-mini-scroll {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            white-space: nowrap !important;
+            text-align: center !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            color: #244e78 !important;
+            line-height: 1.7 !important;
+            padding: 2px 0 4px !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+
+        .materi-wrap .rumus-mini-scroll em {
+            font-style: italic !important;
+        }
+
+        .materi-wrap .rumus-mini-scroll sup {
+            font-size: 0.7em !important;
+            line-height: 0 !important;
+        }
+
+        /* scrollbar kecil hanya kalau rumus kepanjangan */
+        .materi-wrap .rumus-mini-scroll::-webkit-scrollbar {
+            height: 5px !important;
+        }
+
+        .materi-wrap .rumus-mini-scroll::-webkit-scrollbar-track {
+            background: #eaf3ff !important;
+            border-radius: 999px !important;
+        }
+
+        .materi-wrap .rumus-mini-scroll::-webkit-scrollbar-thumb {
+            background: #9db8d8 !important;
+            border-radius: 999px !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .materi-wrap .rumus-mini-label {
+                text-align: left !important;
+                font-size: 12.5px !important;
+            }
+
+            .materi-wrap .rumus-mini-scroll {
+                text-align: left !important;
+                font-size: 15px !important;
+            }
+        }
+
+        /* =========================
+               PERBESAR SEDANG CARD DEFINISI
+               ========================= */
+
+        .materi-wrap .definisi-modern {
+            max-width: 900px !important;
+            margin: 38px auto 30px !important;
+            padding: 42px 28px 28px !important;
+            border-radius: 18px !important;
+        }
+
+        .materi-wrap .definisi-pill {
+            min-width: 125px !important;
+            height: 42px !important;
+            padding: 0 24px !important;
+            font-size: 17px !important;
+            top: -21px !important;
+            left: 28px !important;
+        }
+
+        .materi-wrap .definisi-modern p,
+        .materi-wrap .definisi-modern li {
+            font-size: 16px !important;
+            line-height: 1.75 !important;
+            color: #2f3a4d !important;
+            margin-bottom: 12px !important;
+        }
+
+        .materi-wrap .definisi-modern ul {
+            margin: 10px 0 0 26px !important;
+            padding-left: 18px !important;
+        }
+
+        .materi-wrap .definisi-modern .rumus-besar {
+            font-size: 18px !important;
+            margin: 16px 0 18px !important;
+            padding: 6px 0 !important;
+        }
+
+        .materi-wrap .definisi-modern .katex {
+            font-size: 1em !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .materi-wrap .definisi-modern {
+                max-width: 100% !important;
+                margin: 34px auto 26px !important;
+                padding: 36px 18px 22px !important;
+                border-radius: 16px !important;
+            }
+
+            .materi-wrap .definisi-pill {
+                min-width: 105px !important;
+                height: 36px !important;
+                padding: 0 18px !important;
+                font-size: 14px !important;
+                top: -18px !important;
+                left: 20px !important;
+            }
+
+            .materi-wrap .definisi-modern p,
+            .materi-wrap .definisi-modern li {
+                font-size: 14.5px !important;
+                line-height: 1.65 !important;
+                margin-bottom: 9px !important;
+            }
+
+            .materi-wrap .definisi-modern .rumus-besar {
+                font-size: 15.5px !important;
+                margin: 12px 0 14px !important;
+            }
+        }
+
+        /* =========================
+           PERBESAR SEDANG CARD SIFAT
+           ========================= */
+
+        .materi-wrap .sifat-box,
+        .materi-wrap .sifat-box.modern {
+            max-width: 900px !important;
+            margin: 38px auto 30px !important;
+            padding: 44px 28px 30px !important;
+            border-radius: 18px !important;
+            border-left-width: 6px !important;
+        }
+
+        .materi-wrap .sifat-label-wrap {
+            top: -21px !important;
+            left: 28px !important;
+        }
+
+        .materi-wrap .sifat-box>.sifat-label,
+        .materi-wrap .sifat-box.modern>.sifat-label {
+            top: -21px !important;
+            left: 28px !important;
+        }
+
+        .materi-wrap .sifat-label,
+        .materi-wrap .sifat-badge {
+            min-width: 120px !important;
+            height: 42px !important;
+            padding: 0 24px !important;
+            font-size: 17px !important;
+        }
+
+        .materi-wrap .sifat-box p,
+        .materi-wrap .sifat-box li,
+        .materi-wrap .sifat-box.modern p,
+        .materi-wrap .sifat-box.modern li {
+            font-size: 16px !important;
+            line-height: 1.75 !important;
+            color: #333 !important;
+            margin-bottom: 12px !important;
+        }
+
+        .materi-wrap .sifat-box>.katex-display,
+        .materi-wrap .sifat-box.modern>.katex-display {
+            margin: 14px 0 18px !important;
+            padding: 6px 0 !important;
+            text-align: center !important;
+        }
+
+        .materi-wrap .sifat-box .katex,
+        .materi-wrap .sifat-box.modern .katex {
+            font-size: 1em !important;
+        }
+
+        /* Supaya rumus tidak terlalu berjauhan */
+        .materi-wrap .sifat-box br,
+        .materi-wrap .sifat-box.modern br {
+            display: none !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+
+            .materi-wrap .sifat-box,
+            .materi-wrap .sifat-box.modern {
+                max-width: 100% !important;
+                margin: 34px auto 26px !important;
+                padding: 38px 18px 24px !important;
+                border-radius: 16px !important;
+                border-left-width: 5px !important;
+            }
+
+            .materi-wrap .sifat-label-wrap,
+            .materi-wrap .sifat-box>.sifat-label,
+            .materi-wrap .sifat-box.modern>.sifat-label {
+                top: -18px !important;
+                left: 20px !important;
+            }
+
+            .materi-wrap .sifat-label,
+            .materi-wrap .sifat-badge {
+                min-width: 100px !important;
+                height: 36px !important;
+                padding: 0 18px !important;
+                font-size: 14px !important;
+            }
+
+            .materi-wrap .sifat-box p,
+            .materi-wrap .sifat-box li,
+            .materi-wrap .sifat-box.modern p,
+            .materi-wrap .sifat-box.modern li {
+                font-size: 14.5px !important;
+                line-height: 1.65 !important;
+                margin-bottom: 9px !important;
+            }
+
+            .materi-wrap .sifat-box>.katex-display,
+            .materi-wrap .sifat-box.modern>.katex-display {
+                margin: 10px 0 13px !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+            }
+
+            .materi-wrap .sifat-box .katex,
+            .materi-wrap .sifat-box.modern .katex {
+                font-size: .92em !important;
+            }
+        }
+
+        /* =========================
+       SIFAT COMPACT / SIFAT KEDUA
+       ========================= */
+
+        .materi-wrap .sifat-box.sifat-compact {
+            max-width: 900px !important;
+            margin: 38px auto 30px !important;
+            padding: 42px 28px 26px !important;
+            border-radius: 18px !important;
+            border-left-width: 6px !important;
+        }
+
+        .materi-wrap .sifat-box.sifat-compact>.sifat-label {
+            top: -21px !important;
+            left: 28px !important;
+            min-width: 120px !important;
+            height: 42px !important;
+            padding: 0 24px !important;
+            font-size: 17px !important;
+        }
+
+        .materi-wrap .sifat-box.sifat-compact p {
+            font-size: 16px !important;
+            line-height: 1.75 !important;
+            color: #333 !important;
+            margin-bottom: 12px !important;
+            text-align: justify !important;
+        }
+
+        .materi-wrap .sifat-ringkas-list {
+            margin: 10px 0 14px 24px !important;
+            padding-left: 16px !important;
+        }
+
+        .materi-wrap .sifat-ringkas-list li {
+            font-size: 16px !important;
+            line-height: 1.7 !important;
+            color: #333 !important;
+            margin-bottom: 6px !important;
+        }
+
+        .materi-wrap .sifat-kesimpulan {
+            margin-top: 12px !important;
+        }
+
+        .materi-wrap .sifat-box.sifat-compact .katex-display {
+            margin: 8px 0 6px !important;
+            padding: 0 !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+        }
+
+        .materi-wrap .sifat-box.sifat-compact .katex {
+            font-size: 0.95em !important;
+        }
+
+        /* HP */
+        @media (max-width: 768px) {
+            .materi-wrap .sifat-box.sifat-compact {
+                max-width: 100% !important;
+                margin: 34px auto 26px !important;
+                padding: 38px 18px 22px !important;
+                border-radius: 16px !important;
+            }
+
+            .materi-wrap .sifat-box.sifat-compact>.sifat-label {
+                top: -18px !important;
+                left: 20px !important;
+                min-width: 100px !important;
+                height: 36px !important;
+                padding: 0 18px !important;
+                font-size: 14px !important;
+            }
+
+            .materi-wrap .sifat-box.sifat-compact p,
+            .materi-wrap .sifat-ringkas-list li {
+                font-size: 14.5px !important;
+                line-height: 1.65 !important;
+            }
+
+            .materi-wrap .sifat-ringkas-list {
+                margin-left: 18px !important;
+                padding-left: 12px !important;
+            }
+
+            .materi-wrap .sifat-box.sifat-compact .katex {
+                font-size: 0.88em !important;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -4182,7 +4989,8 @@
                 </div>
 
                 <p>
-                    Untuk memahami bagaimana nilai polinomial bekerja, substitusikan nilai \(x\) ke dalam fungsi.
+                    Untuk memahami hubungan antara nilai polinomial, sisa pembagian, dan faktor,
+                    substitusikan beberapa nilai \(x\) ke dalam fungsi \(P(x)\), lalu tentukan maknanya.
                 </p>
             </div>
 
@@ -4191,9 +4999,20 @@
                 <!-- PERTANYAAN 1 -->
                 <div class="mini-card">
                     <h4>Pertanyaan 1</h4>
-                    <p>Hitung nilai fungsi diatas, lalu cocokkan dengan hasil yang benar.</p>
+
+                    <div class="rumus-mini-eks">
+                        <div class="rumus-mini-label">Mengacu pada:</div>
+                        <div class="rumus-mini-scroll">
+                            <em>P(x)</em> = x<sup>3</sup> − 4x<sup>2</sup> − x + 4
+                        </div>
+                    </div>
+
+                    <p>
+                        Hitung nilai \(P(1)\) dan \(P(2)\), lalu cocokkan setiap nilai dengan hasil yang benar.
+                    </p>
 
                     <div class="bank-label">Seret pilihan jawaban</div>
+
                     <div class="drag-bank" id="answerBank1">
                         <div class="drag-item" draggable="true" data-value="0">0</div>
                         <div class="drag-item" draggable="true" data-value="-6">-6</div>
@@ -4201,51 +5020,68 @@
                         <div class="drag-item" draggable="true" data-value="4">4</div>
                     </div>
 
-                    <div class="small-note">Petunjuk: substitusikan \(x\) ke fungsi \(P(x)\).</div>
-
                     <div class="drop-list" style="margin-top:16px;">
                         <div class="drop-row">
                             <div class="drop-label">\(P(1)\)</div>
                             <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="0" data-group="g1"
-                                id="drop-p1"></div>
+                                id="drop-p1">
+                            </div>
                         </div>
 
                         <div class="drop-row">
                             <div class="drop-label">\(P(2)\)</div>
                             <div class="drop-zone" data-placeholder="Drop jawaban di sini" data-answer="-6" data-group="g1"
-                                id="drop-p2"></div>
+                                id="drop-p2">
+                            </div>
                         </div>
                     </div>
 
                     <div id="statusEks1" class="status-box"></div>
 
                     <div id="explainGabungan" class="explanation-box">
-                        <h5>Penjelasan</h5>
+                        <h5>Penjelasan Pertanyaan 1</h5>
 
                         <p>
-                            Untuk mengetahui banyak kain yang tersisa, kita substitusikan nilai \(x\) ke dalam fungsi
-                            \(P(x)\).
+                            Pada Pertanyaan 1, yang dicek adalah nilai polinomial
+                            \(P(x)=x^3-4x^2-x+4\) ketika \(x=1\) dan \(x=2\).
                         </p>
 
                         <p><strong>1. Saat \(x=1\):</strong></p>
+
                         <p>
                             \[
-                            P(1)=1^3-4(1)^2-1+4=0
+                            P(1)=1^3-4(1)^2-1+4
                             \]
                         </p>
+
                         <p>
-                            Artinya, pada hari ke-1 tidak ada kain yang tersisa (kain habis terjual).
+                            \[
+                            P(1)=1-4-1+4=0
+                            \]
+                        </p>
+
+                        <p>
+                            Jadi, nilai \(P(1)\) adalah \(0\). Nilai ini penting karena
+                            menunjukkan bahwa \(x=1\) merupakan pembuat nol polinomial.
                         </p>
 
                         <p><strong>2. Saat \(x=2\):</strong></p>
+
                         <p>
                             \[
-                            P(2)=2^3-4(2)^2-2+4=8-16-2+4=-6
+                            P(2)=2^3-4(2)^2-2+4
                             \]
                         </p>
+
                         <p>
-                            Nilai negatif menunjukkan bahwa model matematika tidak lagi sesuai dengan kondisi nyata,
-                            tetapi perhitungan secara aljabar tetap benar.
+                            \[
+                            P(2)=8-16-2+4=-6
+                            \]
+                        </p>
+
+                        <p>
+                            Jadi, nilai \(P(2)\) adalah \(-6\). Karena hasilnya bukan \(0\),
+                            maka \(x=2\) bukan pembuat nol polinomial tersebut.
                         </p>
                     </div>
                 </div>
@@ -4253,16 +5089,18 @@
                 <!-- PERTANYAAN 2 -->
                 <div class="mini-card">
                     <h4>Pertanyaan 2</h4>
-                    <p>Perhatikan hasil berikut, lalu seret makna yang paling tepat.</p>
 
-                    <div class="rumus-box">
-                        <div class="rumus-label">HASIL</div>
-                        <div class="rumus-besar">
-                            \[
-                            P(1)=0
-                            \]
+                    <div class="rumus-mini-eks">
+                        <div class="rumus-mini-label">Mengacu pada:</div>
+                        <div class="rumus-mini-scroll">
+                            <em>P(x)</em> = x<sup>3</sup> − 4x<sup>2</sup> − x + 4
                         </div>
                     </div>
+
+                    <p>
+                        Perhatikan hasil pada Pertanyaan 1, yaitu <strong>P(1) = 0</strong>.
+                        Setelah itu, seret makna yang paling tepat.
+                    </p>
 
                     <div class="bank-label">Seret makna hasil</div>
 
@@ -4295,44 +5133,52 @@
 
                     <div id="statusEks2" class="status-box"></div>
 
-                    <div id="explainMakna" class="explanation-box" style="display:none;">
-                        <h5>Penjelasan Makna</h5>
-
-                        <p>Dari hasil sebelumnya diperoleh:</p>
-
-                        \[
-                        P(1)=0
-                        \]
-
-                        <p>Dalam pembagian polinomial berlaku:</p>
-
-                        \[
-                        P(x)=(x-1)Q(x)+sisa
-                        \]
-
-                        <p>Jika \(x=1\), maka:</p>
-
-                        \[
-                        P(1)=(1-1)Q(1)+sisa
-                        \]
-
-                        \[
-                        P(1)=0+sisa
-                        \]
-
-                        \[
-                        P(1)=sisa
-                        \]
+                    <div id="explainMakna" class="explanation-box">
+                        <h5>Penjelasan Pertanyaan 2</h5>
 
                         <p>
-                            Karena \(P(1)=0\), maka sisa pembagian oleh \((x-1)\)
-                            adalah <strong>0</strong>.
+                            Dari Pertanyaan 1 diperoleh:
                         </p>
 
                         <p>
-                            Artinya, \((x-1)\) merupakan faktor dari polinomial tersebut.
+                            \[
+                            P(1)=0
+                            \]
+                        </p>
+
+                        <p>
+                            Berdasarkan Teorema Sisa, sisa pembagian polinomial \(P(x)\)
+                            oleh \((x-1)\) adalah \(P(1)\).
+                        </p>
+
+                        <p>
+                            Karena:
+                        </p>
+
+                        <p>
+                            \[
+                            P(1)=0
+                            \]
+                        </p>
+
+                        <p>
+                            maka sisa pembagian \(P(x)\) oleh \((x-1)\) adalah \(0\).
+                        </p>
+
+                        <p>
+                            Artinya, \((x-1)\) membagi \(P(x)\) tanpa sisa, sehingga
+                            \((x-1)\) merupakan faktor dari polinomial tersebut.
                         </p>
                     </div>
+                </div>
+
+                <!-- TOMBOL CEK SEMUA EKSPLORASI -->
+                <div class="eksplorasi-actions">
+                    <button type="button" class="btn-cek btn-cek-eksplorasi" onclick="cekSemuaEksplorasi()">
+                        Cek Semua
+                    </button>
+
+                    <div id="eksplorasiFinal" class="feedback"></div>
                 </div>
             </div>
         </div>

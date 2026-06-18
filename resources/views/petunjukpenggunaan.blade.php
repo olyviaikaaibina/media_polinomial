@@ -4,196 +4,258 @@
 
 @section('content')
 
-    <style>
+<style>
+    .section-wrapper {
+        background-color: #FDFDE8 !important;
+        min-height: calc(100vh - 160px);
+        padding: 40px 60px 60px;
+        box-sizing: border-box;
+    }
+
+    .guide-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .page-title {
+        text-align: center;
+        font-family: "Times New Roman", serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #8b6f47;
+        margin: 0 0 12px;
+        letter-spacing: 0.4px;
+    }
+
+    .page-subtitle {
+        text-align: center;
+        font-size: 15px;
+        color: #6f685d;
+        margin: 0 0 36px;
+        line-height: 1.7;
+    }
+
+    .option-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .option-item {
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fffaf4;
+        border: 1px solid #ead8c2;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .option-header {
+        width: 100%;
+        border: none;
+        background: linear-gradient(90deg, #ead8c2, #f2e5d6);
+        padding: 20px 58px 20px 22px;
+        text-align: left;
+        font-size: 17px;
+        font-weight: 700;
+        color: #6e5437;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .option-header:hover {
+        background: linear-gradient(90deg, #e5d0b8, #efdfce);
+    }
+
+    .option-header::after {
+        content: "";
+        position: absolute;
+        right: 22px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 10px solid #8b6f47;
+        transition: transform 0.25s ease;
+    }
+
+    .option-item.active .option-header::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .option-content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding: 0 22px;
+        background: #fffdf8;
+        transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+    }
+
+    .option-content.show {
+        max-height: 3000px;
+        opacity: 1;
+        padding: 20px 22px 24px;
+    }
+
+    .option-content p {
+        margin: 0 0 12px;
+        line-height: 1.8;
+        color: #5f584f;
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    .option-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .guide-image-box {
+        width: 100%;
+        margin: 4px 0 16px;
+        padding: 10px;
+        background: #fffaf2;
+        border: 1px solid #ead8c2;
+        border-radius: 14px;
+        box-sizing: border-box;
+    }
+
+    .guide-image {
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid #e7d8c7;
+    }
+
+    .image-caption {
+        margin-top: 8px;
+        text-align: center;
+        font-size: 13px;
+        color: #8b6f47;
+        font-weight: 600;
+    }
+
+    .step-list {
+        margin: 10px 0 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .step-list li {
+        background: #fcf4ea;
+        border: 1px solid #ecdac7;
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: #5f584f;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+
+    .step-number {
+        display: inline-block;
+        min-width: 26px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        border-radius: 50%;
+        background: #c98a5e;
+        color: #fff;
+        font-weight: 700;
+        margin-right: 8px;
+        font-size: 13px;
+    }
+
+    .point-list {
+        margin: 8px 0 0 18px;
+        padding: 0;
+        color: #5f584f;
+    }
+
+    .point-list li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    .contact-box {
+        background: #fcf4ea;
+        border: 1px solid #ecdac7;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-top: 10px;
+    }
+
+    .contact-list {
+        margin: 0;
+        padding-left: 18px;
+        line-height: 1.8;
+        color: #5f584f;
+    }
+
+    .contact-list li {
+        margin-bottom: 4px;
+    }
+
+    .contact-list a {
+        color: #8b6f47;
+        text-decoration: underline;
+        font-weight: 500;
+        word-break: break-word;
+    }
+
+    .contact-list a:hover {
+        color: #6f5332;
+    }
+
+    @media (max-width: 768px) {
         .section-wrapper {
-            background-color: #FDFDE8 !important;
-            min-height: calc(100vh - 160px);
-            padding: 40px 60px 60px;
-            box-sizing: border-box;
+            padding: 28px 16px 40px;
         }
 
         .page-title {
-            text-align: center;
-            font-family: "Times New Roman", serif;
-            font-size: 38px;
-            font-weight: 700;
-            color: #8b6f47;
-            margin: 0 0 42px;
-            letter-spacing: 0.5px;
+            font-size: 28px;
+            line-height: 1.3;
         }
 
-        .option-list {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .option-item {
-            border-radius: 16px;
-            overflow: hidden;
+        .page-subtitle {
+            font-size: 14px;
+            margin-bottom: 28px;
         }
 
         .option-header {
-            width: 100%;
-            border: none;
-            background: #ead8c2;
-            padding: 22px 54px 22px 32px;
-            text-align: left;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: 500;
-            border-radius: 16px;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-        }
-
-        .option-header:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-            background: #e8d2b8;
-        }
-
-        .option-header::after {
-            content: "";
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 9px solid #9a8f7b;
-            transition: transform 0.2s ease;
-        }
-
-        .option-item.active .option-header::after {
-            transform: translateY(-50%) rotate(180deg);
-        }
-
-        .option-content {
-            max-height: 0;
-            overflow: hidden;
-            background-color: #f9f1e7;
-            padding: 0 32px;
-            font-size: 14px;
-            color: #6f685d;
-            border-radius: 0 0 16px 16px;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
-            opacity: 0;
-            transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.25s ease;
+            font-size: 15px;
+            padding: 18px 52px 18px 18px;
         }
 
         .option-content.show {
-            max-height: 2500px;
-            padding: 16px 32px 20px;
-            opacity: 1;
-        }
-
-        .option-content p {
-            margin: 0 0 12px;
-            line-height: 1.7;
-            text-align: justify;
-        }
-
-        .option-content p:last-child {
-            margin-bottom: 0;
+            padding: 18px 16px 20px;
         }
 
         .guide-image-box {
-            width: 100%;
-            margin: 6px 0 18px;
-            padding: 12px;
-            background: #fffaf2;
-            border: 1px solid #ead8c2;
-            border-radius: 14px;
-            box-sizing: border-box;
-        }
-
-        .guide-image {
-            width: 100%;
-            display: block;
-            border-radius: 12px;
-            border: 1px solid #e4d6c5;
+            padding: 8px;
         }
 
         .image-caption {
-            margin-top: 8px;
-            text-align: center;
-            font-size: 13px;
-            color: #8b6f47;
-            font-weight: 600;
+            font-size: 12px;
         }
+    }
+</style>
 
-        .contact-list {
-            margin: 8px 0 0 22px;
-            padding: 0;
-            line-height: 1.8;
-            color: #6f685d;
-        }
+<div class="section-wrapper">
+    <div class="guide-container">
 
-        .contact-list li {
-            margin-bottom: 4px;
-        }
+        <h1 class="page-title">Petunjuk Penggunaan Media Pembelajaran</h1>
 
-        .contact-list a {
-            color: #8b6f47;
-            text-decoration: underline;
-            font-weight: 500;
-            word-break: break-word;
-        }
-
-        .contact-list a:hover {
-            color: #6f5332;
-        }
-
-        @media (max-width: 768px) {
-            .section-wrapper {
-                padding: 28px 16px 40px;
-            }
-
-            .page-title {
-                font-size: 28px;
-                line-height: 1.3;
-                margin-bottom: 30px;
-            }
-
-            .option-header {
-                padding: 18px 52px 18px 20px;
-            }
-
-            .option-content,
-            .option-content.show {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .option-content.show {
-                max-height: 3200px;
-            }
-
-            .guide-image-box {
-                padding: 8px;
-            }
-
-            .image-caption {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-title {
-                font-size: 24px;
-            }
-        }
-    </style>
-
-    <div class="section-wrapper">
-
-        <h1 class="page-title">Panduan Penggunaan Media Pembelajaran</h1>
+        <p class="page-subtitle">
+            Halaman ini berisi petunjuk singkat untuk membantu pengguna memahami fitur-fitur
+            pada media pembelajaran Polimathica.
+        </p>
 
         <div class="option-list">
 
@@ -205,24 +267,7 @@
 
                 <div class="option-content">
                     <p>
-                        Polimathica merupakan media pembelajaran matematika interaktif berbasis web
-                        yang ditujukan untuk peserta didik kelas XI SMA. Media ini dirancang untuk
-                        membantu peserta didik memahami materi matematika melalui tampilan yang
-                        menarik, penjelasan yang runtut, serta aktivitas pembelajaran yang dapat
-                        dilakukan secara mandiri.
-                    </p>
-
-                    <p>
-                        Media pembelajaran ini dikembangkan dengan menggunakan model tutorial, yaitu
-                        model pembelajaran yang menyajikan materi secara bertahap mulai dari pengenalan
-                        konsep, penjelasan materi, contoh soal, latihan, kuis, hingga evaluasi.
-                    </p>
-
-                    <p>
-                        Dengan adanya media ini, proses pembelajaran diharapkan menjadi lebih terarah
-                        karena peserta didik dapat mengikuti langkah-langkah pembelajaran sesuai urutan
-                        yang telah disediakan, sehingga pemahaman terhadap materi matematika dapat
-                        terbentuk secara bertahap.
+                        Polimathica adalah media pembelajaran matematika interaktif berbasis web untuk siswa kelas XI SMA pada materi polinomial. Media ini menggunakan model tutorial, sehingga materi disajikan secara bertahap mulai dari penjelasan konsep, contoh soal, latihan, hingga kuis. Dengan media ini, siswa dapat belajar secara lebih terarah, mandiri, dan runtut.
                     </p>
                 </div>
             </div>
@@ -244,24 +289,12 @@
                         </div>
                     </div>
 
-                    <p>
-                        Halaman beranda merupakan tampilan awal yang muncul ketika pengguna membuka
-                        media pembelajaran Polimathica. Pada halaman ini, pengguna dapat melihat
-                        identitas media, menu navigasi, tombol masuk dan daftar, serta informasi
-                        pengantar mengenai media pembelajaran.
-                    </p>
-
-                    <p>
-                        Di bagian kanan atas terdapat tombol Daftar dan Masuk. Tombol Daftar digunakan
-                        untuk pengguna baru membuat akun, sedangkan tombol Masuk digunakan oleh
-                        pengguna yang sudah memiliki akun agar dapat mengakses fitur pembelajaran.
-                    </p>
-
-                    <p>
-                        Tombol Mulai Belajar digunakan untuk mengarahkan pengguna menuju halaman
-                        materi agar dapat memulai proses pembelajaran. Jika pengguna belum masuk ke
-                        akun, maka pengguna akan diarahkan terlebih dahulu ke halaman login.
-                    </p>
+                    <ul class="point-list">
+                        <li>Halaman beranda adalah tampilan awal saat pengguna membuka website.</li>
+                        <li>Pada bagian ini tersedia menu navigasi, tombol <b>Daftar</b>, dan tombol <b>Masuk</b>.</li>
+                        <li>Tombol <b>Mulai Belajar</b> digunakan untuk masuk ke pembelajaran.</li>
+                        <li>Jika pengguna belum login, maka akan diarahkan terlebih dahulu ke halaman masuk.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -272,18 +305,40 @@
                 </button>
 
                 <div class="option-content">
-                    <p>
-                        Untuk mendaftar akun, pengguna perlu mengisi data diri secara lengkap, yaitu
-                        nama lengkap, alamat email, NIS, jenis kelamin, kelas, dan password. Setelah
-                        semua data terisi dengan benar, pengguna dapat menekan tombol daftar untuk
-                        membuat akun baru.
-                    </p>
+
+                    <div class="guide-image-box">
+                        <img src="{{ asset('img/P3.png') }}"
+                             alt="Tampilan Halaman Pendaftaran Akun"
+                             class="guide-image">
+                        <div class="image-caption">
+                            Gambar 2. Tampilan Halaman Pendaftaran Akun
+                        </div>
+                    </div>
 
                     <p>
-                        Setelah akun berhasil dibuat, pengguna dapat langsung masuk ke halaman login.
-                        Pengguna perlu mengisi alamat email dan password yang sudah dibuat sebelumnya,
-                        kemudian menekan tombol masuk agar dapat mengakses materi pembelajaran.
+                        Ikuti langkah berikut untuk membuat akun:
                     </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <span class="step-number">1</span>
+                            Klik tombol <b>Daftar</b> pada halaman beranda.
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            Isi data yang diminta, yaitu <b>nama</b>, <b>email</b>, <b>NIS</b>,
+                            <b>jenis kelamin</b>, <b>kelas</b>, dan <b>password</b>.
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            Pastikan semua data sudah benar, lalu klik tombol <b>Daftar</b>.
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            Setelah akun berhasil dibuat, masuk menggunakan <b>email</b> dan
+                            <b>password</b> yang telah didaftarkan.
+                        </li>
+                    </ol>
                 </div>
             </div>
 
@@ -300,29 +355,18 @@
                              alt="Tampilan Halaman Materi Polimathica"
                              class="guide-image">
                         <div class="image-caption">
-                            Gambar 2. Tampilan Halaman Materi Polimathica
+                            Gambar 3. Tampilan Halaman Materi Polimathica
                         </div>
                     </div>
 
-                    <p>
-                        Halaman materi merupakan halaman utama yang digunakan pengguna untuk mengikuti
-                        proses pembelajaran. Pada halaman ini terdapat bagian sidebar di sebelah kiri
-                        yang berisi daftar materi, submateri, dan kuis yang dapat dipilih sesuai urutan
-                        pembelajaran.
-                    </p>
-
-                    <p>
-                        Bagian utama halaman menampilkan isi materi pembelajaran, seperti tujuan
-                        pembelajaran, eksplorasi, penjelasan konsep, contoh soal, latihan, dan kuis.
-                        Pengguna dapat membaca materi secara bertahap agar pemahaman terhadap materi
-                        matematika lebih terarah.
-                    </p>
-
-                    <p>
-                        Pada bagian bawah halaman terdapat tombol Previous dan Next yang digunakan
-                        untuk berpindah ke materi sebelumnya atau materi berikutnya. Tombol tersebut
-                        membantu pengguna mengikuti alur pembelajaran secara runtut.
-                    </p>
+                    <ul class="point-list">
+                        <li>Halaman materi digunakan untuk mengikuti proses pembelajaran.</li>
+                        <li>Bagian sidebar menampilkan daftar materi, submateri, dan kuis.</li>
+                        <li>Bagian utama berisi penjelasan materi, contoh soal, latihan, dan kuis.</li>
+                        <li><b>Progress Belajar</b> digunakan untuk melihat jumlah materi yang telah dikerjakan oleh siswa.</li>
+                        <li><b>Logout</b> digunakan untuk keluar dari halaman materi dan mengakhiri sesi belajar.</li>
+                        <li>Tombol <b>Previous</b> dan <b>Next</b> digunakan untuk berpindah antarhalaman materi.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -334,48 +378,55 @@
 
                 <div class="option-content">
                     <p>
-                        Jika mengalami kendala atau memiliki pertanyaan lebih lanjut, silakan hubungi
-                        kami melalui:
+                        Jika mengalami kendala atau memiliki pertanyaan, silakan hubungi melalui kontak berikut:
                     </p>
 
-                    <ul class="contact-list">
-                        <li>
-                            Email:
-                            <a href="mailto:olyviaikaaibina@gmail.com">
-                                olyviaikaaibina@gmail.com
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="contact-box">
+                        <ul class="contact-list">
+                            <li>
+                                Email:
+                                <a href="mailto:olyviaikaaibina@gmail.com">
+                                    olyviaikaaibina@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                No. HP:
+                                <a href="tel:081348475667">
+                                    081348475667
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
         </div>
-
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const items = document.querySelectorAll('.option-item');
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const items = document.querySelectorAll('.option-item');
 
-            items.forEach(function (item) {
-                const header = item.querySelector('.option-header');
-                const content = item.querySelector('.option-content');
+        items.forEach(function (item) {
+            const header = item.querySelector('.option-header');
+            const content = item.querySelector('.option-content');
 
-                header.addEventListener('click', function () {
-                    const isOpen = content.classList.contains('show');
+            header.addEventListener('click', function () {
+                const isOpen = content.classList.contains('show');
 
-                    document.querySelectorAll('.option-content.show').forEach(function (el) {
-                        el.classList.remove('show');
-                        el.parentElement.classList.remove('active');
-                    });
-
-                    if (!isOpen) {
-                        content.classList.add('show');
-                        item.classList.add('active');
-                    }
+                document.querySelectorAll('.option-content.show').forEach(function (el) {
+                    el.classList.remove('show');
+                    el.parentElement.classList.remove('active');
                 });
+
+                if (!isOpen) {
+                    content.classList.add('show');
+                    item.classList.add('active');
+                }
             });
         });
-    </script>
+    });
+</script>
 
 @endsection

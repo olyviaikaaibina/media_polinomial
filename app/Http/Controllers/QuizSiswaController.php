@@ -12,11 +12,45 @@ use Illuminate\Support\Facades\Auth;
 
 class QuizSiswaController extends Controller
 {
+    private function isEvaluasiQuiz($quiz)
+    {
+        $judulQuiz = strtolower($quiz->title ?? '');
+        $tipeQuiz = strtolower($quiz->type ?? $quiz->jenis ?? $quiz->tipe ?? '');
+
+        return str_contains($judulQuiz, 'evaluasi') || str_contains($tipeQuiz, 'evaluasi');
+    }
+
+    private function getDurasiMenit($quiz)
+    {
+        return $this->isEvaluasiQuiz($quiz) ? 30 : 20;
+    }
+
+    public function petunjuk($id)
+    {
+        $quiz = Quiz::with(['bab', 'questions.options'])
+            ->where('is_active', 1)
+            ->findOrFail($id);
+
+        $isEvaluasi = $this->isEvaluasiQuiz($quiz);
+        $durasiMenit = $this->getDurasiMenit($quiz);
+        $jumlahSoal = $quiz->questions->count();
+
+        return view('siswa.petunjukkuis', compact(
+            'quiz',
+            'isEvaluasi',
+            'durasiMenit',
+            'jumlahSoal'
+        ));
+    }
+
     public function show($id)
     {
         $quiz = Quiz::with(['bab', 'questions.options'])
             ->where('is_active', 1)
             ->findOrFail($id);
+
+        $isEvaluasi = $this->isEvaluasiQuiz($quiz);
+        $durasiMenit = $this->getDurasiMenit($quiz);
 
         $studentId = Auth::guard('siswa')->id();
 
@@ -37,7 +71,7 @@ class QuizSiswaController extends Controller
         } else {
             $durasiDetik = $attempt->started_at->diffInSeconds(now());
 
-            if ($durasiDetik >= ($quiz->duration_minutes * 60)) {
+            if ($durasiDetik >= ($durasiMenit * 60)) {
                 $attempt->update([
                     'end_at' => now(),
                     'submitted_at' => now(),
@@ -54,12 +88,20 @@ class QuizSiswaController extends Controller
             }
         }
 
-        return view('siswa.quiz', compact('quiz', 'attempt'));
+        return view('siswa.quiz', compact(
+            'quiz',
+            'attempt',
+            'isEvaluasi',
+            'durasiMenit'
+        ));
     }
 
     public function submit(Request $request, $id)
     {
         $quiz = Quiz::with(['bab', 'questions.options'])->findOrFail($id);
+
+        $durasiMenit = $this->getDurasiMenit($quiz);
+
         $studentId = Auth::guard('siswa')->id();
 
         $attempt = QuizAttempt::where('id', $request->attempt_id)
@@ -70,13 +112,13 @@ class QuizSiswaController extends Controller
 
         if (!$attempt) {
             return redirect()
-                ->route('quiz.show', $quiz->id)
+                ->route('quiz.petunjuk', $quiz->id)
                 ->with('error', 'Attempt kuis tidak ditemukan atau sudah berakhir.');
         }
 
         $durasiDetikSekarang = $attempt->started_at->diffInSeconds(now());
 
-        if ($durasiDetikSekarang >= ($quiz->duration_minutes * 60)) {
+        if ($durasiDetikSekarang >= ($durasiMenit * 60)) {
             $attempt->update([
                 'end_at' => now(),
                 'submitted_at' => now(),
@@ -84,7 +126,7 @@ class QuizSiswaController extends Controller
             ]);
 
             return redirect()
-                ->route('quiz.show', $quiz->id)
+                ->route('quiz.petunjuk', $quiz->id)
                 ->with('error', 'Waktu kuis sudah habis. Silakan ulangi kuis.');
         }
 
@@ -112,7 +154,6 @@ class QuizSiswaController extends Controller
         $kosong = $totalSoal - $terjawab;
         $nilai = $totalSoal > 0 ? round(($benar / $totalSoal) * 100, 2) : 0;
 
-        // KKM diambil dari tabel quizzes
         $kkm = $quiz->kkm ?? 70;
         $lulus = $nilai >= $kkm;
 
@@ -132,16 +173,13 @@ class QuizSiswaController extends Controller
         $attempt->refresh();
 
         $durasiDetik = $attempt->started_at->diffInSeconds($attempt->end_at);
-        $durasiMenit = floor($durasiDetik / 60);
+        $durasiMenitPengerjaan = floor($durasiDetik / 60);
         $durasiSisaDetik = $durasiDetik % 60;
 
-        // Materi terakhir di bab kuis saat ini.
-        // Ini untuk tombol "Kembali ke Materi".
         $previousMateri = Materi::where('bab_id', $quiz->bab_id)
             ->orderBy('urutan', 'desc')
             ->first();
 
-        // Cari bab berikutnya berdasarkan urutan bab.
         $babBerikutnya = null;
 
         if ($quiz->bab) {
@@ -150,8 +188,6 @@ class QuizSiswaController extends Controller
                 ->first();
         }
 
-        // Materi pertama di bab berikutnya.
-        // Ini untuk tombol "Lanjut ke Bab Berikutnya".
         $nextMateri = null;
 
         if ($babBerikutnya) {
@@ -160,7 +196,6 @@ class QuizSiswaController extends Controller
                 ->first();
         }
 
-        // Kalau lulus, buka materi pertama bab berikutnya.
         if ($lulus && $nextMateri) {
             MaterialProgress::updateOrCreate(
                 [
@@ -186,7 +221,7 @@ class QuizSiswaController extends Controller
             'previousMateri',
             'nextMateri',
             'durasiDetik',
-            'durasiMenit',
+            'durasiMenitPengerjaan',
             'durasiSisaDetik'
         ));
     }

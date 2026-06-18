@@ -306,6 +306,37 @@
                 min-width: unset;
             }
         }
+
+        .arahan-box {
+            max-width: 650px;
+            margin: 0 auto 20px;
+            padding: 16px 18px;
+            border-radius: 16px;
+            text-align: left;
+            border: 1px solid rgba(169, 154, 129, 0.18);
+        }
+
+        .arahan-box.success {
+            background: #E5EBDC;
+        }
+
+        .arahan-box.warning {
+            background: #EFE3D6;
+        }
+
+        .arahan-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .arahan-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -358,6 +389,26 @@
                         <div class="detail-label">Jawaban Salah</div>
                     </div>
                 </div>
+
+                @if($lulus ?? false)
+                    <div class="arahan-box success">
+                        <div class="arahan-title">Arahan Selanjutnya</div>
+                        <p class="arahan-text">
+                            Nilai kamu sudah mencapai atau melebihi KKM {{ $kkm ?? '-' }}.
+                            Kamu dapat melanjutkan ke materi berikutnya. Jika ingin memperkuat pemahaman,
+                            kamu juga boleh kembali ke halaman materi untuk membaca ulang bagian yang masih belum yakin.
+                        </p>
+                    </div>
+                @else
+                    <div class="arahan-box warning">
+                        <div class="arahan-title">Arahan Perbaikan</div>
+                        <p class="arahan-text">
+                            Nilai kamu masih di bawah KKM {{ $kkm ?? '-' }}.
+                            Pelajari kembali materi sebelumnya, perhatikan bagian yang masih salah,
+                            lalu ulangi kuis sampai nilai kamu mencapai KKM.
+                        </p>
+                    </div>
+                @endif
 
                 <div class="buttons">
                     @if ($lulus)
@@ -414,11 +465,6 @@
                         </a>
                     @endif
                 </div>
-
-                <div class="footer-note">
-                    Tetap semangat belajar, hasil bisa meningkat dengan latihan yang konsisten.
-                </div>
-
             </div>
         </div>
     </div>
