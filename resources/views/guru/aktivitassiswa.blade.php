@@ -941,10 +941,10 @@
                 <div class="progress-header-left">
                     <div class="progress-label">
                         <i class="bi bi-activity"></i>
-                        Progress Siswa
+                        Progres Siswa
                     </div>
 
-                    <h4 class="page-title">Progress Siswa</h4>
+                    <h4 class="page-title">Progres Siswa</h4>
 
                     <p class="page-subtitle">
                         Pantau perkembangan belajar siswa berdasarkan materi, kuis, evaluasi, dan aktivitas terakhir.
@@ -981,9 +981,9 @@
                     </div>
 
                     <div>
-                        <h5 class="section-title-modern">Tabel Progress Siswa</h5>
+                        <h5 class="section-title-modern">Tabel Progres Siswa</h5>
                         <p class="section-subtitle-modern">
-                            Berisi progress materi, kuis yang lulus KKM, evaluasi, aktivitas terakhir, dan status siswa.
+                            Berisi progres materi, kuis yang lulus KKM, evaluasi, aktivitas terakhir, dan status siswa.
                         </p>
                     </div>
                 </div>
@@ -1021,7 +1021,7 @@
                                 <th class="col-no">No</th>
                                 <th class="col-nama">Nama Siswa</th>
                                 <th class="col-kelas">Kelas</th>
-                                <th class="col-progress">Progress Materi</th>
+                                <th class="col-progress">Progres Materi</th>
                                 <th class="col-kuis">Kuis</th>
                                 <th class="col-evaluasi">Evaluasi</th>
                                 <th class="col-aktivitas">Aktivitas Terakhir</th>

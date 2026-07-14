@@ -1,22 +1,99 @@
 {{-- resources/views/quiz/petunjuk-kuis.blade.php --}}
-@extends('layout.navbar')
 
-@section('title', 'Petunjuk Pengerjaan Kuis')
+@php
+    $isEvaluasi = $isEvaluasi ?? false;
+    $durasiMenit = $durasiMenit ?? ($isEvaluasi ? 30 : 20);
+    $jumlahSoal = $jumlahSoal ?? 10;
+    $judulHalaman = $isEvaluasi ? 'EVALUASI' : 'KUIS';
 
-@section('content')
+    $quizId = isset($quiz) ? (int) $quiz->id : 0;
 
-    @php
-        $isEvaluasi = $isEvaluasi ?? false;
-        $durasiMenit = $durasiMenit ?? ($isEvaluasi ? 30 : 20);
-        $jumlahSoal = $jumlahSoal ?? 10;
-        $judulHalaman = $isEvaluasi ? 'EVALUASI' : 'KUIS';
-    @endphp
+    /*
+        Slug awal sesuai pola penamaan kamu.
+        Kalau ternyata berbeda, kode di bawah tetap akan mencari slug dari database berdasarkan kata kunci.
+    */
+    $slugKembaliMap = [
+        1 => 'grafikfungsipolinomial',
+        2 => 'penjumlahanpengurangandanperkalian',
+        3 => 'pembagianpolinomial',
+        4 => 'faktorpembuatnol',
+        5 => 'identitaspolinomial',
+    ];
+
+    /*
+        Kata kunci untuk mencari slug yang benar di tabel materis.
+        Jadi kalau slug kamu misalnya:
+        - grafik-fungsi-polinomial
+        - grafikfungsipolinomial
+        - grafik-dan-fungsi-polinomial
+        tetap bisa ketemu selama ada kata grafik dan fungsi.
+    */
+    $keywordKembaliMap = [
+        1 => ['grafik', 'fungsi'],
+        2 => ['perkalian'],
+        3 => ['pembagian'],
+        4 => ['faktor', 'pembuat', 'nol'],
+        5 => ['identitas'],
+    ];
+
+    $slugKembali = $slugKembaliMap[$quizId] ?? null;
+
+    try {
+        if ($slugKembali) {
+            $slugAda = \App\Models\Materi::where('slug', $slugKembali)->exists();
+
+            if (!$slugAda) {
+                $slugKembali = null;
+            }
+        }
+
+        if (!$slugKembali && isset($keywordKembaliMap[$quizId])) {
+            $keywords = $keywordKembaliMap[$quizId];
+
+            $queryMateri = \App\Models\Materi::query();
+
+            foreach ($keywords as $keyword) {
+                $queryMateri->where('slug', 'like', '%' . $keyword . '%');
+            }
+
+            $slugKembali = $queryMateri->orderBy('id', 'asc')->value('slug');
+        }
+    } catch (\Throwable $e) {
+        $slugKembali = $slugKembaliMap[$quizId] ?? null;
+    }
+
+    $slugKembali = $slugKembali ?: 'pengertianpolinomial';
+
+    $urlKembali = route('materi.show', ['slug' => $slugKembali]);
+@endphp
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petunjuk Pengerjaan {{ $isEvaluasi ? 'Evaluasi' : 'Kuis' }}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #FDFDE8;
+            color: #3F463F;
+        }
+
         .petunjuk-kuis-page {
             background: #FDFDE8;
-            min-height: calc(100vh - 80px);
-            padding: 35px 16px;
+            min-height: 100vh;
+            padding: 28px 16px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,16 +105,16 @@
             background: #FFFEF7;
             border: 2px solid #D0DDD0;
             border-radius: 22px;
-            padding: 42px 54px;
+            padding: 38px 52px;
             box-shadow: 0 18px 45px rgba(114, 125, 115, 0.12);
         }
 
         .petunjuk-kuis-title {
             text-align: center;
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 900;
             color: #727D73;
-            margin: 0 0 12px;
+            margin: 0 0 10px;
             letter-spacing: 0.5px;
         }
 
@@ -54,10 +131,10 @@
         }
 
         .petunjuk-list li {
-            font-size: 16px;
+            font-size: 15.5px;
             line-height: 1.75;
             color: #3F463F;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .petunjuk-list strong {
@@ -75,7 +152,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 15px;
+            font-size: 14.5px;
             color: #4F5A50;
         }
 
@@ -84,6 +161,7 @@
             height: 14px;
             border-radius: 50%;
             display: inline-block;
+            flex-shrink: 0;
         }
 
         .warna-dot.aktif {
@@ -107,13 +185,13 @@
             display: flex;
             justify-content: center;
             gap: 18px;
-            margin-top: 34px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
         .petunjuk-btn {
             min-width: 145px;
-            padding: 14px 28px;
+            padding: 13px 28px;
             border-radius: 14px;
             border: none;
             text-decoration: none;
@@ -145,8 +223,13 @@
         }
 
         @media (max-width: 768px) {
+            .petunjuk-kuis-page {
+                align-items: flex-start;
+                padding: 20px 12px;
+            }
+
             .petunjuk-kuis-card {
-                padding: 30px 22px;
+                padding: 28px 20px;
             }
 
             .petunjuk-kuis-title {
@@ -160,9 +243,15 @@
             .petunjuk-list li {
                 font-size: 14px;
             }
+
+            .petunjuk-btn {
+                width: 100%;
+            }
         }
     </style>
+</head>
 
+<body>
     <div class="petunjuk-kuis-page">
         <div class="petunjuk-kuis-card">
             <h1 class="petunjuk-kuis-title">
@@ -196,8 +285,7 @@
 
                 <li>
                     Gunakan tombol <strong>Ragu-ragu</strong> jika kamu ingin menandai soal yang masih ingin diperiksa
-                    kembali
-                    sebelum jawaban dikumpulkan.
+                    kembali sebelum jawaban dikumpulkan.
                 </li>
 
                 <li>
@@ -207,10 +295,12 @@
                             <span class="warna-dot belum"></span>
                             Belum dijawab
                         </div>
+
                         <div class="warna-item">
                             <span class="warna-dot dijawab"></span>
                             Sudah dijawab
                         </div>
+
                         <div class="warna-item">
                             <span class="warna-dot ragu"></span>
                             Ragu-ragu
@@ -229,11 +319,12 @@
                     MULAI
                 </a>
 
-                <a href="{{ url()->previous() }}" class="petunjuk-btn kembali">
+                <a href="{{ $urlKembali }}" class="petunjuk-btn kembali">
                     KEMBALI
                 </a>
             </div>
         </div>
     </div>
+</body>
 
-@endsection
+</html>

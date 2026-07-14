@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                            ]
-                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                        delimiters: [
+                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                            {left: '$', right: '$', display: false}
+                                                                                                                                                                                                        ]
+                                                                                                                                                                                                    });"></script>
     <style>
         :root {
             --green: #1b7a2a;
@@ -449,10 +449,10 @@
         }
 
         /*
-                                                                            PENTING UNTUK HP:
-                                                                            pan-y membuat halaman tetap bisa discroll ke atas/bawah.
-                                                                            Jangan pakai touch-action: none di sini.
-                                                                        */
+                                                                                                        PENTING UNTUK HP:
+                                                                                                        pan-y membuat halaman tetap bisa discroll ke atas/bawah.
+                                                                                                        Jangan pakai touch-action: none di sini.
+                                                                                                    */
         .p5-host {
             width: 100%;
             max-width: 100%;
@@ -1071,8 +1071,8 @@
         }
 
         /* =====================================================
-                   PETUNJUK PENGERJAAN LATIHAN
-                ===================================================== */
+                                               PETUNJUK PENGERJAAN LATIHAN
+                                            ===================================================== */
 
         .petunjuk-latihan-box {
             width: 100%;
@@ -1107,6 +1107,316 @@
             .petunjuk-latihan-box p {
                 font-size: 13.3px;
                 line-height: 1.75;
+            }
+        }
+
+        .contoh-sub {
+            color: var(--muted);
+            font-size: 15px;
+            margin: 0 0 12px;
+            text-align: justify;
+        }
+
+        .contoh-panel {
+            border: 2px solid var(--outer-line);
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, .04);
+        }
+
+        .contoh-body {
+            padding: 14px;
+        }
+
+        .contoh-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 12px;
+            align-items: start;
+            padding: 12px;
+            border: 2px solid var(--outer-line);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            background: #fff;
+            cursor: pointer;
+            transition: .15s ease;
+        }
+
+        .contoh-row:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .06);
+            background: #fffdf8;
+        }
+
+        .contoh-row.active {
+            background: #fffdf5;
+            border-color: #e6d0b4;
+        }
+
+        .mono-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 58px;
+            border-radius: 12px;
+            border: 1px dashed rgba(0, 0, 0, .18);
+            background: #fbfdff;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .explain {
+            display: none;
+            border-left: 4px solid var(--outer-line);
+            padding-left: 10px;
+            color: var(--muted);
+            text-align: justify;
+        }
+
+        .explain.show {
+            display: block;
+        }
+
+        .petunjuk-eksplorasi-box {
+            width: 100%;
+            margin: 12px 0 16px;
+            padding: 13px 16px;
+            border-radius: 13px;
+            background: #fffdf5;
+            border: 1.5px solid #ffe69c;
+            box-sizing: border-box;
+        }
+
+        .petunjuk-eksplorasi-box p {
+            margin: 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.75;
+            text-align: justify;
+        }
+
+        .petunjuk-eksplorasi-box strong {
+            color: #424242;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .petunjuk-eksplorasi-box {
+                padding: 11px 13px;
+                margin: 10px 0 14px;
+            }
+
+            .petunjuk-eksplorasi-box p {
+                font-size: 13.5px;
+                line-height: 1.7;
+            }
+        }
+
+        .petunjuk-eksplorasi-box {
+            margin-bottom: 8px !important;
+        }
+
+        .quiz3 {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            border-top: none !important;
+        }
+
+        .quiz3 .qitem:first-child {
+            margin-top: 0 !important;
+        }
+
+        .definisi-card {
+            margin-top: 28px !important;
+            padding-top: 34px !important;
+        }
+
+        .definisi-label {
+            top: -28px !important;
+        }
+
+        /* =====================================================
+           PERAPIHAN CONTOH SOAL - LEBIH MINIMAL DAN RESPONSIF
+        ===================================================== */
+
+        .card-example:has(#solQuiz) {
+            padding: 14px 16px !important;
+        }
+
+        .card-example:has(#solQuiz) .title-box {
+            margin-bottom: 8px !important;
+            font-size: 17px !important;
+        }
+
+        .card-example:has(#solQuiz) .contoh-note {
+            margin: 6px 0 10px !important;
+            padding: 10px 13px !important;
+            border-radius: 10px !important;
+            font-size: 15px !important;
+            line-height: 1.55 !important;
+        }
+
+        .sol-quiz {
+            gap: 10px !important;
+            margin-top: 8px !important;
+        }
+
+        .sol-quiz-item {
+            padding: 10px 12px !important;
+            border-radius: 13px !important;
+            box-shadow: none !important;
+        }
+
+        .sol-quiz-head {
+            display: grid !important;
+            grid-template-columns: 90px 1fr !important;
+            gap: 10px !important;
+            align-items: center !important;
+        }
+
+        .sol-quiz-title {
+            font-size: 15px !important;
+            white-space: nowrap !important;
+        }
+
+        .sol-quiz-form {
+            display: grid !important;
+            grid-template-columns: minmax(170px, 190px) 42px minmax(150px, 190px) !important;
+            gap: 8px !important;
+            justify-content: end !important;
+            align-items: center !important;
+        }
+
+        .sol-input {
+            width: 100% !important;
+            min-width: 170px !important;
+            height: 40px !important;
+            padding: 8px 11px !important;
+            font-size: 15px !important;
+            border-radius: 11px !important;
+        }
+
+        .sol-input::placeholder {
+            font-size: 15px !important;
+            opacity: 1 !important;
+        }
+
+        .sol-quiz-form .answer-icon {
+            width: 40px !important;
+            min-width: 40px !important;
+            height: 40px !important;
+            font-size: 20px !important;
+        }
+
+        .sol-btn.show {
+            width: 100% !important;
+            height: 40px !important;
+            padding: 8px 12px !important;
+            font-size: 15px !important;
+            border-radius: 11px !important;
+            white-space: nowrap !important;
+        }
+
+        .sol-quiz-math {
+            margin-top: 8px !important;
+            font-size: 19px !important;
+            line-height: 1.35 !important;
+        }
+
+        .sol-feedback {
+            margin-top: 6px !important;
+            font-size: 14px !important;
+            line-height: 1.45 !important;
+        }
+
+        #solUnlockAll .title-box {
+            margin-top: 12px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .sol-grid {
+            gap: 8px !important;
+            margin-top: 8px !important;
+        }
+
+        .sol-box {
+            min-height: 42px !important;
+            padding: 8px 10px !important;
+            border-radius: 12px !important;
+            box-shadow: none !important;
+        }
+
+        .sol-content {
+            margin-top: 10px !important;
+            padding: 11px 13px !important;
+            border-radius: 12px !important;
+        }
+
+        .sol-content p,
+        .sol-content ul {
+            margin-top: 6px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .sol-content li {
+            margin: 3px 0 !important;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            .sol-quiz-head {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+
+            .sol-quiz-form {
+                justify-content: stretch !important;
+                grid-template-columns: minmax(170px, 1fr) 40px minmax(145px, 180px) !important;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 640px) {
+            .card-example:has(#solQuiz) {
+                padding: 12px !important;
+            }
+
+            .card-example:has(#solQuiz) .contoh-note {
+                font-size: 13.5px !important;
+                line-height: 1.55 !important;
+                padding: 9px 11px !important;
+            }
+
+            .sol-quiz-item {
+                padding: 10px !important;
+            }
+
+            .sol-quiz-form {
+                grid-template-columns: 1fr 40px !important;
+                gap: 8px !important;
+                width: 100% !important;
+            }
+
+            .sol-input {
+                min-width: 0 !important;
+                width: 100% !important;
+            }
+
+            .sol-btn.show {
+                grid-column: 1 / -1 !important;
+                width: 100% !important;
+            }
+
+            .sol-quiz-math {
+                font-size: 16.5px !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                padding-bottom: 3px !important;
+            }
+
+            .sol-grid {
+                grid-template-columns: 1fr !important;
             }
         }
     </style>
@@ -1192,6 +1502,15 @@
                 pada polinomial tersebut melalui pertanyaan berikut.
             </p>
 
+            <div class="petunjuk-eksplorasi-box">
+                <p>
+                    <strong>Petunjuk pengerjaan:</strong>
+                    Amati bentuk polinomial dan setiap suku yang tersedia. Klik suku yang sesuai dengan perintah pada setiap
+                    soal.
+                    Siswa harus menjawab semua soal eksplorasi terlebih dahulu agar materi berikutnya muncul.
+                </p>
+            </div>
+
             <div class="quiz3" id="quiz3">
                 <div class="qitem" data-q="1" data-done="0">
                     <div class="qtitle">Soal 1</div>
@@ -1239,28 +1558,22 @@
             {{-- CARD 2: Contoh --}}
             <div class="card card-example">
                 <div class="title-box">🧪 Contoh</div>
-                <div class="contoh-sub">Klik angka 1–4 untuk membuka penjelasan.</div>
+
+                <div class="contoh-sub">
+                    Klik pada kotak bentuk monomial untuk membuka atau menutup penjelasan derajatnya.
+                </div>
 
                 <div class="contoh-panel">
-                    <div class="contoh-toolbar">
-                        <div class="pill-row">
-                            <button type="button" class="pill-num" data-target="ex1">1</button>
-                            <button type="button" class="pill-num" data-target="ex2">2</button>
-                            <button type="button" class="pill-num" data-target="ex3">3</button>
-                            <button type="button" class="pill-num" data-target="ex4">4</button>
-                        </div>
-                        <button type="button" class="contoh-reset" id="contohReset">Tutup semua</button>
-                    </div>
-
                     <div class="contoh-body">
-                        <div class="contoh-row">
+
+                        <div class="contoh-row" data-target="ex1">
                             <div class="mono-box">$$4x^5$$</div>
                             <div class="explain" id="ex1">
                                 Derajat monomial ini adalah <b>5</b>, karena variabel $x$ berpangkat <b>5</b>.
                             </div>
                         </div>
 
-                        <div class="contoh-row">
+                        <div class="contoh-row" data-target="ex2">
                             <div class="mono-box">$$x^2y^7$$</div>
                             <div class="explain" id="ex2">
                                 Derajat monomial ini adalah <b>9</b>, karena jumlah pangkat variabel $x$ dan $y$
@@ -1268,20 +1581,21 @@
                             </div>
                         </div>
 
-                        <div class="contoh-row">
+                        <div class="contoh-row" data-target="ex3">
                             <div class="mono-box">$$0.12x$$</div>
                             <div class="explain" id="ex3">
                                 Derajat monomial ini adalah <b>1</b>, karena variabel $x$ berpangkat <b>1</b>.
                             </div>
                         </div>
 
-                        <div class="contoh-row" style="margin-bottom:0;">
+                        <div class="contoh-row" data-target="ex4" style="margin-bottom:0;">
                             <div class="mono-box">$$2.17x^3yz^3$$</div>
                             <div class="explain" id="ex4">
                                 Derajat monomial ini adalah <b>7</b>, karena jumlah pangkat variabel $x$, $y$,
                                 dan $z$ adalah $3 + 1 + 3 = 7$.
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -1703,21 +2017,20 @@
 
             updateSummary();
 
-            // ===== CONTOH: TOGGLE PENJELASAN =====
-            const pills = Array.from(document.querySelectorAll(".pill-num"));
-            const btnReset = document.getElementById("contohReset");
+            // ===== CONTOH: KLIK LANGSUNG PADA KOTAK MONOMIAL =====
+            const contohRows = Array.from(document.querySelectorAll(".contoh-row"));
 
-            pills.forEach(p => {
-                p.addEventListener("click", () => {
-                    const id = p.dataset.target;
+            contohRows.forEach(row => {
+                row.addEventListener("click", () => {
+                    const id = row.dataset.target;
                     const target = document.getElementById(id);
 
                     if (!target) return;
 
                     const willOpen = !target.classList.contains("show");
 
-                    target.classList.toggle("show");
-                    p.classList.toggle("active", willOpen);
+                    target.classList.toggle("show", willOpen);
+                    row.classList.toggle("active", willOpen);
 
                     requestAnimationFrame(() => {
                         window.dispatchEvent(new Event("resize"));
@@ -1725,16 +2038,7 @@
                 });
             });
 
-            if (btnReset) {
-                btnReset.addEventListener("click", () => {
-                    pills.forEach(p => p.classList.remove("active"));
-                    document.querySelectorAll(".explain").forEach(ex => ex.classList.remove("show"));
 
-                    requestAnimationFrame(() => {
-                        window.dispatchEvent(new Event("resize"));
-                    });
-                });
-            }
             // ===== CONTOH SOAL: JAWAB DULU, BARU PENYELESAIAN TERBUKA =====
             const solBoxes = Array.from(document.querySelectorAll(".sol-box"));
             const solContents = Array.from(document.querySelectorAll(".sol-content"));
@@ -1863,17 +2167,17 @@
                             setFeedback(
                                 true,
                                 `
-                                        <div>✅ <b>Benar.</b></div>
-                                        <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
-                                        `
+                                                                    <div>✅ <b>Benar.</b></div>
+                                                                    <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
+                                                                    `
                             );
                         } else {
                             setFeedback(
                                 false,
                                 `
-                                        <div>❌ <b>Salah.</b></div>
-                                        <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
-                                        `
+                                                                    <div>❌ <b>Salah.</b></div>
+                                                                    <div>Klik tombol <b>Lihat penyelesaian</b> untuk melihat pembahasan.</div>
+                                                                    `
                             );
                         }
 
@@ -1937,6 +2241,7 @@
             nextBtn.replaceWith(link);
         }
 
+        // ===== LATIHAN SOAL =====
         // ===== LATIHAN SOAL =====
         (function () {
             const latihan1 = document.getElementById("latihan1");
@@ -2071,6 +2376,16 @@
                 }
             };
 
+            const makeWrongList = wrongItems => {
+                return `
+                <div>❌ <b>Jawaban masih salah.</b></div>
+                <div>Periksa kembali bagian berikut:</div>
+                <ul style="margin:6px 0 0 18px;">
+                    ${wrongItems.map(item => `<li>${item}</li>`).join("")}
+                </ul>
+            `;
+            };
+
             const updateFinalScore = () => {
                 const score =
                     (latihan1?.dataset.done === "1" ? 1 : 0) +
@@ -2082,9 +2397,51 @@
 
                 if (score < 4) {
                     finalScore.innerHTML = `Progress latihan: ${score}/4 soal selesai benar.`;
-                } else {
-                    finalScore.innerHTML = "🎉 Hebat! Semua soal latihan selesai benar (4/4).";
+                    return;
                 }
+
+                finalScore.innerHTML = `
+                <div style="margin-bottom:10px;">
+                    🎉 <b>Hebat! Semua soal latihan selesai benar (4/4).</b>
+                </div>
+
+                <div style="text-align:left; line-height:1.7;">
+                    <div style="font-weight:900; color:#1b7a2a; margin-bottom:6px;">
+                        Pembahasan Semua Soal:
+                    </div>
+
+                    <div style="margin-bottom:8px;">
+                        <b>Soal 1</b><br>
+                        a. Bentuk <b>9x<sup>4</sup>y<sup>2</sup></b> memiliki derajat
+                        <b>4 + 2 = 6</b>, maka pernyataannya <b>True</b>.<br>
+                        b. Suku <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.
+                        Maka pernyataannya <b>True</b>.
+                    </div>
+
+                    <div style="margin-bottom:8px;">
+                        <b>Soal 2</b><br>
+                        Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>,
+                        suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>.
+                        Jadi derajat polinomialnya adalah <b>5</b>.
+                    </div>
+
+                    <div style="margin-bottom:8px;">
+                        <b>Soal 3</b><br>
+                        Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b>
+                        diperoleh dari jumlah pangkat variabel, yaitu
+                        <b>3 + 2 + 1 = 6</b>.
+                    </div>
+
+                    <div>
+                        <b>Soal 4</b><br>
+                        Pada <b>G(x,y) = 5x<sup>2</sup>y<sup>3</sup> − xy + 4</b>,
+                        suku <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat
+                        <b>2 + 3 = 5</b>. Suku <b>−xy</b> memiliki derajat
+                        <b>1 + 1 = 2</b>, dan konstanta <b>4</b> memiliki derajat <b>0</b>.
+                        Jadi derajat tertinggi dan derajat polinomialnya adalah <b>5</b>.
+                    </div>
+                </div>
+            `;
             };
 
             const resetSoal2 = () => {
@@ -2125,13 +2482,13 @@
             if (btnCheck1) {
                 btnCheck1.addEventListener("click", () => {
                     let allAnswered = true;
-                    let tfCorrect = 0;
+                    const wrongItems = [];
 
-                    tfSelects.forEach(sel => {
+                    tfSelects.forEach((sel, index) => {
                         if (!sel.value) allAnswered = false;
 
-                        if (sel.value && sel.value === sel.dataset.answer) {
-                            tfCorrect++;
+                        if (sel.value && sel.value !== sel.dataset.answer) {
+                            wrongItems.push(`Bagian ${index === 0 ? "a" : "b"} masih salah.`);
                         }
                     });
 
@@ -2140,7 +2497,7 @@
                         return;
                     }
 
-                    if (tfCorrect === 2) {
+                    if (wrongItems.length === 0) {
                         latihan1.dataset.done = "1";
                         setDoneText(done1, "Soal 1 selesai.");
 
@@ -2148,11 +2505,9 @@
                             fbTrueFalse,
                             true,
                             `
-                                                                                        <div>✅ Semua jawaban benar.</div>
-                                                                                        <div><b>Penjelasan:</b></div>
-                                                                                        <div>a. <b>Benar</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> adalah jumlah pangkat variabel: <b>4 + 2 = 6</b>.</div>
-                                                                                        <div>b. <b>Benar</b>, karena <b>−7</b> adalah konstanta, sehingga derajatnya <b>0</b>.</div>
-                                                                                        `
+                        <div>✅ <b>Jawaban Soal 1 benar.</b></div>
+                        <div>Silakan lanjut ke Soal 2.</div>
+                        `
                         );
 
                         unlockSection(latihan2, lock2);
@@ -2160,16 +2515,7 @@
                         latihan1.dataset.done = "0";
                         setDoneText(done1, "");
 
-                        setFb(
-                            fbTrueFalse,
-                            false,
-                            `
-                                                                                        <div>❌ Jawaban Soal 1 belum tepat.</div>
-                                                                                        <div><b>Penjelasan jawaban benar:</b></div>
-                                                                                        <div>a. Jawaban yang benar adalah <b>True</b>, karena derajat <b>9x<sup>4</sup>y<sup>2</sup></b> = <b>4 + 2 = 6</b>.</div>
-                                                                                        <div>b. Jawaban yang benar adalah <b>True</b>, karena <b>−7</b> adalah konstanta dan derajat konstanta = <b>0</b>.</div>
-                                                                                        `
-                        );
+                        setFb(fbTrueFalse, false, makeWrongList(wrongItems));
 
                         resetSoal2();
                         resetSoal3();
@@ -2194,11 +2540,20 @@
                         return;
                     }
 
-                    const winnerOk =
-                        normalizePoly(winnerTerm.value) === normalizePoly("3x^5") &&
-                        parseInt(winnerDegree.value || "", 10) === 5;
+                    const wrongItems = [];
 
-                    if (winnerOk) {
+                    const termOk = normalizePoly(winnerTerm.value) === normalizePoly("3x^5");
+                    const degreeOk = parseInt(winnerDegree.value || "", 10) === 5;
+
+                    if (!termOk) {
+                        wrongItems.push("Pilihan suku paling kuat masih salah.");
+                    }
+
+                    if (!degreeOk) {
+                        wrongItems.push("Derajat polinomial masih salah.");
+                    }
+
+                    if (wrongItems.length === 0) {
                         latihan2.dataset.done = "1";
                         setDoneText(done2, "Soal 2 selesai.");
 
@@ -2206,9 +2561,9 @@
                             fbWinner,
                             true,
                             `
-                                                                                        <div>✅ Jawaban benar.</div>
-                                                                                        <div><b>Penjelasan:</b> Pada <b>T(x) = 3x<sup>5</sup> − 2x<sup>3</sup> + 10x</b>, suku dengan pangkat tertinggi adalah <b>3x<sup>5</sup></b>. Jadi suku paling kuat adalah <b>3x<sup>5</sup></b> dan derajat polinomialnya <b>5</b>.</div>
-                                                                                        `
+                        <div>✅ <b>Jawaban Soal 2 benar.</b></div>
+                        <div>Silakan lanjut ke Soal 3.</div>
+                        `
                         );
 
                         unlockSection(latihan3, lock3);
@@ -2216,14 +2571,7 @@
                         latihan2.dataset.done = "0";
                         setDoneText(done2, "");
 
-                        setFb(
-                            fbWinner,
-                            false,
-                            `
-                                                                                        <div>❌ Soal 2 belum tepat.</div>
-                                                                                        <div><b>Penjelasan jawaban benar:</b> Suku paling kuat adalah <b>3x<sup>5</sup></b> karena pangkatnya paling besar. Maka derajat polinomialnya juga <b>5</b>.</div>
-                                                                                        `
-                        );
+                        setFb(fbWinner, false, makeWrongList(wrongItems));
 
                         resetSoal3();
                         resetSoal4();
@@ -2257,9 +2605,9 @@
                             fbMystery,
                             true,
                             `
-                                                                                        <div>✅ Jawaban benar.</div>
-                                                                                        <div><b>Penjelasan:</b> Derajat monomial <b>4a<sup>3</sup>b<sup>2</sup>c</b> diperoleh dari jumlah pangkat variabel, yaitu <b>3 + 2 + 1 = 6</b>.</div>
-                                                                                        `
+                        <div>✅ <b>Jawaban Soal 3 benar.</b></div>
+                        <div>Silakan lanjut ke Soal 4.</div>
+                        `
                         );
 
                         unlockSection(latihan4, lock4);
@@ -2270,10 +2618,7 @@
                         setFb(
                             fbMystery,
                             false,
-                            `
-                                                                                        <div>❌ Soal 3 belum tepat.</div>
-                                                                                        <div><b>Penjelasan jawaban benar:</b> Derajat <b>4a<sup>3</sup>b<sup>2</sup>c</b> adalah <b>3 + 2 + 1 = 6</b>.</div>
-                                                                                        `
+                            makeWrongList(["Derajat monomial masih salah."])
                         );
 
                         resetSoal4();
@@ -2297,10 +2642,20 @@
                         return;
                     }
 
+                    const wrongItems = [];
+
                     const detectHighestOk = parseInt(detectHighest.value || "", 10) === 5;
                     const detectPolyOk = parseInt(detectPoly.value || "", 10) === 5;
 
-                    if (detectHighestOk && detectPolyOk) {
+                    if (!detectHighestOk) {
+                        wrongItems.push("Bagian a, derajat tertinggi masih salah.");
+                    }
+
+                    if (!detectPolyOk) {
+                        wrongItems.push("Bagian b, derajat polinomial masih salah.");
+                    }
+
+                    if (wrongItems.length === 0) {
                         latihan4.dataset.done = "1";
                         setDoneText(done4, "Soal 4 selesai.");
 
@@ -2308,13 +2663,9 @@
                             fbDetect,
                             true,
                             `
-                                                                                        <div>✅ Jawaban benar.</div>
-                                                                                        <div><b>Penjelasan:</b></div>
-                                                                                        <div>• <b>5x<sup>2</sup>y<sup>3</sup></b> memiliki derajat <b>2 + 3 = 5</b></div>
-                                                                                        <div>• <b>−xy</b> memiliki derajat <b>1 + 1 = 2</b></div>
-                                                                                        <div>• <b>4</b> memiliki derajat <b>0</b></div>
-                                                                                        <div>Jadi derajat tertinggi adalah <b>5</b> dan derajat polinomial <b>G(x,y)</b> juga <b>5</b>.</div>
-                                                                                        `
+                        <div>✅ <b>Jawaban Soal 4 benar.</b></div>
+                        <div>Semua soal latihan sudah selesai.</div>
+                        `
                         );
 
                         const saved = await saveProgressMateri();
@@ -2328,18 +2679,7 @@
                         latihan4.dataset.done = "0";
                         setDoneText(done4, "");
 
-                        setFb(
-                            fbDetect,
-                            false,
-                            `
-                                                                                        <div>❌ Soal 4 belum tepat.</div>
-                                                                                        <div><b>Penjelasan jawaban benar:</b></div>
-                                                                                        <div>• Derajat <b>5x<sup>2</sup>y<sup>3</sup></b> = <b>2 + 3 = 5</b></div>
-                                                                                        <div>• Derajat <b>−xy</b> = <b>2</b></div>
-                                                                                        <div>• Derajat <b>4</b> = <b>0</b></div>
-                                                                                        <div>Maka derajat tertinggi = <b>5</b> dan derajat polinomial = <b>5</b>.</div>
-                                                                                        `
-                        );
+                        setFb(fbDetect, false, makeWrongList(wrongItems));
                     }
 
                     updateFinalScore();
@@ -2352,6 +2692,7 @@
 
             updateFinalScore();
         })();
+
     </script>
 @endsection
 
@@ -2392,8 +2733,8 @@
             🔒 Kuis
         </span>
     @else
-        <span class="btn-nav next-btn disabled">
-            Next →
-        </span>
+    <span class="btn-nav next-btn disabled">
+        Next →
+    </span>
     @endif
 @endsection

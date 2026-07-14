@@ -1,869 +1,855 @@
 /* =========================================================
-   Mari Mencoba: Derajat Suatu Polinomial — p5.js RESPONSIVE
-   FIX FINAL:
-   - Jawaban benar:
-     1 = 5
-     2 = 9
-     3 = 1
-     4 = 7
-     5 = 6
-   - Benar = hijau
-   - Salah/kosong = merah
-   - Angka jawaban diacak di panel jawaban
-   - Bisa drag & drop di HP, tablet, laptop/PC
-   - Scroll halaman HP tetap bisa saat sentuh area kosong
-   - FIX: hasil/skor diletakkan di bawah kotak no. 5 dan di atas tombol
-   - FIX: Pangkat/derajat 1 tidak ditulis, contoh x¹ menjadi x
-   - FIX: Seret angka bebas ke kotak mana saja, tidak otomatis ke kotak pertama
+   Mari Mencoba: Derajat Suatu Polinomial — RAPI RESPONSIVE
+   - Tidak memakai canvas, jadi tinggi otomatis dan tidak kepotong
+   - Tidak keluar dari card/container
+   - Drag & drop untuk HP, tablet, dan laptop
+   - Bisa juga klik angka lalu klik kotak jawaban
+   - Jika semua benar, muncul pembahasan semua soal
 ========================================================= */
 
 (function () {
+  "use strict";
+
   const HOST_ID = "p5-interaktif-1b";
 
   const questions = [
-    { text: "Derajat dari ( 4x⁵ )", answer: 5 },
-    { text: "Derajat dari ( x²y⁷ )", answer: 9 },
-    { text: "Derajat dari ( 0.12x )", answer: 1 },
-    { text: "Derajat dari ( 2.17x³yz³ )", answer: 7 },
-    { text: "Derajat dari 6a²b⁴", answer: 6 },
+    {
+      text: "Derajat dari (4x<sup>5</sup>)",
+      answer: 5,
+      explanation:
+        "4x<sup>5</sup> memiliki variabel x dengan pangkat 5, sehingga derajatnya adalah 5.",
+    },
+    {
+      text: "Derajat dari (x<sup>2</sup>y<sup>7</sup>)",
+      answer: 9,
+      explanation:
+        "x<sup>2</sup>y<sup>7</sup> memiliki pangkat 2 pada x dan 7 pada y. Jadi derajatnya 2 + 7 = 9.",
+    },
+    {
+      text: "Derajat dari (0.12x)",
+      answer: 1,
+      explanation:
+        "0.12x sama dengan 0.12x<sup>1</sup>. Pangkat variabel x adalah 1, sehingga derajatnya 1.",
+    },
+    {
+      text: "Derajat dari (2.17x<sup>3</sup>yz<sup>3</sup>)",
+      answer: 7,
+      explanation:
+        "2.17x<sup>3</sup>yz<sup>3</sup> sama dengan 2.17x<sup>3</sup>y<sup>1</sup>z<sup>3</sup>. Jadi derajatnya 3 + 1 + 3 = 7.",
+    },
+    {
+      text: "Derajat dari 6a<sup>2</sup>b<sup>4</sup>",
+      answer: 6,
+      explanation:
+        "6a<sup>2</sup>b<sup>4</sup> memiliki pangkat 2 pada a dan 4 pada b. Jadi derajatnya 2 + 4 = 6.",
+    },
   ];
 
   const answerTokens = [5, 9, 1, 7, 6];
 
-  const BG = [232, 245, 233];
-  const PANEL = [250, 255, 250];
-  const TEXT = [34, 51, 34];
-  const MUTED = [110, 129, 110];
-  const BORDER = [168, 188, 168];
+  let selectedToken = null;
+  let dragState = null;
 
-  const OK = [40, 167, 69];
-  const OK_SOFT = [232, 248, 237];
+  const css = `
+    #${HOST_ID},
+    #${HOST_ID} * {
+      box-sizing: border-box;
+    }
 
-  const ERR = [229, 62, 62];
-  const ERR_SOFT = [255, 235, 235];
+    #${HOST_ID} {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: hidden;
+      font-family: "Poppins", Arial, sans-serif;
+      color: #223322;
+    }
 
-  const sketch = (p) => {
-    let tokens = [];
-    let zones = [];
+    #${HOST_ID} .mm-wrapper {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      background: #e8f5e9;
+      border: 2px solid #efdcc4;
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+    }
 
-    let checkBtn;
-    let resetBtn;
+    #${HOST_ID} .mm-head {
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-    let checked = false;
-    let score = 0;
-    let hostEl = null;
+    #${HOST_ID} .mm-head h3 {
+      margin: 0 0 4px;
+      font-size: clamp(20px, 2.4vw, 30px);
+      line-height: 1.2;
+      font-weight: 700;
+      color: #243524;
+    }
 
-    let isMobile = false;
+    #${HOST_ID} .mm-head p {
+      margin: 0;
+      font-size: clamp(13px, 1.4vw, 16px);
+      line-height: 1.45;
+      color: #6b7f6b;
+    }
 
-    let paddingX = 20;
-    let startY = 92;
-    let gap = 80;
-    let zoneH = 70;
-    let zoneW = 0;
-    let zoneX = 0;
+    #${HOST_ID} .mm-instruction {
+      width: 100%;
+      max-width: 100%;
+      background: #fffdf5;
+      border: 2px solid #c7d9c7;
+      border-radius: 16px;
+      padding: 10px 14px;
+      margin: 10px 0 12px;
+      box-shadow: 0 4px 0 rgba(43, 75, 43, 0.08);
+    }
 
-    let tokenPanelX = 0;
-    let tokenPanelY = 0;
-    let tokenPanelW = 0;
-    let tokenPanelH = 0;
+    #${HOST_ID} .mm-instruction-title {
+      margin: 0 0 5px;
+      font-weight: 700;
+      font-size: clamp(13px, 1.5vw, 15px);
+      color: #223322;
+    }
 
-    let resultY = 0;
-    let btnYFinal = 0;
+    #${HOST_ID} .mm-instruction ol {
+      margin: 0;
+      padding-left: 20px;
+      color: #6b7f6b;
+      font-size: clamp(12px, 1.35vw, 14px);
+      line-height: 1.45;
+    }
 
-    let touchBound = false;
+    #${HOST_ID} .mm-layout {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(165px, 210px);
+      gap: 12px;
+      align-items: stretch;
+    }
 
-    const getHostWidth = () => {
-      hostEl = hostEl || document.getElementById(HOST_ID);
+    #${HOST_ID} .mm-questions {
+      min-width: 0;
+      display: grid;
+      gap: 9px;
+    }
 
-      if (!hostEl) return 360;
+    #${HOST_ID} .mm-question-card {
+      min-width: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(92px, 112px);
+      gap: 10px;
+      align-items: center;
+      background: #fbfffb;
+      border: 2px solid #a9bda9;
+      border-radius: 15px;
+      padding: 9px 10px;
+      min-height: 58px;
+      box-shadow: 3px 4px 0 rgba(43, 75, 43, 0.12);
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
 
-      const rectW = hostEl.getBoundingClientRect().width;
-      const clientW = hostEl.clientWidth;
+    #${HOST_ID} .mm-question-card.is-correct {
+      background: #e8f8ed;
+      border-color: #28a745;
+    }
 
-      return Math.max(280, Math.floor(rectW || clientW || 360));
-    };
+    #${HOST_ID} .mm-question-card.is-wrong {
+      background: #ffebeb;
+      border-color: #e53e3e;
+    }
 
-    class Token {
-      constructor(value, x, y) {
-        this.value = value;
-        this.x = x;
-        this.y = y;
-        this.w = 72;
-        this.h = 44;
+    #${HOST_ID} .mm-question-text {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      color: #263826;
+      font-size: clamp(13px, 1.45vw, 16px);
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
 
-        this.dragging = false;
-        this.offsetX = 0;
-        this.offsetY = 0;
+    #${HOST_ID} .mm-number {
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
 
-        this.zoneIndex = null;
-        this.home = p.createVector(x, y);
+    #${HOST_ID} .mm-arrow,
+    #${HOST_ID} .mm-equal {
+      flex: 0 0 auto;
+    }
+
+    #${HOST_ID} sup {
+      line-height: 0;
+      font-size: 0.72em;
+    }
+
+    #${HOST_ID} .mm-answer-slot {
+      width: 100%;
+      min-width: 0;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #a9bda9;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #6b7f6b;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      padding: 4px;
+      overflow: hidden;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    #${HOST_ID} .mm-answer-slot:empty::before {
+      content: "Seret angka";
+      font-weight: 600;
+      color: #6b7f6b;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    #${HOST_ID} .mm-answer-slot:hover {
+      background: #f8fff8;
+      border-color: #7f987f;
+    }
+
+    #${HOST_ID} .mm-pool {
+      min-width: 0;
+      width: 100%;
+      background: #fbfffb;
+      border: 2px solid #a9bda9;
+      border-radius: 15px;
+      padding: 10px;
+      box-shadow: 3px 4px 0 rgba(43, 75, 43, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    #${HOST_ID} .mm-pool-title {
+      text-align: center;
+      margin: 0 0 10px;
+      color: #6b7f6b;
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 600;
+    }
+
+    #${HOST_ID} .mm-answer-grid {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      gap: 9px;
+    }
+
+    #${HOST_ID} .mm-pool-help {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #738573;
+    }
+
+    #${HOST_ID} .mm-answer-token {
+      width: 58px;
+      height: 40px;
+      min-width: 58px;
+      border: 2px solid #a7a7a7;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #223322;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: grab;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+      box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.14);
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #${HOST_ID} .mm-answer-token:active {
+      cursor: grabbing;
+    }
+
+    #${HOST_ID} .mm-answer-token.is-selected {
+      outline: 3px solid #2e7d32;
+      outline-offset: 3px;
+      border-color: #2e7d32;
+      background: #eef9ef;
+    }
+
+    #${HOST_ID} .mm-answer-token.is-dragging {
+      opacity: 0.96;
+      cursor: grabbing;
+      transform: scale(1.03);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    }
+
+    #${HOST_ID} .mm-action-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    #${HOST_ID} .mm-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 9px 14px;
+      min-width: 145px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.13);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    #${HOST_ID} .mm-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.14);
+    }
+
+    #${HOST_ID} .mm-btn-check {
+      background: #2e7d32;
+      color: #ffffff;
+    }
+
+    #${HOST_ID} .mm-btn-reset {
+      background: #f2c15f;
+      color: #1f241f;
+    }
+
+    #${HOST_ID} .mm-result {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 12px;
+      border-radius: 15px;
+      padding: 12px 14px;
+      overflow: hidden;
+      line-height: 1.45;
+      font-size: clamp(12px, 1.35vw, 14px);
+    }
+
+    #${HOST_ID} .mm-result[hidden] {
+      display: none !important;
+    }
+
+    #${HOST_ID} .mm-result.is-success {
+      background: #e8f8ed;
+      border: 2px solid #28a745;
+      color: #223322;
+    }
+
+    #${HOST_ID} .mm-result.is-warning {
+      background: #ffebeb;
+      border: 2px solid #e53e3e;
+      color: #5b2424;
+      text-align: center;
+    }
+
+    #${HOST_ID} .mm-result-title {
+      margin: 0 0 8px;
+      font-size: clamp(14px, 1.55vw, 16px);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    #${HOST_ID} .mm-score {
+      margin: 0 0 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #${HOST_ID} .mm-discussion {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    #${HOST_ID} .mm-discussion li {
+      margin-bottom: 6px;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 760px) {
+      #${HOST_ID} .mm-wrapper {
+        padding: 12px;
+        border-radius: 16px;
       }
 
-      draw() {
-        p.noStroke();
-        p.fill(0, 0, 0, 35);
-        p.rect(this.x + 2, this.y + 3, this.w, this.h, 10);
-
-        p.stroke(160);
-        p.strokeWeight(1.5);
-        p.fill(255);
-        p.rect(this.x, this.y, this.w, this.h, 10);
-
-        p.noStroke();
-        p.fill(TEXT);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(isMobile ? 16 : 18);
-        p.text(String(this.value), this.x + this.w / 2, this.y + this.h / 2);
+      #${HOST_ID} .mm-layout {
+        grid-template-columns: 1fr;
       }
 
-      contains(mx, my) {
-        return (
-          mx >= this.x &&
-          mx <= this.x + this.w &&
-          my >= this.y &&
-          my <= this.y + this.h
-        );
+      #${HOST_ID} .mm-pool {
+        order: -1;
       }
 
-      startDrag(mx, my) {
-        checked = false;
-        score = 0;
-
-        this.dragging = true;
-        this.offsetX = mx - this.x;
-        this.offsetY = my - this.y;
-
-        if (this.zoneIndex !== null && zones[this.zoneIndex]) {
-          zones[this.zoneIndex].token = null;
-        }
-
-        this.zoneIndex = null;
+      #${HOST_ID} .mm-pool-help {
+        display: none;
       }
 
-      drag(mx, my) {
-        if (!this.dragging) return;
-
-        this.x = mx - this.offsetX;
-        this.y = my - this.offsetY;
-
-        this.x = p.constrain(this.x, 0, p.width - this.w);
-        this.y = p.constrain(this.y, 0, p.height - this.h - 70);
+      #${HOST_ID} .mm-question-card {
+        grid-template-columns: minmax(0, 1fr) minmax(88px, 100px);
+        min-height: 56px;
+        padding: 8px;
       }
 
-      endDrag() {
-        if (!this.dragging) return;
-
-        this.dragging = false;
-
-        /*
-          FIX UTAMA:
-          Dulu zona dipilih berdasarkan overlapArea, sehingga pada beberapa kondisi
-          token pertama bisa selalu terbaca masuk ke kotak pertama.
-          Sekarang zona dipilih berdasarkan titik tengah token.
-          Jadi angka akan masuk ke kotak yang memang kamu arahkan.
-        */
-        const targetZone = getDropZoneForToken(this);
-
-        if (targetZone) {
-          if (targetZone.token && targetZone.token !== this) {
-            const oldToken = targetZone.token;
-            oldToken.zoneIndex = null;
-            returnToHome(oldToken);
-          }
-
-          snapToZone(this, targetZone);
-        } else {
-          returnToHome(this);
-        }
+      #${HOST_ID} .mm-answer-token {
+        width: 54px;
+        min-width: 54px;
+        height: 38px;
+        font-size: 17px;
       }
     }
 
-    class Zone {
-      constructor(index, label, answer, x, y, w, h) {
-        this.index = index;
-        this.label = label;
-        this.answer = answer;
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.token = null;
+    @media (max-width: 480px) {
+      #${HOST_ID} .mm-wrapper {
+        padding: 10px;
       }
 
-      isCorrect() {
-        if (!this.token) return false;
-        return parseInt(this.token.value, 10) === parseInt(this.answer, 10);
+      #${HOST_ID} .mm-instruction {
+        padding: 9px 11px;
       }
 
-      draw() {
-        const correct = this.isCorrect();
+      #${HOST_ID} .mm-question-card {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
 
-        p.noStroke();
-        p.fill(0, 0, 0, 30);
-        p.rect(this.x + 3, this.y + 4, this.w, this.h, 14);
+      #${HOST_ID} .mm-answer-slot {
+        min-height: 38px;
+      }
 
-        let borderColor = BORDER;
-        let fillColor = PANEL;
-        let borderWeight = 2;
-
-        if (checked) {
-          if (correct) {
-            borderColor = OK;
-            fillColor = OK_SOFT;
-            borderWeight = 4;
-          } else {
-            borderColor = ERR;
-            fillColor = ERR_SOFT;
-            borderWeight = 4;
-          }
-        }
-
-        p.stroke(borderColor);
-        p.strokeWeight(borderWeight);
-        p.fill(fillColor);
-        p.rect(this.x, this.y, this.w, this.h, 14);
-
-        const answerText = this.token ? String(this.token.value) : "Seret angka";
-        const answerSpace = isMobile ? 98 : 135;
-        const labelMaxW = this.w - answerSpace - 30;
-
-        p.noStroke();
-        p.fill(TEXT);
-        p.textAlign(p.LEFT, p.CENTER);
-        p.textSize(isMobile ? 12.5 : 15);
-
-        drawWrappedText(
-          this.label,
-          this.x + 12,
-          this.y + this.h / 2,
-          labelMaxW,
-          isMobile ? 16 : 18,
-          2
-        );
-
-        p.textAlign(p.RIGHT, p.CENTER);
-
-        if (checked) {
-          p.fill(correct ? OK : ERR);
-        } else {
-          p.fill(this.token ? TEXT : MUTED);
-        }
-
-        p.textSize(isMobile ? 13 : 15);
-        p.text(answerText, this.x + this.w - 12, this.y + this.h / 2);
-
-        if (checked) {
-          p.textSize(isMobile ? 17 : 19);
-          p.text(correct ? "✓" : "×", this.x + this.w - 12, this.y + 18);
-        }
+      #${HOST_ID} .mm-btn {
+        width: calc(50% - 5px);
+        min-width: 0;
+        padding: 9px 8px;
+        font-size: 13px;
       }
     }
-
-    const buildLayout = () => {
-      hostEl = document.getElementById(HOST_ID);
-      const w = getHostWidth();
-
-      isMobile = w < 650;
-
-      paddingX = isMobile ? 12 : 24;
-      startY = isMobile ? 86 : 96;
-
-      zoneH = isMobile ? 78 : 70;
-      gap = isMobile ? 88 : 82;
-
-      if (!p._renderer) {
-        const c = p.createCanvas(w, 600);
-        c.parent(HOST_ID);
-      } else {
-        p.resizeCanvas(w, p.height);
-      }
-
-      setupCanvasTouch();
-
-      if (hostEl) {
-        hostEl.style.position = "relative";
-        hostEl.style.width = "100%";
-        hostEl.style.maxWidth = "100%";
-        hostEl.style.overflow = "hidden";
-        hostEl.style.boxSizing = "border-box";
-        hostEl.style.touchAction = "pan-y";
-        hostEl.style.userSelect = "none";
-        hostEl.style.webkitUserSelect = "none";
-      }
-
-      zones = [];
-
-      if (isMobile) {
-        zoneX = paddingX;
-        zoneW = w - paddingX * 2;
-
-        for (let i = 0; i < questions.length; i++) {
-          zones.push(
-            new Zone(
-              i,
-              `${i + 1}. ${questions[i].text} → Derajat =`,
-              questions[i].answer,
-              zoneX,
-              startY + i * gap,
-              zoneW,
-              zoneH
-            )
-          );
-        }
-
-        const zonesBottom = zones[zones.length - 1].y + zoneH;
-
-        tokenPanelX = paddingX;
-        tokenPanelY = zonesBottom + 22;
-        tokenPanelW = w - paddingX * 2;
-        tokenPanelH = 132;
-      } else {
-        const sideGap = 18;
-
-        tokenPanelW = Math.min(240, Math.max(190, w * 0.24));
-        zoneX = paddingX;
-        zoneW = w - paddingX * 2 - tokenPanelW - sideGap;
-        zoneW = Math.max(360, zoneW);
-
-        for (let i = 0; i < questions.length; i++) {
-          zones.push(
-            new Zone(
-              i,
-              `${i + 1}. ${questions[i].text}   →  Derajat =`,
-              questions[i].answer,
-              zoneX,
-              startY + i * gap,
-              zoneW,
-              zoneH
-            )
-          );
-        }
-
-        tokenPanelX = zoneX + zoneW + sideGap;
-        tokenPanelY = startY;
-        tokenPanelH = zones[zones.length - 1].y + zoneH - startY;
-      }
-
-      const zonesBottom = zones[zones.length - 1].y + zoneH;
-      const contentBottom = Math.max(zonesBottom, tokenPanelY + tokenPanelH);
-
-      resultY = contentBottom + 34;
-
-      const resultAreaH = checked ? 70 : 18;
-      const buttonGap = 18;
-      btnYFinal = contentBottom + resultAreaH + buttonGap;
-
-      const neededH = Math.ceil(btnYFinal + 58);
-
-      p.resizeCanvas(w, neededH);
-
-      if (hostEl) {
-        hostEl.style.height = neededH + "px";
-      }
-
-      relayoutTokens();
-      restoreTokenZones();
-      setupButtons();
-    };
-
-    const setupCanvasTouch = () => {
-      if (!p.canvas) return;
-
-      const canvasEl = p.canvas;
-
-      canvasEl.style.width = "100%";
-      canvasEl.style.height = "auto";
-      canvasEl.style.display = "block";
-      canvasEl.style.touchAction = "pan-y";
-      canvasEl.style.userSelect = "none";
-      canvasEl.style.webkitUserSelect = "none";
-
-      if (touchBound) return;
-      touchBound = true;
-
-      canvasEl.addEventListener(
-        "touchstart",
-        function (e) {
-          const touch = e.touches && e.touches[0];
-          if (!touch) return;
-
-          const pos = getTouchPos(touch);
-
-          if (pos.y > btnYFinal - 8) return;
-
-          for (let i = tokens.length - 1; i >= 0; i--) {
-            if (tokens[i].contains(pos.x, pos.y)) {
-              e.preventDefault();
-
-              tokens[i].startDrag(pos.x, pos.y);
-
-              const t = tokens.splice(i, 1)[0];
-              tokens.push(t);
-
-              return;
-            }
-          }
-        },
-        { passive: false }
-      );
-
-      canvasEl.addEventListener(
-        "touchmove",
-        function (e) {
-          const activeToken = tokens.find((t) => t.dragging);
-
-          if (!activeToken) return;
-
-          const touch = e.touches && e.touches[0];
-          if (!touch) return;
-
-          e.preventDefault();
-
-          const pos = getTouchPos(touch);
-          activeToken.drag(pos.x, pos.y);
-        },
-        { passive: false }
-      );
-
-      canvasEl.addEventListener(
-        "touchend",
-        function (e) {
-          const activeToken = tokens.find((t) => t.dragging);
-
-          if (!activeToken) return;
-
-          e.preventDefault();
-          activeToken.endDrag();
-        },
-        { passive: false }
-      );
-
-      canvasEl.addEventListener(
-        "touchcancel",
-        function (e) {
-          const activeToken = tokens.find((t) => t.dragging);
-
-          if (!activeToken) return;
-
-          e.preventDefault();
-          activeToken.endDrag();
-        },
-        { passive: false }
-      );
-    };
-
-    const getTouchPos = (touch) => {
-      const rect = p.canvas.getBoundingClientRect();
-      const scaleX = p.width / rect.width;
-      const scaleY = p.height / rect.height;
-
-      return {
-        x: (touch.clientX - rect.left) * scaleX,
-        y: (touch.clientY - rect.top) * scaleY,
-      };
-    };
-
-    const relayoutTokens = () => {
-      if (tokens.length === 0) {
-        const shuffled = shuffleArray([...answerTokens]);
-        tokens = shuffled.map((v) => new Token(v, 0, 0));
-      }
-
-      const tokenW = isMobile ? 60 : 72;
-      const tokenH = isMobile ? 40 : 44;
-      const gapT = isMobile ? 10 : 16;
-
-      tokens.forEach((t) => {
-        t.w = tokenW;
-        t.h = tokenH;
-      });
-
-      let cols;
-
-      if (isMobile) {
-        cols = Math.min(
-          tokens.length,
-          Math.max(2, Math.floor((tokenPanelW - 24 + gapT) / (tokenW + gapT)))
-        );
-      } else {
-        const availableH = Math.max(1, tokenPanelH - 54);
-        const rowsByHeight = Math.max(
-          1,
-          Math.floor((availableH + gapT) / (tokenH + gapT))
-        );
-
-        cols = Math.ceil(tokens.length / rowsByHeight);
-        cols = Math.min(2, Math.max(1, cols));
-      }
-
-      const rows = Math.ceil(tokens.length / cols);
-      const gridW = cols * tokenW + (cols - 1) * gapT;
-      const gridH = rows * tokenH + (rows - 1) * gapT;
-
-      const baseX = tokenPanelX + (tokenPanelW - gridW) / 2;
-      const baseY = isMobile
-        ? tokenPanelY + 48 + (tokenPanelH - 58 - gridH) / 2
-        : tokenPanelY + 48 + (tokenPanelH - 54 - gridH) / 2;
-
-      tokens.forEach((t, i) => {
-        const c = i % cols;
-        const r = Math.floor(i / cols);
-
-        const x = baseX + c * (tokenW + gapT);
-        const y = baseY + r * (tokenH + gapT);
-
-        t.home.set(x, y);
-
-        if (!t.dragging && t.zoneIndex === null) {
-          t.x = x;
-          t.y = y;
-        }
-      });
-    };
-
-    const restoreTokenZones = () => {
-      zones.forEach((z) => {
-        z.token = null;
-      });
-
-      tokens.forEach((t) => {
-        if (t.zoneIndex !== null && zones[t.zoneIndex]) {
-          snapToZone(t, zones[t.zoneIndex]);
-        }
-      });
-    };
-
-    const setupButtons = () => {
-      if (!checkBtn) {
-        checkBtn = p.createButton("Periksa Jawaban");
-        resetBtn = p.createButton("Reset");
-
-        [checkBtn, resetBtn].forEach((btn) => {
-          btn.parent(HOST_ID);
-          btn.style("position", "absolute");
-          btn.style("z-index", "5");
-          btn.style("box-sizing", "border-box");
-        });
-
-        styleBtn(checkBtn, "#2e7d32", "#ffffff");
-        styleBtn(resetBtn, "#f59e0b", "#1b1b1b");
-
-        checkBtn.mousePressed(checkAnswers);
-        resetBtn.mousePressed(resetAll);
-      }
-
-      const w = p.width;
-
-      if (isMobile) {
-        const btnW = Math.max(120, (w - paddingX * 2 - 10) / 2);
-        const gapBtn = 10;
-        const left0 = paddingX;
-
-        setBtnSize(checkBtn, btnW, 14);
-        setBtnSize(resetBtn, btnW, 14);
-
-        checkBtn.position(left0, btnYFinal);
-        resetBtn.position(left0 + btnW + gapBtn, btnYFinal);
-      } else {
-        const btnW = 160;
-        const gapBtn = 12;
-        const totalBtn = btnW * 2 + gapBtn;
-        const left0 = (w - totalBtn) / 2;
-
-        setBtnSize(checkBtn, btnW, 15);
-        setBtnSize(resetBtn, btnW, 15);
-
-        checkBtn.position(left0, btnYFinal);
-        resetBtn.position(left0 + btnW + gapBtn, btnYFinal);
-      }
-    };
-
-    p.setup = () => {
-      hostEl = document.getElementById(HOST_ID);
-      buildLayout();
-
-      setTimeout(() => {
-        buildLayout();
-      }, 100);
-    };
-
-    p.windowResized = () => {
-      buildLayout();
-    };
-
-    p.draw = () => {
-      p.background(BG);
-
-      p.noStroke();
-      p.fill(TEXT);
-      p.textAlign(p.CENTER, p.TOP);
-      p.textSize(isMobile ? 18 : 26);
-
-      const title = isMobile
-        ? "Mari Mencoba"
-        : "🌿 Mari Mencoba: Derajat Suatu Polinomial";
-
-      p.text(title, p.width / 2, isMobile ? 14 : 18);
-
-      p.fill(MUTED);
-      p.textSize(isMobile ? 12 : 15);
-
-      const subtitle = isMobile
-        ? "Seret angka ke kotak jawaban."
-        : "Seret angka derajat ke kotak jawaban mana saja, lalu klik Periksa.";
-
-      p.text(subtitle, p.width / 2, isMobile ? 43 : 52);
-
-      drawTokenPanel();
-
-      zones.forEach((z) => z.draw());
-
-      const idleTokens = tokens.filter((t) => !t.dragging);
-      const draggingTokens = tokens.filter((t) => t.dragging);
-
-      idleTokens.forEach((t) => t.draw());
-      draggingTokens.forEach((t) => t.draw());
-
-      drawResultArea();
-    };
-
-    const drawResultArea = () => {
-      if (!checked) return;
-
-      p.noStroke();
-      p.textAlign(p.CENTER, p.CENTER);
-
-      if (score === zones.length) {
-        p.fill(OK);
-        p.textSize(isMobile ? 14 : 17);
-        p.text("Semua jawaban benar!", p.width / 2, resultY);
-      }
-
-      p.fill(TEXT);
-      p.textSize(isMobile ? 15 : 18);
-      p.text(`Skor: ${score} / ${zones.length}`, p.width / 2, resultY + 28);
-
-      if (score === zones.length) {
-        confetti();
-      }
-    };
-
-    p.mousePressed = () => {
-      if (p.mouseY > btnYFinal - 8) return;
-
-      for (let i = tokens.length - 1; i >= 0; i--) {
-        if (tokens[i].contains(p.mouseX, p.mouseY)) {
-          tokens[i].startDrag(p.mouseX, p.mouseY);
-
-          const t = tokens.splice(i, 1)[0];
-          tokens.push(t);
-
-          break;
-        }
-      }
-    };
-
-    p.mouseDragged = () => {
-      tokens.forEach((t) => {
-        if (t.dragging) {
-          t.drag(p.mouseX, p.mouseY);
-        }
-      });
-    };
-
-    p.mouseReleased = () => {
-      tokens.forEach((t) => {
-        if (t.dragging) {
-          t.endDrag();
-        }
-      });
-    };
-
-    const checkAnswers = () => {
-      checked = true;
-      score = 0;
-
-      zones.forEach((z) => {
-        if (z.isCorrect()) {
-          score++;
-        }
-      });
-
-      buildLayout();
-    };
-
-    const resetAll = () => {
-      checked = false;
-      score = 0;
-
-      zones.forEach((z) => {
-        z.token = null;
-      });
-
-      const shuffled = shuffleArray([...answerTokens]);
-
-      tokens = shuffled.map((v) => new Token(v, 0, 0));
-
-      buildLayout();
-    };
-
-    const returnToHome = (token) => {
-      token.zoneIndex = null;
-      token.x = token.home.x;
-      token.y = token.home.y;
-    };
-
-    const setBtnSize = (btn, w, fontSize) => {
-      btn.style("width", w + "px");
-      btn.style("text-align", "center");
-      btn.style("font-size", fontSize + "px");
-      btn.style("white-space", "nowrap");
-    };
-
-    const styleBtn = (btn, bg, fg) => {
-      btn.style("background", bg);
-      btn.style("color", fg);
-      btn.style("border", "none");
-      btn.style("border-radius", "12px");
-      btn.style("padding", "10px 12px");
-      btn.style("font-weight", "700");
-      btn.style("cursor", "pointer");
-      btn.style("box-shadow", "0 4px 10px rgba(0,0,0,0.12)");
-      btn.style("font-family", "Times New Roman, Times, serif");
-    };
-
-    const getDropZoneForToken = (token) => {
-      const centerX = token.x + token.w / 2;
-      const centerY = token.y + token.h / 2;
-
-      const tolerance = isMobile ? 14 : 10;
-
-      for (const z of zones) {
-        const insideX = centerX >= z.x && centerX <= z.x + z.w;
-        const insideY =
-          centerY >= z.y - tolerance && centerY <= z.y + z.h + tolerance;
-
-        if (insideX && insideY) {
-          return z;
-        }
-      }
-
-      return null;
-    };
-
-    const overlapArea = (x1, y1, w1, h1, x2, y2, w2, h2) => {
-      const xo = Math.max(0, Math.min(x1 + w1, x2 + w2) - Math.max(x1, x2));
-      const yo = Math.max(0, Math.min(y1 + h1, y2 + h2) - Math.max(y1, y2));
-
-      return xo * yo;
-    };
-
-    const snapToZone = (token, zone) => {
-      token.x = zone.x + zone.w - token.w - 12;
-      token.y = zone.y + (zone.h - token.h) / 2;
-
-      token.zoneIndex = zone.index;
-      zone.token = token;
-    };
-
-    const drawTokenPanel = () => {
-      const x = tokenPanelX;
-      const y = tokenPanelY;
-      const w = tokenPanelW;
-      const h = tokenPanelH;
-
-      p.noStroke();
-      p.fill(0, 0, 0, 20);
-      p.rect(x + 3, y + 4, w, h, 16);
-
-      p.stroke(BORDER);
-      p.strokeWeight(2);
-      p.fill(PANEL);
-      p.rect(x, y, w, h, 16);
-
-      p.noStroke();
-      p.fill(MUTED);
-      p.textAlign(p.CENTER, p.CENTER);
-      p.textSize(isMobile ? 13 : 15);
-      p.text("Angka jawaban:", x + w / 2, y + 24);
-    };
-
-    const drawWrappedText = (txt, x, centerY, maxW, lineH, maxLines) => {
-      const words = txt.split(" ");
-      const lines = [];
-      let line = "";
-
-      for (let i = 0; i < words.length; i++) {
-        const testLine = line ? line + " " + words[i] : words[i];
-
-        if (p.textWidth(testLine) <= maxW) {
-          line = testLine;
-        } else {
-          if (line) lines.push(line);
-          line = words[i];
-        }
-      }
-
-      if (line) lines.push(line);
-
-      const finalLines = lines.slice(0, maxLines);
-
-      if (lines.length > maxLines) {
-        let last = finalLines[maxLines - 1];
-
-        while (p.textWidth(last + "...") > maxW && last.length > 3) {
-          last = last.slice(0, -1);
-        }
-
-        finalLines[maxLines - 1] = last + "...";
-      }
-
-      const totalH = finalLines.length * lineH;
-      const startTextY = centerY - totalH / 2 + lineH / 2;
-
-      finalLines.forEach((ln, idx) => {
-        p.text(ln, x, startTextY + idx * lineH);
-      });
-    };
-
-    const shuffleArray = (arr) => {
-      const a = [...arr];
-
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-
-      return a;
-    };
-
-    const confetti = () => {
-      for (let i = 0; i < 24; i++) {
-        const x = p.random(p.width * 0.15, p.width * 0.85);
-        const y = p.random(12, 90);
-
-        p.noStroke();
-        p.fill(
-          40 + p.random(0, 100),
-          160 + p.random(0, 60),
-          80 + p.random(0, 70),
-          200
-        );
-        p.circle(x, y, p.random(3, 6));
-      }
-    };
-  };
-
-  const init = () => {
+  `;
+
+  function injectStyle() {
+    const styleId = `${HOST_ID}-style`;
+
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement("style");
+    style.id = styleId;
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+
+  function shuffleArray(arr) {
+    const a = [...arr];
+
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+
+    return a;
+  }
+
+  function buildHTML() {
+    const questionHTML = questions
+      .map(
+        (q, index) => `
+          <div class="mm-question-card" data-question-index="${index}">
+            <div class="mm-question-text">
+              <span class="mm-number">${index + 1}.</span>
+              <span>${q.text}</span>
+              <span class="mm-arrow">→</span>
+              <span class="mm-equal">Derajat =</span>
+            </div>
+            <div class="mm-answer-slot" data-drop-slot="true" data-index="${index}" aria-label="Kotak jawaban nomor ${index + 1}"></div>
+          </div>
+        `
+      )
+      .join("");
+
+    return `
+      <div class="mm-wrapper">
+        <div class="mm-head">
+          <h3>Mari Mencoba: Derajat Suatu Polinomial</h3>
+          <p>Seret angka derajat ke kotak jawaban yang sesuai, lalu klik <b>Periksa Jawaban</b>.</p>
+        </div>
+
+        <div class="mm-instruction">
+          <p class="mm-instruction-title">Petunjuk pengerjaan:</p>
+          <ol>
+            <li>Baca setiap bentuk polinomial dengan teliti.</li>
+            <li>Tentukan derajat dengan menjumlahkan pangkat variabel dalam satu suku.</li>
+            <li>Seret angka jawaban ke kotak yang sesuai. Kamu juga bisa klik angka, lalu klik kotaknya.</li>
+          </ol>
+        </div>
+
+        <div class="mm-layout">
+          <div class="mm-questions">
+            ${questionHTML}
+          </div>
+
+          <aside class="mm-pool" aria-label="Panel angka jawaban">
+            <div class="mm-pool-title">Angka jawaban:</div>
+            <div class="mm-answer-grid" data-answer-pool="true"></div>
+            <div class="mm-pool-help">Bisa diseret atau klik angka lalu klik kotak.</div>
+          </aside>
+        </div>
+
+        <div class="mm-action-row">
+          <button type="button" class="mm-btn mm-btn-check" data-check="true">Periksa Jawaban</button>
+          <button type="button" class="mm-btn mm-btn-reset" data-reset="true">Reset</button>
+        </div>
+
+        <div class="mm-result" data-result="true" hidden></div>
+      </div>
+    `;
+  }
+
+  function init() {
     const host = document.getElementById(HOST_ID);
 
     if (!host) return;
+    if (host.dataset.derajatPolinomialReady === "1") return;
 
-    if (host.dataset.p5Loaded === "1") return;
+    host.dataset.derajatPolinomialReady = "1";
+    host.style.width = "100%";
+    host.style.maxWidth = "100%";
+    host.style.minWidth = "0";
+    host.style.overflowX = "hidden";
 
-    host.dataset.p5Loaded = "1";
-    new p5(sketch, HOST_ID);
-  };
+    injectStyle();
+    host.innerHTML = buildHTML();
+
+    const pool = host.querySelector("[data-answer-pool]");
+    const resultBox = host.querySelector("[data-result]");
+
+    renderTokens(pool);
+
+    host.addEventListener("pointerdown", function (event) {
+      const token = event.target.closest(".mm-answer-token");
+
+      if (!token || !host.contains(token)) return;
+      if (event.button !== undefined && event.button !== 0) return;
+
+      event.preventDefault();
+      startPointerDrag(event, token, pool, resultBox, host);
+    });
+
+    host.addEventListener("click", function (event) {
+      const clickedToken = event.target.closest(".mm-answer-token");
+      if (clickedToken) return;
+
+      const slot = event.target.closest(".mm-answer-slot");
+      const poolArea = event.target.closest(".mm-pool");
+
+      if (selectedToken && slot) {
+        placeTokenInSlot(selectedToken, slot, pool, resultBox, host);
+        clearSelectedToken();
+        return;
+      }
+
+      if (selectedToken && poolArea) {
+        pool.appendChild(selectedToken);
+        clearSelectedToken();
+        clearCheckedState(resultBox, host);
+      }
+    });
+
+    host.querySelector("[data-check]").addEventListener("click", function () {
+      checkAnswers(resultBox, host);
+    });
+
+    host.querySelector("[data-reset]").addEventListener("click", function () {
+      clearSelectedToken();
+      resetAll(pool, resultBox, host);
+    });
+  }
+
+  function renderTokens(pool) {
+    pool.innerHTML = "";
+
+    shuffleArray(answerTokens).forEach((value) => {
+      const token = document.createElement("button");
+      token.type = "button";
+      token.className = "mm-answer-token";
+      token.dataset.value = String(value);
+      token.textContent = String(value);
+      token.setAttribute("aria-label", `Angka jawaban ${value}`);
+      pool.appendChild(token);
+    });
+  }
+
+  function startPointerDrag(event, token, pool, resultBox, host) {
+    const rect = token.getBoundingClientRect();
+
+    dragState = {
+      token,
+      pool,
+      resultBox,
+      host,
+      originParent: token.parentNode,
+      originNext: token.nextSibling,
+      startX: event.clientX,
+      startY: event.clientY,
+      offsetX: event.clientX - rect.left,
+      offsetY: event.clientY - rect.top,
+      width: rect.width,
+      height: rect.height,
+      dragging: false,
+    };
+
+    document.addEventListener("pointermove", handlePointerMove, { passive: false });
+    document.addEventListener("pointerup", handlePointerUp, { passive: false });
+    document.addEventListener("pointercancel", handlePointerCancel, { passive: false });
+  }
+
+  function handlePointerMove(event) {
+    if (!dragState) return;
+
+    const distanceX = Math.abs(event.clientX - dragState.startX);
+    const distanceY = Math.abs(event.clientY - dragState.startY);
+
+    if (!dragState.dragging && distanceX + distanceY > 5) {
+      beginDrag(event);
+    }
+
+    if (dragState.dragging) {
+      event.preventDefault();
+      moveDraggedToken(event);
+    }
+  }
+
+  function beginDrag(event) {
+    const token = dragState.token;
+    const rect = token.getBoundingClientRect();
+
+    clearSelectedToken();
+    clearCheckedState(dragState.resultBox, dragState.host);
+
+    dragState.offsetX = event.clientX - rect.left;
+    dragState.offsetY = event.clientY - rect.top;
+    dragState.width = rect.width;
+    dragState.height = rect.height;
+    dragState.dragging = true;
+
+    token.classList.add("is-dragging");
+    token.style.position = "fixed";
+    token.style.left = `${rect.left}px`;
+    token.style.top = `${rect.top}px`;
+    token.style.width = `${rect.width}px`;
+    token.style.height = `${rect.height}px`;
+    token.style.zIndex = "99999";
+    token.style.pointerEvents = "none";
+
+    document.body.appendChild(token);
+    moveDraggedToken(event);
+  }
+
+  function moveDraggedToken(event) {
+    const token = dragState.token;
+    const left = event.clientX - dragState.offsetX;
+    const top = event.clientY - dragState.offsetY;
+
+    token.style.left = `${left}px`;
+    token.style.top = `${top}px`;
+  }
+
+  function handlePointerUp(event) {
+    if (!dragState) return;
+
+    if (dragState.dragging) {
+      event.preventDefault();
+      finishDrag(event);
+    } else {
+      toggleSelectedToken(dragState.token);
+    }
+
+    cleanupPointerListeners();
+  }
+
+  function handlePointerCancel() {
+    if (!dragState) return;
+
+    if (dragState.dragging) {
+      restoreTokenToOrigin(dragState.token, dragState);
+      cleanupTokenStyle(dragState.token);
+    }
+
+    cleanupPointerListeners();
+  }
+
+  function finishDrag(event) {
+    const token = dragState.token;
+    const elementBelow = document.elementFromPoint(event.clientX, event.clientY);
+    const slot = elementBelow ? elementBelow.closest(".mm-answer-slot") : null;
+    const poolTarget = elementBelow ? elementBelow.closest(".mm-pool") : null;
+
+    cleanupTokenStyle(token);
+
+    if (slot && dragState.host.contains(slot)) {
+      placeTokenInSlot(token, slot, dragState.pool, dragState.resultBox, dragState.host);
+    } else if (poolTarget && dragState.host.contains(poolTarget)) {
+      dragState.pool.appendChild(token);
+      clearCheckedState(dragState.resultBox, dragState.host);
+    } else {
+      restoreTokenToOrigin(token, dragState);
+    }
+  }
+
+  function cleanupPointerListeners() {
+    document.removeEventListener("pointermove", handlePointerMove);
+    document.removeEventListener("pointerup", handlePointerUp);
+    document.removeEventListener("pointercancel", handlePointerCancel);
+    dragState = null;
+  }
+
+  function cleanupTokenStyle(token) {
+    token.classList.remove("is-dragging");
+    token.style.position = "";
+    token.style.left = "";
+    token.style.top = "";
+    token.style.width = "";
+    token.style.height = "";
+    token.style.zIndex = "";
+    token.style.pointerEvents = "";
+    token.style.transform = "";
+  }
+
+  function restoreTokenToOrigin(token, state) {
+    const originParent = state.originParent;
+    const originNext = state.originNext;
+
+    if (originParent && document.contains(originParent)) {
+      if (originNext && originNext.parentNode === originParent) {
+        originParent.insertBefore(token, originNext);
+      } else {
+        originParent.appendChild(token);
+      }
+    } else {
+      state.pool.appendChild(token);
+    }
+  }
+
+  function toggleSelectedToken(token) {
+    if (selectedToken && selectedToken !== token) {
+      selectedToken.classList.remove("is-selected");
+    }
+
+    if (selectedToken === token) {
+      token.classList.remove("is-selected");
+      selectedToken = null;
+      return;
+    }
+
+    selectedToken = token;
+    selectedToken.classList.add("is-selected");
+  }
+
+  function clearSelectedToken() {
+    if (selectedToken) {
+      selectedToken.classList.remove("is-selected");
+      selectedToken = null;
+    }
+  }
+
+  function placeTokenInSlot(token, slot, pool, resultBox, host) {
+    const existingToken = slot.querySelector(".mm-answer-token");
+
+    if (existingToken && existingToken !== token) {
+      pool.appendChild(existingToken);
+      existingToken.classList.remove("is-selected");
+    }
+
+    slot.appendChild(token);
+    token.classList.remove("is-selected");
+    clearCheckedState(resultBox, host);
+  }
+
+  function clearCheckedState(resultBox, host) {
+    host.querySelectorAll(".mm-question-card").forEach((card) => {
+      card.classList.remove("is-correct", "is-wrong");
+    });
+
+    resultBox.hidden = true;
+    resultBox.className = "mm-result";
+    resultBox.innerHTML = "";
+  }
+
+  function checkAnswers(resultBox, host) {
+    let score = 0;
+    const cards = host.querySelectorAll(".mm-question-card");
+
+    cards.forEach((card, index) => {
+      const slot = card.querySelector(".mm-answer-slot");
+      const token = slot.querySelector(".mm-answer-token");
+      const isCorrect = token && Number(token.dataset.value) === questions[index].answer;
+
+      card.classList.remove("is-correct", "is-wrong");
+
+      if (isCorrect) {
+        score += 1;
+        card.classList.add("is-correct");
+      } else {
+        card.classList.add("is-wrong");
+      }
+    });
+
+    resultBox.hidden = false;
+
+    if (score === questions.length) {
+      const explanationItems = questions
+        .map((q) => `<li>${q.explanation}</li>`)
+        .join("");
+
+      resultBox.className = "mm-result is-success";
+      resultBox.innerHTML = `
+        <p class="mm-result-title">Semua jawaban benar!</p>
+        <p class="mm-score">Skor: ${score} / ${questions.length}</p>
+        <p class="mm-result-title">Pembahasan semua soal:</p>
+        <ol class="mm-discussion">${explanationItems}</ol>
+      `;
+    } else {
+      resultBox.className = "mm-result is-warning";
+      resultBox.innerHTML = `
+        <p class="mm-result-title">Masih ada jawaban yang belum tepat atau belum diisi.</p>
+        <p class="mm-score">Skor: ${score} / ${questions.length}</p>
+        <p style="margin:0;">Perbaiki kotak yang berwarna merah, lalu klik <b>Periksa Jawaban</b> lagi.</p>
+      `;
+    }
+  }
+
+  function resetAll(pool, resultBox, host) {
+    host.querySelectorAll(".mm-answer-slot").forEach((slot) => {
+      slot.innerHTML = "";
+    });
+
+    renderTokens(pool);
+    clearCheckedState(resultBox, host);
+  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

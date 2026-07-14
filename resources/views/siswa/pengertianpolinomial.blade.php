@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                            delimiters: [
-                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                            ]
-                                                                                                                        });"></script>
+                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                            ]
+                                                                                                                                                                        });"></script>
 
     <style>
         :root {
@@ -42,13 +42,65 @@
         }
 
         .materi-wrap {
-            max-width: 980px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: none;
+            margin: 0;
             font-family: "Times New Roman", Times, serif;
             color: var(--text);
             line-height: 1.7;
-            padding: 20px 14px 40px;
+            padding: 20px 24px 40px;
+            box-sizing: border-box;
         }
+
+        /* BIAR ISI MATERI FULL */
+        .materi-wrap {
+            width: 100%;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 20px 24px 40px;
+            box-sizing: border-box;
+        }
+
+        /* BIAR SEMUA CARD TERMASUK EKSPLORASI FULL */
+        .card,
+        .tujuan-card,
+        .card-orange,
+        .card-green {
+            width: 100%;
+            max-width: none !important;
+            box-sizing: border-box;
+        }
+
+        /* KHUSUS CARD EKSPLORASI */
+        .card.card-orange {
+            width: 100%;
+            max-width: none !important;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* BIAR GAMBAR RUMUS IKUT LEBAR CARD EKSPLORASI */
+        .formula-annot {
+            width: 100%;
+            max-width: none !important;
+            margin: 10px 0 14px !important;
+            border-radius: 16px;
+            background: #fff3ea;
+            border: 1px solid #f1c4a6;
+            padding: 14px 16px 18px;
+            text-align: center;
+            overflow: visible;
+            box-sizing: border-box;
+        }
+
+        /* BIAR PERTANYAAN JUGA FULL */
+        .question {
+            width: 100%;
+            max-width: none !important;
+            box-sizing: border-box;
+        }
+
+
 
         .top-title {
             display: flex;
@@ -163,28 +215,29 @@
         }
 
         .formula-annot {
-            margin: 14px 0 18px;
-            border-radius: 18px;
+            max-width: 760px;
+            margin: 10px auto 14px;
+            border-radius: 14px;
             background: #fff3ea;
             border: 1px solid #f1c4a6;
-            padding: 22px 18px 26px;
+            padding: 12px 12px 14px;
             text-align: center;
             overflow: hidden;
         }
 
         .formula-expr {
-            font-size: 44px;
+            font-size: 34px;
             font-weight: 700;
-            margin: 6px 0 18px;
+            margin: 0;
             letter-spacing: 1px;
-            line-height: 1.25;
+            line-height: 1.2;
         }
 
         .grp {
             display: inline-block;
             position: relative;
-            padding: 0 6px 54px;
-            margin: 0 8px;
+            padding: 0 4px 38px;
+            margin: 0 5px;
         }
 
         .pill {
@@ -192,27 +245,12 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: 0;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 900;
-            padding: 8px 14px;
+            padding: 5px 11px;
             border-radius: 999px;
             border: 1px solid rgba(0, 0, 0, .10);
             white-space: nowrap;
-        }
-
-        .pill.koef {
-            background: var(--koef-bg);
-            color: var(--koef-tx);
-        }
-
-        .pill.var {
-            background: var(--var-bg);
-            color: var(--var-tx);
-        }
-
-        .pill.konst {
-            background: var(--konst-bg);
-            color: var(--konst-tx);
         }
 
         .grp::before {
@@ -220,9 +258,9 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 38px;
+            bottom: 28px;
             width: 2px;
-            height: 18px;
+            height: 12px;
             background: rgba(0, 0, 0, .40);
         }
 
@@ -231,12 +269,27 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 56px;
+            bottom: 39px;
             width: 0;
             height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-bottom: 8px solid rgba(0, 0, 0, .40);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, .40);
+        }
+
+        .petunjuk-eksplorasi {
+            background: #fffdf5;
+            border: 1px solid #ffe69c;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 8px 0 14px;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .petunjuk-eksplorasi b {
+            color: var(--green);
         }
 
         .question {
@@ -1031,6 +1084,942 @@
                 line-height: 1.75;
             }
         }
+
+        .formula-annot {
+            width: 100%;
+            max-width: 720px;
+            margin: 10px 0 14px;
+            border-radius: 16px;
+            background: #fff3ea;
+            border: 1px solid #f1c4a6;
+            padding: 14px 16px 18px;
+            text-align: center;
+            overflow: visible;
+        }
+
+        .formula-expr {
+            font-size: 34px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+            line-height: 1.25;
+        }
+
+        .grp {
+            display: inline-block;
+            position: relative;
+            padding: 0 6px 46px;
+            margin: 0 7px;
+        }
+
+        .pill {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            font-size: 12px;
+            font-weight: 900;
+            padding: 6px 13px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, .10);
+            white-space: nowrap;
+        }
+
+        .pill.koef {
+            background: var(--koef-bg);
+            color: var(--koef-tx);
+        }
+
+        .pill.var {
+            background: var(--var-bg);
+            color: var(--var-tx);
+        }
+
+        .pill.konst {
+            background: var(--konst-bg);
+            color: var(--konst-tx);
+        }
+
+        .grp::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 33px;
+            width: 2px;
+            height: 14px;
+            background: rgba(0, 0, 0, .40);
+        }
+
+        .grp::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 46px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, .40);
+        }
+
+        #eksplorasi-quiz {
+            text-align: left;
+        }
+
+        #eksplorasi-quiz .quiz-list {
+            margin: 10px 0 0 22px;
+            padding-left: 18px;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            margin: 12px 0 20px;
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            max-width: 520px;
+            margin-left: 0;
+            display: block;
+        }
+
+        .petunjuk-eksplorasi {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: #fffdf5;
+            border: 1px solid #ffe69c;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 8px 0 14px;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .petunjuk-eksplorasi b {
+            color: var(--green);
+        }
+
+        /* PERTANYAAN SEJAJAR DENGAN JUDUL "PERTANYAAN" */
+        #eksplorasi-quiz .quiz-list {
+            margin: 16px 0 0 0 !important;
+            padding-left: 0 !important;
+            list-style-position: inside !important;
+        }
+
+        /* Setiap soal tidak menjorok */
+        #eksplorasi-quiz .quiz-item {
+            margin: 18px 0 28px 0 !important;
+            padding-left: 0 !important;
+        }
+
+        /* Teks soal sejajar dengan nomor */
+        #eksplorasi-quiz .quiz-q {
+            display: inline;
+            margin: 0 !important;
+        }
+
+        /* Hint sejajar dengan isi soal */
+        #eksplorasi-quiz .hint {
+            margin-left: 25px !important;
+            margin-top: 8px;
+        }
+
+        /* Input sejajar dengan isi soal, bukan terlalu masuk */
+        #eksplorasi-quiz .quiz-input {
+            width: 100%;
+            max-width: 620px;
+            display: block;
+            margin-left: 25px !important;
+            margin-top: 10px;
+        }
+
+        /* Feedback sejajar dengan input */
+        #eksplorasi-quiz .quiz-actions {
+            margin-left: 25px !important;
+        }
+
+        /* Tombol Cek Semua dan Reset sejajar */
+        #eksplorasi-quiz>.quiz-actions {
+            margin-left: 0 !important;
+        }
+
+        /* RAPATKAN JARAK PERTANYAAN EKSPLORASI */
+        #eksplorasi-quiz .quiz-list {
+            margin: 10px 0 0 0 !important;
+            padding-left: 0 !important;
+            list-style-position: inside !important;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            margin: 0 0 16px 0 !important;
+            padding: 0 !important;
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            display: inline !important;
+            margin: 0 !important;
+            line-height: 1.4 !important;
+        }
+
+        #eksplorasi-quiz .hint {
+            margin: 4px 0 6px 28px !important;
+            line-height: 1.4 !important;
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            width: 100%;
+            max-width: 620px;
+            height: 46px;
+            display: block;
+            margin: 6px 0 0 28px !important;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        #eksplorasi-quiz .quiz-actions {
+            margin: 6px 0 0 28px !important;
+        }
+
+        /* tombol cek dan reset tetap di kiri */
+        #eksplorasi-quiz>.quiz-actions {
+            margin-left: 0 !important;
+            margin-top: 10px !important;
+        }
+    </style>
+
+    <style>
+        /* Supaya semua elemen tidak melebar keluar layar */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Area utama materi */
+        .materi-wrap {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 20px 24px 40px !important;
+            font-family: "Times New Roman", Times, serif;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Judul atas */
+        .top-title {
+            width: 100%;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .top-title .label {
+            font-size: clamp(22px, 2.2vw, 30px);
+            font-weight: 700;
+        }
+
+        .top-title .judul {
+            font-size: clamp(24px, 2.6vw, 34px);
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1.25;
+        }
+
+        /* Semua card */
+        .card,
+        .tujuan-card,
+        .card-orange,
+        .card-green,
+        .question,
+        .contoh-wrap,
+        .definisi-block {
+            width: 100% !important;
+            max-width: none !important;
+            box-sizing: border-box;
+        }
+
+        .card {
+            padding: 20px 22px;
+            margin-bottom: 34px;
+            border-radius: 16px;
+        }
+
+        /* Teks agar tidak terlalu melebar aneh */
+        .card p,
+        .definisi-text,
+        .contoh-note2,
+        .kartu-penjelasan,
+        .contoh-penjelasan-interaktif {
+            overflow-wrap: break-word;
+            word-break: normal;
+        }
+
+        /* Tujuan pembelajaran */
+        .tujuan-card {
+            padding: 22px 24px;
+        }
+
+        .tujuan-header .title {
+            font-size: clamp(20px, 2vw, 24px);
+        }
+
+        .tujuan-card li {
+            font-size: clamp(15px, 1.4vw, 17px);
+        }
+
+        /* =========================================================
+                    VISUAL RUMUS EKSPLORASI
+                    ========================================================= */
+        .formula-annot {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 10px 0 14px !important;
+            border-radius: 16px;
+            background: #fff3ea;
+            border: 1px solid #f1c4a6;
+            padding: 14px 16px 18px;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: visible;
+        }
+
+        .formula-expr {
+            display: inline-block;
+            min-width: max-content;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        .grp {
+            display: inline-block;
+            position: relative;
+            padding: 0 6px 46px;
+            margin: 0 7px;
+        }
+
+        .pill {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            font-size: clamp(10px, 1.2vw, 13px);
+            font-weight: 900;
+            padding: 6px 13px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, .10);
+            white-space: nowrap;
+        }
+
+        .pill.koef {
+            background: var(--koef-bg);
+            color: var(--koef-tx);
+        }
+
+        .pill.var {
+            background: var(--var-bg);
+            color: var(--var-tx);
+        }
+
+        .pill.konst {
+            background: var(--konst-bg);
+            color: var(--konst-tx);
+        }
+
+        .grp::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 33px;
+            width: 2px;
+            height: 14px;
+            background: rgba(0, 0, 0, .40);
+        }
+
+        .grp::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 46px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, .40);
+        }
+
+        /* =========================================================
+                    PERTANYAAN EKSPLORASI
+                    ========================================================= */
+        #eksplorasi-quiz {
+            text-align: left;
+            overflow: hidden;
+            padding: 16px;
+        }
+
+        #eksplorasi-quiz .qtitle {
+            font-size: clamp(17px, 1.7vw, 20px);
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+
+        .petunjuk-eksplorasi {
+            width: 100%;
+            max-width: 100%;
+            background: #fffdf5;
+            border: 1px solid #ffe69c;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 8px 0 16px;
+            color: #555;
+            font-size: clamp(14px, 1.4vw, 16px);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .petunjuk-eksplorasi b {
+            color: var(--green);
+        }
+
+        /* List pertanyaan tidak terlalu menjorok */
+        #eksplorasi-quiz .quiz-list {
+            width: 100%;
+            margin: 10px 0 0 0 !important;
+            padding-left: 0 !important;
+            list-style-position: inside !important;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            margin: 0 0 16px 0 !important;
+            padding: 0 !important;
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            display: inline !important;
+            margin: 0 !important;
+            line-height: 1.45 !important;
+            font-size: clamp(16px, 1.5vw, 18px);
+        }
+
+        #eksplorasi-quiz .hint {
+            margin: 4px 0 6px 28px !important;
+            line-height: 1.4 !important;
+            font-size: clamp(13px, 1.3vw, 15px);
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            width: min(100%, 620px) !important;
+            max-width: 100% !important;
+            height: 46px;
+            display: block;
+            margin: 6px 0 0 28px !important;
+            padding: 8px 12px;
+            font-size: clamp(15px, 1.5vw, 17px);
+        }
+
+        #eksplorasi-quiz .quiz-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 6px 0 0 28px !important;
+        }
+
+        #eksplorasi-quiz>.quiz-actions {
+            margin-left: 0 !important;
+            margin-top: 10px !important;
+        }
+
+        .quiz-feedback {
+            max-width: 100%;
+            line-height: 1.5;
+            overflow-wrap: break-word;
+        }
+
+        /* Button */
+        .btnx {
+            min-height: 40px;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: clamp(14px, 1.3vw, 16px);
+        }
+
+        /* =========================================================
+                    KARTU CONTOH DAN GRID
+                    ========================================================= */
+        .kartu-grid,
+        .contoh-grid2,
+        .contoh-grid-interaktif {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .kartu,
+        .contoh-card2,
+        .contoh-card-interaktif {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .kartu {
+            padding: 18px 20px;
+            min-height: 150px;
+        }
+
+        .kartu-ekspresi {
+            font-size: clamp(24px, 2.4vw, 32px);
+            line-height: 1.35;
+        }
+
+        .contoh-ekspresi-interaktif,
+        .contoh-ekspresi2 {
+            font-size: clamp(20px, 2vw, 24px);
+            line-height: 1.4;
+        }
+
+        .contoh-head-interaktif,
+        .contoh-head2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge2 {
+            white-space: normal;
+            line-height: 1.3;
+        }
+
+        /* Definisi */
+        .definisi-block {
+            padding: 36px 26px 30px;
+        }
+
+        .definisi-pill {
+            max-width: calc(100% - 40px);
+            white-space: nowrap;
+        }
+
+        .definisi-text {
+            font-size: clamp(15px, 1.5vw, 17px);
+        }
+
+        /* Latihan */
+        .quiz-box-new {
+            width: 100%;
+        }
+
+        .quiz-item-plain {
+            width: 100%;
+        }
+
+        .quiz-ekspresi {
+            font-size: clamp(24px, 2.6vw, 30px);
+            overflow-wrap: break-word;
+        }
+
+        .quiz-options-new {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 22px;
+        }
+
+        /* KaTeX jangan keluar layar */
+        .katex-display,
+        .katex {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        /* =========================================================
+                    TABLET
+                    ========================================================= */
+        @media (max-width: 992px) {
+            .materi-wrap {
+                padding: 18px 18px 38px !important;
+            }
+
+            .card {
+                padding: 18px 18px;
+                margin-bottom: 28px;
+            }
+
+            .tujuan-card {
+                padding: 20px 20px;
+            }
+
+            .formula-annot {
+                padding: 13px 14px 17px;
+            }
+
+            .kartu-grid,
+            .contoh-grid2,
+            .contoh-grid-interaktif {
+                gap: 14px;
+            }
+
+            .kartu {
+                padding: 16px 16px;
+            }
+
+            .contoh-wrap {
+                padding: 22px 20px;
+            }
+        }
+
+        /* =========================================================
+                    HP BESAR / TABLET KECIL
+                    ========================================================= */
+        @media (max-width: 768px) {
+            .materi-wrap {
+                padding: 16px 14px 34px !important;
+            }
+
+            .top-title {
+                gap: 6px;
+                margin-bottom: 14px;
+            }
+
+            .card {
+                padding: 16px 15px;
+                border-radius: 14px;
+                margin-bottom: 24px;
+            }
+
+            .card-orange,
+            .card-green,
+            .tujuan-card {
+                border-left-width: 5px;
+            }
+
+            .tujuan-card {
+                padding: 16px 15px;
+            }
+
+            .title-box {
+                font-size: 17px;
+                gap: 8px;
+            }
+
+            .card p {
+                text-align: left;
+                line-height: 1.65;
+            }
+
+            .formula-annot {
+                padding: 12px 10px 16px;
+                border-radius: 14px;
+            }
+
+            .formula-expr {
+                font-size: 30px;
+            }
+
+            .grp {
+                padding: 0 5px 42px;
+                margin: 0 5px;
+            }
+
+            .pill {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+
+            #eksplorasi-quiz {
+                padding: 14px 12px;
+            }
+
+            .petunjuk-eksplorasi {
+                font-size: 14px;
+                padding: 9px 10px;
+            }
+
+            #eksplorasi-quiz .quiz-list {
+                list-style-position: outside !important;
+                padding-left: 20px !important;
+            }
+
+            #eksplorasi-quiz .quiz-item {
+                margin-bottom: 14px !important;
+            }
+
+            #eksplorasi-quiz .quiz-q {
+                display: block !important;
+            }
+
+            #eksplorasi-quiz .hint,
+            #eksplorasi-quiz .quiz-input,
+            #eksplorasi-quiz .quiz-actions {
+                margin-left: 0 !important;
+            }
+
+            #eksplorasi-quiz .quiz-input {
+                width: 100% !important;
+                height: 44px;
+            }
+
+            .kartu-grid,
+            .contoh-grid2,
+            .contoh-grid-interaktif {
+                grid-template-columns: 1fr;
+            }
+
+            .contoh-wrap {
+                padding: 20px 16px;
+                border-radius: 14px;
+                border-left-width: 5px;
+            }
+
+            .kartu {
+                min-height: auto;
+                padding: 16px 14px;
+            }
+
+            .kartu-top {
+                justify-content: flex-start;
+            }
+
+            .kartu-penjelasan,
+            .contoh-penjelasan-interaktif {
+                text-align: left;
+            }
+
+            .definisi-block {
+                padding: 34px 18px 24px;
+                border-radius: 20px;
+            }
+
+            .definisi-pill {
+                left: 18px;
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+
+            .quiz-options-new {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .btnx {
+                width: auto;
+            }
+        }
+
+        /* =========================================================
+                    HP KECIL
+                    ========================================================= */
+        @media (max-width: 480px) {
+            .materi-wrap {
+                padding: 12px 10px 30px !important;
+            }
+
+            .top-title .label {
+                font-size: 21px;
+            }
+
+            .top-title .judul {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 14px 12px;
+                border-radius: 13px;
+                margin-bottom: 20px;
+            }
+
+            .tujuan-card {
+                padding: 14px 12px;
+            }
+
+            .tujuan-header .title {
+                font-size: 19px;
+            }
+
+            .tujuan-card li {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .title-box {
+                font-size: 16px;
+            }
+
+            .formula-annot {
+                padding: 10px 8px 14px;
+            }
+
+            .formula-expr {
+                font-size: 27px;
+                letter-spacing: 0;
+            }
+
+            .grp {
+                padding: 0 3px 38px;
+                margin: 0 3px;
+            }
+
+            .pill {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+
+            .grp::before {
+                bottom: 29px;
+                height: 11px;
+            }
+
+            .grp::after {
+                bottom: 39px;
+                border-left-width: 4px;
+                border-right-width: 4px;
+                border-bottom-width: 6px;
+            }
+
+            #eksplorasi-quiz {
+                padding: 12px 10px;
+            }
+
+            #eksplorasi-quiz .qtitle {
+                font-size: 17px;
+            }
+
+            .petunjuk-eksplorasi {
+                font-size: 13.5px;
+                line-height: 1.55;
+            }
+
+            #eksplorasi-quiz .quiz-list {
+                padding-left: 18px !important;
+            }
+
+            #eksplorasi-quiz .quiz-q {
+                font-size: 15px;
+                line-height: 1.45 !important;
+            }
+
+            #eksplorasi-quiz .hint {
+                font-size: 13px;
+            }
+
+            #eksplorasi-quiz .quiz-input {
+                height: 42px;
+                font-size: 14px;
+                padding: 7px 10px;
+            }
+
+            #eksplorasi-quiz>.quiz-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            #eksplorasi-quiz>.quiz-actions .btnx {
+                width: 100%;
+            }
+
+            .contoh-badge {
+                min-width: auto;
+                font-size: 13px;
+                padding: 6px 18px;
+            }
+
+            .kartu-ekspresi {
+                font-size: 23px;
+            }
+
+            .kartu-hint,
+            .contoh-hint-interaktif {
+                font-size: 13.5px;
+            }
+
+            .kartu-penjelasan,
+            .contoh-penjelasan-interaktif {
+                padding: 11px 12px;
+                font-size: 13px;
+                line-height: 1.65;
+            }
+
+            .definisi-block {
+                padding: 32px 14px 22px;
+                margin-top: 28px;
+            }
+
+            .definisi-pill {
+                left: 14px;
+                padding: 7px 16px;
+                font-size: 12px;
+            }
+
+            .definisi-text {
+                font-size: 14.5px;
+                line-height: 1.65;
+            }
+
+            .contoh-note2 {
+                font-size: 13.5px;
+                line-height: 1.6;
+                padding: 9px 10px;
+            }
+
+            .quiz-soal-title {
+                font-size: 16px;
+            }
+
+            .quiz-ekspresi {
+                font-size: 22px;
+            }
+
+            .quiz-options-new label {
+                font-size: 14px;
+            }
+        }
+
+        /* =========================================================
+                    HP SANGAT KECIL
+                    ========================================================= */
+        @media (max-width: 360px) {
+            .materi-wrap {
+                padding: 10px 8px 28px !important;
+            }
+
+            .card {
+                padding: 12px 10px;
+            }
+
+            .formula-expr {
+                font-size: 24px;
+            }
+
+            .pill {
+                font-size: 9.5px;
+                padding: 4px 7px;
+            }
+
+            .btnx {
+                font-size: 13px;
+                padding: 7px 10px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1100,6 +2089,14 @@
             <!-- PERTANYAAN TETAP -->
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Pertanyaan</div>
+
+                <div class="petunjuk-eksplorasi">
+                    <b>Petunjuk pengerjaan:</b>
+                    Amati bentuk aljabar di atas, lalu isi setiap jawaban pada kolom yang tersedia.
+                    Untuk jawaban yang lebih dari satu, pisahkan dengan tanda koma, misalnya
+                    <b>2x, 3y, 5</b>. Setelah semua jawaban terisi, klik tombol <b>Cek Semua</b>.
+                    Siswa harus menjawab semua pertanyaan eksplorasi terlebih dahulu agar materi berikutnya muncul.
+                </div>
 
                 <ol class="quiz-list">
                     <li class="quiz-item" data-type="set" data-answer="2x,3y,5">
@@ -1544,20 +2541,20 @@
                         const div = document.createElement("div");
                         div.className = "quiz-item-plain";
                         div.innerHTML = `
-                                                                    <div class="quiz-soal-title">Soal ${i + 1}</div>
-                                                                    <div class="quiz-ekspresi">${q.expr}</div>
+                                                                                                                    <div class="quiz-soal-title">Soal ${i + 1}</div>
+                                                                                                                    <div class="quiz-ekspresi">${q.expr}</div>
 
-                                                                    <div class="quiz-options-new">
-                                                                        <label>
-                                                                            <input type="radio" name="q${i}" value="polinomial"> Polinomial
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
-                                                                        </label>
-                                                                    </div>
+                                                                                                                    <div class="quiz-options-new">
+                                                                                                                        <label>
+                                                                                                                            <input type="radio" name="q${i}" value="polinomial"> Polinomial
+                                                                                                                        </label>
+                                                                                                                        <label>
+                                                                                                                            <input type="radio" name="q${i}" value="bukan"> Bukan Polinomial
+                                                                                                                        </label>
+                                                                                                                    </div>
 
-                                                                    <div class="feedback-box" id="fb${i}"></div>
-                                                                `;
+                                                                                                                    <div class="feedback-box" id="fb${i}"></div>
+                                                                                                                `;
                         container.appendChild(div);
                     });
 
@@ -1600,24 +2597,24 @@
 
                         if (saved) {
                             resultBox.innerHTML = `
-                                                                        Skor: ${score}/${questions.length}<br>
-                                                                        Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
-                                                                    `;
+                                                                                                                        Skor: ${score}/${questions.length}<br>
+                                                                                                                        Bagus. Semua jawabanmu benar. Silakan lanjut ke materi berikutnya.
+                                                                                                                    `;
                             resultBox.style.color = "green";
 
                             bukaNextButton();
                         } else {
                             resultBox.innerHTML = `
-                                                                        Skor: ${score}/${questions.length}<br>
-                                                                        Jawaban benar, tapi progres belum tersimpan.
-                                                                    `;
+                                                                                                                        Skor: ${score}/${questions.length}<br>
+                                                                                                                        Jawaban benar, tapi progres belum tersimpan.
+                                                                                                                    `;
                             resultBox.style.color = "orange";
                         }
                     } else {
                         resultBox.innerHTML = `
-                                                                    Skor: ${score}/${questions.length}<br>
-                                                                    Masih ada jawaban yang belum tepat. Coba lagi ya.
-                                                                `;
+                                                                                                                    Skor: ${score}/${questions.length}<br>
+                                                                                                                    Masih ada jawaban yang belum tepat. Coba lagi ya.
+                                                                                                                `;
                         resultBox.style.color = "red";
                     }
 
@@ -1760,7 +2757,7 @@
                     fb.textContent = "";
                 };
 
-                const showFeedback = (item, ok, jawabanBenar) => {
+                const showFeedback = (item, ok) => {
                     const fb = item.querySelector(".quiz-feedback");
                     if (!fb) return;
 
@@ -1770,20 +2767,10 @@
                     if (ok) {
                         fb.textContent = "Benar ✅";
                     } else {
-                        fb.textContent = "Belum tepat ❌ Jawaban benar: " + jawabanBenar;
+                        fb.textContent = "Salah ❌";
                     }
                 };
 
-                const getJawabanBenarText = (item) => {
-                    const type = item.getAttribute("data-type");
-                    const answer = item.getAttribute("data-answer") || "";
-
-                    if (type === "set") {
-                        return answer.split(",").join(", ");
-                    }
-
-                    return answer;
-                };
 
                 const unlockMateri = () => {
                     if (!materiLanjutan || isUnlocked) return;
@@ -1869,9 +2856,7 @@
 
                     items.forEach(item => {
                         const ok = checkItem(item);
-                        const jawabanBenar = getJawabanBenarText(item);
-
-                        showFeedback(item, ok, jawabanBenar);
+                        showFeedback(item, ok);
                     });
 
                     // Tidak menampilkan ringkasan bawah.
@@ -1979,8 +2964,8 @@
             🔒 Kuis
         </span>
     @else
-    <span class="btn-nav next-btn disabled">
-        Next →
-    </span>
+        <span class="btn-nav next-btn disabled">
+            Next →
+        </span>
     @endif
 @endsection

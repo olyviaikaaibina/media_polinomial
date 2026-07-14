@@ -884,12 +884,6 @@
                             </div>
 
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Jumlah Soal</label>
-                              <input type="number" name="total_questions" class="form-control"
-                                value="{{ $quiz->total_questions }}" min="0" required>
-                            </div>
-
-                            <div class="col-md-4">
                               <label class="form-label fw-semibold">Waktu (menit)</label>
                               <input type="number" name="duration_minutes" class="form-control"
                                 value="{{ $quiz->duration_minutes }}" min="1" required>

@@ -8,12 +8,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                        delimiters: [
-                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                                                                        ]
-                                                                                                                                                                                    });">
-                                                                                                                                                                                    </script>
+                                                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                                                            ]
+                                                                                                                                                                                                        });">
+                                                                                                                                                                                                        </script>
 
     <style>
         :root {
@@ -2067,6 +2067,45 @@
         .quiz-feedback:empty {
             display: none !important;
         }
+
+        .fungsi-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 10px 0 14px;
+        }
+
+        .fungsi-card {
+            background: #fff;
+            border: 1px solid rgba(91, 155, 213, .20);
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .fungsi-label {
+            margin: 0 0 6px;
+            font-weight: 900;
+            color: #444;
+        }
+
+        .fungsi-card .rumus-box {
+            margin: 0;
+            min-height: 92px;
+            padding: 12px;
+            font-size: 18px;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .fungsi-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .fungsi-card .rumus-box {
+                min-height: 74px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2098,16 +2137,24 @@
                 Perhatikan dua fungsi berikut.
             </p>
 
-            <p style="margin-bottom:6px;"><b>Fungsi pertama:</b></p>
-            <div class="rumus-box">$$T(y)=6y^2-3y+8$$</div>
+            <div class="fungsi-row">
+                <div class="fungsi-card">
+                    <p class="fungsi-label">Fungsi pertama:</p>
+                    <div class="rumus-box">$$T(y)=6y^2-3y+8$$</div>
+                </div>
 
-            <p style="margin-bottom:6px;"><b>Fungsi kedua:</b></p>
-            <div class="rumus-box">$$U(y)=4y^2+5y-2$$</div>
+                <div class="fungsi-card">
+                    <p class="fungsi-label">Fungsi kedua:</p>
+                    <div class="rumus-box">$$U(y)=4y^2+5y-2$$</div>
+                </div>
+            </div>
 
-            <p>
-                Untuk memahami bagaimana fungsi bekerja, coba substitusikan nilai
-                <span class="highlight">$y=1$</span> ke dalam kedua fungsi, lalu amati hasilnya.
-            </p>
+            <div class="note"
+                style="margin:10px 0 14px; padding:12px 14px; border-radius:12px; background:#fffbea; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
+                <b>Petunjuk pengerjaan:</b>
+                Substitusikan nilai $y=1$ ke setiap fungsi, lalu isi semua jawaban. Setelah semua terisi, klik <b>Cek
+                    Semua</b> agar materi berikutnya muncul.
+            </div>
 
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Amati dan Jawab</div>
@@ -2263,7 +2310,9 @@
                     <div class="note"
                         style="margin:10px 0 14px; padding:12px 14px; border-radius:12px; background:#fffbea; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
                         <b>Petunjuk pengerjaan:</b>
-                        Isi hasil operasi pada setiap baris sesuai suku sejenisnya. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³. Lalu klik <b>Cek Semua</b> setelah semua jawaban terisi.
+                        Isi hasil operasi pada setiap baris sesuai suku sejenisnya. Untuk menulis pangkat, ketik angka
+                        setelah variabel, misalnya x2 untuk x² dan x3 untuk x³. Lalu klik <b>Cek Semua</b> setelah semua
+                        jawaban terisi.
                     </div>
 
                     <div class="table-wrap">
@@ -2364,92 +2413,94 @@
 
             <div class="latihan-polynomial-wrapper">
 
-            <div class="latihan-title">Latihan</div>
+                <div class="latihan-title">Latihan</div>
 
-<div class="latihan-desc"
-    style="margin:8px 0 22px; padding:12px 14px; border-radius:14px; background:#fffbea; border:1px solid #f2df9b; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
-    <b>Petunjuk Penggunaan:</b>
-    Kerjakan soal secara berurutan. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar. Setelah semua latihan benar, progress akan tersimpan dan tombol Next terbuka.
-</div>
+                <div class="latihan-desc"
+                    style="margin:8px 0 22px; padding:12px 14px; border-radius:14px; background:#fffbea; border:1px solid #f2df9b; border-left:5px solid #e6b93d; color:#5c4b16; line-height:1.65;">
+                    <b>Petunjuk Penggunaan:</b>
+                    Kerjakan soal secara berurutan. Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk
+                    x² dan x3 untuk x³. Soal berikutnya akan terbuka setelah jawaban sebelumnya benar. Setelah semua latihan
+                    benar, progress akan tersimpan dan tombol Next terbuka.
+                </div>
 
-<div class="soal-card soal-1" id="soal-1">
-    <div class="isi-soal">
-        <h4>1. Penjumlahan 2 Suku</h4>
+                <div class="soal-card soal-1" id="soal-1">
+                    <div class="isi-soal">
+                        <h4>1. Penjumlahan 2 Suku</h4>
 
-        <div class="soal-susun">
-            <div>6y - 4</div>
-            <div>+ 3y + 10</div>
-            <div class="garis-susun"></div>
-        </div>
+                        <div class="soal-susun">
+                            <div>6y - 4</div>
+                            <div>+ 3y + 10</div>
+                            <div class="garis-susun"></div>
+                        </div>
 
-        <div class="jawaban-area">
-            <input type="text" id="jawaban-1" placeholder="Jawaban kamu...">
-            <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
-            <span id="fb-1"></span>
-        </div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-1" placeholder="Jawaban kamu...">
+                            <button onclick="cekJawaban(1, ['9y+6'], 2)">Cek</button>
+                            <span id="fb-1"></span>
+                        </div>
 
-        <div class="penjelasan" id="step-1">
-            <b>Pengerjaan:</b>
-            <p>6y + 3y = 9y</p>
-            <p>-4 + 10 = 6</p>
-            <p>Jadi hasilnya adalah <b>9y + 6</b>.</p>
-        </div>
-    </div>
-</div>
+                        <div class="penjelasan" id="step-1">
+                            <b>Pengerjaan:</b>
+                            <p>6y + 3y = 9y</p>
+                            <p>-4 + 10 = 6</p>
+                            <p>Jadi hasilnya adalah <b>9y + 6</b>.</p>
+                        </div>
+                    </div>
+                </div>
 
-<div class="soal-card soal-2 locked" id="soal-2">
-    <div class="isi-soal">
-        <h4>2. Penjumlahan 3 Suku</h4>
+                <div class="soal-card soal-2 locked" id="soal-2">
+                    <div class="isi-soal">
+                        <h4>2. Penjumlahan 3 Suku</h4>
 
-        <div class="soal-susun">
-            <div>2x² + 3x - 5</div>
-            <div>+ 4x² - x + 1</div>
-            <div class="garis-susun"></div>
-        </div>
+                        <div class="soal-susun">
+                            <div>2x² + 3x - 5</div>
+                            <div>+ 4x² - x + 1</div>
+                            <div class="garis-susun"></div>
+                        </div>
 
-        <div class="jawaban-area">
-            <input type="text" id="jawaban-2" placeholder="Jawaban kamu..." disabled>
-            <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
-            <span id="fb-2"></span>
-        </div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-2" placeholder="Jawaban kamu..." disabled>
+                            <button onclick="cekJawaban(2, ['6x^2+2x-4', '6x²+2x-4'], 3)" disabled>Cek</button>
+                            <span id="fb-2"></span>
+                        </div>
 
-        <div class="penjelasan" id="step-2">
-            <b>Pengerjaan:</b>
-            <p>2x² + 4x² = 6x²</p>
-            <p>3x + (-x) = 2x</p>
-            <p>-5 + 1 = -4</p>
-            <p>Jadi hasilnya adalah <b>6x² + 2x - 4</b>.</p>
-        </div>
-    </div>
-</div>
+                        <div class="penjelasan" id="step-2">
+                            <b>Pengerjaan:</b>
+                            <p>2x² + 4x² = 6x²</p>
+                            <p>3x + (-x) = 2x</p>
+                            <p>-5 + 1 = -4</p>
+                            <p>Jadi hasilnya adalah <b>6x² + 2x - 4</b>.</p>
+                        </div>
+                    </div>
+                </div>
 
-<div class="soal-card soal-3 locked" id="soal-3">
-    <div class="isi-soal">
-        <h4>3. Penjumlahan 4 Suku</h4>
+                <div class="soal-card soal-3 locked" id="soal-3">
+                    <div class="isi-soal">
+                        <h4>3. Penjumlahan 4 Suku</h4>
 
-        <div class="soal-susun">
-            <div>3x³ + 2x² - 5x + 7</div>
-            <div>+ 4x³ - x² + 6x - 2</div>
-            <div class="garis-susun"></div>
-        </div>
+                        <div class="soal-susun">
+                            <div>3x³ + 2x² - 5x + 7</div>
+                            <div>+ 4x³ - x² + 6x - 2</div>
+                            <div class="garis-susun"></div>
+                        </div>
 
-        <div class="jawaban-area">
-            <input type="text" id="jawaban-3" placeholder="Jawaban kamu..." disabled>
-            <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
-            <span id="fb-3"></span>
-        </div>
+                        <div class="jawaban-area">
+                            <input type="text" id="jawaban-3" placeholder="Jawaban kamu..." disabled>
+                            <button onclick="cekJawaban(3, ['7x^3+x^2+x+5', '7x³+x²+x+5'])" disabled>Cek</button>
+                            <span id="fb-3"></span>
+                        </div>
 
-        <div class="penjelasan" id="step-3">
-            <b>Pengerjaan:</b>
-            <p>3x³ + 4x³ = 7x³</p>
-            <p>2x² + (-x²) = x²</p>
-            <p>-5x + 6x = x</p>
-            <p>7 + (-2) = 5</p>
-            <p>Jadi hasilnya adalah <b>7x³ + x² + x + 5</b>.</p>
-        </div>
-    </div>
-</div>
-</div>
+                        <div class="penjelasan" id="step-3">
+                            <b>Pengerjaan:</b>
+                            <p>3x³ + 4x³ = 7x³</p>
+                            <p>2x² + (-x²) = x²</p>
+                            <p>-5x + 6x = x</p>
+                            <p>7 + (-2) = 5</p>
+                            <p>Jadi hasilnya adalah <b>7x³ + x² + x + 5</b>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div> {{-- end #materi-lanjutan --}}
 
@@ -2626,7 +2677,7 @@
                     if (ok) {
                         showFeedback(item, true, "Benar ✅");
                     } else {
-                        showFeedback(item, false, `Salah ❌ Jawaban benar: ${expectedRaw}`);
+                        showFeedback(item, false, "Salah ❌");
                     }
 
                     return {

@@ -77,7 +77,9 @@
 
     .info-card-body p {
         margin-bottom: 14px;
-        line-height: 1.7;
+        line-height: 1.8;
+        text-align: justify;
+        text-align-last: left;
     }
 
     /* Judul utama dalam Informasi Media */
@@ -129,6 +131,8 @@
     .info-value {
         color: #5e554a;
         transition: color 0.3s ease, transform 0.3s ease;
+        text-align: left;
+        line-height: 1.7;
     }
 
     .info-card:hover .info-label,
@@ -147,13 +151,17 @@
 
     /* Daftar pustaka */
     .ref-list {
-        margin-top: 6px;
-        padding-left: 18px;
+        margin-top: 8px;
+        padding-left: 22px;
+        text-align: justify;
+        text-align-last: left;
     }
 
     .ref-list li {
-        margin-bottom: 10px;
-        line-height: 1.6;
+        margin-bottom: 12px;
+        line-height: 1.75;
+        text-align: justify;
+        text-align-last: left;
         transition: transform 0.25s ease, color 0.25s ease;
     }
 
@@ -180,6 +188,23 @@
         .info-value,
         .info-colon {
             font-size: 13px;
+        }
+
+        .media-main-title {
+            font-size: 16px;
+        }
+
+        .media-main-title span {
+            font-size: 14px;
+        }
+
+        .ref-list {
+            padding-left: 18px;
+        }
+
+        .ref-list li {
+            font-size: 13px;
+            line-height: 1.7;
         }
     }
 </style>
@@ -255,6 +280,12 @@
 
                 <ul class="ref-list">
                     <li>
+                        Djumanta, W., & Sudrajat, R. (2008).
+                        <i>Mahir Mengembangkan Kemampuan Matematika 2 untuk Kelas XI Sekolah Menengah Atas/Madrasah Aliyah Program Ilmu Pengetahuan Alam</i>.
+                        Jakarta: Pusat Perbukuan, Departemen Pendidikan Nasional.
+                    </li>
+
+                    <li>
                         Kristanto, Y. D., Taqiyuddin, M., Masta, A. A., & Yulfiana, E. (2024).
                         <i>Matematika Tingkat Lanjut untuk SMA/MA Kelas XI (Edisi Revisi)</i>.
                         Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.
@@ -267,20 +298,14 @@
                     </li>
 
                     <li>
-                        Sutrima, & Usodo, B. (2009).
-                        <i>Wahana Matematika 2 untuk SMA/MA Kelas XI Program Ilmu Pengetahuan Alam</i>.
-                        Jakarta: Pusat Perbukuan, Departemen Pendidikan Nasional.
-                    </li>
-
-                    <li>
-                        Djumanta, W., & Sudrajat, R. (2008).
-                        <i>Mahir Mengembangkan Kemampuan Matematika 2 untuk Kelas XI Sekolah Menengah Atas/Madrasah Aliyah Program Ilmu Pengetahuan Alam</i>.
-                        Jakarta: Pusat Perbukuan, Departemen Pendidikan Nasional.
-                    </li>
-
-                    <li>
                         Soedyarto, N., & Maryanto. (2008).
                         <i>Matematika 2 untuk SMA atau MA Kelas XI Program IPA</i>.
+                        Jakarta: Pusat Perbukuan, Departemen Pendidikan Nasional.
+                    </li>
+
+                    <li>
+                        Sutrima, & Usodo, B. (2009).
+                        <i>Wahana Matematika 2 untuk SMA/MA Kelas XI Program Ilmu Pengetahuan Alam</i>.
                         Jakarta: Pusat Perbukuan, Departemen Pendidikan Nasional.
                     </li>
                 </ul>

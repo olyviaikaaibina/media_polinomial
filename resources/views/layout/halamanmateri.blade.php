@@ -790,6 +790,810 @@
       font-weight: 800 !important;
       border-left: 6px solid #7f956a !important;
     }
+
+    /* =====================================================
+   PERBAIKAN UKURAN LAYOUT
+   Navbar lebih kecil, sidebar lebih kecil,
+   area materi lebih besar
+===================================================== */
+
+    :root {
+      --sidebar-width: 230px;
+      --navbar-height: 64px;
+    }
+
+    /* NAVBAR DIPERKECIL */
+    .navbar-polymathica {
+      min-height: var(--navbar-height) !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    .navbar-polymathica .container-fluid {
+      min-height: calc(var(--navbar-height) - 1px) !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .brand-inline {
+      gap: 8px !important;
+    }
+
+    .brand-inline .logo-img {
+      height: 30px !important;
+    }
+
+    .brand-inline .logo-word {
+      font-size: 0.86rem !important;
+      letter-spacing: 1.4px !important;
+    }
+
+    .navbar-polymathica .navbar-nav {
+      gap: 1.4rem !important;
+    }
+
+    .navbar-polymathica .nav-link {
+      font-size: 0.88rem !important;
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
+    }
+
+    .navbar-polymathica .btn-logout {
+      padding: 6px 14px !important;
+      font-size: 0.84rem !important;
+    }
+
+    /* SIDEBAR DIPERKECIL */
+    .sidebar {
+      width: var(--sidebar-width) !important;
+      padding: 1rem 0.85rem 1rem !important;
+      top: var(--navbar-height) !important;
+      height: calc(100vh - var(--navbar-height)) !important;
+    }
+
+    .sidebar-menu-item {
+      padding: 8px 10px !important;
+      font-size: 0.76rem !important;
+      border-radius: 9px !important;
+      margin-bottom: 8px !important;
+      line-height: 1.25 !important;
+    }
+
+    .dropdown-group {
+      margin-bottom: 10px !important;
+    }
+
+    .dropdown-content {
+      margin-left: 6px !important;
+      margin-top: 6px !important;
+      padding-left: 10px !important;
+      width: calc(100% - 6px) !important;
+    }
+
+    .dropdown-content::before {
+      width: 3px !important;
+    }
+
+    .dropdown-item {
+      padding: 7px 8px !important;
+      font-size: 0.72rem !important;
+      border-radius: 8px !important;
+      margin-bottom: 5px !important;
+      line-height: 1.35 !important;
+    }
+
+    .dropdown-item.active {
+      border-left: 4px solid #7f956a !important;
+      padding-left: 10px !important;
+    }
+
+    .dropdown-arrow {
+      font-size: 0.95rem !important;
+    }
+
+    .btn-sidebar-toggle {
+      padding: 6px 8px !important;
+      font-size: 16px !important;
+      border-radius: 10px !important;
+    }
+
+    /* AREA MATERI DIBESARKAN */
+    .layout-wrapper {
+      height: calc(100vh - var(--navbar-height)) !important;
+    }
+
+    .main-content {
+      margin-left: var(--sidebar-width) !important;
+      height: calc(100vh - var(--navbar-height)) !important;
+      padding: 0.65rem 0.8rem !important;
+    }
+
+    .main-inner {
+      padding: 1.45rem 1.65rem !important;
+      border-radius: 10px !important;
+      min-height: 0 !important;
+    }
+
+    .content-scroll {
+      padding-right: 2px !important;
+    }
+
+    .content-navigation {
+      margin-top: 10px !important;
+      padding-top: 10px !important;
+    }
+
+    /* HANDLE SIDEBAR IKUT NAIK */
+    .sidebar-handle {
+      top: calc(var(--navbar-height) + 12px) !important;
+    }
+
+    .sidebar-handle button {
+      height: 42px !important;
+      width: 42px !important;
+      font-size: 19px !important;
+      border-radius: 12px !important;
+    }
+
+    /* TABLET */
+    @media (max-width: 1199.98px) {
+      :root {
+        --sidebar-width: 220px;
+        --navbar-height: 62px;
+      }
+
+      .main-content {
+        padding: 0.6rem 0.7rem !important;
+      }
+
+      .main-inner {
+        padding: 1.25rem 1.4rem !important;
+      }
+    }
+
+    /* HP / TABLET KECIL */
+    @media (max-width: 991.98px) {
+      :root {
+        --navbar-height: 60px;
+        --sidebar-width: 245px;
+      }
+
+      body {
+        padding-top: var(--navbar-height) !important;
+      }
+
+      .navbar-collapse {
+        margin-top: 8px !important;
+        padding: 10px !important;
+        border-radius: 12px !important;
+      }
+
+      .navbar-polymathica .nav-link {
+        font-size: 0.84rem !important;
+        padding: 8px 10px !important;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+        padding: 0.7rem !important;
+      }
+
+      .main-inner {
+        padding: 1.1rem !important;
+        min-height: calc(100vh - var(--navbar-height) - 78px) !important;
+      }
+
+      .sidebar {
+        width: var(--sidebar-width) !important;
+        max-width: 82vw !important;
+      }
+    }
+
+    /* HP */
+    @media (max-width: 767.98px) {
+      :root {
+        --navbar-height: 58px;
+        --sidebar-width: 235px;
+      }
+
+      .brand-inline .logo-img {
+        height: 27px !important;
+      }
+
+      .brand-inline .logo-word {
+        font-size: 0.76rem !important;
+        letter-spacing: 1px !important;
+      }
+
+      .main-content {
+        padding: 0.55rem !important;
+      }
+
+      .main-inner {
+        padding: 0.9rem !important;
+        border-radius: 10px !important;
+      }
+
+      .sidebar-menu-item {
+        font-size: 0.74rem !important;
+        padding: 8px 9px !important;
+      }
+
+      .dropdown-item {
+        font-size: 0.7rem !important;
+        padding: 7px 8px !important;
+      }
+    }
+
+    /* HP KECIL */
+    @media (max-width: 480px) {
+      :root {
+        --navbar-height: 56px;
+        --sidebar-width: 225px;
+      }
+
+      .brand-inline .logo-img {
+        height: 25px !important;
+      }
+
+      .brand-inline .logo-word {
+        font-size: 0.7rem !important;
+      }
+
+      .main-content {
+        padding: 0.45rem !important;
+      }
+
+      .main-inner {
+        padding: 0.8rem !important;
+      }
+
+      .sidebar {
+        max-width: 88vw !important;
+      }
+    }
+
+    /* =====================================================
+   TAMBAHAN: kecilkan tombol Previous/Next,
+   kecilkan judul materi, dan beri jarak dari navbar
+===================================================== */
+
+    /* BERI SPACE ANTARA NAVBAR DAN KOTAK MATERI */
+    .main-content {
+      padding-top: 1.15rem !important;
+    }
+
+    /* KOTAK PUTIH MATERI JANGAN TERLALU MEPET ATAS */
+    .main-inner {
+      margin-top: 0.35rem !important;
+    }
+
+    /* KECILKAN BAGIAN TOMBOL PREVIOUS / NEXT */
+    .content-navigation {
+      margin-top: 12px !important;
+      padding-top: 12px !important;
+    }
+
+    .content-navigation .btn,
+    .content-navigation a,
+    .content-navigation button {
+      padding: 9px 26px !important;
+      font-size: 0.95rem !important;
+      border-radius: 999px !important;
+      min-width: 130px !important;
+      height: auto !important;
+      line-height: 1.2 !important;
+    }
+
+    /* KECILKAN JUDUL MATERI */
+    .main-inner h1,
+    .main-inner .materi-title,
+    .main-inner .judul-materi,
+    .content-scroll h1 {
+      font-size: 2rem !important;
+      line-height: 1.25 !important;
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    /* KECILKAN SUBJUDUL KALAU ADA */
+    .main-inner h2,
+    .content-scroll h2 {
+      font-size: 1.55rem !important;
+      line-height: 1.3 !important;
+    }
+
+    /* TABLET */
+    @media (max-width: 991.98px) {
+      .main-content {
+        padding-top: 1rem !important;
+      }
+
+      .main-inner {
+        margin-top: 0.25rem !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button {
+        padding: 8px 22px !important;
+        font-size: 0.9rem !important;
+        min-width: 115px !important;
+      }
+
+      .main-inner h1,
+      .main-inner .materi-title,
+      .main-inner .judul-materi,
+      .content-scroll h1 {
+        font-size: 1.65rem !important;
+      }
+
+      .main-inner h2,
+      .content-scroll h2 {
+        font-size: 1.35rem !important;
+      }
+    }
+
+    /* HP */
+    @media (max-width: 767.98px) {
+      .main-content {
+        padding-top: 0.85rem !important;
+      }
+
+      .content-navigation {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button {
+        padding: 7px 18px !important;
+        font-size: 0.82rem !important;
+        min-width: 100px !important;
+      }
+
+      .main-inner h1,
+      .main-inner .materi-title,
+      .main-inner .judul-materi,
+      .content-scroll h1 {
+        font-size: 1.35rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+
+      .main-inner h2,
+      .content-scroll h2 {
+        font-size: 1.15rem !important;
+      }
+    }
+
+    /* =====================================================
+   FINAL OVERRIDE:
+   Tombol Previous/Next lebih kecil
+   Area materi lebih besar
+===================================================== */
+
+    /* AREA LUAR MATERI: lebih mepet kanan-kiri agar kotak materi lebih besar */
+    .main-content {
+      padding: 0.8rem 0.55rem 0.55rem 0.55rem !important;
+    }
+
+    /* KOTAK PUTIH TEMPAT MATERI: dibuat lebih besar */
+    .main-inner {
+      width: 100% !important;
+      max-width: none !important;
+      min-height: calc(100vh - var(--navbar-height) - 35px) !important;
+      padding: 1.25rem 1.45rem !important;
+      margin-top: 0.25rem !important;
+      border-radius: 10px !important;
+    }
+
+    /* AREA ISI MATERI: supaya isi lebih lega */
+    .content-scroll {
+      width: 100% !important;
+      max-width: none !important;
+      padding-right: 2px !important;
+    }
+
+    /* JUDUL MATERI TETAP TIDAK TERLALU BESAR */
+    .main-inner h1,
+    .content-scroll h1,
+    .judul-materi,
+    .materi-title {
+      font-size: 1.85rem !important;
+      line-height: 1.25 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0.9rem !important;
+    }
+
+    /* =====================================================
+   TOMBOL PREVIOUS / NEXT DIPERKECIL
+===================================================== */
+
+    .content-navigation {
+      margin-top: 8px !important;
+      padding-top: 8px !important;
+    }
+
+    /* Target semua kemungkinan tombol navigasi */
+    .content-navigation .btn,
+    .content-navigation a,
+    .content-navigation button,
+    .prev-next-wrapper .btn,
+    .navigation-buttons .btn,
+    .btn-prev,
+    .btn-next,
+    .previous-btn,
+    .next-btn,
+    a[href*="previous"],
+    a[href*="next"] {
+      padding: 6px 18px !important;
+      font-size: 0.82rem !important;
+      min-width: 105px !important;
+      height: 42px !important;
+      line-height: 1 !important;
+      border-radius: 999px !important;
+      font-weight: 700 !important;
+    }
+
+    /* Kalau tombolnya pakai class btn-lg dari Bootstrap */
+    .btn-lg {
+      padding: 6px 18px !important;
+      font-size: 0.82rem !important;
+      min-width: 105px !important;
+      height: 42px !important;
+      border-radius: 999px !important;
+    }
+
+    /* Jarak tombol dari tepi bawah tidak terlalu besar */
+    .content-navigation {
+      padding-bottom: 0 !important;
+    }
+
+    /* TABLET */
+    @media (max-width: 991.98px) {
+      .main-content {
+        padding: 0.7rem 0.45rem 0.45rem 0.45rem !important;
+      }
+
+      .main-inner {
+        min-height: calc(100vh - var(--navbar-height) - 28px) !important;
+        padding: 1rem 1.1rem !important;
+      }
+
+      .main-inner h1,
+      .content-scroll h1,
+      .judul-materi,
+      .materi-title {
+        font-size: 1.55rem !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button,
+      .prev-next-wrapper .btn,
+      .navigation-buttons .btn,
+      .btn-prev,
+      .btn-next,
+      .previous-btn,
+      .next-btn,
+      .btn-lg {
+        padding: 6px 15px !important;
+        font-size: 0.78rem !important;
+        min-width: 95px !important;
+        height: 38px !important;
+      }
+    }
+
+    /* HP */
+    @media (max-width: 767.98px) {
+      .main-content {
+        padding: 0.55rem 0.35rem 0.35rem 0.35rem !important;
+      }
+
+      .main-inner {
+        min-height: calc(100vh - var(--navbar-height) - 20px) !important;
+        padding: 0.85rem !important;
+      }
+
+      .main-inner h1,
+      .content-scroll h1,
+      .judul-materi,
+      .materi-title {
+        font-size: 1.3rem !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button,
+      .prev-next-wrapper .btn,
+      .navigation-buttons .btn,
+      .btn-prev,
+      .btn-next,
+      .previous-btn,
+      .next-btn,
+      .btn-lg {
+        padding: 5px 13px !important;
+        font-size: 0.74rem !important;
+        min-width: 82px !important;
+        height: 34px !important;
+      }
+    }
+
+    /* =====================================================
+   FIX FINAL LAYOUT:
+   Navbar kecil, sidebar kecil, materi pas,
+   tombol Previous/Next selalu kelihatan
+===================================================== */
+
+    :root {
+      --navbar-height: 54px !important;
+      --sidebar-width: 205px !important;
+    }
+
+    /* BODY */
+    body {
+      overflow: hidden !important;
+    }
+
+    /* NAVBAR DIPERKECIL */
+    .navbar-polymathica {
+      min-height: var(--navbar-height) !important;
+      height: var(--navbar-height) !important;
+      padding: 0 18px !important;
+    }
+
+    .navbar-polymathica .container-fluid {
+      min-height: var(--navbar-height) !important;
+      height: var(--navbar-height) !important;
+    }
+
+    .brand-inline .logo-img {
+      height: 25px !important;
+    }
+
+    .brand-inline .logo-word {
+      font-size: 0.72rem !important;
+      letter-spacing: 1.1px !important;
+    }
+
+    .navbar-polymathica .nav-link {
+      font-size: 0.82rem !important;
+      padding: 4px 8px !important;
+    }
+
+    .navbar-polymathica .btn-logout {
+      padding: 6px 13px !important;
+      font-size: 0.78rem !important;
+      border-radius: 999px !important;
+    }
+
+    /* LAYOUT UTAMA */
+    .layout-wrapper {
+      height: calc(100vh - var(--navbar-height)) !important;
+      overflow: hidden !important;
+    }
+
+    /* SIDEBAR DIPERKECIL */
+    .sidebar {
+      width: var(--sidebar-width) !important;
+      top: var(--navbar-height) !important;
+      height: calc(100vh - var(--navbar-height)) !important;
+      padding: 0.75rem 0.65rem !important;
+      overflow-y: auto !important;
+    }
+
+    .sidebar-menu-item {
+      padding: 7px 9px !important;
+      font-size: 0.72rem !important;
+      line-height: 1.2 !important;
+      border-radius: 8px !important;
+      margin-bottom: 7px !important;
+    }
+
+    .dropdown-content {
+      margin-left: 4px !important;
+      padding-left: 8px !important;
+    }
+
+    .dropdown-item {
+      padding: 6px 8px !important;
+      font-size: 0.68rem !important;
+      line-height: 1.25 !important;
+      border-radius: 7px !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* AREA KONTEN */
+    .main-content {
+      margin-left: var(--sidebar-width) !important;
+      height: calc(100vh - var(--navbar-height)) !important;
+      padding: 0.55rem 0.55rem 0.45rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+    }
+
+    /* KOTAK TEMPAT MATERI */
+    .main-inner {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      height: auto !important;
+      max-height: none !important;
+      padding: 1rem 1.25rem !important;
+      margin: 0 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+    }
+
+    /* SCROLL ISI MATERI SAJA */
+    .content-scroll {
+      height: 100% !important;
+      max-height: 100% !important;
+      overflow-y: auto !important;
+      padding-right: 8px !important;
+    }
+
+    /* JUDUL MATERI DIKECILKAN */
+    .main-inner h1,
+    .content-scroll h1,
+    .judul-materi,
+    .materi-title {
+      font-size: 1.75rem !important;
+      line-height: 1.2 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0.8rem !important;
+      letter-spacing: 1px !important;
+    }
+
+    .main-inner h2,
+    .content-scroll h2 {
+      font-size: 1.25rem !important;
+      line-height: 1.25 !important;
+    }
+
+    /* CARD MATERI AGAR TIDAK TERLALU BESAR */
+    .content-scroll .card,
+    .content-scroll .box,
+    .content-scroll .materi-card,
+    .content-scroll .info-card,
+    .content-scroll .contoh-card {
+      padding: 1rem 1.15rem !important;
+    }
+
+    /* PARAGRAF AGAR LEBIH RINGKAS */
+    .content-scroll p {
+      font-size: 0.9rem !important;
+      line-height: 1.55 !important;
+    }
+
+    /* =====================================================
+   TOMBOL PREVIOUS / NEXT SELALU KELIHATAN
+===================================================== */
+
+    .content-navigation {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-top: 0.35rem !important;
+      padding: 0.4rem 0.1rem 0 !important;
+      background: #FDFDE8 !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+      position: relative !important;
+      z-index: 20 !important;
+    }
+
+    /* TOMBOLNYA DIPERKECIL */
+    .content-navigation .btn,
+    .content-navigation a,
+    .content-navigation button,
+    .btn-prev,
+    .btn-next,
+    .previous-btn,
+    .next-btn,
+    .prev-next-wrapper .btn,
+    .navigation-buttons .btn {
+      padding: 5px 16px !important;
+      font-size: 0.78rem !important;
+      min-width: 92px !important;
+      height: 34px !important;
+      line-height: 1 !important;
+      border-radius: 999px !important;
+      font-weight: 700 !important;
+    }
+
+    /* HANDLE SIDEBAR */
+    .sidebar-handle {
+      top: calc(var(--navbar-height) + 8px) !important;
+    }
+
+    .sidebar-handle button {
+      width: 34px !important;
+      height: 34px !important;
+      font-size: 16px !important;
+      border-radius: 10px !important;
+    }
+
+    /* TABLET */
+    @media (max-width: 991.98px) {
+      :root {
+        --navbar-height: 52px !important;
+        --sidebar-width: 220px !important;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+        padding: 0.45rem !important;
+      }
+
+      .main-inner {
+        padding: 0.85rem !important;
+      }
+
+      .main-inner h1,
+      .content-scroll h1,
+      .judul-materi,
+      .materi-title {
+        font-size: 1.45rem !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button,
+      .btn-prev,
+      .btn-next,
+      .previous-btn,
+      .next-btn {
+        padding: 5px 13px !important;
+        font-size: 0.74rem !important;
+        min-width: 82px !important;
+        height: 32px !important;
+      }
+    }
+
+    /* HP */
+    @media (max-width: 767.98px) {
+      :root {
+        --navbar-height: 50px !important;
+      }
+
+      .main-content {
+        padding: 0.35rem !important;
+      }
+
+      .main-inner {
+        padding: 0.75rem !important;
+      }
+
+      .main-inner h1,
+      .content-scroll h1,
+      .judul-materi,
+      .materi-title {
+        font-size: 1.25rem !important;
+      }
+
+      .content-scroll p {
+        font-size: 0.84rem !important;
+      }
+
+      .content-navigation {
+        padding-top: 0.3rem !important;
+      }
+
+      .content-navigation .btn,
+      .content-navigation a,
+      .content-navigation button,
+      .btn-prev,
+      .btn-next,
+      .previous-btn,
+      .next-btn {
+        padding: 4px 11px !important;
+        font-size: 0.7rem !important;
+        min-width: 74px !important;
+        height: 30px !important;
+      }
+    }
   </style>
 </head>
 

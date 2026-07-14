@@ -58,7 +58,7 @@
           <div class="col-md-4">
             <label class="form-label fw-semibold">KKM</label>
             <input type="number" name="kkm" class="form-control rounded-3"
-              value="75" min="0" max="100">
+              value="70" min="0" max="100">
           </div>
         </div>
 

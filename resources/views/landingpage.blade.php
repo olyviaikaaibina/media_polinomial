@@ -615,7 +615,7 @@
             <h1 class="hero-title mb-2">Selamat datang di Polimathica</h1>
             <p class="hero-subtitle mb-3">a quiet place to learn, understand, and evolve</p>
             <p class="hero-body mb-4">
-              Media pembelajaran ini menghadirkan metode tutorial yang memandu kamu
+              Media pembelajaran ini menghadirkan model tutorial yang memandu kamu
               memahami Polinomial Kelas 11 secara bertahap, runtut, dan interaktif.
             </p>
 

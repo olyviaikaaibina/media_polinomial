@@ -37,15 +37,17 @@
 
         .gambar-box {
             text-align: center;
-            margin: 22px 0 26px;
+            margin: 14px 0 18px;
         }
 
         .gambar-box img {
             width: 100%;
-            max-width: 700px;
-            border-radius: 16px;
+            max-width: 520px;
+            border-radius: 14px;
             animation: gambarGerak 4s ease-in-out infinite;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            display: block;
+            margin: 0 auto;
         }
 
         @keyframes gambarGerak {
@@ -270,10 +272,10 @@
         }
 
         .alur-title {
-            font-size: 26px;
+            font-size: 21px;
             font-weight: 800;
             color: #2f3a30;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .alur-desc {
@@ -306,8 +308,9 @@
         }
 
         .klik-card {
-            height: 330px;
-            overflow: hidden;
+            min-height: 330px;
+            height: auto;
+            overflow: visible;
             cursor: pointer;
         }
 
@@ -333,24 +336,23 @@
         }
 
         .alur-preview {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #5f675d;
-            margin-top: 12px;
+            display: none;
         }
 
         .alur-detail {
-            max-height: 0;
-            opacity: 0;
-            overflow-y: auto;
-            transition: all 0.4s ease;
-            padding-right: 6px;
+            max-height: none;
+            opacity: 1;
+            overflow: visible;
+            transition: none;
+            padding-right: 0;
+            margin-top: 14px;
         }
 
         .klik-card.active .alur-detail {
-            max-height: 210px;
+            max-height: none;
             opacity: 1;
             margin-top: 14px;
+            overflow: visible;
         }
 
         .klik-card.active .alur-preview {
@@ -1148,11 +1150,14 @@
 
             .klik-card {
                 height: auto;
-                min-height: 250px;
+                min-height: 330px;
+                overflow: visible;
+                cursor: default;
             }
 
             .klik-card.active .alur-detail {
-                max-height: 420px;
+                max-height: 1000px;
+                overflow: visible;
             }
 
             .hasil-menarik .hasil-rumus,
@@ -1366,6 +1371,164 @@
         .katex-display>.katex {
             display: inline-block !important;
         }
+
+        /* =========================
+                       PERKECIL BAGIAN LATIHAN
+                       ========================= */
+
+        .latihan-section {
+            margin-top: 22px !important;
+        }
+
+        .question-card {
+            padding: 14px 18px !important;
+            margin-bottom: 14px !important;
+            border-radius: 20px !important;
+        }
+
+        .question-head {
+            gap: 12px !important;
+            margin-bottom: 8px !important;
+            align-items: center !important;
+        }
+
+        .question-number {
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            font-size: 18px !important;
+        }
+
+        .question-text {
+            font-size: 17px !important;
+            line-height: 1.35 !important;
+            margin-top: 0 !important;
+        }
+
+        .question-sub {
+            display: none !important;
+        }
+
+        /* Petunjuk setiap soal */
+        .petunjuk-soal {
+            background: #fffdf5;
+            border: 1px solid #ffe3a3;
+            color: #5f552d;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 6px 0 10px;
+        }
+
+        .petunjuk-soal strong {
+            color: #4f4728;
+        }
+
+        /* Soal 1 dibuat lebih padat */
+        #questionCard1 .drag-words {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 8px !important;
+            margin-bottom: 10px !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+        }
+
+        #questionCard1 .drag-item {
+            font-size: 12.5px !important;
+            line-height: 1.35 !important;
+            padding: 8px 10px !important;
+            border-radius: 13px !important;
+            text-align: center !important;
+        }
+
+        #questionCard1 .drop-grid {
+            gap: 8px !important;
+        }
+
+        #questionCard1 .drop-row {
+            grid-template-columns: 155px 1fr !important;
+            gap: 10px !important;
+        }
+
+        #questionCard1 .drop-label {
+            font-size: 14px !important;
+            padding: 9px 12px !important;
+            border-radius: 12px !important;
+        }
+
+        #questionCard1 .drop-zone {
+            min-height: 44px !important;
+            padding: 7px 10px !important;
+            border-radius: 12px !important;
+            font-size: 12.5px !important;
+        }
+
+        #questionCard1 .placeholder {
+            font-size: 12.5px !important;
+        }
+
+        /* Kalau jawaban sudah masuk ke kotak, tetap kecil */
+        #questionCard1 .drop-zone .drag-item {
+            padding: 6px 9px !important;
+            font-size: 12.3px !important;
+            line-height: 1.3 !important;
+        }
+
+        /* Soal 2 dipadatkan */
+        #questionCard2 .soal2-wrap {
+            gap: 9px !important;
+            margin-top: 8px !important;
+        }
+
+        #questionCard2 .soal2-line {
+            font-size: 14.5px !important;
+            line-height: 1.45 !important;
+        }
+
+        #questionCard2 .suku-input {
+            width: 70px !important;
+            min-width: 70px !important;
+            max-width: 70px !important;
+            height: 34px !important;
+            padding: 5px 8px !important;
+        }
+
+        /* Soal 3 dipadatkan */
+        #questionCard3 .opsi-grid {
+            gap: 10px !important;
+            margin-top: 8px !important;
+        }
+
+        #questionCard3 .opsi-card {
+            min-height: 82px !important;
+            padding: 12px 14px !important;
+            border-radius: 14px !important;
+        }
+
+        #questionCard3 .opsi-desc {
+            font-size: 13.5px !important;
+            line-height: 1.45 !important;
+        }
+
+        .feedback {
+            margin-top: 10px !important;
+            font-size: 13px !important;
+            padding: 9px 12px !important;
+            border-radius: 10px !important;
+        }
+
+        /* Responsif */
+        @media (max-width: 992px) {
+            #questionCard1 .drag-words {
+                grid-template-columns: 1fr !important;
+            }
+
+            #questionCard1 .drop-row {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 
 
@@ -1378,7 +1541,8 @@
                 <div class="konsep-card eksponen">
                     <div class="konsep-title">Eksponen</div>
                     <div class="konsep-desc">
-                        Eksponen adalah bentuk singkat dari <strong>perkalian berulang</strong> pada bilangan yang sama.
+                        <strong>Eksponen</strong> adalah bentuk singkat dari <strong>perkalian berulang</strong> pada
+                        bilangan yang sama.
                         Jadi, <strong>\(x^2\)</strong> berarti <strong>\(x \times x\)</strong>.
                         <div class="mini-rumus">$$x \times x = x^2$$</div>
                     </div>
@@ -1387,7 +1551,7 @@
                 <div class="konsep-card aljabar">
                     <div class="konsep-title">Aljabar</div>
                     <div class="konsep-desc">
-                        Aljabar adalah bentuk matematika yang memuat <strong>angka</strong>,
+                        <strong>Aljabar</strong> adalah bentuk matematika yang memuat <strong>angka</strong>,
                         <strong>huruf/variabel</strong>, dan <strong>operasi hitung</strong>.
                         Variabel dipakai untuk menyatakan nilai yang belum diketahui.
                         <div class="mini-rumus">$$3x + 2y + 5$$</div>
@@ -1502,9 +1666,6 @@
         <div class="alur-box">
             <div class="alur-header">
                 <h3 class="alur-title">Menyusun bentuk aljabar dari cerita buah</h3>
-                <p class="alur-desc">
-                    Klik setiap langkah untuk melihat penjelasannya.
-                </p>
             </div>
 
             <div class="alur-grid">
@@ -1579,24 +1740,17 @@
 
             <!-- HASIL -->
             <div class="hasil-box hasil-sederhana">
-                <div class="hasil-badge">Kesimpulan</div>
+
 
                 <div class="hasil-label">Sekarang kita jumlahkan semua bagian cerita</div>
 
-                <div class="hasil-rumus">
-                    $$3x + 2y + 5$$
-                </div>
 
                 <div class="hasil-komponen">
                     <div class="komponen-card">
-                        <div class="komponen-icon">
-                            <span>📦</span>
-                            <span>🍎</span>
-                            <span>📦</span>
-                            <span>🍎</span>
-                            <span>📦</span>
-                            <span>🍎</span>
+                        <div class="komponen-icon komponen-gambar">
+                            <img src="{{ asset('img/apel.png') }}" alt="Apel">
                         </div>
+
                         <div class="komponen-title">Kardus Apel</div>
                         <div class="komponen-rumus">$$3x$$</div>
                     </div>
@@ -1604,25 +1758,21 @@
                     <div class="komponen-plus">+</div>
 
                     <div class="komponen-card">
-                        <div class="komponen-icon">
-                            <span>📦</span>
-                            <span>🍊</span>
-                            <span>📦</span>
-                            <span>🍊</span>
+                        <div class="komponen-icon komponen-gambar">
+                            <img src="{{ asset('img/jeruk.png') }}" alt="Jeruk">
                         </div>
+
                         <div class="komponen-title">Kardus Jeruk</div>
                         <div class="komponen-rumus">$$2y$$</div>
                     </div>
 
                     <div class="komponen-plus">+</div>
+
                     <div class="komponen-card">
-                        <div class="komponen-icon">
-                            <span>🍐</span>
-                            <span>🍐</span>
-                            <span>🍐</span>
-                            <span>🍐</span>
-                            <span>🍐</span>
+                        <div class="komponen-icon komponen-gambar">
+                            <img src="{{ asset('img/pear.png') }}" alt="Pear">
                         </div>
+
                         <div class="komponen-title">Buah Lepas</div>
                         <div class="komponen-rumus">5</div>
                     </div>
@@ -1655,7 +1805,8 @@
                             <div class="unsur-bubble suku-bubble">3</div>
                             <div class="unsur-name suku-name">Banyak Suku</div>
                             <div class="unsur-desc">
-                                Banyak suku menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan oleh
+                                <strong>Banyak suku</strong> menunjukkan jumlah bagian pada bentuk aljabar yang dipisahkan
+                                oleh
                                 tanda tambah atau tanda kurang.
                             </div>
                         </div>
@@ -1665,7 +1816,7 @@
                             <div class="unsur-bubble var-bubble">\(x, y\)</div>
                             <div class="unsur-name var-name">Variabel</div>
                             <div class="unsur-desc">
-                                Variabel merupakan lambang pengganti suatu nilai yang belum diketahui.
+                                <strong>Variabel</strong> merupakan lambang pengganti suatu nilai yang belum diketahui.
                             </div>
                         </div>
 
@@ -1674,7 +1825,7 @@
                             <div class="unsur-bubble koef-bubble">3 &amp; 2</div>
                             <div class="unsur-name koef-name">Koefisien</div>
                             <div class="unsur-desc">
-                                Koefisien merupakan bilangan yang mengalikan variabel dalam suatu suku.
+                                <strong>Koefisien</strong> merupakan bilangan yang mengalikan variabel dalam suatu suku.
                             </div>
                         </div>
 
@@ -1683,7 +1834,7 @@
                             <div class="unsur-bubble konst-bubble">5</div>
                             <div class="unsur-name konst-name">Konstanta</div>
                             <div class="unsur-desc">
-                                Konstanta adalah suku berupa bilangan dan tidak memuat variabel.
+                                <strong>Konstanta</strong> adalah suku berupa bilangan dan tidak memuat variabel.
                             </div>
                         </div>
                     </div>
@@ -1740,7 +1891,10 @@
                     <div class="question-text">Pasangkan istilah dengan pengertiannya yang tepat.</div>
                 </div>
 
-                <div class="question-sub">Seret jawaban yang tepat ke kotak yang sesuai.</div>
+                <div class="petunjuk-soal">
+                    <strong>Petunjuk:</strong> Seret setiap pengertian ke istilah yang sesuai.
+                    Pada laptop, jawaban juga bisa diklik terlebih dahulu, lalu klik kotak tujuan.
+                </div>
 
                 <div class="drag-words" id="dragWords">
                     <div class="drag-item" draggable="true" data-answer="koefisien">
@@ -1790,6 +1944,12 @@
                     </div>
                 </div>
 
+                <div class="petunjuk-soal">
+                    <strong>Petunjuk:</strong> Hitung banyak suku dengan melihat bagian yang dipisahkan oleh tanda tambah
+                    atau tanda kurang.
+                    Isi jawaban menggunakan angka.
+                </div>
+
                 <div class="isian-wrap soal2-wrap">
                     <div class="isian-line soal2-line">
                         <span class="soal2-text">
@@ -1826,7 +1986,10 @@
                     </div>
                 </div>
 
-                <div class="question-sub">Klik salah satu jawaban yang paling tepat.</div>
+                <div class="petunjuk-soal">
+                    <strong>Petunjuk:</strong> Perhatikan kembali cerita pedagang buah.
+                    Pilih makna yang paling tepat dari bentuk <strong>\(2y\)</strong>.
+                </div>
 
                 <div class="opsi-grid" id="opsiSoal3">
                     <div class="opsi-card" data-benar="false" data-choice-question="3">
@@ -2264,11 +2427,7 @@
                 initMateriInteraktif();
             }
         })();
-        document.querySelectorAll('.klik-card').forEach(card => {
-            card.addEventListener('click', function () {
-                this.classList.toggle('active');
-            });
-        });
+
     </script>
 @endsection
 

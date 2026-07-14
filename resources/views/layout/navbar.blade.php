@@ -11,6 +11,26 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  @php
+    $currentUrl = rtrim(url()->current(), '/');
+
+    $berandaUrl = rtrim(route('landingpage'), '/');
+    $daftarMateriUrl = rtrim(route('daftarmateri'), '/');
+    $petunjukUrl = rtrim(route('petunjukpenggunaan'), '/');
+    $tentangUrl = rtrim(route('tentang'), '/');
+    $guruUrl = rtrim(route('halamanguru'), '/');
+    $daftarUrl = rtrim(route('registersiswa'), '/');
+    $masukUrl = rtrim(route('masuksiswa'), '/');
+
+    $isBeranda = $currentUrl === $berandaUrl;
+    $isDaftarMateri = $currentUrl === $daftarMateriUrl || request()->routeIs('materi.*');
+    $isPetunjuk = $currentUrl === $petunjukUrl;
+    $isTentang = $currentUrl === $tentangUrl;
+    $isGuru = $currentUrl === $guruUrl || request()->routeIs('guru.*');
+    $isDaftar = $currentUrl === $daftarUrl;
+    $isMasuk = $currentUrl === $masukUrl;
+  @endphp
+
   <style>
     :root {
       --page-bg: #FDFDE8;
@@ -31,23 +51,21 @@
       flex: 1;
     }
 
-    /* ===== NAVBAR (SEDIKIT LEBIH BESAR) ===== */
     .navbar {
       background-color: #ffffff !important;
       border-bottom: 1px solid #e2d7c9;
-      padding: 0.75rem 1.25rem; /* ⬅️ NAIK DARI SEBELUMNYA */
+      padding: 0.75rem 1.25rem;
     }
 
-    /* ===== LOGO HORIZONTAL ===== */
     .brand {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 12px; /* jarak logo & teks sedikit lebih lega */
+      gap: 12px;
       text-decoration: none;
     }
 
     .brand img {
-      width: 44px;              /* ⬅️ logo lebih besar */
+      width: 44px;
       height: auto;
       display: inline-block !important;
       margin: 0 !important;
@@ -58,34 +76,57 @@
       white-space: nowrap !important;
       line-height: 1.1 !important;
       margin: 0 !important;
-
       font-family: "Playfair Display", serif;
-      font-size: 14px;          /* ⬅️ teks lebih besar */
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 3px;
       color: #85977B;
     }
 
-    /* NAV LINK */
     .nav-link {
-      font-size: 0.95rem;       /* ⬅️ sedikit lebih besar */
+      font-size: 0.95rem;
       color: var(--text-main) !important;
+      padding: 0.45rem 0.9rem !important;
+      border-radius: 22px;
+      transition: all 0.2s ease;
     }
 
-    /* BUTTON */
+    .nav-link:hover {
+      background-color: #f6f1e6;
+      color: #6f815f !important;
+    }
+
+    /* HIGHLIGHT MENU AKTIF */
+    .nav-link.active-page {
+      background-color: #D0DDD0 !important;
+      color: #4f6f42 !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 12px rgba(133, 151, 123, 0.25);
+    }
+
     .btn-nav {
-      font-size: 0.85rem;       /* ⬅️ naik dikit */
+      font-size: 0.85rem;
       border-radius: 22px;
       border: 1px solid #d7c1aa;
       padding: 0.45rem 1.4rem;
       background-color: var(--page-bg);
+      color: var(--text-main);
+      transition: all 0.2s ease;
     }
 
     .btn-nav:hover {
       background-color: #f1eadc;
+      border-color: #c8aa8c;
     }
 
-    /* FOOTER */
+    .btn-nav.active-page {
+      background-color: #D0DDD0 !important;
+      border-color: #85977B !important;
+      color: #4f6f42 !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 12px rgba(133, 151, 123, 0.25);
+    }
+
     footer {
       font-size: 0.75rem;
       color: #8f8375;
@@ -94,16 +135,30 @@
       background-color: #ffffff;
       border-top: 1px solid #e2d7c9;
     }
+
+    @media (max-width: 991px) {
+      .navbar-nav {
+        margin-top: 15px;
+        gap: 6px !important;
+      }
+
+      .nav-link {
+        padding: 0.6rem 1rem !important;
+      }
+
+      .d-flex.gap-2.ms-3 {
+        margin-left: 0 !important;
+        margin-top: 12px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
 
-    <!-- LOGO -->
     <a href="{{ route('landingpage') }}" class="brand me-4">
       <img src="{{ asset('img/2.png') }}" alt="Logo Polimathica">
       <span>POLIMATHICA</span>
@@ -115,38 +170,64 @@
 
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto gap-lg-3">
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('landingpage') }}">Beranda</a>
+          <a class="nav-link {{ $isBeranda ? 'active-page' : '' }}"
+             href="{{ route('landingpage') }}">
+            Beranda
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('daftarmateri') }}">Daftar Materi</a>
+          <a class="nav-link {{ $isDaftarMateri ? 'active-page' : '' }}"
+             href="{{ route('daftarmateri') }}">
+            Daftar Materi
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('petunjukpenggunaan') }}">Petunjuk Penggunaan</a>
+          <a class="nav-link {{ $isPetunjuk ? 'active-page' : '' }}"
+             href="{{ route('petunjukpenggunaan') }}">
+            Petunjuk Penggunaan
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('tentang') }}">Tentang</a>
+          <a class="nav-link {{ $isTentang ? 'active-page' : '' }}"
+             href="{{ route('tentang') }}">
+            Tentang
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('halamanguru') }}">Halaman Guru</a>
+          <a class="nav-link {{ $isGuru ? 'active-page' : '' }}"
+             href="{{ route('halamanguru') }}">
+            Halaman Guru
+          </a>
         </li>
+
       </ul>
 
       <div class="d-flex gap-2 ms-3">
-        <a href="{{ route('registersiswa') }}" class="btn btn-nav">Daftar</a>
-        <a href="{{ route('masuksiswa') }}" class="btn btn-nav">Masuk</a>
+        <a href="{{ route('registersiswa') }}"
+           class="btn btn-nav {{ $isDaftar ? 'active-page' : '' }}">
+          Daftar
+        </a>
+
+        <a href="{{ route('masuksiswa') }}"
+           class="btn btn-nav {{ $isMasuk ? 'active-page' : '' }}">
+          Masuk
+        </a>
       </div>
     </div>
 
   </div>
 </nav>
 
-<!-- CONTENT -->
 <main>
   @yield('content')
 </main>
 
-<!-- FOOTER -->
 <footer>
   © 2026 Polimathica. Olyvia Ika Albina
 </footer>

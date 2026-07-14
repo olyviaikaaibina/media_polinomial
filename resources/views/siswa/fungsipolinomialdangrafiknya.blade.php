@@ -6,11 +6,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                                                                                                                                                                                                                                                        delimiters: [
-                                                                                                                                                                                                                                                                                                                                                                                                            {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                                                                                                                                                                                                                                            {left: '$', right: '$', display: false}
-                                                                                                                                                                                                                                                                                                                                                                                                        ]
-                                                                                                                                                                                                                                                                                                                                                                                                    });"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            delimiters: [
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        });"></script>
 
     <!-- p5.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
@@ -1719,6 +1719,100 @@
                 text-align: left !important;
             }
         }
+
+        .slider-x-box {
+            width: 100%;
+            margin: 8px 0 12px;
+        }
+
+        .slider-x-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: #1f2937;
+            font-size: 15px;
+        }
+
+        .range-bubble-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 24px;
+            margin: 4px 0 10px;
+        }
+
+        .range-bubble {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #2b6cb0;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 900;
+            line-height: 1;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .range-bubble::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #2b6cb0;
+        }
+
+        .range-bubble-wrap .range {
+            display: block;
+            width: 100%;
+            margin: 0;
+        }
+
+        .petunjuk-mini {
+            margin: 12px 0 16px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #fffdf5;
+            border: 1px solid #ffe69c;
+            color: #555;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .petunjuk-mini b {
+            color: #1b7a2a;
+        }
+
+        .petunjuk-mini ul {
+            margin: 6px 0 0 18px;
+            padding: 0;
+        }
+
+        .petunjuk-mini li {
+            margin: 4px 0;
+        }
+
+        .pembahasan-latihan {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #f8fff6;
+            border-left: 5px solid #1b7a2a;
+            border: 1px solid rgba(27, 122, 42, .18);
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .pembahasan-latihan b {
+            color: #1b7a2a;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -1755,143 +1849,168 @@
                 <b>$f(x)$</b> yang dihasilkan, posisi titik pada grafik, dan arah perubahan grafik.
             </p>
 
+            <div class="petunjuk-mini">
+                <b>Petunjuk pengerjaan:</b>
+                <ul>
+                    <li>Geser slider untuk menentukan nilai <b>$x$</b>.</li>
+                    <li>Amati titik pada grafik dan perubahan nilai fungsi.</li>
+                    <li>Isi semua jawaban pada bagian <b>Jawaban</b>.</li>
+                    <li>Klik tombol <b>Cek Semua</b> setelah semua jawaban terisi.</li>
+                    <li><b>Materi lanjutan akan muncul setelah semua pertanyaan eksplorasi dijawab terlebih dahulu.</b></li>
+                </ul>
+            </div>
+
             <div class="mission">
-                <div class="mission-row">
-                    <div class="panel">
-                        <div class="panel-title">
-                            <span>🕹️ Kontrol Nilai</span>
-                            <span class="chip" id="expInsightChip">Insight: siap diamati</span>
-                        </div>
 
-                        <input class="range" id="expX" type="range" min="-6" max="6" step="1" value="0">
-
-                        <div class="small-note">
-                            Setiap perubahan $x$ akan menghasilkan nilai $f(x)$ yang berbeda.
-                        </div>
-
-                        <div class="kpi">
-                            <div class="box">
-                                <div class="lbl">Nilai x</div>
-                                <div class="val" id="kpiX">0</div>
+                <div class="mission">
+                    <div class="mission-row">
+                        <div class="panel">
+                            <div class="panel-title">
+                                <span>🕹️ Kontrol Nilai</span>
+                                <span class="chip" id="expInsightChip">Insight: siap diamati</span>
                             </div>
-                            <div class="box">
-                                <div class="lbl">Nilai f(x)</div>
-                                <div class="val" id="kpiFx">—</div>
-                            </div>
-                            <div class="box">
-                                <div class="lbl">Perubahan</div>
-                                <div class="val" id="kpiTrend">—</div>
-                            </div>
-                        </div>
 
-                        {{-- Soal --}}
-                        <div class="exp-explainbox" id="expAnswerBox">
-                            <div class="head">✍️ Jawaban</div>
+                            <div class="slider-x-box">
+                                <label for="expX" class="slider-x-label">
+                                    Geser nilai <b>x</b>
+                                </label>
 
-                            <div class="line">
-                                <span class="tag">1</span>
-                                <div class="txt">
-                                    Tentukan nilai <b>$f(x)$</b> untuk nilai $x$ saat ini.
-                                    <br>
-                                    <input type="number" id="studentFx" class="pick"
-                                        style="max-width:180px; margin-top:8px;">
-                                    <div id="statusFx" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                                <div class="range-bubble-wrap">
+                                    <div class="range-bubble" id="expXBubble">x = 0</div>
+
+                                    <input class="range" id="expX" type="range" min="-6" max="6" step="1" value="0">
+                                </div>
+                            </div>
+                            <div class="small-note">
+                                Setiap perubahan $x$ akan menghasilkan nilai $f(x)$ yang berbeda.
+                            </div>
+
+                            <div class="kpi">
+                                <div class="box">
+                                    <div class="lbl">Nilai x</div>
+                                    <div class="val" id="kpiX">0</div>
+                                </div>
+                                <div class="box">
+                                    <div class="lbl">Nilai f(x)</div>
+                                    <div class="val" id="kpiFx">—</div>
+                                </div>
+                                <div class="box">
+                                    <div class="lbl">Perubahan</div>
+                                    <div class="val" id="kpiTrend">—</div>
                                 </div>
                             </div>
 
-                            <div class="line">
-                                <span class="tag">2</span>
-                                <div class="txt">
-                                    Posisi titik $(x,f(x))$ berada di ...
-                                    <br>
-                                    <select id="studentPos" class="pick" style="max-width:240px; margin-top:8px;">
-                                        <option value="">Pilih jawaban…</option>
-                                        <option value="atas">Di atas sumbu-x</option>
-                                        <option value="bawah">Di bawah sumbu-x</option>
-                                        <option value="sumbu">Tepat pada sumbu-x</option>
-                                    </select>
-                                    <div id="statusPos" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                            {{-- Soal --}}
+                            <div class="exp-explainbox" id="expAnswerBox">
+                                <div class="head">✍️ Jawaban</div>
+
+                                <div class="line">
+                                    <span class="tag">1</span>
+                                    <div class="txt">
+                                        Tentukan nilai <b>$f(x)$</b> untuk nilai $x$ saat ini.
+                                        <br>
+                                        <input type="number" id="studentFx" class="pick"
+                                            style="max-width:180px; margin-top:8px;">
+                                        <div id="statusFx" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                                    </div>
+                                </div>
+
+                                <div class="line">
+                                    <span class="tag">2</span>
+                                    <div class="txt">
+                                        Posisi titik $(x,f(x))$ berada di ...
+                                        <br>
+                                        <select id="studentPos" class="pick" style="max-width:240px; margin-top:8px;">
+                                            <option value="">Pilih jawaban…</option>
+                                            <option value="atas">Di atas sumbu-x</option>
+                                            <option value="bawah">Di bawah sumbu-x</option>
+                                            <option value="sumbu">Tepat pada sumbu-x</option>
+                                        </select>
+                                        <div id="statusPos" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                                    </div>
+                                </div>
+
+                                <div class="line">
+                                    <span class="tag">3</span>
+                                    <div class="txt">
+                                        Nilai fungsi saat ini sedang ...
+                                        <br>
+                                        <select id="studentTrend" class="pick" style="max-width:240px; margin-top:8px;">
+                                            <option value="">Pilih jawaban…</option>
+                                            <option value="Naik">Naik</option>
+                                            <option value="Turun">Turun</option>
+                                            <option value="Tetap">Tetap</option>
+                                        </select>
+                                        <div id="statusTrend" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-row">
+                                    <button type="button" class="btn-cek" id="btnCekExplore">Cek Semua</button>
+                                    <button type="button" class="btn-reset" id="btnResetExplore">↺ Reset</button>
+                                    <button type="button" class="btn-reset" id="btnShowExplain" disabled>💡 Lihat
+                                        Pembahasan</button>
+                                </div>
+
+                                <div class="feedback" id="feedbackExplore">
+                                    Amati grafiknya, lalu isi semua jawabanmu.
                                 </div>
                             </div>
 
-                            <div class="line">
-                                <span class="tag">3</span>
-                                <div class="txt">
-                                    Nilai fungsi saat ini sedang ...
-                                    <br>
-                                    <select id="studentTrend" class="pick" style="max-width:240px; margin-top:8px;">
-                                        <option value="">Pilih jawaban…</option>
-                                        <option value="Naik">Naik</option>
-                                        <option value="Turun">Turun</option>
-                                        <option value="Tetap">Tetap</option>
-                                    </select>
-                                    <div id="statusTrend" class="mini-badge" style="margin-top:8px;">Belum dijawab</div>
+                            {{-- Pembahasan --}}
+                            <div class="exp-explainbox" id="expExplain" style="display:none;">
+                                <div class="head">💡 Pembahasan</div>
+
+                                <div class="line">
+                                    <span class="tag">1</span>
+                                    <div class="txt" id="txtSub">
+                                        Substitusikan nilai $x$ ke fungsi untuk mendapatkan $f(x)$.
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCekExplore">Cek Semua</button>
-                                <button type="button" class="btn-reset" id="btnResetExplore">↺ Reset</button>
-                                <button type="button" class="btn-reset" id="btnShowExplain" disabled>💡 Lihat
-                                    Pembahasan</button>
-                            </div>
+                                <div class="line">
+                                    <span class="tag">2</span>
+                                    <div class="txt" id="txtPoint">
+                                        Titik $(x,f(x))$ menunjukkan posisi pada grafik.
+                                    </div>
+                                </div>
 
-                            <div class="feedback" id="feedbackExplore">
-                                Amati grafiknya, lalu isi semua jawabanmu.
+                                <div class="line">
+                                    <span class="tag">3</span>
+                                    <div class="txt" id="txtPos">
+                                        Jika $f(x)$ positif → di atas sumbu-x, jika negatif → di bawah.
+                                    </div>
+                                </div>
+
+                                <div class="line">
+                                    <span class="tag">4</span>
+                                    <div class="txt" id="txtIdea">
+                                        Perhatikan perubahan nilai untuk menentukan apakah fungsi naik atau turun.
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        {{-- Pembahasan --}}
-                        <div class="exp-explainbox" id="expExplain" style="display:none;">
-                            <div class="head">💡 Pembahasan</div>
-
-                            <div class="line">
-                                <span class="tag">1</span>
-                                <div class="txt" id="txtSub">
-                                    Substitusikan nilai $x$ ke fungsi untuk mendapatkan $f(x)$.
-                                </div>
+                        <div class="panel">
+                            <div class="panel-title">
+                                <span>📈 Grafik Fungsi</span>
+                                <span class="chip warn" id="expCoordChip">Titik: (0, -3)</span>
                             </div>
 
-                            <div class="line">
-                                <span class="tag">2</span>
-                                <div class="txt" id="txtPoint">
-                                    Titik $(x,f(x))$ menunjukkan posisi pada grafik.
-                                </div>
+                            <div class="canvas-wrap">
+                                <canvas id="expGraph"></canvas>
                             </div>
 
-                            <div class="line">
-                                <span class="tag">3</span>
-                                <div class="txt" id="txtPos">
-                                    Jika $f(x)$ positif → di atas sumbu-x, jika negatif → di bawah.
-                                </div>
+                            <div class="small-note">
+                                Grafik menunjukkan hubungan antara nilai $x$ dan $f(x)$.
                             </div>
-
-                            <div class="line">
-                                <span class="tag">4</span>
-                                <div class="txt" id="txtIdea">
-                                    Perhatikan perubahan nilai untuk menentukan apakah fungsi naik atau turun.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel">
-                        <div class="panel-title">
-                            <span>📈 Grafik Fungsi</span>
-                            <span class="chip warn" id="expCoordChip">Titik: (0, -3)</span>
-                        </div>
-
-                        <div class="canvas-wrap">
-                            <canvas id="expGraph"></canvas>
-                        </div>
-
-                        <div class="small-note">
-                            Grafik menunjukkan hubungan antara nilai $x$ dan $f(x)$.
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+
+        </div> {{-- tutup .card.card-explore --}}
 
         {{-- =========================
         SEMUA MATERI LANJUTAN DISEMBUNYIKAN DULU
@@ -1904,16 +2023,19 @@
                 <p>
                     Polinomial bukan hanya sekadar bentuk aljabar yang terdiri atas beberapa suku.
                     Polinomial juga dapat digunakan untuk membentuk suatu fungsi yang disebut fungsi polinomial.
-                    Ketika sebuah polinomial diberi variabel bebas, misalnya variabel x, maka setiap nilai x yang dimasukkan
+                    Ketika sebuah polinomial diberi variabel bebas, misalnya variabel x, maka setiap nilai x yang
+                    dimasukkan
                     ke dalam polinomial tersebut akan menghasilkan suatu nilai fungsi.
-                    Dengan demikian, fungsi polinomial dapat dipahami sebagai polinomial yang dijalankan atau dioperasikan
+                    Dengan demikian, fungsi polinomial dapat dipahami sebagai polinomial yang dijalankan atau
+                    dioperasikan
                     sebagai fungsi.
                 </p>
             </div>
 
             <div class="card definisi-card">
                 <div class="definisi-label">DEFINISI</div>
-                <p class="highlight" style="margin-top:6px;">Fungsi polinomial dalam variabel $x$ memiliki bentuk umum:</p>
+                <p class="highlight" style="margin-top:6px;">Fungsi polinomial dalam variabel $x$ memiliki bentuk umum:
+                </p>
 
                 <div class="rumus" style="background:#f7f9fc;">
                     $$P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$$
@@ -2014,6 +2136,17 @@
                         Geser slider atau klik titik untuk melihat nilai fungsi dan informasi penting pada grafik.
                     </p>
 
+                    <div class="petunjuk-mini">
+                        <b>Petunjuk pengerjaan:</b>
+                        <ul>
+                            <li>Geser slider untuk memilih nilai <b>x</b>.</li>
+                            <li>Perhatikan nilai <b>f(x)</b> yang muncul.</li>
+                            <li>Amati posisi titik aktif pada grafik.</li>
+                            <li>Gunakan informasi titik potong sumbu-x, titik potong sumbu-y, dan vertex untuk memahami
+                                bentuk grafik.</li>
+                        </ul>
+                    </div>
+
                     <div class="ci-layout">
                         <div class="ci-panel">
                             <div class="ci-range-wrap">
@@ -2079,6 +2212,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- =========================
             MATERI TAMBAHAN
             ========================= --}}
@@ -2313,140 +2447,144 @@
             <div class="contoh-card" id="contohInteraktifCard">
                 <div class="contoh-pill">CONTOH</div>
 
-                <div class="contoh-box">
-                    <p class="contoh-instruksi">
-                        Dengan mengidentifikasi <b>perilaku ujungnya</b>, pasangkan setiap fungsi polinomial berikut
-                        dengan salah satu grafik <b>A–C</b> yang telah diberikan.
-                    </p>
+                <p class="contoh-instruksi">
+                    Dengan mengidentifikasi <b>perilaku ujungnya</b>, pasangkan setiap fungsi polinomial berikut
+                    dengan salah satu grafik <b>A–C</b> yang telah diberikan.
+                </p>
 
-                    <div class="contoh-grid">
-                        <div class="grafik-row">
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/A.png') }}" alt="Grafik A">
-                                <div class="grafik-label">A</div>
-                            </div>
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/B.png') }}" alt="Grafik B">
-                                <div class="grafik-label">B</div>
-                            </div>
-                            <div class="grafik-card">
-                                <img src="{{ asset('img/C.png') }}" alt="Grafik C">
-                                <div class="grafik-label">C</div>
+                <div class="petunjuk-mini">
+                    <b>Petunjuk pengerjaan:</b>
+                    <ul>
+                        <li>Perhatikan <b>suku utama</b> dari setiap fungsi.</li>
+                        <li>Tentukan apakah derajatnya <b>genap</b> atau <b>ganjil</b>.</li>
+                        <li>Perhatikan tanda koefisien utama, apakah <b>positif</b> atau <b>negatif</b>.</li>
+                        <li>Pilih grafik A, B, atau C yang sesuai.</li>
+                        <li>Klik tombol <b>Cek Jawaban</b> setelah semua nomor dipilih.</li>
+                    </ul>
+                </div>
+
+                <div class="contoh-grid">
+                    <div class="grafik-row">
+                        <div class="grafik-card">
+                            <img src="{{ asset('img/A.png') }}" alt="Grafik A">
+                            <div class="grafik-label">A</div>
+                        </div>
+                        <div class="grafik-card">
+                            <img src="{{ asset('img/B.png') }}" alt="Grafik B">
+                            <div class="grafik-label">B</div>
+                        </div>
+                        <div class="grafik-card">
+                            <img src="{{ asset('img/C.png') }}" alt="Grafik C">
+                            <div class="grafik-label">C</div>
+                        </div>
+                    </div>
+
+                    <div class="match-area">
+                        <div class="match-row">
+                            <div class="fx">1) $g(x)=x^4-4x^2+3$</div>
+                            <div>
+                                <select class="pick" id="pick1">
+                                    <option value="">Pilih grafik…</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="match-area">
-                            <div class="match-row">
-                                <div class="fx">1) $g(x)=x^4-4x^2+3$</div>
-                                <div>
-                                    <select class="pick" id="pick1">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
+                        <div class="match-row">
+                            <div class="fx">2) $h(x)=-x^6+4x^3-x$</div>
+                            <div>
+                                <select class="pick" id="pick2">
+                                    <option value="">Pilih grafik…</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="match-row">
+                            <div class="fx">3) $f(x)=2x^3-5x^2+x+1$</div>
+                            <div>
+                                <select class="pick" id="pick3">
+                                    <option value="">Pilih grafik…</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="btn-row">
+                            <button type="button" class="btn-cek" id="btnCekContoh">Cek Jawaban</button>
+                            <button type="button" class="btn-reset" id="btnResetContoh">↺ Reset</button>
+                        </div>
+
+                        <div class="feedback" id="feedbackContoh">
+                            Pilih jawaban untuk nomor 1–3, lalu klik <b>Cek Jawaban</b>.
+                        </div>
+
+                        <div id="penyelesaianContoh">
+                            <p style="margin: 14px 0 8px; font-weight:900; color:#111;">Penyelesaian:</p>
+                            <p style="margin:0 0 10px; color:var(--muted); text-align:justify;">
+                                Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi
+                                <b>suku utama</b>,
+                                <b>derajat</b>,
+                                <b>tanda koefisien utama</b>, lalu tentukan <b>perilaku ujung</b>.
+                            </p>
+
+                            <div class="solve-table-wrap">
+                                <table class="solve" aria-label="Tabel penyelesaian perilaku ujung">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Suku Utama</th>
+                                            <th>Derajat</th>
+                                            <th>Tanda Koef</th>
+                                            <th>Perilaku Ujung</th>
+                                            <th>Grafik</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>$x^4$</td>
+                                            <td>4</td>
+                                            <td>Positif</td>
+                                            <td>kiri ↑, kanan ↑</td>
+                                            <td><b>B</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>$-x^6$</td>
+                                            <td>6</td>
+                                            <td>Negatif</td>
+                                            <td>kiri ↓, kanan ↓</td>
+                                            <td><b>C</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>$2x^3$</td>
+                                            <td>3</td>
+                                            <td>Positif</td>
+                                            <td>kiri ↓, kanan ↑</td>
+                                            <td><b>A</b></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
-                            <div class="match-row">
-                                <div class="fx">2) $h(x)=-x^6+4x^3-x$</div>
-                                <div>
-                                    <select class="pick" id="pick2">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="match-row">
-                                <div class="fx">3) $f(x)=2x^3-5x^2+x+1$</div>
-                                <div>
-                                    <select class="pick" id="pick3">
-                                        <option value="">Pilih grafik…</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="btn-row">
-                                <button type="button" class="btn-cek" id="btnCekContoh">Cek Jawaban</button>
-                                <button type="button" class="btn-reset" id="btnResetContoh">↺ Reset</button>
-                            </div>
-
-                            <div class="feedback" id="feedbackContoh">
-                                Pilih jawaban untuk nomor 1–3, lalu klik <b>Cek Jawaban</b>.
-                            </div>
-
-                            <div id="penyelesaianContoh">
-                                <p style="margin: 14px 0 8px; font-weight:900; color:#111;">Penyelesaian:</p>
-                                <p style="margin:0 0 10px; color:var(--muted); text-align:justify;">
-                                    Untuk memasangkan fungsi polinomial dengan grafiknya, identifikasi
-                                    <b>suku utama</b>,
-                                    <b>derajat</b>,
-                                    <b>tanda koefisien utama</b>, lalu tentukan <b>perilaku ujung</b>.
-                                </p>
-
-                                <div class="solve-table-wrap">
-                                    <table class="solve" aria-label="Tabel penyelesaian perilaku ujung">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Suku Utama</th>
-                                                <th>Derajat</th>
-                                                <th>Tanda Koef</th>
-                                                <th>Perilaku Ujung</th>
-                                                <th>Grafik</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>$x^4$</td>
-                                                <td>4</td>
-                                                <td>Positif</td>
-                                                <td>kiri ↑, kanan ↑</td>
-                                                <td><b>B</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>$-x^6$</td>
-                                                <td>6</td>
-                                                <td>Negatif</td>
-                                                <td>kiri ↓, kanan ↓</td>
-                                                <td><b>C</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>$2x^3$</td>
-                                                <td>3</td>
-                                                <td>Positif</td>
-                                                <td>kiri ↓, kanan ↑</td>
-                                                <td><b>A</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="note" style="margin-top:12px;">
-                                    <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah.
-                                    Derajat ganjil → ujung kiri dan kanan berlawanan arah.
-                                    Tanda koefisien utama menentukan apakah ujung kanan naik atau turun.
-                                </div>
+                            <div class="note" style="margin-top:12px;">
+                                <b>Kesimpulan:</b> Derajat genap → kedua ujung sama arah.
+                                Derajat ganjil → ujung kiri dan kanan berlawanan arah.
+                                Tanda koefisien utama menentukan apakah ujung kanan naik atau turun.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-            {{-- =========================
-            LATIHAN
-            ========================= --}}
             {{-- =========================
             LATIHAN
             ========================= --}}
@@ -2456,10 +2594,16 @@
                 </div>
 
                 {{-- PETUNJUK LATIHAN --}}
-                <div class="note" style="margin-bottom:18px;">
-                    <b>Petunjuk pengerjaan:</b> Kerjakan soal berurutan. Untuk pangkat, ketik angka setelah variabel,
-                    misalnya <b>x2</b> untuk <b>x²</b> dan <b>x3</b> untuk <b>x³</b>. Titik ditulis dalam bentuk
-                    <b>(x, y)</b>.
+                <div class="petunjuk-mini" style="margin-bottom:18px;">
+                    <b>Petunjuk pengerjaan:</b>
+                    <ul>
+                        <li>Kerjakan soal secara berurutan mulai dari nomor 1.</li>
+                        <li>Soal berikutnya akan terbuka jika soal sebelumnya sudah benar.</li>
+                        <li>Untuk pangkat, ketik angka setelah variabel, misalnya <b>x2</b> untuk <b>x²</b> dan <b>x3</b>
+                            untuk <b>x³</b>.</li>
+                        <li>Titik ditulis dalam bentuk <b>(x, y)</b>.</li>
+                        <li>Setelah selesai menjawab, klik tombol <b>Cek Jawaban</b> pada setiap nomor.</li>
+                    </ul>
                 </div>
 
                 {{-- 1. Analisis Fungsi Polinomial --}}
@@ -2495,8 +2639,12 @@
                         </button>
                     </div>
 
-                    <div id="hasilSoal1" class="hasil-latihan">
-                        Kerjakan soal nomor 1 lalu klik <b>Cek Jawaban No. 1</b>.
+                    <div id="pembahasanSoal1" class="pembahasan-latihan">
+                        <b>Pembahasan:</b>
+                        Fungsi $p(x)=7x^3-3x^2+15$ memiliki pangkat tertinggi 3, sehingga derajatnya adalah 3. Suku-sukunya
+                        adalah $7x^3$, $-3x^2$, dan $15$, jadi banyak sukunya 3. Suku utama adalah $7x^3$ dan koefisien
+                        utamanya 7. Karena derajatnya ganjil dan koefisien utamanya positif, perilaku ujung grafiknya adalah
+                        kiri turun dan kanan naik.
                     </div>
                 </section>
 
@@ -2527,8 +2675,12 @@
                         </button>
                     </div>
 
-                    <div id="hasilSoal2" class="hasil-latihan">
-                        Soal nomor 2 akan terbuka jika nomor 1 sudah benar.
+                    <div id="pembahasanSoal2" class="pembahasan-latihan">
+                        <b>Pembahasan:</b>
+                        Untuk titik potong sumbu-x, buat $f(x)=0$, sehingga $x^2-2x-8=0$. Bentuk tersebut dapat difaktorkan
+                        menjadi $(x-4)(x+2)=0$, sehingga diperoleh $x=4$ atau $x=-2$. Titik potong sumbu-y diperoleh saat
+                        $x=0$, yaitu $(0,-8)$. Vertex diperoleh dari $x=\frac{-b}{2a}=1$, lalu $f(1)=-9$, sehingga vertexnya
+                        adalah $(1,-9)$.
                     </div>
                 </section>
 
@@ -2626,13 +2778,20 @@
                         </button>
                     </div>
 
-                    <div id="hasilSoal3" class="hasil-latihan">
-                        Soal nomor 3 akan terbuka jika nomor 2 sudah benar.
+                    <div id="pembahasanSoal3" class="pembahasan-latihan">
+                        <b>Pembahasan:</b>
+                        Fungsi $2x^3+5x^2-1$ memiliki derajat ganjil dan koefisien utama positif, sehingga perilaku ujungnya
+                        kiri turun dan kanan naik, maka sesuai dengan grafik A. Fungsi $3x^4-6x^2+2$ memiliki derajat genap
+                        dan koefisien utama positif, sehingga kedua ujung grafiknya naik, maka sesuai dengan grafik B.
+                        Fungsi $-x^4+2x^2-3$ memiliki derajat genap dan koefisien utama negatif, sehingga kedua ujung
+                        grafiknya turun, maka sesuai dengan grafik C.
                     </div>
+
+
                 </section>
-            </div>
-        </div>
-    </div>
+            </div> {{-- tutup card LATIHAN --}}
+        </div> {{-- tutup #materiLanjutan --}}
+    </div> {{-- tutup .materi-wrap --}}
 
     <!-- Save Progress -->
     <script>
@@ -2673,6 +2832,7 @@
             const kpiTrend = document.getElementById('kpiTrend');
             const insightChip = document.getElementById('expInsightChip');
             const coordChip = document.getElementById('expCoordChip');
+            const expXBubble = document.getElementById('expXBubble');
 
             const txtSub = document.getElementById('txtSub');
             const txtPoint = document.getElementById('txtPoint');
@@ -3112,6 +3272,18 @@
                 setInsight('', 'Insight: siap diamati');
             }
 
+            function updateSliderBubble() {
+                if (!slider || !expXBubble) return;
+
+                const min = Number(slider.min);
+                const max = Number(slider.max);
+                const val = Number(slider.value);
+
+                const percent = ((val - min) / (max - min)) * 100;
+
+                expXBubble.textContent = `x = ${val}`;
+                expXBubble.style.left = `${percent}%`;
+            }
             function updateExplorerUI() {
                 if (!slider) return;
 
@@ -3119,6 +3291,7 @@
                 const y = fx(x);
                 const trend = getCorrectTrend(x);
 
+                updateSliderBubble();
                 updateKPIVisibility(x, y, trend);
 
                 if (coordChip) {
@@ -3370,12 +3543,12 @@
                     }
 
                     graphDescription.innerHTML = `
-                                                                                                                                                                                                                                                        Grafik berbentuk <b>parabola membuka ke atas</b>. 
-                                                                                                                                                                                                                                                        Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
-                                                                                                                                                                                                                                                        ${posisiGrafik}
-                                                                                                                                                                                                                                                        Perilaku ujungnya adalah <b>naik-naik</b>:
-                                                                                                                                                                                                                                                        saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
-                                                                                                                                                                                                                                                    `;
+                                                                                                                                                                                                                                                                                                                                            Grafik berbentuk <b>parabola membuka ke atas</b>. 
+                                                                                                                                                                                                                                                                                                                                            Dari kiri ke kanan, grafik <b>turun lalu naik</b>. 
+                                                                                                                                                                                                                                                                                                                                            ${posisiGrafik}
+                                                                                                                                                                                                                                                                                                                                            Perilaku ujungnya adalah <b>naik-naik</b>:
+                                                                                                                                                                                                                                                                                                                                            saat x → -∞, y → +∞ dan saat x → +∞, y → +∞.
+                                                                                                                                                                                                                                                                                                                                        `;
                 }
             }
 
@@ -4273,6 +4446,9 @@
             const hasil1 = document.getElementById("hasilSoal1");
             const hasil2 = document.getElementById("hasilSoal2");
             const hasil3 = document.getElementById("hasilSoal3");
+            const pembahasan1 = document.getElementById("pembahasanSoal1");
+            const pembahasan2 = document.getElementById("pembahasanSoal2");
+            const pembahasan3 = document.getElementById("pembahasanSoal3");
 
             const cekSoal1Btn = document.getElementById("cekSoal1Btn");
             const cekSoal2Btn = document.getElementById("cekSoal2Btn");
@@ -4360,6 +4536,20 @@
                 el.innerHTML = html;
             }
 
+            function tampilPembahasan(el) {
+                if (el) el.style.display = "block";
+            }
+
+            function sembunyiPembahasan(el) {
+                if (el) el.style.display = "none";
+            }
+
+            function sembunyiSemuaPembahasan() {
+                sembunyiPembahasan(pembahasan1);
+                sembunyiPembahasan(pembahasan2);
+                sembunyiPembahasan(pembahasan3);
+            }
+
             function setInputState(el, state) {
                 if (!el) return;
                 el.classList.remove("is-correct", "is-wrong", "is-empty");
@@ -4441,6 +4631,10 @@
                 const { kosong, salah } = cekGroup(soal1Ids);
 
                 if (kosong.length) {
+                    sembunyiPembahasan(pembahasan1);
+                    sembunyiPembahasan(pembahasan2);
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(hasil1, "bad", `⚠️ Nomor 1 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
                     lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 akan terbuka jika nomor 1 sudah benar.");
                     lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
@@ -4448,6 +4642,10 @@
                 }
 
                 if (salah.length) {
+                    sembunyiPembahasan(pembahasan1);
+                    sembunyiPembahasan(pembahasan2);
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(hasil1, "bad", `❌ Nomor 1 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
                     lockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Soal nomor 2 masih terkunci karena nomor 1 belum benar.");
                     lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 akan terbuka jika nomor 2 sudah benar.");
@@ -4455,6 +4653,8 @@
                 }
 
                 setHasil(hasil1, "ok", "✅ Jawaban nomor 1 benar semua. Soal nomor 2 sudah terbuka.");
+                tampilPembahasan(pembahasan1);
+
                 unlockSection(section2, soal2Ids, cekSoal2Btn, hasil2, "Silakan kerjakan soal nomor 2 lalu klik <b>Cek Jawaban No. 2</b>.");
             });
 
@@ -4462,18 +4662,26 @@
                 const { kosong, salah } = cekGroup(soal2Ids);
 
                 if (kosong.length) {
+                    sembunyiPembahasan(pembahasan2);
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(hasil2, "bad", `⚠️ Nomor 2 belum lengkap. Yang kosong: <b>${kosong.join(", ")}</b>.`);
                     lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 masih terkunci karena nomor 2 belum benar.");
                     return;
                 }
 
                 if (salah.length) {
+                    sembunyiPembahasan(pembahasan2);
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(hasil2, "bad", `❌ Nomor 2 masih salah pada bagian: <b>${salah.join(", ")}</b>.`);
                     lockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Soal nomor 3 masih terkunci karena nomor 2 belum benar.");
                     return;
                 }
 
                 setHasil(hasil2, "ok", "✅ Jawaban nomor 2 benar semua. Soal nomor 3 sudah terbuka.");
+                tampilPembahasan(pembahasan2);
+
                 unlockSection(section3, soal3Ids, cekSoal3Btn, hasil3, "Silakan kerjakan soal nomor 3 lalu klik <b>Cek Jawaban No. 3</b>.");
             });
 
@@ -4481,6 +4689,8 @@
                 const { kosong, salah } = cekGroup(soal3Ids);
 
                 if (kosong.length) {
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(
                         hasil3,
                         "bad",
@@ -4490,6 +4700,8 @@
                 }
 
                 if (salah.length) {
+                    sembunyiPembahasan(pembahasan3);
+
                     setHasil(
                         hasil3,
                         "bad",
@@ -4503,6 +4715,8 @@
                     "ok",
                     "✅ Semua jawaban nomor 3 benar. Latihan selesai. Menyimpan progress..."
                 );
+
+                tampilPembahasan(pembahasan3);
 
                 const berhasilSimpan = await saveProgressMateri();
 
@@ -4532,6 +4746,8 @@
                     }
                 });
 
+                sembunyiSemuaPembahasan();
+
                 setHasil(
                     hasil1,
                     "",
@@ -4554,7 +4770,6 @@
                     "Soal nomor 3 akan terbuka jika nomor 2 sudah benar."
                 );
             });
-
             lockSection(
                 section2,
                 soal2Ids,

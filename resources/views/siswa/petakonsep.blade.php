@@ -4,26 +4,25 @@
     <style>
         .peta-page {
             width: 100%;
-            padding: 4px 20px 0;
+            padding: 0 6px 16px;
             box-sizing: border-box;
         }
 
         .peta-card {
             width: 100%;
-            max-width: 1150px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 10px 20px 10px;
+            padding: 6px 6px 10px;
             box-sizing: border-box;
             text-align: center;
         }
 
-        .peta-title {
-            font-family: 'Playfair Display', serif;
-            color: #2f5d3a;
-            font-weight: 800;
-            font-size: 30px;
-            margin: 0 0 10px;
-            text-align: center;
+        .peta-image-section {
+            width: 100%;
+            min-height: calc(100vh - 145px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .peta-image-wrap {
@@ -31,18 +30,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 10px;
         }
 
         .peta-image {
-            width: 88%;
-            max-width: 920px;
-            height: 360px;
-            object-fit: fill;
+            width: 100%;
+            max-width: 1300px;
+            height: auto;
+            max-height: calc(100vh - 170px);
+            object-fit: contain;
             display: block;
             border-radius: 14px;
             border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
         }
 
         .peta-button-group {
@@ -51,7 +51,8 @@
             align-items: center;
             gap: 14px;
             flex-wrap: wrap;
-            margin-top: 0;
+            margin-top: 12px;
+            padding-bottom: 0;
         }
 
         .btn-peta {
@@ -78,30 +79,49 @@
         }
 
         @media (max-width: 992px) {
+            .peta-page {
+                padding: 0 6px 14px;
+            }
+
+            .peta-card {
+                max-width: 100%;
+                padding: 6px 6px 10px;
+            }
+
+            .peta-image-section {
+                min-height: calc(100vh - 140px);
+            }
+
             .peta-image {
-                width: 92%;
-                max-width: 820px;
-                height: 340px;
+                width: 100%;
+                max-width: 100%;
+                max-height: calc(100vh - 165px);
             }
         }
 
         @media (max-width: 768px) {
             .peta-page {
-                padding: 4px 10px 0;
+                padding: 0 4px 12px;
             }
 
             .peta-card {
-                padding: 8px 8px 10px;
+                padding: 4px 4px 8px;
             }
 
-            .peta-title {
-                font-size: 25px;
-                margin-bottom: 8px;
+            .peta-image-section {
+                min-height: calc(100vh - 135px);
             }
 
             .peta-image {
-                width: 98%;
-                height: 300px;
+                width: 100%;
+                max-width: 100%;
+                max-height: calc(100vh - 160px);
+                border-radius: 12px;
+            }
+
+            .peta-button-group {
+                gap: 10px;
+                margin-top: 10px;
             }
 
             .btn-peta {
@@ -123,24 +143,22 @@
         <div class="peta-page">
             <div class="peta-card">
 
-                <h2 class="peta-title">
-                    Peta Konsep
-                </h2>
-
-                <div class="peta-image-wrap">
-                    <img src="{{ asset('img/petakonsep.png') }}"
-                         alt="Peta Konsep Polinomial"
-                         class="peta-image">
+                <div class="peta-image-section">
+                    <div class="peta-image-wrap">
+                        <img src="{{ asset('img/petakonsepp.png') }}"
+                             alt="Peta Konsep Polinomial"
+                             class="peta-image">
+                    </div>
                 </div>
 
                 <div class="peta-button-group">
-                    <a href="{{ asset('img/petakonsep.png') }}"
+                    <a href="{{ asset('img/petakonsepp.png') }}"
                        download
                        class="btn-peta">
                         Unduh Gambar
                     </a>
 
-                    <a href="{{ asset('img/petakonsep.png') }}"
+                    <a href="{{ asset('img/petakonsepp.png') }}"
                        target="_blank"
                        class="btn-peta">
                         Buka Penuh

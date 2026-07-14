@@ -5,11 +5,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                            delimiters: [
-                                                                                                                                                                                {left: '$$', right: '$$', display: true},
-                                                                                                                                                                                {left: '$', right: '$', display: false}
-                                                                                                                                                                            ]
-                                                                                                                                                                        });"></script>
+                                                                                                                                                                                                                                                    delimiters: [
+                                                                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                                                                                                                    ]
+                                                                                                                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -2446,6 +2446,540 @@
                 font-size: 16px;
             }
         }
+
+        /* ===================== COMPACT SIDE BY SIDE ===================== */
+
+        .petunjuk-compact {
+            margin: 8px 0 12px;
+            padding: 10px 14px;
+            border-left-width: 6px;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .eksplorasi-fungsi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 12px 0;
+        }
+
+        .eksplorasi-fungsi-card {
+            min-width: 0;
+        }
+
+        .eksplorasi-fungsi-card p {
+            margin: 0 0 6px;
+        }
+
+        #eksplorasi-quiz {
+            padding: 12px 14px;
+        }
+
+        #eksplorasi-quiz .quiz-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 10px 0 0;
+            padding-left: 0;
+            list-style-position: inside;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            min-width: 0;
+            margin: 0 !important;
+            padding: 12px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(91, 155, 213, .18);
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            min-height: 46px;
+            font-size: 15px;
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            max-width: 100%;
+        }
+
+        .contoh-top-grid {
+            display: grid;
+            grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+            gap: 14px;
+            align-items: stretch;
+            margin-bottom: 14px;
+        }
+
+        .contoh-top-grid .rumus-box {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        .contoh-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .contoh-steps-grid .step-box {
+            margin-bottom: 0;
+            padding: 14px;
+        }
+
+        .contoh-steps-grid .step-title {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .contoh-steps-grid .step-explain {
+            font-size: 14.5px;
+            line-height: 1.65;
+        }
+
+        .compact-game .game-header {
+            padding: 18px 20px 8px;
+        }
+
+        .compact-game .game-title {
+            font-size: 26px;
+        }
+
+        .compact-game .game-subtitle {
+            margin-top: 6px;
+            font-size: 15.5px;
+            line-height: 1.6;
+        }
+
+        .game-instruction {
+            max-width: 850px;
+            margin: 8px auto 0;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid rgba(47, 143, 70, .14);
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .compact-game .game-scene {
+            grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+            gap: 16px;
+            padding: 14px 20px 22px;
+        }
+
+        .compact-game .game-story-box,
+        .compact-game .game-panel {
+            padding: 18px;
+            border-radius: 20px;
+        }
+
+        .compact-game .game-story-box p {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .compact-game .game-formula-main {
+            margin: 10px 0;
+            padding: 12px 14px;
+        }
+
+        .compact-game .game-stage-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .compact-game .game-dialogue,
+        .compact-game .game-question-box,
+        .compact-game .game-hint-box,
+        .compact-game .game-feedback {
+            padding: 12px 14px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+        }
+
+        .compact-game .game-input {
+            padding: 12px 14px;
+            border-radius: 14px;
+        }
+
+        .compact-game .game-btn {
+            padding: 10px 16px;
+            min-height: 40px;
+            font-size: 15.5px;
+        }
+
+        @media (max-width: 1024px) {
+            .contoh-steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .compact-game .game-scene {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .eksplorasi-fungsi-grid,
+            .contoh-top-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #eksplorasi-quiz .quiz-list {
+                grid-template-columns: 1fr;
+            }
+
+            #eksplorasi-quiz .quiz-q {
+                min-height: auto;
+            }
+
+            .compact-game .game-title {
+                font-size: 22px;
+            }
+
+            .game-instruction {
+                text-align: left;
+                font-size: 14.5px;
+            }
+        }
+
+        /* ===================== PERBAIKAN EKSPLORASI ===================== */
+
+        /* Soal eksplorasi tetap turun ke bawah, bukan bersampingan */
+        #eksplorasi-quiz .quiz-list {
+            display: block !important;
+            margin: 10px 0 0 18px !important;
+            padding-left: 0 !important;
+        }
+
+        /* ===================== KEMBALIKAN TAMPILAN SOAL EKSPLORASI ===================== */
+
+        #eksplorasi-quiz {
+            padding: 14px 16px !important;
+        }
+
+        #eksplorasi-quiz .quiz-list {
+            display: block !important;
+            margin: 10px 0 0 18px !important;
+            padding-left: 0 !important;
+            list-style-position: outside !important;
+        }
+
+        #eksplorasi-quiz .quiz-item {
+            width: 100% !important;
+            margin: 12px 0 16px !important;
+            padding: 0 !important;
+            border: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            min-height: 0 !important;
+            margin-bottom: 8px !important;
+            line-height: 1.55 !important;
+        }
+
+        #eksplorasi-quiz .quiz-input {
+            width: 100% !important;
+            max-width: 560px !important;
+            padding: 12px 14px !important;
+            border-radius: 12px !important;
+        }
+
+        #eksplorasi-quiz .quiz-actions {
+            margin-top: 6px !important;
+        }
+
+        #eksplorasi-quiz .quiz-q {
+            min-height: 0 !important;
+            margin-bottom: 6px !important;
+        }
+
+        /* Petunjuk eksplorasi dibuat lebih kecil dan tidak terlalu memakan tempat */
+        .petunjuk-compact {
+            margin: 8px 0 14px !important;
+            padding: 10px 14px !important;
+            border-left-width: 6px !important;
+            border-radius: 14px !important;
+            font-size: 15px !important;
+            line-height: 1.65 !important;
+        }
+
+        /* Tim A dan Tim B tetap bersampingan */
+        .eksplorasi-fungsi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 12px 0;
+        }
+
+        .eksplorasi-fungsi-card {
+            min-width: 0;
+        }
+
+        .eksplorasi-fungsi-card p {
+            margin: 0 0 6px;
+        }
+
+        @media (max-width: 768px) {
+            .eksplorasi-fungsi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===================== CONTOH MINIMALIS ===================== */
+
+        .contoh-wrap {
+            padding: 18px 20px !important;
+            border-radius: 16px !important;
+        }
+
+        .contoh-pill {
+            padding: 8px 18px !important;
+            margin-bottom: 10px !important;
+            font-size: 15px !important;
+        }
+
+        .contoh-top-grid {
+            display: block !important;
+            margin-bottom: 12px !important;
+        }
+
+        .contoh-desc {
+            margin: 0 0 8px !important;
+            font-size: 15.5px !important;
+            line-height: 1.65 !important;
+            text-align: left !important;
+        }
+
+        .contoh-top-grid .rumus-box {
+            min-height: unset !important;
+            margin: 10px 0 12px !important;
+            padding: 14px 16px !important;
+            border-radius: 14px !important;
+            font-size: 17px !important;
+        }
+
+        .contoh-top-grid .petunjuk-box {
+            margin: 8px 0 0 !important;
+            padding: 10px 14px !important;
+            border-radius: 12px !important;
+            border-left-width: 5px !important;
+            font-size: 14.5px !important;
+            line-height: 1.65 !important;
+            text-align: left !important;
+        }
+
+        .contoh-top-grid .petunjuk-title {
+            font-size: 15px !important;
+        }
+
+        .step-box {
+            padding: 14px 16px !important;
+            margin-bottom: 12px !important;
+            border-radius: 14px !important;
+        }
+
+        .step-title {
+            font-size: 16px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .step-explain {
+            font-size: 14.5px !important;
+            line-height: 1.65 !important;
+            margin: 6px 0 !important;
+        }
+
+        .interaktif-wrap {
+            padding: 12px !important;
+            margin-top: 8px !important;
+        }
+
+        .interaktif-title {
+            font-size: 15px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .interaktif-input {
+            padding: 10px 12px !important;
+            min-height: 42px !important;
+        }
+
+        .interaktif-actions {
+            margin-top: 8px !important;
+        }
+
+        @media (max-width: 768px) {
+            .contoh-wrap {
+                padding: 14px !important;
+            }
+
+            .contoh-top-grid .rumus-box {
+                justify-content: flex-start !important;
+                font-size: 15px !important;
+            }
+        }
+
+        /* ===================== PENJELASAN JAWABAN BENAR LATIHAN ===================== */
+
+        .latihan-explanation {
+            display: none;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(27, 122, 42, .08);
+            border: 1px solid rgba(27, 122, 42, .18);
+            color: #14532d;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.75;
+            text-align: justify;
+        }
+
+        .latihan-explanation.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .latihan-explanation {
+                font-size: 14px;
+                line-height: 1.7;
+                padding: 11px 12px;
+                border-radius: 11px;
+                text-align: left;
+            }
+        }
+
+        /* ===================== PENJELASAN JAWABAN BENAR LATIHAN ===================== */
+
+        .latihan-explanation {
+            display: none;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(27, 122, 42, .08);
+            border: 1px solid rgba(27, 122, 42, .18);
+            color: #14532d;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.75;
+            text-align: justify;
+        }
+
+        .latihan-explanation.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .latihan-explanation {
+                font-size: 14px;
+                line-height: 1.7;
+                padding: 11px 12px;
+                border-radius: 11px;
+                text-align: left;
+            }
+        }
+
+        /* ===================== PENJELASAN JAWABAN BENAR LATIHAN ===================== */
+
+        .latihan-explanation {
+            display: none;
+            width: 100%;
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: #f3fbf4;
+            border: 1px solid rgba(27, 122, 42, .18);
+            color: #14532d;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .latihan-explanation.show {
+            display: block;
+        }
+
+        .latihan-explanation-title {
+            font-weight: 900;
+            font-size: 16px;
+            color: #0f5f22;
+            margin-bottom: 10px;
+        }
+
+        .latihan-explanation p {
+            margin: 6px 0 10px;
+            color: #14532d;
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .explanation-step {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(27, 122, 42, .12);
+        }
+
+        .explanation-step b {
+            color: #0f5f22;
+        }
+
+        .explanation-math {
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px dashed rgba(27, 122, 42, .22);
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .explanation-result {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(27, 122, 42, .10);
+            border: 1px solid rgba(27, 122, 42, .18);
+            font-weight: 900;
+            color: #0f5f22;
+        }
+
+        @media (max-width: 480px) {
+            .latihan-explanation {
+                font-size: 14px;
+                line-height: 1.65;
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .latihan-explanation p {
+                font-size: 14px;
+                line-height: 1.65;
+            }
+
+            .latihan-explanation-title {
+                font-size: 15px;
+            }
+
+            .explanation-step,
+            .explanation-math,
+            .explanation-result {
+                padding: 9px 10px;
+                border-radius: 10px;
+            }
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2459,21 +2993,35 @@
             mengurangkan polinomial kedua dari polinomial pertama.
         </p>
 
+        {{-- EKSPLORASI --}}
         <div class="card card-eksplorasi">
             <div class="title-box blue">🧭 Eksplorasi</div>
 
             <p>Perhatikan dua fungsi berikut.</p>
 
-            <p style="margin-bottom:6px;"><b>Tim A</b></p>
-            <div class="rumus-box">$$T(x)=5x^3-2x^2+4x+6$$</div>
+            <div class="eksplorasi-fungsi-grid">
+                <div class="eksplorasi-fungsi-card">
+                    <p><b>Tim A</b></p>
+                    <div class="rumus-box">$$T(x)=5x^3-2x^2+4x+6$$</div>
+                </div>
 
-            <p style="margin-bottom:6px;"><b>Tim B</b></p>
-            <div class="rumus-box">$$U(x)=3x^3+x^2-2x-5$$</div>
+                <div class="eksplorasi-fungsi-card">
+                    <p><b>Tim B</b></p>
+                    <div class="rumus-box">$$U(x)=3x^3+x^2-2x-5$$</div>
+                </div>
+            </div>
 
             <p>
                 Untuk memahami hubungan kedua fungsi, coba substitusikan nilai
                 <span class="highlight">$x=1$</span> dan amati hasilnya.
             </p>
+
+            <div class="petunjuk-box petunjuk-compact">
+                <span class="petunjuk-title">Petunjuk Pengerjaan:</span>
+                Amati kedua fungsi yang diberikan, lalu substitusikan nilai <b>$x = 1$</b> ke dalam masing-masing fungsi.
+                Setelah itu, hitung nilai $T(1)$, nilai $U(1)$, dan selisih $T(1)-U(1)$.
+                Semua jawaban harus diisi terlebih dahulu agar materi berikutnya dapat muncul.
+            </div>
 
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Amati dan Temukan Polanya</div>
@@ -2516,7 +3064,9 @@
             </div>
         </div>
 
+        {{-- SEMUA BAGIAN DI BAWAH INI TERKUNCI SAMPAI EKSPLORASI DIISI --}}
         <div id="materi-lanjutan" style="display:none;">
+
             {{-- TRIK CEPAT --}}
             <div class="tip-board" id="tipBoard">
                 <div class="tip-head">
@@ -2539,14 +3089,14 @@
 
                 <div class="tip-grid">
                     <div class="tip-example-card">
-                        <div class="tip-example-title">✅ Sebelum</div>
+                        <div class="tip-example-title">Sebelum</div>
                         <div class="tip-formula-box">
                             $$A(x) - (B(x) - C(x))$$
                         </div>
                     </div>
 
                     <div class="tip-example-card">
-                        <div class="tip-example-title">✅ Setelah kurung dibuka</div>
+                        <div class="tip-example-title">Setelah kurung dibuka</div>
                         <div class="tip-formula-box">
                             $$A(x) - B(x) + C(x)$$
                         </div>
@@ -2589,6 +3139,12 @@
                     $$(5x^3-2x^2+4x+6)-(3x^3+x^2-2x-5)$$
                 </div>
 
+                <div class="petunjuk-box petunjuk-compact">
+                    <span class="petunjuk-title">Petunjuk Pengerjaan:</span>
+                    Perhatikan tanda minus di depan kurung kedua, lalu ubah semua tanda pada polinomial kedua ketika
+                    kurung dibuka. Setelah itu, kelompokkan suku yang sejenis dan sederhanakan hasilnya.
+                </div>
+
                 <div class="step-box">
                     <div class="step-title">Langkah 1: Perhatikan bentuk pengurangannya</div>
                     <p class="step-explain">
@@ -2625,7 +3181,7 @@
                 <div class="step-box">
                     <div class="step-title">Langkah 3: Hitung setiap kelompok</div>
                     <p class="step-explain">
-                        Sekarang hitung hasil setiap kelompok
+                        Sekarang hitung hasil setiap kelompok.
                     </p>
 
                     <div class="interaktif-wrap" data-answer="2x^3-3x^2+6x+11">
@@ -2643,11 +3199,19 @@
                 </div>
             </div>
 
-            <div class="card game-mission-card" id="game-mode">
+            {{-- MISI --}}
+            <div class="card game-mission-card compact-game" id="game-mode">
                 <div class="game-header">
                     <h2 class="game-title">Misi Membuka Gerbang Polinomial</h2>
+
                     <p class="game-subtitle">
                         Selesaikan setiap tahap untuk membuka gerbang.
+                    </p>
+
+                    <p class="game-instruction">
+                        Petunjuk pengerjaan: Baca misi terlebih dahulu, lalu isi jawaban pada kotak yang tersedia sesuai
+                        tahap yang sedang aktif. Pada tahap pertama, buka kurung dengan mengubah tanda pada polinomial
+                        kedua. Pada tahap berikutnya, kelompokkan suku sejenis dan tulis hasil akhirnya dengan rapi.
                     </p>
                 </div>
 
@@ -2782,8 +3346,7 @@
                 <div class="petunjuk-box">
                     <span class="petunjuk-title">Petunjuk Penggunaan:</span>
                     Kerjakan latihan secara berurutan. Selesaikan Latihan A terlebih dahulu sampai benar, lalu Latihan B
-                    akan terbuka.
-                    Isi setiap langkah, kemudian klik <b>Cek</b> atau gunakan tombol <b>Cek Semua</b>.
+                    akan terbuka. Isi setiap langkah, kemudian klik <b>Cek</b> atau gunakan tombol <b>Cek Semua</b>.
                     Untuk menulis pangkat, ketik angka setelah variabel, misalnya <b>x2</b> untuk $x^2$ dan <b>x3</b> untuk
                     $x^3$.
                 </div>
@@ -2816,7 +3379,7 @@
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
                                 Gabungkan suku $x^2$ dengan $x^2$, suku $x$ dengan $x$, dan konstanta dengan konstanta
-                                (gunakan tanda kurung untuk membedakan kelompoknya).
+                                menggunakan tanda kurung untuk membedakan kelompoknya.
                             </div>
                             <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
@@ -2837,6 +3400,12 @@
                                 <button type="button" class="latihan-reset">Reset</button>
                                 <span class="latihan-feedback"></span>
                             </div>
+                        </div>
+                        <div id="latihan-a-explanation" class="latihan-explanation">
+                            <b>Penjelasan jawaban benar:</b>
+                            Karena ada tanda minus di depan kurung kedua, maka tanda pada polinomial kedua dibalik.
+                            Bentuknya menjadi $9x^2 - 4x + 7 - 2x^2 - 3x + 5$.
+                            Setelah suku sejenis digabungkan, diperoleh $7x^2 - 7x + 12$.
                         </div>
                     </div>
 
@@ -2866,8 +3435,8 @@
                             data-answer="(5y^3-2y^3)+(y+4y)+(-8-1)">
                             <div class="latihan-step-title">Langkah 2: Kelompokkan suku sejenis</div>
                             <div class="latihan-step-help">
-                                Kelompokkan suku $y^3$, suku $y$, dan konstanta (gunakan tanda kurung untuk membedakan
-                                kelompok).
+                                Kelompokkan suku $y^3$, suku $y$, dan konstanta menggunakan tanda kurung untuk membedakan
+                                kelompok.
                             </div>
                             <input type="text" class="latihan-input" placeholder="Isi jawaban">
                             <div class="latihan-actions">
@@ -2889,6 +3458,12 @@
                                 <span class="latihan-feedback"></span>
                             </div>
                         </div>
+                        <div id="latihan-b-explanation" class="latihan-explanation">
+                            <b>Penjelasan jawaban benar:</b>
+                            Karena ada tanda minus di depan kurung kedua, maka tanda pada polinomial kedua dibalik.
+                            Bentuknya menjadi $5y^3 + y - 8 - 2y^3 + 4y - 1$.
+                            Setelah suku sejenis digabungkan, diperoleh $3y^3 + 5y - 9$.
+                        </div>
                     </div>
                 </div>
 
@@ -2901,11 +3476,9 @@
                     ✅ Bagus! Semua langkah pada latihan A dan B sudah benar.
                 </div>
             </div>
+
         </div>
     </div>
-
-
-
     <script>
         window.completeMateriUrl = "{{ route('materi.complete', $materi->id) }}";
     </script>
@@ -3045,7 +3618,7 @@
                     if (ok) {
                         setFb(fb, true, "Benar");
                     } else {
-                        setFb(fb, false, "Benar", `Salah. Jawaban benar: ${answerRaw}`);
+                        setFb(fb, false, "Benar", "Salah");
                     }
 
                     return {
@@ -3278,6 +3851,9 @@
 
             const latihanBCard = document.getElementById("latihan-b-card");
 
+            const latihanAExplanation = document.getElementById("latihan-a-explanation");
+            const latihanBExplanation = document.getElementById("latihan-b-explanation");
+
             const latihanSummary = document.getElementById("latihan-summary");
             const latihanFinal = document.getElementById("latihan-final-message");
             const latihanCheckAll = document.getElementById("latihan-check-all");
@@ -3296,7 +3872,6 @@
                 setFb(fb, ok);
                 return ok;
             }
-
             function setLatihanBLocked(locked) {
                 latihanBTerbuka = !locked;
 
@@ -3317,6 +3892,10 @@
                     if (locked) {
                         if (input) input.value = "";
                         clearFb(fb);
+
+                        if (latihanBExplanation) {
+                            latihanBExplanation.classList.remove("show");
+                        }
                     }
                 });
             }
@@ -3375,12 +3954,35 @@
                 const totalB = latihanBItems.length;
 
                 const aBenarSemua = correctA === totalA && totalA > 0;
+                const bBenarSemua = correctB === totalB && totalB > 0;
 
                 if (aBenarSemua) {
                     setLatihanBLocked(false);
+
+                    if (latihanAExplanation) {
+                        latihanAExplanation.classList.add("show");
+                    }
                 } else {
                     setLatihanBLocked(true);
                     progressSudahDisimpan = false;
+
+                    if (latihanAExplanation) {
+                        latihanAExplanation.classList.remove("show");
+                    }
+
+                    if (latihanBExplanation) {
+                        latihanBExplanation.classList.remove("show");
+                    }
+                }
+
+                if (bBenarSemua && latihanBTerbuka) {
+                    if (latihanBExplanation) {
+                        latihanBExplanation.classList.add("show");
+                    }
+                } else {
+                    if (latihanBExplanation) {
+                        latihanBExplanation.classList.remove("show");
+                    }
                 }
 
                 if (latihanSummary) {
@@ -3463,10 +4065,10 @@
                 {
                     name: "Gerbang 1 — Buka Kurung",
                     prompt: `
-                                                    $$
-                                                    (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
-                                                    $$
-                                                    `,
+                                                                                                                            $$
+                                                                                                                            (5x^3 - 2x^2 + 4x + 6) - (3x^3 + x^2 - 2x - 5)
+                                                                                                                            $$
+                                                                                                                            `,
                     dialogue: "Ubah tanda pada semua suku di dalam kurung kedua, lalu tulis bentuk setelah kurung dibuka.",
                     hint: "Karena ada tanda minus di depan kurung kedua, semua tanda di dalam kurung kedua harus berubah.",
                     answers: [
@@ -3482,10 +4084,10 @@
                 {
                     name: "Gerbang 2 — Kelompokkan Suku Sejenis",
                     prompt: `
-                                                    $$
-                                                    5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
-                                                    $$
-                                                    `,
+                                                                                                                            $$
+                                                                                                                            5x^3 - 2x^2 + 4x + 6 - 3x^3 - x^2 + 2x + 5
+                                                                                                                            $$
+                                                                                                                            `,
                     dialogue: "Sekarang kelompokkan suku-suku sejenis agar lebih mudah disederhanakan.",
                     hint: "Gabungkan suku dengan variabel dan pangkat yang sama: suku x^3, suku x^2, suku x, dan konstanta.",
                     answers: [
@@ -3498,10 +4100,10 @@
                 {
                     name: "Gerbang 3 — Sederhanakan",
                     prompt: `
-                                                    $$
-                                                    (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
-                                                    $$
-                                                    `,
+                                                                                                                            $$
+                                                                                                                            (5x^3 - 3x^3) + (-2x^2 - x^2) + (4x + 2x) + (6 + 5)
+                                                                                                                            $$
+                                                                                                                            `,
                     dialogue: "Hitung setiap kelompok, lalu tulis hasil akhir dalam bentuk polinomial yang sederhana dan terurut.",
                     hint: "Kurangkan atau jumlahkan koefisien pada tiap kelompok, lalu tulis hasil akhirnya secara rapi.",
                     answers: [

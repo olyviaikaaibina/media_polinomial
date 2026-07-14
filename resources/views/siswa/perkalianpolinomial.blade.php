@@ -8,11 +8,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {
-                                                                                                                                                                    delimiters: [
-                                                                                                                                                                        {left: '$$', right: '$$', display: true},
-                                                                                                                                                                        {left: '$', right: '$', display: false}
-                                                                                                                                                                    ]
-                                                                                                                                                                });"></script>
+                                                                                                                                                                                                    delimiters: [
+                                                                                                                                                                                                        {left: '$$', right: '$$', display: true},
+                                                                                                                                                                                                        {left: '$', right: '$', display: false}
+                                                                                                                                                                                                    ]
+                                                                                                                                                                                                });"></script>
 
     <style>
         :root {
@@ -1295,9 +1295,9 @@
         }
 
         /* ================================
-                                                                                                                           RESPONSIVE: LAPTOP, TABLET, HP
-                                                                                                                           Tempel di paling bawah <style>
-                                                                                                                        ================================ */
+                                                                                                                                                           RESPONSIVE: LAPTOP, TABLET, HP
+                                                                                                                                                           Tempel di paling bawah <style>
+                                                                                                                                                        ================================ */
 
         /* Laptop / desktop besar */
         @media (min-width: 1025px) {
@@ -1741,8 +1741,8 @@
         }
 
         /* =========================
-                                                                               CARD JAWABAN CONTOH C
-                                                                               ========================= */
+                                                                                                               CARD JAWABAN CONTOH C
+                                                                                                               ========================= */
 
         .contoh-answer-card {
             width: 100%;
@@ -1777,8 +1777,8 @@
         }
 
         /* =========================
-                                                                               TABEL KECIL
-                                                                               ========================= */
+                                                                                                               TABEL KECIL
+                                                                                                               ========================= */
 
         .contoh-table-box {
             width: 100%;
@@ -1843,8 +1843,8 @@
         }
 
         /* =========================
-                                                                               INPUT DI DALAM TABEL
-                                                                               ========================= */
+                                                                                                               INPUT DI DALAM TABEL
+                                                                                                               ========================= */
 
         .table-answer-input {
             width: 76px;
@@ -1865,8 +1865,8 @@
         }
 
         /* =========================
-                                                                               HINT KATEX
-                                                                               ========================= */
+                                                                                                               HINT KATEX
+                                                                                                               ========================= */
 
         .hint-katex {
             width: 100%;
@@ -1882,8 +1882,8 @@
         }
 
         /* =========================
-                                                                               INPUT HASIL DI SAMPING
-                                                                               ========================= */
+                                                                                                               INPUT HASIL DI SAMPING
+                                                                                                               ========================= */
 
         .contoh-result-row {
             display: flex;
@@ -1922,8 +1922,8 @@
         }
 
         /* =========================
-                                                                               FEEDBACK DI SAMPING INPUT
-                                                                               ========================= */
+                                                                                                               FEEDBACK DI SAMPING INPUT
+                                                                                                               ========================= */
 
         .susun-feedback {
             display: inline-block;
@@ -1946,8 +1946,8 @@
         }
 
         /* =========================
-                                                                               TOMBOL CEK DI SAMPING / KIRI
-                                                                               ========================= */
+                                                                                                               TOMBOL CEK DI SAMPING / KIRI
+                                                                                                               ========================= */
 
         .susun-actions-side {
             display: flex;
@@ -1965,8 +1965,8 @@
         }
 
         /* =========================
-                                                                               RESPONSIVE
-                                                                               ========================= */
+                                                                                                               RESPONSIVE
+                                                                                                               ========================= */
 
         @media (max-width: 850px) {
             .contoh-answer-card {
@@ -2034,8 +2034,8 @@
         }
 
         /* =========================
-                                                                       LATIHAN TERAKHIR BERURUTAN
-                                                                       ========================= */
+                                                                                                       LATIHAN TERAKHIR BERURUTAN
+                                                                                                       ========================= */
 
         .game-soal {
             position: relative;
@@ -2144,6 +2144,59 @@
         .tip-example-desc {
             text-align: justify !important;
         }
+
+        /* =========================
+                                   EKSPLORASI BENTUK BERSAMPINGAN
+                                ========================= */
+        .eksplorasi-bentuk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 12px 0 18px;
+            align-items: stretch;
+        }
+
+        .eksplorasi-bentuk-card {
+            background: rgba(255, 255, 255, .88);
+            border: 1px solid rgba(91, 155, 213, .22);
+            border-radius: 16px;
+            padding: 14px;
+            min-width: 0;
+        }
+
+        .eksplorasi-bentuk-title {
+            font-weight: 900;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .eksplorasi-bentuk-card .rumus-box {
+            margin: 0;
+            min-height: 74px;
+            width: 100%;
+        }
+
+        .eksplorasi-bentuk-card .rumus-box .katex-display {
+            margin: 0;
+        }
+
+        @media (max-width: 700px) {
+            .eksplorasi-bentuk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .game-explain {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(27, 122, 42, .08);
+            border: 1px solid rgba(27, 122, 42, .18);
+            color: #244b2c;
+            font-weight: 700;
+            line-height: 1.8;
+        }
     </style>
 
     <div class="materi-wrap">
@@ -2168,16 +2221,27 @@
                 Perhatikan dua bentuk aljabar berikut.
             </p>
 
-            <p style="margin-bottom:6px;"><b>Bentuk pertama:</b></p>
-            <div class="rumus-box">$$A(x)=3x$$</div>
+            <div class="eksplorasi-bentuk-grid">
+                <div class="eksplorasi-bentuk-card">
+                    <div class="eksplorasi-bentuk-title">Bentuk pertama:</div>
+                    <div class="rumus-box">$$A(x)=3x$$</div>
+                </div>
 
-            <p style="margin-bottom:6px;"><b>Bentuk kedua:</b></p>
-            <div class="rumus-box">$$B(x)=2x^2-5x+4$$</div>
-
+                <div class="eksplorasi-bentuk-card">
+                    <div class="eksplorasi-bentuk-title">Bentuk kedua:</div>
+                    <div class="rumus-box">$$B(x)=2x^2-5x+4$$</div>
+                </div>
+            </div>
             <p>
                 Untuk memahami hubungan kedua bentuk tersebut, coba substitusikan nilai
                 <span class="highlight">$x=1$</span> dan amati hasilnya.
             </p>
+
+            <div class="petunjuk-box"
+                style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                <b>Petunjuk:</b> Substitusikan <b>$x=1$</b> ke $A(x)$ dan $B(x)$, lalu kalikan hasilnya. Isi semua jawaban
+                agar materi berikutnya muncul.
+            </div>
 
             <div class="question" id="eksplorasi-quiz">
                 <div class="qtitle">Amati dan Temukan Polanya</div>
@@ -2310,13 +2374,17 @@
                 <p>
                     Jadi, fokusnya ada dua: hitung angka di depan, lalu gabungkan variabel dengan aturan pangkat.
                 </p>
-
                 <div class="section-split">
                     <div class="submateri-title">Contoh</div>
 
                     <div class="contoh-box" id="contoh-a">
                         <div class="contoh-row-title">Hitunglah hasil dari:</div>
                         <div class="rumus-box">$$(3x^2)(4x^3)$$</div>
+
+                        <div class="petunjuk-box"
+                            style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                            <b>Petunjuk:</b> Kalikan koefisiennya, lalu jumlahkan pangkat variabel yang sama.
+                        </div>
 
                         <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
                             Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
@@ -2387,6 +2455,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -2529,6 +2598,12 @@
                     <div class="contoh-box" id="contoh-b">
                         <div class="contoh-row-title">Gunakan aturan distributif.</div>
                         <div class="rumus-box">$$3x(2x^2-5x+4)$$</div>
+
+                        <div class="petunjuk-box"
+                            style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                            <b>Petunjuk:</b> Kalikan <b>$3x$</b> ke setiap suku di dalam kurung, lalu tuliskan hasil
+                            akhirnya.
+                        </div>
 
                         <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
                             Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
@@ -2865,6 +2940,11 @@
                             $$(x+2)(x+3)$$
                         </div>
 
+                        <div class="petunjuk-box"
+                            style="margin:0 0 14px; padding:10px 12px; border-radius:12px; background:rgba(27,122,42,.06); border-left:4px solid #97a97c; color:#374151; line-height:1.8;">
+                            <b>Petunjuk:</b> Kalikan suku pada baris dengan suku pada kolom, lalu gabungkan suku sejenis.
+                        </div>
+
                         <p style="font-style: italic; margin: 8px 0 12px; color:#4b5563;">
                             Untuk menulis pangkat, ketik angka setelah variabel, misalnya x2 untuk x² dan x3 untuk x³.
                         </p>
@@ -2978,7 +3058,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- =========================
             C. LATIHAN
             ========================== --}}
@@ -3113,8 +3192,7 @@
                         <b>Petunjuk pengerjaan:</b>
                         Perhatikan setiap bentuk perkalian polinomial pada soal. Tentukan hasil perkaliannya dengan cara
                         mengalikan setiap suku, memperhatikan tanda positif atau negatif, lalu menyederhanakan suku sejenis.
-                        <div class="jawaban-line">
-                        </div>
+                        <div class="jawaban-line"></div>
                     </div>
 
                     <div class="game-grid">
@@ -3137,6 +3215,14 @@
                                 <button type="button" class="game-option"
                                     data-value="x^3-x^2-10x-8">$$x^3-x^2-10x-8$$</button>
                             </div>
+
+                            <div class="game-explain">
+                                <b>Penjelasan:</b>
+                                Kalikan $x$ dan $-4$ ke setiap suku di dalam kurung.
+                                Dari $x(x^2+3x+2)$ diperoleh $x^3+3x^2+2x$.
+                                Dari $-4(x^2+3x+2)$ diperoleh $-4x^2-12x-8$.
+                                Jika suku sejenis digabung, hasilnya $x^3-x^2-10x-8$.
+                            </div>
                         </div>
 
                         <div class="game-soal" data-answer="10x^3-4x^2+14x">
@@ -3157,6 +3243,13 @@
                                 <button type="button" class="game-option"
                                     data-value="10x^3-4x^2+7x">$$10x^3-4x^2+7x$$</button>
                             </div>
+
+                            <div class="game-explain">
+                                <b>Penjelasan:</b>
+                                Kalikan $2x$ ke semua suku di dalam kurung.
+                                $2x(5x^2)=10x^3$, $2x(-2x)=-4x^2$, dan $2x(7)=14x$.
+                                Jadi hasilnya $10x^3-4x^2+14x$.
+                            </div>
                         </div>
 
                         <div class="game-soal" data-answer="-12y^5">
@@ -3173,6 +3266,13 @@
                                 <button type="button" class="game-option" data-value="-12y^5">$$-12y^5$$</button>
                                 <button type="button" class="game-option" data-value="12y^5">$$12y^5$$</button>
                                 <button type="button" class="game-option" data-value="-12y^6">$$-12y^6$$</button>
+                            </div>
+
+                            <div class="game-explain">
+                                <b>Penjelasan:</b>
+                                Koefisiennya dikalikan, yaitu $-3 \times 4=-12$.
+                                Karena variabelnya sama-sama $y$, pangkatnya dijumlahkan:
+                                $y^2 \cdot y^3=y^5$. Jadi hasilnya $-12y^5$.
                             </div>
                         </div>
 
@@ -3367,7 +3467,7 @@
                             if (ok) {
                                 fb.textContent = "Benar";
                             } else {
-                                fb.textContent = `Salah. Jawaban benar: ${answerRaw}`;
+                                fb.textContent = "Salah";
                             }
                         }
 
@@ -4093,6 +4193,12 @@
                         option.disabled = true;
                     });
 
+
+                    const explainBox = soal.querySelector(".game-explain");
+                    if (explainBox) {
+                        explainBox.style.display = "none";
+                    }
+
                     const btn = soal.querySelector(".game-check-one");
                     if (btn) {
                         btn.disabled = true;
@@ -4229,6 +4335,11 @@
                             selected.classList.add("correct");
                             markDone(index);
 
+                            const explainBox = soal.querySelector(".game-explain");
+                            if (explainBox) {
+                                explainBox.style.display = "block";
+                            }
+
                             const benar = hitungBenar();
 
                             if (index < soalList.length - 1) {
@@ -4249,8 +4360,13 @@
                             selected.classList.add("wrong");
                             setStatus(soal, "Salah", "no");
 
+                            const explainBox = soal.querySelector(".game-explain");
+                            if (explainBox) {
+                                explainBox.style.display = "none";
+                            }
+
                             if (scoreEl) {
-                                scoreEl.textContent = `Jawaban soal ${index + 1} masih salah. Coba lagi.`;
+                                scoreEl.textContent = `Salah. Jawaban soal ${index + 1} masih salah. Coba lagi.`;
                             }
 
                             if (finalNote) {

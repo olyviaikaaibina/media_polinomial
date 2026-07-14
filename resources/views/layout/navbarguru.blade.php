@@ -437,7 +437,7 @@
 
             <a href="{{ route('aktivitassiswa') }}"
               class="sidebar-subcard {{ request()->routeIs('aktivitassiswa') ? 'active' : '' }}">
-              Progress Siswa
+              Progres Siswa
             </a>
           </div>
         </div>
